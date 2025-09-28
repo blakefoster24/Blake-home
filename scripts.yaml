@@ -45,5 +45,57 @@ generate_entities_readme:
           ---
           _Generated: {{ now().isoformat() }}_
   mode: single
+  generate_helpers_readme:
+  alias: Generate Helpers README (UI helpers snapshot)
+  sequence:
+    - action: shell_command.write_entities_md
+      data:
+        content: |-
+          # Home Assistant — UI Helpers (Snapshot)
+          Auto-generated list of helpers created via the UI. Safe to publish.
+
+          {% set sections = [
+            ('input_boolean', '🎚 Input Booleans'),
+            ('input_number',  '🔢 Input Numbers'),
+            ('input_text',    '✏️ Input Texts'),
+            ('input_select',  '📋 Input Selects'),
+            ('input_datetime','🗓 Input Datetimes'),
+            ('input_button',  '🔘 Input Buttons'),
+            ('timer',         '⏱ Timers'),
+            ('counter',       '🔁 Counters')
+          ] %}
+
+          {% for domain, title in sections %}
+          {% set items = states[domain] | list %}
+          {% if items | count > 0 %}
+          ## {{ title }}
+          | Entity ID | Friendly Name | Key Attributes |
+          |---|---|---|
+          {% for s in items | sort(attribute='entity_id') %}
+          {# Build a compact attributes summary per domain #}
+          {% if domain == 'input_number' %}
+          {% set attr = "min=" ~ (s.attributes.min|default('')) ~ ", max=" ~ (s.attributes.max|default('')) ~ ", step=" ~ (s.attributes.step|default('')) %}
+          {% elif domain == 'input_text' %}
+          {% set attr = "min=" ~ (s.attributes.min|default('')) ~ ", max=" ~ (s.attributes.max|default('')) ~ ", mode=" ~ (s.attributes.mode|default('')) %}
+          {% elif domain == 'input_select' %}
+          {% set attr = "options=" ~ (s.attributes.options|default([])|join(', ')) %}
+          {% elif domain == 'input_datetime' %}
+          {% set attr = "has_date=" ~ (s.attributes.has_date|default(false)) ~ ", has_time=" ~ (s.attributes.has_time|default(false)) %}
+          {% elif domain == 'timer' %}
+          {% set attr = "duration=" ~ (s.attributes.duration|default('')) ~ ", restore=" ~ (s.attributes.restore|default(false)) %}
+          {% elif domain == 'counter' %}
+          {% set attr = "min=" ~ (s.attributes.minimum|default('')) ~ ", max=" ~ (s.attributes.maximum|default('')) ~ ", step=" ~ (s.attributes.step|default('')) ~ ", restore=" ~ (s.attributes.restore|default(false)) %}
+          {% else %}
+          {% set attr = "" %}
+          {% endif %}
+          | `{{ s.entity_id }}` | {{ s.name }} | {{ attr }} |
+          {% endfor %}
+
+          {% endif %}
+          {% endfor %}
+
+          ---
+          _Generated: {{ now().isoformat() }}_
+  mode: single
 
   
