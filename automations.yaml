@@ -552,12 +552,23 @@
       notification_id: lamp_latency
   mode: single
 - id: auto_push_github
-  alias: "Auto-push HA config to GitHub hourly"
-  description: "Commits and pushes any config changes once an hour"
+  alias: Auto-push HA config to GitHub hourly
+  description: Commits and pushes any config changes once an hour
   trigger:
-    - platform: time_pattern
-      minutes: "0"       # runs at HH:00 every hour
-      # (alternative: use 'hours: "/1"' and remove the minutes line)
+  - platform: time_pattern
+    minutes: '0'
   action:
-    - service: shell_command.ha_git_commit_push
+  - service: shell_command.ha_git_commit_push
+  mode: single
+- id: '1759100833585'
+  alias: Set my room
+  description: ''
+  triggers: []
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.set_my_room
   mode: single
