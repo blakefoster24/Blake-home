@@ -30,12 +30,12 @@ generate_entities_readme:
           ] %}
 
           {% for domain, title in sections %}
-          {% set items = attribute(states, domain) | list | sort(attribute='entity_id') %}
-          {% if items | length > 0 %}
+          {% set items = states[domain] | list %}
+          {% if items | count > 0 %}
           ## {{ title }}
           | Entity ID | Friendly Name |
           |---|---|
-          {% for s in items %}
+          {% for s in items | sort(attribute='entity_id') %}
           | `{{ s.entity_id }}` | {{ s.name }} |
           {% endfor %}
 
@@ -45,4 +45,4 @@ generate_entities_readme:
           ---
           _Generated: {{ now().isoformat() }}_
   mode: single
-
+  
