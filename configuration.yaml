@@ -37,4 +37,3 @@ shell_command:
     {{ content }}
     EOF'
 
-# test push
