@@ -20,3 +20,4 @@ home-assistant_v2.*
 __pycache__/
 esphome/
 zigbee2mqtt/log/
+.git-credentials
