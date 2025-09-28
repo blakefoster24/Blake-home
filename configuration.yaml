@@ -18,3 +18,8 @@ shell_command:
              git -c credential.helper='store --file=/config/.git-credentials' add -A &&
              (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
              git -c credential.helper='store --file=/config/.git-credentials' push origin main"
+
+notify:
+  - name: entities_md
+    platform: file
+    filename: /config/README_entities.md

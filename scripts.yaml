@@ -1,1 +1,48 @@
-{}
+generate_entities_readme:
+  alias: Generate Entities README (Grouped)
+  sequence:
+    - action: notify.entities_md
+      data:
+        message: |-
+          # Home Assistant — All Entities (Grouped)
+          Auto-generated from running **Generate Entities README (Grouped)**.
+          Add your human-friendly descriptions in **README.md** if you want a curated version.
+
+          {% set sections = [
+            ('light', '💡 Lights'),
+            ('switch', '🔌 Switches / Outlets'),
+            ('sensor', '🌡 Sensors'),
+            ('binary_sensor', '🧭 Binary Sensors'),
+            ('scene', '🎛 Scenes'),
+            ('script', '📜 Scripts'),
+            ('automation', '🤖 Automations'),
+            ('climate', '🌬 Climate'),
+            ('fan', '🌀 Fans'),
+            ('cover', '🪟 Covers'),
+            ('media_player', '📺 Media Players'),
+            ('lock', '🔒 Locks'),
+            ('button', '🔘 Buttons'),
+            ('input_boolean', '🎚 Input Booleans'),
+            ('input_number', '🔢 Input Numbers'),
+            ('input_select', '📋 Input Selects'),
+            ('device_tracker', '📍 Device Trackers'),
+            ('person', '👤 People')
+          ] %}
+
+          {% for domain, title in sections %}
+          {% set items = attribute(states, domain) | list | sort(attribute='entity_id') %}
+          {% if items | length > 0 %}
+          ## {{ title }}
+          | Entity ID | Friendly Name |
+          |---|---|
+          {% for s in items %}
+          | `{{ s.entity_id }}` | {{ s.name }} |
+          {% endfor %}
+
+          {% endif %}
+          {% endfor %}
+
+          ---
+          _Generated: {{ now().isoformat() }}_
+  mode: single
+
