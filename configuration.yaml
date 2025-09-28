@@ -23,3 +23,17 @@ notify:
   - name: entities_md
     platform: file
     filename: /config/README_entities.md
+
+shell_command:
+  ha_git_commit_push: >
+    bash -c "cd /config &&
+             git config user.name 'Home Assistant' &&
+             git config user.email 'ha@local' &&
+             git -c credential.helper='store --file=/config/.git-credentials' add -A &&
+             (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
+             git -c credential.helper='store --file=/config/.git-credentials' push origin main"
+  write_entities_md: >
+    bash -lc 'cat > /config/README_entities.md << "EOF"
+    {{ content }}
+    EOF'
+
