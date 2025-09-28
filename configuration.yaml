@@ -13,6 +13,8 @@ scene: !include scenes.yaml
 shell_command:
   ha_git_commit_push: >
     bash -c "cd /config &&
-             git add -A &&
+             git config user.name 'Home Assistant' &&
+             git config user.email 'ha@local' &&
+             git -c credential.helper='store --file=/config/.git-credentials' add -A &&
              (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
-             git push origin main"
+             git -c credential.helper='store --file=/config/.git-credentials' push origin main"
