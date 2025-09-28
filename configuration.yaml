@@ -9,3 +9,10 @@ frontend:
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+
+shell_command:
+  ha_git_commit_push: >
+    bash -c "cd /config &&
+             git add -A &&
+             (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
+             git push origin main"

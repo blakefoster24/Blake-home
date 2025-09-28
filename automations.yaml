@@ -546,8 +546,18 @@
       notification_id: Lamp_latency
   - action: persistent_notification.create
     data:
-      title: Lamp latency
+      title: Lamp latencyj
       message: "{{ ((as_timestamp(trigger.to_state.last_changed) * 1000) -\n     (states('input_number.lamp_cmd_ms')
         | float)) | round(0) }} ms"
       notification_id: lamp_latency
+  mode: single
+- id: auto_push_github
+  alias: "Auto-push HA config to GitHub hourly"
+  description: "Commits and pushes any config changes once an hour"
+  trigger:
+    - platform: time_pattern
+      minutes: "0"       # runs at HH:00 every hour
+      # (alternative: use 'hours: "/1"' and remove the minutes line)
+  action:
+    - service: shell_command.ha_git_commit_push
   mode: single
