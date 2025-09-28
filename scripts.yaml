@@ -1,12 +1,12 @@
 generate_entities_readme:
   alias: Generate Entities README (Grouped)
   sequence:
-    - action: notify.entities_md
+    - action: shell_command.write_entities_md
       data:
-        message: |-
+        content: |-
           # Home Assistant — All Entities (Grouped)
           Auto-generated from running **Generate Entities README (Grouped)**.
-          Add your human-friendly descriptions in **README.md** if you want a curated version.
+          Add human-friendly descriptions in **README.md** if you want a curated version.
 
           {% set sections = [
             ('light', '💡 Lights'),
@@ -45,4 +45,5 @@ generate_entities_readme:
           ---
           _Generated: {{ now().isoformat() }}_
   mode: single
+
   
