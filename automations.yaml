@@ -565,10 +565,20 @@
   description: ''
   triggers: []
   conditions: []
-  actions:
+  actions:  
   - action: scene.turn_on
     metadata: {}
     data: {}
     target:
       entity_id: scene.set_my_room
+  mode: single
+
+- id: nightly_github_sync
+  alias: Nightly GitHub sync
+  description: Run snapshots + push every night at 2 AM
+  triggers:
+    - trigger: time
+      at: "02:00:00"
+  actions:
+    - action: script.push_config_with_snapshots
   mode: single
