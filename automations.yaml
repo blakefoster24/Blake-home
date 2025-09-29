@@ -237,60 +237,39 @@
   - trigger: state
     entity_id:
     - light.closet_light
-    to: 'on'
-    id: Closet light on
-  - trigger: state
-    entity_id:
-    - light.closet_light
-    to: 'off'
-    id: Closet light off
   conditions: []
   actions:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id:
-        - Closet light on
-      sequence:
-      - sequence:
-        - action: light.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: light.bathroom_light
-        - action: input_boolean.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: input_boolean.bathroom_light_helper
-        - delay:
-            hours: 0
-            minutes: 20
-            seconds: 0
-            milliseconds: 0
-        - action: input_boolean.turn_off
-          metadata: {}
-          data: {}
-          target:
-            entity_id: input_boolean.bathroom_light_helper
-    - conditions:
-      - condition: trigger
-        id:
-        - Closet light off
-      - condition: state
-        entity_id: input_boolean.bathroom_light_helper
-        state: 'on'
-      sequence:
-      - action: light.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.bathroom_light
-      - action: input_boolean.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.bathroom_light_helper
+  - if:
+    - condition: state
+      entity_id: timer.10_second_timer
+      state: idle
+    then:
+    - action: counter.reset
+      metadata: {}
+      data: {}
+      target:
+        entity_id: counter.counter_helper
+    - action: timer.start
+      metadata: {}
+      data: {}
+      target:
+        entity_id: timer.10_second_timer
+    else:
+    - action: counter.increment
+      metadata: {}
+      data: {}
+      target:
+        entity_id: counter.counter_helper
+  - if:
+    - condition: numeric_state
+      entity_id: counter.counter_helper
+      above: 2
+    then:
+    - action: light.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: light.bathroom_light
   mode: restart
 - id: '1758990657332'
   alias: Living Room Lamp
@@ -551,7 +530,7 @@
   - action: script.push_config_with_snapshots
   mode: single
 - id: bedroom_light_or_fan_3x_toggle_10s
-  alias: Bedroom light/fan — 3x toggle in 10s → scenes
+  alias: Bedroom Toggle automations
   description: Flip the light OR the fan 3 times within 10 seconds to run the mapped
     scene
   triggers:
@@ -565,30 +544,30 @@
   actions:
   - if:
     - condition: state
-      entity_id: timer.bedroom_toggle_window
+      entity_id: timer.10_second_timer
       state: idle
     then:
     - action: counter.reset
       metadata: {}
       data: {}
       target:
-        entity_id: counter.bedroom_toggle_count
+        entity_id: counter.counter_helper
     - action: timer.start
       metadata: {}
       data: {}
       target:
-        entity_id: timer.bedroom_toggle_window
+        entity_id: timer.10_second_timer
   - action: counter.increment
     metadata: {}
     data: {}
     target:
-      entity_id: counter.bedroom_toggle_count
+      entity_id: counter.counter_helper
   - if:
     - condition: numeric_state
-      entity_id: counter.bedroom_toggle_count
+      entity_id: counter.counter_helper
       above: 2
     - condition: state
-      entity_id: timer.bedroom_toggle_window
+      entity_id: timer.10_second_timer
       state: active
     then:
     - choose:
@@ -614,27 +593,27 @@
       metadata: {}
       data: {}
       target:
-        entity_id: timer.bedroom_toggle_window
+        entity_id: timer.10_second_timer
     - action: counter.reset
       metadata: {}
       data: {}
       target:
-        entity_id: counter.bedroom_toggle_count
+        entity_id: counter.counter_helper
   - wait_for_trigger:
     - trigger: event
       event_type: timer.finished
       event_data:
-        entity_id: timer.bedroom_toggle_window
+        entity_id: timer.10_second_timer
     timeout: 00:00:00
     continue_on_timeout: true
   - if:
     - condition: state
-      entity_id: timer.bedroom_toggle_window
+      entity_id: timer.10_second_timer
       state: idle
     then:
     - action: counter.reset
       metadata: {}
       data: {}
       target:
-        entity_id: counter.bedroom_toggle_count
+        entity_id: counter.counter_helper
   mode: restart
