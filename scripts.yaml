@@ -23,7 +23,7 @@ generate_entities_readme:
 generate_helpers_readme:
   alias: Generate Helpers README
   sequence:
-    - action: shell_command.write_entities_md
+    - action: shell_command.write_helpers_md
       data:
         content: |-
           # Home Assistant — UI Helpers (Snapshot)
