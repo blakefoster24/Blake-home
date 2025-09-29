@@ -105,25 +105,9 @@
       - condition: trigger
         id:
         - I’m Awake Trigger
-      - condition: and
-        conditions:
-        - condition: template
-          value_template: '{% set wd = now().isoweekday() %}
-
-            {% set wn = now().isocalendar()[1] %}
-
-            {% set offset = 1 %}
-
-            {% set active_this_week = ((wn + offset) % 4 == 0) %}
-
-            {% set active_prev_week = (((wn - 1) + offset) % 4 == 0) %}
-
-            {{ (wd in [2,3,4]) or (wd == 5 and not active_this_week) or (wd == 1 and
-            not active_prev_week) or ((wd in [6,7]) and active_this_week) }}'
-        - condition: time
-          after: 08:00:00
-          before: 09:30:00
-          enabled: true
+      - condition: state
+        entity_id: binary_sensor.workday_8_9_30am
+        state: 'on'
       sequence:
       - sequence:
         - action: light.turn_on
@@ -158,25 +142,9 @@
       - condition: state
         entity_id: input_boolean.im_awake_toggle_helper
         state: 'off'
-      - condition: and
-        conditions:
-        - condition: template
-          value_template: '{% set wd = now().isoweekday() %}
-
-            {% set wn = now().isocalendar()[1] %}
-
-            {% set offset = 1 %}
-
-            {% set active_this_week = ((wn + offset) % 4 == 0) %}
-
-            {% set active_prev_week = (((wn - 1) + offset) % 4 == 0) %}
-
-            {{ (wd in [2,3,4]) or (wd == 5 and not active_this_week) or (wd == 1 and
-            not active_prev_week) or ((wd in [6,7]) and active_this_week) }}'
-        - condition: time
-          after: 08:00:00
-          before: 09:30:00
-          enabled: true
+      - condition: state
+        state: 'on'
+        entity_id: binary_sensor.workday_8_9_30am
       sequence:
       - sequence:
         - delay:
@@ -194,25 +162,9 @@
         id:
         - Main lights off
         - '9:29'
-      - condition: and
-        conditions:
-        - condition: template
-          value_template: '{% set wd = now().isoweekday() %}
-
-            {% set wn = now().isocalendar()[1] %}
-
-            {% set offset = 1 %}
-
-            {% set active_this_week = ((wn + offset) % 4 == 0) %}
-
-            {% set active_prev_week = (((wn - 1) + offset) % 4 == 0) %}
-
-            {{ (wd in [2,3,4]) or (wd == 5 and not active_this_week) or (wd == 1 and
-            not active_prev_week) or ((wd in [6,7]) and active_this_week) }}'
-        - condition: time
-          after: 08:00:00
-          before: 09:30:00
-          enabled: true
+      - condition: state
+        entity_id: binary_sensor.workday_8_9_30am
+        state: 'on'
       sequence:
       - action: scene.turn_on
         metadata: {}
@@ -391,39 +343,12 @@
         state: 'off'
       - condition: or
         conditions:
-        - condition: and
-          conditions:
-          - condition: template
-            value_template: '{% set wd = now().isoweekday() %}
-
-              {% set wn = now().isocalendar()[1] %}
-
-              {% set offset = 1 %}
-
-              {% set active_this_week = ((wn + offset) % 4 == 0) %}
-
-              {% set active_prev_week = (((wn - 1) + offset) % 4 == 0) %}
-
-              {{ (wd in [2,3,4]) or (wd == 5 and not active_this_week) or (wd == 1
-              and not active_prev_week) or ((wd in [6,7]) and active_this_week) }}'
-          - condition: time
-            after: '17:00:00'
-            before: '10:00:00'
-        - condition: not
-          conditions:
-          - condition: template
-            value_template: '{% set wd = now().isoweekday() %}
-
-              {% set wn = now().isocalendar()[1] %}
-
-              {% set offset = 1 %}
-
-              {% set active_this_week = ((wn + offset) % 4 == 0) %}
-
-              {% set active_prev_week = (((wn - 1) + offset) % 4 == 0) %}
-
-              {{ (wd in [2,3,4]) or (wd == 5 and not active_this_week) or (wd == 1
-              and not active_prev_week) or ((wd in [6,7]) and active_this_week) }}'
+        - condition: state
+          entity_id: binary_sensor.workday_before_10am_after_5pm
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.workday
+          state: 'off'
       sequence:
       - action: light.turn_on
         metadata: {}
@@ -456,41 +381,12 @@
               above: 30
             - condition: or
               conditions:
-              - condition: not
-                conditions:
-                - condition: template
-                  value_template: '{% set wd = now().isoweekday() %}
-
-                    {% set wn = now().isocalendar()[1] %}
-
-                    {% set offset = 1 %}
-
-                    {% set active_this_week = ((wn + offset) % 4 == 0) %}
-
-                    {% set active_prev_week = (((wn - 1) + offset) % 4 == 0) %}
-
-                    {{ (wd in [2,3,4]) or (wd == 5 and not active_this_week) or (wd
-                    == 1 and not active_prev_week) or ((wd in [6,7]) and active_this_week)
-                    }}'
-              - condition: and
-                conditions:
-                - condition: time
-                  after: '17:00:00'
-                  before: '10:00:00'
-                - condition: template
-                  value_template: '{% set wd = now().isoweekday() %}
-
-                    {% set wn = now().isocalendar()[1] %}
-
-                    {% set offset = 1 %}
-
-                    {% set active_this_week = ((wn + offset) % 4 == 0) %}
-
-                    {% set active_prev_week = (((wn - 1) + offset) % 4 == 0) %}
-
-                    {{ (wd in [2,3,4]) or (wd == 5 and not active_this_week) or (wd
-                    == 1 and not active_prev_week) or ((wd in [6,7]) and active_this_week)
-                    }}'
+              - condition: state
+                entity_id: binary_sensor.workday
+                state: 'off'
+              - condition: state
+                entity_id: binary_sensor.workday_before_10am_after_5pm
+                state: 'on'
       sequence:
       - action: light.turn_on
         metadata: {}

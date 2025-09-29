@@ -74,6 +74,12 @@ Auto-generated list of entities. Safe to publish.
 
 | `binary_sensor.shelly_ceiling_lights_overvoltage` | Bedroom Ceiling Lights Overvoltage |
 
+| `binary_sensor.workday` | Workday |
+
+| `binary_sensor.workday_8_9_30am` | Workday: 8-9:30am |
+
+| `binary_sensor.workday_before_10am_after_5pm` | Workday: before 10am / after 5pm |
+
 
 
 ## Button
@@ -435,4 +441,4 @@ Auto-generated list of entities. Safe to publish.
 
 
 ---
-_Generated: 2025-09-29T11:34:34.289047-05:00_
+_Generated: 2025-09-29T12:25:10.043136-05:00_
