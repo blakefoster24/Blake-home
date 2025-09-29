@@ -665,3 +665,32 @@
       target:
         entity_id: counter.counter_helper
   mode: restart
+- id: '1759142569915'
+  alias: Update TP-Link devices every 5s (safe)
+  description: Force-refresh available entities from the tplink integration; skip
+    if none available
+  triggers:
+  - trigger: time_pattern
+    seconds: /5
+  conditions: []
+  actions:
+  - variables:
+      tplink_all: '{{ integration_entities(''tplink'') }}'
+      tplink_avail: '{{ expand(integration_entities(''tplink''))  | selectattr(''state'',''ne'',''unavailable'')  |
+        map(attribute=''entity_id'')  | list }}'
+  - if:
+    - condition: template
+      value_template: '{{ tplink_avail | count > 0 }}'
+    then:
+    - action: homeassistant.update_entity
+      metadata: {}
+      data:
+        entity_id: '{{ tplink_avail }}'
+    else:
+    - action: logbook.log
+      metadata: {}
+      data:
+        name: TP-Link Poll
+        message: Skipped — no available tplink entities
+        entity_id: ''
+  mode: single
