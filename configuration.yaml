@@ -18,8 +18,14 @@ shell_command:
              git -c credential.helper='store --file=/config/.git-credentials' add -A &&
              (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
              git -c credential.helper='store --file=/config/.git-credentials' push origin main"
-  write_entities_md: >
+
+  write_entities_md: |
     bash -lc 'cat > /config/README_entities.md << "EOF"
+    {{ content }}
+    EOF'
+
+  write_helpers_md: |
+    bash -lc 'cat > /config/README_helpers.md << "EOF"
     {{ content }}
     EOF'
 
