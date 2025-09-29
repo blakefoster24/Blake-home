@@ -554,14 +554,14 @@
   alias: Bedroom light/fan — 3x toggle in 10s → scenes
   description: Flip the light OR the fan 3 times within 10 seconds to run the mapped
     scene
-  mode: restart
   triggers:
   - trigger: state
-    id: light_flip
     entity_id: light.bedroom_ceiling_lights
+    id: light_flip
   - trigger: state
-    id: fan_flip
     entity_id: fan.bedroom_ceiling_fan
+    id: fan_flip
+  conditions: []
   actions:
   - if:
     - condition: state
@@ -569,12 +569,18 @@
       state: idle
     then:
     - action: counter.reset
+      metadata: {}
+      data: {}
       target:
         entity_id: counter.bedroom_toggle_count
     - action: timer.start
+      metadata: {}
+      data: {}
       target:
         entity_id: timer.bedroom_toggle_window
   - action: counter.increment
+    metadata: {}
+    data: {}
     target:
       entity_id: counter.bedroom_toggle_count
   - if:
@@ -591,6 +597,8 @@
           id: light_flip
         sequence:
         - action: scene.turn_on
+          metadata: {}
+          data: {}
           target:
             entity_id: scene.set_my_room
       - conditions:
@@ -598,12 +606,18 @@
           id: fan_flip
         sequence:
         - action: scene.turn_on
+          metadata: {}
+          data: {}
           target:
             entity_id: scene.all_off
     - action: timer.cancel
+      metadata: {}
+      data: {}
       target:
         entity_id: timer.bedroom_toggle_window
     - action: counter.reset
+      metadata: {}
+      data: {}
       target:
         entity_id: counter.bedroom_toggle_count
   - wait_for_trigger:
@@ -619,5 +633,8 @@
       state: idle
     then:
     - action: counter.reset
+      metadata: {}
+      data: {}
       target:
         entity_id: counter.bedroom_toggle_count
+  mode: restart
