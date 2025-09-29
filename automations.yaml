@@ -349,11 +349,6 @@
         entity_id: light.main_lights
         state: 'off'
       sequence:
-      - action: input_datetime.set_datetime
-        target:
-          entity_id: input_datetime.lamp_cmd_time
-        data:
-          datetime: '{{ now().isoformat() }}'
       - action: light.turn_on
         metadata: {}
         data: {}
@@ -525,32 +520,6 @@
           entity_id: light.living_room_lamp
       alias: Main lights turn on - lamp off
   mode: single
-- id: '1758991543281'
-  alias: _Probe - Lamp state latency (ms)
-  description: Logs delay between HA command and lamp state update
-  triggers:
-  - entity_id: light.living_room_lamp
-    trigger: state
-  conditions: []
-  actions:
-  - target:
-      entity_id: input_datetime.lamp_state_time
-    data:
-      datetime: '{{ now().isoformat() }}'
-    action: input_datetime.set_datetime
-  - action: persistent_notification.create
-    metadata: {}
-    data:
-      message: '{{ (as_timestamp(states(''input_datetime.lamp_state_time'')) -           as_timestamp(states(''input_datetime.lamp_cmd_time'')))
-        | round(3) }} s'
-      notification_id: Lamp_latency
-  - action: persistent_notification.create
-    data:
-      title: Lamp latencyj
-      message: "{{ ((as_timestamp(trigger.to_state.last_changed) * 1000) -\n     (states('input_number.lamp_cmd_ms')
-        | float)) | round(0) }} ms"
-      notification_id: lamp_latency
-  mode: single
 - id: auto_push_github
   alias: Auto-push HA config to GitHub hourly
   description: Commits and pushes any config changes once an hour
@@ -565,20 +534,90 @@
   description: ''
   triggers: []
   conditions: []
-  actions:  
+  actions:
   - action: scene.turn_on
     metadata: {}
     data: {}
     target:
       entity_id: scene.set_my_room
   mode: single
-
 - id: nightly_github_sync
   alias: Nightly GitHub sync
   description: Run snapshots + push every night at 2 AM
   triggers:
-    - trigger: time
-      at: "02:00:00"
+  - trigger: time
+    at: 02:00:00
   actions:
-    - action: script.push_config_with_snapshots
+  - action: script.push_config_with_snapshots
   mode: single
+- id: bedroom_light_or_fan_3x_toggle_10s
+  alias: Bedroom light/fan — 3x toggle in 10s → scenes
+  description: Flip the light OR the fan 3 times within 10 seconds to run the mapped
+    scene
+  mode: restart
+  triggers:
+  - trigger: state
+    id: light_flip
+    entity_id: light.bedroom_ceiling_lights
+  - trigger: state
+    id: fan_flip
+    entity_id: fan.bedroom_ceiling_fan
+  actions:
+  - if:
+    - condition: state
+      entity_id: timer.bedroom_toggle_window
+      state: idle
+    then:
+    - action: counter.reset
+      target:
+        entity_id: counter.bedroom_toggle_count
+    - action: timer.start
+      target:
+        entity_id: timer.bedroom_toggle_window
+  - action: counter.increment
+    target:
+      entity_id: counter.bedroom_toggle_count
+  - if:
+    - condition: numeric_state
+      entity_id: counter.bedroom_toggle_count
+      above: 2
+    - condition: state
+      entity_id: timer.bedroom_toggle_window
+      state: active
+    then:
+    - choose:
+      - conditions:
+        - condition: trigger
+          id: light_flip
+        sequence:
+        - action: scene.turn_on
+          target:
+            entity_id: scene.set_my_room
+      - conditions:
+        - condition: trigger
+          id: fan_flip
+        sequence:
+        - action: scene.turn_on
+          target:
+            entity_id: scene.all_off
+    - action: timer.cancel
+      target:
+        entity_id: timer.bedroom_toggle_window
+    - action: counter.reset
+      target:
+        entity_id: counter.bedroom_toggle_count
+  - wait_for_trigger:
+    - trigger: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.bedroom_toggle_window
+    timeout: 00:00:00
+    continue_on_timeout: true
+  - if:
+    - condition: state
+      entity_id: timer.bedroom_toggle_window
+      state: idle
+    then:
+    - action: counter.reset
+      target:
+        entity_id: counter.bedroom_toggle_count
