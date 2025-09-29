@@ -17,6 +17,11 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
+| `input_boolean.general_toggle_helper` | General toggle helper |  |
+
+
+
+
 | `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle Helper |  |
 
 
@@ -33,32 +38,38 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
-## 🗓 Input Datetimes
+
+
+
+
+
+
+## ⏱ Timers
 | Entity ID | Friendly Name | Key Attributes |
 |---|---|---|
 
 
 
 
-| `input_datetime.lamp_cmd_time` | Lamp Cmd Time | has_date=True, has_time=True |
-
-
-
-
-| `input_datetime.lamp_state_time` | Lamp State Time | has_date=True, has_time=True |
+| `timer.10_second_timer` | 10 second timer | duration=0:00:10, restore=False |
 
 
 
 
 
 
+## 🔁 Counters
+| Entity ID | Friendly Name | Key Attributes |
+|---|---|---|
 
 
 
+
+| `counter.counter_helper` | Counter helper | min=0, max=20, step=1, restore=False |
 
 
 
 
 
 ---
-_Generated: 2025-09-28T18:53:11.430889-05:00_ EOF
+_Generated: 2025-09-29T02:00:00.438876-05:00_ EOF
