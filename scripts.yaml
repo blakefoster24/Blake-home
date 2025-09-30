@@ -68,9 +68,4 @@ push_config_with_snapshots:
   - action: shell_command.write_log_slice
   - action: shell_command.write_automation_runs
   - action: shell_command.ha_git_commit_push
-  - action: persistent_notification.create
-    data:
-      title: GitHub Sync
-      message: Config + diagnostics pushed at {{ now().strftime('%Y-%m-%d %H:%M:%S')
-        }}
   mode: single
