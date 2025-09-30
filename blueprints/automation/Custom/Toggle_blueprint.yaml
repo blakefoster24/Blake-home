@@ -1,0 +1,116 @@
+blueprint:
+  name: N toggles in M seconds → Run Scene
+  description: >
+    Detect on/off flips of a single entity within a time window and run a scene.
+    Uses your helpers: counter.counter_helper and timer.timer_helper.
+    The timer helper's configured duration defines the window.
+  domain: automation
+
+  input:
+    trigger_entity:
+      name: Entity to monitor for flips
+      selector:
+        entity: {}
+    count_threshold:
+      name: Number of flips required
+      default: 3
+      selector:
+        number:
+          min: 2
+          max: 20
+          step: 1
+          mode: box
+    scene_target:
+      name: Scene to activate
+      selector:
+        entity:
+          domain: scene
+
+mode: restart
+max_exceeded: silent
+
+triggers:
+  - trigger: state
+    entity_id: !input trigger_entity
+    to: "on"
+  - trigger: state
+    entity_id: !input trigger_entity
+    to: "off"
+
+# Make the input visible to templates (don't use !input inside templates)
+variables:
+  v_threshold: !input count_threshold
+  v_scene: !input scene_target
+
+conditions: []
+
+actions:
+  # Start the window on first flip (and clear counter)
+  - if:
+      - condition: state
+        entity_id: timer.timer_helper
+        state: "idle"
+    then:
+      - action: counter.reset
+        metadata: {}
+        data: {}
+        target:
+          entity_id: counter.counter_helper
+      - action: timer.start
+        metadata: {}
+        data: {}
+        target:
+          entity_id: timer.timer_helper
+        # Uses the timer helper's configured duration
+
+  # Count every flip
+  - action: counter.increment
+    metadata: {}
+    data: {}
+    target:
+      entity_id: counter.counter_helper
+
+  # If threshold reached within window → run scene, clean up, stop
+  - if:
+      - condition: state
+        entity_id: timer.timer_helper
+        state: active
+      - condition: template
+        value_template: >
+          {{ states('counter.counter_helper') | int(0) >= (v_threshold | int) }}
+    then:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: "{{ v_scene }}"
+      - action: counter.reset
+        metadata: {}
+        data: {}
+        target:
+          entity_id: counter.counter_helper
+      - action: timer.cancel
+        metadata: {}
+        data: {}
+        target:
+          entity_id: timer.timer_helper
+      - stop: "Threshold reached — done"
+
+  # If the window ends without hitting threshold → reset counter
+  - wait_for_trigger:
+      - trigger: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.timer_helper
+    timeout: "00:00:00"
+    continue_on_timeout: true
+  - if:
+      - condition: state
+        entity_id: timer.timer_helper
+        state: idle
+    then:
+      - action: counter.reset
+        metadata: {}
+        data: {}
+        target:
+          entity_id: counter.counter_helper

@@ -1,0 +1,509 @@
+- id: '1758434770896'
+  alias: Flic Button
+  description: ''
+  triggers:
+  - trigger: webhook
+    allowed_methods:
+    - POST
+    - PUT
+    local_only: true
+    webhook_id: Flic_Single
+    alias: 'Flic single '
+    id: Flic_Single Trigger
+  - trigger: webhook
+    allowed_methods:
+    - POST
+    - PUT
+    local_only: true
+    webhook_id: Flic_Double
+    id: Flic_Double Trigger
+    alias: 'Flic double '
+  - trigger: webhook
+    allowed_methods:
+    - POST
+    - PUT
+    local_only: true
+    webhook_id: Flic_Hold
+    id: Flic_Hold Trigger
+    alias: Flic hold
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Flic_Single Trigger
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.goodnight_scene
+    - conditions:
+      - condition: trigger
+        id:
+        - Flic_Double Trigger
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.im_awake
+    - conditions:
+      - condition: trigger
+        id:
+        - Flic_Hold Trigger
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.lights_off
+  mode: single
+- id: '1758494538482'
+  alias: Bedroom Ceiling Lights on -> bedroom lamp on
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - light.bedroom_ceiling_lights
+    to: 'on'
+  conditions: []
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.full_lamp
+  mode: single
+- id: '1758599987280'
+  alias: Workday Wake-up / 1am Goodnight
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - scene.im_awake
+    id: I’m Awake Trigger
+  - trigger: time
+    at: 08:40:00
+    id: 8:40am Time Trigger
+  - trigger: time
+    at: 09:29:00
+    id: '9:29'
+  - trigger: state
+    entity_id:
+    - light.main_lights
+    to: 'off'
+    id: Main lights off
+  - trigger: time
+    at: 01:00:00
+    id: 1am goodnight
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - I’m Awake Trigger
+      - condition: state
+        entity_id: binary_sensor.workday_8_9_30am
+        state: 'on'
+      sequence:
+      - sequence:
+        - action: light.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.closet_light
+        - action: light.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.bathroom_light
+        - action: input_boolean.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.im_awake_toggle_helper
+        - delay:
+            hours: 1
+            minutes: 0
+            seconds: 0
+            milliseconds: 0
+        - action: input_boolean.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.im_awake_toggle_helper
+    - conditions:
+      - condition: trigger
+        id:
+        - 8:40am Time Trigger
+      - condition: state
+        entity_id: input_boolean.im_awake_toggle_helper
+        state: 'off'
+      - condition: state
+        state: 'on'
+        entity_id: binary_sensor.workday_8_9_30am
+      sequence:
+      - sequence:
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 5
+            milliseconds: 0
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: scene.im_awake
+    - conditions:
+      - condition: trigger
+        id:
+        - Main lights off
+        - '9:29'
+      - condition: state
+        entity_id: binary_sensor.workday_8_9_30am
+        state: 'on'
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.all_off
+    - conditions:
+      - condition: trigger
+        id:
+        - 1am goodnight
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.goodnight_scene
+  mode: parallel
+- id: '1758990657332'
+  alias: Living Room Lamp
+  description: Control the living room lamp around sunset/sunrise and in sync with
+    the main lights.
+  triggers:
+  - trigger: sun
+    event: sunset
+    offset: -01:00:00
+    id: Sunset -1hr
+    enabled: true
+  - trigger: sun
+    event: sunrise
+    offset: 00:30:00
+    id: Sunrise +30min
+  - trigger: state
+    entity_id:
+    - light.main_lights
+    to: 'on'
+    id: Main lights on
+  - trigger: state
+    entity_id:
+    - light.main_lights
+    to: 'off'
+    id: Main lights off
+  - type: value
+    device_id: c01df91d71e0dd72fe7a5636aea2d71b
+    entity_id: 43e53695c8962aaa2bf07e8ed7325df8
+    domain: sensor
+    trigger: device
+    above: 40
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    id: Cloud coverage >40
+  - type: value
+    device_id: c01df91d71e0dd72fe7a5636aea2d71b
+    entity_id: 43e53695c8962aaa2bf07e8ed7325df8
+    domain: sensor
+    trigger: device
+    below: 30
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    id: Cloud coverage <30
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Sunset -1hr
+      - condition: state
+        entity_id: light.main_lights
+        state: 'off'
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.living_room_lamp
+      alias: Sunset - lamp on
+    - conditions:
+      - condition: trigger
+        id:
+        - Cloud coverage >40
+      - condition: state
+        entity_id: light.main_lights
+        state: 'off'
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.workday_before_10am_after_5pm
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.workday
+          state: 'off'
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          brightness_pct: 75
+          transition: 0
+        target:
+          entity_id: light.living_room_lamp
+      alias: Cloud coverage >40% - lamp on
+    - conditions:
+      - condition: and
+        conditions:
+        - condition: trigger
+          id:
+          - Main lights off
+        - condition: or
+          conditions:
+          - condition: sun
+            before: sunrise
+            after: sunset
+            after_offset: -01:00:00
+            before_offset: 00:30:00
+          - condition: and
+            conditions:
+            - type: is_value
+              condition: device
+              device_id: c01df91d71e0dd72fe7a5636aea2d71b
+              entity_id: 43e53695c8962aaa2bf07e8ed7325df8
+              domain: sensor
+              above: 30
+            - condition: or
+              conditions:
+              - condition: state
+                entity_id: binary_sensor.workday
+                state: 'off'
+              - condition: state
+                entity_id: binary_sensor.workday_before_10am_after_5pm
+                state: 'on'
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        data:
+          brightness_pct: 75
+          transition: 0
+        target:
+          entity_id: light.living_room_lamp
+      alias: 'Main lights off & (night time or >30% cloud coverage) - lamp on '
+    - conditions:
+      - condition: trigger
+        id:
+        - Sunrise +30min
+      - type: is_value
+        condition: device
+        device_id: c01df91d71e0dd72fe7a5636aea2d71b
+        entity_id: 43e53695c8962aaa2bf07e8ed7325df8
+        domain: sensor
+        below: 30
+      sequence:
+      - action: light.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.living_room_lamp
+      alias: Sunrise & <30% cloud coverage - lamp off
+    - conditions:
+      - condition: trigger
+        id:
+        - Cloud coverage <30
+      - condition: not
+        conditions:
+        - condition: sun
+          before: sunrise
+          after: sunset
+          before_offset: 00:30:00
+          after_offset: -01:00:00
+      sequence:
+      - action: light.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.living_room_lamp
+      alias: Cloud coverage <30% - lamp off
+    - conditions:
+      - condition: trigger
+        id:
+        - Main lights on
+      sequence:
+      - action: light.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.living_room_lamp
+      alias: Main lights turn on - lamp off
+  mode: single
+- id: auto_push_github
+  alias: Auto-push HA config to GitHub hourly
+  description: Commits and pushes any config changes once an hour
+  trigger:
+  - platform: time_pattern
+    minutes: '0'
+  action:
+  - service: shell_command.ha_git_commit_push
+  mode: single
+- id: nightly_github_sync
+  alias: Nightly GitHub sync
+  description: Run snapshots + push every night at 2 AM
+  triggers:
+  - trigger: time
+    at: 02:00:00
+  actions:
+  - action: script.push_config_with_snapshots
+  mode: single
+- id: bedroom_light_or_fan_3x_toggle_10s
+  alias: Bedroom Toggle automations
+  description: Flip the light OR the fan 3 times within 10 seconds to run the mapped
+    scene
+  triggers:
+  - trigger: state
+    entity_id: light.bedroom_ceiling_lights
+    id: light_flip
+  - trigger: state
+    entity_id: fan.bedroom_ceiling_fan
+    id: fan_flip
+  conditions: []
+  actions:
+  - if:
+    - condition: state
+      entity_id: timer.timer_helper
+      state: idle
+    then:
+    - action: counter.reset
+      metadata: {}
+      data: {}
+      target:
+        entity_id: counter.counter_helper
+    - action: timer.start
+      metadata: {}
+      data: {}
+      target:
+        entity_id: timer.timer_helper
+  - action: counter.increment
+    metadata: {}
+    data: {}
+    target:
+      entity_id: counter.counter_helper
+  - if:
+    - condition: numeric_state
+      entity_id: counter.counter_helper
+      above: 2
+    - condition: state
+      state: active
+      entity_id: timer.timer_helper
+    then:
+    - choose:
+      - conditions:
+        - condition: trigger
+          id: light_flip
+        sequence:
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: scene.set_my_room
+      - conditions:
+        - condition: trigger
+          id: fan_flip
+        sequence:
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: scene.all_off
+    - action: timer.cancel
+      metadata: {}
+      data: {}
+      target:
+        entity_id:
+        - timer.timer_helper
+    - action: counter.reset
+      metadata: {}
+      data: {}
+      target:
+        entity_id: counter.counter_helper
+  - wait_for_trigger:
+    - trigger: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.timer_helper
+    timeout: 00:00:00
+    continue_on_timeout: true
+  - if:
+    - condition: state
+      state: idle
+      entity_id: timer.timer_helper
+    then:
+    - action: counter.reset
+      metadata: {}
+      data: {}
+      target:
+        entity_id: counter.counter_helper
+  mode: restart
+- id: '1759142569915'
+  alias: Update TP-Link devices every 5s (safe)
+  description: Force-refresh available entities from the tplink integration; skip
+    if none available
+  triggers:
+  - trigger: time_pattern
+    seconds: /5
+  conditions: []
+  actions:
+  - variables:
+      tplink_all: '{{ integration_entities(''tplink'') }}'
+      tplink_avail: '{{ expand(integration_entities(''tplink''))  | selectattr(''state'',''ne'',''unavailable'')  |
+        map(attribute=''entity_id'')  | list }}'
+  - if:
+    - condition: template
+      value_template: '{{ tplink_avail | count > 0 }}'
+    then:
+    - action: homeassistant.update_entity
+      metadata: {}
+      data:
+        entity_id: '{{ tplink_avail }}'
+    else:
+    - action: logbook.log
+      metadata: {}
+      data:
+        name: TP-Link Poll
+        message: Skipped — no available tplink entities
+        entity_id: ''
+  mode: single
+- id: '1759205626451'
+  alias: Main lights (2) -> All Off
+  description: ''
+  use_blueprint:
+    path: Custom/Toggle_blueprint.yaml
+    input:
+      trigger_entity: light.main_lights
+      count_threshold: 2
+      scene_target: scene.all_off
+- id: '1759205739916'
+  alias: Bedroom Ceiling Lights (3) -> Set My Room
+  description: ''
+  use_blueprint:
+    path: Custom/Toggle_blueprint.yaml
+    input:
+      trigger_entity: light.bedroom_ceiling_lights
+      scene_target: scene.set_my_room

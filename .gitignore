@@ -1,0 +1,25 @@
+# Ignore everything by default
+*
+# Re-allow directories so file rules below can match inside them
+!*/
+
+# Allow YAML and docs anywhere
+!*.yaml
+!*.yml
+!*.md
+!.gitignore
+
+# Always ignore secrets and runtime files
+secrets.yaml
+*.log
+*.db*
+home-assistant_v2.*
+.storage/
+.cloud/
+.google.token
+.ios.conf
+*.pyc
+__pycache__/
+esphome/
+zigbee2mqtt/log/
+.git-credentials
