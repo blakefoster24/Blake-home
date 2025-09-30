@@ -28,4 +28,19 @@ shell_command:
     bash -lc 'cat > /config/README_helpers.md << "EOF"
     {{ content }}
     EOF'
+    
+  # Save the last 300 lines of HA log (timestamped)
+  write_log_slice: >
+    bash -lc 'mkdir -p /homeassistant/diagnostics &&
+              { echo "===== $(date -Iseconds) — last 300 lines =====";
+                tail -n 300 /homeassistant/home-assistant.log || true; } \
+              > /homeassistant/diagnostics/last_log.txt'
+              
+  # Append a tiny “automation runs” feed from the log (last 1,000 lines scanned)
+  write_automation_runs: >
+    bash -lc 'mkdir -p /homeassistant/diagnostics &&
+              { echo "===== $(date -Iseconds) — automation runs (recent) =====";
+                tail -n 1000 /homeassistant/home-assistant.log | grep -E "Automation|automations" || true; } \
+              > /homeassistant/diagnostics/automation_runs.txt'
+
 

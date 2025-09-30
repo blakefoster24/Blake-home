@@ -8,6 +8,9 @@
 !*.yml
 !*.md
 !.gitignore
+!diagnostics/
+!diagnostics/**
+
 
 # Always ignore secrets and runtime files
 secrets.yaml
