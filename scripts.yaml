@@ -1,87 +1,76 @@
 generate_entities_readme:
   alias: Generate Entities README
   sequence:
-    - action: shell_command.write_entities_md
-      data:
-        content: |-
-          # Home Assistant — Entities (Snapshot)
-          Auto-generated list of entities. Safe to publish.
+  - action: shell_command.write_entities_md
+    data:
+      content: '# Home Assistant — Entities (Snapshot)
 
-          {% for domain, items in states | groupby('domain') %}
-          ## {{ domain | capitalize }}
-          | Entity ID | Name |
-          |---|---|
-          {% for s in items | sort(attribute='entity_id') %}
-          | `{{ s.entity_id }}` | {{ s.name }} |
-          {% endfor %}
+        Auto-generated list of entities. Safe to publish.
 
-          {% endfor %}
-          ---
-          _Generated: {{ now().isoformat() }}_
+
+        {% for domain, items in states | groupby(''domain'') %}
+
+        ## {{ domain | capitalize }}
+
+        | Entity ID | Name |
+
+        |---|---|
+
+        {% for s in items | sort(attribute=''entity_id'') %}
+
+        | `{{ s.entity_id }}` | {{ s.name }} |
+
+        {% endfor %}
+
+
+        {% endfor %}
+
+        ---
+
+        _Generated: {{ now().isoformat() }}_'
   mode: single
-
 generate_helpers_readme:
   alias: Generate Helpers README
   sequence:
-    - action: shell_command.write_helpers_md
-      data:
-        content: |-
-          # Home Assistant — UI Helpers (Snapshot)
-          Auto-generated list of helpers created via the UI. Safe to publish.
-
-          {% set sections = [
-            ('input_boolean', '🎚 Input Booleans'),
-            ('input_number',  '🔢 Input Numbers'),
-            ('input_text',    '✏️ Input Texts'),
-            ('input_select',  '📋 Input Selects'),
-            ('input_datetime','🗓 Input Datetimes'),
-            ('input_button',  '🔘 Input Buttons'),
-            ('timer',         '⏱ Timers'),
-            ('counter',       '🔁 Counters')
-          ] %}
-
-          {% for domain, title in sections %}
-          {% set items = states[domain] | list %}
-          {% if items | count > 0 %}
-          ## {{ title }}
-          | Entity ID | Friendly Name | Key Attributes |
-          |---|---|---|
-          {% for s in items | sort(attribute='entity_id') %}
-          {% if domain == 'input_number' %}
-          {% set attr = "min=" ~ (s.attributes.min|default('')) ~ ", max=" ~ (s.attributes.max|default('')) ~ ", step=" ~ (s.attributes.step|default('')) %}
-          {% elif domain == 'input_text' %}
-          {% set attr = "min=" ~ (s.attributes.min|default('')) ~ ", max=" ~ (s.attributes.max|default('')) ~ ", mode=" ~ (s.attributes.mode|default('')) %}
-          {% elif domain == 'input_select' %}
-          {% set attr = "options=" ~ (s.attributes.options|default([])|join(', ')) %}
-          {% elif domain == 'input_datetime' %}
-          {% set attr = "has_date=" ~ (s.attributes.has_date|default(false)) ~ ", has_time=" ~ (s.attributes.has_time|default(false)) %}
-          {% elif domain == 'timer' %}
-          {% set attr = "duration=" ~ (s.attributes.duration|default('')) ~ ", restore=" ~ (s.attributes.restore|default(false)) %}
-          {% elif domain == 'counter' %}
-          {% set attr = "min=" ~ (s.attributes.minimum|default('')) ~ ", max=" ~ (s.attributes.maximum|default('')) ~ ", step=" ~ (s.attributes.step|default('')) ~ ", restore=" ~ (s.attributes.restore|default(false)) %}
-          {% else %}
-          {% set attr = "" %}
-          {% endif %}
-          | `{{ s.entity_id }}` | {{ s.name }} | {{ attr }} |
-          {% endfor %}
-
-          {% endif %}
-          {% endfor %}
-
-          ---
-          _Generated: {{ now().isoformat() }}_
+  - action: shell_command.write_helpers_md
+    data:
+      content: "# Home Assistant — UI Helpers (Snapshot)\nAuto-generated list of helpers
+        created via the UI. Safe to publish.\n\n{% set sections = [\n  ('input_boolean',
+        '\U0001F39A Input Booleans'),\n  ('input_number',  '\U0001F522 Input Numbers'),\n
+        \ ('input_text',    '✏️ Input Texts'),\n  ('input_select',  '\U0001F4CB Input
+        Selects'),\n  ('input_datetime','\U0001F5D3 Input Datetimes'),\n  ('input_button',
+        \ '\U0001F518 Input Buttons'),\n  ('timer',         '⏱ Timers'),\n  ('counter',
+        \      '\U0001F501 Counters')\n] %}\n\n{% for domain, title in sections %}\n{%
+        set items = states[domain] | list %}\n{% if items | count > 0 %}\n## {{ title
+        }}\n| Entity ID | Friendly Name | Key Attributes |\n|---|---|---|\n{% for
+        s in items | sort(attribute='entity_id') %}\n{% if domain == 'input_number'
+        %}\n{% set attr = \"min=\" ~ (s.attributes.min|default('')) ~ \", max=\" ~
+        (s.attributes.max|default('')) ~ \", step=\" ~ (s.attributes.step|default(''))
+        %}\n{% elif domain == 'input_text' %}\n{% set attr = \"min=\" ~ (s.attributes.min|default(''))
+        ~ \", max=\" ~ (s.attributes.max|default('')) ~ \", mode=\" ~ (s.attributes.mode|default(''))
+        %}\n{% elif domain == 'input_select' %}\n{% set attr = \"options=\" ~ (s.attributes.options|default([])|join(',
+        ')) %}\n{% elif domain == 'input_datetime' %}\n{% set attr = \"has_date=\"
+        ~ (s.attributes.has_date|default(false)) ~ \", has_time=\" ~ (s.attributes.has_time|default(false))
+        %}\n{% elif domain == 'timer' %}\n{% set attr = \"duration=\" ~ (s.attributes.duration|default(''))
+        ~ \", restore=\" ~ (s.attributes.restore|default(false)) %}\n{% elif domain
+        == 'counter' %}\n{% set attr = \"min=\" ~ (s.attributes.minimum|default(''))
+        ~ \", max=\" ~ (s.attributes.maximum|default('')) ~ \", step=\" ~ (s.attributes.step|default(''))
+        ~ \", restore=\" ~ (s.attributes.restore|default(false)) %}\n{% else %}\n{%
+        set attr = \"\" %}\n{% endif %}\n| `{{ s.entity_id }}` | {{ s.name }} | {{
+        attr }} |\n{% endfor %}\n\n{% endif %}\n{% endfor %}\n\n---\n_Generated: {{
+        now().isoformat() }}_"
   mode: single
-
 push_config_with_snapshots:
-  alias: Push config with snapshots
+  alias: Push config with diagnostics
   sequence:
-    - action: script.generate_entities_readme
-    - action: script.generate_helpers_readme
-    - action: shell_command.ha_git_commit_push
-    - action: persistent_notification.create
-      data:
-        title: "GitHub Sync"
-        message: "Config + snapshots pushed at {{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+  - action: script.generate_entities_readme
+  - action: script.generate_helpers_readme
+  - action: shell_command.write_log_slice
+  - action: shell_command.write_automation_runs
+  - action: shell_command.ha_git_commit_push
+  - action: persistent_notification.create
+    data:
+      title: GitHub Sync
+      message: Config + diagnostics pushed at {{ now().strftime('%Y-%m-%d %H:%M:%S')
+        }}
   mode: single
-
-  

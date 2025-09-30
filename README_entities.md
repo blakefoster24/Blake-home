@@ -228,7 +228,7 @@ Auto-generated list of entities. Safe to publish.
 
 | `script.generate_helpers_readme` | Generate Helpers README |
 
-| `script.push_config_with_snapshots` | Push config with snapshots |
+| `script.push_config_with_snapshots` | Push config with diagnostics |
 
 
 
@@ -263,8 +263,6 @@ Auto-generated list of entities. Safe to publish.
 | `sensor.blakes_iphone_bssid` | Blakes iPhone BSSID |
 
 | `sensor.blakes_iphone_connection_type` | Blakes iPhone Connection Type |
-
-| `sensor.blakes_iphone_geocoded_location` | Blakes iPhone Geocoded Location |
 
 | `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger |
 
@@ -443,4 +441,4 @@ Auto-generated list of entities. Safe to publish.
 
 
 ---
-_Generated: 2025-09-29T23:27:29.123731-05:00_
+_Generated: 2025-09-30T00:12:34.270904-05:00_
