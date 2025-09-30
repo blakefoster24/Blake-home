@@ -12,19 +12,21 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.bedroom_ceiling_3x_toggle_set_my_room` | Bedroom ceiling 3x toggle → Set My Room |
 
+| `automation.bedroom_ceiling_lights_3_set_my_room` | Bedroom Ceiling Lights (3) -> Set My Room |
+
 | `automation.bedroom_light_fan_3x_toggle_in_10s_scenes` | Bedroom Toggle automations |
 
 | `automation.flic_single` | Flic Button |
+
+| `automation.main_lights_2_all_off` | Main lights (2) -> All Off |
 
 | `automation.new_automation_2` | Workday Wake-up / 1am Goodnight |
 
 | `automation.new_automation_4` | Living Room Lamp |
 
-| `automation.night_lamp` | Bedroom Ceiling Lights on = bedroom lamp on |
+| `automation.night_lamp` | Bedroom Ceiling Lights on -> bedroom lamp on |
 
 | `automation.nightly_github_sync` | Nightly GitHub sync |
-
-| `automation.set_my_room` | Set my room |
 
 | `automation.update_tp_link_devices_every_5s` | Update TP-Link devices every 5s (safe) |
 
@@ -439,4 +441,4 @@ Auto-generated list of entities. Safe to publish.
 
 
 ---
-_Generated: 2025-09-29T22:55:24.912844-05:00_
+_Generated: 2025-09-29T23:20:46.253785-05:00_

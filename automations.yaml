@@ -61,7 +61,7 @@
           entity_id: scene.lights_off
   mode: single
 - id: '1758494538482'
-  alias: Bedroom Ceiling Lights on = bedroom lamp on
+  alias: Bedroom Ceiling Lights on -> bedroom lamp on
   description: ''
   triggers:
   - trigger: state
@@ -363,18 +363,6 @@
   action:
   - service: shell_command.ha_git_commit_push
   mode: single
-- id: '1759100833585'
-  alias: Set my room
-  description: ''
-  triggers: []
-  conditions: []
-  actions:
-  - action: scene.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: scene.set_my_room
-  mode: single
 - id: nightly_github_sync
   alias: Nightly GitHub sync
   description: Run snapshots + push every night at 2 AM
@@ -502,3 +490,20 @@
         message: Skipped — no available tplink entities
         entity_id: ''
   mode: single
+- id: '1759205626451'
+  alias: Main lights (2) -> All Off
+  description: ''
+  use_blueprint:
+    path: Custom/Toggle_blueprint.yaml
+    input:
+      trigger_entity: light.main_lights
+      count_threshold: 2
+      scene_target: scene.all_off
+- id: '1759205739916'
+  alias: Bedroom Ceiling Lights (3) -> Set My Room
+  description: ''
+  use_blueprint:
+    path: Custom/Toggle_blueprint.yaml
+    input:
+      trigger_entity: light.bedroom_ceiling_lights
+      scene_target: scene.set_my_room
