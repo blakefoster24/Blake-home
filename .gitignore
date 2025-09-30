@@ -26,3 +26,10 @@ __pycache__/
 esphome/
 zigbee2mqtt/log/
 .git-credentials
+
+# Ignore everything in diagnostics by default
+diagnostics/*
+
+# Allow these two rolling snapshots
+!diagnostics/last_log.txt
+!diagnostics/automation_runs.txt
