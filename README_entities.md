@@ -264,6 +264,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `sensor.blakes_iphone_connection_type` | Blakes iPhone Connection Type |
 
+| `sensor.blakes_iphone_geocoded_location` | Blakes iPhone Geocoded Location |
+
 | `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger |
 
 | `sensor.blakes_iphone_location_permission` | Blakes iPhone Location permission |
@@ -441,4 +443,4 @@ Auto-generated list of entities. Safe to publish.
 
 
 ---
-_Generated: 2025-09-29T12:25:10.043136-05:00_
+_Generated: 2025-09-29T21:54:39.515817-05:00_
