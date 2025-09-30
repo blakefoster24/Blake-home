@@ -8,8 +8,6 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.auto_push_ha_config_to_github_hourly` | Auto-push HA config to GitHub hourly |
 
-| `automation.bathroom_with_closet` | Closet light triggers bathroom light (3 flips in 10s) |
-
 | `automation.bedroom_ceiling_3x_toggle_in_10s_set_my_room` | Bedroom ceiling 3x toggle in 10s → Set My Room |
 
 | `automation.bedroom_ceiling_3x_toggle_set_my_room` | Bedroom ceiling 3x toggle → Set My Room |
@@ -264,8 +262,6 @@ Auto-generated list of entities. Safe to publish.
 
 | `sensor.blakes_iphone_connection_type` | Blakes iPhone Connection Type |
 
-| `sensor.blakes_iphone_geocoded_location` | Blakes iPhone Geocoded Location |
-
 | `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger |
 
 | `sensor.blakes_iphone_location_permission` | Blakes iPhone Location permission |
@@ -392,7 +388,7 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
-| `timer.10_second_timer` | 10 second timer |
+| `timer.timer_helper` | Timer Helper |
 
 
 
@@ -443,4 +439,4 @@ Auto-generated list of entities. Safe to publish.
 
 
 ---
-_Generated: 2025-09-29T21:54:39.515817-05:00_
+_Generated: 2025-09-29T22:21:16.999506-05:00_

@@ -52,7 +52,7 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
-| `timer.10_second_timer` | 10 second timer | duration=0:00:20, restore=False |
+| `timer.timer_helper` | Timer Helper | duration=0:00:20, restore=False |
 
 
 
@@ -73,4 +73,4 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 ---
-_Generated: 2025-09-29T21:54:39.611878-05:00_
+_Generated: 2025-09-29T22:21:17.080319-05:00_

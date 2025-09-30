@@ -182,95 +182,6 @@
         target:
           entity_id: scene.goodnight_scene
   mode: parallel
-- id: '1758933793508'
-  alias: Closet light triggers bathroom light (3 flips in 10s)
-  description: ''
-  triggers:
-  - trigger: state
-    entity_id:
-    - light.closet_light
-  conditions: []
-  actions:
-  - if:
-    - condition: state
-      entity_id: timer.10_second_timer
-      state: idle
-    then:
-    - action: counter.reset
-      metadata: {}
-      data: {}
-      target:
-        entity_id: counter.counter_helper
-    - action: timer.start
-      metadata: {}
-      data: {}
-      target:
-        entity_id: timer.10_second_timer
-  - action: counter.increment
-    metadata: {}
-    data: {}
-    target:
-      entity_id: counter.counter_helper
-  - if:
-    - condition: numeric_state
-      entity_id: counter.counter_helper
-      above: 2
-    - condition: state
-      entity_id: timer.10_second_timer
-      state: active
-    - condition: state
-      entity_id: light.closet_light
-      state: 'on'
-    then:
-    - action: light.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id: light.bathroom_light
-    - action: input_boolean.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id: input_boolean.general_toggle_helper
-    - action: timer.cancel
-      metadata: {}
-      data: {}
-      target:
-        entity_id: timer.10_second_timer
-    - action: counter.reset
-      metadata: {}
-      data: {}
-      target:
-        entity_id: counter.counter_helper
-  - if:
-    - condition: state
-      entity_id: light.closet_light
-      state: 'off'
-    - condition: state
-      entity_id: input_boolean.general_toggle_helper
-      state: 'on'
-    then:
-    - action: light.turn_off
-      metadata: {}
-      data: {}
-      target:
-        entity_id: light.bathroom_light
-    - action: input_boolean.turn_off
-      metadata: {}
-      data: {}
-      target:
-        entity_id: input_boolean.general_toggle_helper
-    - action: timer.cancel
-      metadata: {}
-      data: {}
-      target:
-        entity_id: timer.10_second_timer
-    - action: counter.reset
-      metadata: {}
-      data: {}
-      target:
-        entity_id: counter.counter_helper
-  mode: restart
 - id: '1758990657332'
   alias: Living Room Lamp
   description: Control the living room lamp around sunset/sunrise and in sync with
@@ -488,7 +399,7 @@
   actions:
   - if:
     - condition: state
-      entity_id: timer.10_second_timer
+      entity_id: timer.timer_helper
       state: idle
     then:
     - action: counter.reset
@@ -500,7 +411,7 @@
       metadata: {}
       data: {}
       target:
-        entity_id: timer.10_second_timer
+        entity_id: timer.timer_helper
   - action: counter.increment
     metadata: {}
     data: {}
@@ -511,8 +422,8 @@
       entity_id: counter.counter_helper
       above: 2
     - condition: state
-      entity_id: timer.10_second_timer
       state: active
+      entity_id: timer.timer_helper
     then:
     - choose:
       - conditions:
@@ -537,7 +448,8 @@
       metadata: {}
       data: {}
       target:
-        entity_id: timer.10_second_timer
+        entity_id:
+        - timer.timer_helper
     - action: counter.reset
       metadata: {}
       data: {}
@@ -547,13 +459,13 @@
     - trigger: event
       event_type: timer.finished
       event_data:
-        entity_id: timer.10_second_timer
+        entity_id: timer.timer_helper
     timeout: 00:00:00
     continue_on_timeout: true
   - if:
     - condition: state
-      entity_id: timer.10_second_timer
       state: idle
+      entity_id: timer.timer_helper
     then:
     - action: counter.reset
       metadata: {}
