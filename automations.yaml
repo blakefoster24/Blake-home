@@ -499,6 +499,7 @@
       trigger_entity: light.main_lights
       count_threshold: 2
       scene_target: scene.all_off
+      entity_target: light.bathroom_light
 - id: '1759205739916'
   alias: Bedroom Ceiling Lights (3) -> Set My Room
   description: ''
@@ -507,3 +508,4 @@
     input:
       trigger_entity: light.bedroom_ceiling_lights
       scene_target: scene.set_my_room
+      entity_target: light.bathroom_light

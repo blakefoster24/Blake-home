@@ -1,16 +1,21 @@
 blueprint:
-  name: N toggles in M seconds → Run Scene
-  description: >
-    Detect on/off flips of a single entity within a time window and run a scene.
-    Uses your helpers: counter.counter_helper and timer.timer_helper.
-    The timer helper's configured duration defines the window.
+  name: Gesture — N toggles in M seconds → Flexible Action (fixed helpers)
+  description: |
+    Detect N on/off flips of a single entity within a time window and then
+    either activate a scene, or turn ON/OFF/TOGGLE any target entity.
+    Uses your existing helpers:
+      • counter.counter_helper
+      • timer.timer_helper
+    The timer helper’s configured duration defines the window.
   domain: automation
 
   input:
     trigger_entity:
       name: Entity to monitor for flips
+      description: Any on/off capable entity (light, switch, fan, etc.)
       selector:
         entity: {}
+
     count_threshold:
       name: Number of flips required
       default: 3
@@ -20,85 +25,123 @@ blueprint:
           max: 20
           step: 1
           mode: box
+
+    action_type:
+      name: Action to perform
+      default: Activate a scene
+      selector:
+        select:
+          options:
+            - Activate a scene
+            - Turn ON an entity
+            - Turn OFF an entity
+            - TOGGLE an entity
+
     scene_target:
-      name: Scene to activate
+      name: Scene (used only when "Activate a scene" is selected)
+      default:
       selector:
         entity:
           domain: scene
 
+    entity_target:
+      name: Target entity (used for ON/OFF/TOGGLE only)
+      default:
+      selector:
+        entity: {}
+
 mode: restart
 max_exceeded: silent
 
-triggers:
-  - trigger: state
+# Bind inputs to variables so we can use them in templates safely.
+variables:
+  v_threshold: !input count_threshold
+  v_action_type: !input action_type
+  v_scene: !input scene_target
+  v_entity: !input entity_target
+
+trigger:
+  - platform: state
     entity_id: !input trigger_entity
     to: "on"
-  - trigger: state
+  - platform: state
     entity_id: !input trigger_entity
     to: "off"
 
-# Make the input visible to templates (don't use !input inside templates)
-variables:
-  v_threshold: !input count_threshold
-  v_scene: !input scene_target
+condition: []
 
-conditions: []
-
-actions:
-  # Start the window on first flip (and clear counter)
+action:
+  # If the timer is idle, start a new window and reset the counter
   - if:
       - condition: state
         entity_id: timer.timer_helper
-        state: "idle"
+        state: idle
     then:
       - action: counter.reset
-        metadata: {}
-        data: {}
         target:
           entity_id: counter.counter_helper
       - action: timer.start
-        metadata: {}
-        data: {}
         target:
           entity_id: timer.timer_helper
-        # Uses the timer helper's configured duration
 
-  # Count every flip
+  # Count each flip
   - action: counter.increment
-    metadata: {}
-    data: {}
     target:
       entity_id: counter.counter_helper
 
-  # If threshold reached within window → run scene, clean up, stop
+  # If threshold reached within the active window, perform the selected action
   - if:
       - condition: state
         entity_id: timer.timer_helper
         state: active
       - condition: template
-        value_template: >
-          {{ states('counter.counter_helper') | int(0) >= (v_threshold | int) }}
+        value_template: "{{ (states('counter.counter_helper')|int(0)) >= (v_threshold|int(0)) }}"
     then:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: "{{ v_scene }}"
+      - choose:
+          # Activate a scene
+          - conditions:
+              - condition: template
+                value_template: "{{ v_action_type == 'Activate a scene' }}"
+            sequence:
+              - action: scene.turn_on
+                target:
+                  entity_id: "{{ v_scene }}"
+          # Turn ON an entity
+          - conditions:
+              - condition: template
+                value_template: "{{ v_action_type == 'Turn ON an entity' }}"
+            sequence:
+              - action: homeassistant.turn_on
+                target:
+                  entity_id: "{{ v_entity }}"
+          # Turn OFF an entity
+          - conditions:
+              - condition: template
+                value_template: "{{ v_action_type == 'Turn OFF an entity' }}"
+            sequence:
+              - action: homeassistant.turn_off
+                target:
+                  entity_id: "{{ v_entity }}"
+          # TOGGLE an entity
+          - conditions:
+              - condition: template
+                value_template: "{{ v_action_type == 'TOGGLE an entity' }}"
+            sequence:
+              - action: homeassistant.toggle
+                target:
+                  entity_id: "{{ v_entity }}"
+      # Cleanup after success
       - action: counter.reset
-        metadata: {}
-        data: {}
         target:
           entity_id: counter.counter_helper
       - action: timer.cancel
-        metadata: {}
-        data: {}
         target:
           entity_id: timer.timer_helper
       - stop: "Threshold reached — done"
 
-  # If the window ends without hitting threshold → reset counter
+  # If the window ends without hitting the threshold, reset the counter
   - wait_for_trigger:
-      - trigger: event
+      - platform: event
         event_type: timer.finished
         event_data:
           entity_id: timer.timer_helper
@@ -110,7 +153,5 @@ actions:
         state: idle
     then:
       - action: counter.reset
-        metadata: {}
-        data: {}
         target:
           entity_id: counter.counter_helper
