@@ -509,3 +509,47 @@
       trigger_entity: light.bedroom_ceiling_lights
       scene_target: scene.set_my_room
       entity_target: light.bathroom_light
+- id: '1759355794560'
+  alias: Manage iOS Work Alarm Focus
+  description: Turn Work Alarm Focus ON at 5am on workdays and OFF at 10am
+  triggers:
+  - trigger: time
+    at: 05:00:00
+    id: focus_on
+  - trigger: time
+    at: '10:00:00'
+    id: focus_off
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: focus_on
+      - condition: state
+        entity_id: binary_sensor.workday_sensor
+        state: 'on'
+      sequence:
+      - action: notify.mobile_app_youriphone
+        data:
+          message: enable_work_alarm_focus
+          data:
+            push:
+              interruption-level: critical
+            apns_headers:
+              apns-push-type: background
+            actions:
+            - action: enable_work_alarm_focus
+    - conditions:
+      - condition: trigger
+        id: focus_off
+      sequence:
+      - action: notify.mobile_app_youriphone
+        data:
+          message: disable_work_alarm_focus
+          data:
+            push:
+              interruption-level: critical
+            apns_headers:
+              apns-push-type: background
+            actions:
+            - action: disable_work_alarm_focus
+  mode: single
