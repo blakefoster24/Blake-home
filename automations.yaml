@@ -372,95 +372,6 @@
   actions:
   - action: script.push_config_with_snapshots
   mode: single
-- id: bedroom_light_or_fan_3x_toggle_10s
-  alias: Bedroom Toggle automations
-  description: Flip the light OR the fan 3 times within 10 seconds to run the mapped
-    scene
-  triggers:
-  - trigger: state
-    entity_id: light.bedroom_ceiling_lights
-    id: light_flip
-  - trigger: state
-    entity_id: fan.bedroom_ceiling_fan
-    id: fan_flip
-  conditions: []
-  actions:
-  - if:
-    - condition: state
-      entity_id: timer.timer_helper
-      state: idle
-    then:
-    - action: counter.reset
-      metadata: {}
-      data: {}
-      target:
-        entity_id: counter.counter_helper
-    - action: timer.start
-      metadata: {}
-      data: {}
-      target:
-        entity_id: timer.timer_helper
-  - action: counter.increment
-    metadata: {}
-    data: {}
-    target:
-      entity_id: counter.counter_helper
-  - if:
-    - condition: numeric_state
-      entity_id: counter.counter_helper
-      above: 2
-    - condition: state
-      state: active
-      entity_id: timer.timer_helper
-    then:
-    - choose:
-      - conditions:
-        - condition: trigger
-          id: light_flip
-        sequence:
-        - action: scene.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: scene.set_my_room
-      - conditions:
-        - condition: trigger
-          id: fan_flip
-        sequence:
-        - action: scene.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: scene.all_off
-    - action: timer.cancel
-      metadata: {}
-      data: {}
-      target:
-        entity_id:
-        - timer.timer_helper
-    - action: counter.reset
-      metadata: {}
-      data: {}
-      target:
-        entity_id: counter.counter_helper
-  - wait_for_trigger:
-    - trigger: event
-      event_type: timer.finished
-      event_data:
-        entity_id: timer.timer_helper
-    timeout: 00:00:00
-    continue_on_timeout: true
-  - if:
-    - condition: state
-      state: idle
-      entity_id: timer.timer_helper
-    then:
-    - action: counter.reset
-      metadata: {}
-      data: {}
-      target:
-        entity_id: counter.counter_helper
-  mode: restart
 - id: '1759142569915'
   alias: Update TP-Link devices every 5s (safe)
   description: Force-refresh available entities from the tplink integration; skip
@@ -514,7 +425,7 @@
   description: Enable Work Alarm Focus on workdays at 5am, disable at 10am
   triggers:
   - trigger: time
-    at: 05:00:00
+    at: '17:53:00'
     id: focus_on
   - trigger: time
     at: '10:00:00'
@@ -553,3 +464,137 @@
             actions:
             - action: disable_work_alarm_focus
   mode: single
+- id: '1759358428447'
+  alias: Workday Wake-up / 1am Goodnight + iOS Work Alarm Focus
+  description: Combines wake-up/goodnight logic with managing iOS Work Alarm Focus
+  triggers:
+  - trigger: state
+    entity_id: scene.im_awake
+    id: Im_Awake
+  - trigger: time
+    at: 08:40:00
+    id: 8_40am
+  - trigger: time
+    at: 09:29:00
+    id: '9_29'
+  - trigger: state
+    entity_id: light.main_lights
+    to: 'off'
+    id: Main_Lights_Off
+  - trigger: time
+    at: 01:00:00
+    id: 1am_goodnight
+  - trigger: time
+    at: 05:00:00
+    id: Focus_On
+  - trigger: time
+    at: '10:00:00'
+    id: Focus_Off
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: Im_Awake
+      - condition: state
+        entity_id: binary_sensor.workday
+        state: 'on'
+      - condition: time
+        after: 08:00:00
+        before: 09:30:00
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.closet_light
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.bathroom_light
+      - action: input_boolean.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: input_boolean.im_awake_toggle_helper
+      - delay: 01:00:00
+      - action: input_boolean.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: input_boolean.im_awake_toggle_helper
+    - conditions:
+      - condition: trigger
+        id: 8_40am
+      - condition: state
+        entity_id: input_boolean.im_awake_toggle_helper
+        state: 'off'
+      - condition: state
+        entity_id: binary_sensor.workday
+        state: 'on'
+      - condition: time
+        after: 08:00:00
+        before: 09:30:00
+      sequence:
+      - delay: 00:00:05
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.im_awake
+    - conditions:
+      - condition: trigger
+        id:
+        - Main_Lights_Off
+        - '9_29'
+      - condition: state
+        entity_id: binary_sensor.workday
+        state: 'on'
+      - condition: time
+        after: 08:00:00
+        before: 09:30:00
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.all_off
+    - conditions:
+      - condition: trigger
+        id: 1am_goodnight
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.goodnight_scene
+    - conditions:
+      - condition: trigger
+        id: Focus_On
+      - condition: state
+        entity_id: binary_sensor.workday
+        state: 'on'
+      sequence:
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: enable_work_alarm_focus
+          data:
+            apns_headers:
+              apns-push-type: background
+            actions:
+            - action: enable_work_alarm_focus
+    - conditions:
+      - condition: trigger
+        id: Focus_Off
+      sequence:
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: disable_work_alarm_focus
+          data:
+            apns_headers:
+              apns-push-type: background
+            actions:
+            - action: disable_work_alarm_focus
+  mode: parallel
