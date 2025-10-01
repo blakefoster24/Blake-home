@@ -511,7 +511,7 @@
       entity_target: light.bathroom_light
 - id: '1759355794560'
   alias: Manage iOS Work Alarm Focus
-  description: Turn Work Alarm Focus ON at 5am on workdays and OFF at 10am
+  description: Enable Work Alarm Focus on workdays at 5am, disable at 10am
   triggers:
   - trigger: time
     at: 05:00:00
@@ -525,10 +525,10 @@
       - condition: trigger
         id: focus_on
       - condition: state
-        entity_id: binary_sensor.workday_sensor
+        entity_id: binary_sensor.workday
         state: 'on'
       sequence:
-      - action: notify.mobile_app_youriphone
+      - action: notify.mobile_app_blakes_iphone
         data:
           message: enable_work_alarm_focus
           data:
@@ -542,7 +542,7 @@
       - condition: trigger
         id: focus_off
       sequence:
-      - action: notify.mobile_app_youriphone
+      - action: notify.mobile_app_blakes_iphone
         data:
           message: disable_work_alarm_focus
           data:

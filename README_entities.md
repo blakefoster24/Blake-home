@@ -20,6 +20,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.main_lights_2_all_off` | Main lights (2) -> All Off |
 
+| `automation.manage_ios_work_alarm_focus` | Manage iOS Work Alarm Focus |
+
 | `automation.new_automation_2` | Workday Wake-up / 1am Goodnight |
 
 | `automation.new_automation_4` | Living Room Lamp |
@@ -260,10 +262,6 @@ Auto-generated list of entities. Safe to publish.
 
 | `sensor.bathroom_light_signal_level` | Bathroom Light Signal level |
 
-| `sensor.blakes_iphone_app_version` | Blakes iPhone App Version |
-
-| `sensor.blakes_iphone_audio_output` | Blakes iPhone Audio Output |
-
 | `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level |
 
 | `sensor.blakes_iphone_battery_state` | Blakes iPhone Battery State |
@@ -271,14 +269,6 @@ Auto-generated list of entities. Safe to publish.
 | `sensor.blakes_iphone_bssid` | Blakes iPhone BSSID |
 
 | `sensor.blakes_iphone_connection_type` | Blakes iPhone Connection Type |
-
-| `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger |
-
-| `sensor.blakes_iphone_location_permission` | Blakes iPhone Location permission |
-
-| `sensor.blakes_iphone_sim_1` | Blakes iPhone SIM 1 |
-
-| `sensor.blakes_iphone_sim_2` | Blakes iPhone SIM 2 |
 
 | `sensor.blakes_iphone_ssid` | Blakes iPhone SSID |
 
@@ -449,4 +439,4 @@ Auto-generated list of entities. Safe to publish.
 
 
 ---
-_Generated: 2025-10-01T16:25:06.976802-05:00_
+_Generated: 2025-10-01T17:23:39.060393-05:00_
