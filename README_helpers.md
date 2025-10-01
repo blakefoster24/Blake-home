@@ -42,6 +42,17 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
+## 🔘 Input Buttons
+| Entity ID | Friendly Name | Key Attributes |
+|---|---|---|
+
+
+
+
+| `input_button.fake_button` | Fake Button |  |
+
+
+
 
 
 
@@ -52,7 +63,7 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
-| `timer.timer_helper` | Timer Helper | duration=0:00:20, restore=False |
+| `timer.timer_helper` | Timer Helper | duration=0:00:30, restore=False |
 
 
 
@@ -73,4 +84,4 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 ---
-_Generated: 2025-09-30T02:00:00.357068-05:00_
+_Generated: 2025-10-01T02:00:00.356913-05:00_

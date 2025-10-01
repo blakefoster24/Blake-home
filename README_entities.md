@@ -144,6 +144,14 @@ Auto-generated list of entities. Safe to publish.
 
 
 
+## Input_button
+| Entity ID | Name |
+|---|---|
+
+| `input_button.fake_button` | Fake Button |
+
+
+
 ## Light
 | Entity ID | Name |
 |---|---|
@@ -443,4 +451,4 @@ Auto-generated list of entities. Safe to publish.
 
 
 ---
-_Generated: 2025-09-30T02:00:00.267258-05:00_
+_Generated: 2025-10-01T02:00:00.269276-05:00_
