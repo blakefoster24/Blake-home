@@ -14,13 +14,9 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.bedroom_ceiling_lights_3_set_my_room` | Bedroom Ceiling Lights (3) -> Set My Room |
 
-| `automation.bedroom_light_fan_3x_toggle_in_10s_scenes` | Bedroom Toggle automations |
-
 | `automation.flic_single` | Flic Button |
 
 | `automation.main_lights_2_all_off` | Main lights (2) -> All Off |
-
-| `automation.manage_ios_work_alarm_focus` | Manage iOS Work Alarm Focus |
 
 | `automation.new_automation_2` | Workday Wake-up / 1am Goodnight |
 
@@ -29,8 +25,6 @@ Auto-generated list of entities. Safe to publish.
 | `automation.night_lamp` | Bedroom Ceiling Lights on -> bedroom lamp on |
 
 | `automation.nightly_github_sync` | Nightly GitHub sync |
-
-| `automation.update_tp_link_devices_every_5s` | Update TP-Link devices every 5s (safe) |
 
 
 
@@ -143,6 +137,8 @@ Auto-generated list of entities. Safe to publish.
 | `input_boolean.general_toggle_helper` | General toggle helper |
 
 | `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle Helper |
+
+| `input_boolean.workday_toggle` | Workday toggle |
 
 
 
@@ -262,6 +258,10 @@ Auto-generated list of entities. Safe to publish.
 
 | `sensor.bathroom_light_signal_level` | Bathroom Light Signal level |
 
+| `sensor.blakes_iphone_app_version` | Blakes iPhone App Version |
+
+| `sensor.blakes_iphone_audio_output` | Blakes iPhone Audio Output |
+
 | `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level |
 
 | `sensor.blakes_iphone_battery_state` | Blakes iPhone Battery State |
@@ -269,6 +269,16 @@ Auto-generated list of entities. Safe to publish.
 | `sensor.blakes_iphone_bssid` | Blakes iPhone BSSID |
 
 | `sensor.blakes_iphone_connection_type` | Blakes iPhone Connection Type |
+
+| `sensor.blakes_iphone_geocoded_location` | Blakes iPhone Geocoded Location |
+
+| `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger |
+
+| `sensor.blakes_iphone_location_permission` | Blakes iPhone Location permission |
+
+| `sensor.blakes_iphone_sim_1` | Blakes iPhone SIM 1 |
+
+| `sensor.blakes_iphone_sim_2` | Blakes iPhone SIM 2 |
 
 | `sensor.blakes_iphone_ssid` | Blakes iPhone SSID |
 
@@ -439,4 +449,4 @@ Auto-generated list of entities. Safe to publish.
 
 
 ---
-_Generated: 2025-10-01T17:23:39.060393-05:00_
+_Generated: 2025-10-01T22:47:22.223641-05:00_

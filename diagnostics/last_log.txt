@@ -1,39 +1,301 @@
-===== 2025-10-01T17:23:39-05:00 — last 300 lines =====
-2025-09-30 01:51:22.093 ERROR (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: If at step 3: Error executing script. Error for call_service at pos 1: Error communicating with Roku API
-2025-09-30 01:51:22.094 ERROR (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Error executing script. Error for if at pos 3: Error communicating with Roku API
-2025-09-30 01:51:22.096 ERROR (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Error while executing automation automation.bedroom_ceiling_lights_3_set_my_room: Error communicating with Roku API
-2025-09-30 02:00:01.341 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
-         git config user.name 'Home Assistant' &&
-         git config user.email 'ha@local' &&
-         git -c credential.helper='store --file=/config/.git-credentials' add -A &&
-         (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
-         git -c credential.helper='store --file=/config/.git-credentials' push origin main"
-`, return code: 1
-NoneType: None
-2025-09-30 06:59:47.026 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
-2025-09-30 08:38:28.026 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
-2025-09-30 17:38:24.737 ERROR (MainThread) [homeassistant.components.automation] Failed to generate automation from blueprint: Missing input entity_target
-2025-09-30 17:38:24.741 ERROR (MainThread) [homeassistant.components.automation] Failed to generate automation from blueprint: Missing input entity_target
-2025-09-30 17:38:26.052 ERROR (MainThread) [homeassistant.components.automation] Failed to generate automation from blueprint: Missing input entity_target
-2025-09-30 17:38:26.053 ERROR (MainThread) [homeassistant.components.automation] Failed to generate automation from blueprint: Missing input entity_target
-2025-09-30 17:38:27.788 ERROR (MainThread) [homeassistant.components.automation] Failed to generate automation from blueprint: Missing input entity_target
-2025-09-30 17:38:27.789 ERROR (MainThread) [homeassistant.components.automation] Failed to generate automation from blueprint: Missing input entity_target
-2025-09-30 17:38:30.112 ERROR (MainThread) [homeassistant.components.automation] Failed to generate automation from blueprint: Missing input entity_target
-2025-09-30 17:38:30.113 ERROR (MainThread) [homeassistant.components.automation] Failed to generate automation from blueprint: Missing input entity_target
-2025-09-30 19:28:50.215 ERROR (MainThread) [homeassistant.components.alexa.state_report] Timeout sending report to Alexa for media_player.bedroom_tv
-2025-09-30 22:17:14.028 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
-2025-09-30 22:29:31.746 ERROR (MainThread) [kasa.smart.smartdevice] Error querying 192.168.1.81 for modules 'Time, AutoOff, DeviceModule' after first update: ('Unable to query the device: 192.168.1.81: ', TimeoutError())
-2025-09-30 22:29:33.925 ERROR (MainThread) [kasa.smart.smartdevice] Error querying 192.168.1.81 individually for module query 'get_device_usage' after first update: Error querying device: 192.168.1.81: TIME_ERROR(-1601) for method: get_device_usage (error_code=TIME_ERROR)
-2025-09-30 23:27:04.025 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
-2025-09-30 23:30:52.748 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [281472046410112] Blake Foster from 127.0.0.1 (Home Assistant/2025.9.1 (io.robbie.HomeAssistant; build:2025.1389; iOS 18.6.2)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
-2025-09-30 23:46:56.748 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [281472046411872] Blake Foster from 127.0.0.1 (Home Assistant/2025.9.1 (io.robbie.HomeAssistant; build:2025.1389; iOS 18.6.2)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
-2025-09-30 23:46:56.749 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [281472147143744] Blake Foster from 127.0.0.1 (Home Assistant/2025.9.1 (io.robbie.HomeAssistant; build:2025.1389; iOS 18.6.2)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
-2025-10-01 02:00:04.146 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
-         git config user.name 'Home Assistant' &&
-         git config user.email 'ha@local' &&
-         git -c credential.helper='store --file=/config/.git-credentials' add -A &&
-         (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
-         git -c credential.helper='store --file=/config/.git-credentials' push origin main"
-`, return code: 1
-NoneType: None
-2025-10-01 08:19:08.025 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
+===== 2025-10-01T22:47:22-05:00 — last 300 lines =====
+    )
+  File "/usr/src/homeassistant/homeassistant/components/media_player/reproduce_state.py", line 145, in async_reproduce_states
+    await asyncio.gather(
+    ...<6 lines>...
+    )
+  File "/usr/src/homeassistant/homeassistant/components/media_player/reproduce_state.py", line 91, in _async_reproduce_states
+    await call_service(SERVICE_SELECT_SOURCE, [ATTR_INPUT_SOURCE])
+  File "/usr/src/homeassistant/homeassistant/components/media_player/reproduce_state.py", line 60, in call_service
+    await hass.services.async_call(
+        DOMAIN, service, data, blocking=True, context=context
+    )
+  File "/usr/src/homeassistant/homeassistant/core.py", line 2835, in async_call
+    response_data = await coro
+                    ^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/core.py", line 2878, in _execute_service
+    return await target(service_call)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/service.py", line 850, in entity_service_call
+    single_response = await _handle_entity_call(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        hass, entity, func, data, call.context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/helpers/service.py", line 922, in _handle_entity_call
+    result = await task
+             ^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/roku/helpers.py", line 45, in wrapper
+    raise HomeAssistantError(
+        "Timeout communicating with Roku API"
+    ) from error
+homeassistant.exceptions.HomeAssistantError: Timeout communicating with Roku API
+2025-10-01 19:05:44.483 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: undefined is not an object (evaluating 'i.domain')
+_keyFunction (src/panels/config/integrations/dialog-add-integration.ts:480:16)
+s (src/directives/repeat.ts:56:34)
+t (src/directives/repeat.ts:94:6)
+t (src/lit-html.ts:1174:33)
+this (src/lit-html.ts:1452:29)
+t (src/async-directive.ts:366:29)
+this (src/virtualize.ts:139:22)
+dispatchEvent ([native code]::)
+_notifyRange (src/Virtualizer.ts:817:6)
+_notifyRange (src/Virtualizer.ts:546:11)
+2025-10-01 20:59:49.568 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:11.716 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:12.447 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:14.436 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:15.286 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:16.274 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:16.956 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:19.083 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:19.476 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:20.694 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:21.556 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:21.626 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:21.696 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:22.026 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:00:22.606 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"delay"in e')
+hasTemplate (src/data/script.ts:335:17)
+of (src/data/script.ts:449:35)
+migrateAutomationTrigger (src/data/automation.ts:422:45)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+2025-10-01 21:07:34.944 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
+2025-10-01 21:51:05.877 WARNING (SyncWorker_3) [googleapiclient.http] Encountered 403 Forbidden with reason "accessNotConfigured"
+2025-10-01 21:51:05.879 ERROR (MainThread) [aiohttp.server] Error handling request from 127.0.0.1
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_protocol.py", line 510, in _handle_request
+    resp = await request_handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_app.py", line 569, in _handle
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/web_middlewares.py", line 117, in impl
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/security_filter.py", line 92, in security_filter_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/forwarded.py", line 77, in forwarded_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/request_context.py", line 26, in request_context_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/ban.py", line 86, in ban_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/auth.py", line 242, in auth_middleware
+    return await handler(request)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/headers.py", line 41, in headers_middleware
+    response = await handler(request)
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/http.py", line 73, in handle
+    result = await handler(request, **request.match_info)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/http/decorators.py", line 83, in with_admin
+    return await func(self, request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/config/config_entries.py", line 220, in get
+    return await super().get(request, flow_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/data_entry_flow.py", line 107, in get
+    result = await self._flow_mgr.async_configure(flow_id)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/data_entry_flow.py", line 335, in async_configure
+    result = await self._async_configure(flow_id, user_input)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/data_entry_flow.py", line 382, in _async_configure
+    result = await self._async_handle_step(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        flow, cur_step["step_id"], user_input
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/data_entry_flow.py", line 486, in _async_handle_step
+    result: _FlowResultT = await getattr(flow, method)(user_input)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/config_entry_oauth2_flow.py", line 472, in async_step_creation
+    return await self.async_oauth_create_entry(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        {"auth_implementation": self.flow_impl.domain, "token": token}
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/google_mail/config_flow.py", line 64, in async_oauth_create_entry
+    email = await self.hass.async_add_executor_job(_get_profile)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/google_mail/config_flow.py", line 61, in _get_profile
+    return users.getProfile(userId="me").execute()["emailAddress"]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.13/site-packages/googleapiclient/_helpers.py", line 130, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "/usr/local/lib/python3.13/site-packages/googleapiclient/http.py", line 938, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 403 when requesting https://gmail.googleapis.com/gmail/v1/users/me/profile?alt=json returned "Gmail API has not been used in project 391502353879 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/gmail.googleapis.com/overview?project=391502353879 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.". Details: "[{'message': 'Gmail API has not been used in project 391502353879 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/gmail.googleapis.com/overview?project=391502353879 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry.', 'domain': 'usageLimits', 'reason': 'accessNotConfigured', 'extendedHelp': 'https://console.developers.google.com'}]">

@@ -28,6 +28,11 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
+| `input_boolean.workday_toggle` | Workday toggle |  |
+
+
+
+
 
 
 
@@ -84,4 +89,4 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 ---
-_Generated: 2025-10-01T17:23:39.157060-05:00_
+_Generated: 2025-10-01T22:47:22.318481-05:00_
