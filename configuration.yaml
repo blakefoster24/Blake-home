@@ -47,3 +47,10 @@ shell_command:
   write_diag_test: |
     bash -lc 'mkdir -p /config/diagnostics &&
               echo "Diag test at $(date -Iseconds)" > /config/diagnostics/diag_test.txt'
+              
+logger:
+  default: warning
+  logs:
+    homeassistant.components.google: debug
+    homeassistant.components.google_mail: debug
+    homeassistant.components.application_credentials: debug
