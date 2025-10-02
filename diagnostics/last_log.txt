@@ -1,5 +1,1 @@
-===== 2025-10-01T23:49:15-05:00 — last 300 lines =====
-2025-10-01 23:23:16.093 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
-2025-10-01 23:40:53.966 WARNING (ImportExecutor_0) [py.warnings] /usr/local/lib/python3.13/site-packages/pybotvac/version.py:1: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
-  import pkg_resources
-
+===== 2025-10-02T00:51:27-05:00 — last 300 lines =====

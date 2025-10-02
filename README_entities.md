@@ -258,6 +258,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `sensor.bathroom_light_signal_level` | Bathroom Light Signal level |
 
+| `sensor.blake_foster30_gmail_com_vacation_end_date` | blake.foster30@gmail.com Vacation end date |
+
 | `sensor.blakes_iphone_app_version` | Blakes iPhone App Version |
 
 | `sensor.blakes_iphone_audio_output` | Blakes iPhone Audio Output |
@@ -449,4 +451,4 @@ Auto-generated list of entities. Safe to publish.
 
 
 ---
-_Generated: 2025-10-01T23:49:14.992923-05:00_
+_Generated: 2025-10-02T00:51:26.984568-05:00_

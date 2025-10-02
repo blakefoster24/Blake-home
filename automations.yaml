@@ -98,6 +98,9 @@
   - trigger: time
     at: 01:00:00
     id: 1am goodnight
+  - trigger: time
+    at: 00:50:00
+    id: 10pm Alarms
   conditions: []
   actions:
   - choose:
@@ -181,6 +184,29 @@
         data: {}
         target:
           entity_id: scene.goodnight_scene
+    - conditions:
+      - condition: trigger
+        id:
+        - 10pm Alarms
+      sequence:
+      - if:
+        - condition: state
+          entity_id: binary_sensor.workday
+          state: 'on'
+        then:
+        - action: notify.blake_foster30_gmail_com
+          metadata: {}
+          data:
+            message: Work Alarm ON
+            title: Work Alarm ON
+            target: blake.foster30@gmail.com
+        else:
+        - action: notify.blake_foster30_gmail_com
+          metadata: {}
+          data:
+            message: Work Alarm OFF
+            title: Work Alarm OFF
+            target: blake.foster30@gmail.com
   mode: parallel
 - id: '1758990657332'
   alias: Living Room Lamp
