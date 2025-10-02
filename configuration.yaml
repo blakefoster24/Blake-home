@@ -48,4 +48,15 @@ shell_command:
     bash -lc 'mkdir -p /config/diagnostics &&
               echo "Diag test at $(date -Iseconds)" > /config/diagnostics/diag_test.txt'
 
+notify:
+  - name: gmail_notify
+    platform: smtp
+    server: smtp.gmail.com
+    port: 587
+    sender: blake.foster30@gmail.com
+    encryption: starttls
+    username: blake.foster30@gmail.com
+    password: "cpsd nmxi rily srzo"
+    recipient:
+      - blake.foster30@gmail.com
 

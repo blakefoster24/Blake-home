@@ -421,180 +421,64 @@
       scene_target: scene.set_my_room
       entity_target: light.bathroom_light
 - id: '1759355794560'
-  alias: Manage iOS Work Alarm Focus
-  description: Enable Work Alarm Focus on workdays at 5am, disable at 10am
+  alias: iPhone alarms — email toggle (night before + morning backup)
+  description: Sends Gmail subject "Work Alarm ON/OFF" so Shortcuts enable/disable
+    iPhone alarms
   triggers:
   - trigger: time
-    at: '17:53:00'
-    id: focus_on
-  - trigger: time
-    at: '10:00:00'
-    id: focus_off
-  actions:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id: focus_on
-      - condition: state
-        entity_id: binary_sensor.workday
-        state: 'on'
-      sequence:
-      - action: notify.mobile_app_blakes_iphone
-        data:
-          message: enable_work_alarm_focus
-          data:
-            push:
-              interruption-level: critical
-            apns_headers:
-              apns-push-type: background
-            actions:
-            - action: enable_work_alarm_focus
-    - conditions:
-      - condition: trigger
-        id: focus_off
-      sequence:
-      - action: notify.mobile_app_blakes_iphone
-        data:
-          message: disable_work_alarm_focus
-          data:
-            push:
-              interruption-level: critical
-            apns_headers:
-              apns-push-type: background
-            actions:
-            - action: disable_work_alarm_focus
-  mode: single
-- id: '1759358428447'
-  alias: Workday Wake-up / 1am Goodnight + iOS Work Alarm Focus
-  description: Combines wake-up/goodnight logic with managing iOS Work Alarm Focus
-  triggers:
-  - trigger: state
-    entity_id: scene.im_awake
-    id: Im_Awake
-  - trigger: time
-    at: 08:40:00
-    id: 8_40am
-  - trigger: time
-    at: 09:29:00
-    id: '9_29'
-  - trigger: state
-    entity_id: light.main_lights
-    to: 'off'
-    id: Main_Lights_Off
-  - trigger: time
-    at: 01:00:00
-    id: 1am_goodnight
+    at: '18:35:00'
+    id: Night_Check
   - trigger: time
     at: 05:00:00
-    id: Focus_On
-  - trigger: time
-    at: '10:00:00'
-    id: Focus_Off
+    id: Morning_Backup
   actions:
   - choose:
     - conditions:
       - condition: trigger
-        id: Im_Awake
+        id: Night_Check
       - condition: state
         entity_id: binary_sensor.workday
         state: 'on'
-      - condition: time
-        after: 08:00:00
-        before: 09:30:00
       sequence:
-      - action: light.turn_on
+      - action: notify.gmail_notify
         metadata: {}
-        data: {}
-        target:
-          entity_id: light.closet_light
-      - action: light.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.bathroom_light
-      - action: input_boolean.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.im_awake_toggle_helper
-      - delay: 01:00:00
-      - action: input_boolean.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.im_awake_toggle_helper
+        data:
+          title: Work Alarm ON
+          message: Enable iPhone alarms (via Shortcut).
     - conditions:
       - condition: trigger
-        id: 8_40am
+        id: Night_Check
       - condition: state
-        entity_id: input_boolean.im_awake_toggle_helper
+        entity_id: binary_sensor.workday
         state: 'off'
-      - condition: state
-        entity_id: binary_sensor.workday
-        state: 'on'
-      - condition: time
-        after: 08:00:00
-        before: 09:30:00
       sequence:
-      - delay: 00:00:05
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.im_awake
-    - conditions:
-      - condition: trigger
-        id:
-        - Main_Lights_Off
-        - '9_29'
-      - condition: state
-        entity_id: binary_sensor.workday
-        state: 'on'
-      - condition: time
-        after: 08:00:00
-        before: 09:30:00
-      sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.all_off
-    - conditions:
-      - condition: trigger
-        id: 1am_goodnight
-      sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.goodnight_scene
-    - conditions:
-      - condition: trigger
-        id: Focus_On
-      - condition: state
-        entity_id: binary_sensor.workday
-        state: 'on'
-      sequence:
-      - action: notify.mobile_app_blakes_iphone
+      - action: notify.gmail_notify
         metadata: {}
         data:
-          message: enable_work_alarm_focus
-          data:
-            apns_headers:
-              apns-push-type: background
-            actions:
-            - action: enable_work_alarm_focus
+          title: Work Alarm OFF
+          message: Disable iPhone alarms (via Shortcut).
     - conditions:
       - condition: trigger
-        id: Focus_Off
+        id: Morning_Backup
+      - condition: state
+        entity_id: binary_sensor.workday
+        state: 'on'
       sequence:
-      - action: notify.mobile_app_blakes_iphone
+      - action: notify.gmail_notify
         metadata: {}
         data:
-          message: disable_work_alarm_focus
-          data:
-            apns_headers:
-              apns-push-type: background
-            actions:
-            - action: disable_work_alarm_focus
-  mode: parallel
+          title: Work Alarm ON
+          message: Enable iPhone alarms (backup).
+    - conditions:
+      - condition: trigger
+        id: Morning_Backup
+      - condition: state
+        entity_id: binary_sensor.workday
+        state: 'off'
+      sequence:
+      - action: notify.gmail_notify
+        metadata: {}
+        data:
+          title: Work Alarm OFF
+          message: Disable iPhone alarms (backup).
+  mode: single
