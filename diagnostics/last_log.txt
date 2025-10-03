@@ -1,9 +1,4 @@
-===== 2025-10-02T19:12:16-05:00 — last 300 lines =====
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/data_entry_flow.py", line 346, in _async_configure
-    raise UnknownFlow
-homeassistant.data_entry_flow.UnknownFlow
-2025-10-02 02:00:01.262 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
+===== 2025-10-02T22:33:20-05:00 — last 300 lines =====
          git config user.name 'Home Assistant' &&
          git config user.email 'ha@local' &&
          git -c credential.helper='store --file=/config/.git-credentials' add -A &&
@@ -299,3 +294,8 @@ NoneType: None
 2025-10-02 19:08:08.466 ERROR (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: If at step 3: Error executing script. Error for choose at pos 1: Invalid response from Roku API
 2025-10-02 19:08:08.467 ERROR (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Error executing script. Error for if at pos 3: Invalid response from Roku API
 2025-10-02 19:08:08.471 ERROR (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Error while executing automation automation.bedroom_ceiling_lights_3_set_my_room: Invalid response from Roku API
+2025-10-02 19:21:01.415 ERROR (MainThread) [homeassistant.components.automation] Failed to generate automation from blueprint: Missing input source_entity
+2025-10-02 19:21:01.419 ERROR (MainThread) [homeassistant.components.automation] Failed to generate automation from blueprint: Missing input source_entity
+2025-10-02 20:04:49.879 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
+2025-10-02 21:57:27.336 ERROR (MainThread) [homeassistant.components.matter] Failed to get Matter Server add-on discovery info
+2025-10-02 21:57:32.342 ERROR (MainThread) [homeassistant.components.matter] Failed to get Matter Server add-on discovery info

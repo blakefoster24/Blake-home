@@ -12,11 +12,11 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.bedroom_ceiling_3x_toggle_set_my_room` | Bedroom ceiling 3x toggle → Set My Room |
 
-| `automation.bedroom_ceiling_lights_3_set_my_room` | Bedroom Ceiling Lights (3) -> Set My Room |
+| `automation.bedroom_ceiling_lights_3_all_off` | Bedroom Ceiling Lights (3)  -> All Off |
 
 | `automation.flic_single` | Flic Button |
 
-| `automation.main_lights_2_all_off` | Main lights (2) -> All Off |
+| `automation.new_automation` | Bedroom Ceiling Lights (3) -> Set My Room |
 
 | `automation.new_automation_2` | Workday Wake-up / 1am Goodnight |
 
@@ -115,6 +115,14 @@ Auto-generated list of entities. Safe to publish.
 |---|---|
 
 | `event.backup_automatic_backup` | Backup Automatic backup |
+
+| `event.hue_dimmer_switch_1_button_1` | Hue Dimmer Swirch Button 1 |
+
+| `event.hue_dimmer_switch_1_button_2` | Hue Dimmer Swirch Button 2 |
+
+| `event.hue_dimmer_switch_1_button_3` | Hue Dimmer Swirch Button 3 |
+
+| `event.hue_dimmer_switch_1_button_4` | Hue Dimmer Swirch Button 4 |
 
 
 
@@ -291,6 +299,8 @@ Auto-generated list of entities. Safe to publish.
 | `sensor.closet_light_auto_off_at` | Closet Light Auto-off at |
 
 | `sensor.closet_light_signal_level` | Closet Light Signal level |
+
+| `sensor.hue_dimmer_switch_1_battery` | Hue Dimmer Swirch Battery |
 
 | `sensor.main_lights_auto_off_at` | Main Lights Auto-off at |
 
