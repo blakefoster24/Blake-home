@@ -99,8 +99,8 @@
     at: 01:00:00
     id: 1am goodnight
   - trigger: time
-    at: 00:50:00
-    id: 10pm Alarms
+    at: 00:30:00
+    id: 12:30am Alarms
   conditions: []
   actions:
   - choose:
@@ -187,7 +187,7 @@
     - conditions:
       - condition: trigger
         id:
-        - 10pm Alarms
+        - 12:30am Alarms
       sequence:
       - if:
         - condition: state
