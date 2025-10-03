@@ -261,6 +261,14 @@
       - condition: trigger
         id:
         - Sunset -1hr
+      - condition: or
+        conditions:
+        - condition: state
+          entity_id: binary_sensor.workday_before_10am_after_5pm
+          state: 'on'
+        - condition: state
+          entity_id: binary_sensor.workday
+          state: 'off'
       sequence:
       - action: light.turn_on
         metadata: {}
