@@ -254,6 +254,9 @@
       minutes: 5
       seconds: 0
     id: Cloud coverage <30
+  - trigger: time
+    at: '10:05:00'
+    id: 10:05am Trigger
   conditions: []
   actions:
   - choose:
@@ -320,7 +323,7 @@
               device_id: c01df91d71e0dd72fe7a5636aea2d71b
               entity_id: 43e53695c8962aaa2bf07e8ed7325df8
               domain: sensor
-              above: 30
+              above: 40
             - condition: or
               conditions:
               - condition: state
@@ -399,6 +402,19 @@
         target:
           entity_id: light.living_room_lamp
       alias: Main lights turn on - lamp off
+    - conditions:
+      - condition: trigger
+        id:
+        - 10:05am Trigger
+      - condition: state
+        entity_id: binary_sensor.workday
+        state: 'on'
+      sequence:
+      - action: light.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.living_room_lamp
   mode: single
 - id: auto_push_github
   alias: Auto-push HA config to GitHub hourly
