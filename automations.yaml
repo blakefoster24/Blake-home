@@ -261,9 +261,6 @@
       - condition: trigger
         id:
         - Sunset -1hr
-      - condition: state
-        entity_id: light.main_lights
-        state: 'off'
       sequence:
       - action: light.turn_on
         metadata: {}
@@ -372,6 +369,21 @@
       - condition: trigger
         id:
         - Main lights on
+      - condition: or
+        conditions:
+        - type: is_value
+          condition: device
+          device_id: c01df91d71e0dd72fe7a5636aea2d71b
+          entity_id: 43e53695c8962aaa2bf07e8ed7325df8
+          domain: sensor
+          below: 30
+        - condition: not
+          conditions:
+          - condition: sun
+            before: sunrise
+            after: sunset
+            before_offset: 00:30:00
+            after_offset: -01:00:00
       sequence:
       - action: light.turn_off
         metadata: {}
@@ -498,6 +510,16 @@
         data: {}
         target:
           entity_id:
+          - light.living_room_lamp
+    - conditions:
+      - condition: trigger
+        id: up_short
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id:
           - light.main_lights
           - light.bedroom_ceiling_lights
           - light.closet_light
@@ -522,25 +544,11 @@
           entity_id: media_player.bedroom_tv
     - conditions:
       - condition: trigger
-        id: up_short
-      sequence:
-      - action: light.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id:
-          - light.living_room_lamp
-    - conditions:
-      - condition: trigger
         id: up_repeat
       sequence: []
     - conditions:
       - condition: trigger
         id: up_long
-      sequence: []
-    - conditions:
-      - condition: trigger
-        id: down_short
       sequence:
       - action: light.turn_on
         metadata: {}
@@ -574,6 +582,15 @@
           minutes: 7
           seconds: 0
           milliseconds: 0
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.set_my_room
+    - conditions:
+      - condition: trigger
+        id: down_short
+      sequence:
       - action: scene.turn_on
         metadata: {}
         data: {}
