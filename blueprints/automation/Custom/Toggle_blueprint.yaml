@@ -1,23 +1,22 @@
 blueprint:
-  name: Gesture — N toggles in M seconds → Flexible Action (fixed helpers)
-  description: |
-    Detect N on/off flips of a single entity within a time window and then
-    either activate a scene, or turn ON/OFF/TOGGLE any target entity.
-    Uses your existing helpers:
+  name: Gesture — N toggles in timer window → Run Scene (with auto-reset)
+  description: >
+    Detect N on/off flips of a single entity within the helper timer's window and
+    run a scene. Uses your existing helpers:
       • counter.counter_helper
       • timer.timer_helper
-    The timer helper’s configured duration defines the window.
+    Counter is reset when the timer finishes (and after a match) so stale counts
+    never affect the next gesture.
   domain: automation
 
   input:
-    trigger_entity:
-      name: Entity to monitor for flips
-      description: Any on/off capable entity (light, switch, fan, etc.)
+    source_entity:
+      name: Source entity to watch
       selector:
-        entity: {}
+        entity: {}   # any on/off capable entity
 
     count_threshold:
-      name: Number of flips required
+      name: Number of toggles required
       default: 3
       selector:
         number:
@@ -26,132 +25,82 @@ blueprint:
           step: 1
           mode: box
 
-    action_type:
-      name: Action to perform
-      default: Activate a scene
-      selector:
-        select:
-          options:
-            - Activate a scene
-            - Turn ON an entity
-            - Turn OFF an entity
-            - TOGGLE an entity
-
     scene_target:
-      name: Scene (used only when "Activate a scene" is selected)
-      default:
+      name: Scene to activate
       selector:
         entity:
           domain: scene
 
-    entity_target:
-      name: Target entity (used for ON/OFF/TOGGLE only)
-      default:
-      selector:
-        entity: {}
+# Make inputs usable inside templates (no `!input` inside Jinja)
+variables:
+  i_threshold: !input count_threshold
 
 mode: restart
 max_exceeded: silent
 
-# Bind inputs to variables so we can use them in templates safely.
-variables:
-  v_threshold: !input count_threshold
-  v_action_type: !input action_type
-  v_scene: !input scene_target
-  v_entity: !input entity_target
+triggers:
+  # Count every state change on the watched entity
+  - trigger: state
+    entity_id: !input source_entity
+    id: flip
 
-trigger:
-  - platform: state
-    entity_id: !input trigger_entity
-    to: "on"
-  - platform: state
-    entity_id: !input trigger_entity
-    to: "off"
+  # When the helper timer finishes, clear the counter so it can't leak
+  - trigger: state
+    entity_id: timer.timer_helper
+    from: active
+    to: idle
+    id: timer_done
 
-condition: []
+conditions: []
 
-action:
-  # If the timer is idle, start a new window and reset the counter
-  - if:
-      - condition: state
-        entity_id: timer.timer_helper
-        state: idle
-    then:
-      - action: counter.reset
+actions:
+  - choose:
+      # Timer finished → reset counter only
+      - conditions:
+          - condition: trigger
+            id: timer_done
+        sequence:
+          - action: counter.reset
+            target:
+              entity_id: counter.counter_helper
+
+    default:
+      # A flip occurred
+      # If timer isn't running, start a fresh window and clear any old count
+      - choose:
+          - conditions:
+              - condition: state
+                entity_id: timer.timer_helper
+                state: idle
+            sequence:
+              - action: counter.reset
+                target:
+                  entity_id: counter.counter_helper
+              - action: timer.start
+                target:
+                  entity_id: timer.timer_helper
+
+      # Count this flip
+      - action: counter.increment
         target:
           entity_id: counter.counter_helper
-      - action: timer.start
-        target:
-          entity_id: timer.timer_helper
 
-  # Count each flip
-  - action: counter.increment
-    target:
-      entity_id: counter.counter_helper
-
-  # If threshold reached within the active window, perform the selected action
-  - if:
-      - condition: state
-        entity_id: timer.timer_helper
-        state: active
-      - condition: template
-        value_template: "{{ (states('counter.counter_helper')|int(0)) >= (v_threshold|int(0)) }}"
-    then:
+      # If threshold met while timer is active → run scene, then clean up
       - choose:
-          # Activate a scene
           - conditions:
               - condition: template
-                value_template: "{{ v_action_type == 'Activate a scene' }}"
+                value_template: >
+                  {{ states('counter.counter_helper')|int(0) >= i_threshold|int }}
+              - condition: state
+                entity_id: timer.timer_helper
+                state: active
             sequence:
               - action: scene.turn_on
                 target:
-                  entity_id: "{{ v_scene }}"
-          # Turn ON an entity
-          - conditions:
-              - condition: template
-                value_template: "{{ v_action_type == 'Turn ON an entity' }}"
-            sequence:
-              - action: homeassistant.turn_on
+                  entity_id: !input scene_target
+              - action: timer.cancel
                 target:
-                  entity_id: "{{ v_entity }}"
-          # Turn OFF an entity
-          - conditions:
-              - condition: template
-                value_template: "{{ v_action_type == 'Turn OFF an entity' }}"
-            sequence:
-              - action: homeassistant.turn_off
+                  entity_id: timer.timer_helper
+              - action: counter.reset
                 target:
-                  entity_id: "{{ v_entity }}"
-          # TOGGLE an entity
-          - conditions:
-              - condition: template
-                value_template: "{{ v_action_type == 'TOGGLE an entity' }}"
-            sequence:
-              - action: homeassistant.toggle
-                target:
-                  entity_id: "{{ v_entity }}"
-      # Cleanup after success
-      - action: counter.reset
-        target:
-          entity_id: counter.counter_helper
-      - action: timer.cancel
-        target:
-          entity_id: timer.timer_helper
-      - stop: "Threshold reached — done"
-
-  # If the window ends without hitting the threshold, reset the counter
-  - wait_for_trigger:
-      - platform: event
-        event_type: timer.finished
-        event_data:
-          entity_id: timer.timer_helper
-    timeout: "00:00:00"
-    continue_on_timeout: true
-  - if:
-      - condition: state
-        entity_id: timer.timer_helper
-        state: idle
-    then:
-      - action: counter.reset
-        target:
-          entity_id: counter.counter_helper
+                  entity_id: counter.counter_helper
