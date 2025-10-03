@@ -16,6 +16,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.flic_single` | Flic Button |
 
+| `automation.hue_dimmer_short_release_long_press_repeat_on_middle` | Hue Dimmer Switch |
+
 | `automation.new_automation` | Bedroom Ceiling Lights (3) -> Set My Room |
 
 | `automation.new_automation_2` | Workday Wake-up / 1am Goodnight |
