@@ -68,7 +68,7 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
-| `timer.timer_helper` | Timer Helper | duration=0:00:30, restore=False |
+| `timer.timer_helper` | Timer Helper | duration=0:00:15, restore=False |
 
 
 
@@ -89,4 +89,4 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 ---
-_Generated: 2025-10-02T02:00:00.283020-05:00_
+_Generated: 2025-10-02T19:12:16.198597-05:00_

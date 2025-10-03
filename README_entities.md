@@ -44,9 +44,9 @@ Auto-generated list of entities. Safe to publish.
 
 | `binary_sensor.bathroom_light_overheated` | Bathroom Light Overheated |
 
-| `binary_sensor.closet_light_switch_cloud_connection` | Closet Light Cloud connection |
+| `binary_sensor.closet_light_cloud_connection` | Closet Light Cloud connection |
 
-| `binary_sensor.closet_light_switch_overheated` | Closet Light Overheated |
+| `binary_sensor.closet_light_overheated` | Closet Light Overheated |
 
 | `binary_sensor.fan_outlet_cloud_connection` | Fan Outlet Cloud connection |
 
@@ -184,7 +184,9 @@ Auto-generated list of entities. Safe to publish.
 
 | `number.bathroom_light_turn_off_in` | Bathroom Light Turn off in |
 
-| `number.closet_light_switch_turn_off_in` | Closet Light Turn off in |
+| `number.closet_light_turn_off_in` | Closet Light Turn off in |
+
+| `number.main_lights_turn_off_in` | Main Lights Turn off in |
 
 
 
@@ -286,169 +288,16 @@ Auto-generated list of entities. Safe to publish.
 
 | `sensor.blakes_iphone_storage` | Blakes iPhone Storage |
 
-| `sensor.closet_light_switch_auto_off_at` | Closet Light Auto-off at |
+| `sensor.closet_light_auto_off_at` | Closet Light Auto-off at |
 
-| `sensor.closet_light_switch_signal_level` | Closet Light Signal level |
+| `sensor.closet_light_signal_level` | Closet Light Signal level |
 
-| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage |
+| `sensor.main_lights_auto_off_at` | Main Lights Auto-off at |
 
-| `sensor.openweathermap_condition_2` | OpenWeatherMap Condition |
+| `sensor.main_lights_current` | Main Lights Current |
 
-| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew Point |
+| `sensor.main_lights_current_consumption` | Main Lights Current consumption |
 
-| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Feels like temperature |
+| `sensor.main_lights_signal_level` | Main Lights Signal level |
 
-| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity |
-
-| `sensor.openweathermap_precipitation_kind_2` | OpenWeatherMap Precipitation kind |
-
-| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure |
-
-| `sensor.openweathermap_rain_2` | OpenWeatherMap Rain |
-
-| `sensor.openweathermap_snow_2` | OpenWeatherMap Snow |
-
-| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature |
-
-| `sensor.openweathermap_uv_index_2` | OpenWeatherMap UV Index |
-
-| `sensor.openweathermap_visibility_2` | OpenWeatherMap Visibility |
-
-| `sensor.openweathermap_weather_2` | OpenWeatherMap Weather |
-
-| `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather Code |
-
-| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind bearing |
-
-| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust |
-
-| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed |
-
-| `sensor.shelly_ceiling_fan_energy` | Bedroom Ceiling Fan Energy |
-
-| `sensor.shelly_ceiling_fan_power` | Bedroom Ceiling Fan Power |
-
-| `sensor.shelly_ceiling_lights_energy` | Bedroom Ceiling Lights Energy |
-
-| `sensor.shelly_ceiling_lights_power` | Bedroom Ceiling Lights Power |
-
-| `sensor.sun_next_dawn` | Sun Next dawn |
-
-| `sensor.sun_next_dusk` | Sun Next dusk |
-
-| `sensor.sun_next_midnight` | Sun Next midnight |
-
-| `sensor.sun_next_noon` | Sun Next noon |
-
-| `sensor.sun_next_rising` | Sun Next rising |
-
-| `sensor.sun_next_setting` | Sun Next setting |
-
-
-
-## Stt
-| Entity ID | Name |
-|---|---|
-
-| `stt.home_assistant_cloud` | Home Assistant Cloud |
-
-
-
-## Sun
-| Entity ID | Name |
-|---|---|
-
-| `sun.sun` | Sun |
-
-
-
-## Switch
-| Entity ID | Name |
-|---|---|
-
-| `switch.bathroom_light` | Bathroom Light |
-
-| `switch.bathroom_light_auto_off_enabled` | Bathroom Light Auto-off enabled |
-
-| `switch.bathroom_light_auto_update_enabled` | Bathroom Light Auto-update enabled |
-
-| `switch.bathroom_light_led` | Bathroom Light LED |
-
-| `switch.bedroom_ceiling_fan` | Bedroom ceiling fan |
-
-| `switch.bedroom_ceiling_lights` | Bedroom Ceiling Lights |
-
-| `switch.bedroom_fan` | Fan |
-
-| `switch.closet_light` | Closet Light |
-
-| `switch.closet_light_switch_auto_off_enabled` | Closet Light Auto-off enabled |
-
-| `switch.closet_light_switch_auto_update_enabled` | Closet Light Auto-update enabled |
-
-| `switch.closet_light_switch_led` | Closet Light LED |
-
-| `switch.fan_outlet_led` | Fan Outlet LED |
-
-| `switch.main_lights` | Main Lights |
-
-| `switch.main_lights_led` | Main Lights LED |
-
-
-
-## Timer
-| Entity ID | Name |
-|---|---|
-
-| `timer.timer_helper` | Timer Helper |
-
-
-
-## Tts
-| Entity ID | Name |
-|---|---|
-
-| `tts.home_assistant_cloud` | Home Assistant Cloud |
-
-
-
-## Update
-| Entity ID | Name |
-|---|---|
-
-| `update.advanced_ssh_web_terminal_update` | Advanced SSH & Web Terminal Update |
-
-| `update.file_editor_update` | File editor Update |
-
-| `update.home_assistant_core_update` | Home Assistant Core Update |
-
-| `update.home_assistant_operating_system_update` | Home Assistant Operating System Update |
-
-| `update.home_assistant_supervisor_update` | Home Assistant Supervisor Update |
-
-| `update.shelly_device_firmware` | Shelly Device Firmware |
-
-| `update.terminal_ssh_update` | Terminal & SSH Update |
-
-
-
-## Weather
-| Entity ID | Name |
-|---|---|
-
-| `weather.forecast_home` | Forecast Home |
-
-| `weather.openweathermap_2` | OpenWeatherMap |
-
-
-
-## Zone
-| Entity ID | Name |
-|---|---|
-
-| `zone.home` | Home |
-
-
-
----
-_Generated: 2025-10-02T02:00:00.196072-05:00_
+| `sensor.main_lights_this_month_s_consumption` | Main Lights This months
