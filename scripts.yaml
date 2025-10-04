@@ -1,5 +1,5 @@
 push_config_with_snapshots:
-  alias: Push config + diagnostics to GitHub
+  alias: Create & Push HA Info to Github
   sequence:
   - action: shell_command.write_entities_md
     data:

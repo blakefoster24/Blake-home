@@ -238,7 +238,7 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
-| `script.push_config_with_snapshots` | Push config + diagnostics to GitHub |
+| `script.create_push_ha_info_to_github` | Create & Push HA Info to Github |
 
 
 
