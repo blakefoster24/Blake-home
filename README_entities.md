@@ -8,10 +8,6 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.auto_push_ha_config_to_github_hourly` | Auto-push HA config to GitHub hourly |
 
-| `automation.bedroom_ceiling_3x_toggle_in_10s_set_my_room` | Bedroom ceiling 3x toggle in 10s → Set My Room |
-
-| `automation.bedroom_ceiling_3x_toggle_set_my_room` | Bedroom ceiling 3x toggle → Set My Room |
-
 | `automation.bedroom_ceiling_lights_3_all_off` | Bedroom Ceiling Lights (3)  -> All Off |
 
 | `automation.flic_single` | Flic Button |
@@ -51,6 +47,8 @@ Auto-generated list of entities. Safe to publish.
 | `binary_sensor.closet_light_overheated` | Closet Light Overheated |
 
 | `binary_sensor.fan_outlet_cloud_connection` | Fan Outlet Cloud connection |
+
+| `binary_sensor.front_door` | Front Door Sensor Window |
 
 | `binary_sensor.main_lights_cloud_connection` | Main Lights Cloud connection |
 
@@ -118,13 +116,13 @@ Auto-generated list of entities. Safe to publish.
 
 | `event.backup_automatic_backup` | Backup Automatic backup |
 
-| `event.hue_dimmer_switch_1_button_1` | Hue Dimmer Swirch Button 1 |
+| `event.hue_dimmer_switch_button_1` | Hue Dimmer Switch Button 1 |
 
-| `event.hue_dimmer_switch_1_button_2` | Hue Dimmer Swirch Button 2 |
+| `event.hue_dimmer_switch_button_2` | Hue Dimmer Switch Button 2 |
 
-| `event.hue_dimmer_switch_1_button_3` | Hue Dimmer Swirch Button 3 |
+| `event.hue_dimmer_switch_button_3` | Hue Dimmer Switch Button 3 |
 
-| `event.hue_dimmer_switch_1_button_4` | Hue Dimmer Swirch Button 4 |
+| `event.hue_dimmer_switch_button_4` | Hue Dimmer Switch Button 4 |
 
 
 
@@ -302,7 +300,13 @@ Auto-generated list of entities. Safe to publish.
 
 | `sensor.closet_light_signal_level` | Closet Light Signal level |
 
-| `sensor.hue_dimmer_switch_1_battery` | Hue Dimmer Swirch Battery |
+| `sensor.front_door_sensor_battery` | Front Door Sensor Battery |
+
+| `sensor.front_door_sensor_illuminance` | Front Door Sensor Illuminance |
+
+| `sensor.front_door_sensor_rotation` | Front Door Sensor Rotation |
+
+| `sensor.hue_dimmer_switch_1_battery` | Hue Dimmer Switch Battery |
 
 | `sensor.main_lights_auto_off_at` | Main Lights Auto-off at |
 
