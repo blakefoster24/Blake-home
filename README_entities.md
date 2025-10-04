@@ -238,11 +238,7 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
-| `script.generate_entities_readme` | Generate Entities README |
-
-| `script.generate_helpers_readme` | Generate Helpers README |
-
-| `script.push_config_with_snapshots` | Push config with diagnostics |
+| `script.push_config_with_snapshots` | Push config + diagnostics to GitHub |
 
 
 

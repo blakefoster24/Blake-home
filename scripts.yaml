@@ -1,5 +1,5 @@
-generate_entities_readme:
-  alias: Generate Entities README
+push_config_with_snapshots:
+  alias: Push config + diagnostics to GitHub
   sequence:
   - action: shell_command.write_entities_md
     data:
@@ -25,13 +25,10 @@ generate_entities_readme:
 
         {% endfor %}
 
+
         ---
 
         _Generated: {{ now().isoformat() }}_'
-  mode: single
-generate_helpers_readme:
-  alias: Generate Helpers README
-  sequence:
   - action: shell_command.write_helpers_md
     data:
       content: "# Home Assistant — UI Helpers (Snapshot)\nAuto-generated list of helpers
@@ -54,18 +51,15 @@ generate_helpers_readme:
         %}\n{% elif domain == 'timer' %}\n{% set attr = \"duration=\" ~ (s.attributes.duration|default(''))
         ~ \", restore=\" ~ (s.attributes.restore|default(false)) %}\n{% elif domain
         == 'counter' %}\n{% set attr = \"min=\" ~ (s.attributes.minimum|default(''))
-        ~ \", max=\" ~ (s.attributes.maximum|default('')) ~ \", step=\" ~ (s.attributes.step|default(''))
+        ~ \", max=\" ~ (s.attributes.maximum|default('')) ~ \", step=\" ~ (s.attributes.step|default(false))
         ~ \", restore=\" ~ (s.attributes.restore|default(false)) %}\n{% else %}\n{%
         set attr = \"\" %}\n{% endif %}\n| `{{ s.entity_id }}` | {{ s.name }} | {{
         attr }} |\n{% endfor %}\n\n{% endif %}\n{% endfor %}\n\n---\n_Generated: {{
         now().isoformat() }}_"
-  mode: single
-push_config_with_snapshots:
-  alias: Push config with diagnostics
-  sequence:
-  - action: script.generate_entities_readme
-  - action: script.generate_helpers_readme
   - action: shell_command.write_log_slice
+    data: {}
   - action: shell_command.write_automation_runs
+    data: {}
   - action: shell_command.ha_git_commit_push
+    data: {}
   mode: single
