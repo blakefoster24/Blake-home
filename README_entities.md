@@ -6,8 +6,6 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
-| `automation.auto_push_ha_config_to_github_hourly` | Auto-push HA config to GitHub hourly |
-
 | `automation.bedroom_ceiling_lights_3_all_off` | Bedroom Ceiling Lights (3)  -> All Off |
 
 | `automation.flic_single` | Flic Button |

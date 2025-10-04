@@ -420,15 +420,6 @@
         target:
           entity_id: light.living_room_lamp
   mode: single
-- id: auto_push_github
-  alias: Auto-push HA config to GitHub hourly
-  description: Commits and pushes any config changes once an hour
-  trigger:
-  - platform: time_pattern
-    minutes: '0'
-  action:
-  - service: shell_command.ha_git_commit_push
-  mode: single
 - id: nightly_github_sync
   alias: Nightly GitHub sync
   description: Run snapshots + push every night at 2 AM

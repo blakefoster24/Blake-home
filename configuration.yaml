@@ -11,7 +11,7 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 
 shell_command:
-  ha_git_commit_push: |
+  ha_git_commit_push: >
     bash -c "cd /config &&
              git config user.name 'Home Assistant' &&
              git config user.email 'ha@local' &&
