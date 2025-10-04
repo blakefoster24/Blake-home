@@ -44,11 +44,6 @@
         id:
         - Flic_Double Trigger
       sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.im_awake
       - action: light.turn_on
         metadata: {}
         data: {}
@@ -552,8 +547,8 @@
         data: {}
         target:
           entity_id:
-          - light.bedroom_ceiling_lights
           - light.bathroom_light
+          - light.closet_light
     - conditions:
       - condition: trigger
         id: up_repeat
