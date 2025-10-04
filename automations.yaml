@@ -34,11 +34,11 @@
         id:
         - Flic_Single Trigger
       sequence:
-      - action: scene.turn_on
+      - action: light.turn_on
         metadata: {}
         data: {}
         target:
-          entity_id: scene.goodnight_scene
+          entity_id: light.main_lights
     - conditions:
       - condition: trigger
         id:
@@ -49,6 +49,15 @@
         data: {}
         target:
           entity_id: scene.im_awake
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id:
+          - light.bedroom_ceiling_lights
+          - light.closet_light
+          - light.main_lights
+          - light.bathroom_light
     - conditions:
       - condition: trigger
         id:
@@ -58,7 +67,7 @@
         metadata: {}
         data: {}
         target:
-          entity_id: scene.lights_off
+          entity_id: scene.all_off
   mode: single
 - id: '1758494538482'
   alias: Bedroom Ceiling Lights on -> bedroom lamp on
@@ -520,21 +529,20 @@
       - condition: trigger
         id: top_short
       sequence:
-      - action: light.turn_on
+      - action: scene.turn_on
         metadata: {}
         data: {}
         target:
-          entity_id: light.main_lights
+          entity_id: scene.set_my_room
     - conditions:
       - condition: trigger
         id: top_long
       sequence:
-      - action: light.turn_on
+      - action: scene.turn_on
         metadata: {}
         data: {}
         target:
-          entity_id:
-          - light.living_room_lamp
+          entity_id: scene.im_awake
     - conditions:
       - condition: trigger
         id: up_short
@@ -544,28 +552,8 @@
         data: {}
         target:
           entity_id:
-          - light.main_lights
           - light.bedroom_ceiling_lights
-          - light.closet_light
           - light.bathroom_light
-      - action: media_player.play_media
-        metadata: {}
-        data:
-          media:
-            media_content_id: '837'
-            media_content_type: app
-            metadata:
-              title: YouTube
-              thumbnail: http://192.168.1.68:8060/query/icon/837
-              media_class: app
-              children_media_class:
-              navigateIds:
-              - {}
-              - media_content_type: apps
-                media_content_id: ''
-              browse_entity_id: media_player.bedroom_tv
-        target:
-          entity_id: media_player.bedroom_tv
     - conditions:
       - condition: trigger
         id: up_repeat
@@ -574,52 +562,15 @@
       - condition: trigger
         id: up_long
       sequence:
-      - action: light.turn_on
+      - action: fan.toggle
         metadata: {}
         data: {}
         target:
-          entity_id:
-          - light.main_lights
-          - light.bedroom_ceiling_lights
-          - light.closet_light
-          - light.bathroom_light
-      - action: media_player.play_media
-        metadata: {}
-        data:
-          media:
-            media_content_id: '837'
-            media_content_type: app
-            metadata:
-              title: YouTube
-              thumbnail: http://192.168.1.68:8060/query/icon/837
-              media_class: app
-              children_media_class:
-              navigateIds:
-              - {}
-              - media_content_type: apps
-                media_content_id: ''
-              browse_entity_id: media_player.bedroom_tv
-        target:
-          entity_id: media_player.bedroom_tv
-      - delay:
-          hours: 0
-          minutes: 7
-          seconds: 0
-          milliseconds: 0
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.set_my_room
+          entity_id: fan.bedroom_ceiling_fan
     - conditions:
       - condition: trigger
         id: down_short
-      sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.set_my_room
+      sequence: []
     - conditions:
       - condition: trigger
         id: down_repeat
@@ -636,10 +587,15 @@
         metadata: {}
         data: {}
         target:
-          entity_id: scene.all_off
+          entity_id: scene.lights_off
     - conditions:
       - condition: trigger
         id: bottom_long
-      sequence: []
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.goodnight_scene
   mode: parallel
   max: 10
