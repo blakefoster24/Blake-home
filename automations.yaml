@@ -427,7 +427,7 @@
   - trigger: time
     at: 02:00:00
   actions:
-  - action: script.push_config_with_snapshots
+  - action: script.create_push_ha_info_to_github
     data: {}
   mode: single
 - id: '1759452792193'

@@ -1,4 +1,4 @@
-push_config_with_snapshots:
+create_push_ha_info_to_github:
   alias: Create & Push HA Info to Github
   sequence:
   - action: shell_command.write_entities_md
@@ -63,3 +63,4 @@ push_config_with_snapshots:
   - action: shell_command.ha_git_commit_push
     data: {}
   mode: single
+  description: ''
