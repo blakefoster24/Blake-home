@@ -1,1 +1,14 @@
-===== 2025-10-05T03:09:59-05:00 — automation runs (recent) =====
+===== 2025-10-05T04:12:19-05:00 — automation runs (recent) =====
+2025-10-05 04:09:38.211 INFO (MainThread) [homeassistant.components.automation.flic_single] Initialized trigger Flic Button
+2025-10-05 04:09:38.212 INFO (MainThread) [homeassistant.components.automation.night_lamp] Initialized trigger Bedroom Ceiling Lights on -> bedroom lamp on
+2025-10-05 04:09:38.217 INFO (MainThread) [homeassistant.components.automation.new_automation_2] Initialized trigger Workday Wake-up / 1am Goodnight
+2025-10-05 04:09:38.224 INFO (MainThread) [homeassistant.components.automation.new_automation_4] Initialized trigger Living Room Lamp
+2025-10-05 04:09:38.225 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Initialized trigger Nightly GitHub sync
+2025-10-05 04:09:38.234 INFO (MainThread) [homeassistant.components.automation.new_automation] Initialized trigger Bedroom Ceiling Lights (3) -> Set My Room
+2025-10-05 04:09:38.236 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_all_off] Initialized trigger Bedroom Ceiling Lights (3)  -> All Off
+2025-10-05 04:09:38.249 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_short_release_long_press_repeat_on_middle] Initialized trigger Hue Dimmer Switch
+2025-10-05 04:12:19.714 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-05 04:12:19.715 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-05 04:12:19.808 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-05 04:12:19.847 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-05 04:12:19.897 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service

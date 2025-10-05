@@ -1,5 +1,24 @@
-===== 2025-10-05T03:09:59-05:00 — last 300 lines =====
-2025-10-04 18:48:03.747 ERROR (MainThread) [kasa.smart.smartdevice] Error querying 192.168.1.85 for modules 'Time, AutoOff, DeviceModule, Energy, Matter' after first update: ('Unable to query the device: 192.168.1.85: ', TimeoutError())
-2025-10-04 18:48:05.946 ERROR (MainThread) [kasa.smart.smartdevice] Error querying 192.168.1.85 individually for module query 'get_device_usage' after first update: Error querying device: 192.168.1.85: TIME_ERROR(-1601) for method: get_device_usage (error_code=TIME_ERROR)
-2025-10-04 18:48:05.982 ERROR (MainThread) [kasa.smart.smartdevice] Error querying 192.168.1.85 individually for module query 'get_energy_usage' after first update: Error querying device: 192.168.1.85: JSON_DECODE_FAIL_ERROR(-1003) for method: get_energy_usage (error_code=JSON_DECODE_FAIL_ERROR)
-2025-10-04 21:25:21.006 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
+===== 2025-10-05T04:12:19-05:00 — last 1000 lines =====
+2025-10-05 04:09:15.887 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-05 04:09:15.895 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-05 04:09:15.897 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-05 04:09:15.899 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-05 04:09:15.900 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-05 04:09:15.902 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-05 04:09:15.905 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-05 04:09:15.906 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-05 04:09:15.908 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-05 04:09:34.435 INFO (MainThread) [homeassistant.components.scene] Setting up hue.scene
+2025-10-05 04:09:38.145 INFO (MainThread) [homeassistant.core] Starting Home Assistant 2025.9.4
+2025-10-05 04:09:38.211 INFO (MainThread) [homeassistant.components.automation.flic_single] Initialized trigger Flic Button
+2025-10-05 04:09:38.212 INFO (MainThread) [homeassistant.components.automation.night_lamp] Initialized trigger Bedroom Ceiling Lights on -> bedroom lamp on
+2025-10-05 04:09:38.217 INFO (MainThread) [homeassistant.components.automation.new_automation_2] Initialized trigger Workday Wake-up / 1am Goodnight
+2025-10-05 04:09:38.224 INFO (MainThread) [homeassistant.components.automation.new_automation_4] Initialized trigger Living Room Lamp
+2025-10-05 04:09:38.225 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Initialized trigger Nightly GitHub sync
+2025-10-05 04:09:38.234 INFO (MainThread) [homeassistant.components.automation.new_automation] Initialized trigger Bedroom Ceiling Lights (3) -> Set My Room
+2025-10-05 04:09:38.236 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_all_off] Initialized trigger Bedroom Ceiling Lights (3)  -> All Off
+2025-10-05 04:09:38.249 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_short_release_long_press_repeat_on_middle] Initialized trigger Hue Dimmer Switch
+2025-10-05 04:12:19.714 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-05 04:12:19.715 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-05 04:12:19.808 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-05 04:12:19.847 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service

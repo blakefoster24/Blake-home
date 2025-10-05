@@ -10,6 +10,15 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+logger:
+  default: warning
+  logs:
+    homeassistant.core: info
+    homeassistant.components.automation: info
+    homeassistant.components.script: info
+    homeassistant.helpers.script: info
+    homeassistant.components.scene: info
+
 shell_command:
   ha_git_commit_push: >
     bash -c "cd /config &&
@@ -29,19 +38,20 @@ shell_command:
     {{ content }}
     EOF'
 
-  # Diagnostics: last 300 lines of HA log
   write_log_slice: |
-    bash -lc 'mkdir -p /config/diagnostics &&
-              { echo "===== $(date -Iseconds) — last 300 lines =====";
-                tail -n 300 /config/home-assistant.log || true; } \
-              > /config/diagnostics/last_log.txt'
-
-  # Diagnostics: recent automation lines from the log
+    bash -lc 'mkdir -p /config/diagnostics && {
+    echo "===== $(date -Iseconds) — last 1000 lines =====";
+    tail -n 1000 /config/home-assistant.log || true;
+    } > /config/diagnostics/last_log.txt'
+    
+    # Diagnostics: recent automation lines from the log
   write_automation_runs: |
-    bash -lc 'mkdir -p /config/diagnostics &&
-              { echo "===== $(date -Iseconds) — automation runs (recent) =====";
-                tail -n 1000 /config/home-assistant.log | grep -E "Automation|automations" || true; } \
-              > /config/diagnostics/automation_runs.txt'
+    bash -lc 'mkdir -p /config/diagnostics && {
+    echo "===== $(date -Iseconds) — automation runs (recent) =====";
+    tail -n 2000 /config/home-assistant.log \
+    | grep -iE "(homeassistant.components.automation|automation|triggered|queued|running|executing|alexa|cloud|scene\.turn_on|light\.turn_(on|off))" \
+    || true;
+    } > /config/diagnostics/automation_runs.txt'
 
   # Quick path test (optional)
   write_diag_test: |
