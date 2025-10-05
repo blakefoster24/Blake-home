@@ -1,1 +1,5 @@
-===== 2025-10-04T18:31:58-05:00 — last 300 lines =====
+===== 2025-10-05T02:00:00-05:00 — last 300 lines =====
+2025-10-04 18:48:03.747 ERROR (MainThread) [kasa.smart.smartdevice] Error querying 192.168.1.85 for modules 'Time, AutoOff, DeviceModule, Energy, Matter' after first update: ('Unable to query the device: 192.168.1.85: ', TimeoutError())
+2025-10-04 18:48:05.946 ERROR (MainThread) [kasa.smart.smartdevice] Error querying 192.168.1.85 individually for module query 'get_device_usage' after first update: Error querying device: 192.168.1.85: TIME_ERROR(-1601) for method: get_device_usage (error_code=TIME_ERROR)
+2025-10-04 18:48:05.982 ERROR (MainThread) [kasa.smart.smartdevice] Error querying 192.168.1.85 individually for module query 'get_energy_usage' after first update: Error querying device: 192.168.1.85: JSON_DECODE_FAIL_ERROR(-1003) for method: get_energy_usage (error_code=JSON_DECODE_FAIL_ERROR)
+2025-10-04 21:25:21.006 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
