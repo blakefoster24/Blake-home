@@ -663,3 +663,30 @@
       target:
         entity_id: input_boolean.workday_today
   mode: single
+- id: '1759730650322'
+  alias: 11pm -> Workday Helper -> Work Alarms
+  description: ''
+  triggers:
+  - trigger: time
+    at: '23:00:00'
+  conditions: []
+  actions:
+  - if:
+    - condition: state
+      state: 'on'
+      entity_id: input_boolean.workday_tomorrow_helper
+    then:
+    - action: notify.blake_foster30_gmail_com
+      metadata: {}
+      data:
+        message: Work Alarm ON
+        title: Work Alarm ON
+        target: blake.foster30@gmail.com
+    else:
+    - action: notify.blake_foster30_gmail_com
+      metadata: {}
+      data:
+        message: Work Alarm OFF
+        title: Work Alarm OFF
+        target: blake.foster30@gmail.com
+  mode: single

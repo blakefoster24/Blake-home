@@ -6,6 +6,8 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
+| `automation.11pm_workday_helper_work_alarms` | 11pm -> Workday Helper -> Work Alarms |
+
 | `automation.1pm_workday_tomorrow_toggle` | 1pm workday tomorrow toggle |
 
 | `automation.bedroom_ceiling_fan_3_all_off` | Bedroom Ceiling Fan (3)  -> All Off |
