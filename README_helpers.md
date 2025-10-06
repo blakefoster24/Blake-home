@@ -13,22 +13,17 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
-| `input_boolean.bathroom_light_helper` | Bathroom light helper |  |
-
-
-
-
-| `input_boolean.general_toggle_helper` | General toggle helper |  |
-
-
-
-
 | `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle Helper |  |
 
 
 
 
-| `input_boolean.workday_toggle` | Workday toggle |  |
+| `input_boolean.workday_today` | Workday Today |  |
+
+
+
+
+| `input_boolean.workday_tomorrow_helper` | Workday Tomorrow Helper |  |
 
 
 
@@ -44,17 +39,6 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
-
-
-
-## 🔘 Input Buttons
-| Entity ID | Friendly Name | Key Attributes |
-|---|---|---|
-
-
-
-
-| `input_button.fake_button` | Fake Button |  |
 
 
 
@@ -89,4 +73,4 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 ---
-_Generated: 2025-10-05T14:07:50.828437-05:00_
+_Generated: 2025-10-06T00:48:02.945668-05:00_

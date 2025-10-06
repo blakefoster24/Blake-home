@@ -103,8 +103,8 @@
     at: 01:00:00
     id: 1am goodnight
   - trigger: time
-    at: 00:30:00
-    id: 12:30am Alarms
+    at: '23:00:00'
+    id: 11pm
   conditions: []
   actions:
   - choose:
@@ -112,9 +112,14 @@
       - condition: trigger
         id:
         - I’m Awake Trigger
-      - condition: state
-        entity_id: binary_sensor.workday_8_9_30am
-        state: 'on'
+      - condition: and
+        conditions:
+        - condition: state
+          state: 'on'
+          entity_id: input_boolean.workday_today
+        - condition: time
+          after: 08:00:00
+          before: 09:30:00
       sequence:
       - sequence:
         - action: light.turn_on
@@ -149,9 +154,14 @@
       - condition: state
         entity_id: input_boolean.im_awake_toggle_helper
         state: 'off'
-      - condition: state
-        state: 'on'
-        entity_id: binary_sensor.workday_8_9_30am
+      - condition: and
+        conditions:
+        - condition: state
+          state: 'on'
+          entity_id: input_boolean.workday_today
+        - condition: time
+          after: 08:00:00
+          before: 09:30:00
       sequence:
       - sequence:
         - delay:
@@ -169,9 +179,14 @@
         id:
         - Main lights off
         - '9:29'
-      - condition: state
-        entity_id: binary_sensor.workday_8_9_30am
-        state: 'on'
+      - condition: and
+        conditions:
+        - condition: state
+          state: 'on'
+          entity_id: input_boolean.workday_today
+        - condition: time
+          after: 08:00:00
+          before: 09:30:00
       sequence:
       - action: scene.turn_on
         metadata: {}
@@ -191,12 +206,12 @@
     - conditions:
       - condition: trigger
         id:
-        - 12:30am Alarms
+        - 11pm
       sequence:
       - if:
         - condition: state
-          entity_id: binary_sensor.workday
           state: 'on'
+          entity_id: input_boolean.workday_tomorrow_helper
         then:
         - action: notify.blake_foster30_gmail_com
           metadata: {}
@@ -261,6 +276,9 @@
   - trigger: time
     at: '10:05:00'
     id: 10:05am Trigger
+  - trigger: time
+    at: '17:05:00'
+    id: 5:05 pm
   conditions: []
   actions:
   - choose:
@@ -268,14 +286,6 @@
       - condition: trigger
         id:
         - Sunset -1hr
-      - condition: or
-        conditions:
-        - condition: state
-          entity_id: binary_sensor.workday_before_10am_after_5pm
-          state: 'on'
-        - condition: state
-          entity_id: binary_sensor.workday
-          state: 'off'
       sequence:
       - action: light.turn_on
         metadata: {}
@@ -287,17 +297,29 @@
       - condition: trigger
         id:
         - Cloud coverage >40
+        - 5:05 pm
       - condition: state
         entity_id: light.main_lights
         state: 'off'
+      - type: is_value
+        condition: device
+        device_id: c01df91d71e0dd72fe7a5636aea2d71b
+        entity_id: 43e53695c8962aaa2bf07e8ed7325df8
+        domain: sensor
+        above: 39
       - condition: or
         conditions:
         - condition: state
-          entity_id: binary_sensor.workday_before_10am_after_5pm
-          state: 'on'
-        - condition: state
-          entity_id: binary_sensor.workday
           state: 'off'
+          entity_id: input_boolean.workday_today
+        - condition: and
+          conditions:
+          - condition: state
+            entity_id: input_boolean.workday_today
+            state: 'on'
+          - condition: time
+            after: '17:00:00'
+            before: '10:00:00'
       sequence:
       - action: light.turn_on
         metadata: {}
@@ -306,7 +328,7 @@
           transition: 0
         target:
           entity_id: light.living_room_lamp
-      alias: Cloud coverage >40% - lamp on
+      alias: Cloud coverage >40%(work or 5:05) - lamp on
     - conditions:
       - condition: and
         conditions:
@@ -331,11 +353,16 @@
             - condition: or
               conditions:
               - condition: state
-                entity_id: binary_sensor.workday
                 state: 'off'
-              - condition: state
-                entity_id: binary_sensor.workday_before_10am_after_5pm
-                state: 'on'
+                entity_id: input_boolean.workday_today
+              - condition: and
+                conditions:
+                - condition: state
+                  entity_id: input_boolean.workday_today
+                  state: 'on'
+                - condition: time
+                  after: '17:00:00'
+                  before: '10:00:00'
       sequence:
       - action: light.turn_on
         metadata: {}
@@ -411,8 +438,8 @@
         id:
         - 10:05am Trigger
       - condition: state
-        entity_id: binary_sensor.workday
         state: 'on'
+        entity_id: input_boolean.workday_today
       sequence:
       - action: light.turn_off
         metadata: {}
@@ -439,7 +466,7 @@
       source_entity: light.bedroom_ceiling_lights
       scene_target: scene.set_my_room
 - id: '1759452927264'
-  alias: Bedroom Ceiling Lights (3)  -> All Off
+  alias: Bedroom Ceiling Fan (3)  -> All Off
   description: ''
   use_blueprint:
     path: Custom/Toggle_blueprint.yaml
@@ -586,3 +613,53 @@
           entity_id: scene.goodnight_scene
   mode: parallel
   max: 10
+- id: '1759721039676'
+  alias: 1pm workday tomorrow toggle
+  description: ''
+  triggers:
+  - trigger: time
+    at: '13:00:00'
+  conditions: []
+  actions:
+  - if:
+    - condition: state
+      entity_id: binary_sensor.workday_tomorrow
+      state: 'on'
+    then:
+    - action: input_boolean.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: input_boolean.workday_tomorrow_helper
+    else:
+    - action: input_boolean.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: input_boolean.workday_tomorrow_helper
+  mode: single
+- id: '1759722918130'
+  alias: Workday tomorrow Toggle -> Workday Today Toggle
+  description: ''
+  triggers:
+  - trigger: time
+    at: 02:00:00
+  conditions: []
+  actions:
+  - if:
+    - condition: state
+      entity_id: input_boolean.workday_tomorrow_helper
+      state: 'on'
+    then:
+    - action: input_boolean.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: input_boolean.workday_today
+    else:
+    - action: input_boolean.turn_off
+      metadata: {}
+      data: {}
+      target:
+        entity_id: input_boolean.workday_today
+  mode: single

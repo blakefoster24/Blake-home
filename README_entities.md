@@ -6,21 +6,25 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
-| `automation.bedroom_ceiling_lights_3_all_off` | Bedroom Ceiling Lights (3)  -> All Off |
+| `automation.1pm_workday_tomorrow_toggle` | 1pm workday tomorrow toggle |
+
+| `automation.bedroom_ceiling_fan_3_all_off` | Bedroom Ceiling Fan (3)  -> All Off |
+
+| `automation.bedroom_ceiling_lights_3_set_my_room` | Bedroom Ceiling Lights (3) -> Set My Room |
+
+| `automation.bedroom_ceiling_lights_on_bedroom_lamp_on` | Bedroom Ceiling Lights on -> bedroom lamp on |
 
 | `automation.flic_single` | Flic Button |
 
-| `automation.hue_dimmer_short_release_long_press_repeat_on_middle` | Hue Dimmer Switch |
+| `automation.hue_dimmer_switch` | Hue Dimmer Switch |
 
-| `automation.new_automation` | Bedroom Ceiling Lights (3) -> Set My Room |
-
-| `automation.new_automation_2` | Workday Wake-up / 1am Goodnight |
-
-| `automation.new_automation_4` | Living Room Lamp |
-
-| `automation.night_lamp` | Bedroom Ceiling Lights on -> bedroom lamp on |
+| `automation.living_room_lamp` | Living Room Lamp |
 
 | `automation.nightly_github_sync` | Nightly GitHub sync |
+
+| `automation.workday_tomorrow_toggle_workday_today_toggle` | Workday tomorrow Toggle -> Workday Today Toggle |
+
+| `automation.workday_wake_up_1am_goodnight` | Workday Wake-up / 1am Goodnight |
 
 
 
@@ -68,11 +72,7 @@ Auto-generated list of entities. Safe to publish.
 
 | `binary_sensor.shelly_ceiling_lights_overvoltage` | Bedroom Ceiling Lights Overvoltage |
 
-| `binary_sensor.workday` | Workday |
-
-| `binary_sensor.workday_8_9_30am` | Workday: 8-9:30am |
-
-| `binary_sensor.workday_before_10am_after_5pm` | Workday: before 10am / after 5pm |
+| `binary_sensor.workday_tomorrow` | Workday Tomorrow |
 
 
 
@@ -138,21 +138,11 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
-| `input_boolean.bathroom_light_helper` | Bathroom light helper |
-
-| `input_boolean.general_toggle_helper` | General toggle helper |
-
 | `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle Helper |
 
-| `input_boolean.workday_toggle` | Workday toggle |
+| `input_boolean.workday_today` | Workday Today |
 
-
-
-## Input_button
-| Entity ID | Name |
-|---|---|
-
-| `input_button.fake_button` | Fake Button |
+| `input_boolean.workday_tomorrow_helper` | Workday Tomorrow Helper |
 
 
 
