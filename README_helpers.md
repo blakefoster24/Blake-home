@@ -13,17 +13,17 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
-| `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle Helper |  |
+| `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle |  |
 
 
 
 
-| `input_boolean.workday_today` | Workday Today |  |
+| `input_boolean.workday_today_toggle` | Workday Today Toggle |  |
 
 
 
 
-| `input_boolean.workday_tomorrow_helper` | Workday Tomorrow Helper |  |
+| `input_boolean.workday_tomorrow_toggle` | Workday Tomorrow Toggle |  |
 
 
 
@@ -73,4 +73,4 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 ---
-_Generated: 2025-10-06T02:00:00.358860-05:00_
+_Generated: 2025-10-06T09:30:26.234534-05:00_

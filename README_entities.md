@@ -74,7 +74,7 @@ Auto-generated list of entities. Safe to publish.
 
 | `binary_sensor.shelly_ceiling_lights_overvoltage` | Bedroom Ceiling Lights Overvoltage |
 
-| `binary_sensor.workday_tomorrow` | Workday Tomorrow |
+| `binary_sensor.workday_tomorrow_template_sensor` | Workday Tomorrow Template Sensor |
 
 
 
@@ -140,11 +140,11 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
-| `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle Helper |
+| `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle |
 
-| `input_boolean.workday_today` | Workday Today |
+| `input_boolean.workday_today_toggle` | Workday Today Toggle |
 
-| `input_boolean.workday_tomorrow_helper` | Workday Tomorrow Helper |
+| `input_boolean.workday_tomorrow_toggle` | Workday Tomorrow Toggle |
 
 
 

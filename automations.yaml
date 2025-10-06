@@ -102,9 +102,6 @@
   - trigger: time
     at: 01:00:00
     id: 1am goodnight
-  - trigger: time
-    at: '23:00:00'
-    id: 11pm
   conditions: []
   actions:
   - choose:
@@ -116,7 +113,7 @@
         conditions:
         - condition: state
           state: 'on'
-          entity_id: input_boolean.workday_today
+          entity_id: input_boolean.workday_today_toggle
         - condition: time
           after: 08:00:00
           before: 09:30:00
@@ -158,7 +155,7 @@
         conditions:
         - condition: state
           state: 'on'
-          entity_id: input_boolean.workday_today
+          entity_id: input_boolean.workday_today_toggle
         - condition: time
           after: 08:00:00
           before: 09:30:00
@@ -183,7 +180,7 @@
         conditions:
         - condition: state
           state: 'on'
-          entity_id: input_boolean.workday_today
+          entity_id: input_boolean.workday_today_toggle
         - condition: time
           after: 08:00:00
           before: 09:30:00
@@ -203,29 +200,6 @@
         data: {}
         target:
           entity_id: scene.goodnight_scene
-    - conditions:
-      - condition: trigger
-        id:
-        - 11pm
-      sequence:
-      - if:
-        - condition: state
-          state: 'on'
-          entity_id: input_boolean.workday_tomorrow_helper
-        then:
-        - action: notify.blake_foster30_gmail_com
-          metadata: {}
-          data:
-            message: Work Alarm ON
-            title: Work Alarm ON
-            target: blake.foster30@gmail.com
-        else:
-        - action: notify.blake_foster30_gmail_com
-          metadata: {}
-          data:
-            message: Work Alarm OFF
-            title: Work Alarm OFF
-            target: blake.foster30@gmail.com
   mode: parallel
 - id: '1758990657332'
   alias: Living Room Lamp
@@ -311,11 +285,11 @@
         conditions:
         - condition: state
           state: 'off'
-          entity_id: input_boolean.workday_today
+          entity_id: input_boolean.workday_today_toggle
         - condition: and
           conditions:
           - condition: state
-            entity_id: input_boolean.workday_today
+            entity_id: input_boolean.workday_today_toggle
             state: 'on'
           - condition: time
             after: '17:00:00'
@@ -354,12 +328,12 @@
               conditions:
               - condition: state
                 state: 'off'
-                entity_id: input_boolean.workday_today
+                entity_id: input_boolean.workday_today_toggle
               - condition: and
                 conditions:
                 - condition: state
-                  entity_id: input_boolean.workday_today
                   state: 'on'
+                  entity_id: input_boolean.workday_today_toggle
                 - condition: time
                   after: '17:00:00'
                   before: '10:00:00'
@@ -439,7 +413,7 @@
         - 10:05am Trigger
       - condition: state
         state: 'on'
-        entity_id: input_boolean.workday_today
+        entity_id: input_boolean.workday_today_toggle
       sequence:
       - action: light.turn_off
         metadata: {}
@@ -623,20 +597,20 @@
   actions:
   - if:
     - condition: state
-      entity_id: binary_sensor.workday_tomorrow
       state: 'on'
+      entity_id: binary_sensor.workday_tomorrow_template_sensor
     then:
     - action: input_boolean.turn_on
       metadata: {}
       data: {}
       target:
-        entity_id: input_boolean.workday_tomorrow_helper
+        entity_id: input_boolean.workday_tomorrow_toggle
     else:
     - action: input_boolean.turn_off
       metadata: {}
       data: {}
       target:
-        entity_id: input_boolean.workday_tomorrow_helper
+        entity_id: input_boolean.workday_tomorrow_toggle
   mode: single
 - id: '1759722918130'
   alias: Workday tomorrow Toggle -> Workday Today Toggle
@@ -648,20 +622,22 @@
   actions:
   - if:
     - condition: state
-      entity_id: input_boolean.workday_tomorrow_helper
       state: 'on'
+      entity_id: input_boolean.workday_tomorrow_toggle
     then:
     - action: input_boolean.turn_on
       metadata: {}
       data: {}
       target:
-        entity_id: input_boolean.workday_today
+        entity_id:
+        - input_boolean.workday_today_toggle
     else:
     - action: input_boolean.turn_off
       metadata: {}
       data: {}
       target:
-        entity_id: input_boolean.workday_today
+        entity_id:
+        - input_boolean.workday_today_toggle
   mode: single
 - id: '1759730650322'
   alias: 11pm -> Workday Helper -> Work Alarms
@@ -674,7 +650,7 @@
   - if:
     - condition: state
       state: 'on'
-      entity_id: input_boolean.workday_tomorrow_helper
+      entity_id: input_boolean.workday_tomorrow_toggle
     then:
     - action: notify.blake_foster30_gmail_com
       metadata: {}
