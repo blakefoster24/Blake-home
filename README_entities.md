@@ -16,6 +16,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.bedroom_ceiling_lights_on_bedroom_lamp_on` | Bedroom Ceiling Lights on -> bedroom lamp on |
 
+| `automation.closet_light_bathroom_light` | Closet light -> bathroom light |
+
 | `automation.flic_single` | Flic Button |
 
 | `automation.hue_dimmer_switch` | Hue Dimmer Switch |
@@ -143,6 +145,8 @@ Auto-generated list of entities. Safe to publish.
 | `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle |
 
 | `input_boolean.workday_today_toggle` | Workday Today Toggle |
+
+| `input_boolean.workday_toggle_helper` | General Toggle Helper |
 
 | `input_boolean.workday_tomorrow_toggle` | Workday Tomorrow Toggle |
 

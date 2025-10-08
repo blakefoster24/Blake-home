@@ -123,12 +123,12 @@
           metadata: {}
           data: {}
           target:
-            entity_id: light.closet_light
+            entity_id: light.bathroom_light
         - action: light.turn_on
           metadata: {}
           data: {}
           target:
-            entity_id: light.bathroom_light
+            entity_id: light.closet_light
         - action: input_boolean.turn_on
           metadata: {}
           data: {}
@@ -666,3 +666,67 @@
         title: Work Alarm OFF
         target: blake.foster30@gmail.com
   mode: single
+- id: '1759838752481'
+  alias: Closet light -> bathroom light
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - light.closet_light
+    to: 'on'
+    id: Closet light on
+  - trigger: state
+    entity_id:
+    - light.closet_light
+    to: 'off'
+    id: Closet light off
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Closet light on
+      - condition: state
+        entity_id: light.bathroom_light
+        state: 'off'
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.bathroom_light
+      - action: input_boolean.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: input_boolean.workday_toggle_helper
+      - delay:
+          hours: 0
+          minutes: 30
+          seconds: 0
+          milliseconds: 0
+      - action: input_boolean.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: input_boolean.workday_toggle_helper
+    - conditions:
+      - condition: trigger
+        id:
+        - Closet light off
+      - condition: state
+        entity_id: input_boolean.workday_toggle_helper
+        state: 'on'
+      sequence:
+      - action: light.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.bathroom_light
+      - action: input_boolean.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: input_boolean.workday_toggle_helper
+  mode: restart
