@@ -588,83 +588,88 @@
   mode: parallel
   max: 10
 - id: '1759721039676'
-  alias: 1pm workday tomorrow toggle
+  alias: 'Work Schedule Automations '
   description: ''
   triggers:
   - trigger: time
     at: '13:00:00'
-  conditions: []
-  actions:
-  - if:
-    - condition: state
-      state: 'on'
-      entity_id: binary_sensor.workday_tomorrow_template_sensor
-    then:
-    - action: input_boolean.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id: input_boolean.workday_tomorrow_toggle
-    else:
-    - action: input_boolean.turn_off
-      metadata: {}
-      data: {}
-      target:
-        entity_id: input_boolean.workday_tomorrow_toggle
-  mode: single
-- id: '1759722918130'
-  alias: Workday tomorrow Toggle -> Workday Today Toggle
-  description: ''
-  triggers:
-  - trigger: time
-    at: 02:00:00
-  conditions: []
-  actions:
-  - if:
-    - condition: state
-      state: 'on'
-      entity_id: input_boolean.workday_tomorrow_toggle
-    then:
-    - action: input_boolean.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id:
-        - input_boolean.workday_today_toggle
-    else:
-    - action: input_boolean.turn_off
-      metadata: {}
-      data: {}
-      target:
-        entity_id:
-        - input_boolean.workday_today_toggle
-  mode: single
-- id: '1759730650322'
-  alias: 11pm -> Workday Helper -> Work Alarms
-  description: ''
-  triggers:
+    id: 1pm
   - trigger: time
     at: '23:00:00'
+    id: 11pm
+  - trigger: time
+    at: 02:00:00
+    id: 2am
   conditions: []
   actions:
-  - if:
-    - condition: state
-      state: 'on'
-      entity_id: input_boolean.workday_tomorrow_toggle
-    then:
-    - action: notify.blake_foster30_gmail_com
-      metadata: {}
-      data:
-        message: Work Alarm ON
-        title: Work Alarm ON
-        target: blake.foster30@gmail.com
-    else:
-    - action: notify.blake_foster30_gmail_com
-      metadata: {}
-      data:
-        message: Work Alarm OFF
-        title: Work Alarm OFF
-        target: blake.foster30@gmail.com
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - 1pm
+      sequence:
+      - if:
+        - condition: state
+          state: 'on'
+          entity_id: binary_sensor.workday_tomorrow_template_sensor
+        then:
+        - action: input_boolean.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.workday_tomorrow_toggle
+        else:
+        - action: input_boolean.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.workday_tomorrow_toggle
+    - conditions:
+      - condition: trigger
+        id:
+        - 11pm
+      sequence:
+      - if:
+        - condition: state
+          state: 'on'
+          entity_id: input_boolean.workday_tomorrow_toggle
+        then:
+        - action: notify.blake_foster30_gmail_com
+          metadata: {}
+          data:
+            message: Work Alarm ON
+            title: Work Alarm ON
+            target: blake.foster30@gmail.com
+        else:
+        - action: notify.blake_foster30_gmail_com
+          metadata: {}
+          data:
+            message: Work Alarm OFF
+            title: Work Alarm OFF
+            target: blake.foster30@gmail.com
+    - conditions:
+      - condition: trigger
+        id:
+        - 2am
+      sequence:
+      - if:
+        - condition: state
+          state: 'on'
+          entity_id: input_boolean.workday_tomorrow_toggle
+        then:
+        - action: input_boolean.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id:
+            - input_boolean.workday_today_toggle
+        else:
+        - action: input_boolean.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id:
+            - input_boolean.workday_today_toggle
   mode: single
 - id: '1759838752481'
   alias: Closet light -> bathroom light

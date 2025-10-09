@@ -6,9 +6,7 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
-| `automation.11pm_workday_helper_work_alarms` | 11pm -> Workday Helper -> Work Alarms |
-
-| `automation.1pm_workday_tomorrow_toggle` | 1pm workday tomorrow toggle |
+| `automation.1pm_workday_tomorrow_toggle` | Work Schedule Automations  |
 
 | `automation.bedroom_ceiling_fan_3_all_off` | Bedroom Ceiling Fan (3)  -> All Off |
 
@@ -25,8 +23,6 @@ Auto-generated list of entities. Safe to publish.
 | `automation.living_room_lamp` | Living Room Lamp |
 
 | `automation.nightly_github_sync` | Nightly GitHub sync |
-
-| `automation.workday_tomorrow_toggle_workday_today_toggle` | Workday tomorrow Toggle -> Workday Today Toggle |
 
 | `automation.workday_wake_up_1am_goodnight` | Workday Wake-up / 1am Goodnight |
 
