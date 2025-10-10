@@ -535,13 +535,11 @@
       - condition: trigger
         id: up_short
       sequence:
-      - action: light.turn_on
+      - action: scene.turn_on
         metadata: {}
         data: {}
         target:
-          entity_id:
-          - light.bathroom_light
-          - light.closet_light
+          entity_id: scene.full_lamp
     - conditions:
       - condition: trigger
         id: up_repeat
@@ -550,15 +548,21 @@
       - condition: trigger
         id: up_long
       sequence:
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id:
+          - light.closet_light
+    - conditions:
+      - condition: trigger
+        id: down_short
+      sequence:
       - action: fan.toggle
         metadata: {}
         data: {}
         target:
           entity_id: fan.bedroom_ceiling_fan
-    - conditions:
-      - condition: trigger
-        id: down_short
-      sequence: []
     - conditions:
       - condition: trigger
         id: down_repeat
