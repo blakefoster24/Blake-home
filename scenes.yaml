@@ -122,7 +122,7 @@
     fan.bedroom_ceiling_fan:
       friendly_name: Bedroom ceiling fan
       supported_features: 48
-      state: 'on'
+      state: 'off'
     media_player.bedroom_tv:
       source_list:
       - Home
