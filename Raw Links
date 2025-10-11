@@ -1,0 +1,55 @@
+Home Assistant Repository Links
+
+This document contains direct raw links to all key Home Assistant configuration and diagnostic files in the repository.
+⸻
+🧩 Core Configuration Files
+
+- Automations:
+
+- https://raw.githubusercontent.com/blakefoster24/Blake-home/main/automations.yaml
+
+- Scripts:
+
+- https://raw.githubusercontent.com/blakefoster24/Blake-home/main/scripts.yaml
+
+- Configuration:
+
+- https://raw.githubusercontent.com/blakefoster24/Blake-home/main/configuration.yaml
+
+- Scenes:
+
+- https://raw.githubusercontent.com/blakefoster24/Blake-home/main/scenes.yaml
+⸻
+🧾 Snapshot Files
+
+- Entities Snapshot:
+
+- https://raw.githubusercontent.com/blakefoster24/Blake-home/main/README_entities.md
+
+- Helpers Snapshot:
+
+- https://raw.githubusercontent.com/blakefoster24/Blake-home/main/README_helpers.md
+⸻
+🩺 Diagnostics
+
+- Last Log Slice:
+
+- https://raw.githubusercontent.com/blakefoster24/Blake-home/main/diagnostics/last_log.txt
+
+- Automation Runs:
+
+- https://raw.githubusercontent.com/blakefoster24/Blake-home/main/diagnostics/automation_runs.txt
+⸻
+🧠 Blueprints
+
+- Blueprints Directory:
+
+- https://github.com/blakefoster24/Blake-home/tree/main/blueprints/automation
+⸻
+🕒 Commit History
+
+- Recent Commits:
+
+- https://github.com/blakefoster24/Blake-home/commits/main
+⸻
+Last updated automatically via Home Assistant sync workflow.
