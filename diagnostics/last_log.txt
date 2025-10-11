@@ -1,645 +1,4 @@
-===== 2025-10-11T02:00:00-05:00 — last 1000 lines =====
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.OperationalError: no such table: states
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/helpers/recorder.py", line 95, in session_scope
-    yield session
-  File "/usr/src/homeassistant/homeassistant/components/logbook/processor.py", line 184, in get_events
-    execute_stmt_lambda_element(session, stmt, orm_rows=False)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/recorder/util.py", line 190, in execute_stmt_lambda_element
-    executed = session.connection().execute(stmt)
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
-    return meth(
-        self,
-        distilled_parameters,
-        execution_options or NO_OPTIONS,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/sql/lambdas.py", line 594, in _execute_on_connection
-    return connection._execute_clauseelement(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self, distilled_params, execution_options
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
-    ret = self._execute_context(
-        dialect,
-    ...<8 lines>...
-        cache_hit=cache_hit,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
-    return self._exec_single_context(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        dialect, context, statement, parameters
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
-    self._handle_dbapi_exception(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        e, str_statement, effective_parameters, cursor, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: states
-[SQL: WITH anon_1 AS 
-(SELECT anon_2.context_id_bin AS context_id_bin 
-FROM (SELECT events.context_id_bin AS context_id_bin 
-FROM events LEFT OUTER JOIN event_types ON events.event_type_id = event_types.event_type_id LEFT OUTER JOIN event_data ON events.data_id = event_data.data_id 
-WHERE events.time_fired_ts > ? AND events.time_fired_ts < ? AND events.event_type_id IN (?, ?) AND (JSON_QUOTE(JSON_EXTRACT(CAST(event_data.shared_data AS TEXT), ?)) IS NOT NULL AND CAST(JSON_QUOTE(JSON_EXTRACT(CAST(event_data.shared_data AS TEXT), ?)) AS TEXT) IN (?) OR JSON_QUOTE(JSON_EXTRACT(CAST(events.event_data AS TEXT), ?)) IS NOT NULL AND CAST(JSON_QUOTE(JSON_EXTRACT(CAST(events.event_data AS TEXT), ?)) AS TEXT) IN (?)) UNION ALL SELECT states.context_id_bin AS context_id_bin 
-FROM states 
-WHERE states.last_updated_ts > ? AND states.last_updated_ts < ? AND states.metadata_id IN (?)) AS anon_2 GROUP BY anon_2.context_id_bin)
- SELECT events.event_id AS row_id, event_types.event_type AS event_type, CASE WHEN (event_data.shared_data IS NULL) THEN events.event_data ELSE event_data.shared_data END AS event_data, events.time_fired_ts AS time_fired_ts, events.context_id_bin AS context_id_bin, events.context_user_id_bin AS context_user_id_bin, events.context_parent_id_bin AS context_parent_id_bin, ? AS state, ? AS entity_id, ? AS icon, ? AS context_only 
-FROM events LEFT OUTER JOIN event_types ON events.event_type_id = event_types.event_type_id LEFT OUTER JOIN event_data ON events.data_id = event_data.data_id 
-WHERE events.time_fired_ts > ? AND events.time_fired_ts < ? AND events.event_type_id IN (?, ?) AND (JSON_QUOTE(JSON_EXTRACT(CAST(event_data.shared_data AS TEXT), ?)) IS NOT NULL AND CAST(JSON_QUOTE(JSON_EXTRACT(CAST(event_data.shared_data AS TEXT), ?)) AS TEXT) IN (?) OR JSON_QUOTE(JSON_EXTRACT(CAST(events.event_data AS TEXT), ?)) IS NOT NULL AND CAST(JSON_QUOTE(JSON_EXTRACT(CAST(events.event_data AS TEXT), ?)) AS TEXT) IN (?)) UNION ALL SELECT states.state_id AS row_id, ? AS event_type, ? AS event_data, states.last_updated_ts AS time_fired_ts, states.context_id_bin AS context_id_bin, states.context_user_id_bin AS context_user_id_bin, states.context_parent_id_bin AS context_parent_id_bin, states.state AS state, states_meta.entity_id AS entity_id, CASE WHEN (JSON_QUOTE(JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?)) IS NULL) THEN JSON_EXTRACT(CAST(states.attributes AS TEXT), ?) ELSE JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?) END AS icon, ? AS context_only 
-FROM states LEFT OUTER JOIN states AS old_state ON states.old_state_id = old_state.state_id LEFT OUTER JOIN state_attributes ON states.attributes_id = state_attributes.attributes_id LEFT OUTER JOIN states_meta ON states.metadata_id = states_meta.metadata_id 
-WHERE states.last_updated_ts > ? AND states.last_updated_ts < ? AND old_state.state_id IS NOT NULL AND states.state != old_state.state AND states.state IS NOT NULL AND ((states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ?) OR ((states_meta.entity_id LIKE ?) AND (state_attributes.shared_attrs NOT LIKE ? OR states.attributes NOT LIKE ?))) AND (states.last_updated_ts = states.last_changed_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) UNION ALL SELECT events.event_id AS row_id, event_types.event_type AS event_type, CASE WHEN (event_data.shared_data IS NULL) THEN events.event_data ELSE event_data.shared_data END AS event_data, events.time_fired_ts AS time_fired_ts, events.context_id_bin AS context_id_bin, events.context_user_id_bin AS context_user_id_bin, events.context_parent_id_bin AS context_parent_id_bin, ? AS state, ? AS entity_id, ? AS icon, ? AS context_only 
-FROM anon_1 LEFT OUTER JOIN events ON anon_1.context_id_bin = events.context_id_bin LEFT OUTER JOIN event_types ON events.event_type_id = event_types.event_type_id LEFT OUTER JOIN event_data ON events.data_id = event_data.data_id UNION ALL SELECT states.state_id AS row_id, ? AS event_type, ? AS event_data, states.last_updated_ts AS time_fired_ts, states.context_id_bin AS context_id_bin, states.context_user_id_bin AS context_user_id_bin, states.context_parent_id_bin AS context_parent_id_bin, states.state AS state, states_meta.entity_id AS entity_id, ? AS icon, ? AS context_only 
-FROM anon_1 LEFT OUTER JOIN states ON anon_1.context_id_bin = states.context_id_bin LEFT OUTER JOIN states_meta ON states.metadata_id = states_meta.metadata_id ORDER BY time_fired_ts]
-[parameters: (1760078228.43, 1760164628.443918, 30, 22, '$."entity_id"', '$."entity_id"', '"switch.bedroom_ceiling_fan"', '$."entity_id"', '$."entity_id"', '"switch.bedroom_ceiling_fan"', 1760078228.43, 1760164628.443918, 49, None, None, None, None, 1760078228.43, 1760164628.443918, 30, 22, '$."entity_id"', '$."entity_id"', '"switch.bedroom_ceiling_fan"', '$."entity_id"', '$."entity_id"', '"switch.bedroom_ceiling_fan"', None, None, '$."icon"', '$."icon"', '$."icon"', None, 1760078228.43, 1760164628.443918, 'proximity.%', 'counter.%', 'sensor.%', 'sensor.%', '%"unit_of_measurement":%', '%"unit_of_measurement":%', 49, None, None, None, '1', None, None, None, '1')]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:37:08.675 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281471799347776] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.9.3 (io.robbie.HomeAssistant; build:2025.1423; iOS 26.0.1) Mobile/HomeAssistant, like Safari)
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.OperationalError: no such table: states
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
-    await func(hass, connection, msg)
-  File "/usr/src/homeassistant/homeassistant/components/logbook/websocket_api.py", line 373, in ws_event_stream
-    last_event_time = await _async_send_historical_events(
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<12 lines>...
-    )
-    ^
-  File "/usr/src/homeassistant/homeassistant/components/logbook/websocket_api.py", line 105, in _async_send_historical_events
-    message, last_event_time = await _async_get_ws_stream_events(
-                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<6 lines>...
-    )
-    ^
-  File "/usr/src/homeassistant/homeassistant/components/logbook/websocket_api.py", line 166, in _async_get_ws_stream_events
-    return await get_instance(hass).async_add_executor_job(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<6 lines>...
-    )
-    ^
-  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
-    result = self.fn(*self.args, **self.kwargs)
-  File "/usr/src/homeassistant/homeassistant/components/logbook/websocket_api.py", line 195, in _ws_stream_get_events
-    events = event_processor.get_events(start_day, end_day)
-  File "/usr/src/homeassistant/homeassistant/components/logbook/processor.py", line 184, in get_events
-    execute_stmt_lambda_element(session, stmt, orm_rows=False)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/recorder/util.py", line 190, in execute_stmt_lambda_element
-    executed = session.connection().execute(stmt)
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
-    return meth(
-        self,
-        distilled_parameters,
-        execution_options or NO_OPTIONS,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/sql/lambdas.py", line 594, in _execute_on_connection
-    return connection._execute_clauseelement(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self, distilled_params, execution_options
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
-    ret = self._execute_context(
-        dialect,
-    ...<8 lines>...
-        cache_hit=cache_hit,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
-    return self._exec_single_context(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        dialect, context, statement, parameters
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
-    self._handle_dbapi_exception(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        e, str_statement, effective_parameters, cursor, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: states
-[SQL: WITH anon_1 AS 
-(SELECT anon_2.context_id_bin AS context_id_bin 
-FROM (SELECT events.context_id_bin AS context_id_bin 
-FROM events LEFT OUTER JOIN event_types ON events.event_type_id = event_types.event_type_id LEFT OUTER JOIN event_data ON events.data_id = event_data.data_id 
-WHERE events.time_fired_ts > ? AND events.time_fired_ts < ? AND events.event_type_id IN (?, ?) AND (JSON_QUOTE(JSON_EXTRACT(CAST(event_data.shared_data AS TEXT), ?)) IS NOT NULL AND CAST(JSON_QUOTE(JSON_EXTRACT(CAST(event_data.shared_data AS TEXT), ?)) AS TEXT) IN (?) OR JSON_QUOTE(JSON_EXTRACT(CAST(events.event_data AS TEXT), ?)) IS NOT NULL AND CAST(JSON_QUOTE(JSON_EXTRACT(CAST(events.event_data AS TEXT), ?)) AS TEXT) IN (?)) UNION ALL SELECT states.context_id_bin AS context_id_bin 
-FROM states 
-WHERE states.last_updated_ts > ? AND states.last_updated_ts < ? AND states.metadata_id IN (?)) AS anon_2 GROUP BY anon_2.context_id_bin)
- SELECT events.event_id AS row_id, event_types.event_type AS event_type, CASE WHEN (event_data.shared_data IS NULL) THEN events.event_data ELSE event_data.shared_data END AS event_data, events.time_fired_ts AS time_fired_ts, events.context_id_bin AS context_id_bin, events.context_user_id_bin AS context_user_id_bin, events.context_parent_id_bin AS context_parent_id_bin, ? AS state, ? AS entity_id, ? AS icon, ? AS context_only 
-FROM events LEFT OUTER JOIN event_types ON events.event_type_id = event_types.event_type_id LEFT OUTER JOIN event_data ON events.data_id = event_data.data_id 
-WHERE events.time_fired_ts > ? AND events.time_fired_ts < ? AND events.event_type_id IN (?, ?) AND (JSON_QUOTE(JSON_EXTRACT(CAST(event_data.shared_data AS TEXT), ?)) IS NOT NULL AND CAST(JSON_QUOTE(JSON_EXTRACT(CAST(event_data.shared_data AS TEXT), ?)) AS TEXT) IN (?) OR JSON_QUOTE(JSON_EXTRACT(CAST(events.event_data AS TEXT), ?)) IS NOT NULL AND CAST(JSON_QUOTE(JSON_EXTRACT(CAST(events.event_data AS TEXT), ?)) AS TEXT) IN (?)) UNION ALL SELECT states.state_id AS row_id, ? AS event_type, ? AS event_data, states.last_updated_ts AS time_fired_ts, states.context_id_bin AS context_id_bin, states.context_user_id_bin AS context_user_id_bin, states.context_parent_id_bin AS context_parent_id_bin, states.state AS state, states_meta.entity_id AS entity_id, CASE WHEN (JSON_QUOTE(JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?)) IS NULL) THEN JSON_EXTRACT(CAST(states.attributes AS TEXT), ?) ELSE JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?) END AS icon, ? AS context_only 
-FROM states LEFT OUTER JOIN states AS old_state ON states.old_state_id = old_state.state_id LEFT OUTER JOIN state_attributes ON states.attributes_id = state_attributes.attributes_id LEFT OUTER JOIN states_meta ON states.metadata_id = states_meta.metadata_id 
-WHERE states.last_updated_ts > ? AND states.last_updated_ts < ? AND old_state.state_id IS NOT NULL AND states.state != old_state.state AND states.state IS NOT NULL AND ((states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ?) OR ((states_meta.entity_id LIKE ?) AND (state_attributes.shared_attrs NOT LIKE ? OR states.attributes NOT LIKE ?))) AND (states.last_updated_ts = states.last_changed_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) UNION ALL SELECT events.event_id AS row_id, event_types.event_type AS event_type, CASE WHEN (event_data.shared_data IS NULL) THEN events.event_data ELSE event_data.shared_data END AS event_data, events.time_fired_ts AS time_fired_ts, events.context_id_bin AS context_id_bin, events.context_user_id_bin AS context_user_id_bin, events.context_parent_id_bin AS context_parent_id_bin, ? AS state, ? AS entity_id, ? AS icon, ? AS context_only 
-FROM anon_1 LEFT OUTER JOIN events ON anon_1.context_id_bin = events.context_id_bin LEFT OUTER JOIN event_types ON events.event_type_id = event_types.event_type_id LEFT OUTER JOIN event_data ON events.data_id = event_data.data_id UNION ALL SELECT states.state_id AS row_id, ? AS event_type, ? AS event_data, states.last_updated_ts AS time_fired_ts, states.context_id_bin AS context_id_bin, states.context_user_id_bin AS context_user_id_bin, states.context_parent_id_bin AS context_parent_id_bin, states.state AS state, states_meta.entity_id AS entity_id, ? AS icon, ? AS context_only 
-FROM anon_1 LEFT OUTER JOIN states ON anon_1.context_id_bin = states.context_id_bin LEFT OUTER JOIN states_meta ON states.metadata_id = states_meta.metadata_id ORDER BY time_fired_ts]
-[parameters: (1760078228.43, 1760164628.443918, 30, 22, '$."entity_id"', '$."entity_id"', '"switch.bedroom_ceiling_fan"', '$."entity_id"', '$."entity_id"', '"switch.bedroom_ceiling_fan"', 1760078228.43, 1760164628.443918, 49, None, None, None, None, 1760078228.43, 1760164628.443918, 30, 22, '$."entity_id"', '$."entity_id"', '"switch.bedroom_ceiling_fan"', '$."entity_id"', '$."entity_id"', '"switch.bedroom_ceiling_fan"', None, None, '$."icon"', '$."icon"', '$."icon"', None, 1760078228.43, 1760164628.443918, 'proximity.%', 'counter.%', 'sensor.%', 'sensor.%', '%"unit_of_measurement":%', '%"unit_of_measurement":%', 49, None, None, None, '1', None, None, None, '1')]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:37:26.774 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT events.event_id AS row_id, event_types.event_type AS event_type, CASE WHEN (event_data.shared_data IS NULL) THEN events.event_data ELSE event_data.shared_data END AS event_data, events.time_fired_ts AS time_fired_ts, events.context_id_bin AS context_id_bin, events.context_user_id_bin AS context_user_id_bin, events.context_parent_id_bin AS context_parent_id_bin, ? AS state, ? AS entity_id, ? AS icon, ? AS context_only 
-FROM events LEFT OUTER JOIN event_types ON events.event_type_id = event_types.event_type_id LEFT OUTER JOIN event_data ON events.data_id = event_data.data_id 
-WHERE events.time_fired_ts > ? AND events.time_fired_ts < ? AND events.event_type_id IN (?, ?, ?, ?, ?, ?, ?) AND events.context_id_bin = ? UNION ALL SELECT states.state_id AS row_id, ? AS event_type, ? AS event_data, states.last_updated_ts AS time_fired_ts, states.context_id_bin AS context_id_bin, states.context_user_id_bin AS context_user_id_bin, states.context_parent_id_bin AS context_parent_id_bin, states.state AS state, states_meta.entity_id AS entity_id, CASE WHEN (JSON_QUOTE(JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?)) IS NULL) THEN JSON_EXTRACT(CAST(states.attributes AS TEXT), ?) ELSE JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?) END AS icon, ? AS context_only 
-FROM states LEFT OUTER JOIN states AS old_state ON states.old_state_id = old_state.state_id LEFT OUTER JOIN state_attributes ON states.attributes_id = state_attributes.attributes_id LEFT OUTER JOIN states_meta ON states.metadata_id = states_meta.metadata_id 
-WHERE states.last_updated_ts > ? AND states.last_updated_ts < ? AND old_state.state_id IS NOT NULL AND states.state != old_state.state AND states.state IS NOT NULL AND ((states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ?) OR ((states_meta.entity_id LIKE ?) AND (state_attributes.shared_attrs NOT LIKE ? OR states.attributes NOT LIKE ?))) AND (states.last_updated_ts = states.last_changed_ts OR states.last_changed_ts IS NULL) AND states.context_id_bin = ? ORDER BY time_fired_ts]
-[parameters: (None, None, None, None, 1760155200.228544, 1760164646.770693, 17, 28, 9, 26, 30, 22, 23, <memory at 0xffff3c042f80>, None, None, '$."icon"', '$."icon"', '$."icon"', None, 1760155200.228544, 1760164646.770693, 'proximity.%', 'counter.%', 'sensor.%', 'sensor.%', '%"unit_of_measurement":%', '%"unit_of_measurement":%', <memory at 0xffff3c043d00>)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:37:26.877 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT events.event_id AS row_id, event_types.event_type AS event_type, CASE WHEN (event_data.shared_data IS NULL) THEN events.event_data ELSE event_data.shared_data END AS event_data, events.time_fired_ts AS time_fired_ts, events.context_id_bin AS context_id_bin, events.context_user_id_bin AS context_user_id_bin, events.context_parent_id_bin AS context_parent_id_bin, ? AS state, ? AS entity_id, ? AS icon, ? AS context_only 
-FROM events LEFT OUTER JOIN event_types ON events.event_type_id = event_types.event_type_id LEFT OUTER JOIN event_data ON events.data_id = event_data.data_id 
-WHERE events.time_fired_ts > ? AND events.time_fired_ts < ? AND events.event_type_id IN (?, ?, ?, ?, ?, ?, ?) AND events.context_id_bin = ? UNION ALL SELECT states.state_id AS row_id, ? AS event_type, ? AS event_data, states.last_updated_ts AS time_fired_ts, states.context_id_bin AS context_id_bin, states.context_user_id_bin AS context_user_id_bin, states.context_parent_id_bin AS context_parent_id_bin, states.state AS state, states_meta.entity_id AS entity_id, CASE WHEN (JSON_QUOTE(JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?)) IS NULL) THEN JSON_EXTRACT(CAST(states.attributes AS TEXT), ?) ELSE JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?) END AS icon, ? AS context_only 
-FROM states LEFT OUTER JOIN states AS old_state ON states.old_state_id = old_state.state_id LEFT OUTER JOIN state_attributes ON states.attributes_id = state_attributes.attributes_id LEFT OUTER JOIN states_meta ON states.metadata_id = states_meta.metadata_id 
-WHERE states.last_updated_ts > ? AND states.last_updated_ts < ? AND old_state.state_id IS NOT NULL AND states.state != old_state.state AND states.state IS NOT NULL AND ((states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ?) OR ((states_meta.entity_id LIKE ?) AND (state_attributes.shared_attrs NOT LIKE ? OR states.attributes NOT LIKE ?))) AND (states.last_updated_ts = states.last_changed_ts OR states.last_changed_ts IS NULL) AND states.context_id_bin = ? ORDER BY time_fired_ts]
-[parameters: (None, None, None, None, 1760155200.228544, 1760164646.770693, 17, 28, 9, 26, 30, 22, 23, <memory at 0xffff58e90f40>, None, None, '$."icon"', '$."icon"', '$."icon"', None, 1760155200.228544, 1760164646.770693, 'proximity.%', 'counter.%', 'sensor.%', 'sensor.%', '%"unit_of_measurement":%', '%"unit_of_measurement":%', <memory at 0xffff51af62c0>)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:37:26.979 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT events.event_id AS row_id, event_types.event_type AS event_type, CASE WHEN (event_data.shared_data IS NULL) THEN events.event_data ELSE event_data.shared_data END AS event_data, events.time_fired_ts AS time_fired_ts, events.context_id_bin AS context_id_bin, events.context_user_id_bin AS context_user_id_bin, events.context_parent_id_bin AS context_parent_id_bin, ? AS state, ? AS entity_id, ? AS icon, ? AS context_only 
-FROM events LEFT OUTER JOIN event_types ON events.event_type_id = event_types.event_type_id LEFT OUTER JOIN event_data ON events.data_id = event_data.data_id 
-WHERE events.time_fired_ts > ? AND events.time_fired_ts < ? AND events.event_type_id IN (?, ?, ?, ?, ?, ?, ?) AND events.context_id_bin = ? UNION ALL SELECT states.state_id AS row_id, ? AS event_type, ? AS event_data, states.last_updated_ts AS time_fired_ts, states.context_id_bin AS context_id_bin, states.context_user_id_bin AS context_user_id_bin, states.context_parent_id_bin AS context_parent_id_bin, states.state AS state, states_meta.entity_id AS entity_id, CASE WHEN (JSON_QUOTE(JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?)) IS NULL) THEN JSON_EXTRACT(CAST(states.attributes AS TEXT), ?) ELSE JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?) END AS icon, ? AS context_only 
-FROM states LEFT OUTER JOIN states AS old_state ON states.old_state_id = old_state.state_id LEFT OUTER JOIN state_attributes ON states.attributes_id = state_attributes.attributes_id LEFT OUTER JOIN states_meta ON states.metadata_id = states_meta.metadata_id 
-WHERE states.last_updated_ts > ? AND states.last_updated_ts < ? AND old_state.state_id IS NOT NULL AND states.state != old_state.state AND states.state IS NOT NULL AND ((states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ?) OR ((states_meta.entity_id LIKE ?) AND (state_attributes.shared_attrs NOT LIKE ? OR states.attributes NOT LIKE ?))) AND (states.last_updated_ts = states.last_changed_ts OR states.last_changed_ts IS NULL) AND states.context_id_bin = ? ORDER BY time_fired_ts]
-[parameters: (None, None, None, None, 1760155200.228544, 1760164646.770693, 17, 28, 9, 26, 30, 22, 23, <memory at 0xffff51af7700>, None, None, '$."icon"', '$."icon"', '$."icon"', None, 1760155200.228544, 1760164646.770693, 'proximity.%', 'counter.%', 'sensor.%', 'sensor.%', '%"unit_of_measurement":%', '%"unit_of_measurement":%', <memory at 0xffff42979540>)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:37:26.980 ERROR (DbWorker_2) [homeassistant.helpers.recorder] Error executing query
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.OperationalError: no such table: states
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/helpers/recorder.py", line 95, in session_scope
-    yield session
-  File "/usr/src/homeassistant/homeassistant/components/logbook/processor.py", line 184, in get_events
-    execute_stmt_lambda_element(session, stmt, orm_rows=False)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/recorder/util.py", line 190, in execute_stmt_lambda_element
-    executed = session.connection().execute(stmt)
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
-    return meth(
-        self,
-        distilled_parameters,
-        execution_options or NO_OPTIONS,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/sql/lambdas.py", line 594, in _execute_on_connection
-    return connection._execute_clauseelement(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self, distilled_params, execution_options
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
-    ret = self._execute_context(
-        dialect,
-    ...<8 lines>...
-        cache_hit=cache_hit,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
-    return self._exec_single_context(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        dialect, context, statement, parameters
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
-    self._handle_dbapi_exception(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        e, str_statement, effective_parameters, cursor, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT events.event_id AS row_id, event_types.event_type AS event_type, CASE WHEN (event_data.shared_data IS NULL) THEN events.event_data ELSE event_data.shared_data END AS event_data, events.time_fired_ts AS time_fired_ts, events.context_id_bin AS context_id_bin, events.context_user_id_bin AS context_user_id_bin, events.context_parent_id_bin AS context_parent_id_bin, ? AS state, ? AS entity_id, ? AS icon, ? AS context_only 
-FROM events LEFT OUTER JOIN event_types ON events.event_type_id = event_types.event_type_id LEFT OUTER JOIN event_data ON events.data_id = event_data.data_id 
-WHERE events.time_fired_ts > ? AND events.time_fired_ts < ? AND events.event_type_id IN (?, ?, ?, ?, ?, ?, ?) AND events.context_id_bin = ? UNION ALL SELECT states.state_id AS row_id, ? AS event_type, ? AS event_data, states.last_updated_ts AS time_fired_ts, states.context_id_bin AS context_id_bin, states.context_user_id_bin AS context_user_id_bin, states.context_parent_id_bin AS context_parent_id_bin, states.state AS state, states_meta.entity_id AS entity_id, CASE WHEN (JSON_QUOTE(JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?)) IS NULL) THEN JSON_EXTRACT(CAST(states.attributes AS TEXT), ?) ELSE JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?) END AS icon, ? AS context_only 
-FROM states LEFT OUTER JOIN states AS old_state ON states.old_state_id = old_state.state_id LEFT OUTER JOIN state_attributes ON states.attributes_id = state_attributes.attributes_id LEFT OUTER JOIN states_meta ON states.metadata_id = states_meta.metadata_id 
-WHERE states.last_updated_ts > ? AND states.last_updated_ts < ? AND old_state.state_id IS NOT NULL AND states.state != old_state.state AND states.state IS NOT NULL AND ((states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ?) OR ((states_meta.entity_id LIKE ?) AND (state_attributes.shared_attrs NOT LIKE ? OR states.attributes NOT LIKE ?))) AND (states.last_updated_ts = states.last_changed_ts OR states.last_changed_ts IS NULL) AND states.context_id_bin = ? ORDER BY time_fired_ts]
-[parameters: (None, None, None, None, 1760155200.228544, 1760164646.770693, 17, 28, 9, 26, 30, 22, 23, <memory at 0xffff51af7700>, None, None, '$."icon"', '$."icon"', '$."icon"', None, 1760155200.228544, 1760164646.770693, 'proximity.%', 'counter.%', 'sensor.%', 'sensor.%', '%"unit_of_measurement":%', '%"unit_of_measurement":%', <memory at 0xffff42979540>)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:37:26.996 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281471799347776] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.9.3 (io.robbie.HomeAssistant; build:2025.1423; iOS 26.0.1) Mobile/HomeAssistant, like Safari)
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.OperationalError: no such table: states
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
-    await func(hass, connection, msg)
-  File "/usr/src/homeassistant/homeassistant/components/logbook/websocket_api.py", line 506, in ws_get_events
-    await get_instance(hass).async_add_executor_job(
-    ...<5 lines>...
-    )
-  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
-    result = self.fn(*self.args, **self.kwargs)
-  File "/usr/src/homeassistant/homeassistant/components/logbook/websocket_api.py", line 441, in _ws_formatted_get_events
-    msg_id, event_processor.get_events(start_time, end_time)
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/logbook/processor.py", line 184, in get_events
-    execute_stmt_lambda_element(session, stmt, orm_rows=False)
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/recorder/util.py", line 190, in execute_stmt_lambda_element
-    executed = session.connection().execute(stmt)
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
-    return meth(
-        self,
-        distilled_parameters,
-        execution_options or NO_OPTIONS,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/sql/lambdas.py", line 594, in _execute_on_connection
-    return connection._execute_clauseelement(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self, distilled_params, execution_options
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
-    ret = self._execute_context(
-        dialect,
-    ...<8 lines>...
-        cache_hit=cache_hit,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
-    return self._exec_single_context(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        dialect, context, statement, parameters
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
-    self._handle_dbapi_exception(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        e, str_statement, effective_parameters, cursor, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT events.event_id AS row_id, event_types.event_type AS event_type, CASE WHEN (event_data.shared_data IS NULL) THEN events.event_data ELSE event_data.shared_data END AS event_data, events.time_fired_ts AS time_fired_ts, events.context_id_bin AS context_id_bin, events.context_user_id_bin AS context_user_id_bin, events.context_parent_id_bin AS context_parent_id_bin, ? AS state, ? AS entity_id, ? AS icon, ? AS context_only 
-FROM events LEFT OUTER JOIN event_types ON events.event_type_id = event_types.event_type_id LEFT OUTER JOIN event_data ON events.data_id = event_data.data_id 
-WHERE events.time_fired_ts > ? AND events.time_fired_ts < ? AND events.event_type_id IN (?, ?, ?, ?, ?, ?, ?) AND events.context_id_bin = ? UNION ALL SELECT states.state_id AS row_id, ? AS event_type, ? AS event_data, states.last_updated_ts AS time_fired_ts, states.context_id_bin AS context_id_bin, states.context_user_id_bin AS context_user_id_bin, states.context_parent_id_bin AS context_parent_id_bin, states.state AS state, states_meta.entity_id AS entity_id, CASE WHEN (JSON_QUOTE(JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?)) IS NULL) THEN JSON_EXTRACT(CAST(states.attributes AS TEXT), ?) ELSE JSON_EXTRACT(CAST(state_attributes.shared_attrs AS TEXT), ?) END AS icon, ? AS context_only 
-FROM states LEFT OUTER JOIN states AS old_state ON states.old_state_id = old_state.state_id LEFT OUTER JOIN state_attributes ON states.attributes_id = state_attributes.attributes_id LEFT OUTER JOIN states_meta ON states.metadata_id = states_meta.metadata_id 
-WHERE states.last_updated_ts > ? AND states.last_updated_ts < ? AND old_state.state_id IS NOT NULL AND states.state != old_state.state AND states.state IS NOT NULL AND ((states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ? AND states_meta.entity_id NOT LIKE ?) OR ((states_meta.entity_id LIKE ?) AND (state_attributes.shared_attrs NOT LIKE ? OR states.attributes NOT LIKE ?))) AND (states.last_updated_ts = states.last_changed_ts OR states.last_changed_ts IS NULL) AND states.context_id_bin = ? ORDER BY time_fired_ts]
-[parameters: (None, None, None, None, 1760155200.228544, 1760164646.770693, 17, 28, 9, 26, 30, 22, 23, <memory at 0xffff51af7700>, None, None, '$."icon"', '$."icon"', '$."icon"', None, 1760155200.228544, 1760164646.770693, 'proximity.%', 'counter.%', 'sensor.%', 'sensor.%', '%"unit_of_measurement":%', '%"unit_of_measurement":%', <memory at 0xffff42979540>)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:37:39.417 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:37:39.419 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:37:39.420 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:37:39.420 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:37:39.425 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:37:39.428 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:37:42.617 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:37:42.619 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:37:42.620 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:37:44.173 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:37:44.175 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:37:44.176 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:37:44.184 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-11 01:37:44.184 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-11 01:37:44.383 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Restarting
-2025-10-11 01:37:44.390 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:37:44.391 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:37:44.392 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:37:44.408 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-11 01:37:44.408 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-11 01:37:45.664 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Restarting
-2025-10-11 01:37:45.671 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:37:45.673 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:37:45.674 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:37:45.681 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-11 01:37:45.682 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-11 01:37:46.385 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Restarting
-2025-10-11 01:37:46.392 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:37:46.393 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:37:46.395 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:37:46.402 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-11 01:37:46.402 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-11 01:37:47.553 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Restarting
-2025-10-11 01:37:47.561 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:37:47.563 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:37:47.564 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:37:47.571 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-11 01:37:47.571 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-11 01:37:47.754 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Restarting
-2025-10-11 01:37:47.762 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:37:47.763 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:37:47.764 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:37:47.771 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-11 01:37:47.772 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-11 01:37:49.241 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-11 01:37:49.243 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-11 01:37:49.246 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-11 01:37:49.252 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:37:49.252 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:37:49.255 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Restarting
-2025-10-11 01:37:49.261 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:37:49.262 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:37:49.263 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:38:13.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-11 01:38:13.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:38:13.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:38:13.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:38:13.014 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:38:13.014 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:38:55.055 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:38:55.056 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:38:55.058 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:38:55.058 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:38:55.063 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:38:55.066 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:39:01.867 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:39:01.869 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:39:01.870 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:39:10.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-11 01:39:10.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:39:10.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:39:10.011 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:39:10.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:39:10.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:39:27.367 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:39:27.368 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:39:27.369 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:39:27.370 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:39:27.375 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:39:27.378 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:39:30.907 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:39:30.908 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:39:30.909 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:39:39.199 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-11 01:39:39.200 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:39:39.200 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:39:39.207 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:39:39.208 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:39:39.209 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:39:50.257 ERROR (DbWorker_3) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT anon_1.metadata_id, anon_1.state, anon_1.last_updated_ts 
-FROM (SELECT anon_2.metadata_id AS metadata_id, anon_2.state AS state, anon_2.last_updated_ts AS last_updated_ts 
-FROM (SELECT states.metadata_id AS metadata_id, states.state AS state, ? AS last_updated_ts 
-FROM states 
-WHERE states.last_updated_ts < ? AND states.metadata_id = ? ORDER BY states.last_updated_ts DESC
- LIMIT ? OFFSET ?) AS anon_2 UNION ALL SELECT anon_3.metadata_id AS metadata_id, anon_3.state AS state, anon_3.last_updated_ts AS last_updated_ts 
-FROM (SELECT states.metadata_id AS metadata_id, states.state AS state, states.last_updated_ts AS last_updated_ts 
-FROM states 
-WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ?) AS anon_3) AS anon_1 ORDER BY anon_1.metadata_id, anon_1.last_updated_ts]
-[parameters: (0, 1760078390.244, 45, 1, 0, 45, 1760078390.244, 1760164790.253484)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:39:50.279 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
-FROM states 
-WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
-[parameters: (3, 1760141040.772221, 1760164790.256963)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:39:50.360 ERROR (DbWorker_3) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT anon_1.metadata_id, anon_1.state, anon_1.last_updated_ts 
-FROM (SELECT anon_2.metadata_id AS metadata_id, anon_2.state AS state, anon_2.last_updated_ts AS last_updated_ts 
-FROM (SELECT states.metadata_id AS metadata_id, states.state AS state, ? AS last_updated_ts 
-FROM states 
-WHERE states.last_updated_ts < ? AND states.metadata_id = ? ORDER BY states.last_updated_ts DESC
- LIMIT ? OFFSET ?) AS anon_2 UNION ALL SELECT anon_3.metadata_id AS metadata_id, anon_3.state AS state, anon_3.last_updated_ts AS last_updated_ts 
-FROM (SELECT states.metadata_id AS metadata_id, states.state AS state, states.last_updated_ts AS last_updated_ts 
-FROM states 
-WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ?) AS anon_3) AS anon_1 ORDER BY anon_1.metadata_id, anon_1.last_updated_ts]
-[parameters: (0, 1760078390.244, 45, 1, 0, 45, 1760078390.244, 1760164790.253484)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:39:50.381 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
-FROM states 
-WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
-[parameters: (3, 1760141040.772221, 1760164790.256963)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:39:50.462 ERROR (DbWorker_3) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT anon_1.metadata_id, anon_1.state, anon_1.last_updated_ts 
-FROM (SELECT anon_2.metadata_id AS metadata_id, anon_2.state AS state, anon_2.last_updated_ts AS last_updated_ts 
-FROM (SELECT states.metadata_id AS metadata_id, states.state AS state, ? AS last_updated_ts 
-FROM states 
-WHERE states.last_updated_ts < ? AND states.metadata_id = ? ORDER BY states.last_updated_ts DESC
- LIMIT ? OFFSET ?) AS anon_2 UNION ALL SELECT anon_3.metadata_id AS metadata_id, anon_3.state AS state, anon_3.last_updated_ts AS last_updated_ts 
-FROM (SELECT states.metadata_id AS metadata_id, states.state AS state, states.last_updated_ts AS last_updated_ts 
-FROM states 
-WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ?) AS anon_3) AS anon_1 ORDER BY anon_1.metadata_id, anon_1.last_updated_ts]
-[parameters: (0, 1760078390.244, 45, 1, 0, 45, 1760078390.244, 1760164790.253484)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:39:50.462 ERROR (DbWorker_3) [homeassistant.helpers.recorder] Error executing query
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.OperationalError: no such table: states
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/helpers/recorder.py", line 95, in session_scope
-    yield session
-  File "/usr/src/homeassistant/homeassistant/components/recorder/history/modern.py", line 129, in get_significant_states
-    return get_significant_states_with_session(
-        hass,
-    ...<9 lines>...
-        compressed_state_format,
-    )
-  File "/usr/src/homeassistant/homeassistant/components/recorder/history/modern.py", line 293, in get_significant_states_with_session
-    execute_stmt_lambda_element(session, stmt, None, end_time, orm_rows=False),
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/recorder/util.py", line 190, in execute_stmt_lambda_element
-    executed = session.connection().execute(stmt)
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
-    return meth(
-        self,
-        distilled_parameters,
-        execution_options or NO_OPTIONS,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/sql/lambdas.py", line 594, in _execute_on_connection
-    return connection._execute_clauseelement(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self, distilled_params, execution_options
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
-    ret = self._execute_context(
-        dialect,
-    ...<8 lines>...
-        cache_hit=cache_hit,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
-    return self._exec_single_context(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        dialect, context, statement, parameters
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
-    self._handle_dbapi_exception(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        e, str_statement, effective_parameters, cursor, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT anon_1.metadata_id, anon_1.state, anon_1.last_updated_ts 
-FROM (SELECT anon_2.metadata_id AS metadata_id, anon_2.state AS state, anon_2.last_updated_ts AS last_updated_ts 
-FROM (SELECT states.metadata_id AS metadata_id, states.state AS state, ? AS last_updated_ts 
-FROM states 
-WHERE states.last_updated_ts < ? AND states.metadata_id = ? ORDER BY states.last_updated_ts DESC
- LIMIT ? OFFSET ?) AS anon_2 UNION ALL SELECT anon_3.metadata_id AS metadata_id, anon_3.state AS state, anon_3.last_updated_ts AS last_updated_ts 
-FROM (SELECT states.metadata_id AS metadata_id, states.state AS state, states.last_updated_ts AS last_updated_ts 
-FROM states 
-WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ?) AS anon_3) AS anon_1 ORDER BY anon_1.metadata_id, anon_1.last_updated_ts]
-[parameters: (0, 1760078390.244, 45, 1, 0, 45, 1760078390.244, 1760164790.253484)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:39:50.486 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
-FROM states 
-WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
-[parameters: (3, 1760141040.772221, 1760164790.256963)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:39:50.481 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281471799347776] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.9.3 (io.robbie.HomeAssistant; build:2025.1423; iOS 26.0.1) Mobile/HomeAssistant, like Safari)
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.OperationalError: no such table: states
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
-    await func(hass, connection, msg)
-  File "/usr/src/homeassistant/homeassistant/components/history/websocket_api.py", line 529, in ws_stream
-    last_event_time = await _async_send_historical_states(
-                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<11 lines>...
-    )
-    ^
-  File "/usr/src/homeassistant/homeassistant/components/history/websocket_api.py", line 287, in _async_send_historical_states
-    last_time_ts, last_time_dt, payload = await instance.async_add_executor_job(
-                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    ...<11 lines>...
-    )
-    ^
-  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
-    result = self.fn(*self.args, **self.kwargs)
-  File "/usr/src/homeassistant/homeassistant/components/history/websocket_api.py", line 233, in _generate_historical_response
-    history.get_significant_states(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+===== 2025-10-11T11:57:28-05:00 — last 1000 lines =====
         hass,
         ^^^^^
     ...<8 lines>...
@@ -710,18 +69,147 @@ Traceback (most recent call last):
     cursor.execute(statement, parameters)
     ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
 sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT anon_1.metadata_id, anon_1.state, anon_1.last_updated_ts 
-FROM (SELECT anon_2.metadata_id AS metadata_id, anon_2.state AS state, anon_2.last_updated_ts AS last_updated_ts 
-FROM (SELECT states.metadata_id AS metadata_id, states.state AS state, ? AS last_updated_ts 
+[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
 FROM states 
-WHERE states.last_updated_ts < ? AND states.metadata_id = ? ORDER BY states.last_updated_ts DESC
- LIMIT ? OFFSET ?) AS anon_2 UNION ALL SELECT anon_3.metadata_id AS metadata_id, anon_3.state AS state, anon_3.last_updated_ts AS last_updated_ts 
-FROM (SELECT states.metadata_id AS metadata_id, states.state AS state, states.last_updated_ts AS last_updated_ts 
-FROM states 
-WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ?) AS anon_3) AS anon_1 ORDER BY anon_1.metadata_id, anon_1.last_updated_ts]
-[parameters: (0, 1760078390.244, 45, 1, 0, 45, 1760078390.244, 1760164790.253484)]
+WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
+[parameters: (45, 1760186486.138183, 1760201024.693016)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:39:50.487 ERROR (DbWorker_2) [homeassistant.helpers.recorder] Error executing query
+2025-10-11 11:44:54.398 ERROR (DbWorker_3) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: statistics_meta
+[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
+FROM statistics_meta 
+WHERE statistics_meta.statistic_id IN (?)]
+[parameters: ('sun.sun',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:44:54.420 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
+[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
+FROM states 
+WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
+[parameters: (45, 1760186486.138183, 1760201094.3874)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:44:54.500 ERROR (DbWorker_3) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: statistics_meta
+[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
+FROM statistics_meta 
+WHERE statistics_meta.statistic_id IN (?)]
+[parameters: ('sun.sun',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:44:54.523 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
+[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
+FROM states 
+WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
+[parameters: (45, 1760186486.138183, 1760201094.3874)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:44:54.602 ERROR (DbWorker_3) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: statistics_meta
+[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
+FROM statistics_meta 
+WHERE statistics_meta.statistic_id IN (?)]
+[parameters: ('sun.sun',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:44:54.603 ERROR (DbWorker_3) [homeassistant.helpers.recorder] Error executing query
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: statistics_meta
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/helpers/recorder.py", line 95, in session_scope
+    yield session
+  File "/usr/src/homeassistant/homeassistant/components/recorder/statistics.py", line 1989, in statistics_during_period
+    return _statistics_during_period_with_session(
+        hass,
+    ...<6 lines>...
+        types,
+    )
+  File "/usr/src/homeassistant/homeassistant/components/recorder/statistics.py", line 1879, in _statistics_during_period_with_session
+    metadata = get_instance(hass).statistics_meta_manager.get_many(
+        session, statistic_ids=statistic_ids
+    )
+  File "/usr/src/homeassistant/homeassistant/components/recorder/table_managers/statistics_meta.py", line 282, in get_many
+    return results | self._get_from_database(
+                     ~~~~~~~~~~~~~~~~~~~~~~~^
+        session, statistic_ids=missing_statistic_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/recorder/table_managers/statistics_meta.py", line 115, in _get_from_database
+    for row in execute_stmt_lambda_element(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        session,
+        ^^^^^^^^
+    ...<6 lines>...
+        orm_rows=False,
+        ^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/recorder/util.py", line 190, in execute_stmt_lambda_element
+    executed = session.connection().execute(stmt)
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/sql/lambdas.py", line 594, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: statistics_meta
+[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
+FROM statistics_meta 
+WHERE statistics_meta.statistic_id IN (?)]
+[parameters: ('sun.sun',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:44:54.628 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
+[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
+FROM states 
+WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
+[parameters: (45, 1760186486.138183, 1760201094.3874)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:44:54.628 ERROR (DbWorker_2) [homeassistant.helpers.recorder] Error executing query
 Traceback (most recent call last):
   File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
     self.dialect.do_execute(
@@ -800,9 +288,122 @@ sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: state
 [SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
 FROM states 
 WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
-[parameters: (3, 1760141040.772221, 1760164790.256963)]
+[parameters: (45, 1760186486.138183, 1760201094.3874)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:39:50.522 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281471799347776] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.9.3 (io.robbie.HomeAssistant; build:2025.1423; iOS 26.0.1) Mobile/HomeAssistant, like Safari)
+2025-10-11 11:44:54.621 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281471705842048] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.9.3 (io.robbie.HomeAssistant; build:2025.1423; iOS 26.0.1) Mobile/HomeAssistant, like Safari)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: statistics_meta
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
+    await func(hass, connection, msg)
+  File "/usr/src/homeassistant/homeassistant/components/recorder/websocket_api.py", line 256, in ws_get_statistics_during_period
+    await ws_handle_get_statistics_during_period(hass, connection, msg)
+  File "/usr/src/homeassistant/homeassistant/components/recorder/websocket_api.py", line 223, in ws_handle_get_statistics_during_period
+    await get_instance(hass).async_add_executor_job(
+    ...<9 lines>...
+    )
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/recorder/websocket_api.py", line 179, in _ws_get_statistics_during_period
+    result = statistics_during_period(
+        hass,
+    ...<5 lines>...
+        types,
+    )
+  File "/usr/src/homeassistant/homeassistant/components/recorder/statistics.py", line 1989, in statistics_during_period
+    return _statistics_during_period_with_session(
+        hass,
+    ...<6 lines>...
+        types,
+    )
+  File "/usr/src/homeassistant/homeassistant/components/recorder/statistics.py", line 1879, in _statistics_during_period_with_session
+    metadata = get_instance(hass).statistics_meta_manager.get_many(
+        session, statistic_ids=statistic_ids
+    )
+  File "/usr/src/homeassistant/homeassistant/components/recorder/table_managers/statistics_meta.py", line 282, in get_many
+    return results | self._get_from_database(
+                     ~~~~~~~~~~~~~~~~~~~~~~~^
+        session, statistic_ids=missing_statistic_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/recorder/table_managers/statistics_meta.py", line 115, in _get_from_database
+    for row in execute_stmt_lambda_element(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        session,
+        ^^^^^^^^
+    ...<6 lines>...
+        orm_rows=False,
+        ^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/recorder/util.py", line 190, in execute_stmt_lambda_element
+    executed = session.connection().execute(stmt)
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/sql/lambdas.py", line 594, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: statistics_meta
+[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
+FROM statistics_meta 
+WHERE statistics_meta.statistic_id IN (?)]
+[parameters: ('sun.sun',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:44:54.668 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281471705842048] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.9.3 (io.robbie.HomeAssistant; build:2025.1423; iOS 26.0.1) Mobile/HomeAssistant, like Safari)
 Traceback (most recent call last):
   File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
     self.dialect.do_execute(
@@ -909,93 +510,492 @@ sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: state
 [SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
 FROM states 
 WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
-[parameters: (3, 1760141040.772221, 1760164790.256963)]
+[parameters: (45, 1760186486.138183, 1760201094.3874)]
 (Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 01:40:28.141 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:40:28.143 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:40:28.144 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:40:28.144 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:40:28.149 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:40:28.152 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:40:31.009 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:40:31.010 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:40:31.011 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:40:34.223 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
-2025-10-11 01:40:43.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-11 01:40:43.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:40:43.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:40:43.012 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:40:43.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:40:43.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:40:51.022 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:40:51.024 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:40:51.025 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:40:51.026 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:40:51.030 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:40:51.033 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:40:53.117 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:40:53.118 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:40:53.119 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:40:54.784 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:40:54.798 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:40:54.799 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:40:54.803 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-11 01:40:54.803 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-11 01:40:54.946 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-11 01:40:54.948 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-11 01:40:54.951 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-11 01:40:54.957 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:40:54.958 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:40:54.961 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Restarting
-2025-10-11 01:40:54.967 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:40:54.968 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:40:54.969 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:40:55.098 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:40:55.099 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:40:55.100 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:40:55.101 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:40:55.106 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:40:55.109 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:41:10.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-11 01:41:10.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:41:10.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:41:10.012 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:41:10.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:41:10.014 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:41:19.050 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:41:19.051 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:41:19.052 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:41:19.053 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:41:19.058 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:41:19.070 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:41:24.000 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:41:24.001 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:41:24.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:41:34.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-11 01:41:34.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:41:34.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:41:34.011 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:41:34.012 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:41:34.021 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:42:09.411 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:42:09.413 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-11 01:42:09.414 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:42:09.415 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:42:09.419 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:42:09.422 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-11 01:42:24.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-11 01:42:24.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:42:24.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-11 01:42:24.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-11 01:42:24.014 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
-2025-10-11 01:42:24.014 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
-2025-10-11 02:00:00.305 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions
-2025-10-11 02:00:00.306 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service
-2025-10-11 02:00:00.307 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-11 02:00:00.308 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-11 02:00:00.392 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-11 02:00:00.427 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-11 02:00:00.476 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Running automation actions
-2025-10-11 02:00:00.479 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Choose at step 1: choice 3: Running automation actions
-2025-10-11 02:00:00.480 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Choose at step 1: choice 3: If at step 1: Running automation actions
-2025-10-11 02:00:00.481 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Choose at step 1: choice 3: If at step 1: Executing step call service
+2025-10-11 11:45:01.881 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: undefined is not an object (evaluating 'Object.getOwnPropertyNames(t)')
+getOwnPropertyNames ([native code]::)
+o (node_modules/deep-freeze/index.js:4:29)
+_handleConfigChanged (src/panels/lovelace/editor/card-editor/hui-dialog-edit-card.ts:275:34)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this._updateConfigElement (src/panels/lovelace/editor/hui-element-editor.ts:110:16)
+2025-10-11 11:47:35.370 ERROR (DbWorker_3) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: statistics_meta
+[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
+FROM statistics_meta 
+WHERE statistics_meta.statistic_id IN (?)]
+[parameters: ('sun.sun',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:47:35.421 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
+[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
+FROM states 
+WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
+[parameters: (45, 1760186486.138183, 1760201255.352521)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:47:35.472 ERROR (DbWorker_3) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: statistics_meta
+[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
+FROM statistics_meta 
+WHERE statistics_meta.statistic_id IN (?)]
+[parameters: ('sun.sun',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:47:35.524 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
+[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
+FROM states 
+WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
+[parameters: (45, 1760186486.138183, 1760201255.352521)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:47:35.574 ERROR (DbWorker_3) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: statistics_meta
+[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
+FROM statistics_meta 
+WHERE statistics_meta.statistic_id IN (?)]
+[parameters: ('sun.sun',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:47:35.574 ERROR (DbWorker_3) [homeassistant.helpers.recorder] Error executing query
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: statistics_meta
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/helpers/recorder.py", line 95, in session_scope
+    yield session
+  File "/usr/src/homeassistant/homeassistant/components/recorder/statistics.py", line 1989, in statistics_during_period
+    return _statistics_during_period_with_session(
+        hass,
+    ...<6 lines>...
+        types,
+    )
+  File "/usr/src/homeassistant/homeassistant/components/recorder/statistics.py", line 1879, in _statistics_during_period_with_session
+    metadata = get_instance(hass).statistics_meta_manager.get_many(
+        session, statistic_ids=statistic_ids
+    )
+  File "/usr/src/homeassistant/homeassistant/components/recorder/table_managers/statistics_meta.py", line 282, in get_many
+    return results | self._get_from_database(
+                     ~~~~~~~~~~~~~~~~~~~~~~~^
+        session, statistic_ids=missing_statistic_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/recorder/table_managers/statistics_meta.py", line 115, in _get_from_database
+    for row in execute_stmt_lambda_element(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        session,
+        ^^^^^^^^
+    ...<6 lines>...
+        orm_rows=False,
+        ^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/recorder/util.py", line 190, in execute_stmt_lambda_element
+    executed = session.connection().execute(stmt)
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/sql/lambdas.py", line 594, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: statistics_meta
+[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
+FROM statistics_meta 
+WHERE statistics_meta.statistic_id IN (?)]
+[parameters: ('sun.sun',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:47:35.593 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281471705842048] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.9.3 (io.robbie.HomeAssistant; build:2025.1423; iOS 26.0.1) Mobile/HomeAssistant, like Safari)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: statistics_meta
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
+    await func(hass, connection, msg)
+  File "/usr/src/homeassistant/homeassistant/components/recorder/websocket_api.py", line 256, in ws_get_statistics_during_period
+    await ws_handle_get_statistics_during_period(hass, connection, msg)
+  File "/usr/src/homeassistant/homeassistant/components/recorder/websocket_api.py", line 223, in ws_handle_get_statistics_during_period
+    await get_instance(hass).async_add_executor_job(
+    ...<9 lines>...
+    )
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/recorder/websocket_api.py", line 179, in _ws_get_statistics_during_period
+    result = statistics_during_period(
+        hass,
+    ...<5 lines>...
+        types,
+    )
+  File "/usr/src/homeassistant/homeassistant/components/recorder/statistics.py", line 1989, in statistics_during_period
+    return _statistics_during_period_with_session(
+        hass,
+    ...<6 lines>...
+        types,
+    )
+  File "/usr/src/homeassistant/homeassistant/components/recorder/statistics.py", line 1879, in _statistics_during_period_with_session
+    metadata = get_instance(hass).statistics_meta_manager.get_many(
+        session, statistic_ids=statistic_ids
+    )
+  File "/usr/src/homeassistant/homeassistant/components/recorder/table_managers/statistics_meta.py", line 282, in get_many
+    return results | self._get_from_database(
+                     ~~~~~~~~~~~~~~~~~~~~~~~^
+        session, statistic_ids=missing_statistic_id
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/recorder/table_managers/statistics_meta.py", line 115, in _get_from_database
+    for row in execute_stmt_lambda_element(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        session,
+        ^^^^^^^^
+    ...<6 lines>...
+        orm_rows=False,
+        ^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/recorder/util.py", line 190, in execute_stmt_lambda_element
+    executed = session.connection().execute(stmt)
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/sql/lambdas.py", line 594, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: statistics_meta
+[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
+FROM statistics_meta 
+WHERE statistics_meta.statistic_id IN (?)]
+[parameters: ('sun.sun',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:47:35.626 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
+[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
+FROM states 
+WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
+[parameters: (45, 1760186486.138183, 1760201255.352521)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:47:35.627 ERROR (DbWorker_2) [homeassistant.helpers.recorder] Error executing query
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: states
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/helpers/recorder.py", line 95, in session_scope
+    yield session
+  File "/usr/src/homeassistant/homeassistant/components/recorder/history/modern.py", line 129, in get_significant_states
+    return get_significant_states_with_session(
+        hass,
+    ...<9 lines>...
+        compressed_state_format,
+    )
+  File "/usr/src/homeassistant/homeassistant/components/recorder/history/modern.py", line 293, in get_significant_states_with_session
+    execute_stmt_lambda_element(session, stmt, None, end_time, orm_rows=False),
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/recorder/util.py", line 190, in execute_stmt_lambda_element
+    executed = session.connection().execute(stmt)
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/sql/lambdas.py", line 594, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: states
+[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
+FROM states 
+WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
+[parameters: (45, 1760186486.138183, 1760201255.352521)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:47:35.651 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281471705842048] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2025.9.3 (io.robbie.HomeAssistant; build:2025.1423; iOS 26.0.1) Mobile/HomeAssistant, like Safari)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: states
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
+    await func(hass, connection, msg)
+  File "/usr/src/homeassistant/homeassistant/components/history/websocket_api.py", line 572, in ws_stream
+    await _async_send_historical_states(
+    ...<14 lines>...
+    )
+  File "/usr/src/homeassistant/homeassistant/components/history/websocket_api.py", line 287, in _async_send_historical_states
+    last_time_ts, last_time_dt, payload = await instance.async_add_executor_job(
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<11 lines>...
+    )
+    ^
+  File "/usr/local/lib/python3.13/concurrent/futures/thread.py", line 59, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/src/homeassistant/homeassistant/components/history/websocket_api.py", line 233, in _generate_historical_response
+    history.get_significant_states(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        hass,
+        ^^^^^
+    ...<8 lines>...
+        True,
+        ^^^^^
+    ),
+    ^
+  File "/usr/src/homeassistant/homeassistant/components/recorder/history/__init__.py", line 104, in get_significant_states
+    return _target(
+        hass,
+    ...<8 lines>...
+        compressed_state_format,
+    )
+  File "/usr/src/homeassistant/homeassistant/components/recorder/history/modern.py", line 129, in get_significant_states
+    return get_significant_states_with_session(
+        hass,
+    ...<9 lines>...
+        compressed_state_format,
+    )
+  File "/usr/src/homeassistant/homeassistant/components/recorder/history/modern.py", line 293, in get_significant_states_with_session
+    execute_stmt_lambda_element(session, stmt, None, end_time, orm_rows=False),
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/components/recorder/util.py", line 190, in execute_stmt_lambda_element
+    executed = session.connection().execute(stmt)
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+    return meth(
+        self,
+        distilled_parameters,
+        execution_options or NO_OPTIONS,
+    )
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/sql/lambdas.py", line 594, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self, distilled_params, execution_options
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+        dialect,
+    ...<8 lines>...
+        cache_hit=cache_hit,
+    )
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        dialect, context, statement, parameters
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        e, str_statement, effective_parameters, cursor, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        cursor, str_statement, effective_parameters, context
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: states
+[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
+FROM states 
+WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
+[parameters: (45, 1760186486.138183, 1760201255.352521)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2025-10-11 11:47:42.526 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: undefined is not an object (evaluating 'Object.getOwnPropertyNames(t)')
+getOwnPropertyNames ([native code]::)
+o (node_modules/deep-freeze/index.js:4:29)
+_handleConfigChanged (src/panels/lovelace/editor/card-editor/hui-dialog-edit-card.ts:275:34)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this._updateConfigElement (src/panels/lovelace/editor/hui-element-editor.ts:110:16)
+2025-10-11 11:50:10.253 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-11 11:50:10.255 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
+2025-10-11 11:50:10.256 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-10-11 11:50:10.256 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 11:50:10.261 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 11:50:10.265 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
+2025-10-11 11:50:25.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-11 11:50:25.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-10-11 11:50:25.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-10-11 11:50:25.011 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-11 11:50:25.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
+2025-10-11 11:50:25.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
+2025-10-11 11:53:05.545 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-11 11:53:05.546 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
+2025-10-11 11:53:05.547 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-10-11 11:53:05.548 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 11:53:05.553 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 11:53:05.555 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
+2025-10-11 11:53:08.454 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-11 11:53:08.455 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
+2025-10-11 11:53:08.457 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
+2025-10-11 11:53:20.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-11 11:53:20.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-10-11 11:53:20.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-10-11 11:53:20.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-11 11:53:20.014 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
+2025-10-11 11:53:20.014 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
+2025-10-11 11:57:28.631 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-11 11:57:28.631 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-11 11:57:28.711 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-11 11:57:28.746 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
