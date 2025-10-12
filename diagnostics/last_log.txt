@@ -1,227 +1,4 @@
-===== 2025-10-11T11:57:28-05:00 — last 1000 lines =====
-        hass,
-        ^^^^^
-    ...<8 lines>...
-        True,
-        ^^^^^
-    ),
-    ^
-  File "/usr/src/homeassistant/homeassistant/components/recorder/history/__init__.py", line 104, in get_significant_states
-    return _target(
-        hass,
-    ...<8 lines>...
-        compressed_state_format,
-    )
-  File "/usr/src/homeassistant/homeassistant/components/recorder/history/modern.py", line 129, in get_significant_states
-    return get_significant_states_with_session(
-        hass,
-    ...<9 lines>...
-        compressed_state_format,
-    )
-  File "/usr/src/homeassistant/homeassistant/components/recorder/history/modern.py", line 293, in get_significant_states_with_session
-    execute_stmt_lambda_element(session, stmt, None, end_time, orm_rows=False),
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/recorder/util.py", line 190, in execute_stmt_lambda_element
-    executed = session.connection().execute(stmt)
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
-    return meth(
-        self,
-        distilled_parameters,
-        execution_options or NO_OPTIONS,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/sql/lambdas.py", line 594, in _execute_on_connection
-    return connection._execute_clauseelement(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self, distilled_params, execution_options
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
-    ret = self._execute_context(
-        dialect,
-    ...<8 lines>...
-        cache_hit=cache_hit,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
-    return self._exec_single_context(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        dialect, context, statement, parameters
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
-    self._handle_dbapi_exception(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        e, str_statement, effective_parameters, cursor, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
-FROM states 
-WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
-[parameters: (45, 1760186486.138183, 1760201024.693016)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 11:44:54.398 ERROR (DbWorker_3) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: statistics_meta
-[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
-FROM statistics_meta 
-WHERE statistics_meta.statistic_id IN (?)]
-[parameters: ('sun.sun',)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 11:44:54.420 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
-FROM states 
-WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
-[parameters: (45, 1760186486.138183, 1760201094.3874)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 11:44:54.500 ERROR (DbWorker_3) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: statistics_meta
-[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
-FROM statistics_meta 
-WHERE statistics_meta.statistic_id IN (?)]
-[parameters: ('sun.sun',)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 11:44:54.523 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
-FROM states 
-WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
-[parameters: (45, 1760186486.138183, 1760201094.3874)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 11:44:54.602 ERROR (DbWorker_3) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: statistics_meta
-[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
-FROM statistics_meta 
-WHERE statistics_meta.statistic_id IN (?)]
-[parameters: ('sun.sun',)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 11:44:54.603 ERROR (DbWorker_3) [homeassistant.helpers.recorder] Error executing query
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.OperationalError: no such table: statistics_meta
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/helpers/recorder.py", line 95, in session_scope
-    yield session
-  File "/usr/src/homeassistant/homeassistant/components/recorder/statistics.py", line 1989, in statistics_during_period
-    return _statistics_during_period_with_session(
-        hass,
-    ...<6 lines>...
-        types,
-    )
-  File "/usr/src/homeassistant/homeassistant/components/recorder/statistics.py", line 1879, in _statistics_during_period_with_session
-    metadata = get_instance(hass).statistics_meta_manager.get_many(
-        session, statistic_ids=statistic_ids
-    )
-  File "/usr/src/homeassistant/homeassistant/components/recorder/table_managers/statistics_meta.py", line 282, in get_many
-    return results | self._get_from_database(
-                     ~~~~~~~~~~~~~~~~~~~~~~~^
-        session, statistic_ids=missing_statistic_id
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/src/homeassistant/homeassistant/components/recorder/table_managers/statistics_meta.py", line 115, in _get_from_database
-    for row in execute_stmt_lambda_element(
-               ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        session,
-        ^^^^^^^^
-    ...<6 lines>...
-        orm_rows=False,
-        ^^^^^^^^^^^^^^^
-    ):
-    ^
-  File "/usr/src/homeassistant/homeassistant/components/recorder/util.py", line 190, in execute_stmt_lambda_element
-    executed = session.connection().execute(stmt)
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
-    return meth(
-        self,
-        distilled_parameters,
-        execution_options or NO_OPTIONS,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/sql/lambdas.py", line 594, in _execute_on_connection
-    return connection._execute_clauseelement(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self, distilled_params, execution_options
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
-    ret = self._execute_context(
-        dialect,
-    ...<8 lines>...
-        cache_hit=cache_hit,
-    )
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
-    return self._exec_single_context(
-           ~~~~~~~~~~~~~~~~~~~~~~~~~^
-        dialect, context, statement, parameters
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
-    self._handle_dbapi_exception(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        e, str_statement, effective_parameters, cursor, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
-    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: statistics_meta
-[SQL: SELECT statistics_meta.id, statistics_meta.statistic_id, statistics_meta.source, statistics_meta.unit_of_measurement, statistics_meta.has_sum, statistics_meta.name, statistics_meta.mean_type 
-FROM statistics_meta 
-WHERE statistics_meta.statistic_id IN (?)]
-[parameters: ('sun.sun',)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 11:44:54.628 ERROR (DbWorker_2) [homeassistant.components.recorder.util] Error executing query: (sqlite3.OperationalError) no such table: states
-[SQL: SELECT states.metadata_id, states.state, states.last_updated_ts 
-FROM states 
-WHERE (states.last_changed_ts = states.last_updated_ts OR states.last_changed_ts IS NULL) AND states.metadata_id IN (?) AND states.last_updated_ts > ? AND states.last_updated_ts < ? ORDER BY states.metadata_id, states.last_updated_ts]
-[parameters: (45, 1760186486.138183, 1760201094.3874)]
-(Background on this error at: https://sqlalche.me/e/20/e3q8)
-2025-10-11 11:44:54.628 ERROR (DbWorker_2) [homeassistant.helpers.recorder] Error executing query
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
-    self.dialect.do_execute(
-    ~~~~~~~~~~~~~~~~~~~~~~~^
-        cursor, str_statement, effective_parameters, context
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.13/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
-    cursor.execute(statement, parameters)
-    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.OperationalError: no such table: states
+===== 2025-10-12T02:00:00-05:00 — last 1000 lines =====
 
 The above exception was the direct cause of the following exception:
 
@@ -999,3 +776,226 @@ this._updateConfigElement (src/panels/lovelace/editor/hui-element-editor.ts:110:
 2025-10-11 11:57:28.631 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-11 11:57:28.711 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-11 11:57:28.746 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-11 11:57:28.830 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-11 11:57:28.901 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-11 11:57:29.375 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
+         git config user.name 'Home Assistant' &&
+         git config user.email 'ha@local' &&
+         git -c credential.helper='store --file=/config/.git-credentials' add -A &&
+         (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
+         git -c credential.helper='store --file=/config/.git-credentials' push origin main"
+`, return code: 1
+NoneType: None
+2025-10-11 12:13:31.357 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 12:13:31.361 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Running automation actions
+2025-10-11 12:13:31.361 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Executing step call service
+2025-10-11 12:39:26.582 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-11 12:39:26.591 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 10: Running automation actions
+2025-10-11 12:39:26.591 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 10: Executing step call service
+2025-10-11 12:39:28.092 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-11 12:39:28.094 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
+2025-10-11 12:39:28.095 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-10-11 12:39:28.096 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 12:39:28.101 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 12:39:28.120 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
+2025-10-11 12:39:43.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-11 12:39:43.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-10-11 12:39:43.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-10-11 12:39:43.011 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-11 12:39:43.012 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
+2025-10-11 12:39:43.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
+2025-10-11 12:51:42.223 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
+2025-10-11 12:59:25.153 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-11 12:59:25.155 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
+2025-10-11 12:59:25.155 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
+2025-10-11 12:59:25.165 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-11 12:59:25.166 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
+2025-10-11 12:59:25.166 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
+2025-10-11 12:59:30.254 ERROR (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Error executing script. Error for call_service at pos 1: Timeout communicating with Roku API
+2025-10-11 12:59:30.255 ERROR (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Error executing script. Error for choose at pos 1: Timeout communicating with Roku API
+2025-10-11 12:59:30.256 ERROR (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Error while executing automation automation.hue_dimmer_switch: Timeout communicating with Roku API
+2025-10-11 13:00:00.259 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Running automation actions
+2025-10-11 13:00:00.260 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Choose at step 1: choice 1: Running automation actions
+2025-10-11 13:00:00.261 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Choose at step 1: choice 1: If at step 1: Running automation actions
+2025-10-11 13:00:00.262 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Choose at step 1: choice 1: If at step 1: Executing step call service
+2025-10-11 13:07:55.212 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
+2025-10-11 13:07:55.214 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Running automation actions
+2025-10-11 13:07:55.214 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
+2025-10-11 13:07:55.332 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
+2025-10-11 13:07:55.335 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step delay 0:30:00
+2025-10-11 13:11:46.981 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
+2025-10-11 13:11:46.983 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 3: Running automation actions
+2025-10-11 13:11:46.983 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 3: Executing step call service
+2025-10-11 13:11:47.478 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Restarting
+2025-10-11 13:11:47.493 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
+2025-10-11 13:11:47.496 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Running automation actions
+2025-10-11 13:11:47.496 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
+2025-10-11 13:11:47.516 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
+2025-10-11 13:13:31.385 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 13:13:31.388 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Running automation actions
+2025-10-11 13:13:31.389 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Executing step call service
+2025-10-11 13:15:58.914 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 13:15:58.923 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Running automation actions
+2025-10-11 13:15:58.923 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Executing step call service
+2025-10-11 13:16:16.408 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 13:16:16.416 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Running automation actions
+2025-10-11 13:16:16.416 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Executing step call service
+2025-10-11 13:16:16.425 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
+2025-10-11 16:18:59.881 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
+2025-10-11 16:18:59.883 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Running automation actions
+2025-10-11 16:18:59.883 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Executing step call service
+2025-10-11 16:18:59.966 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
+2025-10-11 16:18:59.966 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
+2025-10-11 16:18:59.969 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-11 16:18:59.986 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
+2025-10-11 16:18:59.987 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-10-11 16:18:59.988 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 16:18:59.989 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 16:19:00.000 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
+2025-10-11 16:19:00.430 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 16:19:00.438 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Running automation actions
+2025-10-11 16:19:00.439 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Executing step call service
+2025-10-11 16:19:00.461 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
+2025-10-11 16:19:14.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-11 16:19:14.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-10-11 16:19:14.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-10-11 16:19:14.011 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-11 16:19:14.012 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
+2025-10-11 16:19:14.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
+2025-10-11 16:57:48.938 ERROR (MainThread) [pyhap.hap_handler] HASS Bridge: Client ('192.168.1.90', 49159) with uuid 009a3c91-95ec-4431-82a4-ab76f9c342b5 attempted pair verify without being paired first (public_key=8b985270121fe665f82c2812d78229505a306ff222b927be7bcdb4e739eb9f6a, paired clients={UUID('14cc4859-2b83-4b8e-9328-4518e821a567'): '10910c864a8e1c9e257504648720b92bf48d0e151dd6937d6fe8a07e7ebe28a0'}).
+2025-10-11 17:01:37.395 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-11 17:01:37.396 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
+2025-10-11 17:01:37.398 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-10-11 17:01:37.398 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 17:01:37.417 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 17:01:37.421 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
+2025-10-11 17:01:38.379 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
+2025-10-11 17:01:38.380 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
+2025-10-11 17:01:38.382 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-11 17:01:38.384 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
+2025-10-11 17:01:38.390 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
+2025-10-11 17:01:38.621 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-11 17:01:38.622 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
+2025-10-11 17:01:38.624 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
+2025-10-11 17:01:38.631 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
+2025-10-11 17:01:38.631 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
+2025-10-11 17:01:39.114 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
+2025-10-11 17:01:39.174 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 17:01:39.181 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Running automation actions
+2025-10-11 17:01:39.182 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Executing step call service
+2025-10-11 17:01:39.191 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
+2025-10-11 17:01:43.145 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
+2025-10-11 17:01:43.147 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
+2025-10-11 17:01:43.150 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
+2025-10-11 17:01:43.151 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-11 17:01:43.157 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
+2025-10-11 17:01:43.158 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
+2025-10-11 17:01:43.162 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-11 17:01:43.163 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-10-11 17:01:43.164 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-10-11 17:01:49.215 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
+2025-10-11 17:01:49.217 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Running automation actions
+2025-10-11 17:01:49.217 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
+2025-10-11 17:01:49.326 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
+2025-10-11 17:01:49.341 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step delay 0:30:00
+2025-10-11 17:02:29.224 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Restarting
+2025-10-11 17:02:29.227 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
+2025-10-11 17:02:29.229 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Running automation actions
+2025-10-11 17:02:29.230 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
+2025-10-11 17:02:29.329 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
+2025-10-11 17:05:00.210 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 17:05:00.213 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Running automation actions
+2025-10-11 17:05:00.214 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Executing step call service
+2025-10-11 18:00:46.317 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 18:00:46.319 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Sunset - lamp on: Running automation actions
+2025-10-11 18:00:46.319 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Sunset - lamp on: Executing step call service
+2025-10-11 18:13:31.353 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 18:46:29.156 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-11 18:46:29.157 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
+2025-10-11 18:46:29.159 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-10-11 18:46:29.159 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 18:46:29.174 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 18:46:29.176 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
+2025-10-11 18:46:44.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-11 18:46:44.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-10-11 18:46:44.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-10-11 18:46:44.011 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-11 18:46:44.012 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
+2025-10-11 18:46:44.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
+2025-10-11 18:49:06.568 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-11 18:49:06.575 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 9: Running automation actions
+2025-10-11 18:49:06.576 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 9: Executing step call service
+2025-10-11 18:53:31.349 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 18:53:31.352 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Running automation actions
+2025-10-11 18:53:31.352 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Executing step call service
+2025-10-11 19:20:55.222 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
+2025-10-11 19:27:02.103 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-11 19:27:02.105 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
+2025-10-11 19:27:02.106 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-10-11 19:27:02.107 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 19:27:02.112 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-11 19:27:02.138 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
+2025-10-11 19:27:17.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-11 19:27:17.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-10-11 19:27:17.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-10-11 19:27:17.011 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-11 19:27:17.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
+2025-10-11 19:27:17.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
+2025-10-11 19:43:31.353 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 20:13:31.363 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 20:13:31.366 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Running automation actions
+2025-10-11 20:13:31.367 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Executing step call service
+2025-10-11 21:03:31.353 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 21:13:31.356 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 21:13:31.359 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Running automation actions
+2025-10-11 21:13:31.359 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Executing step call service
+2025-10-11 23:00:00.229 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Running automation actions
+2025-10-11 23:00:00.231 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Choose at step 1: choice 2: Running automation actions
+2025-10-11 23:00:00.232 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Choose at step 1: choice 2: If at step 1: Running automation actions
+2025-10-11 23:00:00.233 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Choose at step 1: choice 2: If at step 1: Executing step call service
+2025-10-11 23:03:31.380 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 23:11:09.842 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-11 23:11:09.843 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
+2025-10-11 23:11:09.844 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
+2025-10-11 23:13:31.342 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-11 23:13:31.345 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Running automation actions
+2025-10-11 23:13:31.346 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Executing step call service
+2025-10-11 23:59:49.213 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
+2025-10-11 23:59:49.215 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Running automation actions
+2025-10-11 23:59:49.215 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
+2025-10-11 23:59:49.313 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
+2025-10-11 23:59:49.316 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step delay 0:30:00
+2025-10-12 00:00:14.215 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Restarting
+2025-10-12 00:00:14.223 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
+2025-10-12 00:00:14.225 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Running automation actions
+2025-10-12 00:00:14.226 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
+2025-10-12 00:00:14.322 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
+2025-10-12 01:00:00.436 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
+2025-10-12 01:00:00.439 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Choose at step 1: choice 4: Running automation actions
+2025-10-12 01:00:00.439 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Choose at step 1: choice 4: Executing step call service
+2025-10-12 01:00:17.632 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-12 01:00:17.634 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
+2025-10-12 01:00:17.634 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
+2025-10-12 01:38:37.252 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-12 01:38:37.254 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
+2025-10-12 01:38:37.255 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-10-12 01:38:37.255 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-12 01:38:37.260 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-12 01:38:37.263 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
+2025-10-12 01:38:52.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-12 01:38:52.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-10-12 01:38:52.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-10-12 01:38:52.011 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
+2025-10-12 01:38:52.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
+2025-10-12 01:38:52.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Executing step call service
+2025-10-12 01:43:31.376 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-12 02:00:00.305 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions
+2025-10-12 02:00:00.306 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service
+2025-10-12 02:00:00.307 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-12 02:00:00.307 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-12 02:00:00.395 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-12 02:00:00.430 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-12 02:00:00.476 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Running automation actions
+2025-10-12 02:00:00.479 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Choose at step 1: choice 3: Running automation actions
+2025-10-12 02:00:00.483 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Choose at step 1: choice 3: If at step 1: Running automation actions
+2025-10-12 02:00:00.484 INFO (MainThread) [homeassistant.components.automation.1pm_workday_tomorrow_toggle] Work Schedule Automations : Choose at step 1: choice 3: If at step 1: Executing step call service
