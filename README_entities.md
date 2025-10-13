@@ -6,8 +6,6 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
-| `automation.1pm_workday_tomorrow_toggle` | Work Schedule Automations  |
-
 | `automation.bedroom_ceiling_fan_3_all_off` | Bedroom Ceiling Fan (3)  -> All Off |
 
 | `automation.bedroom_ceiling_lights_3_set_my_room` | Bedroom Ceiling Lights (3) -> Set My Room |
@@ -23,6 +21,8 @@ Auto-generated list of entities. Safe to publish.
 | `automation.living_room_lamp` | Living Room Lamp |
 
 | `automation.nightly_github_sync` | Nightly GitHub sync |
+
+| `automation.work_schedule_automations` | Work Schedule Automations |
 
 | `automation.workday_wake_up_1am_goodnight` | Workday Wake-up / 1am Goodnight |
 
@@ -105,6 +105,8 @@ Auto-generated list of entities. Safe to publish.
 |---|---|
 
 | `device_tracker.blakes_iphone` | Blakes iPhone |
+
+| `device_tracker.ipad` | iPad |
 
 
 
@@ -293,6 +295,30 @@ Auto-generated list of entities. Safe to publish.
 | `sensor.front_door_sensor_rotation` | Front Door Sensor Rotation |
 
 | `sensor.hue_dimmer_switch_1_battery` | Hue Dimmer Switch Battery |
+
+| `sensor.ipad_app_version` | iPad App Version |
+
+| `sensor.ipad_audio_output` | iPad Audio Output |
+
+| `sensor.ipad_battery_level` | iPad Battery Level |
+
+| `sensor.ipad_battery_state` | iPad Battery State |
+
+| `sensor.ipad_bssid` | iPad BSSID |
+
+| `sensor.ipad_connection_type` | iPad Connection Type |
+
+| `sensor.ipad_geocoded_location` | iPad Geocoded Location |
+
+| `sensor.ipad_last_update_trigger` | iPad Last Update Trigger |
+
+| `sensor.ipad_location_permission` | iPad Location permission |
+
+| `sensor.ipad_sim_1` | iPad SIM 1 |
+
+| `sensor.ipad_ssid` | iPad SSID |
+
+| `sensor.ipad_storage` | iPad Storage |
 
 | `sensor.main_lights_auto_off_at` | Main Lights Auto-off at |
 
