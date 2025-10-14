@@ -739,3 +739,28 @@
         target:
           entity_id: input_boolean.workday_toggle_helper
   mode: restart
+- id: '1760424497591'
+  alias: Thermostat
+  description: ''
+  triggers:
+  - trigger: time
+    at: '17:00:00'
+    id: 5pm
+  - trigger: time
+    at: '21:00:00'
+    id: 9pm
+  - trigger: time
+    at: 09:00:00
+    id: 9am
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - 5pm
+      sequence:
+      - action: climate.set_preset_mode
+        metadata: {}
+        data: {}
+  mode: single

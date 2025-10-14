@@ -22,6 +22,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.nightly_github_sync` | Nightly GitHub sync |
 
+| `automation.thermostat` | Thermostat |
+
 | `automation.work_schedule_automations` | Work Schedule Automations |
 
 | `automation.workday_wake_up_1am_goodnight` | Workday Wake-up / 1am Goodnight |
@@ -52,6 +54,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `binary_sensor.front_door` | Front Door Sensor Window |
 
+| `binary_sensor.home_assistant_matter_hub_running` | Home-Assistant-Matter-Hub Running |
+
 | `binary_sensor.main_lights_cloud_connection` | Main Lights Cloud connection |
 
 | `binary_sensor.remote_ui` | Remote UI |
@@ -80,7 +84,17 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
+| `button.nest_thermostat_identify` | Nest Thermostat Identify |
+
 | `button.shelly_device_reboot` | Shelly Device Reboot |
+
+
+
+## Climate
+| Entity ID | Name |
+|---|---|
+
+| `climate.nest_thermostat` | Nest Thermostat |
 
 
 
@@ -226,6 +240,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `scene.set_my_room` | Set My Room |
 
+| `scene.thermostat_67_70` | Thermostat 67-70 |
+
 
 
 ## Script
@@ -293,6 +309,14 @@ Auto-generated list of entities. Safe to publish.
 | `sensor.front_door_sensor_illuminance` | Front Door Sensor Illuminance |
 
 | `sensor.front_door_sensor_rotation` | Front Door Sensor Rotation |
+
+| `sensor.home_assistant_matter_hub_cpu_percent` | Home-Assistant-Matter-Hub CPU percent |
+
+| `sensor.home_assistant_matter_hub_memory_percent` | Home-Assistant-Matter-Hub Memory percent |
+
+| `sensor.home_assistant_matter_hub_newest_version` | Home-Assistant-Matter-Hub Newest version |
+
+| `sensor.home_assistant_matter_hub_version` | Home-Assistant-Matter-Hub Version |
 
 | `sensor.hue_dimmer_switch_1_battery` | Hue Dimmer Switch Battery |
 
