@@ -529,8 +529,8 @@
       entity_only: true
     light.bedroom_lamp:
       entity_only: true
-- id: '1760424645413'
-  name: Thermostat 67-70
+- id: '1760530227300'
+  name: Thermostat Ideal Evening
   entities:
     climate.nest_thermostat:
       hvac_modes:
@@ -550,3 +550,48 @@
   metadata:
     climate.nest_thermostat:
       entity_only: true
+  icon: mdi:thermostat-cog
+- id: '1760530278493'
+  name: Thermostat Away
+  entities:
+    climate.nest_thermostat:
+      hvac_modes:
+      - 'off'
+      - heat
+      - cool
+      - heat_cool
+      min_temp: 50
+      max_temp: 90
+      current_temperature: 70
+      temperature:
+      target_temp_high: 80
+      target_temp_low: 58
+      friendly_name: Nest Thermostat
+      supported_features: 387
+      state: heat_cool
+  metadata:
+    climate.nest_thermostat:
+      entity_only: true
+  icon: mdi:thermostat-cog
+- id: '1760530533419'
+  name: Thermostat Ideal Morning
+  entities:
+    climate.nest_thermostat:
+      hvac_modes:
+      - 'off'
+      - heat
+      - cool
+      - heat_cool
+      min_temp: 50
+      max_temp: 90
+      current_temperature: 70
+      temperature:
+      target_temp_high: 70
+      target_temp_low: 67
+      friendly_name: Nest Thermostat
+      supported_features: 387
+      state: heat_cool
+  metadata:
+    climate.nest_thermostat:
+      entity_only: true
+  icon: mdi:thermostat-cog

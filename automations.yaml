@@ -102,6 +102,9 @@
   - trigger: time
     at: 01:00:00
     id: 1am goodnight
+  - trigger: time
+    at: 09:00:00
+    id: 9am
   conditions: []
   actions:
   - choose:
@@ -200,6 +203,34 @@
         data: {}
         target:
           entity_id: scene.goodnight_scene
+    - conditions:
+      - condition: trigger
+        id:
+        - 9am
+      sequence:
+      - action: media_player.play_media
+        metadata: {}
+        data:
+          media:
+            media_content_id: '837'
+            media_content_type: app
+            metadata:
+              title: YouTube
+              thumbnail: http://192.168.1.68:8060/query/icon/837
+              media_class: app
+              children_media_class:
+              navigateIds:
+              - {}
+              - media_content_type: apps
+                media_content_id: ''
+              browse_entity_id: media_player.bedroom_tv
+        target:
+          entity_id: media_player.bedroom_tv
+      - action: media_player.media_play
+        metadata: {}
+        data: {}
+        target:
+          entity_id: media_player.bedroom_tv
   mode: parallel
 - id: '1758990657332'
   alias: Living Room Lamp
@@ -744,23 +775,43 @@
   description: ''
   triggers:
   - trigger: time
-    at: '17:00:00'
-    id: 5pm
-  - trigger: time
-    at: '21:00:00'
-    id: 9pm
-  - trigger: time
     at: 09:00:00
     id: 9am
+  - trigger: time
+    at: '16:00:00'
+    id: 4pm
   conditions: []
   actions:
   - choose:
     - conditions:
       - condition: trigger
         id:
-        - 5pm
+        - 9am
       sequence:
-      - action: climate.set_preset_mode
+      - if:
+        - condition: state
+          entity_id: input_boolean.workday_today_toggle
+          state: 'on'
+        then:
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: scene.thermostat_away
+        else:
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: scene.thermostat_ideal_morning
+    - conditions:
+      - condition: trigger
+        id:
+        - 4pm
+      sequence:
+      - action: scene.turn_on
         metadata: {}
         data: {}
+        target:
+          entity_id: scene.thermostat_ideal
   mode: single

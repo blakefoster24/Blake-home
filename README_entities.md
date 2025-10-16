@@ -240,7 +240,11 @@ Auto-generated list of entities. Safe to publish.
 
 | `scene.set_my_room` | Set My Room |
 
-| `scene.thermostat_67_70` | Thermostat 67-70 |
+| `scene.thermostat_away` | Thermostat Away |
+
+| `scene.thermostat_ideal` | Thermostat Ideal Evening |
+
+| `scene.thermostat_ideal_morning` | Thermostat Ideal Morning |
 
 
 
