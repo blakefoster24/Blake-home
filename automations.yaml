@@ -92,6 +92,9 @@
     at: 08:40:00
     id: 8:40am Time Trigger
   - trigger: time
+    at: 09:00:00
+    id: 9am
+  - trigger: time
     at: 09:29:00
     id: '9:29'
   - trigger: state
@@ -102,9 +105,6 @@
   - trigger: time
     at: 01:00:00
     id: 1am goodnight
-  - trigger: time
-    at: 09:00:00
-    id: 9am
   conditions: []
   actions:
   - choose:
@@ -207,30 +207,37 @@
       - condition: trigger
         id:
         - 9am
+      - condition: state
+        entity_id: input_boolean.workday_today_toggle
+        state: 'on'
+      - condition: template
+        value_template: '{{ (now().timestamp() - (states.binary_sensor.front_door.last_changed
+          | as_timestamp)) > 3600 }}'
       sequence:
-      - action: media_player.play_media
-        metadata: {}
-        data:
-          media:
-            media_content_id: '837'
-            media_content_type: app
-            metadata:
-              title: YouTube
-              thumbnail: http://192.168.1.68:8060/query/icon/837
-              media_class: app
-              children_media_class:
-              navigateIds:
-              - {}
-              - media_content_type: apps
-                media_content_id: ''
-              browse_entity_id: media_player.bedroom_tv
-        target:
-          entity_id: media_player.bedroom_tv
-      - action: media_player.media_play
-        metadata: {}
-        data: {}
-        target:
-          entity_id: media_player.bedroom_tv
+      - sequence:
+        - action: input_boolean.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.alexa_helper
+        - wait_for_trigger:
+          - trigger: webhook
+            allowed_methods:
+            - POST
+            - PUT
+            local_only: true
+            webhook_id: Flic_Hold
+          continue_on_timeout: true
+          timeout:
+            hours: 0
+            minutes: 30
+            seconds: 0
+            milliseconds: 0
+        - action: input_boolean.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.alexa_helper
   mode: parallel
 - id: '1758990657332'
   alias: Living Room Lamp

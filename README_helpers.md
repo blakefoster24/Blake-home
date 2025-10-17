@@ -13,6 +13,11 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
+| `input_boolean.alexa_helper` | Alexa Helper |  |
+
+
+
+
 | `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle |  |
 
 
@@ -78,4 +83,4 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 ---
-_Generated: 2025-10-16T02:00:00.375978-05:00_
+_Generated: 2025-10-17T02:00:00.352567-05:00_
