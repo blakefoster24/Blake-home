@@ -105,6 +105,11 @@
   - trigger: time
     at: 01:00:00
     id: 1am goodnight
+  - trigger: state
+    entity_id:
+    - binary_sensor.front_door
+    to:
+    id: Door
   conditions: []
   actions:
   - choose:
@@ -238,6 +243,28 @@
           data: {}
           target:
             entity_id: input_boolean.alexa_helper
+        enabled: true
+    - conditions:
+      - condition: trigger
+        id:
+        - Door
+      - condition: state
+        entity_id: input_boolean.workday_today_toggle
+        state: 'on'
+      - condition: time
+        after: 08:20:00
+        before: 09:20:00
+      sequence:
+      - action: input_boolean.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: input_boolean.alexa_helper
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.all_off
   mode: parallel
 - id: '1758990657332'
   alias: Living Room Lamp
