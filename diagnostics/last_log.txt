@@ -1,18 +1,4 @@
-===== 2025-10-19T00:52:45-05:00 — last 1000 lines =====
-2025-10-18 09:39:04.676 ERROR (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Error executing script. Error for call_service at pos 1: Timeout communicating with Roku API
-2025-10-18 09:39:04.677 ERROR (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Error executing script. Error for choose at pos 1: Timeout communicating with Roku API
-2025-10-18 09:39:04.679 ERROR (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Error while executing automation automation.hue_dimmer_switch: Timeout communicating with Roku API
-2025-10-18 09:43:21.744 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
-2025-10-18 09:43:21.748 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 6: Running automation actions
-2025-10-18 09:43:21.748 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 6: Executing step call service
-2025-10-18 09:43:21.903 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
-2025-10-18 09:43:21.905 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Running automation actions
-2025-10-18 09:43:21.906 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 09:43:21.907 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 09:43:21.912 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 09:43:21.915 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: default: Executing step call service
-2025-10-18 09:43:36.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 09:43:36.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+===== 2025-10-19T00:56:39-05:00 — last 1000 lines =====
 2025-10-18 09:43:36.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
 2025-10-18 09:43:36.012 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Running automation actions
 2025-10-18 09:43:36.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_fan_3_all_off] Bedroom Ceiling Fan (3)  -> All Off: Choose at step 1: choice 1: Running automation actions
@@ -999,3 +985,17 @@ NoneType: None
 2025-10-19 00:52:45.074 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 00:52:45.157 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 00:52:45.193 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:52:45.289 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:52:45.364 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:52:45.874 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
+         git config user.name 'Home Assistant' &&
+         git config user.email 'ha@local' &&
+         git -c credential.helper='store --file=/config/.git-credentials' add -A &&
+         (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
+         git -c credential.helper='store --file=/config/.git-credentials' push origin main"
+`, return code: 1
+NoneType: None
+2025-10-19 00:56:39.500 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-19 00:56:39.501 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:56:39.582 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:56:39.617 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
