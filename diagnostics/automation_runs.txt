@@ -1,4 +1,4 @@
-===== 2025-10-19T00:45:01-05:00 — automation runs (recent) =====
+===== 2025-10-19T00:51:35-05:00 — automation runs (recent) =====
   File "/usr/src/homeassistant/homeassistant/components/cloud/__init__.py", line 287, in async_startup_repairs
     if subscription_info := await async_subscription_info(cloud):
   File "/usr/src/homeassistant/homeassistant/components/cloud/subscription.py", line 24, in async_subscription_info
@@ -1629,3 +1629,11 @@ ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
 2025-10-19 00:45:00.969 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 00:45:01.005 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 00:45:01.099 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:45:01.173 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:45:01.702 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
+2025-10-19 00:49:48.508 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
+2025-10-19 00:51:35.418 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-19 00:51:35.419 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:51:35.499 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:51:35.538 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:51:35.632 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
