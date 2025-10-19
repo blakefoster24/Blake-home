@@ -1,18 +1,4 @@
-===== 2025-10-19T01:10:24-05:00 — last 1000 lines =====
-2025-10-18 12:33:23.989 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
-2025-10-18 12:33:23.989 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
-2025-10-18 12:54:07.992 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-18 12:54:07.993 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Running automation actions
-2025-10-18 12:54:07.994 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 12:54:08.121 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 12:54:08.123 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step delay 0:30:00
-2025-10-18 13:00:00.236 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Running automation actions
-2025-10-18 13:00:00.238 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 1: Running automation actions
-2025-10-18 13:00:00.239 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 1: If at step 1: Running automation actions
-2025-10-18 13:00:00.239 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 1: If at step 1: Executing step call service
-2025-10-18 13:15:11.347 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 13:19:15.359 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Restarting
-2025-10-18 13:19:15.367 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
+===== 2025-10-19T01:17:47-05:00 — last 1000 lines =====
 2025-10-18 13:19:15.369 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Running automation actions
 2025-10-18 13:19:15.370 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
 2025-10-18 13:19:15.401 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
@@ -999,3 +985,17 @@ NoneType: None
 2025-10-19 01:10:24.346 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 01:10:24.427 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 01:10:24.462 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:10:24.558 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:10:24.634 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:10:25.178 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
+         git config user.name 'Home Assistant' &&
+         git config user.email 'ha@local' &&
+         git -c credential.helper='store --file=/config/.git-credentials' add -A &&
+         (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
+         git -c credential.helper='store --file=/config/.git-credentials' push origin main"
+`, return code: 1
+NoneType: None
+2025-10-19 01:17:47.246 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-19 01:17:47.247 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:17:47.327 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:17:47.362 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service

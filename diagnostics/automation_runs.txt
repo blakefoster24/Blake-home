@@ -1,18 +1,4 @@
-===== 2025-10-19T01:10:24-05:00 — automation runs (recent) =====
-2025-10-15 18:37:37.657 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-15 20:35:03.066 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-15 20:35:03.067 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-15 20:35:03.068 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-15 20:35:03.069 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-15 20:35:03.075 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-15 20:35:03.077 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-15 20:35:03.343 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-15 20:35:03.344 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-15 20:35:03.347 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-15 20:35:03.354 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-15 20:35:03.355 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-15 20:35:03.780 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-15 20:35:03.782 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
+===== 2025-10-19T01:17:47-05:00 — automation runs (recent) =====
 2025-10-15 20:35:03.783 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
 2025-10-15 20:35:03.791 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
 2025-10-15 20:35:03.792 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
@@ -1623,3 +1609,10 @@ ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
 2025-10-19 01:10:24.427 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 01:10:24.462 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 01:10:24.558 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:10:24.634 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:10:25.178 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
+2025-10-19 01:17:47.246 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-19 01:17:47.247 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:17:47.327 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:17:47.362 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:17:47.457 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
