@@ -6,15 +6,13 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
-| `automation.bedroom_ceiling_fan_3_all_off` | Bedroom Ceiling Fan (3)  -> All Off |
-
 | `automation.bedroom_ceiling_lights_3_set_my_room` | Bedroom Ceiling Lights (3) -> Set My Room |
 
 | `automation.bedroom_ceiling_lights_on_bedroom_lamp_on` | Bedroom Ceiling Lights on -> bedroom lamp on |
 
 | `automation.closet_light_bathroom_light` | Closet light -> bathroom light |
 
-| `automation.flic_single` | Flic Button |
+| `automation.flic_butttons` | Flic Button |
 
 | `automation.hue_dimmer_switch` | Hue Dimmer Switch |
 
@@ -22,11 +20,13 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.nightly_github_sync` | Nightly GitHub sync |
 
+| `automation.test_door_plus_motion` | Test door plus motion |
+
 | `automation.thermostat` | Thermostat |
 
 | `automation.work_schedule_automations` | Work Schedule Automations |
 
-| `automation.workday_wake_up_1am_goodnight` | Workday Wake-up / 1am Goodnight |
+| `automation.workday_wake_goodnight` | Workday Wake-up / 1am Goodnight |
 
 
 
@@ -52,11 +52,13 @@ Auto-generated list of entities. Safe to publish.
 
 | `binary_sensor.fan_outlet_cloud_connection` | Fan Outlet Cloud connection |
 
-| `binary_sensor.front_door` | Front Door Sensor Window |
+| `binary_sensor.front_door` | Front door |
 
 | `binary_sensor.home_assistant_matter_hub_running` | Home-Assistant-Matter-Hub Running |
 
 | `binary_sensor.main_lights_cloud_connection` | Main Lights Cloud connection |
+
+| `binary_sensor.motion_1_motion` | Motion 1 |
 
 | `binary_sensor.remote_ui` | Remote UI |
 
@@ -129,6 +131,10 @@ Auto-generated list of entities. Safe to publish.
 |---|---|
 
 | `event.backup_automatic_backup` | Backup Automatic backup |
+
+| `event.bthome_sensor_3370_button` | Motion 1 Button |
+
+| `event.front_door_sensor_button` | Front Door Sensor Button |
 
 | `event.hue_dimmer_switch_button_1` | Hue Dimmer Switch Button 1 |
 

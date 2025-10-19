@@ -97,18 +97,13 @@
   - trigger: time
     at: 09:29:00
     id: '9:29'
-  - trigger: state
-    entity_id:
-    - light.main_lights
-    to: 'off'
-    id: Main lights off
   - trigger: time
     at: 01:00:00
     id: 1am goodnight
   - trigger: state
     entity_id:
     - binary_sensor.front_door
-    to:
+    to: 'on'
     id: Door
   conditions: []
   actions:
@@ -138,16 +133,6 @@
           target:
             entity_id: light.closet_light
         - action: input_boolean.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: input_boolean.im_awake_toggle_helper
-        - delay:
-            hours: 1
-            minutes: 0
-            seconds: 0
-            milliseconds: 0
-        - action: input_boolean.turn_off
           metadata: {}
           data: {}
           target:
@@ -182,8 +167,29 @@
     - conditions:
       - condition: trigger
         id:
-        - Main lights off
+        - 9am
+      - condition: template
+        value_template: '{{ (now().timestamp() - (states.binary_sensor.front_door.last_changed
+          | as_timestamp)) > 3600 }}'
+      - condition: and
+        conditions:
+        - condition: state
+          state: 'on'
+          entity_id: input_boolean.workday_today_toggle
+        - condition: time
+          after: 08:00:00
+          before: 09:30:00
+      sequence:
+      - action: input_boolean.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: input_boolean.alexa_helper
+    - conditions:
+      - condition: trigger
+        id:
         - '9:29'
+        - Door
       - condition: and
         conditions:
         - condition: state
@@ -198,6 +204,16 @@
         data: {}
         target:
           entity_id: scene.all_off
+      - action: input_boolean.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: input_boolean.alexa_helper
+      - action: input_boolean.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: input_boolean.im_awake_toggle_helper
     - conditions:
       - condition: trigger
         id:
@@ -208,63 +224,6 @@
         data: {}
         target:
           entity_id: scene.goodnight_scene
-    - conditions:
-      - condition: trigger
-        id:
-        - 9am
-      - condition: state
-        entity_id: input_boolean.workday_today_toggle
-        state: 'on'
-      - condition: template
-        value_template: '{{ (now().timestamp() - (states.binary_sensor.front_door.last_changed
-          | as_timestamp)) > 3600 }}'
-      sequence:
-      - sequence:
-        - action: input_boolean.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: input_boolean.alexa_helper
-        - wait_for_trigger:
-          - trigger: webhook
-            allowed_methods:
-            - POST
-            - PUT
-            local_only: true
-            webhook_id: Flic_Hold
-          continue_on_timeout: true
-          timeout:
-            hours: 0
-            minutes: 30
-            seconds: 0
-            milliseconds: 0
-        - action: input_boolean.turn_off
-          metadata: {}
-          data: {}
-          target:
-            entity_id: input_boolean.alexa_helper
-        enabled: true
-    - conditions:
-      - condition: trigger
-        id:
-        - Door
-      - condition: state
-        entity_id: input_boolean.workday_today_toggle
-        state: 'on'
-      - condition: time
-        after: 08:20:00
-        before: 09:20:00
-      sequence:
-      - action: input_boolean.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.alexa_helper
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.all_off
   mode: parallel
 - id: '1758990657332'
   alias: Living Room Lamp
@@ -504,14 +463,6 @@
     input:
       source_entity: light.bedroom_ceiling_lights
       scene_target: scene.set_my_room
-- id: '1759452927264'
-  alias: Bedroom Ceiling Fan (3)  -> All Off
-  description: ''
-  use_blueprint:
-    path: Custom/Toggle_blueprint.yaml
-    input:
-      source_entity: fan.bedroom_ceiling_fan
-      scene_target: scene.all_off
 - id: '1759463858553'
   alias: Hue Dimmer Switch
   description: ''
@@ -848,4 +799,32 @@
         data: {}
         target:
           entity_id: scene.thermostat_ideal
+  mode: single
+- id: '1760842208486'
+  alias: Test door plus motion
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.front_door
+    to: 'on'
+  conditions: []
+  actions:
+  - if:
+    - condition: template
+      value_template: "as_timestamp(states.binary_sensor.motion_1_motion.last_changed)\n
+        \ < as_timestamp(states.binary_sensor.front_door.last_changed) - 1"
+    then:
+    - action: scene.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: scene.all_off
+    else:
+    - action: light.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id:
+        - light.main_lights
   mode: single
