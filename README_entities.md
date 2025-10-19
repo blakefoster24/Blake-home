@@ -20,6 +20,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.nightly_github_sync` | Nightly GitHub sync |
 
+| `automation.stamp_last_motion_on_time` | Stamp last motion ON time |
+
 | `automation.test_door_plus_motion` | Test door plus motion |
 
 | `automation.thermostat` | Thermostat |
@@ -169,6 +171,14 @@ Auto-generated list of entities. Safe to publish.
 | `input_boolean.workday_toggle_helper` | General Toggle Helper |
 
 | `input_boolean.workday_tomorrow_toggle` | Workday Tomorrow Toggle |
+
+
+
+## Input_datetime
+| Entity ID | Name |
+|---|---|
+
+| `input_datetime.last_motion_on` | Last motion on |
 
 
 

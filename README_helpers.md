@@ -49,6 +49,17 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
+## 🗓 Input Datetimes
+| Entity ID | Friendly Name | Key Attributes |
+|---|---|---|
+
+
+
+
+| `input_datetime.last_motion_on` | Last motion on | has_date=True, has_time=True |
+
+
+
 
 
 
@@ -83,4 +94,4 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 ---
-_Generated: 2025-10-19T01:18:44.072084-05:00_
+_Generated: 2025-10-19T01:45:48.835110-05:00_

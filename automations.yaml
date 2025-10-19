@@ -804,16 +804,23 @@
   alias: Test door plus motion
   description: ''
   triggers:
-  - trigger: state
-    entity_id:
-    - binary_sensor.front_door
+  - entity_id: binary_sensor.front_door
     to: 'on'
+    trigger: state
   conditions: []
   actions:
+  - action: logbook.log
+    data:
+      name: Test door plus motion
+      message: "Motion diff: {{\n  as_timestamp(trigger.to_state.last_changed)\n  -
+        as_timestamp(states('input_datetime.last_motion_on'))\n}}\n"
   - if:
     - condition: template
-      value_template: "as_timestamp(states.binary_sensor.motion_1_motion.last_changed)\n
-        \ < as_timestamp(states.binary_sensor.front_door.last_changed) - 1"
+      value_template: "{% set motion_state = states('input_datetime.last_motion_on')
+        %}\n{% if motion_state in ['unknown', 'unavailable', ''] %}\n  {{ false }}\n{%
+        else %}\n  {% set door_ts = as_timestamp(trigger.to_state.last_changed) %}\n
+        \ {% set motion_ts = as_timestamp(motion_state) %}\n  {{ 1 <= (door_ts - motion_ts)
+        <= 5 }}\n{% endif %}\n"
     then:
     - action: scene.turn_on
       metadata: {}
@@ -825,6 +832,36 @@
       metadata: {}
       data: {}
       target:
-        entity_id:
-        - light.main_lights
+        entity_id: light.main_lights
+  mode: single
+- id: '1760855339342'
+  alias: Stamp last motion ON time
+  description: Update or clear helper when motion changes
+  triggers:
+  - entity_id: binary_sensor.motion_1_motion
+    to: 'on'
+    trigger: state
+  - entity_id: binary_sensor.motion_1_motion
+    to: 'off'
+    trigger: state
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id: motion_on
+      sequence:
+      - action: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.last_motion_on
+        data:
+          datetime: '{{ now().isoformat() }}'
+    - conditions:
+      - condition: template
+        value_template: '{{ trigger.to_state.state == ''off'' }}'
+      sequence:
+      - action: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.last_motion_on
+        data:
+          datetime: ''
   mode: single

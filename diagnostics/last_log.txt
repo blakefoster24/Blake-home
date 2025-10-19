@@ -1,56 +1,4 @@
-===== 2025-10-19T01:18:44-05:00 — last 1000 lines =====
-2025-10-18 13:48:21.574 ERROR (MainThread) [homeassistant.components.openweathermap.coordinator] Error fetching openweathermap data: Cannot connect to host api.openweathermap.org:443 ssl:default [Timeout while contacting DNS servers]
-2025-10-18 14:03:21.709 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 14:03:21.712 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Running automation actions
-2025-10-18 14:03:21.712 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage >40%(work or 5:05) - lamp on: Executing step call service
-2025-10-18 16:00:00.474 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions
-2025-10-18 16:00:00.476 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 2: Running automation actions
-2025-10-18 16:00:00.477 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 2: Executing step call service
-2025-10-18 16:14:06.656 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff655cac10>,), {'max_record_size': 10}): Timeout error occurred accessing AlexaAPI: An exception of type CancelledError occurred. Arguments:
-()
-2025-10-18 16:29:51.662 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff655cac10>,), {'max_record_size': 10}): Timeout error occurred accessing AlexaAPI: An exception of type CancelledError occurred. Arguments:
-()
-2025-10-18 17:03:29.079 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 17:03:34.148 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 17:03:35.864 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 17:03:35.866 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Running automation actions
-2025-10-18 17:03:35.866 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Executing step call service
-2025-10-18 17:03:36.378 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-18 17:03:36.437 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 17:03:36.447 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Running automation actions
-2025-10-18 17:03:36.448 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Executing step call service
-2025-10-18 17:03:37.046 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 17:03:37.046 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 17:03:37.049 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:03:37.056 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 17:03:37.057 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:03:37.058 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:03:37.059 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:03:37.065 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 17:03:52.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:03:52.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:03:52.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:05:00.092 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 17:07:31.635 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 17:07:31.637 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:07:31.637 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:07:32.874 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 17:07:32.876 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Running automation actions
-2025-10-18 17:07:32.876 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Executing step call service
-2025-10-18 17:07:34.226 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 17:07:34.227 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:07:34.228 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:07:35.116 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 17:07:35.118 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Running automation actions
-2025-10-18 17:07:35.118 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Executing step call service
-2025-10-18 17:07:35.568 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 17:07:35.570 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Running automation actions
-2025-10-18 17:07:35.571 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Executing step call service
-2025-10-18 17:07:35.906 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 17:07:35.907 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:07:35.908 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:07:37.365 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 17:07:37.366 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 1: Running automation actions
+===== 2025-10-19T01:45:48-05:00 — last 1000 lines =====
 2025-10-18 17:07:37.367 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 1: Executing step call service
 2025-10-18 17:07:37.938 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
 2025-10-18 17:07:37.939 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Running automation actions
@@ -999,3 +947,55 @@ NoneType: None
 2025-10-19 01:18:43.989 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 01:18:44.070 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 01:18:44.106 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:18:44.200 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:18:44.277 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:21:33.511 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-19 01:28:55.145 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: e is not an Object. (evaluating '"trigger"in e')
+AutomationConfig,> (src/data/automation.ts:398:19)
+saveAutomationConfig (src/data/automation.ts:379:35)
+ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+2025-10-19 01:29:03.676 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Initialized trigger Stamp last motion ON time
+2025-10-19 01:31:48.100 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 01:33:26.984 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 01:34:47.974 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: WeakMap keys must be objects or non-registered symbols
+set ([native code]::)
+ev.stopPropagation (src/panels/config/automation/action/ha-automation-action.ts:353:27)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+save (src/panels/config/automation/action/ha-automation-action-row.ts:704:18)
+_yamlChangedSidebar (src/panels/config/automation/sidebar/ha-automation-sidebar-action.ts:315:24)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+2025-10-19 01:34:54.494 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: WeakMap keys must be objects or non-registered symbols
+set ([native code]::)
+ev.stopPropagation (src/panels/config/automation/action/ha-automation-action.ts:353:27)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+save (src/panels/config/automation/action/ha-automation-action-row.ts:704:18)
+_yamlChangedSidebar (src/panels/config/automation/sidebar/ha-automation-sidebar-action.ts:315:24)
+this (src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+2025-10-19 01:36:30.321 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 01:37:42.482 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 01:38:54.428 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 01:41:45.814 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 01:41:57.840 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Initialized trigger Stamp last motion ON time
+2025-10-19 01:43:49.273 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 01:45:48.750 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-19 01:45:48.750 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:45:48.833 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:45:48.869 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
