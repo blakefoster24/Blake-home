@@ -1,18 +1,4 @@
-===== 2025-10-19T00:51:35-05:00 — last 1000 lines =====
-2025-10-18 09:00:00.059 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: Running automation actions
-2025-10-18 09:00:00.060 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: If at step 1: Running automation actions
-2025-10-18 09:00:00.061 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: If at step 1: Executing step call service
-2025-10-18 09:00:00.233 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 09:13:12.510 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 09:13:12.514 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage <30% - lamp off: Running automation actions
-2025-10-18 09:13:12.515 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage <30% - lamp off: Executing step call service
-2025-10-18 09:29:00.104 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 09:38:59.550 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
-2025-10-18 09:38:59.551 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
-2025-10-18 09:38:59.552 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
-2025-10-18 09:38:59.560 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
-2025-10-18 09:38:59.562 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
-2025-10-18 09:38:59.562 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
+===== 2025-10-19T00:52:45-05:00 — last 1000 lines =====
 2025-10-18 09:39:04.676 ERROR (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Error executing script. Error for call_service at pos 1: Timeout communicating with Roku API
 2025-10-18 09:39:04.677 ERROR (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Error executing script. Error for choose at pos 1: Timeout communicating with Roku API
 2025-10-18 09:39:04.679 ERROR (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Error while executing automation automation.hue_dimmer_switch: Timeout communicating with Roku API
@@ -999,3 +985,17 @@ NoneType: None
 2025-10-19 00:51:35.419 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 00:51:35.499 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 00:51:35.538 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:51:35.632 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:51:35.706 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:51:36.215 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
+         git config user.name 'Home Assistant' &&
+         git config user.email 'ha@local' &&
+         git -c credential.helper='store --file=/config/.git-credentials' add -A &&
+         (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
+         git -c credential.helper='store --file=/config/.git-credentials' push origin main"
+`, return code: 1
+NoneType: None
+2025-10-19 00:52:45.073 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-19 00:52:45.074 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:52:45.157 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 00:52:45.193 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
