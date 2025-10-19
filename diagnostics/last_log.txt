@@ -1,12 +1,4 @@
-===== 2025-10-19T01:45:48-05:00 — last 1000 lines =====
-2025-10-18 17:07:37.367 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:07:37.938 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 17:07:37.939 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Running automation actions
-2025-10-18 17:07:37.940 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Executing step call service
-2025-10-18 17:07:38.264 WARNING (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Already running
-2025-10-18 17:07:48.505 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 17:07:48.507 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Running automation actions
-2025-10-18 17:07:48.507 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Executing step call service
+===== 2025-10-19T01:52:36-05:00 — last 1000 lines =====
 2025-10-18 17:07:54.465 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
 2025-10-18 17:07:54.467 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 3: Running automation actions
 2025-10-18 17:07:54.468 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 3: Executing step call service
@@ -999,3 +991,11 @@ event (src/common/dom/fire_event.ts:75:21)
 2025-10-19 01:45:48.750 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 01:45:48.833 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 01:45:48.869 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:45:48.964 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:45:49.042 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:51:46.482 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 01:52:25.297 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 01:52:36.810 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-19 01:52:36.811 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:52:36.892 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:52:36.928 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service

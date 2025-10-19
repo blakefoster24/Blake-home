@@ -817,7 +817,7 @@
   - if:
     - condition: template
       value_template: "{% set motion_state = states('input_datetime.last_motion_on')
-        %}\n{% if motion_state in ['unknown', 'unavailable', ''] %}\n  {{ false }}\n{%
+        %} {% if motion_state in ['unknown', 'unavailable', ''] %}\n  {{ false }}\n{%
         else %}\n  {% set door_ts = as_timestamp(trigger.to_state.last_changed) %}\n
         \ {% set motion_ts = as_timestamp(motion_state) %}\n  {{ 1 <= (door_ts - motion_ts)
         <= 5 }}\n{% endif %}\n"
