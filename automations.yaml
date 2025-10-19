@@ -823,14 +823,10 @@
         <= 5 }}\n{% endif %}\n"
     then:
     - action: scene.turn_on
-      metadata: {}
-      data: {}
       target:
         entity_id: scene.all_off
     else:
     - action: light.turn_on
-      metadata: {}
-      data: {}
       target:
         entity_id: light.main_lights
   mode: single
@@ -840,9 +836,11 @@
   triggers:
   - entity_id: binary_sensor.motion_1_motion
     to: 'on'
+    id: motion_on
     trigger: state
   - entity_id: binary_sensor.motion_1_motion
     to: 'off'
+    id: motion_off
     trigger: state
   actions:
   - choose:
@@ -856,8 +854,8 @@
         data:
           datetime: '{{ now().isoformat() }}'
     - conditions:
-      - condition: template
-        value_template: '{{ trigger.to_state.state == ''off'' }}'
+      - condition: trigger
+        id: motion_off
       sequence:
       - action: input_datetime.set_datetime
         target:

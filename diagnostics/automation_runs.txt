@@ -1,12 +1,4 @@
-===== 2025-10-19T01:52:37-05:00 — automation runs (recent) =====
-2025-10-16 06:32:54.137 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step delay 0:30:00
-2025-10-16 07:02:54.140 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-16 07:03:19.910 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-16 07:03:19.912 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Running automation actions
-2025-10-16 07:03:19.912 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Executing step call service
-2025-10-16 07:03:20.534 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-16 07:03:20.538 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Running automation actions
-2025-10-16 07:03:20.544 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Executing step call service
+===== 2025-10-19T01:55:12-05:00 — automation runs (recent) =====
 2025-10-16 07:03:21.327 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
 2025-10-16 07:03:21.328 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
 2025-10-16 07:03:21.330 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
@@ -1598,3 +1590,11 @@ _yamlChangedSidebar (src/panels/config/automation/sidebar/ha-automation-sidebar-
 2025-10-19 01:52:36.892 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 01:52:36.928 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 01:52:37.023 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:52:37.099 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:54:22.533 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 01:55:07.272 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Initialized trigger Stamp last motion ON time
+2025-10-19 01:55:12.611 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-19 01:55:12.611 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:55:12.693 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:55:12.729 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:55:12.824 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service

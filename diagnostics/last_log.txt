@@ -1,12 +1,4 @@
-===== 2025-10-19T01:52:36-05:00 — last 1000 lines =====
-2025-10-18 17:07:54.465 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 17:07:54.467 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 3: Running automation actions
-2025-10-18 17:07:54.468 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 3: Executing step call service
-2025-10-18 17:07:54.976 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-18 17:07:55.034 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 17:07:55.045 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Running automation actions
-2025-10-18 17:07:55.046 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Executing step call service
-2025-10-18 17:07:55.208 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+===== 2025-10-19T01:55:12-05:00 — last 1000 lines =====
 2025-10-18 17:07:55.210 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
 2025-10-18 17:07:55.211 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
 2025-10-18 17:07:55.211 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
@@ -999,3 +991,11 @@ event (src/common/dom/fire_event.ts:75:21)
 2025-10-19 01:52:36.811 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 01:52:36.892 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-19 01:52:36.928 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:52:37.023 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:52:37.099 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:54:22.533 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 01:55:07.272 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Initialized trigger Stamp last motion ON time
+2025-10-19 01:55:12.611 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-19 01:55:12.611 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:55:12.693 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 01:55:12.729 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
