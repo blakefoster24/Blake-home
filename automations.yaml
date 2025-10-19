@@ -810,6 +810,7 @@
   conditions: []
   actions:
   - action: logbook.log
+    metadata: {}
     data:
       name: Test door plus motion
       message: "Motion diff: {{\n  as_timestamp(trigger.to_state.last_changed)\n  -
@@ -823,10 +824,14 @@
         <= 5 }}\n{% endif %}\n"
     then:
     - action: scene.turn_on
+      metadata: {}
+      data: {}
       target:
         entity_id: scene.all_off
     else:
     - action: light.turn_on
+      metadata: {}
+      data: {}
       target:
         entity_id: light.main_lights
   mode: single
@@ -849,17 +854,19 @@
         id: motion_on
       sequence:
       - action: input_datetime.set_datetime
-        target:
-          entity_id: input_datetime.last_motion_on
+        metadata: {}
         data:
           datetime: '{{ now().isoformat() }}'
+        target:
+          entity_id: input_datetime.last_motion_on
     - conditions:
       - condition: trigger
         id: motion_off
       sequence:
       - action: input_datetime.set_datetime
-        target:
-          entity_id: input_datetime.last_motion_on
+        metadata: {}
         data:
           datetime: ''
+        target:
+          entity_id: input_datetime.last_motion_on
   mode: single
