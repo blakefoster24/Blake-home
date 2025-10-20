@@ -44,15 +44,11 @@
         id:
         - Flic_Double Trigger
       sequence:
-      - action: light.turn_on
+      - action: scene.turn_on
         metadata: {}
         data: {}
         target:
-          entity_id:
-          - light.bedroom_ceiling_lights
-          - light.closet_light
-          - light.main_lights
-          - light.bathroom_light
+          entity_id: scene.new_scene
     - conditions:
       - condition: trigger
         id:
@@ -84,10 +80,6 @@
   alias: Workday Wake-up / 1am Goodnight
   description: ''
   triggers:
-  - trigger: state
-    entity_id:
-    - scene.im_awake
-    id: I’m Awake Trigger
   - trigger: time
     at: 08:40:00
     id: 8:40am Time Trigger
@@ -105,13 +97,20 @@
     - binary_sensor.front_door
     to: 'on'
     id: Door
+  - device_id: 6e3f05f16e73548265ce22e622f4a268
+    domain: hue
+    type: long_press
+    subtype: 1
+    unique_id: cdb2dfb8-edb8-4c9a-83ef-5519e2338c0a
+    trigger: device
+    id: '1 Long press '
   conditions: []
   actions:
   - choose:
     - conditions:
       - condition: trigger
         id:
-        - I’m Awake Trigger
+        - '1 Long press '
       - condition: and
         conditions:
         - condition: state
@@ -154,23 +153,15 @@
           before: 09:30:00
       sequence:
       - sequence:
-        - delay:
-            hours: 0
-            minutes: 0
-            seconds: 5
-            milliseconds: 0
-        - action: scene.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: scene.im_awake
+        - event: hue_event
+          event_data:
+            device_id: 6e3f05f16e73548265ce22e622f4a268
+            type: long_press
+            subtype: 1
     - conditions:
       - condition: trigger
         id:
         - 9am
-      - condition: template
-        value_template: '{{ (now().timestamp() - (states.binary_sensor.front_door.last_changed
-          | as_timestamp)) > 3600 }}'
       - condition: and
         conditions:
         - condition: state
@@ -179,7 +170,17 @@
         - condition: time
           after: 08:00:00
           before: 09:30:00
+      - condition: template
+        value_template: "{% set s = states.binary_sensor.front_door %} {{ s.state
+          in ['unavailable', 'unknown']\n   or (as_timestamp(now()) - as_timestamp(s.last_changed))
+          > 3600 }}\n"
       sequence:
+      - action: media_player.volume_set
+        metadata: {}
+        data:
+          volume_level: 0.35
+        target:
+          entity_id: media_player.blake_s_echo_pop
       - action: input_boolean.turn_on
         metadata: {}
         data: {}
@@ -214,6 +215,13 @@
         data: {}
         target:
           entity_id: input_boolean.im_awake_toggle_helper
+      - action: media_player.volume_set
+        metadata: {}
+        data:
+          volume_level: 0.45
+        target:
+          entity_id:
+          - media_player.blake_s_echo_pop
     - conditions:
       - condition: trigger
         id:
@@ -224,6 +232,11 @@
         data: {}
         target:
           entity_id: scene.goodnight_scene
+  - action: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.alexa_helper
   mode: parallel
 - id: '1758990657332'
   alias: Living Room Lamp
@@ -801,39 +814,102 @@
           entity_id: scene.thermostat_ideal
   mode: single
 - id: '1760842208486'
-  alias: Test door plus motion
+  alias: Workday Door plus motion
   description: ''
   triggers:
   - entity_id: binary_sensor.front_door
     to: 'on'
     trigger: state
-  conditions: []
+  conditions:
+  - condition: state
+    entity_id: input_boolean.workday_today_toggle
+    state: 'on'
   actions:
-  - action: logbook.log
-    metadata: {}
-    data:
-      name: Test door plus motion
-      message: "Motion diff: {{\n  as_timestamp(trigger.to_state.last_changed)\n  -
-        as_timestamp(states('input_datetime.last_motion_on'))\n}}\n"
-  - if:
-    - condition: template
-      value_template: "{% set motion_state = states('input_datetime.last_motion_on')
-        %} {% if motion_state in ['unknown', 'unavailable', ''] %}\n  {{ false }}\n{%
-        else %}\n  {% set door_ts = as_timestamp(trigger.to_state.last_changed) %}\n
-        \ {% set motion_ts = as_timestamp(motion_state) %}\n  {{ 1 <= (door_ts - motion_ts)
-        <= 5 }}\n{% endif %}\n"
-    then:
-    - action: scene.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id: scene.all_off
-    else:
-    - action: light.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id: light.main_lights
+  - choose:
+    - conditions:
+      - condition: time
+        before: 08:00:00
+        after: 05:00:00
+      sequence:
+      - if:
+        - condition: template
+          value_template: "{% set motion_state = states('input_datetime.last_motion_on')
+            %} {% if motion_state in ['unknown', 'unavailable', ''] %}\n  {{ false
+            }}\n{% else %}\n  {% set door_ts = as_timestamp(trigger.to_state.last_changed)
+            %}\n  {% set motion_ts = as_timestamp(motion_state) %}\n  {{ 1 <= (door_ts
+            - motion_ts) <= 900 }}\n{% endif %}\n"
+        then:
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: scene.all_off
+        else:
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: scene.new_scene
+        - action: media_player.play_media
+          metadata: {}
+          data:
+            media:
+              media_content_id: '837'
+              media_content_type: app
+              metadata:
+                title: YouTube
+                thumbnail: http://192.168.1.68:8060/query/icon/837
+                media_class: app
+                children_media_class:
+                navigateIds:
+                - {}
+                - media_content_type: apps
+                  media_content_id: ''
+                browse_entity_id: media_player.bedroom_tv
+          target:
+            entity_id: media_player.bedroom_tv
+    - conditions:
+      - condition: time
+        after: '16:30:00'
+        before: '19:00:00'
+      sequence:
+      - if:
+        - condition: template
+          value_template: "{% set motion_state = states('input_datetime.last_motion_on')
+            %} {% if motion_state in ['unknown', 'unavailable', ''] %}\n  {{ false
+            }}\n{% else %}\n  {% set door_ts = as_timestamp(trigger.to_state.last_changed)
+            %}\n  {% set motion_ts = as_timestamp(motion_state) %}\n  {{ 1 <= (door_ts
+            - motion_ts) <= 900 }}\n{% endif %}\n"
+        then:
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: scene.all_off
+        else:
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: scene.new_scene
+        - action: media_player.play_media
+          metadata: {}
+          data:
+            media:
+              media_content_id: '837'
+              media_content_type: app
+              metadata:
+                title: YouTube
+                thumbnail: http://192.168.1.68:8060/query/icon/837
+                media_class: app
+                children_media_class:
+                navigateIds:
+                - {}
+                - media_content_type: apps
+                  media_content_id: ''
+                browse_entity_id: media_player.bedroom_tv
+          target:
+            entity_id: media_player.bedroom_tv
   mode: single
 - id: '1760855339342'
   alias: Stamp last motion ON time

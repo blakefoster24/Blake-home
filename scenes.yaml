@@ -326,10 +326,6 @@
 - id: '1758432207585'
   name: I’m Awake
   entities:
-    fan.bedroom_ceiling_fan:
-      friendly_name: Bedroom ceiling fan
-      supported_features: 48
-      state: 'off'
     light.bedroom_lamp:
       min_color_temp_kelvin: 2202
       max_color_temp_kelvin: 6535
@@ -362,8 +358,6 @@
       state: 'off'
   icon: mdi:weather-sunset-up
   metadata:
-    fan.bedroom_ceiling_fan:
-      entity_only: true
     light.bedroom_lamp:
       entity_only: true
     fan.bedroom_fan:
@@ -595,3 +589,43 @@
     climate.nest_thermostat:
       entity_only: true
   icon: mdi:thermostat-cog
+- id: '1760928794381'
+  name: All Lights
+  entities:
+    light.closet_light:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: Closet Light
+      supported_features: 0
+      state: 'on'
+    light.bedroom_ceiling_lights:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: Bedroom Ceiling Lights
+      supported_features: 0
+      state: 'on'
+    light.bathroom_light:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: Bathroom Light
+      supported_features: 0
+      state: 'on'
+    light.main_lights:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: Main Lights
+      supported_features: 0
+      state: 'on'
+  metadata:
+    light.closet_light:
+      entity_only: true
+    light.bedroom_ceiling_lights:
+      entity_only: true
+    light.bathroom_light:
+      entity_only: true
+    light.main_lights:
+      entity_only: true

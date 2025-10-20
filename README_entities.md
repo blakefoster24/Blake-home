@@ -22,7 +22,7 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.stamp_last_motion_on_time` | Stamp last motion ON time |
 
-| `automation.test_door_plus_motion` | Test door plus motion |
+| `automation.test_door_plus_motion` | Workday Door + Motion |
 
 | `automation.thermostat` | Thermostat |
 
@@ -152,7 +152,7 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
-| `fan.bedroom_ceiling_fan` | Bedroom ceiling fan |
+| `fan.bedroom_ceiling_fan` | Bedroom Ceiling Fan |
 
 | `fan.bedroom_fan` | Fan |
 

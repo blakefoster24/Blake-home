@@ -1,1001 +1,145 @@
-===== 2025-10-19T02:08:41-05:00 — last 1000 lines =====
-2025-10-18 17:08:18.278 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:08:18.287 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step delay 0:30:00
-2025-10-18 17:08:18.292 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 17:08:18.307 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Running automation actions
-2025-10-18 17:08:18.308 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Executing step call service
-2025-10-18 17:08:33.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:08:33.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:08:33.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:27:37.973 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:27:37.974 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 17:27:37.976 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:27:37.976 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:27:37.982 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:27:37.985 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 17:27:52.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:27:52.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:27:52.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:27:56.662 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 17:27:56.662 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 17:27:56.665 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:27:56.672 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 17:27:56.674 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:27:56.674 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:27:56.676 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:27:56.680 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 17:27:58.428 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:27:58.429 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 17:27:58.431 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 17:28:11.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:28:11.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:28:11.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:32:27.439 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 17:32:27.439 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 17:32:27.442 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:32:27.449 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 17:32:27.451 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:32:27.451 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:32:27.453 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:32:27.457 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 17:32:42.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:32:42.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:32:42.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:36:12.838 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:36:12.840 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 17:36:12.841 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:36:12.842 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:36:12.846 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:36:12.849 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 17:36:13.135 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 17:36:13.135 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 17:36:13.138 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:36:13.144 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 17:36:13.146 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 17:36:27.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:36:27.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:36:27.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:36:44.747 ERROR (MainThread) [pyvizio] Failed to execute command: Connection timeout to host https://192.168.1.74:7345/pairing/start
-2025-10-18 17:37:14.284 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:37:14.286 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 17:37:14.287 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:37:14.287 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:37:14.293 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:37:14.295 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 17:37:14.590 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 17:37:14.591 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 17:37:14.594 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:37:14.601 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 17:37:14.658 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 17:37:29.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:37:29.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:37:29.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:38:18.290 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:39:05.663 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Initialized trigger TestNew automation
-2025-10-18 17:39:11.806 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 17:39:11.816 INFO (MainThread) [homeassistant.components.automation.testnew_automation] TestNew automation: Running automation actions
-2025-10-18 17:39:11.816 INFO (MainThread) [homeassistant.components.automation.testnew_automation] TestNew automation: Executing step call service
-2025-10-18 17:39:12.043 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:39:12.045 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 17:39:12.046 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:39:12.047 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:39:12.052 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:39:12.055 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 17:39:12.445 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-18 17:39:12.497 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 17:39:12.507 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Running automation actions
-2025-10-18 17:39:12.508 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Executing step call service
-2025-10-18 17:39:15.414 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 17:39:15.423 WARNING (MainThread) [homeassistant.components.automation.testnew_automation] TestNew automation: Already running
-2025-10-18 17:39:27.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 17:39:27.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:39:27.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:39:30.789 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 17:39:30.790 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 1: Running automation actions
-2025-10-18 17:39:30.791 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 1: Executing step call service
-2025-10-18 17:39:31.325 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 17:39:31.334 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Running automation actions
-2025-10-18 17:39:31.334 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Executing step call service
-2025-10-18 17:40:28.792 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 17:40:28.801 INFO (MainThread) [homeassistant.components.automation.testnew_automation] TestNew automation: Running automation actions
-2025-10-18 17:40:28.801 INFO (MainThread) [homeassistant.components.automation.testnew_automation] TestNew automation: Executing step call service
-2025-10-18 17:40:29.351 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 17:40:29.360 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Running automation actions
-2025-10-18 17:40:29.360 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Executing step call service
-2025-10-18 17:40:34.353 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 17:40:34.362 INFO (MainThread) [homeassistant.components.automation.testnew_automation] TestNew automation: Running automation actions
-2025-10-18 17:40:34.363 INFO (MainThread) [homeassistant.components.automation.testnew_automation] TestNew automation: Executing step call service
-2025-10-18 17:42:49.700 INFO (MainThread) [homeassistant.components.automation.testnew_automation] TestNew automation: Running automation actions
-2025-10-18 17:42:49.701 INFO (MainThread) [homeassistant.components.automation.testnew_automation] TestNew automation: Executing step call service
-2025-10-18 17:52:25.321 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 17:52:25.323 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Sunset - lamp on: Running automation actions
-2025-10-18 17:52:25.323 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Sunset - lamp on: Executing step call service
-2025-10-18 19:34:52.367 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 19:34:52.376 INFO (MainThread) [homeassistant.components.automation.testnew_automation] TestNew automation: Running automation actions
-2025-10-18 19:34:52.376 INFO (MainThread) [homeassistant.components.automation.testnew_automation] TestNew automation: Executing step call service
-2025-10-18 19:45:04.423 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Initialized trigger TestNew automation
-2025-10-18 20:12:25.895 WARNING (MainThread) [alexapy.helpers] alexaapi.get_device_preferences((<alexapy.alexalogin.AlexaLogin object at 0xffff655cac10>,), {}): Timeout error occurred accessing AlexaAPI: An exception of type CancelledError occurred. Arguments:
-()
-2025-10-18 20:12:25.897 WARNING (MainThread) [alexapy.helpers] alexaapi.get_dnd_state((<alexapy.alexalogin.AlexaLogin object at 0xffff655cac10>,), {}): Timeout error occurred accessing AlexaAPI: An exception of type CancelledError occurred. Arguments:
-()
-2025-10-18 20:12:25.900 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: 
-2025-10-18 20:13:38.168 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
-TypeError: e is not an Object. (evaluating '"trigger"in e')
-AutomationConfig,> (src/data/automation.ts:398:19)
-saveAutomationConfig (src/data/automation.ts:379:35)
-ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
-this (src/lit-html.ts:2109:33)
-dispatchEvent ([native code]::)
-event (src/common/dom/fire_event.ts:75:21)
-this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
-this (src/lit-html.ts:2109:33)
-dispatchEvent ([native code]::)
-event (src/common/dom/fire_event.ts:75:21)
-2025-10-18 20:13:59.300 INFO (MainThread) [homeassistant.components.automation.motion_time] Initialized trigger Motion Time
-2025-10-18 20:18:02.630 INFO (MainThread) [homeassistant.components.automation.motion_time] Initialized trigger Motion Time
-2025-10-18 20:53:31.747 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [281472488508608] Blake Foster from 127.0.0.1 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 26.0.1)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds
-2025-10-18 21:16:11.108 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
-TypeError: e is not an Object. (evaluating '"trigger"in e')
-AutomationConfig,> (src/data/automation.ts:398:19)
-saveAutomationConfig (src/data/automation.ts:379:35)
-ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
-this (src/lit-html.ts:2109:33)
-dispatchEvent ([native code]::)
-event (src/common/dom/fire_event.ts:75:21)
-this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
-this (src/lit-html.ts:2109:33)
-dispatchEvent ([native code]::)
-event (src/common/dom/fire_event.ts:75:21)
-2025-10-18 21:16:15.443 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Initialized trigger Front Door - Direction Detection
-2025-10-18 21:50:20.701 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-18 21:50:55.163 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 21:52:10.455 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 21:52:10.463 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Running automation actions
-2025-10-18 21:52:10.464 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Executing step assigning variables
-2025-10-18 21:52:10.473 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Running automation actions
-2025-10-18 21:52:10.474 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Executing step wait for trigger (timeout: 0:00:03)
-2025-10-18 21:52:10.478 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Initialized trigger
-2025-10-18 21:52:10.479 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 21:52:10.481 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 21:52:10.481 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 21:52:10.612 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 21:52:10.613 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 21:52:10.615 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 21:52:10.622 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 21:52:10.623 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 21:52:10.624 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 21:52:10.634 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 21:52:10.637 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 21:52:10.961 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-18 21:52:10.963 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Running automation actions
-2025-10-18 21:52:10.963 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 21:52:11.010 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 21:52:11.014 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step delay 0:30:00
-2025-10-18 21:52:11.050 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 21:52:13.478 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Test condition template: False
-2025-10-18 21:52:13.479 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Running automation actions
-2025-10-18 21:52:13.480 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Executing step call service
-2025-10-18 21:52:24.155 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 21:52:25.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 21:52:25.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 21:52:25.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 21:52:25.636 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 21:52:25.645 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Running automation actions
-2025-10-18 21:52:25.646 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Executing step assigning variables
-2025-10-18 21:52:25.649 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Running automation actions
-2025-10-18 21:52:25.651 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Executing step wait for trigger (timeout: 0:00:03)
-2025-10-18 21:52:25.653 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Initialized trigger
-2025-10-18 21:52:25.654 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 21:52:25.656 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 21:52:25.656 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 21:52:28.557 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 21:52:28.558 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Running automation actions
-2025-10-18 21:52:28.559 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 2: Executing step call service
-2025-10-18 21:52:28.653 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Test condition template: False
-2025-10-18 21:52:28.655 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Running automation actions
-2025-10-18 21:52:28.656 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Executing step call service
-2025-10-18 21:52:33.913 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 21:52:33.916 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 3: Running automation actions
-2025-10-18 21:52:33.916 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 3: Executing step call service
-2025-10-18 21:52:34.054 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Restarting
-2025-10-18 21:52:34.078 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-18 21:52:34.081 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Running automation actions
-2025-10-18 21:52:34.082 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
-2025-10-18 21:52:34.106 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
-2025-10-18 21:52:34.171 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 21:52:34.174 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Running automation actions
-2025-10-18 21:52:34.179 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Executing step call service
-2025-10-18 21:52:34.287 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 21:52:34.288 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 21:52:34.289 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 21:52:34.290 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 21:52:34.295 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 21:52:34.298 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 21:52:36.628 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 21:52:49.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 21:52:49.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 21:52:49.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 21:55:18.281 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-18 21:55:35.807 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 21:55:35.815 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Running automation actions
-2025-10-18 21:55:35.816 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Executing step assigning variables
-2025-10-18 21:55:35.819 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Running automation actions
-2025-10-18 21:55:35.822 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Executing step wait for trigger (timeout: 0:00:03)
-2025-10-18 21:55:35.823 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Initialized trigger
-2025-10-18 21:55:35.825 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 21:55:35.826 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 21:55:35.827 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 21:55:36.053 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 21:55:36.054 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 21:55:36.057 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 21:55:36.063 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 21:55:36.065 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 21:55:36.065 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 21:55:36.067 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 21:55:36.072 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 21:55:36.300 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-18 21:55:36.312 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Running automation actions
-2025-10-18 21:55:36.312 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 21:55:36.353 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 21:55:36.357 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step delay 0:30:00
-2025-10-18 21:55:36.375 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 21:55:38.825 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Test condition template: False
-2025-10-18 21:55:38.826 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Running automation actions
-2025-10-18 21:55:38.827 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Executing step call service
-2025-10-18 21:55:39.814 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 21:55:51.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 21:55:51.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 21:55:51.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 22:00:42.036 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff655cac10>,), {'max_record_size': 10}): A connection error occurred: An exception of type ClientConnectorDNSError occurred. Arguments:
-(ConnectionKey(host='www.amazon.com', port=443, is_ssl=True, ssl=<ssl.SSLContext object at 0xffff68eb4410>, proxy=None, proxy_auth=None, proxy_headers_hash=None), OSError(None, 'Timeout while contacting DNS servers'))
-2025-10-18 22:00:42.037 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff655cac10>,), {}): An error occurred accessing AlexaAPI: An exception of type AlexapyConnectionError occurred. Arguments:
-()
-2025-10-18 22:00:42.037 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: 
-2025-10-18 22:03:16.520 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 22:03:16.529 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Running automation actions
-2025-10-18 22:03:16.530 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Executing step assigning variables
-2025-10-18 22:03:16.533 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Running automation actions
-2025-10-18 22:03:16.534 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Executing step wait for trigger (timeout: 0:00:03)
-2025-10-18 22:03:16.536 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Initialized trigger
-2025-10-18 22:03:16.538 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 22:03:16.539 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 22:03:16.539 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 22:03:19.537 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Test condition template: False
-2025-10-18 22:03:19.539 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Running automation actions
-2025-10-18 22:03:19.539 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Executing step call service
-2025-10-18 22:03:20.290 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 22:03:21.326 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 22:03:21.335 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Running automation actions
-2025-10-18 22:03:21.335 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Executing step assigning variables
-2025-10-18 22:03:21.339 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Running automation actions
-2025-10-18 22:03:21.341 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Executing step wait for trigger (timeout: 0:00:03)
-2025-10-18 22:03:21.342 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Initialized trigger
-2025-10-18 22:03:21.344 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 22:03:21.345 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 22:03:21.346 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 22:03:24.344 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Test condition template: False
-2025-10-18 22:03:24.346 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Running automation actions
-2025-10-18 22:03:24.346 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Executing step call service
-2025-10-18 22:03:25.873 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 22:03:27.299 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 22:03:27.308 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Running automation actions
-2025-10-18 22:03:27.309 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Executing step assigning variables
-2025-10-18 22:03:27.312 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Running automation actions
-2025-10-18 22:03:27.313 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Executing step wait for trigger (timeout: 0:00:03)
-2025-10-18 22:03:27.316 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Initialized trigger
-2025-10-18 22:03:27.318 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 22:03:27.319 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 22:03:27.319 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 22:03:30.317 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Test condition template: False
-2025-10-18 22:03:30.319 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Running automation actions
-2025-10-18 22:03:30.319 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Executing step call service
-2025-10-18 22:03:30.450 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 22:05:07.660 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 22:05:07.669 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Running automation actions
-2025-10-18 22:05:07.669 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Executing step assigning variables
-2025-10-18 22:05:07.673 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Running automation actions
-2025-10-18 22:05:07.675 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Executing step wait for trigger (timeout: 0:00:03)
-2025-10-18 22:05:07.676 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Initialized trigger
-2025-10-18 22:05:07.678 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 22:05:07.679 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 22:05:07.680 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 22:05:10.678 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Test condition template: False
-2025-10-18 22:05:10.680 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Running automation actions
-2025-10-18 22:05:10.680 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Executing step call service
-2025-10-18 22:05:12.713 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 22:05:14.879 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 22:05:14.887 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Running automation actions
-2025-10-18 22:05:14.888 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Executing step assigning variables
-2025-10-18 22:05:14.891 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Running automation actions
-2025-10-18 22:05:14.892 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Executing step wait for trigger (timeout: 0:00:03)
-2025-10-18 22:05:14.894 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Initialized trigger
-2025-10-18 22:05:14.896 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 22:05:14.897 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 22:05:14.898 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 22:05:17.895 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Test condition template: False
-2025-10-18 22:05:17.897 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Running automation actions
-2025-10-18 22:05:17.897 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Executing step call service
-2025-10-18 22:05:19.708 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Running automation actions
-2025-10-18 22:05:19.710 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 3: Running automation actions
-2025-10-18 22:05:19.710 INFO (MainThread) [homeassistant.components.automation.flic_single] Flic Button: Choose at step 1: choice 3: Executing step call service
-2025-10-18 22:05:19.995 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Restarting
-2025-10-18 22:05:20.002 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-18 22:05:20.004 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Running automation actions
-2025-10-18 22:05:20.005 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
-2025-10-18 22:05:20.055 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
-2025-10-18 22:05:20.170 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 22:05:20.174 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Running automation actions
-2025-10-18 22:05:20.174 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Executing step call service
-2025-10-18 22:05:20.192 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 22:05:20.194 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 22:05:20.201 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 22:05:20.202 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 22:05:20.204 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 22:05:20.211 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 22:05:21.890 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 22:05:35.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 22:05:35.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 22:05:35.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 22:55:12.534 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 22:55:12.543 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Running automation actions
-2025-10-18 22:55:12.544 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Executing step assigning variables
-2025-10-18 22:55:12.547 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Running automation actions
-2025-10-18 22:55:12.549 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Executing step wait for trigger (timeout: 0:00:03)
-2025-10-18 22:55:12.551 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Initialized trigger
-2025-10-18 22:55:12.552 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 22:55:12.553 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 22:55:12.554 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 22:55:12.885 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 22:55:12.885 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 22:55:12.888 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 22:55:12.894 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 22:55:12.896 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 22:55:12.896 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 22:55:12.898 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 22:55:12.903 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 22:55:13.033 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-18 22:55:13.035 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Running automation actions
-2025-10-18 22:55:13.036 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 22:55:13.166 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 22:55:13.169 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step delay 0:30:00
-2025-10-18 22:55:13.195 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 22:55:15.552 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Test condition template: False
-2025-10-18 22:55:15.554 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Running automation actions
-2025-10-18 22:55:15.554 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Executing step call service
-2025-10-18 22:55:16.387 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 22:55:23.045 INFO (MainThread) [homeassistant.components.automation.motion_time] Motion Time: Running automation actions
-2025-10-18 22:55:23.045 INFO (MainThread) [homeassistant.components.automation.motion_time] Motion Time: Executing step call service
-2025-10-18 22:55:27.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 22:55:27.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 22:55:27.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 22:58:00.492 INFO (MainThread) [homeassistant.components.automation.motion_time] Motion Time: Running automation actions
-2025-10-18 22:58:00.493 INFO (MainThread) [homeassistant.components.automation.motion_time] Motion Time: Executing step call service
-2025-10-18 23:00:00.254 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Running automation actions
-2025-10-18 23:00:00.256 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 2: Running automation actions
-2025-10-18 23:00:00.257 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 2: If at step 1: Running automation actions
-2025-10-18 23:00:00.257 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 2: If at step 1: Executing step call service
-2025-10-18 23:08:14.687 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:08:14.696 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:12:47.895 WARNING (MainThread) [alexapy.helpers] alexaapi.get_devices((<alexapy.alexalogin.AlexaLogin object at 0xffff655cac10>,), {}): Timeout error occurred accessing AlexaAPI: An exception of type CancelledError occurred. Arguments:
-()
-2025-10-18 23:12:47.897 ERROR (MainThread) [custom_components.alexa_media] Error fetching alexa_media data: Error communicating with API: 
-2025-10-18 23:18:54.981 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:18:54.982 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:18:54.983 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:18:54.984 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:18:54.987 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:18:54.990 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:19:02.938 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:19:02.938 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:19:02.941 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:19:02.949 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:19:02.950 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:19:09.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:19:09.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:19:09.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:21:37.082 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:21:37.084 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:21:37.085 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:21:37.086 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:21:37.091 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:21:37.094 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:21:37.336 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:21:37.337 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:21:37.339 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:21:37.342 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:21:37.344 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:21:52.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:21:52.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:21:52.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:22:09.495 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:23:36.576 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:23:36.584 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:25:13.173 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:25:59.309 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:25:59.310 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:25:59.311 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:25:59.312 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:25:59.320 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:25:59.322 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:25:59.358 ERROR (MainThread) [homeassistant.components.shelly] Error fetching shellyplus2pm-3c8a1fe82824 data: An error occurred while reconnecting to shellyplus2pm-3c8a1fe82824
-2025-10-18 23:26:09.549 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:26:09.549 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:26:09.552 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:26:09.559 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:26:09.561 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:26:14.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:26:14.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:26:14.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:26:28.210 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:26:28.212 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:26:28.213 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:26:28.214 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:26:28.220 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:26:28.222 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:26:43.001 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:26:43.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:26:43.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:26:51.798 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:26:51.800 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:26:51.801 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:26:51.802 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:26:51.807 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:26:51.809 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:26:52.068 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:26:52.069 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:26:52.071 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:06.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:06.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:27:06.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:10.999 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:27:11.000 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:27:11.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:11.009 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:11.010 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:27:11.011 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:11.012 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:11.018 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:13.049 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:13.050 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:13.052 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:19.193 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:27:19.194 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:27:19.197 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:19.204 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:19.205 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:19.210 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-18 23:27:19.211 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:19.364 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
-2025-10-18 23:27:19.377 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:19.380 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:19.387 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:19.393 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-18 23:27:19.398 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:20.127 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-18 23:27:20.176 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 23:27:20.187 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Running automation actions
-2025-10-18 23:27:20.188 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Executing step call service
-2025-10-18 23:27:20.509 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:27:20.510 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:27:20.513 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
-2025-10-18 23:27:20.529 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:20.531 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:20.536 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:20.541 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-18 23:27:20.542 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:20.622 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
-2025-10-18 23:27:20.637 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:20.640 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:20.644 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:20.656 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-18 23:27:20.656 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:21.329 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:27:21.330 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:27:21.332 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
-2025-10-18 23:27:21.349 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:21.351 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:21.353 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:21.360 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-18 23:27:21.361 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:21.470 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
-2025-10-18 23:27:21.480 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:21.482 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:21.484 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:21.491 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-18 23:27:21.492 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:22.046 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:27:22.047 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:27:22.049 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
-2025-10-18 23:27:22.066 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:22.068 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:22.070 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:22.090 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-18 23:27:22.090 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:22.523 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:22.526 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:22.528 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
-2025-10-18 23:27:22.536 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:22.537 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:27:22.538 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:23.280 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:23.281 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:23.283 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:27:23.283 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:23.289 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:23.291 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:25.158 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:27:25.158 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:27:25.161 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:25.167 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:25.169 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:26.283 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:26.285 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:26.286 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:26.294 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-18 23:27:26.294 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:26.352 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:26.355 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:26.358 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
-2025-10-18 23:27:26.368 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:26.370 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:27:26.370 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:28.059 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:27:28.060 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:27:28.063 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:28.070 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:28.071 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:27:28.072 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:28.082 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:28.086 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:29.711 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:29.712 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:29.714 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:31.415 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:27:31.416 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:27:31.419 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:31.425 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:31.427 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:31.432 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-18 23:27:31.432 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:31.696 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:31.699 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:31.701 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
-2025-10-18 23:27:31.709 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:31.711 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:27:31.711 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:32.670 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:32.672 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:32.673 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:27:32.673 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:32.679 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:32.682 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:35.280 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:27:35.281 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:27:35.284 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:35.291 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:35.292 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:36.673 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:36.675 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:36.676 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:36.684 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-18 23:27:36.684 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:36.750 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:36.752 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:36.755 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
-2025-10-18 23:27:36.764 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:36.766 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:27:36.766 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:38.068 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:27:38.069 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:27:38.072 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:38.079 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:38.080 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:27:38.080 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:38.082 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:38.093 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:39.086 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:39.088 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:39.089 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:40.236 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:27:40.237 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:27:40.240 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:40.246 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:40.248 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:40.253 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-18 23:27:40.254 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:40.326 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:40.329 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:40.338 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
-2025-10-18 23:27:40.351 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
-2025-10-18 23:27:40.358 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:40.364 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:40.366 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:40.368 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:27:40.371 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:40.373 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:40.381 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:42.201 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:27:42.202 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:27:42.204 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:42.211 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:42.212 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:44.371 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:44.372 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:44.373 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:27:44.381 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Running automation actions
-2025-10-18 23:27:44.382 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:44.441 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:44.444 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 3: choice 1: Executing step call service
-2025-10-18 23:27:44.448 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Restarting
-2025-10-18 23:27:44.456 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:44.458 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:27:44.458 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:44.681 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:27:44.682 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:27:44.684 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
-2025-10-18 23:27:44.692 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
-2025-10-18 23:27:44.693 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:27:44.693 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:44.695 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:27:44.699 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
-2025-10-18 23:28:04.050 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Initialized trigger Bedroom Ceiling Lights (3) -> Set My Room
-2025-10-18 23:29:03.711 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:29:03.711 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:29:22.909 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:29:22.910 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:32:14.530 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:33:17.039 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:33:17.048 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Running automation actions
-2025-10-18 23:33:17.049 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Executing step assigning variables
-2025-10-18 23:33:17.052 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Running automation actions
-2025-10-18 23:33:17.058 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Executing step wait for trigger (timeout: 0:00:03)
-2025-10-18 23:33:17.059 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Initialized trigger
-2025-10-18 23:33:17.061 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 23:33:17.062 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 23:33:17.065 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 23:33:17.389 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:33:17.390 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:33:17.547 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-18 23:33:17.548 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:33:17.549 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:33:17.561 ERROR (MainThread) [homeassistant] Error doing job: Task exception was never retrieved (None)
+===== 2025-10-19T22:13:29-05:00 — last 1000 lines =====
+2025-10-19 21:35:28.909 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alexa_media which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-10-19 21:35:28.914 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration custom_icons which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-10-19 21:35:28.919 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2025-10-19 21:35:51.684 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281472976188128] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 26.0.1))
 Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 1472, in async_init
-    subscription("added", flow.flow_id)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/config/config_entries.py", line 396, in async_on_flow_init_remove
-    "flow": hass.config_entries.flow.async_get(flow_id),
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/data_entry_flow.py", line 233, in async_get
-    raise UnknownFlow
-homeassistant.data_entry_flow.UnknownFlow
-2025-10-18 23:33:17.615 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 23:33:17.635 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:33:17.638 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step delay 0:30:00
-2025-10-18 23:33:19.720 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:33:20.061 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Test condition template: False
-2025-10-18 23:33:20.063 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Running automation actions
-2025-10-18 23:33:20.064 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Executing step call service
-2025-10-18 23:33:27.858 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:33:27.867 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Running automation actions
-2025-10-18 23:33:27.868 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Executing step assigning variables
-2025-10-18 23:33:27.871 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Running automation actions
-2025-10-18 23:33:27.872 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Executing step wait for trigger (timeout: 0:00:03)
-2025-10-18 23:33:27.875 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Initialized trigger
-2025-10-18 23:33:27.877 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 23:33:27.878 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 23:33:27.878 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 23:33:29.099 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:33:30.877 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Test condition template: False
-2025-10-18 23:33:30.879 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Running automation actions
-2025-10-18 23:33:30.879 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Executing step call service
-2025-10-18 23:33:45.663 INFO (MainThread) [homeassistant.components.automation.motion_time] Motion Time: Running automation actions
-2025-10-18 23:33:45.663 INFO (MainThread) [homeassistant.components.automation.motion_time] Motion Time: Executing step call service
-2025-10-18 23:34:53.050 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:34:53.059 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Running automation actions
-2025-10-18 23:34:53.060 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Executing step assigning variables
-2025-10-18 23:34:53.063 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Running automation actions
-2025-10-18 23:34:53.064 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Executing step wait for trigger (timeout: 0:00:03)
-2025-10-18 23:34:53.067 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Initialized trigger
-2025-10-18 23:34:53.068 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 23:34:53.070 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 23:34:53.070 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 23:34:55.925 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:34:56.068 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 2: choice 2: Test condition template: False
-2025-10-18 23:34:56.070 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Running automation actions
-2025-10-18 23:34:56.070 INFO (MainThread) [homeassistant.components.automation.testnew_automation] Front Door - Direction Detection: Choose at step 3: default: Executing step call service
-2025-10-18 23:37:21.704 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Restarting
-2025-10-18 23:37:21.712 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-18 23:37:21.715 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Running automation actions
-2025-10-18 23:37:21.716 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
-2025-10-18 23:37:21.748 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
-2025-10-18 23:37:21.770 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 23:37:21.779 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Running automation actions
-2025-10-18 23:37:21.780 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Executing step call service
-2025-10-18 23:40:04.169 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:40:04.178 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 23:40:04.179 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 23:40:04.180 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 23:40:04.651 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-18 23:40:04.653 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Running automation actions
-2025-10-18 23:40:04.654 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:40:04.786 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-18 23:40:04.803 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-18 23:40:04.807 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step delay 0:30:00
-2025-10-18 23:40:05.154 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:40:05.157 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:41:02.514 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Initialized trigger Workday Wake-up / 1am Goodnight
-2025-10-18 23:41:59.345 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:41:59.345 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:42:00.835 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:42:00.835 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:42:09.704 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:42:09.704 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:42:13.646 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:42:13.647 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:42:15.101 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:42:15.101 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:42:16.623 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:42:16.623 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:42:33.079 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:42:33.079 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:43:54.917 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-18 23:43:54.919 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-18 23:43:54.919 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-18 23:43:54.926 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-18 23:43:55.056 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-18 23:43:55.057 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-18 23:49:35.851 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
-2025-10-19 00:03:52.941 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-19 00:03:52.942 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-19 00:07:36.737 ERROR (MainThread) [homeassistant] Error doing job: Task exception was never retrieved (None)
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
+    await func(hass, connection, msg)
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/websocket_api.py", line 246, in websocket_run
+    await pipeline_input.validate()
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 1690, in validate
+    raise PipelineRunValidationError(
+        "the pipeline does not support speech-to-text"
+    )
+homeassistant.components.assist_pipeline.pipeline.PipelineRunValidationError: the pipeline does not support speech-to-text
+2025-10-19 21:35:52.728 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-19 21:35:52.735 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-19 21:35:52.737 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-19 21:35:52.740 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-19 21:35:52.741 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-19 21:35:52.743 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-19 21:35:52.745 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-19 21:35:52.747 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-19 21:35:52.748 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-19 21:35:52.751 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-19 21:35:52.753 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-19 21:35:52.755 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene
+2025-10-19 21:36:06.752 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281472976188128] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 26.0.1))
 Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 1472, in async_init
-    subscription("added", flow.flow_id)
-    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/config/config_entries.py", line 396, in async_on_flow_init_remove
-    "flow": hass.config_entries.flow.async_get(flow_id),
-            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/data_entry_flow.py", line 233, in async_get
-    raise UnknownFlow
-homeassistant.data_entry_flow.UnknownFlow
-2025-10-19 00:08:27.480 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-19 00:08:27.480 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-19 00:08:30.992 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-19 00:08:30.993 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-19 00:10:04.809 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-19 00:13:04.424 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-19 00:13:04.424 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-19 00:17:05.901 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-19 00:17:05.902 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-19 00:17:05.903 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-19 00:17:05.910 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-19 00:18:04.945 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 00:18:21.618 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-19 00:18:21.726 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-19 00:18:21.729 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Running automation actions
-2025-10-19 00:18:21.732 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Executing step call service
-2025-10-19 00:19:47.968 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-19 00:19:47.977 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-19 00:19:47.979 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-19 00:19:47.979 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-19 00:19:48.301 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-19 00:19:48.301 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-19 00:19:48.454 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-19 00:19:48.472 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Running automation actions
-2025-10-19 00:19:48.472 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-19 00:19:48.503 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-19 00:19:48.506 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step delay 0:30:00
-2025-10-19 00:19:48.524 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-19 00:24:25.987 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-19 00:24:25.996 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-19 00:24:25.998 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-19 00:24:25.998 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-19 00:24:36.501 INFO (MainThread) [homeassistant.components.automation.workday_wake_up_1am_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-19 00:24:36.510 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-19 00:24:36.511 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-19 00:24:36.512 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-19 00:32:01.440 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 00:32:30.093 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 00:32:43.593 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 00:33:46.222 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 00:35:53.642 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Initialized trigger Flic Button
-2025-10-19 00:36:54.323 INFO (MainThread) [homeassistant.components.automation.workday_wake_goodnight] Initialized trigger Workday Wake-up / 1am Goodnight
-2025-10-19 00:37:29.957 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: Running automation actions
-2025-10-19 00:37:29.958 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Running automation actions
-2025-10-19 00:37:29.959 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Test door plus motion: If at step 1: Executing step call service
-2025-10-19 00:37:29.969 INFO (MainThread) [homeassistant.components.automation.workday_wake_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-19 00:43:51.367 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Running automation actions
-2025-10-19 00:43:51.368 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Bedroom Ceiling Lights on -> bedroom lamp on: Executing step call service
-2025-10-19 00:45:00.884 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-19 00:45:00.884 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:45:00.969 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:45:01.005 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:45:01.099 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:45:01.173 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:45:01.702 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
-         git config user.name 'Home Assistant' &&
-         git config user.email 'ha@local' &&
-         git -c credential.helper='store --file=/config/.git-credentials' add -A &&
-         (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
-         git -c credential.helper='store --file=/config/.git-credentials' push origin main"
-`, return code: 1
-NoneType: None
-2025-10-19 00:49:48.508 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
-2025-10-19 00:51:35.418 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-19 00:51:35.419 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:51:35.499 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:51:35.538 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:51:35.632 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:51:35.706 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:51:36.215 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
-         git config user.name 'Home Assistant' &&
-         git config user.email 'ha@local' &&
-         git -c credential.helper='store --file=/config/.git-credentials' add -A &&
-         (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
-         git -c credential.helper='store --file=/config/.git-credentials' push origin main"
-`, return code: 1
-NoneType: None
-2025-10-19 00:52:45.073 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-19 00:52:45.074 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:52:45.157 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:52:45.193 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:52:45.289 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:52:45.364 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:52:45.874 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
-         git config user.name 'Home Assistant' &&
-         git config user.email 'ha@local' &&
-         git -c credential.helper='store --file=/config/.git-credentials' add -A &&
-         (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
-         git -c credential.helper='store --file=/config/.git-credentials' push origin main"
-`, return code: 1
-NoneType: None
-2025-10-19 00:56:39.500 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-19 00:56:39.501 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:56:39.582 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:56:39.617 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:56:39.711 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:56:39.787 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 00:56:40.312 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
-         git config user.name 'Home Assistant' &&
-         git config user.email 'ha@local' &&
-         git -c credential.helper='store --file=/config/.git-credentials' add -A &&
-         (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
-         git -c credential.helper='store --file=/config/.git-credentials' push origin main"
-`, return code: 1
-NoneType: None
-2025-10-19 01:00:00.068 INFO (MainThread) [homeassistant.components.automation.workday_wake_goodnight] Workday Wake-up / 1am Goodnight: Running automation actions
-2025-10-19 01:00:00.071 INFO (MainThread) [homeassistant.components.automation.workday_wake_goodnight] Workday Wake-up / 1am Goodnight: Choose at step 1: choice 5: Running automation actions
-2025-10-19 01:00:00.071 INFO (MainThread) [homeassistant.components.automation.workday_wake_goodnight] Workday Wake-up / 1am Goodnight: Choose at step 1: choice 5: Executing step call service
-2025-10-19 01:00:00.572 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
-2025-10-19 01:00:00.730 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-19 01:00:00.733 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Running automation actions
-2025-10-19 01:00:00.734 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Executing step call service
-2025-10-19 01:06:49.062 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-19 01:06:49.063 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:06:49.146 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:06:49.181 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:06:49.276 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:06:49.353 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:06:49.854 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
-         git config user.name 'Home Assistant' &&
-         git config user.email 'ha@local' &&
-         git -c credential.helper='store --file=/config/.git-credentials' add -A &&
-         (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
-         git -c credential.helper='store --file=/config/.git-credentials' push origin main"
-`, return code: 1
-NoneType: None
-2025-10-19 01:10:24.346 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-19 01:10:24.346 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:10:24.427 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:10:24.462 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:10:24.558 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:10:24.634 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:10:25.178 ERROR (MainThread) [homeassistant.components.shell_command] Error running command: `bash -c "cd /config &&
-         git config user.name 'Home Assistant' &&
-         git config user.email 'ha@local' &&
-         git -c credential.helper='store --file=/config/.git-credentials' add -A &&
-         (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
-         git -c credential.helper='store --file=/config/.git-credentials' push origin main"
-`, return code: 1
-NoneType: None
-2025-10-19 01:17:47.246 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-19 01:17:47.247 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:17:47.327 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:17:47.362 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:17:47.457 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:17:47.534 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:18:43.989 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-19 01:18:43.989 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:18:44.070 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:18:44.106 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:18:44.200 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:18:44.277 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:21:33.511 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
-2025-10-19 01:28:55.145 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
-TypeError: e is not an Object. (evaluating '"trigger"in e')
-AutomationConfig,> (src/data/automation.ts:398:19)
-saveAutomationConfig (src/data/automation.ts:379:35)
-ev.stopPropagation (src/panels/config/automation/ha-automation-editor.ts:803:35)
-this (src/lit-html.ts:2109:33)
-dispatchEvent ([native code]::)
-event (src/common/dom/fire_event.ts:75:21)
-this.hass.localize (src/components/ha-yaml-editor.ts:173:14)
-this (src/lit-html.ts:2109:33)
-dispatchEvent ([native code]::)
-event (src/common/dom/fire_event.ts:75:21)
-2025-10-19 01:29:03.676 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Initialized trigger Stamp last motion ON time
-2025-10-19 01:31:48.100 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 01:33:26.984 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 01:34:47.974 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
-TypeError: WeakMap keys must be objects or non-registered symbols
-set ([native code]::)
-ev.stopPropagation (src/panels/config/automation/action/ha-automation-action.ts:353:27)
-this (src/lit-html.ts:2109:33)
-dispatchEvent ([native code]::)
-event (src/common/dom/fire_event.ts:75:21)
-save (src/panels/config/automation/action/ha-automation-action-row.ts:704:18)
-_yamlChangedSidebar (src/panels/config/automation/sidebar/ha-automation-sidebar-action.ts:315:24)
-this (src/lit-html.ts:2109:33)
-dispatchEvent ([native code]::)
-event (src/common/dom/fire_event.ts:75:21)
-2025-10-19 01:34:54.494 ERROR (MainThread) [frontend.js.modern.202509035] Uncaught error from WebKit 605.1.15 on iOS 18.7
-TypeError: WeakMap keys must be objects or non-registered symbols
-set ([native code]::)
-ev.stopPropagation (src/panels/config/automation/action/ha-automation-action.ts:353:27)
-this (src/lit-html.ts:2109:33)
-dispatchEvent ([native code]::)
-event (src/common/dom/fire_event.ts:75:21)
-save (src/panels/config/automation/action/ha-automation-action-row.ts:704:18)
-_yamlChangedSidebar (src/panels/config/automation/sidebar/ha-automation-sidebar-action.ts:315:24)
-this (src/lit-html.ts:2109:33)
-dispatchEvent ([native code]::)
-event (src/common/dom/fire_event.ts:75:21)
-2025-10-19 01:36:30.321 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 01:37:42.482 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 01:38:54.428 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 01:41:45.814 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 01:41:57.840 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Initialized trigger Stamp last motion ON time
-2025-10-19 01:43:49.273 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 01:45:48.750 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-19 01:45:48.750 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:45:48.833 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:45:48.869 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:45:48.964 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:45:49.042 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:51:46.482 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 01:52:25.297 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 01:52:36.810 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-19 01:52:36.811 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:52:36.892 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:52:36.928 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:52:37.023 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:52:37.099 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:54:22.533 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 01:55:07.272 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Initialized trigger Stamp last motion ON time
-2025-10-19 01:55:12.611 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-19 01:55:12.611 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:55:12.693 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:55:12.729 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:55:12.824 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 01:55:12.902 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 02:00:00.263 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions
-2025-10-19 02:00:00.264 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service
-2025-10-19 02:00:00.265 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-19 02:00:00.266 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 02:00:00.351 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 02:00:00.387 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 02:00:00.406 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Running automation actions
-2025-10-19 02:00:00.408 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 3: Running automation actions
-2025-10-19 02:00:00.410 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 3: If at step 1: Running automation actions
-2025-10-19 02:00:00.413 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 3: If at step 1: Executing step call service
-2025-10-19 02:00:00.486 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 02:00:00.563 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 02:02:59.539 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Initialized trigger Stamp last motion ON time
-2025-10-19 02:05:07.299 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Initialized trigger Stamp last motion ON time
-2025-10-19 02:06:52.510 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 02:08:13.517 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
-2025-10-19 02:08:40.849 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
-2025-10-19 02:08:40.850 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 02:08:40.931 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
-2025-10-19 02:08:40.967 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
+    await func(hass, connection, msg)
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/websocket_api.py", line 246, in websocket_run
+    await pipeline_input.validate()
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 1690, in validate
+    raise PipelineRunValidationError(
+        "the pipeline does not support speech-to-text"
+    )
+homeassistant.components.assist_pipeline.pipeline.PipelineRunValidationError: the pipeline does not support speech-to-text
+2025-10-19 21:36:16.280 INFO (MainThread) [homeassistant.components.scene] Setting up hue.scene
+2025-10-19 21:36:40.738 INFO (MainThread) [homeassistant.core] Starting Home Assistant 2025.9.4
+2025-10-19 21:36:47.076 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Initialized trigger Flic Button
+2025-10-19 21:36:47.077 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_on_bedroom_lamp_on] Initialized trigger Bedroom Ceiling Lights on -> bedroom lamp on
+2025-10-19 21:36:47.084 INFO (MainThread) [homeassistant.components.automation.workday_wake_goodnight] Initialized trigger Workday Wake-up / 1am Goodnight
+2025-10-19 21:36:47.091 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Initialized trigger Living Room Lamp
+2025-10-19 21:36:47.093 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Initialized trigger Nightly GitHub sync
+2025-10-19 21:36:47.094 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Initialized trigger Bedroom Ceiling Lights (3) -> Set My Room
+2025-10-19 21:36:47.103 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Initialized trigger Hue Dimmer Switch
+2025-10-19 21:36:47.106 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations 
+2025-10-19 21:36:47.107 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Initialized trigger Closet light -> bathroom light
+2025-10-19 21:36:47.125 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat
+2025-10-19 21:36:47.126 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 21:36:47.127 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Initialized trigger Stamp last motion ON time
+2025-10-19 21:37:22.756 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281472313616128] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 26.0.1))
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
+    await func(hass, connection, msg)
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/websocket_api.py", line 246, in websocket_run
+    await pipeline_input.validate()
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 1690, in validate
+    raise PipelineRunValidationError(
+        "the pipeline does not support speech-to-text"
+    )
+homeassistant.components.assist_pipeline.pipeline.PipelineRunValidationError: the pipeline does not support speech-to-text
+2025-10-19 21:39:13.143 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281472310785216] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 26.0.1))
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
+    await func(hass, connection, msg)
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/websocket_api.py", line 246, in websocket_run
+    await pipeline_input.validate()
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 1690, in validate
+    raise PipelineRunValidationError(
+        "the pipeline does not support speech-to-text"
+    )
+homeassistant.components.assist_pipeline.pipeline.PipelineRunValidationError: the pipeline does not support speech-to-text
+2025-10-19 21:49:26.405 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 21:51:52.655 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 21:52:20.989 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-19 21:52:21.000 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Running automation actions
+2025-10-19 21:52:21.001 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Executing step call service
+2025-10-19 21:52:42.935 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
+2025-10-19 21:52:42.938 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Running automation actions
+2025-10-19 21:52:42.938 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
+2025-10-19 21:52:43.049 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step call service
+2025-10-19 21:52:43.059 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 1: Executing step delay 0:30:00
+2025-10-19 21:53:28.866 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Restarting
+2025-10-19 21:53:28.873 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Running automation actions
+2025-10-19 21:53:28.876 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Running automation actions
+2025-10-19 21:53:28.877 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
+2025-10-19 21:53:28.922 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-19 21:53:28.927 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Running automation actions
+2025-10-19 21:53:28.933 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights off & (night time or >30% cloud coverage) - lamp on : Executing step call service
+2025-10-19 21:53:28.975 INFO (MainThread) [homeassistant.components.automation.closet_light_bathroom_light] Closet light -> bathroom light: Choose at step 1: choice 2: Executing step call service
+2025-10-19 21:53:57.343 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Initialized trigger Flic Button
+2025-10-19 21:55:46.516 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 21:57:05.841 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 21:58:07.430 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Test door plus motion
+2025-10-19 21:58:25.576 INFO (MainThread) [homeassistant.components.automation.test_door_plus_motion] Initialized trigger Workday Door plus motion
+2025-10-19 22:03:30.243 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281472299006880] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 26.0.1))
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
+    await func(hass, connection, msg)
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/websocket_api.py", line 246, in websocket_run
+    await pipeline_input.validate()
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 1690, in validate
+    raise PipelineRunValidationError(
+        "the pipeline does not support speech-to-text"
+    )
+homeassistant.components.assist_pipeline.pipeline.PipelineRunValidationError: the pipeline does not support speech-to-text
+2025-10-19 22:06:51.876 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281472284630432] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 26.0.1))
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
+    await func(hass, connection, msg)
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/websocket_api.py", line 246, in websocket_run
+    await pipeline_input.validate()
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 1690, in validate
+    raise PipelineRunValidationError(
+        "the pipeline does not support speech-to-text"
+    )
+homeassistant.components.assist_pipeline.pipeline.PipelineRunValidationError: the pipeline does not support speech-to-text
+2025-10-19 22:09:52.788 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281472284634752] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 26.0.1))
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
+    await func(hass, connection, msg)
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/websocket_api.py", line 246, in websocket_run
+    await pipeline_input.validate()
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 1690, in validate
+    raise PipelineRunValidationError(
+        "the pipeline does not support speech-to-text"
+    )
+homeassistant.components.assist_pipeline.pipeline.PipelineRunValidationError: the pipeline does not support speech-to-text
+2025-10-19 22:13:23.953 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281472284481216] Error handling message: Unknown error (unknown_error) Blake Foster from 192.168.1.65 (Home Assistant/2025.10.0 (io.robbie.HomeAssistant; build:2025.1443; iOS 26.0.1))
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/websocket_api/decorators.py", line 28, in _handle_async_response
+    await func(hass, connection, msg)
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/websocket_api.py", line 246, in websocket_run
+    await pipeline_input.validate()
+  File "/usr/src/homeassistant/homeassistant/components/assist_pipeline/pipeline.py", line 1690, in validate
+    raise PipelineRunValidationError(
+        "the pipeline does not support speech-to-text"
+    )
+homeassistant.components.assist_pipeline.pipeline.PipelineRunValidationError: the pipeline does not support speech-to-text
+2025-10-19 22:13:28.971 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-19 22:13:28.972 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 22:13:29.075 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-19 22:13:29.127 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
