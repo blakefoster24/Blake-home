@@ -166,6 +166,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle |
 
+| `input_boolean.music_test` | Music Test |
+
 | `input_boolean.workday_today_toggle` | Workday Today Toggle |
 
 | `input_boolean.workday_toggle_helper` | General Toggle Helper |

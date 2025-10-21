@@ -23,6 +23,11 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
+| `input_boolean.music_test` | Music Test |  |
+
+
+
+
 | `input_boolean.workday_today_toggle` | Workday Today Toggle |  |
 
 
@@ -94,4 +99,4 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 ---
-_Generated: 2025-10-20T02:00:00.480314-05:00_
+_Generated: 2025-10-21T02:00:00.473989-05:00_
