@@ -22,6 +22,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.stamp_last_motion_on_time` | Stamp last motion ON time |
 
+| `automation.test_bay` | Test Bay |
+
 | `automation.test_door_plus_motion` | Workday Door + Motion |
 
 | `automation.thermostat` | Thermostat |
@@ -165,8 +167,6 @@ Auto-generated list of entities. Safe to publish.
 | `input_boolean.alexa_helper` | Alexa Helper |
 
 | `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle |
-
-| `input_boolean.music_test` | Music Test |
 
 | `input_boolean.workday_today_toggle` | Workday Today Toggle |
 

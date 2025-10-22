@@ -178,7 +178,7 @@
       - action: media_player.volume_set
         metadata: {}
         data:
-          volume_level: 0.35
+          volume_level: 0.3
         target:
           entity_id: media_player.blake_s_echo_pop
       - action: input_boolean.turn_on
@@ -186,6 +186,11 @@
         data: {}
         target:
           entity_id: input_boolean.alexa_helper
+        enabled: false
+      - action: media_player.media_play
+        target:
+          entity_id: media_player.everywhere
+        data: {}
     - conditions:
       - condition: trigger
         id:
@@ -200,6 +205,11 @@
           after: 08:00:00
           before: 09:30:00
       sequence:
+      - action: media_player.media_pause
+        metadata: {}
+        data: {}
+        target:
+          entity_id: media_player.everywhere
       - action: scene.turn_on
         metadata: {}
         data: {}
@@ -232,11 +242,6 @@
         data: {}
         target:
           entity_id: scene.goodnight_scene
-  - action: input_boolean.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: input_boolean.alexa_helper
   mode: parallel
 - id: '1758990657332'
   alias: Living Room Lamp
@@ -945,4 +950,29 @@
           datetime: ''
         target:
           entity_id: input_datetime.last_motion_on
+  mode: single
+- id: '1761047102816'
+  alias: Test Bay
+  description: ''
+  triggers:
+  - trigger: event
+    event_type: ''
+  conditions: []
+  actions:
+  - action: media_player.volume_set
+    metadata: {}
+    data:
+      volume_level: 0.3
+    target:
+      entity_id: media_player.blake_s_echo_pop
+  - action: media_player.media_play
+    target:
+      entity_id: media_player.everywhere
+    data: {}
+  - action: media_player.media_pause
+    metadata: {}
+    data: {}
+    target:
+      entity_id:
+      - media_player.everywhere
   mode: single
