@@ -175,22 +175,29 @@
           in ['unavailable', 'unknown']\n   or (as_timestamp(now()) - as_timestamp(s.last_changed))
           > 3600 }}\n"
       sequence:
-      - action: media_player.volume_set
-        metadata: {}
-        data:
-          volume_level: 0.3
-        target:
-          entity_id: media_player.blake_s_echo_pop
-      - action: input_boolean.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.alexa_helper
-        enabled: false
-      - action: media_player.media_play
-        target:
-          entity_id: media_player.everywhere
-        data: {}
+      - sequence:
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.2
+          target:
+            entity_id: media_player.everywhere
+        - action: media_player.shuffle_set
+          target:
+            entity_id:
+            - media_player.everywhere
+          data:
+            shuffle: true
+        - action: media_player.media_next_track
+          metadata: {}
+          data: {}
+          target:
+            entity_id: media_player.everywhere
+        - action: media_player.media_play
+          target:
+            entity_id: media_player.everywhere
+          data: {}
+        alias: Play Music Alexa
     - conditions:
       - condition: trigger
         id:
@@ -205,33 +212,26 @@
           after: 08:00:00
           before: 09:30:00
       sequence:
-      - action: media_player.media_pause
-        metadata: {}
-        data: {}
-        target:
-          entity_id: media_player.everywhere
       - action: scene.turn_on
         metadata: {}
         data: {}
         target:
           entity_id: scene.all_off
-      - action: input_boolean.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.alexa_helper
-      - action: input_boolean.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.im_awake_toggle_helper
-      - action: media_player.volume_set
-        metadata: {}
-        data:
-          volume_level: 0.45
-        target:
-          entity_id:
-          - media_player.blake_s_echo_pop
+      - sequence:
+        - action: media_player.media_pause
+          metadata: {}
+          data: {}
+          target:
+            entity_id:
+            - media_player.everywhere
+          enabled: true
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.4
+          target:
+            entity_id: media_player.everywhere
+        alias: 'Pause and Reset Volume on Alexa '
     - conditions:
       - condition: trigger
         id:
@@ -829,105 +829,71 @@
   - condition: state
     entity_id: input_boolean.workday_today_toggle
     state: 'on'
+  - condition: not
+    conditions:
+    - condition: time
+      after: '19:00:00'
+      before: '22:00:00'
   actions:
-  - choose:
-    - conditions:
-      - condition: time
-        before: 08:00:00
-        after: 05:00:00
-      sequence:
-      - if:
-        - condition: template
-          value_template: "{% set motion_state = states('input_datetime.last_motion_on')
-            %} {% if motion_state in ['unknown', 'unavailable', ''] %}\n  {{ false
-            }}\n{% else %}\n  {% set door_ts = as_timestamp(trigger.to_state.last_changed)
-            %}\n  {% set motion_ts = as_timestamp(motion_state) %}\n  {{ 1 <= (door_ts
-            - motion_ts) <= 900 }}\n{% endif %}\n"
-        then:
-        - action: scene.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: scene.all_off
-        else:
-        - action: scene.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: scene.new_scene
-        - action: media_player.play_media
-          metadata: {}
-          data:
-            media:
-              media_content_id: '837'
-              media_content_type: app
-              metadata:
-                title: YouTube
-                thumbnail: http://192.168.1.68:8060/query/icon/837
-                media_class: app
-                children_media_class:
-                navigateIds:
-                - {}
-                - media_content_type: apps
-                  media_content_id: ''
-                browse_entity_id: media_player.bedroom_tv
-          target:
-            entity_id: media_player.bedroom_tv
-    - conditions:
-      - condition: time
-        after: '16:30:00'
-        before: '19:00:00'
-      sequence:
-      - if:
-        - condition: template
-          value_template: "{% set motion_state = states('input_datetime.last_motion_on')
-            %} {% if motion_state in ['unknown', 'unavailable', ''] %}\n  {{ false
-            }}\n{% else %}\n  {% set door_ts = as_timestamp(trigger.to_state.last_changed)
-            %}\n  {% set motion_ts = as_timestamp(motion_state) %}\n  {{ 1 <= (door_ts
-            - motion_ts) <= 900 }}\n{% endif %}\n"
-        then:
-        - action: scene.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: scene.all_off
-        else:
-        - action: scene.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: scene.new_scene
-        - action: media_player.play_media
-          metadata: {}
-          data:
-            media:
-              media_content_id: '837'
-              media_content_type: app
-              metadata:
-                title: YouTube
-                thumbnail: http://192.168.1.68:8060/query/icon/837
-                media_class: app
-                children_media_class:
-                navigateIds:
-                - {}
-                - media_content_type: apps
-                  media_content_id: ''
-                browse_entity_id: media_player.bedroom_tv
-          target:
-            entity_id: media_player.bedroom_tv
+  - if:
+    - condition: template
+      value_template: "{% set motion_ts = state_attr('input_datetime.last_motion_on',
+        'timestamp') %}\n{% if motion_ts is number %}\n  {% set door_ts = as_timestamp(trigger.to_state.last_changed)
+        %}\n  {{ 1 <= (door_ts - motion_ts) <= 900 }}\n{% else %}\n  false\n{% endif
+        %}"
+    then:
+    - action: scene.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: scene.all_off
+    else:
+    - action: scene.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: scene.new_scene
+    - action: media_player.play_media
+      metadata: {}
+      data:
+        media:
+          media_content_id: '837'
+          media_content_type: app
+          metadata:
+            title: YouTube
+            thumbnail: http://192.168.1.68:8060/query/icon/837
+            media_class: app
+            children_media_class:
+            navigateIds:
+            - {}
+            - media_content_type: apps
+              media_content_id: ''
+            browse_entity_id: media_player.bedroom_tv
+      target:
+        entity_id: media_player.bedroom_tv
   mode: single
-- id: '1760855339342'
-  alias: Stamp last motion ON time
-  description: Update or clear helper when motion changes
+- id: '1761047102816'
+  alias: Test Bay
+  description: ''
   triggers:
-  - entity_id: binary_sensor.motion_1_motion
+  - trigger: event
+    event_type: ''
+  conditions: []
+  actions: []
+  mode: single
+- id: '1761198863619'
+  alias: Stamp last motion ON time
+  description: Stamp helper on ON; clear to epoch on OFF
+  triggers:
+  - id: motion_on
+    entity_id: binary_sensor.motion_1_motion
     to: 'on'
-    id: motion_on
     trigger: state
-  - entity_id: binary_sensor.motion_1_motion
+  - id: motion_off
+    entity_id: binary_sensor.motion_1_motion
     to: 'off'
-    id: motion_off
     trigger: state
+  conditions: []
   actions:
   - choose:
     - conditions:
@@ -937,7 +903,7 @@
       - action: input_datetime.set_datetime
         metadata: {}
         data:
-          datetime: '{{ now().isoformat() }}'
+          timestamp: '{{ now().timestamp() | int }}'
         target:
           entity_id: input_datetime.last_motion_on
     - conditions:
@@ -947,32 +913,7 @@
       - action: input_datetime.set_datetime
         metadata: {}
         data:
-          datetime: ''
+          timestamp: 0
         target:
           entity_id: input_datetime.last_motion_on
-  mode: single
-- id: '1761047102816'
-  alias: Test Bay
-  description: ''
-  triggers:
-  - trigger: event
-    event_type: ''
-  conditions: []
-  actions:
-  - action: media_player.volume_set
-    metadata: {}
-    data:
-      volume_level: 0.3
-    target:
-      entity_id: media_player.blake_s_echo_pop
-  - action: media_player.media_play
-    target:
-      entity_id: media_player.everywhere
-    data: {}
-  - action: media_player.media_pause
-    metadata: {}
-    data: {}
-    target:
-      entity_id:
-      - media_player.everywhere
-  mode: single
+  mode: restart
