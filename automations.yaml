@@ -48,7 +48,7 @@
         metadata: {}
         data: {}
         target:
-          entity_id: scene.new_scene
+          entity_id: scene.all_lights
     - conditions:
       - condition: trigger
         id:
@@ -60,22 +60,6 @@
         target:
           entity_id: scene.all_off
   mode: single
-- id: '1758494538482'
-  alias: Bedroom Ceiling Lights on -> bedroom lamp on
-  description: ''
-  triggers:
-  - trigger: state
-    entity_id:
-    - light.bedroom_ceiling_lights
-    to: 'on'
-  conditions: []
-  actions:
-  - action: scene.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: scene.full_lamp
-  mode: single
 - id: '1758599987280'
   alias: Workday Wake-up / 1am Goodnight
   description: ''
@@ -84,8 +68,8 @@
     at: 08:40:00
     id: 8:40am Time Trigger
   - trigger: time
-    at: 09:00:00
-    id: 9am
+    at: 08:55:00
+    id: 8:55am
   - trigger: time
     at: 09:29:00
     id: '9:29'
@@ -161,7 +145,7 @@
     - conditions:
       - condition: trigger
         id:
-        - 9am
+        - 8:55am
       - condition: and
         conditions:
         - condition: state
@@ -175,11 +159,12 @@
           in ['unavailable', 'unknown']\n   or (as_timestamp(now()) - as_timestamp(s.last_changed))
           > 3600 }}\n"
       sequence:
-      - sequence:
+      - alias: Play Music Alexa
+        sequence:
         - action: media_player.volume_set
           metadata: {}
           data:
-            volume_level: 0.2
+            volume_level: 0.15
           target:
             entity_id: media_player.everywhere
         - action: media_player.shuffle_set
@@ -197,7 +182,6 @@
           target:
             entity_id: media_player.everywhere
           data: {}
-        alias: Play Music Alexa
     - conditions:
       - condition: trigger
         id:
@@ -723,6 +707,11 @@
     - light.closet_light
     to: 'off'
     id: Closet light off
+  - trigger: state
+    entity_id:
+    - light.bedroom_ceiling_lights
+    to: 'on'
+    id: Bedroom Lights
   conditions: []
   actions:
   - choose:
@@ -772,6 +761,16 @@
         data: {}
         target:
           entity_id: input_boolean.workday_toggle_helper
+    - conditions:
+      - condition: trigger
+        id:
+        - Bedroom Lights
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.full_lamp
   mode: restart
 - id: '1760424497591'
   alias: Thermostat
@@ -826,21 +825,18 @@
     to: 'on'
     trigger: state
   conditions:
-  - condition: state
-    entity_id: input_boolean.workday_today_toggle
-    state: 'on'
   - condition: not
     conditions:
-    - condition: time
-      after: '19:00:00'
-      before: '22:00:00'
+    - condition: template
+      value_template: '{{ states(''sensor.blakes_iphone_battery_state'') | lower in
+        [''charging'', ''full'', ''not_charging''] }}'
   actions:
   - if:
     - condition: template
       value_template: "{% set motion_ts = state_attr('input_datetime.last_motion_on',
         'timestamp') %}\n{% if motion_ts is number %}\n  {% set door_ts = as_timestamp(trigger.to_state.last_changed)
         %}\n  {{ 1 <= (door_ts - motion_ts) <= 900 }}\n{% else %}\n  false\n{% endif
-        %}"
+        %}               "
     then:
     - action: scene.turn_on
       metadata: {}
@@ -852,7 +848,7 @@
       metadata: {}
       data: {}
       target:
-        entity_id: scene.new_scene
+        entity_id: scene.all_lights
     - action: media_player.play_media
       metadata: {}
       data:

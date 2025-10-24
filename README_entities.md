@@ -8,13 +8,13 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.bedroom_ceiling_lights_3_set_my_room` | Bedroom Ceiling Lights (3) -> Set My Room |
 
-| `automation.bedroom_ceiling_lights_on_bedroom_lamp_on` | Bedroom Ceiling Lights on -> bedroom lamp on |
-
-| `automation.closet_light_bathroom_light` | Closet light -> bathroom light |
+| `automation.door_automation` | Door Automation |
 
 | `automation.flic_butttons` | Flic Button |
 
 | `automation.hue_dimmer_switch` | Hue Dimmer Switch |
+
+| `automation.light_triggers_another_light` | Light Triggers another Light |
 
 | `automation.living_room_lamp` | Living Room Lamp |
 
@@ -23,8 +23,6 @@ Auto-generated list of entities. Safe to publish.
 | `automation.stamp_last_motion_on_time` | Stamp last motion ON time |
 
 | `automation.test_bay` | Test Bay |
-
-| `automation.test_door_plus_motion` | Workday Door + Motion |
 
 | `automation.thermostat` | Thermostat |
 
