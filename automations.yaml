@@ -913,3 +913,59 @@
         target:
           entity_id: input_datetime.last_motion_on
   mode: restart
+- id: '1761312420129'
+  alias: 'Battery automation '
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.blakes_iphone_battery_level
+    below: 100
+    id: iPhone battery
+  - trigger: numeric_state
+    entity_id:
+    - sensor.ipad_battery_level
+    below: 10
+    id: iPad battery
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - iPhone battery
+      sequence:
+      - repeat:
+          count: 2
+          sequence:
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 1
+              milliseconds: 0
+          - action: light.turn_on
+            metadata: {}
+            data:
+              flash: short
+            target:
+              entity_id: light.bedroom_lamp
+    - conditions:
+      - condition: trigger
+        id:
+        - iPad battery
+      sequence:
+      - repeat:
+          count: 3
+          sequence:
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 1
+              milliseconds: 0
+          - action: light.turn_on
+            metadata: {}
+            data:
+              flash: short
+            target:
+              entity_id: light.bedroom_lamp
+  mode: single
