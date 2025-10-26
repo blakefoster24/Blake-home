@@ -201,21 +201,19 @@
         data: {}
         target:
           entity_id: scene.all_off
-      - sequence:
-        - action: media_player.media_pause
+      - alias: 'Pause and Reset Volume on Alexa '
+        sequence:
+        - action: media_player.media_stop
           metadata: {}
           data: {}
           target:
-            entity_id:
-            - media_player.everywhere
-          enabled: true
+            entity_id: media_player.everywhere
         - action: media_player.volume_set
           metadata: {}
           data:
             volume_level: 0.4
           target:
             entity_id: media_player.everywhere
-        alias: 'Pause and Reset Volume on Alexa '
     - conditions:
       - condition: trigger
         id:
@@ -825,18 +823,33 @@
     to: 'on'
     trigger: state
   conditions:
-  - condition: not
+  - condition: or
     conditions:
-    - condition: template
-      value_template: '{{ states(''sensor.blakes_iphone_battery_state'') | lower in
-        [''charging'', ''full'', ''not_charging''] }}'
+    - condition: not
+      conditions:
+      - condition: template
+        value_template: '{{ states(''sensor.blakes_iphone_battery_state'') | lower
+          in [''charging'', ''full''] }}'
+    - condition: and
+      conditions:
+      - condition: template
+        value_template: '{{ states(''sensor.blakes_iphone_battery_state'') | lower
+          in [''charging'', ''full''] }}'
+      - condition: numeric_state
+        entity_id: input_number.phone_charging_distance
+        above: 0.1
+        below: 100
   actions:
   - if:
     - condition: template
-      value_template: "{% set motion_ts = state_attr('input_datetime.last_motion_on',
-        'timestamp') %}\n{% if motion_ts is number %}\n  {% set door_ts = as_timestamp(trigger.to_state.last_changed)
-        %}\n  {{ 1 <= (door_ts - motion_ts) <= 900 }}\n{% else %}\n  false\n{% endif
-        %}               "
+      value_template: '{% set motion_ts = state_attr(''input_datetime.last_motion_on'',''timestamp'')
+        %}
+
+        {% set door_ts = as_timestamp(trigger.to_state.last_changed) if trigger is
+        defined else now().timestamp() %}
+
+        {{ motion_ts is number and motion_ts > 0 and motion_ts <= (door_ts - 0.5)
+        }}'
     then:
     - action: scene.turn_on
       metadata: {}
@@ -881,20 +894,23 @@
   alias: Stamp last motion ON time
   description: Stamp helper on ON; clear to epoch on OFF
   triggers:
-  - id: motion_on
-    entity_id: binary_sensor.motion_1_motion
+  - trigger: state
+    entity_id:
+    - binary_sensor.motion_1_motion
     to: 'on'
-    trigger: state
-  - id: motion_off
-    entity_id: binary_sensor.motion_1_motion
+    id: Motion
+  - trigger: state
+    entity_id:
+    - binary_sensor.motion_1_motion
     to: 'off'
-    trigger: state
+    id: Clear
   conditions: []
   actions:
   - choose:
     - conditions:
       - condition: trigger
-        id: motion_on
+        id:
+        - Motion
       sequence:
       - action: input_datetime.set_datetime
         metadata: {}
@@ -904,7 +920,8 @@
           entity_id: input_datetime.last_motion_on
     - conditions:
       - condition: trigger
-        id: motion_off
+        id:
+        - Clear
       sequence:
       - action: input_datetime.set_datetime
         metadata: {}
@@ -968,4 +985,33 @@
               flash: short
             target:
               entity_id: light.bedroom_lamp
+  mode: single
+- id: '1761431556805'
+  alias: Stamp Phone Plugged-In Distance
+  triggers:
+  - entity_id: sensor.blakes_iphone_battery_state
+    trigger: state
+  conditions:
+  - condition: template
+    value_template: '{{ states(''sensor.blakes_iphone_battery_state'') in [''Charging'',''Full'']
+      }}'
+  actions:
+  - action: notify.mobile_app_blakes_iphone
+    data:
+      message: request_location_update
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 2
+      milliseconds: 0
+  - variables:
+      miles: '{% set km = distance(''device_tracker.blakes_iphone'',''zone.home'')
+        %} {{ ((km if km is number else 0) * 0.621371) | float(0) | round(3) }}
+
+        '
+  - action: input_number.set_value
+    target:
+      entity_id: input_number.phone_charging_distance
+    data:
+      value: '{{ miles }}'
   mode: single

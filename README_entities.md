@@ -22,6 +22,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.nightly_github_sync` | Nightly GitHub sync |
 
+| `automation.stamp_distance_phone_plugged_in` | Stamp Distance | Phone -> Plugged In |
+
 | `automation.stamp_last_motion_on_time` | Stamp last motion ON time |
 
 | `automation.test_bay` | Test Bay |
@@ -181,6 +183,14 @@ Auto-generated list of entities. Safe to publish.
 |---|---|
 
 | `input_datetime.last_motion_on` | Last motion on |
+
+
+
+## Input_number
+| Entity ID | Name |
+|---|---|
+
+| `input_number.phone_charging_distance` | Phone -> charging | distance  |
 
 
 
