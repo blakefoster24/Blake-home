@@ -161,27 +161,57 @@
       sequence:
       - alias: Play Music Alexa
         sequence:
+        - action: media_player.volume_mute
+          metadata: {}
+          data:
+            is_volume_muted: true
+          target:
+            entity_id: media_player.everywhere
+        - action: media_player.shuffle_set
+          metadata: {}
+          data:
+            shuffle: true
+          target:
+            entity_id: media_player.everywhere
+        - action: media_player.media_next_track
+          metadata: {}
+          data: {}
+          target:
+            entity_id: media_player.everywhere
+          enabled: true
+        - if:
+          - condition: state
+            entity_id: media_player.everywhere
+            state: playing
+          then: []
+          else:
+          - action: media_player.play_media
+            metadata: {}
+            data:
+              media:
+                media_content_id: music alarm
+                media_content_type: routine
+            target:
+              entity_id:
+              - media_player.blake_s_echo_pop
+          - action: media_player.shuffle_set
+            metadata: {}
+            data:
+              shuffle: true
+            target:
+              entity_id: media_player.everywhere
         - action: media_player.volume_set
           metadata: {}
           data:
             volume_level: 0.15
           target:
             entity_id: media_player.everywhere
-        - action: media_player.shuffle_set
-          target:
-            entity_id:
-            - media_player.everywhere
-          data:
-            shuffle: true
-        - action: media_player.media_next_track
+        - action: media_player.volume_mute
           metadata: {}
-          data: {}
+          data:
+            is_volume_muted: false
           target:
-            entity_id: media_player.everywhere
-        - action: media_player.media_play
-          target:
-            entity_id: media_player.everywhere
-          data: {}
+            entity_id: media_player.blake_s_echo_pop
     - conditions:
       - condition: trigger
         id:
