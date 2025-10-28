@@ -14,6 +14,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.flic_butttons` | Flic Button |
 
+| `automation.goodnight` | Goodnight |
+
 | `automation.hue_dimmer_switch` | Hue Dimmer Switch |
 
 | `automation.light_triggers_another_light` | Light Triggers another Light |
@@ -32,7 +34,7 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.work_schedule_automations` | Work Schedule Automations |
 
-| `automation.workday_wake_goodnight` | Workday Wake-up / 1am Goodnight |
+| `automation.workday_wake_up` | Workday Wake-up |
 
 
 
@@ -59,8 +61,6 @@ Auto-generated list of entities. Safe to publish.
 | `binary_sensor.fan_outlet_cloud_connection` | Fan Outlet Cloud connection |
 
 | `binary_sensor.front_door` | Front door |
-
-| `binary_sensor.home_assistant_matter_hub_running` | Home-Assistant-Matter-Hub Running |
 
 | `binary_sensor.main_lights_cloud_connection` | Main Lights Cloud connection |
 

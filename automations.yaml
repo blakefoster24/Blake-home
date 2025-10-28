@@ -61,7 +61,7 @@
           entity_id: scene.all_off
   mode: single
 - id: '1758599987280'
-  alias: Workday Wake-up / 1am Goodnight
+  alias: Workday Wake-up
   description: ''
   triggers:
   - trigger: time
@@ -73,9 +73,6 @@
   - trigger: time
     at: 09:29:00
     id: '9:29'
-  - trigger: time
-    at: 01:00:00
-    id: 1am goodnight
   - trigger: state
     entity_id:
     - binary_sensor.front_door
@@ -161,16 +158,10 @@
       sequence:
       - alias: Play Music Alexa
         sequence:
-        - action: media_player.volume_mute
+        - action: media_player.volume_set
           metadata: {}
           data:
-            is_volume_muted: true
-          target:
-            entity_id: media_player.everywhere
-        - action: media_player.shuffle_set
-          metadata: {}
-          data:
-            shuffle: true
+            volume_level: 0.01
           target:
             entity_id: media_player.everywhere
         - action: media_player.media_next_track
@@ -179,12 +170,24 @@
           target:
             entity_id: media_player.everywhere
           enabled: true
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 5
+            milliseconds: 0
         - if:
           - condition: state
             entity_id: media_player.everywhere
             state: playing
           then: []
           else:
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.01
+            target:
+              entity_id:
+              - media_player.blake_s_echo_pop
           - action: media_player.play_media
             metadata: {}
             data:
@@ -194,24 +197,84 @@
             target:
               entity_id:
               - media_player.blake_s_echo_pop
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.01
+            target:
+              entity_id: media_player.everywhere
           - action: media_player.shuffle_set
             metadata: {}
             data:
               shuffle: true
+          - action: media_player.media_next_track
+            metadata: {}
+            data: {}
             target:
               entity_id: media_player.everywhere
-        - action: media_player.volume_set
-          metadata: {}
-          data:
-            volume_level: 0.15
-          target:
-            entity_id: media_player.everywhere
-        - action: media_player.volume_mute
-          metadata: {}
-          data:
-            is_volume_muted: false
-          target:
-            entity_id: media_player.blake_s_echo_pop
+            enabled: true
+        - alias: Incrementally raise volume
+          sequence:
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.02
+            target:
+              entity_id: media_player.everywhere
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.05
+            target:
+              entity_id: media_player.everywhere
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.1
+            target:
+              entity_id: media_player.everywhere
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.12
+            target:
+              entity_id: media_player.everywhere
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.15
+            target:
+              entity_id: media_player.everywhere
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.bedroom_ceiling_lights
     - conditions:
       - condition: trigger
         id:
@@ -244,16 +307,6 @@
             volume_level: 0.4
           target:
             entity_id: media_player.everywhere
-    - conditions:
-      - condition: trigger
-        id:
-        - 1am goodnight
-      sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.goodnight_scene
   mode: parallel
 - id: '1758990657332'
   alias: Living Room Lamp
@@ -917,8 +970,17 @@
   triggers:
   - trigger: event
     event_type: ''
+    id: Manual trigger
   conditions: []
-  actions: []
+  actions:
+  - action: automation.trigger
+    target:
+      entity_id: automation.workday_wake_up
+    data:
+      skip_condition: true
+      variables:
+        trigger:
+          id: 8:55am
   mode: single
 - id: '1761198863619'
   alias: Stamp last motion ON time
@@ -1044,4 +1106,34 @@
       entity_id: input_number.phone_charging_distance
     data:
       value: '{{ miles }}'
+  mode: single
+- id: '1761579203292'
+  alias: Goodnight
+  description: ''
+  triggers:
+  - trigger: time
+    at: 01:00:00
+  - trigger: state
+    entity_id:
+    - media_player.bedroom_tv
+    to: idle
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+  conditions:
+  - condition: time
+    after: '21:00:00'
+    before: 06:00:00
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: media_player.bedroom_tv
+      state: playing
+  actions:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.goodnight_scene
   mode: single
