@@ -700,9 +700,6 @@
   - trigger: time
     at: '23:00:00'
     id: 11pm
-  - trigger: time
-    at: 02:00:00
-    id: 2am
   conditions: []
   actions:
   - choose:
@@ -743,23 +740,6 @@
             message: Work Alarm ON
             title: Work Alarm ON
             target: blake.foster30@gmail.com
-        else:
-        - action: notify.blake_foster30_gmail_com
-          metadata: {}
-          data:
-            message: Work Alarm OFF
-            title: Work Alarm OFF
-            target: blake.foster30@gmail.com
-    - conditions:
-      - condition: trigger
-        id:
-        - 2am
-      sequence:
-      - if:
-        - condition: state
-          state: 'on'
-          entity_id: input_boolean.workday_tomorrow_toggle
-        then:
         - action: input_boolean.turn_on
           metadata: {}
           data: {}
@@ -767,6 +747,12 @@
             entity_id:
             - input_boolean.workday_today_toggle
         else:
+        - action: notify.blake_foster30_gmail_com
+          metadata: {}
+          data:
+            message: Work Alarm OFF
+            title: Work Alarm OFF
+            target: blake.foster30@gmail.com
         - action: input_boolean.turn_off
           metadata: {}
           data: {}
@@ -775,7 +761,7 @@
             - input_boolean.workday_today_toggle
   mode: single
 - id: '1759838752481'
-  alias: Closet light -> bathroom light
+  alias: Light Triggers Light
   description: ''
   triggers:
   - trigger: state
@@ -899,70 +885,89 @@
           entity_id: scene.thermostat_ideal
   mode: single
 - id: '1760842208486'
-  alias: Workday Door plus motion
+  alias: Door Automation
   description: ''
   triggers:
   - entity_id: binary_sensor.front_door
     to: 'on'
     trigger: state
-  conditions:
-  - condition: or
-    conditions:
-    - condition: not
-      conditions:
-      - condition: template
-        value_template: '{{ states(''sensor.blakes_iphone_battery_state'') | lower
-          in [''charging'', ''full''] }}'
-    - condition: and
-      conditions:
-      - condition: template
-        value_template: '{{ states(''sensor.blakes_iphone_battery_state'') | lower
-          in [''charging'', ''full''] }}'
-      - condition: numeric_state
-        entity_id: input_number.phone_charging_distance
-        above: 0.1
-        below: 100
+  conditions: []
   actions:
   - if:
-    - condition: template
-      value_template: '{% set motion_ts = state_attr(''input_datetime.last_motion_on'',''timestamp'')
-        %}
-
-        {% set door_ts = as_timestamp(trigger.to_state.last_changed) if trigger is
-        defined else now().timestamp() %}
-
-        {{ motion_ts is number and motion_ts > 0 and motion_ts <= (door_ts - 0.5)
-        }}'
+    - condition: or
+      conditions:
+      - condition: not
+        conditions:
+        - condition: template
+          value_template: '{{ states(''sensor.blakes_iphone_battery_state'') | lower
+            in [''charging'', ''full''] }}'
+      - condition: and
+        conditions:
+        - condition: template
+          value_template: '{{ states(''sensor.blakes_iphone_battery_state'') | lower
+            in [''charging'', ''full''] }}'
+        - condition: numeric_state
+          entity_id: input_number.phone_charging_distance
+          above: 0.25
     then:
-    - action: scene.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id: scene.all_off
+    - if:
+      - condition: template
+        value_template: '{% set motion_ts = state_attr(''input_datetime.last_motion_on'',''timestamp'')
+          %}
+
+          {% set door_ts = as_timestamp(trigger.to_state.last_changed) if trigger
+          is defined else now().timestamp() %}
+
+          {{ motion_ts is number and motion_ts > 0 and motion_ts <= (door_ts - 0.5)
+          }}'
+      then:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.all_off
+      else:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.all_lights
+      - action: media_player.play_media
+        metadata: {}
+        data:
+          media:
+            media_content_id: '837'
+            media_content_type: app
+            metadata:
+              title: YouTube
+              thumbnail: http://192.168.1.68:8060/query/icon/837
+              media_class: app
+              children_media_class:
+              navigateIds:
+              - {}
+              - media_content_type: apps
+                media_content_id: ''
+              browse_entity_id: media_player.bedroom_tv
+        target:
+          entity_id: media_player.bedroom_tv
     else:
-    - action: scene.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id: scene.all_lights
-    - action: media_player.play_media
-      metadata: {}
-      data:
-        media:
-          media_content_id: '837'
-          media_content_type: app
-          metadata:
-            title: YouTube
-            thumbnail: http://192.168.1.68:8060/query/icon/837
-            media_class: app
-            children_media_class:
-            navigateIds:
-            - {}
-            - media_content_type: apps
-              media_content_id: ''
-            browse_entity_id: media_player.bedroom_tv
-      target:
-        entity_id: media_player.bedroom_tv
+    - if:
+      - condition: template
+        value_template: '{% set motion_ts = state_attr(''input_datetime.last_motion_on'',''timestamp'')
+          %}
+
+          {% set door_ts = as_timestamp(trigger.to_state.last_changed) if trigger
+          is defined else now().timestamp() %}
+
+          {{ motion_ts is number and motion_ts > 0 and motion_ts <= (door_ts - 0.5)
+          }}'
+      then: []
+      else:
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.main_lights
   mode: single
 - id: '1761047102816'
   alias: Test Bay
@@ -971,7 +976,15 @@
   - trigger: event
     event_type: ''
     id: Manual trigger
-  conditions: []
+  conditions:
+  - condition: or
+    conditions:
+    - condition: numeric_state
+      entity_id: input_number.test
+      above: 10
+    - condition: numeric_state
+      entity_id: input_number.test
+      above: 1
   actions:
   - action: automation.trigger
     target:
@@ -1023,7 +1036,7 @@
           entity_id: input_datetime.last_motion_on
   mode: restart
 - id: '1761312420129'
-  alias: 'Battery automation '
+  alias: 'Battery Low Automation '
   description: ''
   triggers:
   - trigger: numeric_state
@@ -1123,7 +1136,7 @@
       seconds: 0
   conditions:
   - condition: time
-    after: '21:00:00'
+    after: '22:00:00'
     before: 06:00:00
   - condition: not
     conditions:

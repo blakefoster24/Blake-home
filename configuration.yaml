@@ -1,11 +1,9 @@
-
 # Loads default set of integrations. Do not remove.
 default_config:
 
 # Load frontend themes from the themes folder
 frontend:
   themes: !include_dir_merge_named themes
-
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
@@ -57,4 +55,32 @@ shell_command:
   write_diag_test: |
     bash -lc 'mkdir -p /config/diagnostics &&
               echo "Diag test at $(date -Iseconds)" > /config/diagnostics/diag_test.txt'
-              
+panel_custom:
+  - name: panel_entities
+    sidebar_title: Entities
+    sidebar_icon: mdi:shape
+    url_path: 'config/entities'
+    module_url: /api/hassio/app/entrypoint.js
+    embed_iframe: true
+    require_admin: true
+  - name: panel_helpers
+    sidebar_title: Helpers
+    sidebar_icon: mdi:tools
+    url_path: 'config/helpers'
+    module_url: /api/hassio/app/entrypoint.js
+    embed_iframe: true
+    require_admin: true
+  - name: panel_automations
+    sidebar_title: Automations
+    sidebar_icon: mdi:robot
+    url_path: 'config/automation'
+    module_url: /api/hassio/app/entrypoint.js
+    embed_iframe: true
+    require_admin: true    
+  - name: panel_hacs
+    sidebar_title: HACS
+    sidebar_icon: mdi:home-group
+    url_path: 'hacs/entry'
+    module_url: /api/hassio/app/entrypoint.js
+    embed_iframe: true
+    require_admin: true
