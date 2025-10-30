@@ -10,6 +10,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.bedroom_ceiling_lights_3_set_my_room` | Bedroom Ceiling Lights (3) -> Set My Room |
 
+| `automation.device_active_inactive` | Device Active/Inactive |
+
 | `automation.door_automation` | Door Automation |
 
 | `automation.flic_butttons` | Flic Button |
@@ -167,6 +169,8 @@ Auto-generated list of entities. Safe to publish.
 |---|---|
 
 | `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle |
+
+| `input_boolean.phone_active` | Phone active |
 
 | `input_boolean.workday_today_toggle` | Workday Today Toggle |
 
