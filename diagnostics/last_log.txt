@@ -1,124 +1,4 @@
-===== 2025-10-31T02:00:00-05:00 — last 1000 lines =====
-{# If holiday: apply 4-person rotation (work every 4th). Else: use your normal schedule. #}
-{% if is_company_holiday and anchor_idx != -1 %}
-  {{ ((idx - anchor_idx) % 4 == 0) }}
-{% else %}
-  {{ (wd in [2,3,4])
-     or (wd == 5 and not active_this_week)
-     or (wd == 1 and not active_prev_week)
-     or ((wd in [6,7]) and active_this_week) }}
-{% endif %}) renders=4>' for attribute '_attr_available' in entity 'None'
-2025-10-29 18:08:29.967 ERROR (MainThread) [homeassistant.components.template.template_entity] TemplateError('SecurityError: access to attribute 'append' of 'list' object is unsafe.') while processing template 'Template<template=({# --- Base day we’re evaluating (kept the same as your original: "tomorrow") --- #}
-{% set t = now() + timedelta(days=1) %}
-{% set d = t.date() %}
-{% set wd = t.isoweekday() %}
-{% set wn = t.isocalendar()[1] %}
-
-{# --- Your existing week-rotation logic (unchanged) --- #}
-{% set offset = 1 %}
-{% set active_this_week = ((wn + offset) % 4 == 0) %}
-{% set active_prev_week = (((wn - 1) + offset) % 4 == 0) %}
-
-{# ---------- Holiday helpers ---------- #}
-{# nth weekday helper: weekday Mon=0..Sun=6; e.g. 3rd Monday = nth_weekday(y,1,0,3) #}
-{% macro nth_weekday(year, month, weekday, n) -%}
-  {%- set first = as_datetime(strptime(year|string ~ '-' ~ ('%02d' % month) ~ '-01','%Y-%m-%d')) -%}
-  {%- set shift = (weekday - first.weekday()) % 7 -%}
-  {{ (first + timedelta(days=shift + 7*(n-1))).date() }}
-{%- endmacro %}
-
-{# last weekday helper, e.g. last Monday in May = last_weekday(y,5,0) #}
-{% macro last_weekday(year, month, weekday) -%}
-  {%- set ny = year + 1 if month == 12 else year -%}
-  {%- set nm = 1 if month == 12 else month + 1 -%}
-  {%- set first_next = as_datetime(strptime(ny|string ~ '-' ~ ('%02d' % nm) ~ '-01','%Y-%m-%d')) -%}
-  {%- set last_day = (first_next - timedelta(days=1)) -%}
-  {%- set back = (last_day.weekday() - weekday) % 7 -%}
-  {{ (last_day - timedelta(days=back)).date() }}
-{%- endmacro %}
-
-{# Thanksgiving helper (4th Thursday in Nov) #}
-{% macro thanksgiving(year) -%}
-  {{ nth_weekday(year, 11, 3, 4) }}
-{%- endmacro %}
-
-{# Build holiday list across a small year window so rotation indexing stays consistent #}
-{% set y = d.year %}
-{% set years = [y-1, y, y+1, y+2] %}
-{% set hols = [] %}
-{% for yy in years %}
-  {# Fixed-date: New Year’s Day, Independence Day, Christmas #}
-  {% set _ = hols.append(as_datetime(strptime(yy|string ~ '-01-01','%Y-%m-%d')).date()) %}
-  {% set _ = hols.append(nth_weekday(yy, 1, 0, 3)) %}        {# MLK Day: 3rd Monday Jan #}
-  {% set _ = hols.append(last_weekday(yy, 5, 0)) %}           {# Memorial Day: last Monday May #}
-  {% set _ = hols.append(as_datetime(strptime(yy|string ~ '-07-04','%Y-%m-%d')).date()) %}  {# Independence Day #}
-  {% set _ = hols.append(nth_weekday(yy, 9, 0, 1)) %}         {# Labor Day: 1st Monday Sep #}
-  {% set _ = hols.append(thanksgiving(yy)) %}                 {# Thanksgiving #}
-  {% set _ = hols.append(as_datetime(strptime(yy|string ~ '-12-25','%Y-%m-%d')).date()) %}  {# Christmas #}
-{% endfor %}
-{% set hols = hols | sort %}
-
-{# Find index of the day we’re checking, if it is a holiday #}
-{% set idx = -1 %}
-{% for h in hols %}
-  {% if h == d %}
-    {% set idx = loop.index0 %}
-  {% endif %}
-{% endfor %}
-
-{# Anchor the rotation: you said you WORK the next holiday, Thanksgiving 2025 #}
-{% set anchor = thanksgiving(2025) %}
-{% set anchor_idx = (hols.index(anchor) if anchor in hols else -1) %}
-
-{# Determine if the target date is one of the company holidays #}
-{% set is_company_holiday = (idx != -1) %}
-
-{# If holiday: apply 4-person rotation (work every 4th). Else: use your normal schedule. #}
-{% if is_company_holiday and anchor_idx != -1 %}
-  {{ ((idx - anchor_idx) % 4 == 0) }}
-{% else %}
-  {{ (wd in [2,3,4])
-     or (wd == 5 and not active_this_week)
-     or (wd == 1 and not active_prev_week)
-     or ((wd in [6,7]) and active_this_week) }}
-{% endif %}) renders=4>' for attribute '_attr_available' in entity 'None'
-2025-10-29 18:08:41.735 ERROR (MainThread) [homeassistant.components.template.template_entity] TemplateError('SecurityError: access to attribute 'append' of 'list' object is unsafe.') while processing template 'Template<template=({# --- Base day we’re evaluating (kept the same as your original: "tomorrow") --- #}
-{% set t = now() + timedelta(days=1) %}
-{% set d = t.date() %}
-{% set wd = t.isoweekday() %}
-{% set wn = t.isocalendar()[1] %}
-
-{# --- Your existing week-rotation logic (unchanged) --- #}
-{% set offset = 1 %}
-{% set active_this_week = ((wn + offset) % 4 == 0) %}
-{% set active_prev_week = (((wn - 1) + offset) % 4 == 0) %}
-
-{# ---------- Holiday helpers ---------- #}
-{# nth weekday helper: weekday Mon=0..Sun=6; e.g. 3rd Monday = nth_weekday(y,1,0,3) #}
-{% macro nth_weekday(year, month, weekday, n) -%}
-  {%- set first = as_datetime(strptime(year|string ~ '-' ~ ('%02d' % month) ~ '-01','%Y-%m-%d')) -%}
-  {%- set shift = (weekday - first.weekday()) % 7 -%}
-  {{ (first + timedelta(days=shift + 7*(n-1))).date() }}
-{%- endmacro %}
-
-{# last weekday helper, e.g. last Monday in May = last_weekday(y,5,0) #}
-{% macro last_weekday(year, month, weekday) -%}
-  {%- set ny = year + 1 if month == 12 else year -%}
-  {%- set nm = 1 if month == 12 else month + 1 -%}
-  {%- set first_next = as_datetime(strptime(ny|string ~ '-' ~ ('%02d' % nm) ~ '-01','%Y-%m-%d')) -%}
-  {%- set last_day = (first_next - timedelta(days=1)) -%}
-  {%- set back = (last_day.weekday() - weekday) % 7 -%}
-  {{ (last_day - timedelta(days=back)).date() }}
-{%- endmacro %}
-
-{# Thanksgiving helper (4th Thursday in Nov) #}
-{% macro thanksgiving(year) -%}
-  {{ nth_weekday(year, 11, 3, 4) }}
-{%- endmacro %}
-
-{# Build holiday list across a small year window so rotation indexing stays consistent #}
-{% set y = d.year %}
-{% set years = [y-1, y, y+1, y+2] %}
+===== 2025-10-31T09:14:03-05:00 — last 1000 lines =====
 {% set hols = [] %}
 {% for yy in years %}
   {# Fixed-date: New Year’s Day, Independence Day, Christmas #}
@@ -999,3 +879,123 @@
 2025-10-31 02:00:00.162 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-31 02:00:00.285 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-31 02:00:00.362 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-31 02:00:00.487 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-31 02:00:00.568 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-31 02:32:49.224 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions
+2025-10-31 02:32:49.225 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service
+2025-10-31 02:33:40.948 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-31 02:33:40.950 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
+2025-10-31 02:33:40.950 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
+2025-10-31 03:11:58.645 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-10-31 03:11:58.646 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Running automation actions
+2025-10-31 03:11:58.647 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Executing step call service
+2025-10-31 03:14:24.208 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-10-31 03:14:24.210 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Running automation actions
+2025-10-31 03:14:24.210 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Executing step call service
+2025-10-31 04:21:24.027 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions
+2025-10-31 04:21:24.028 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service
+2025-10-31 04:33:38.886 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
+2025-10-31 07:12:34.873 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-31 07:12:34.875 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
+2025-10-31 07:12:34.875 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
+2025-10-31 07:59:14.086 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-31 07:59:14.089 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Sunrise & <30% cloud coverage - lamp off: Running automation actions
+2025-10-31 07:59:14.090 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Sunrise & <30% cloud coverage - lamp off: Executing step call service
+2025-10-31 08:05:48.549 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-31 08:05:48.556 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Running automation actions
+2025-10-31 08:05:48.556 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Executing step call service
+2025-10-31 08:05:54.985 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-31 08:28:33.470 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-31 08:28:33.479 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 10: Running automation actions
+2025-10-31 08:28:33.479 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 10: Executing step call service
+2025-10-31 08:29:42.844 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up
+2025-10-31 08:40:48.887 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device
+2025-10-31 08:50:00.077 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Running automation actions
+2025-10-31 08:53:49.079 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-31 08:53:49.080 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
+2025-10-31 08:53:49.081 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
+2025-10-31 08:55:00.475 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Running automation actions
+2025-10-31 08:55:00.479 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Running automation actions
+2025-10-31 08:55:00.482 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Running automation actions
+2025-10-31 08:55:00.483 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Executing step call service
+2025-10-31 08:55:00.485 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Executing step call service
+2025-10-31 08:55:00.491 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Executing step delay 0:00:05
+2025-10-31 08:55:05.494 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Running automation actions
+2025-10-31 08:55:05.495 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-10-31 08:55:05.497 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-10-31 08:55:05.505 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step delay 0:00:02
+2025-10-31 08:55:07.507 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-10-31 08:55:07.510 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-10-31 08:55:07.517 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-10-31 08:55:07.524 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Running automation actions
+2025-10-31 08:55:07.525 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-10-31 08:55:07.527 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-10-31 08:55:09.529 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-10-31 08:55:09.532 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-10-31 08:55:11.534 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-10-31 08:55:11.536 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-10-31 08:55:13.538 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-10-31 08:55:13.541 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-10-31 08:55:15.542 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-10-31 08:55:15.545 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Executing step call service
+2025-10-31 08:55:15.732 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-31 08:55:15.733 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
+2025-10-31 08:55:15.735 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-10-31 08:55:15.735 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-31 08:55:15.740 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-31 08:55:15.743 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
+2025-10-31 08:55:15.747 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions
+2025-10-31 08:55:15.749 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 3: Running automation actions
+2025-10-31 08:55:15.752 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 3: Executing step call service
+2025-10-31 08:55:30.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-31 08:55:30.021 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-10-31 08:55:30.022 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:00:00.121 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions
+2025-10-31 09:00:00.123 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: Running automation actions
+2025-10-31 09:00:00.131 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: If at step 1: Running automation actions
+2025-10-31 09:00:00.132 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: If at step 1: Executing step call service
+2025-10-31 09:00:41.074 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions
+2025-10-31 09:00:41.076 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 1: Running automation actions
+2025-10-31 09:00:41.076 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:00:41.185 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:00:41.187 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 1: Executing step delay 0:30:00
+2025-10-31 09:06:33.269 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-10-31 09:06:33.270 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Running automation actions
+2025-10-31 09:06:33.271 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:08:16.024 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-10-31 09:08:16.026 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Running automation actions
+2025-10-31 09:08:16.026 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Executing step call service
+2025-10-31 09:08:48.978 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-10-31 09:08:48.979 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Running automation actions
+2025-10-31 09:08:48.980 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:09:10.052 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Running automation actions
+2025-10-31 09:09:10.054 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: If at step 1: Running automation actions
+2025-10-31 09:09:10.056 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: If at step 1: If at step 1: Running automation actions
+2025-10-31 09:09:10.069 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: If at step 1: If at step 1: Executing step call service
+2025-10-31 09:09:10.073 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Running automation actions
+2025-10-31 09:09:10.079 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Running automation actions
+2025-10-31 09:09:10.079 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Executing step call service
+2025-10-31 09:09:10.273 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-31 09:09:10.275 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
+2025-10-31 09:09:10.276 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-10-31 09:09:10.277 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:09:10.281 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:09:10.284 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
+2025-10-31 09:09:10.430 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Pause and Reset Volume on Alexa : Running automation actions
+2025-10-31 09:09:10.430 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Pause and Reset Volume on Alexa : Executing step call service
+2025-10-31 09:09:10.432 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Pause and Reset Volume on Alexa : Executing step call service
+2025-10-31 09:09:10.562 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Restarting
+2025-10-31 09:09:10.581 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions
+2025-10-31 09:09:10.583 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 2: Running automation actions
+2025-10-31 09:09:10.584 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 2: Executing step call service
+2025-10-31 09:09:10.607 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 2: Executing step call service
+2025-10-31 09:09:25.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-31 09:09:25.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-10-31 09:09:25.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:10:06.347 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-10-31 09:10:06.349 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Running automation actions
+2025-10-31 09:10:06.349 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Executing step call service
+2025-10-31 09:14:03.044 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-31 09:14:03.044 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-31 09:14:03.129 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-31 09:14:03.165 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service

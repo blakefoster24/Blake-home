@@ -1,4 +1,4 @@
-===== 2025-10-31T02:00:00-05:00 — automation runs (recent) =====
+===== 2025-10-31T09:14:03-05:00 — automation runs (recent) =====
 2025-10-29 09:59:04.451 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alexa_media which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
 2025-10-29 09:59:39.560 WARNING (MainThread) [alexapy.helpers] alexalogin.login((<alexapy.alexalogin.AlexaLogin object at 0xffff844078c0>,), {'cookies': {'session-id': <Morsel: session-id=135-6754973-7685933>, 'session-id-time': <Morsel: session-id-time=2082787201l>, 'ubid-main': <Morsel: ubid-main=135-2124486-6657756>, 'lc-main': <Morsel: lc-main=en_US>, 'session-token': <Morsel: session-token="98jA0iqskHDfecR0oO5lAkqCrTqs3OPAb4OsNgWlUjX2Sfnh4ckTaNVFce0lF089tqSByineVGwXm9aO6pM79mhdjfYtVPhqyZvlhU+M+La+GZJS2HdbHK0f3vH9k8hAIwLB2sYamZLDPFqNfgr2gshP4WDmQditFjLZTA7xy+o1f0H6d1EaD0E4C5UW+9qp6c+Fk8t/oIc4k2qw/R8mDza0/a8jRkgAI1kWOtkALNCyDvKTft3Abb+OjEjQvSqVaFJ8Ah4byI7s+a/kvwcP3esJiudWS8TeTUE9dqhIWpIXWAdkezFrCgXwskW26Gvri9zxZDmcDEbmTPfySG6P4yKVz969/gSvix6swfG2VwiqZzPnIqlypiwHtuIq2NBu">, 'sid': <Morsel: sid="\"gl7GniF10phi8Qy8AI4JQQ==|24AV1d1IzkuNawFXnmITvHBF4W/16WffFOHzLcz0OrY=\"">, 'x-main': <Morsel: x-main="Bs7Oc12Q6kMVxE2eColVfI@jJw9MXdPGfxRMfTv8ZzcDy8cdiYZucm0p1sHTKSpk">, 'at-main': <Morsel: at-main=Atza|gQAkJfFHAwEBAHN2izaIDiwmHaI0qCA5M5nDRJ_Qw3a6l1vz581iOZ0S-e-9z4YFPGIfNsm5ZYIQoPbT39EGrYsBsU5gHuPh5PttHrBs66jTiH8P-Lb8f0ymnQjadD15Ba2q97PyfiSnCvvdQE2ucO5d1qP2EMSCLmTcu85WRxRKLCJDjo7HFrKBhtxtnQUpDL2XmCY3kg6mFDnOd8GiWeHl1OeUPKFqpIRhj5UNXXXOdAw7ony8Wln1lqkh8EKYm727zIB2is2jBa93CJLK2Xgw7qsrEC8PU-0oEzxaEE1r5cbpECKuX8vc2hp9mnKy5qxAb3uV6RJLff7sL9VgTArbeLlN8GYw113Lp-rLPQ_UoPXkDPQRHhlHK3aXkjn5u44jgOQPUvmcexRfQaYtMpSx57w-DrlKutYAlEDhNQiIXOr3FfWzO6BANNS8YK9DW4WbLub-Eiu-GbSI9QF4zkuCjAgh6Pf-TacUZX4nIc4YU2oWeya7WgVYJLAIWyH4joVo60BGTuqbvQ>, 'sess-at-main': <Morsel: sess-at-main="erZQ80SEmC5b5B6eXTbgy7R/TbReVvKjB4SNMwz1lRE=">, 'csrf': <Morsel: csrf=-955002620>, 'i18n-prefs': <Morsel: i18n-prefs=USD>}}): A connection error occurred: An exception of type ClientConnectorCertificateError occurred. Arguments:
 2025-10-29 09:59:55.519 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Initialized trigger Flic Button
@@ -646,3 +646,121 @@
 2025-10-31 02:00:00.285 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-31 02:00:00.362 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-10-31 02:00:00.487 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-31 02:00:00.568 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-31 02:32:49.224 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions
+2025-10-31 02:32:49.225 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service
+2025-10-31 02:33:40.948 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-31 02:33:40.950 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
+2025-10-31 02:33:40.950 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
+2025-10-31 03:11:58.645 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-10-31 03:11:58.646 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Running automation actions
+2025-10-31 03:11:58.647 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Executing step call service
+2025-10-31 03:14:24.208 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-10-31 03:14:24.210 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Running automation actions
+2025-10-31 03:14:24.210 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Executing step call service
+2025-10-31 04:21:24.027 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions
+2025-10-31 04:21:24.028 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service
+2025-10-31 07:12:34.873 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-31 07:12:34.875 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
+2025-10-31 07:12:34.875 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
+2025-10-31 07:59:14.086 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-31 07:59:14.089 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Sunrise & <30% cloud coverage - lamp off: Running automation actions
+2025-10-31 07:59:14.090 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Sunrise & <30% cloud coverage - lamp off: Executing step call service
+2025-10-31 08:05:48.549 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-31 08:05:48.556 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Running automation actions
+2025-10-31 08:05:48.556 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Main lights turn on - lamp off: Executing step call service
+2025-10-31 08:05:54.985 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-10-31 08:28:33.470 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-31 08:28:33.479 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 10: Running automation actions
+2025-10-31 08:28:33.479 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 10: Executing step call service
+2025-10-31 08:29:42.844 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up
+2025-10-31 08:50:00.077 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Running automation actions
+2025-10-31 08:53:49.079 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-10-31 08:53:49.080 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
+2025-10-31 08:53:49.081 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
+2025-10-31 08:55:00.475 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Running automation actions
+2025-10-31 08:55:00.479 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Running automation actions
+2025-10-31 08:55:00.482 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Running automation actions
+2025-10-31 08:55:00.483 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Executing step call service
+2025-10-31 08:55:00.485 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Executing step call service
+2025-10-31 08:55:00.491 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Executing step delay 0:00:05
+2025-10-31 08:55:05.494 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Running automation actions
+2025-10-31 08:55:05.495 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-10-31 08:55:05.497 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-10-31 08:55:05.505 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step delay 0:00:02
+2025-10-31 08:55:07.507 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-10-31 08:55:07.510 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-10-31 08:55:07.517 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-10-31 08:55:07.524 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Running automation actions
+2025-10-31 08:55:07.525 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-10-31 08:55:07.527 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-10-31 08:55:09.529 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-10-31 08:55:09.532 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-10-31 08:55:11.534 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-10-31 08:55:11.536 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-10-31 08:55:13.538 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-10-31 08:55:13.541 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-10-31 08:55:15.542 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-10-31 08:55:15.545 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Executing step call service
+2025-10-31 08:55:15.732 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-31 08:55:15.733 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
+2025-10-31 08:55:15.735 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-10-31 08:55:15.735 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-31 08:55:15.740 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-31 08:55:15.743 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
+2025-10-31 08:55:15.747 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions
+2025-10-31 08:55:15.749 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 3: Running automation actions
+2025-10-31 08:55:15.752 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 3: Executing step call service
+2025-10-31 08:55:30.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-31 08:55:30.021 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-10-31 08:55:30.022 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:00:00.121 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions
+2025-10-31 09:00:00.123 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: Running automation actions
+2025-10-31 09:00:00.131 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: If at step 1: Running automation actions
+2025-10-31 09:00:00.132 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: If at step 1: Executing step call service
+2025-10-31 09:00:41.074 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions
+2025-10-31 09:00:41.076 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 1: Running automation actions
+2025-10-31 09:00:41.076 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:00:41.185 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:00:41.187 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 1: Executing step delay 0:30:00
+2025-10-31 09:06:33.269 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-10-31 09:06:33.270 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Running automation actions
+2025-10-31 09:06:33.271 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:08:16.024 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-10-31 09:08:16.026 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Running automation actions
+2025-10-31 09:08:16.026 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Executing step call service
+2025-10-31 09:08:48.978 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-10-31 09:08:48.979 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Running automation actions
+2025-10-31 09:08:48.980 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:09:10.052 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Running automation actions
+2025-10-31 09:09:10.054 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: If at step 1: Running automation actions
+2025-10-31 09:09:10.056 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: If at step 1: If at step 1: Running automation actions
+2025-10-31 09:09:10.069 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: If at step 1: If at step 1: Executing step call service
+2025-10-31 09:09:10.073 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Running automation actions
+2025-10-31 09:09:10.079 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Running automation actions
+2025-10-31 09:09:10.079 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Executing step call service
+2025-10-31 09:09:10.273 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-31 09:09:10.275 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
+2025-10-31 09:09:10.276 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-10-31 09:09:10.277 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:09:10.281 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:09:10.284 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
+2025-10-31 09:09:10.430 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Pause and Reset Volume on Alexa : Running automation actions
+2025-10-31 09:09:10.430 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Pause and Reset Volume on Alexa : Executing step call service
+2025-10-31 09:09:10.432 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Pause and Reset Volume on Alexa : Executing step call service
+2025-10-31 09:09:10.562 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Restarting
+2025-10-31 09:09:10.581 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions
+2025-10-31 09:09:10.583 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 2: Running automation actions
+2025-10-31 09:09:10.584 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 2: Executing step call service
+2025-10-31 09:09:10.607 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 2: Executing step call service
+2025-10-31 09:09:25.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-10-31 09:09:25.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-10-31 09:09:25.005 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-10-31 09:10:06.347 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-10-31 09:10:06.349 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Running automation actions
+2025-10-31 09:10:06.349 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Executing step call service
+2025-10-31 09:14:03.044 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-10-31 09:14:03.044 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-31 09:14:03.129 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-31 09:14:03.165 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-10-31 09:14:03.231 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service

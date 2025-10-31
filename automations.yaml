@@ -65,7 +65,7 @@
   description: ''
   triggers:
   - trigger: time
-    at: 08:40:00
+    at: 08:50:00
     id: 8:40am Time Trigger
   - trigger: time
     at: 08:55:00
