@@ -119,10 +119,6 @@
       friendly_name: Bathroom Light
       supported_features: 0
       state: 'off'
-    fan.bedroom_ceiling_fan:
-      friendly_name: Bedroom ceiling fan
-      supported_features: 48
-      state: 'off'
     media_player.bedroom_tv:
       source_list:
       - Home
@@ -153,7 +149,6 @@
       - The CW
       - The Roku Channel
       - Tubi - Free Movies & TV
-      - USA Network
       - YouTube
       - YouTube TV
       - discovery+
@@ -197,8 +192,6 @@
     light.bedroom_ceiling_lights:
       entity_only: true
     light.bathroom_light:
-      entity_only: true
-    fan.bedroom_ceiling_fan:
       entity_only: true
     media_player.bedroom_tv:
       entity_only: true

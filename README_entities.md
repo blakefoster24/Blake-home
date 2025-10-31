@@ -10,8 +10,6 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.bedroom_ceiling_lights_3_set_my_room` | Bedroom Ceiling Lights (3) -> Set My Room |
 
-| `automation.device_active_inactive` | Device Active/Inactive |
-
 | `automation.door_automation` | Door Automation |
 
 | `automation.flic_butttons` | Flic Button |
