@@ -963,7 +963,12 @@
 
           {{ motion_ts is number and motion_ts > 0 and motion_ts <= (door_ts - 0.5)
           }}'
-      then: []
+      then:
+      - action: light.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.main_lights
       else:
       - action: light.turn_on
         metadata: {}
