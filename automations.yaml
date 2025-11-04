@@ -868,23 +868,45 @@
           metadata: {}
           data: {}
           target:
-            entity_id: scene.thermostat_away
+            entity_id: scene.thermostat_workday
         else:
-        - action: scene.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: scene.thermostat_ideal_morning
+        - if:
+          - condition: numeric_state
+            entity_id: sensor.openweathermap_feels_like_temperature_2
+            above: 65
+          then:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.thermostat_ideal_morning
+          else:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.thermostat_winter
     - conditions:
       - condition: trigger
         id:
         - 4pm
       sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.thermostat_ideal
+      - if:
+        - condition: numeric_state
+          entity_id: sensor.openweathermap_feels_like_temperature_2
+          above: 65
+        then:
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: scene.thermostat_ideal
+        else:
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: scene.thermostat_winter
   mode: single
 - id: '1760842208486'
   alias: Door Automation

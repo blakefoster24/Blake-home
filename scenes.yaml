@@ -622,3 +622,41 @@
       entity_only: true
     light.main_lights:
       entity_only: true
+- id: '1762234662256'
+  name: Thermostat Winter
+  entities:
+    climate.nest_thermostat:
+      hvac_modes:
+      - 'off'
+      - heat
+      - cool
+      - heat_cool
+      min_temp: 50
+      max_temp: 90
+      current_temperature: 70
+      temperature: 68
+      target_temp_high:
+      target_temp_low:
+      friendly_name: Nest Thermostat
+      supported_features: 387
+      state: heat
+  metadata: {}
+- id: '1762234719894'
+  name: Thermostat winter Workday
+  entities:
+    climate.nest_thermostat:
+      hvac_modes:
+      - 'off'
+      - heat
+      - cool
+      - heat_cool
+      min_temp: 50
+      max_temp: 90
+      current_temperature: 70
+      temperature: 58
+      target_temp_high:
+      target_temp_low:
+      friendly_name: Nest Thermostat
+      supported_features: 387
+      state: heat
+  metadata: {}
