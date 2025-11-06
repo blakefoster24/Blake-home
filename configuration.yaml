@@ -57,7 +57,7 @@ shell_command:
               echo "Diag test at $(date -Iseconds)" > /config/diagnostics/diag_test.txt'
 panel_custom:
   - name: panel_entities
-    sidebar_title: Entities
+    sidebar_title: Entities / Helpers
     sidebar_icon: mdi:shape
     url_path: 'config/entities'
     module_url: /api/hassio/app/entrypoint.js
@@ -71,7 +71,7 @@ panel_custom:
     embed_iframe: true
     require_admin: true
   - name: panel_automations
-    sidebar_title: Automations
+    sidebar_title: Automations / Scenes
     sidebar_icon: mdi:robot
     url_path: 'config/automation'
     module_url: /api/hassio/app/entrypoint.js

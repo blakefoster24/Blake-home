@@ -60,261 +60,6 @@
         target:
           entity_id: scene.all_off
   mode: single
-- id: '1758599987280'
-  alias: Workday Wake-up
-  description: ''
-  triggers:
-  - trigger: time
-    at: 08:50:00
-    id: 8:40am Time Trigger
-  - trigger: time
-    at: 08:55:00
-    id: 8:55am
-  - trigger: time
-    at: 09:29:00
-    id: '9:29'
-  - trigger: state
-    entity_id:
-    - binary_sensor.front_door
-    to: 'on'
-    id: Door
-  - device_id: 6e3f05f16e73548265ce22e622f4a268
-    domain: hue
-    type: long_press
-    subtype: 1
-    unique_id: cdb2dfb8-edb8-4c9a-83ef-5519e2338c0a
-    trigger: device
-    id: '1 Long press '
-  conditions: []
-  actions:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id:
-        - '1 Long press '
-      - condition: and
-        conditions:
-        - condition: state
-          state: 'on'
-          entity_id: input_boolean.workday_today_toggle
-        - condition: time
-          after: 08:00:00
-          before: 09:30:00
-      sequence:
-      - sequence:
-        - action: light.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: light.bathroom_light
-        - action: light.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: light.closet_light
-        - action: input_boolean.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: input_boolean.im_awake_toggle_helper
-    - conditions:
-      - condition: trigger
-        id:
-        - 8:40am Time Trigger
-      - condition: state
-        entity_id: input_boolean.im_awake_toggle_helper
-        state: 'off'
-      - condition: and
-        conditions:
-        - condition: state
-          state: 'on'
-          entity_id: input_boolean.workday_today_toggle
-        - condition: time
-          after: 08:00:00
-          before: 09:30:00
-      sequence:
-      - sequence:
-        - event: hue_event
-          event_data:
-            device_id: 6e3f05f16e73548265ce22e622f4a268
-            type: long_press
-            subtype: 1
-    - conditions:
-      - condition: trigger
-        id:
-        - 8:55am
-      - condition: and
-        conditions:
-        - condition: state
-          state: 'on'
-          entity_id: input_boolean.workday_today_toggle
-        - condition: time
-          after: 08:00:00
-          before: 09:30:00
-      - condition: template
-        value_template: "{% set s = states.binary_sensor.front_door %} {{ s.state
-          in ['unavailable', 'unknown']\n   or (as_timestamp(now()) - as_timestamp(s.last_changed))
-          > 3600 }}\n"
-      sequence:
-      - alias: Play Music Alexa
-        sequence:
-        - action: media_player.volume_set
-          metadata: {}
-          data:
-            volume_level: 0.01
-          target:
-            entity_id: media_player.everywhere
-        - action: media_player.media_next_track
-          metadata: {}
-          data: {}
-          target:
-            entity_id: media_player.everywhere
-          enabled: true
-        - delay:
-            hours: 0
-            minutes: 0
-            seconds: 5
-            milliseconds: 0
-        - if:
-          - condition: state
-            entity_id: media_player.everywhere
-            state: playing
-          then: []
-          else:
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.01
-            target:
-              entity_id:
-              - media_player.blake_s_echo_pop
-          - action: media_player.play_media
-            metadata: {}
-            data:
-              media:
-                media_content_id: music alarm
-                media_content_type: routine
-            target:
-              entity_id:
-              - media_player.blake_s_echo_pop
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 2
-              milliseconds: 0
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.01
-            target:
-              entity_id: media_player.everywhere
-          - action: media_player.shuffle_set
-            metadata: {}
-            data:
-              shuffle: true
-            target:
-              entity_id: media_player.everywhere
-          - action: media_player.media_next_track
-            metadata: {}
-            data: {}
-            target:
-              entity_id: media_player.everywhere
-            enabled: true
-        - alias: Incrementally raise volume
-          sequence:
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.02
-            target:
-              entity_id: media_player.everywhere
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 2
-              milliseconds: 0
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.05
-            target:
-              entity_id: media_player.everywhere
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 2
-              milliseconds: 0
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.1
-            target:
-              entity_id: media_player.everywhere
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 2
-              milliseconds: 0
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.12
-            target:
-              entity_id: media_player.everywhere
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 2
-              milliseconds: 0
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.15
-            target:
-              entity_id: media_player.everywhere
-      - action: light.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.bedroom_ceiling_lights
-    - conditions:
-      - condition: trigger
-        id:
-        - '9:29'
-        - Door
-      - condition: and
-        conditions:
-        - condition: state
-          state: 'on'
-          entity_id: input_boolean.workday_today_toggle
-        - condition: time
-          after: 08:00:00
-          before: 09:30:00
-        - condition: not
-          conditions:
-          - condition: state
-            entity_id: person.blake_foster
-            state: home
-      sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.all_off
-      - alias: 'Pause and Reset Volume on Alexa '
-        sequence:
-        - action: media_player.media_stop
-          metadata: {}
-          data: {}
-          target:
-            entity_id: media_player.everywhere
-        - action: media_player.volume_set
-          metadata: {}
-          data:
-            volume_level: 0.4
-          target:
-            entity_id: media_player.everywhere
-  mode: parallel
 - id: '1758990657332'
   alias: Living Room Lamp
   description: Control the living room lamp around sunset/sunrise and in sync with
@@ -697,7 +442,7 @@
         metadata: {}
         data: {}
         target:
-          entity_id: scene.lights_off
+          entity_id: scene.bedroom_lights_off
     - conditions:
       - condition: trigger
         id: bottom_long
@@ -1204,3 +949,253 @@
     target:
       entity_id: scene.goodnight_scene
   mode: single
+- id: '1762355968615'
+  alias: Workday Wake-up
+  description: ''
+  triggers:
+  - trigger: time
+    at: 08:50:00
+    id: 8:40am Time Trigger
+  - trigger: time
+    at: 08:55:00
+    id: 8:55am
+  - trigger: time
+    at: 09:29:00
+    id: '9:29'
+  - trigger: state
+    entity_id:
+    - binary_sensor.front_door
+    to: 'on'
+    id: Door
+  - device_id: 6e3f05f16e73548265ce22e622f4a268
+    domain: hue
+    type: long_press
+    subtype: 1
+    unique_id: cdb2dfb8-edb8-4c9a-83ef-5519e2338c0a
+    trigger: device
+    id: '1 Long press '
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - '1 Long press '
+      - condition: and
+        conditions:
+        - condition: state
+          state: 'on'
+          entity_id: input_boolean.workday_today_toggle
+        - condition: time
+          after: 08:00:00
+          before: 09:30:00
+      sequence:
+      - sequence:
+        - action: light.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.bathroom_light
+        - action: light.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.closet_light
+        - action: input_boolean.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.im_awake_toggle_helper
+    - conditions:
+      - condition: trigger
+        id:
+        - 8:40am Time Trigger
+      - condition: state
+        entity_id: input_boolean.im_awake_toggle_helper
+        state: 'off'
+      - condition: and
+        conditions:
+        - condition: state
+          state: 'on'
+          entity_id: input_boolean.workday_today_toggle
+        - condition: time
+          after: 08:00:00
+          before: 09:30:00
+      sequence:
+      - sequence:
+        - event: hue_event
+          event_data:
+            device_id: 6e3f05f16e73548265ce22e622f4a268
+            type: long_press
+            subtype: 1
+    - conditions:
+      - condition: trigger
+        id:
+        - 8:55am
+      - condition: and
+        conditions:
+        - condition: state
+          state: 'on'
+          entity_id: input_boolean.workday_today_toggle
+        - condition: time
+          after: 08:00:00
+          before: 09:30:00
+      - condition: template
+        value_template: "{% set s = states.binary_sensor.front_door %} {{ s.state
+          in ['unavailable', 'unknown']\n   or (as_timestamp(now()) - as_timestamp(s.last_changed))
+          > 3600 }}\n"
+      sequence:
+      - alias: Play Music Alexa
+        sequence:
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.01
+          target:
+            entity_id: media_player.everywhere
+        - action: media_player.media_next_track
+          metadata: {}
+          data: {}
+          target:
+            entity_id: media_player.everywhere
+          enabled: true
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 5
+            milliseconds: 0
+        - if:
+          - condition: state
+            entity_id: media_player.everywhere
+            state: playing
+          then: []
+          else:
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.01
+            target:
+              entity_id:
+              - media_player.blake_s_echo_pop
+          - action: media_player.play_media
+            metadata: {}
+            data:
+              media:
+                media_content_id: music alarm
+                media_content_type: routine
+            target:
+              entity_id:
+              - media_player.blake_s_echo_pop
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.01
+            target:
+              entity_id: media_player.everywhere
+          - action: media_player.shuffle_set
+            metadata: {}
+            data:
+              shuffle: true
+            target:
+              entity_id: media_player.everywhere
+          - action: media_player.media_next_track
+            metadata: {}
+            data: {}
+            target:
+              entity_id: media_player.everywhere
+            enabled: true
+        - alias: Incrementally raise volume
+          sequence:
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.02
+            target:
+              entity_id: media_player.everywhere
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.05
+            target:
+              entity_id: media_player.everywhere
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.1
+            target:
+              entity_id: media_player.everywhere
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.12
+            target:
+              entity_id: media_player.everywhere
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0.15
+            target:
+              entity_id: media_player.everywhere
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.bedroom_ceiling_lights
+    - conditions:
+      - condition: trigger
+        id:
+        - '9:29'
+        - Door
+      - condition: and
+        conditions:
+        - condition: state
+          state: 'on'
+          entity_id: input_boolean.workday_today_toggle
+        - condition: time
+          after: 08:00:00
+          before: 09:30:00
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.all_off
+      - alias: 'Pause and Reset Volume on Alexa '
+        sequence:
+        - action: media_player.media_stop
+          metadata: {}
+          data: {}
+          target:
+            entity_id: media_player.everywhere
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.4
+          target:
+            entity_id: media_player.everywhere
+  mode: parallel
