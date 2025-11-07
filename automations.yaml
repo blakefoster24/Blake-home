@@ -136,15 +136,24 @@
         id:
         - Cloud coverage >40
         - 5:05 pm
+        - Main lights off
+        - Workday today off
       - condition: state
         entity_id: light.main_lights
         state: 'off'
-      - type: is_value
-        condition: device
-        device_id: c01df91d71e0dd72fe7a5636aea2d71b
-        entity_id: 43e53695c8962aaa2bf07e8ed7325df8
-        domain: sensor
-        above: 39
+      - condition: or
+        conditions:
+        - type: is_value
+          condition: device
+          device_id: c01df91d71e0dd72fe7a5636aea2d71b
+          entity_id: 43e53695c8962aaa2bf07e8ed7325df8
+          domain: sensor
+          above: 38
+        - condition: sun
+          before: sunrise
+          after: sunset
+          after_offset: -01:00:00
+          before_offset: 00:30:00
       - condition: or
         conditions:
         - condition: state
@@ -170,53 +179,6 @@
         target:
           entity_id: light.living_room_lamp
       alias: Cloud coverage >40%(work or 5:05) - lamp on
-    - conditions:
-      - condition: and
-        conditions:
-        - condition: trigger
-          id:
-          - Main lights off
-          - Workday today off
-        - condition: or
-          conditions:
-          - condition: sun
-            before: sunrise
-            after: sunset
-            after_offset: -01:00:00
-            before_offset: 00:30:00
-          - condition: and
-            conditions:
-            - type: is_value
-              condition: device
-              device_id: c01df91d71e0dd72fe7a5636aea2d71b
-              entity_id: 43e53695c8962aaa2bf07e8ed7325df8
-              domain: sensor
-              above: 40
-            - condition: or
-              conditions:
-              - condition: state
-                state: 'off'
-                entity_id: input_boolean.workday_today_toggle
-              - condition: state
-                entity_id: person.blake_foster
-                state: home
-              - condition: and
-                conditions:
-                - condition: state
-                  state: 'on'
-                  entity_id: input_boolean.workday_today_toggle
-                - condition: time
-                  after: '17:00:00'
-                  before: '10:00:00'
-      sequence:
-      - action: light.turn_on
-        metadata: {}
-        data:
-          brightness_pct: 75
-          transition: 0
-        target:
-          entity_id: light.living_room_lamp
-      alias: 'Main lights off & (night time or >30% cloud coverage) - lamp on '
     - conditions:
       - condition: trigger
         id:
@@ -442,7 +404,7 @@
         metadata: {}
         data: {}
         target:
-          entity_id: scene.bedroom_lights_off
+          entity_id: scene.all_lights_off
     - conditions:
       - condition: trigger
         id: bottom_long
@@ -672,6 +634,18 @@
     trigger: state
   conditions: []
   actions:
+  - action: logbook.log
+    metadata: {}
+    data:
+      name: Door Debug
+      entity_id: binary_sensor.front_door
+      message: "{% set motion_ts = state_attr('input_datetime.last_motion_on','timestamp')
+        %} {% set door_ts = as_timestamp(trigger.to_state.last_changed) if trigger
+        is defined else now().timestamp() %} {% if motion_ts is number and motion_ts
+        > 0 %}\n  {% set delta = (door_ts - motion_ts) | round(3) %}\n{% else %}\n
+        \ {% set delta = 'n/a' %}\n{% endif %} motion_ts={{ motion_ts }}; door_ts={{
+        door_ts }}; delta={{ delta }}; leaving_eval={{ motion_ts is number and motion_ts
+        > 0 and motion_ts <= (door_ts - 0.5) }}\n"
   - if:
     - condition: or
       conditions:
@@ -697,8 +671,7 @@
           {% set door_ts = as_timestamp(trigger.to_state.last_changed) if trigger
           is defined else now().timestamp() %}
 
-          {{ motion_ts is number and motion_ts > 0 and motion_ts <= (door_ts - 0.5)
-          }}'
+          {{ motion_ts is number and motion_ts <= door_ts }}'
       then:
       - action: scene.turn_on
         metadata: {}
@@ -738,8 +711,7 @@
           {% set door_ts = as_timestamp(trigger.to_state.last_changed) if trigger
           is defined else now().timestamp() %}
 
-          {{ motion_ts is number and motion_ts > 0 and motion_ts <= (door_ts - 0.5)
-          }}'
+          {{ motion_ts is number and motion_ts <= door_ts }}'
       then:
       - action: light.turn_off
         metadata: {}
@@ -804,7 +776,7 @@
       - action: input_datetime.set_datetime
         metadata: {}
         data:
-          timestamp: '{{ now().timestamp() | int }}'
+          timestamp: '{{ now().timestamp() }}'
         target:
           entity_id: input_datetime.last_motion_on
     - conditions:
@@ -815,7 +787,7 @@
       - action: input_datetime.set_datetime
         metadata: {}
         data:
-          timestamp: 0
+          datetime:
         target:
           entity_id: input_datetime.last_motion_on
   mode: restart
@@ -974,21 +946,19 @@
     unique_id: cdb2dfb8-edb8-4c9a-83ef-5519e2338c0a
     trigger: device
     id: '1 Long press '
-  conditions: []
+  conditions:
+  - condition: state
+    state: 'on'
+    entity_id: input_boolean.workday_today_toggle
+  - condition: time
+    after: 08:00:00
+    before: 09:30:00
   actions:
   - choose:
     - conditions:
       - condition: trigger
         id:
         - '1 Long press '
-      - condition: and
-        conditions:
-        - condition: state
-          state: 'on'
-          entity_id: input_boolean.workday_today_toggle
-        - condition: time
-          after: 08:00:00
-          before: 09:30:00
       sequence:
       - sequence:
         - action: light.turn_on
@@ -1013,14 +983,6 @@
       - condition: state
         entity_id: input_boolean.im_awake_toggle_helper
         state: 'off'
-      - condition: and
-        conditions:
-        - condition: state
-          state: 'on'
-          entity_id: input_boolean.workday_today_toggle
-        - condition: time
-          after: 08:00:00
-          before: 09:30:00
       sequence:
       - sequence:
         - event: hue_event
@@ -1032,14 +994,6 @@
       - condition: trigger
         id:
         - 8:55am
-      - condition: and
-        conditions:
-        - condition: state
-          state: 'on'
-          entity_id: input_boolean.workday_today_toggle
-        - condition: time
-          after: 08:00:00
-          before: 09:30:00
       - condition: template
         value_template: "{% set s = states.binary_sensor.front_door %} {{ s.state
           in ['unavailable', 'unknown']\n   or (as_timestamp(now()) - as_timestamp(s.last_changed))
@@ -1171,14 +1125,6 @@
         id:
         - '9:29'
         - Door
-      - condition: and
-        conditions:
-        - condition: state
-          state: 'on'
-          entity_id: input_boolean.workday_today_toggle
-        - condition: time
-          after: 08:00:00
-          before: 09:30:00
       sequence:
       - action: scene.turn_on
         metadata: {}
