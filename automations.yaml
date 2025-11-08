@@ -123,37 +123,27 @@
     - conditions:
       - condition: trigger
         id:
-        - Sunset -1hr
-      sequence:
-      - action: light.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.living_room_lamp
-      alias: Sunset - lamp on
-    - conditions:
-      - condition: trigger
-        id:
         - Cloud coverage >40
         - 5:05 pm
         - Main lights off
         - Workday today off
+        - Sunset -1hr
       - condition: state
         entity_id: light.main_lights
         state: 'off'
       - condition: or
         conditions:
+        - condition: sun
+          before: sunrise
+          after: sunset
+          after_offset: -01:00:00
+          before_offset: 00:30:00
         - type: is_value
           condition: device
           device_id: c01df91d71e0dd72fe7a5636aea2d71b
           entity_id: 43e53695c8962aaa2bf07e8ed7325df8
           domain: sensor
           above: 38
-        - condition: sun
-          before: sunrise
-          after: sunset
-          after_offset: -01:00:00
-          before_offset: 00:30:00
       - condition: or
         conditions:
         - condition: state
@@ -182,31 +172,24 @@
     - conditions:
       - condition: trigger
         id:
-        - Sunrise +30min
-      - type: is_value
-        condition: device
-        device_id: c01df91d71e0dd72fe7a5636aea2d71b
-        entity_id: 43e53695c8962aaa2bf07e8ed7325df8
-        domain: sensor
-        below: 30
-      sequence:
-      - action: light.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.living_room_lamp
-      alias: Sunrise & <30% cloud coverage - lamp off
-    - conditions:
-      - condition: trigger
-        id:
         - Cloud coverage <30
-      - condition: not
+        - Main lights on
+        - Sunrise +30min
+      - condition: and
         conditions:
-        - condition: sun
-          before: sunrise
-          after: sunset
-          before_offset: 00:30:00
-          after_offset: -01:00:00
+        - condition: not
+          conditions:
+          - condition: sun
+            before: sunrise
+            after: sunset
+            before_offset: 00:30:00
+            after_offset: -01:00:00
+        - type: is_value
+          condition: device
+          device_id: c01df91d71e0dd72fe7a5636aea2d71b
+          entity_id: 43e53695c8962aaa2bf07e8ed7325df8
+          domain: sensor
+          below: 32
       sequence:
       - action: light.turn_off
         metadata: {}
@@ -217,36 +200,23 @@
     - conditions:
       - condition: trigger
         id:
-        - Main lights on
+        - 10:05am Trigger
       - condition: or
         conditions:
-        - type: is_value
-          condition: device
-          device_id: c01df91d71e0dd72fe7a5636aea2d71b
-          entity_id: 43e53695c8962aaa2bf07e8ed7325df8
-          domain: sensor
-          below: 30
-        - condition: not
+        - condition: state
+          state: 'off'
+          entity_id: input_boolean.workday_today_toggle
+        - condition: state
+          entity_id: person.blake_foster
+          state: home
+        - condition: and
           conditions:
-          - condition: sun
-            before: sunrise
-            after: sunset
-            before_offset: 00:30:00
-            after_offset: -01:00:00
-      sequence:
-      - action: light.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.living_room_lamp
-      alias: Main lights turn on - lamp off
-    - conditions:
-      - condition: trigger
-        id:
-        - 10:05am Trigger
-      - condition: state
-        state: 'on'
-        entity_id: input_boolean.workday_today_toggle
+          - condition: state
+            entity_id: input_boolean.workday_today_toggle
+            state: 'on'
+          - condition: time
+            after: '17:00:00'
+            before: '10:00:00'
       sequence:
       - action: light.turn_off
         metadata: {}
@@ -787,7 +757,7 @@
       - action: input_datetime.set_datetime
         metadata: {}
         data:
-          datetime:
+          datetime: '0'
         target:
           entity_id: input_datetime.last_motion_on
   mode: restart
@@ -902,11 +872,13 @@
   - condition: time
     after: '22:00:00'
     before: 06:00:00
-  - condition: not
-    conditions:
-    - condition: state
-      entity_id: media_player.bedroom_tv
-      state: playing
+  - condition: state
+    entity_id: media_player.bedroom_tv
+    state: idle
+    for:
+      hours: 0
+      minutes: 15
+      seconds: 0
   - condition: state
     entity_id: input_boolean.phone_active
     state: 'off'
