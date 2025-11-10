@@ -74,16 +74,6 @@
     event: sunrise
     offset: 00:30:00
     id: Sunrise +30min
-  - trigger: state
-    entity_id:
-    - light.main_lights
-    to: 'on'
-    id: Main lights on
-  - trigger: state
-    entity_id:
-    - light.main_lights
-    to: 'off'
-    id: Main lights off
   - type: value
     device_id: c01df91d71e0dd72fe7a5636aea2d71b
     entity_id: 43e53695c8962aaa2bf07e8ed7325df8
@@ -106,17 +96,16 @@
       minutes: 5
       seconds: 0
     id: Cloud coverage <30
-  - trigger: time
-    at: '10:05:00'
-    id: 10:05am Trigger
-  - trigger: time
-    at: '17:05:00'
-    id: 5:05 pm
   - trigger: state
     entity_id:
-    - input_boolean.workday_today_toggle
-    to: 'off'
-    id: Workday today off
+    - person.blake_foster
+    to: home
+    id: Blake’s home
+  - trigger: state
+    entity_id:
+    - person.blake_foster
+    to: not_home
+    id: Blake away
   conditions: []
   actions:
   - choose:
@@ -124,13 +113,8 @@
       - condition: trigger
         id:
         - Cloud coverage >40
-        - 5:05 pm
-        - Main lights off
-        - Workday today off
         - Sunset -1hr
-      - condition: state
-        entity_id: light.main_lights
-        state: 'off'
+        - Blake’s home
       - condition: or
         conditions:
         - condition: sun
@@ -138,28 +122,17 @@
           after: sunset
           after_offset: -01:00:00
           before_offset: 00:30:00
-        - type: is_value
-          condition: device
-          device_id: c01df91d71e0dd72fe7a5636aea2d71b
-          entity_id: 43e53695c8962aaa2bf07e8ed7325df8
-          domain: sensor
-          above: 38
-      - condition: or
-        conditions:
-        - condition: state
-          state: 'off'
-          entity_id: input_boolean.workday_today_toggle
-        - condition: state
-          entity_id: person.blake_foster
-          state: home
         - condition: and
           conditions:
+          - type: is_value
+            condition: device
+            device_id: c01df91d71e0dd72fe7a5636aea2d71b
+            entity_id: 43e53695c8962aaa2bf07e8ed7325df8
+            domain: sensor
+            above: 38
           - condition: state
-            entity_id: input_boolean.workday_today_toggle
-            state: 'on'
-          - condition: time
-            after: '17:00:00'
-            before: '10:00:00'
+            entity_id: person.blake_foster
+            state: home
       sequence:
       - action: light.turn_on
         metadata: {}
@@ -168,28 +141,31 @@
           transition: 0
         target:
           entity_id: light.living_room_lamp
-      alias: Cloud coverage >40%(work or 5:05) - lamp on
+      alias: After sunset / cloud >40 & home
     - conditions:
       - condition: trigger
         id:
         - Cloud coverage <30
-        - Main lights on
         - Sunrise +30min
-      - condition: and
+        - Blake away
+      - condition: not
         conditions:
-        - condition: not
-          conditions:
-          - condition: sun
-            before: sunrise
-            after: sunset
-            before_offset: 00:30:00
-            after_offset: -01:00:00
+        - condition: sun
+          before: sunrise
+          after: sunset
+          before_offset: 00:30:00
+          after_offset: -01:00:00
+      - condition: or
+        conditions:
         - type: is_value
           condition: device
           device_id: c01df91d71e0dd72fe7a5636aea2d71b
           entity_id: 43e53695c8962aaa2bf07e8ed7325df8
           domain: sensor
           below: 32
+        - condition: state
+          entity_id: person.blake_foster
+          state: not_home
       sequence:
       - action: light.turn_off
         metadata: {}
@@ -197,32 +173,6 @@
         target:
           entity_id: light.living_room_lamp
       alias: Cloud coverage <30% - lamp off
-    - conditions:
-      - condition: trigger
-        id:
-        - 10:05am Trigger
-      - condition: or
-        conditions:
-        - condition: state
-          state: 'off'
-          entity_id: input_boolean.workday_today_toggle
-        - condition: state
-          entity_id: person.blake_foster
-          state: home
-        - condition: and
-          conditions:
-          - condition: state
-            entity_id: input_boolean.workday_today_toggle
-            state: 'on'
-          - condition: time
-            after: '17:00:00'
-            before: '10:00:00'
-      sequence:
-      - action: light.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.living_room_lamp
   mode: single
 - id: nightly_github_sync
   alias: Nightly GitHub sync
@@ -552,9 +502,9 @@
     id: Blake’s home
   - trigger: state
     entity_id:
-    - input_boolean.workday_today_toggle
-    to: 'off'
-    id: Workday off
+    - person.blake_foster
+    to: not_home
+    id: Blake away
   conditions: []
   actions:
   - choose:
@@ -562,16 +512,15 @@
       - condition: trigger
         id:
         - 9am
-        - Blake’s home
-        - Workday off
-      - condition: time
-        before: '15:50:00'
-        after: 09:05:00
+        - Blake away
       sequence:
       - if:
         - condition: state
           entity_id: input_boolean.workday_today_toggle
           state: 'on'
+        - condition: time
+          after: 08:59:00
+          before: '15:50:00'
         then:
         - action: scene.turn_on
           metadata: {}
@@ -594,6 +543,19 @@
         data: {}
         target:
           entity_id: scene.thermostat_ideal_evening
+    - conditions:
+      - condition: trigger
+        id:
+        - Blake’s home
+      - condition: time
+        after: 08:59:00
+        before: '15:50:00'
+      sequence:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.thermostat_ideal_morning
   mode: single
 - id: '1760842208486'
   alias: Door Automation
@@ -615,7 +577,7 @@
         > 0 %}\n  {% set delta = (door_ts - motion_ts) | round(3) %}\n{% else %}\n
         \ {% set delta = 'n/a' %}\n{% endif %} motion_ts={{ motion_ts }}; door_ts={{
         door_ts }}; delta={{ delta }}; leaving_eval={{ motion_ts is number and motion_ts
-        > 0 and motion_ts <= (door_ts - 0.5) }}\n"
+        > 0 and motion_ts <= door_ts }}\n"
   - if:
     - condition: or
       conditions:
@@ -631,7 +593,7 @@
             in [''charging'', ''full''] }}'
         - condition: numeric_state
           entity_id: input_number.phone_charging_distance
-          above: 0.25
+          above: 0.1
     then:
     - if:
       - condition: template
@@ -641,7 +603,7 @@
           {% set door_ts = as_timestamp(trigger.to_state.last_changed) if trigger
           is defined else now().timestamp() %}
 
-          {{ motion_ts is number and motion_ts <= door_ts }}'
+          {{ motion_ts is number and motion_ts > 0 and motion_ts <= door_ts }}'
       then:
       - action: scene.turn_on
         metadata: {}
@@ -681,7 +643,7 @@
           {% set door_ts = as_timestamp(trigger.to_state.last_changed) if trigger
           is defined else now().timestamp() %}
 
-          {{ motion_ts is number and motion_ts <= door_ts }}'
+          {{ motion_ts is number and motion_ts > 0 and motion_ts <= door_ts }}'
       then:
       - action: light.turn_off
         metadata: {}
@@ -690,6 +652,20 @@
           entity_id: light.main_lights
       else:
       - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.main_lights
+      - wait_for_trigger:
+        - trigger: state
+          entity_id:
+          - binary_sensor.motion_1_motion
+          to: 'off'
+          for:
+            hours: 0
+            minutes: 3
+            seconds: 0
+      - action: light.turn_off
         metadata: {}
         data: {}
         target:
