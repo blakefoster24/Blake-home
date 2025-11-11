@@ -1,4 +1,4 @@
-===== 2025-11-10T02:00:00-06:00 — automation runs (recent) =====
+===== 2025-11-11T02:00:00-06:00 — automation runs (recent) =====
 2025-11-09 10:35:59.746 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alexa_media which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
 2025-11-09 10:36:31.762 WARNING (MainThread) [alexapy.helpers] alexalogin.login((<alexapy.alexalogin.AlexaLogin object at 0xffff79bd7cb0>,), {'cookies': {'lc-main': <Morsel: lc-main=en_US>, 'session-id': <Morsel: session-id=138-6441723-4777400>, 'session-id-time': <Morsel: session-id-time=2082787201l>, 'ubid-main': <Morsel: ubid-main=130-6247593-1595817>, 'session-token': <Morsel: session-token="LqhV+NeEjoOfuNtxTnHlBfw0lLweaUdLLu5Ri6R4+3aXNCmIT15xhENxZLVrOwHq+hQnxoMSy5X22DePzUj7gvDsypmVQFWHWixK6nTVP8qyYexwONjVtYJgW3LTyCnB9qlDL9yEhjgLoRAz6DVjgYsxtvKPoY7fSOEO0kr3HoR1zesOtFbm58+PbiMZiFxazvzbjOoSkOFWkN2MjgisG6sMCYsJXxq3tZBX5l7YN0R53GDwkMnAjtGdw5KCGnLqbuNV8PaZ5r2+hBwxHKl3lacp7NUkNvBbV49lZHmSFfYZaSxWlaaOtuE29PzISiqo8mbVhupfCUuIA8WTbn6lQKSamBXdmZoJd14VzDWQ9YReHLLB+5AEchmjH/U6Suyw">, 'sid': <Morsel: sid="\"icXxpnBSBNVLlG+yh5uT3Q==|hOj93L08tLtR2H7RS+uKnREDud/82IMzuiuOnIr+nr8=\"">, 'x-main': <Morsel: x-main="@D4q7fUL4A5vs7Q5z18Yp5?rivy85t364kI1SvwcIwt5H7FUhy9x4btrJy36wTDy">, 'at-main': <Morsel: at-main=Atza|gQCFzY1IAwEBACyL3CNS_H_9DRRq-SAeQBWJXJh28c44udR-U1NKddlTTHik0sbslW83hTUHSYIovcsmaRCW6vl9jUbOv4UUE4-MnXE-M0G1671etL4RxVpZwVufN0qIoZjgku7TpEsiz_qtM22o0dGJYd9zpBNu1uuiRDsJYd7VEPUmLt8Di5Ku28JwphFOD9dXA9z85qPSMubknAqLMKXak3-NnnLr6WqZlSXdM4ISPDLnx8BxCYw11-GSwkOqUxO-sMnGrqs0J7zzeJsCvOm1gSUw3D5N3PDeUuAqr5MlxfoqIjAQ206lPBWogkxy7xEQhBrGfzanLmsaq2N-CtwMEk9vmVbbmRSWxZlLWGnH4Bjaz0btaG3MFhctt7o1JVIWaXS6Iwjcgp0BQ51l4p57SeJviGKTMkTSaNUfxPoQGTGz-W_SzuLKXCV3RrvFTJnXekYjKYDUQe2zXHEtQvRAVnJyYp19P5tPp9Xf-vOHcBX4WBDUpojtfHLWDk4MwruabFxLUg0aQi9dTjxQItzM0HtpIB8GWCh2F_FIqsM1Yg>, 'sess-at-main': <Morsel: sess-at-main="Ck5YLho8rmVu2Avgr5W3LzXU5vjKX2l8mmhnKqHw8oU=">, 'csrf': <Morsel: csrf=-793887693>, 'i18n-prefs': <Morsel: i18n-prefs=USD>}}): A connection error occurred: An exception of type ClientConnectorCertificateError occurred. Arguments:
 2025-11-09 10:36:49.696 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Initialized trigger Flic Button
@@ -475,3 +475,392 @@
 2025-11-10 02:00:00.426 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-11-10 02:00:00.466 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
 2025-11-10 02:00:00.521 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-11-10 02:00:00.587 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-11-10 03:15:46.369 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 03:15:46.371 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 03:15:46.372 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 03:15:46.604 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step delay 0:00:02
+2025-11-10 03:15:48.607 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step assigning variables
+2025-11-10 03:15:48.608 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 06:14:22.957 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-11-10 06:14:22.959 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: After sunset / cloud >40 & home: Running automation actions
+2025-11-10 06:14:22.960 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: After sunset / cloud >40 & home: Executing step call service
+2025-11-10 07:10:11.025 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-11-10 07:10:11.029 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage <30% - lamp off: Running automation actions
+2025-11-10 07:10:11.029 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage <30% - lamp off: Executing step call service
+2025-11-10 07:14:22.984 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-11-10 07:14:22.987 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage <30% - lamp off: Running automation actions
+2025-11-10 07:14:22.988 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage <30% - lamp off: Executing step call service
+2025-11-10 07:36:51.474 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 07:36:51.476 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 07:36:51.476 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 07:36:51.651 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step delay 0:00:02
+2025-11-10 07:36:53.652 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step assigning variables
+2025-11-10 07:36:53.653 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 08:14:41.495 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-11-10 08:14:41.496 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions
+2025-11-10 08:14:41.496 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service
+2025-11-10 08:18:16.134 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 08:18:16.136 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 08:18:16.137 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 08:18:16.382 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step delay 0:00:02
+2025-11-10 08:18:18.385 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step assigning variables
+2025-11-10 08:18:18.386 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 08:50:00.014 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 08:50:00.016 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 08:50:00.016 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 08:50:00.196 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Running automation actions
+2025-11-10 08:54:56.099 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up
+2025-11-10 08:55:00.105 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Running automation actions
+2025-11-10 08:55:00.109 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Running automation actions
+2025-11-10 08:55:00.112 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Running automation actions
+2025-11-10 08:55:00.113 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Executing step call service
+2025-11-10 08:55:00.290 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Executing step call service
+2025-11-10 08:55:00.293 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Executing step delay 0:00:05
+2025-11-10 08:55:05.296 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Running automation actions
+2025-11-10 08:55:05.297 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-11-10 08:55:05.387 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-11-10 08:55:05.404 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step delay 0:00:02
+2025-11-10 08:55:07.406 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-11-10 08:55:07.520 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-11-10 08:55:07.532 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: If at step 4: Executing step call service
+2025-11-10 08:55:07.537 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Running automation actions
+2025-11-10 08:55:07.538 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:55:07.542 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 08:55:09.545 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:55:09.714 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 08:55:11.716 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:55:11.991 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 08:55:13.993 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:55:14.249 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 08:55:16.251 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:55:16.532 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 3: Executing step call service
+2025-11-10 08:55:16.771 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-11-10 08:55:16.773 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
+2025-11-10 08:55:16.774 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-11-10 08:55:16.775 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-11-10 08:55:16.779 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-11-10 08:55:16.782 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
+2025-11-10 08:55:16.800 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions
+2025-11-10 08:55:16.801 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 3: Running automation actions
+2025-11-10 08:55:16.808 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 3: Executing step call service
+2025-11-10 08:55:31.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-11-10 08:55:31.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-11-10 08:55:31.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-11-10 08:57:22.012 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up
+2025-11-10 08:57:39.578 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script
+2025-11-10 08:57:39.579 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Pause and Reset Volume on Alexa : Running websocket_api script
+2025-11-10 08:57:39.579 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Pause and Reset Volume on Alexa : Executing step call service
+2025-11-10 08:57:39.947 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Pause and Reset Volume on Alexa : Executing step call service
+2025-11-10 08:57:47.778 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-11-10 08:57:47.779 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
+2025-11-10 08:57:47.790 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-11-10 08:57:47.791 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-11-10 08:57:47.793 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-11-10 08:57:47.796 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
+2025-11-10 08:58:02.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-11-10 08:58:02.003 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-11-10 08:58:02.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-11-10 08:58:12.809 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script
+2025-11-10 08:58:12.810 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step hue_event
+2025-11-10 08:58:12.812 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions
+2025-11-10 08:58:12.814 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 2: Running automation actions
+2025-11-10 08:58:12.814 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 2: Executing step call service
+2025-11-10 08:58:12.821 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Running automation actions
+2025-11-10 08:58:12.823 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 1: Running automation actions
+2025-11-10 08:58:12.824 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 1: Sequence action at step 1: Running automation actions
+2025-11-10 08:58:12.824 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 1: Sequence action at step 1: Executing step call service
+2025-11-10 08:58:12.928 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 1: Sequence action at step 1: Executing step call service
+2025-11-10 08:58:13.000 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 1: Sequence action at step 1: Executing step call service
+2025-11-10 08:58:13.396 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions
+2025-11-10 08:58:17.986 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script
+2025-11-10 08:58:17.987 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Running websocket_api script
+2025-11-10 08:58:17.987 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Executing step call service
+2025-11-10 08:58:18.321 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Executing step call service
+2025-11-10 08:58:18.329 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Executing step delay 0:00:05
+2025-11-10 08:58:23.332 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: If at step 4: Running websocket_api script
+2025-11-10 08:58:23.332 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: If at step 4: Executing step call service
+2025-11-10 08:58:23.431 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: If at step 4: Executing step call service
+2025-11-10 08:58:23.439 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: If at step 4: Executing step delay 0:00:02
+2025-11-10 08:58:25.440 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: If at step 4: Executing step call service
+2025-11-10 08:58:25.685 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: If at step 4: Executing step call service
+2025-11-10 08:58:25.698 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: If at step 4: Executing step call service
+2025-11-10 08:58:25.715 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Running websocket_api script
+2025-11-10 08:58:25.716 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:58:25.720 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 08:58:27.722 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:58:27.989 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 08:58:29.991 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:58:30.264 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 08:58:32.266 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:58:32.541 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 08:58:34.543 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:58:42.768 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up
+2025-11-10 08:59:14.367 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up
+2025-11-10 08:59:25.460 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script
+2025-11-10 08:59:25.461 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Pause and Reset Volume on Alexa : Running websocket_api script
+2025-11-10 08:59:25.462 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Pause and Reset Volume on Alexa : Executing step call service
+2025-11-10 08:59:25.789 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Pause and Reset Volume on Alexa : Executing step call service
+2025-11-10 08:59:45.995 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script
+2025-11-10 08:59:45.996 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Running websocket_api script
+2025-11-10 08:59:45.996 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Executing step call service
+2025-11-10 08:59:46.000 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Executing step call service
+2025-11-10 08:59:46.008 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Executing step delay 0:00:05
+2025-11-10 08:59:51.010 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Executing step call service
+2025-11-10 08:59:51.271 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: If at step 5: Running websocket_api script
+2025-11-10 08:59:51.272 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Running websocket_api script
+2025-11-10 08:59:51.273 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:59:51.279 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 08:59:53.281 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:59:53.554 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 08:59:55.555 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:59:55.832 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 08:59:57.833 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 08:59:58.090 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 09:00:00.057 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions
+2025-11-10 09:00:00.058 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: Running automation actions
+2025-11-10 09:00:00.060 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: If at step 1: Running automation actions
+2025-11-10 09:00:00.060 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: If at step 1: Executing step call service
+2025-11-10 09:00:00.092 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 09:00:10.213 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script
+2025-11-10 09:00:10.214 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Pause and Reset Volume on Alexa : Running websocket_api script
+2025-11-10 09:00:10.215 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Pause and Reset Volume on Alexa : Executing step call service
+2025-11-10 09:00:10.542 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Pause and Reset Volume on Alexa : Executing step call service
+2025-11-10 09:00:29.211 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script
+2025-11-10 09:00:29.212 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Running websocket_api script
+2025-11-10 09:00:29.212 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Executing step call service
+2025-11-10 09:00:29.580 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Executing step call service
+2025-11-10 09:00:29.588 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Executing step delay 0:00:05
+2025-11-10 09:00:34.589 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Executing step call service
+2025-11-10 09:00:34.880 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: If at step 5: Running websocket_api script
+2025-11-10 09:00:34.881 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Running websocket_api script
+2025-11-10 09:00:34.881 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 09:00:34.892 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 09:00:36.894 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 09:00:37.182 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 09:00:39.185 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 09:00:39.484 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 09:00:41.486 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 09:00:41.763 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step delay 0:00:02
+2025-11-10 09:00:43.765 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Play Music Alexa: Incrementally raise volume: Executing step call service
+2025-11-10 09:05:44.167 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-11-10 09:05:44.168 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Running automation actions
+2025-11-10 09:05:44.169 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Executing step call service
+2025-11-10 09:06:51.414 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-11-10 09:06:51.415 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Running automation actions
+2025-11-10 09:06:51.416 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Executing step call service
+2025-11-10 09:09:25.409 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-11-10 09:09:25.410 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Running automation actions
+2025-11-10 09:09:25.411 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Executing step call service
+2025-11-10 09:10:14.038 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Flic Button: Running automation actions
+2025-11-10 09:10:14.040 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Flic Button: Choose at step 1: choice 3: Running automation actions
+2025-11-10 09:10:14.040 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Flic Button: Choose at step 1: choice 3: Executing step call service
+2025-11-10 09:10:14.536 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions
+2025-11-10 09:10:22.577 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Running automation actions
+2025-11-10 09:10:22.577 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step call service
+2025-11-10 09:10:22.581 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: If at step 2: Running automation actions
+2025-11-10 09:10:22.588 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: If at step 2: If at step 1: Running automation actions
+2025-11-10 09:10:22.588 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: If at step 2: If at step 1: Executing step call service
+2025-11-10 09:10:22.594 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Running automation actions
+2025-11-10 09:10:22.597 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Running automation actions
+2025-11-10 09:10:22.598 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Executing step call service
+2025-11-10 09:10:27.613 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Executing step call service
+2025-11-10 09:10:27.616 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Pause and Reset Volume on Alexa : Running automation actions
+2025-11-10 09:10:27.616 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Pause and Reset Volume on Alexa : Executing step call service
+2025-11-10 09:10:27.907 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Pause and Reset Volume on Alexa : Executing step call service
+2025-11-10 09:11:18.670 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-11-10 09:11:18.672 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Running automation actions
+2025-11-10 09:11:18.673 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Executing step call service
+2025-11-10 09:15:03.979 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-11-10 09:15:03.983 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage <30% - lamp off: Running automation actions
+2025-11-10 09:15:03.986 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage <30% - lamp off: Executing step call service
+2025-11-10 09:15:03.995 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions
+2025-11-10 09:15:03.996 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: Running automation actions
+2025-11-10 09:15:03.997 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: If at step 1: Running automation actions
+2025-11-10 09:15:03.998 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 1: If at step 1: Executing step call service
+2025-11-10 09:24:12.578 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 09:24:12.580 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 09:24:12.580 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 09:24:12.611 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 09:24:12.613 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 09:24:12.613 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 09:29:00.292 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Running automation actions
+2025-11-10 09:29:00.294 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Running automation actions
+2025-11-10 09:29:00.295 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Executing step call service
+2025-11-10 09:29:05.306 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Executing step call service
+2025-11-10 09:29:05.308 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Pause and Reset Volume on Alexa : Running automation actions
+2025-11-10 09:29:05.309 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Pause and Reset Volume on Alexa : Executing step call service
+2025-11-10 09:29:05.677 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Workday Wake-up: Choose at step 1: choice 4: Pause and Reset Volume on Alexa : Executing step call service
+2025-11-10 09:32:12.132 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 09:32:12.134 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 09:32:12.135 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 09:54:22.971 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-11-10 09:54:22.974 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage <30% - lamp off: Running automation actions
+2025-11-10 09:54:22.974 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage <30% - lamp off: Executing step call service
+2025-11-10 10:45:23.308 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 10:45:23.310 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 10:45:23.310 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 11:33:20.812 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 11:33:20.814 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 11:33:20.814 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 12:36:42.805 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 12:36:42.807 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 12:36:42.807 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 13:00:00.205 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Running automation actions
+2025-11-10 13:00:00.206 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 1: Running automation actions
+2025-11-10 13:00:00.208 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 1: If at step 1: Running automation actions
+2025-11-10 13:00:00.208 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 1: If at step 1: Executing step call service
+2025-11-10 14:14:22.965 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-11-10 14:35:09.615 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 14:35:09.617 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 14:35:09.617 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 15:14:22.975 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-11-10 15:14:22.979 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage <30% - lamp off: Running automation actions
+2025-11-10 15:14:22.979 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Cloud coverage <30% - lamp off: Executing step call service
+2025-11-10 15:43:55.233 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 15:43:55.235 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 15:43:55.236 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 15:52:53.091 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-11-10 15:52:53.093 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: After sunset / cloud >40 & home: Running automation actions
+2025-11-10 15:52:53.094 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: After sunset / cloud >40 & home: Executing step call service
+2025-11-10 16:00:00.126 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions
+2025-11-10 16:00:00.127 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 2: Running automation actions
+2025-11-10 16:00:00.128 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: choice 2: Executing step call service
+2025-11-10 16:03:21.174 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 16:03:21.176 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 16:03:21.176 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 16:18:48.929 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 16:18:48.931 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 16:18:48.931 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 17:55:11.470 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 17:55:11.472 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 17:55:11.472 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 19:38:59.158 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Running automation actions
+2025-11-10 19:38:59.160 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Running automation actions
+2025-11-10 19:38:59.160 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 1 of 2
+2025-11-10 19:38:59.161 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions
+2025-11-10 19:38:59.161 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01
+2025-11-10 19:38:59.164 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 19:38:59.166 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 19:38:59.167 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 19:39:00.163 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service
+2025-11-10 19:39:00.279 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 2 of 2
+2025-11-10 19:39:00.279 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions
+2025-11-10 19:39:00.280 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01
+2025-11-10 19:39:01.283 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service
+2025-11-10 19:40:20.046 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 19:40:20.048 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 19:40:20.048 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 19:40:20.223 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step delay 0:00:02
+2025-11-10 19:40:22.225 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step assigning variables
+2025-11-10 19:40:22.227 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 19:44:38.139 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 19:44:38.141 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 19:44:38.141 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 19:44:38.453 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 19:44:38.455 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 19:44:38.455 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 19:44:38.672 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step delay 0:00:02
+2025-11-10 19:44:40.674 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step assigning variables
+2025-11-10 19:44:40.676 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 19:45:20.524 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 19:45:20.526 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 19:45:20.526 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 19:55:07.768 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Running automation actions
+2025-11-10 19:55:07.770 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Running automation actions
+2025-11-10 19:55:07.770 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 1 of 2
+2025-11-10 19:55:07.771 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions
+2025-11-10 19:55:07.772 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01
+2025-11-10 19:55:08.773 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service
+2025-11-10 19:55:08.891 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 2 of 2
+2025-11-10 19:55:08.892 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions
+2025-11-10 19:55:08.892 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01
+2025-11-10 19:55:09.895 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service
+2025-11-10 19:57:37.698 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions
+2025-11-10 19:57:37.700 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: After sunset / cloud >40 & home: Running automation actions
+2025-11-10 19:57:37.701 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: After sunset / cloud >40 & home: Executing step call service
+2025-11-10 19:57:37.710 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions
+2025-11-10 19:59:04.539 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Running automation actions
+2025-11-10 19:59:04.540 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step call service
+2025-11-10 19:59:04.549 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: If at step 2: Running automation actions
+2025-11-10 19:59:04.551 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: If at step 2: If at step 1: Running automation actions
+2025-11-10 19:59:04.551 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: If at step 2: If at step 1: Executing step call service
+2025-11-10 19:59:04.676 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: If at step 2: If at step 1: Executing step call service
+2025-11-10 19:59:04.708 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-11-10 19:59:04.710 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
+2025-11-10 19:59:04.711 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-11-10 19:59:04.711 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-11-10 19:59:04.724 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-11-10 19:59:04.727 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
+2025-11-10 19:59:04.740 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions
+2025-11-10 19:59:04.747 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 3: Running automation actions
+2025-11-10 19:59:04.747 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 3: Executing step call service
+2025-11-10 19:59:05.069 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions
+2025-11-10 19:59:05.071 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 1: Running automation actions
+2025-11-10 19:59:05.072 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 1: Executing step call service
+2025-11-10 19:59:05.112 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 1: Executing step call service
+2025-11-10 19:59:05.114 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 1: Executing step delay 0:30:00
+2025-11-10 19:59:19.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-11-10 19:59:19.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-11-10 19:59:19.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-11-10 20:00:54.277 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-11-10 20:00:54.278 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Running automation actions
+2025-11-10 20:00:54.279 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Executing step call service
+2025-11-10 20:05:53.575 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-11-10 20:05:53.577 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Running automation actions
+2025-11-10 20:05:53.577 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Executing step call service
+2025-11-10 20:08:55.539 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-11-10 20:08:55.540 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Running automation actions
+2025-11-10 20:08:55.541 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 1: Executing step call service
+2025-11-10 20:26:22.917 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-11-10 20:26:22.919 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Running automation actions
+2025-11-10 20:26:22.921 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Running automation actions
+2025-11-10 20:26:22.921 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-11-10 20:26:22.926 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Choose at step 1: choice 1: Executing step call service
+2025-11-10 20:26:22.939 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: default: Executing step call service
+2025-11-10 20:26:23.002 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Restarting
+2025-11-10 20:26:23.011 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions
+2025-11-10 20:26:23.013 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 2: Running automation actions
+2025-11-10 20:26:23.013 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 2: Executing step call service
+2025-11-10 20:26:23.039 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: choice 2: Executing step call service
+2025-11-10 20:26:35.189 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Running automation actions
+2025-11-10 20:26:35.191 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Running automation actions
+2025-11-10 20:26:35.191 INFO (MainThread) [homeassistant.components.automation.stamp_last_motion_on_time] Stamp last motion ON time: Choose at step 1: choice 2: Executing step call service
+2025-11-10 20:26:37.002 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions
+2025-11-10 20:26:37.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Running automation actions
+2025-11-10 20:26:37.004 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Choose at step 1: choice 1: Executing step call service
+2025-11-10 20:39:35.091 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 20:39:35.093 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 20:39:35.094 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 20:39:35.276 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step delay 0:00:02
+2025-11-10 20:39:37.278 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step assigning variables
+2025-11-10 20:39:37.280 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 21:55:10.747 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: Running automation actions
+2025-11-10 21:55:10.761 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Running automation actions
+2025-11-10 21:55:10.761 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 21:55:10.967 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step delay 0:00:02
+2025-11-10 21:55:12.968 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step assigning variables
+2025-11-10 21:55:12.970 INFO (MainThread) [homeassistant.components.automation.stamp_distance_phone_plugged_in] Stamp Phone Plugged-In Distance: If at step 1: Executing step call service
+2025-11-10 21:55:56.776 INFO (MainThread) [homeassistant.components.automation.new_automation] Initialized trigger New automation
+2025-11-10 23:00:00.245 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Running automation actions
+2025-11-10 23:00:00.247 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 2: Running automation actions
+2025-11-10 23:00:00.248 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 2: If at step 1: Running automation actions
+2025-11-10 23:00:00.249 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 2: If at step 1: Executing step call service
+2025-11-10 23:00:00.829 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations : Choose at step 1: choice 2: If at step 1: Executing step call service
+2025-11-11 00:00:17.476 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions
+2025-11-11 00:00:17.476 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service
+2025-11-11 00:17:06.869 INFO (MainThread) [homeassistant.components.automation.door_automation] Initialized trigger Door Automation
+2025-11-11 00:19:04.097 INFO (MainThread) [homeassistant.components.automation.new_automation] Initialized trigger New automation
+2025-11-11 00:20:44.085 INFO (MainThread) [homeassistant.components.automation.new_automation] Initialized trigger New automation
+2025-11-11 00:21:25.743 INFO (MainThread) [homeassistant.components.automation.new_automation] Initialized trigger New automation
+2025-11-11 00:22:26.421 INFO (MainThread) [homeassistant.components.automation.new_automation] Initialized trigger New automation
+2025-11-11 00:24:46.489 INFO (MainThread) [homeassistant.components.automation.new_automation] Initialized trigger New automation
+2025-11-11 00:26:22.426 INFO (MainThread) [homeassistant.components.automation.new_automation] Initialized trigger New automation
+2025-11-11 00:28:13.495 INFO (MainThread) [homeassistant.components.automation.new_automation] Initialized trigger door test
+2025-11-11 02:00:00.321 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions
+2025-11-11 02:00:00.322 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service
+2025-11-11 02:00:00.323 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Running script sequence
+2025-11-11 02:00:00.323 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-11-11 02:00:00.415 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-11-11 02:00:00.451 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service
+2025-11-11 02:00:00.505 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github] Create & Push HA Info to Github: Executing step call service

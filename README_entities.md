@@ -22,6 +22,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.living_room_lamp` | Living Room Lamp |
 
+| `automation.new_automation` | door test |
+
 | `automation.nightly_github_sync` | Nightly GitHub sync |
 
 | `automation.stamp_distance_phone_plugged_in` | Stamp Distance | Phone -> Plugged In |
