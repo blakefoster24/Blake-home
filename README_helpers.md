@@ -67,6 +67,11 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
+| `input_datetime.last_door_open` | Last Door Open | has_date=True, has_time=True |
+
+
+
+
 | `input_datetime.last_motion_on` | Last motion on | has_date=True, has_time=True |
 
 
@@ -105,4 +110,4 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 ---
-_Generated: 2025-11-11T02:00:00.417054-06:00_
+_Generated: 2025-11-12T02:00:00.416965-06:00_

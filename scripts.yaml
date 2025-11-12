@@ -64,3 +64,16 @@ create_push_ha_info_to_github:
     data: {}
   mode: single
   description: ''
+find_remote:
+  sequence:
+  - action: remote.send_command
+    metadata: {}
+    data:
+      num_repeats: 1
+      delay_secs: 0.4
+      hold_secs: 0
+      command: find_remote
+    target:
+      entity_id: remote.bedroom_tv
+  alias: Find Remote
+  description: ''

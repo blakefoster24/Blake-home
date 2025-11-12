@@ -527,10 +527,10 @@
       - heat_cool
       min_temp: 50
       max_temp: 90
-      current_temperature: 72
+      current_temperature: 69
       temperature:
-      target_temp_high: 73
-      target_temp_low: 68
+      target_temp_high: 72
+      target_temp_low: 69
       friendly_name: Nest Thermostat
       supported_features: 387
       state: heat_cool
@@ -549,10 +549,10 @@
       - heat_cool
       min_temp: 50
       max_temp: 90
-      current_temperature: 70
+      current_temperature: 69
       temperature:
       target_temp_high: 80
-      target_temp_low: 58
+      target_temp_low: 60
       friendly_name: Nest Thermostat
       supported_features: 387
       state: heat_cool
@@ -571,9 +571,9 @@
       - heat_cool
       min_temp: 50
       max_temp: 90
-      current_temperature: 72
+      current_temperature: 69
       temperature:
-      target_temp_high: 71
+      target_temp_high: 72
       target_temp_low: 68
       friendly_name: Nest Thermostat
       supported_features: 387
