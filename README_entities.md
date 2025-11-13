@@ -16,6 +16,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `automation.goodnight` | Goodnight |
 
+| `automation.helper_automation` | Helper Automation |
+
 | `automation.hue_dimmer_switch` | Hue Dimmer Switch |
 
 | `automation.light_triggers_another_light` | Light Triggers another Light |
@@ -23,10 +25,6 @@ Auto-generated list of entities. Safe to publish.
 | `automation.living_room_lamp` | Living Room Lamp |
 
 | `automation.nightly_github_sync` | Nightly GitHub sync |
-
-| `automation.stamp_distance_phone_plugged_in` | Stamp Distance | Phone -> Plugged In |
-
-| `automation.stamp_last_motion_on_time` | Stamp - (Motion On / Clear) & (Door Open) |
 
 | `automation.test_bay` | Test Bay |
 

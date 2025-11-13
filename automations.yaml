@@ -609,7 +609,7 @@
           id: 8:55am
   mode: single
 - id: '1761198863619'
-  alias: Stamp - (Motion On / Clear) & (Door Open)
+  alias: Helper Automation
   description: ''
   triggers:
   - trigger: state
@@ -622,11 +622,9 @@
     - binary_sensor.motion_1_motion
     to: 'off'
     id: Clear
-  - trigger: state
-    entity_id:
-    - binary_sensor.front_door
-    to: 'on'
-    id: Front Door open
+  - entity_id: sensor.blakes_iphone_battery_state
+    trigger: state
+    id: Phone trigger
   conditions: []
   actions:
   - choose:
@@ -655,19 +653,39 @@
     - conditions:
       - condition: trigger
         id:
-        - Front Door open
+        - Phone trigger
       sequence:
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 5
-          milliseconds: 0
-      - action: input_datetime.set_datetime
-        metadata: {}
-        data:
-          datetime: '{{ now().isoformat() }}'
-        target:
-          entity_id: input_datetime.last_door_open
+      - if:
+        - condition: template
+          value_template: '{{ states(''sensor.blakes_iphone_battery_state'') in [''Charging'',''Full'']
+            }}'
+          alias: Phone Plugged In
+        then:
+        - action: notify.mobile_app_blakes_iphone
+          data:
+            message: request_location_update
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 2
+            milliseconds: 0
+        - variables:
+            miles: '{% set km = distance(''device_tracker.blakes_iphone'',''zone.home'')
+              %} {{ ((km if km is number else 0) * 0.621371) | float(0) | round(3)
+              }}
+
+              '
+        - action: input_number.set_value
+          target:
+            entity_id: input_number.phone_charging_distance
+          data:
+            value: '{{ miles }}'
+        else:
+        - action: input_number.set_value
+          target:
+            entity_id: input_number.phone_charging_distance
+          data:
+            value: 10
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
@@ -725,43 +743,6 @@
             target:
               entity_id: light.bedroom_lamp
   mode: single
-- id: '1761431556805'
-  alias: Stamp Phone Plugged-In Distance
-  triggers:
-  - entity_id: sensor.blakes_iphone_battery_state
-    trigger: state
-  conditions: []
-  actions:
-  - if:
-    - condition: template
-      value_template: '{{ states(''sensor.blakes_iphone_battery_state'') in [''Charging'',''Full'']
-        }}'
-    then:
-    - action: notify.mobile_app_blakes_iphone
-      data:
-        message: request_location_update
-    - delay:
-        hours: 0
-        minutes: 0
-        seconds: 2
-        milliseconds: 0
-    - variables:
-        miles: '{% set km = distance(''device_tracker.blakes_iphone'',''zone.home'')
-          %} {{ ((km if km is number else 0) * 0.621371) | float(0) | round(3) }}
-
-          '
-    - action: input_number.set_value
-      target:
-        entity_id: input_number.phone_charging_distance
-      data:
-        value: '{{ miles }}'
-    else:
-    - action: input_number.set_value
-      target:
-        entity_id: input_number.phone_charging_distance
-      data:
-        value: 10
-  mode: single
 - id: '1761579203292'
   alias: Goodnight
   description: ''
@@ -795,13 +776,15 @@
       hours: 0
       minutes: 15
       seconds: 0
+    alias: Bedroom Tv Idle > 15 min
   - condition: state
     entity_id: input_boolean.phone_active
     state: 'off'
     for:
       hours: 0
-      minutes: 10
+      minutes: 19
       seconds: 0
+    attribute: 'he be '
   actions:
   - action: scene.turn_on
     metadata: {}
@@ -834,6 +817,7 @@
     unique_id: cdb2dfb8-edb8-4c9a-83ef-5519e2338c0a
     trigger: device
     id: '1 Long press '
+    alias: 1 Long Press (I’m awake Scene)
   conditions:
   - condition: state
     state: 'on'
@@ -864,6 +848,7 @@
           data: {}
           target:
             entity_id: input_boolean.im_awake_toggle_helper
+      alias: Wake up Sequence
     - conditions:
       - condition: trigger
         id:
@@ -878,6 +863,8 @@
             device_id: 6e3f05f16e73548265ce22e622f4a268
             type: long_press
             subtype: 1
+        alias: Trigger Wake-up Sequence
+      alias: 8:40am & Helper Still Off
     - conditions:
       - condition: trigger
         id:
@@ -886,12 +873,14 @@
         value_template: "{% set s = states.binary_sensor.front_door %} {{ s.state
           in ['unavailable', 'unknown']\n   or (as_timestamp(now()) - as_timestamp(s.last_changed))
           > 3600 }}\n"
+        alias: Door hasn’t opened in the last hour
       sequence:
       - event: hue_event
         event_data:
           device_id: 6e3f05f16e73548265ce22e622f4a268
           type: long_press
           subtype: 1
+        alias: Trigger Wake-up Sequence
       - action: light.turn_on
         metadata: {}
         data: {}
@@ -967,6 +956,7 @@
             target:
               entity_id: media_player.everywhere
             enabled: true
+          alias: Music Playing Check
         - alias: Incrementally raise volume
           sequence:
           - action: media_player.volume_set
@@ -1019,6 +1009,7 @@
               volume_level: 0.15
             target:
               entity_id: media_player.everywhere
+      alias: 8:55 & Haven’t Left
     - conditions:
       - condition: trigger
         id:
@@ -1048,6 +1039,7 @@
             volume_level: 0.4
           target:
             entity_id: media_player.everywhere
+      alias: Leaving Branch
   mode: parallel
 - id: '1762858969202'
   alias: Door Automation
