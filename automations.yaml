@@ -798,11 +798,11 @@
   description: ''
   triggers:
   - trigger: time
-    at: 08:50:00
-    id: 8:40am Time Trigger
+    at: 08:40:00
+    id: Time window - late
   - trigger: time
     at: 08:55:00
-    id: 8:55am
+    id: Time window - last chance
   - trigger: time
     at: 09:29:00
     id: '9:29'
@@ -853,7 +853,7 @@
     - conditions:
       - condition: trigger
         id:
-        - 8:40am Time Trigger
+        - Time window - late
       - condition: state
         entity_id: input_boolean.im_awake_toggle_helper
         state: 'off'
@@ -865,11 +865,11 @@
             type: long_press
             subtype: 1
         alias: Trigger Wake-up Sequence
-      alias: 8:40am & Helper Still Off
+      alias: First time window
     - conditions:
       - condition: trigger
         id:
-        - 8:55am
+        - Time window - last chance
       - condition: template
         value_template: "{% set s = states.binary_sensor.front_door %} {{ s.state
           in ['unavailable', 'unknown']\n   or (as_timestamp(now()) - as_timestamp(s.last_changed))
@@ -1010,7 +1010,7 @@
               volume_level: 0.15
             target:
               entity_id: media_player.everywhere
-      alias: 8:55 & Haven’t Left
+      alias: Last time window & Haven’t Left
     - conditions:
       - condition: trigger
         id:

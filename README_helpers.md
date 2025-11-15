@@ -110,4 +110,4 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 ---
-_Generated: 2025-11-14T02:00:00.452323-06:00_
+_Generated: 2025-11-15T02:00:00.428573-06:00_
