@@ -92,7 +92,7 @@ Auto-generated list of entities. Safe to publish.
 
 | `button.nest_thermostat_identify` | Nest Thermostat Identify |
 
-| `button.shelly_device_reboot` | Shelly Device Reboot |
+| `button.shelly_device_reboot` | Shelly Device Restart |
 
 
 
@@ -163,6 +163,8 @@ Auto-generated list of entities. Safe to publish.
 ## Input_boolean
 | Entity ID | Name |
 |---|---|
+
+| `input_boolean.door_helper` | Door Helper |
 
 | `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle |
 

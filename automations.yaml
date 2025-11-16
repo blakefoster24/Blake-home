@@ -430,14 +430,9 @@
     id: Closet light on
   - trigger: state
     entity_id:
-    - light.closet_light
-    to: 'off'
-    id: Closet light off
-  - trigger: state
-    entity_id:
-    - light.bedroom_ceiling_lights
+    - switch.bedroom_ceiling_lights
     to: 'on'
-    id: Bedroom Lights
+    id: Bedroom ceiling lights on
   conditions: []
   actions:
   - choose:
@@ -454,49 +449,33 @@
         data: {}
         target:
           entity_id: light.bathroom_light
-      - action: input_boolean.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.workday_toggle_helper
-      - delay:
+      - wait_for_trigger:
+        - trigger: state
+          entity_id:
+          - light.closet_light
+          to: 'off'
+        timeout:
           hours: 0
-          minutes: 30
+          minutes: 45
           seconds: 0
           milliseconds: 0
-      - action: input_boolean.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.workday_toggle_helper
-    - conditions:
-      - condition: trigger
-        id:
-        - Closet light off
-      - condition: state
-        entity_id: input_boolean.workday_toggle_helper
-        state: 'on'
-      sequence:
       - action: light.turn_off
         metadata: {}
         data: {}
         target:
           entity_id: light.bathroom_light
-      - action: input_boolean.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.workday_toggle_helper
+      alias: Closet Light -> Bathroom Light
     - conditions:
       - condition: trigger
         id:
-        - Bedroom Lights
+        - Bedroom ceiling lights on
       sequence:
       - action: scene.turn_on
         metadata: {}
         data: {}
         target:
           entity_id: scene.full_lamp
+      alias: Ceiling Light -> Lamp
   mode: restart
 - id: '1760424497591'
   alias: Thermostat
@@ -614,44 +593,16 @@
   alias: Helper Automation
   description: ''
   triggers:
-  - trigger: state
-    entity_id:
-    - binary_sensor.motion_1_motion
-    to: 'on'
-    id: Motion
-  - trigger: state
-    entity_id:
-    - binary_sensor.motion_1_motion
-    to: 'off'
-    id: Clear
   - entity_id: sensor.blakes_iphone_battery_state
     trigger: state
     id: Phone trigger
+  - trigger: state
+    entity_id:
+    - binary_sensor.motion_1_motion
+    id: Motion sensor
   conditions: []
   actions:
   - choose:
-    - conditions:
-      - condition: trigger
-        id:
-        - Motion
-      sequence:
-      - action: input_datetime.set_datetime
-        metadata: {}
-        data:
-          timestamp: '{{ now().timestamp() }}'
-        target:
-          entity_id: input_datetime.last_motion_on
-    - conditions:
-      - condition: trigger
-        id:
-        - Clear
-      sequence:
-      - action: input_datetime.set_datetime
-        metadata: {}
-        data:
-          timestamp: 0
-        target:
-          entity_id: input_datetime.last_motion_on
     - conditions:
       - condition: trigger
         id:
@@ -688,6 +639,34 @@
             entity_id: input_number.phone_charging_distance
           data:
             value: 10
+    - conditions:
+      - condition: trigger
+        id:
+        - Motion sensor
+      sequence:
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: binary_sensor.motion_1_motion
+            state: 'on'
+          sequence:
+          - action: input_datetime.set_datetime
+            metadata: {}
+            data:
+              timestamp: '{{ now().timestamp() }}'
+            target:
+              entity_id: input_datetime.last_motion_on
+        - conditions:
+          - condition: state
+            entity_id: binary_sensor.motion_1_motion
+            state: 'off'
+          sequence:
+          - action: input_datetime.set_datetime
+            metadata: {}
+            data:
+              timestamp: 0
+            target:
+              entity_id: input_datetime.last_motion_on
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
