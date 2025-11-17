@@ -386,10 +386,6 @@
       friendly_name: Bathroom Light
       supported_features: 0
       state: 'off'
-    fan.bedroom_ceiling_fan:
-      friendly_name: Bedroom ceiling fan
-      supported_features: 48
-      state: 'off'
     media_player.bedroom_tv:
       source_list:
       - Home
@@ -420,18 +416,17 @@
       - The CW
       - The Roku Channel
       - Tubi - Free Movies & TV
-      - USA Network
       - YouTube
       - YouTube TV
       - discovery+
-      device_class: tv
-      friendly_name: Bedroom Tv
-      supported_features: 151481
       media_content_type: app
       app_id: '837'
       app_name: YouTube
       source: YouTube
-      entity_picture: /api/media_player_proxy/media_player.bedroom_tv?token=7716434732863915bcecfc2ea0f4098f7079eff9be3467959648a5d76d9713ce&cache=642a348a145c8aed
+      device_class: tv
+      entity_picture: /api/media_player_proxy/media_player.bedroom_tv?token=d118bdf90947e1fbc7e2c148e055bf61c4d59f5751905f850598da78c4443002&cache=642a348a145c8aed
+      friendly_name: Bedroom Tv
+      supported_features: 151481
       state: 'on'
     light.bedroom_lamp:
       min_color_temp_kelvin: 2202
@@ -471,8 +466,6 @@
     light.closet_light:
       entity_only: true
     light.bathroom_light:
-      entity_only: true
-    fan.bedroom_ceiling_fan:
       entity_only: true
     media_player.bedroom_tv:
       entity_only: true
