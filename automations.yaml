@@ -600,6 +600,21 @@
     entity_id:
     - binary_sensor.motion_1_motion
     id: Motion sensor
+  - trigger: state
+    entity_id:
+    - binary_sensor.front_door
+    to:
+    id: Front door
+  - trigger: state
+    entity_id:
+    - binary_sensor.front_door
+    to:
+    - 'on'
+    for:
+      hours: 0
+      minutes: 15
+      seconds: 0
+    id: Still open
   conditions: []
   actions:
   - choose:
@@ -667,6 +682,47 @@
               timestamp: 0
             target:
               entity_id: input_datetime.last_motion_on
+    - conditions:
+      - condition: trigger
+        id:
+        - Still open
+        - Front door
+      sequence:
+      - choose:
+        - conditions:
+          - condition: trigger
+            id:
+            - Front door
+          sequence:
+          - if:
+            - condition: state
+              entity_id: binary_sensor.front_door
+              state:
+              - 'on'
+            then:
+            - action: input_boolean.turn_on
+              metadata: {}
+              data: {}
+              target:
+                entity_id: input_boolean.door_helper
+            else:
+            - action: input_boolean.turn_off
+              metadata: {}
+              data: {}
+              target:
+                entity_id: input_boolean.door_helper
+          alias: Mirror door sensor
+        - conditions:
+          - condition: trigger
+            id:
+            - Still open
+          sequence:
+          - action: input_boolean.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: input_boolean.door_helper
+          alias: Force Close
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
@@ -787,8 +843,9 @@
     id: '9:29'
   - trigger: state
     entity_id:
-    - binary_sensor.front_door
-    to: 'on'
+    - input_boolean.door_helper
+    to:
+    - 'on'
     id: Door
   - device_id: 6e3f05f16e73548265ce22e622f4a268
     domain: hue
@@ -1029,6 +1086,12 @@
     entity_id:
     - binary_sensor.front_door
     to: 'on'
+    enabled: false
+  - trigger: state
+    entity_id:
+    - input_boolean.door_helper
+    to:
+    - 'on'
   conditions:
   - condition: not
     conditions:
