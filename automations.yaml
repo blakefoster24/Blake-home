@@ -298,6 +298,11 @@
         data: {}
         target:
           entity_id: scene.full_lamp
+      - action: light.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.bedroom_ceiling_lights
     - conditions:
       - condition: trigger
         id: up_repeat
@@ -476,7 +481,7 @@
         target:
           entity_id: scene.full_lamp
       alias: Ceiling Light -> Lamp
-  mode: restart
+  mode: parallel
 - id: '1760424497591'
   alias: Thermostat
   description: ''
@@ -1082,11 +1087,6 @@
   alias: Door Automation
   description: ''
   triggers:
-  - trigger: state
-    entity_id:
-    - binary_sensor.front_door
-    to: 'on'
-    enabled: false
   - trigger: state
     entity_id:
     - input_boolean.door_helper
