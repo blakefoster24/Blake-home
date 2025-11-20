@@ -17,6 +17,9 @@ logger:
     homeassistant.helpers.script: info
     homeassistant.components.scene: info
 
+trace:
+  stored_traces: 50
+
 shell_command:
   ha_git_commit_push: >
     bash -c "cd /config &&

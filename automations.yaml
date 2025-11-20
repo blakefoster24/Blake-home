@@ -283,12 +283,7 @@
     - conditions:
       - condition: trigger
         id: top_long
-      sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.im_awake
+      sequence: []
     - conditions:
       - condition: trigger
         id: up_short
@@ -584,15 +579,7 @@
     - condition: numeric_state
       entity_id: input_number.test
       above: 1
-  actions:
-  - action: automation.trigger
-    target:
-      entity_id: automation.workday_wake_up
-    data:
-      skip_condition: true
-      variables:
-        trigger:
-          id: 8:55am
+  actions: []
   mode: single
 - id: '1761198863619'
   alias: Helper Automation
@@ -885,6 +872,17 @@
           data: {}
           target:
             entity_id: light.closet_light
+        - action: light.turn_on
+          metadata: {}
+          data:
+            transition: 15
+          target:
+            entity_id: light.bedroom_lamp
+        - action: fan.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id: fan.bedroom_fan
         - action: input_boolean.turn_on
           metadata: {}
           data: {}
@@ -899,13 +897,11 @@
         entity_id: input_boolean.im_awake_toggle_helper
         state: 'off'
       sequence:
-      - sequence:
-        - event: hue_event
-          event_data:
-            device_id: 6e3f05f16e73548265ce22e622f4a268
-            type: long_press
-            subtype: 1
-        alias: Trigger Wake-up Sequence
+      - event: hue_event
+        event_data:
+          device_id: 6e3f05f16e73548265ce22e622f4a268
+          type: long_press
+          subtype: 1
       alias: First time window
     - conditions:
       - condition: trigger
@@ -936,6 +932,12 @@
             volume_level: 0.01
           target:
             entity_id: media_player.everywhere
+        - action: media_player.shuffle_set
+          metadata: {}
+          data:
+            shuffle: true
+          target:
+            entity_id: media_player.everywhere
         - action: media_player.media_next_track
           metadata: {}
           data: {}
@@ -953,7 +955,8 @@
           target:
             entity_id: media_player.everywhere
           enabled: true
-        - if:
+        - alias: Music Playing Check
+          if:
           - condition: state
             entity_id: media_player.everywhere
             state: playing
@@ -963,15 +966,6 @@
             metadata: {}
             data:
               volume_level: 0.01
-            target:
-              entity_id:
-              - media_player.blake_s_echo_pop
-          - action: media_player.play_media
-            metadata: {}
-            data:
-              media:
-                media_content_id: music alarm
-                media_content_type: routine
             target:
               entity_id:
               - media_player.blake_s_echo_pop
@@ -986,6 +980,20 @@
               volume_level: 0.01
             target:
               entity_id: media_player.everywhere
+          - action: media_player.play_media
+            metadata: {}
+            data:
+              media:
+                media_content_id: music alarm
+                media_content_type: routine
+            target:
+              entity_id:
+              - media_player.blake_s_echo_pop
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 5
+              milliseconds: 0
           - action: media_player.shuffle_set
             metadata: {}
             data:
@@ -998,7 +1006,6 @@
             target:
               entity_id: media_player.everywhere
             enabled: true
-          alias: Music Playing Check
         - alias: Incrementally raise volume
           sequence:
           - action: media_player.volume_set
