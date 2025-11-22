@@ -184,7 +184,9 @@ Auto-generated list of entities. Safe to publish.
 
 | `input_datetime.last_door_open` | Last Door Open |
 
-| `input_datetime.last_motion_on` | Last motion on |
+| `input_datetime.last_motion_on` | Last Motion On |
+
+| `input_datetime.scheduled_off` | Scheduled Off |
 
 
 
@@ -192,7 +194,7 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
-| `input_number.phone_charging_distance` | Phone -> charging | distance  |
+| `input_number.phone_charging_distance` | Phone Charging -> Distance |
 
 
 

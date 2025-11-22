@@ -52,7 +52,7 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
-| `input_number.phone_charging_distance` | Phone -> charging | distance  | min=0.0, max=100.0, step=0.01 |
+| `input_number.phone_charging_distance` | Phone Charging -> Distance | min=0.0, max=100.0, step=0.01 |
 
 
 
@@ -77,7 +77,12 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
-| `input_datetime.last_motion_on` | Last motion on | has_date=True, has_time=True |
+| `input_datetime.last_motion_on` | Last Motion On | has_date=True, has_time=True |
+
+
+
+
+| `input_datetime.scheduled_off` | Scheduled Off | has_date=True, has_time=False |
 
 
 
@@ -115,4 +120,4 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 ---
-_Generated: 2025-11-21T02:00:00.586959-06:00_
+_Generated: 2025-11-22T02:00:59.218957-06:00_

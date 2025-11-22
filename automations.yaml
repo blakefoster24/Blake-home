@@ -354,11 +354,19 @@
   description: ''
   triggers:
   - trigger: time
-    at: '13:00:00'
-    id: 1pm
+    at: 09:45:00
+    id: 9:45am
   - trigger: time
     at: '23:00:00'
     id: 11pm
+  - trigger: time
+    at: '13:00:00'
+    id: 1pm
+  - trigger: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: enter_comp_day_mmddyyyy
+    alias: Holiday Comp Date Entered
   conditions: []
   actions:
   - choose:
@@ -367,10 +375,34 @@
         id:
         - 1pm
       sequence:
-      - if:
+      - alias: Scheduled off = Tomorrow
+        if:
+        - alias: Scheduled Off = Tomorrow
+          condition: template
+          value_template: "{% set comp = states('input_datetime.scheduled_off') %}\n{%
+            if comp in ['unknown', 'unavailable', 'none', ''] %}\n  false\n{% else
+            %}\n  {% set tomorrow = (now().date() + timedelta(days=1)).strftime('%Y-%m-%d')
+            %}\n  {{ comp == tomorrow }}\n{% endif %}"
+        then:
+        - action: input_boolean.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.workday_tomorrow_toggle
+      - alias: 'Workday Schedule '
+        if:
         - condition: state
           state: 'on'
           entity_id: binary_sensor.workday_tomorrow_template_sensor
+        - alias: Tomorrow is NOT scheduled off
+          condition: not
+          conditions:
+          - alias: Scheduled Off = Tomorrow
+            condition: template
+            value_template: "{% set comp = states('input_datetime.scheduled_off')
+              %}\n{% if comp in ['unknown', 'unavailable', 'none', ''] %}\n  false\n{%
+              else %}\n  {% set tomorrow = (now().date() + timedelta(days=1)).strftime('%Y-%m-%d')
+              %}\n  {{ comp == tomorrow }}\n{% endif %}"
         then:
         - action: input_boolean.turn_on
           metadata: {}
@@ -418,6 +450,79 @@
           target:
             entity_id:
             - input_boolean.workday_today_toggle
+        alias: Workday tomorrow toggle -> alarms
+    - conditions: []
+      sequence:
+      - choose:
+        - conditions:
+          - condition: trigger
+            id:
+            - 9:45am
+          - condition: template
+            value_template: "{%- set worked = [\n  '2025-11-27','2026-05-25','2026-12-25','2027-07-04','2028-01-01',\n
+              \ '2028-09-04','2029-01-15','2029-11-22','2030-05-27','2030-12-25'\n]
+              -%}\n\n{%- set today = now().date() -%}\n\n{%- for d in worked -%}\n
+              \ {%- if (as_datetime(d ~ ' 00:00:00').date() - today).days == 7 -%}\n
+              \   true\n  {%- endif -%}\n{%- endfor -%}\n\nfalse"
+            alias: Holiday in 7 days
+          sequence:
+          - action: notify.mobile_app_blakes_iphone
+            metadata: {}
+            data:
+              title: You work a holiday next week
+              message: 'Enter the date you want off (MM-DD-YYYY). Example: 11-27-2025'
+              data:
+                tag: comp_day_prompt
+                actions:
+                - action: enter_comp_day_mmddyyyy
+                  title: Enter comp day
+                  behavior: textInput
+                  textInputButtonTitle: Save
+                  textInputPlaceholder: MM-DD-YYYY
+            alias: Request holiday comp date
+          alias: Holiday in 7 days
+        - conditions:
+          - condition: template
+            value_template: "{{ trigger is defined\n   and trigger.platform == 'event'\n
+              \  and trigger.event.event_type == 'mobile_app_notification_action'\n
+              \  and trigger.event.data.action == 'enter_comp_day_mmddyyyy' }}"
+            alias: Holiday Comp Date Entered
+          sequence:
+          - variables:
+              raw_input: '{{ trigger.event.data.reply_text | default('''') | trim
+                }}'
+          - if:
+            - condition: template
+              value_template: "{{ raw_input is string and raw_input != '' and\n   (raw_input
+                | regex_match('^\\\\d{1,2}-\\\\d{1,2}-\\\\d{4}$')) }}\n"
+              alias: Correct holiday comp date format
+            then:
+            - variables:
+                parts: '{{ raw_input.split(''-'') }}'
+                mm: '{{ parts[0].zfill(2) }}'
+                dd: '{{ parts[1].zfill(2) }}'
+                yyyy: '{{ parts[2] }}'
+                iso_date: '{{ yyyy ~ ''-'' ~ mm ~ ''-'' ~ dd }}'
+            - action: input_datetime.set_datetime
+              metadata: {}
+              data:
+                date: '{{ iso_date }}'
+              target:
+                entity_id: input_datetime.scheduled_off
+            - action: notify.mobile_app_blakes_iphone
+              metadata: {}
+              data:
+                message: Comp day set to {{ iso_date }} (from {{ raw_input }})
+              alias: Notification = date set
+            else:
+            - action: notify.mobile_app_blakes_iphone
+              metadata: {}
+              data:
+                message: 'Invalid date. Please reply with MM-DD-YYYY (example: 11-27-2025).'
+              alias: Notification = invalid date
+            alias: Holiday date format (correct/incorrect)
+          alias: Holiday comp date entered
+      alias: Holiday in 7 days
   mode: single
 - id: '1759838752481'
   alias: Light Triggers Light
@@ -510,12 +615,12 @@
           id:
           - Blake away
         alias: 9am or Blake Away
-      - condition: time
-        after: 08:59:00
-        before: '15:50:00'
       - condition: state
         entity_id: input_boolean.workday_today_toggle
         state: 'on'
+      - condition: time
+        after: 08:59:00
+        before: '15:50:00'
       sequence:
       - action: scene.turn_on
         metadata: {}
@@ -697,6 +802,17 @@
               data: {}
               target:
                 entity_id: input_boolean.door_helper
+            - delay:
+                hours: 0
+                minutes: 0
+                seconds: 5
+                milliseconds: 0
+            - action: input_datetime.set_datetime
+              metadata: {}
+              data:
+                datetime: '{{ now().isoformat() }}'
+              target:
+                entity_id: input_datetime.last_door_open
             else:
             - action: input_boolean.turn_off
               metadata: {}
@@ -824,6 +940,14 @@
   alias: Workday Wake-up
   description: ''
   triggers:
+  - device_id: 6e3f05f16e73548265ce22e622f4a268
+    domain: hue
+    type: long_press
+    subtype: 1
+    unique_id: cdb2dfb8-edb8-4c9a-83ef-5519e2338c0a
+    trigger: device
+    id: '1 Long press '
+    alias: 1 Long Press (I’m awake Scene)
   - trigger: time
     at: 08:40:00
     id: Time window - late
@@ -835,18 +959,10 @@
     id: '9:29'
   - trigger: state
     entity_id:
-    - input_boolean.door_helper
+    - input_boolean.im_awake_toggle_helper
     to:
     - 'on'
-    id: Door
-  - device_id: 6e3f05f16e73548265ce22e622f4a268
-    domain: hue
-    type: long_press
-    subtype: 1
-    unique_id: cdb2dfb8-edb8-4c9a-83ef-5519e2338c0a
-    trigger: device
-    id: '1 Long press '
-    alias: 1 Long Press (I’m awake Scene)
+    id: Awake toggle
   conditions:
   - condition: state
     state: 'on'
@@ -907,11 +1023,11 @@
       - condition: trigger
         id:
         - Time window - last chance
-      - condition: template
-        value_template: "{% set s = states.binary_sensor.front_door %} {{ s.state
+      - alias: Door hasn’t opened in the last hour
+        condition: template
+        value_template: "{% set s = states.input_boolean.door_helper %} {{ s.state
           in ['unavailable', 'unknown']\n   or (as_timestamp(now()) - as_timestamp(s.last_changed))
           > 3600 }}\n"
-        alias: Door hasn’t opened in the last hour
       sequence:
       - event: hue_event
         event_data:
@@ -1059,35 +1175,99 @@
             target:
               entity_id: media_player.everywhere
       alias: Last time window & Haven’t Left
-    - conditions:
-      - condition: trigger
-        id:
-        - '9:29'
-        - Door
+    - conditions: []
       sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.all_off
-      - action: input_boolean.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.im_awake_toggle_helper
-      - alias: 'Pause and Reset Volume on Alexa '
-        sequence:
-        - action: media_player.media_stop
-          metadata: {}
-          data: {}
-          target:
-            entity_id: media_player.everywhere
-        - action: media_player.volume_set
-          metadata: {}
-          data:
-            volume_level: 0.4
-          target:
-            entity_id: media_player.everywhere
+      - choose:
+        - conditions:
+          - condition: trigger
+            id:
+            - Awake toggle
+          sequence:
+          - action: automation.turn_off
+            target:
+              entity_id: automation.door_automation
+            data:
+              stop_actions: true
+          - alias: Wait for -> door open
+            wait_for_trigger:
+            - trigger: state
+              entity_id:
+              - input_boolean.door_helper
+              to:
+              - 'on'
+              from:
+              - 'off'
+            timeout:
+              hours: 1
+              minutes: 0
+              seconds: 0
+              milliseconds: 0
+            continue_on_timeout: false
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.all_off
+          - alias: 'Pause and Reset Volume on Alexa '
+            sequence:
+            - action: media_player.media_stop
+              metadata: {}
+              data: {}
+              target:
+                entity_id: media_player.everywhere
+            - action: media_player.volume_set
+              metadata: {}
+              data:
+                volume_level: 0.4
+              target:
+                entity_id: media_player.everywhere
+          - action: input_boolean.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: input_boolean.im_awake_toggle_helper
+          - action: input_datetime.set_datetime
+            metadata: {}
+            data:
+              datetime: '{{ now().isoformat() }}'
+            target:
+              entity_id: input_datetime.last_door_open
+          - action: automation.turn_on
+            target:
+              entity_id: automation.door_automation
+            data: {}
+        - conditions:
+          - condition: trigger
+            id:
+            - '9:29'
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.all_off
+          - alias: 'Pause and Reset Volume on Alexa '
+            sequence:
+            - action: media_player.media_stop
+              metadata: {}
+              data: {}
+              target:
+                entity_id: media_player.everywhere
+            - action: media_player.volume_set
+              metadata: {}
+              data:
+                volume_level: 0.4
+              target:
+                entity_id: media_player.everywhere
+          - action: input_boolean.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: input_boolean.im_awake_toggle_helper
+          - action: automation.turn_on
+            target:
+              entity_id: automation.door_automation
+            data: {}
       alias: Leaving Branch
   mode: parallel
 - id: '1762858969202'
@@ -1099,18 +1279,7 @@
     - input_boolean.door_helper
     to:
     - 'on'
-  conditions:
-  - condition: not
-    conditions:
-    - condition: and
-      conditions:
-      - condition: state
-        state: 'on'
-        entity_id: input_boolean.workday_today_toggle
-      - condition: time
-        after: 08:15:00
-        before: 09:30:00
-      alias: 'Workday: 8:15-9:30 AM'
+  conditions: []
   actions:
   - variables:
       motion_ts: '{{ state_attr(''input_datetime.last_motion_on'',''timestamp'') }}'
@@ -1238,10 +1407,4 @@
         target:
           entity_id: light.main_lights
       alias: Arriving Branch
-  - action: input_datetime.set_datetime
-    metadata: {}
-    data:
-      datetime: '{{ now().isoformat() }}'
-    target:
-      entity_id: input_datetime.last_door_open
   mode: single
