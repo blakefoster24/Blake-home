@@ -197,14 +197,6 @@
   - action: script.create_push_ha_info_to_github
     data: {}
   mode: single
-- id: '1759452792193'
-  alias: Bedroom Ceiling Lights (3) -> Set My Room
-  description: ''
-  use_blueprint:
-    path: Custom/Toggle_blueprint.yaml
-    input:
-      source_entity: light.bedroom_ceiling_lights
-      scene_target: scene.set_my_room
 - id: '1759463858553'
   alias: Hue Dimmer Switch
   description: ''
@@ -830,6 +822,11 @@
             data: {}
             target:
               entity_id: input_boolean.door_helper
+          - action: counter.increment
+            metadata: {}
+            data: {}
+            target:
+              entity_id: counter.door_stuck
           alias: Force Close
   mode: restart
 - id: '1761312420129'
@@ -935,6 +932,8 @@
     data: {}
     target:
       entity_id: scene.goodnight_scene
+  trace:
+    stored_traces: 50
   mode: single
 - id: '1762355968615'
   alias: Workday Wake-up
@@ -1269,6 +1268,8 @@
               entity_id: automation.door_automation
             data: {}
       alias: Leaving Branch
+  trace:
+    stored_traces: 50
   mode: parallel
 - id: '1762858969202'
   alias: Door Automation
@@ -1407,4 +1408,39 @@
         target:
           entity_id: light.main_lights
       alias: Arriving Branch
+  trace:
+    stored_traces: 50
+  mode: single
+- id: '1763883487543'
+  alias: Bedroom Ceiling Lights (3) -> Set My Room
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - light.bedroom_ceiling_lights
+  conditions: []
+  actions:
+  - wait_for_trigger:
+    - trigger: state
+      entity_id:
+      - light.bedroom_ceiling_lights
+    timeout:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - wait_for_trigger:
+    - trigger: state
+      entity_id:
+      - light.bedroom_ceiling_lights
+    timeout:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.set_my_room
   mode: single

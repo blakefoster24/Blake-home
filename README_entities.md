@@ -118,6 +118,8 @@ Auto-generated list of entities. Safe to publish.
 
 | `counter.counter_helper` | Counter helper |
 
+| `counter.door_stuck` | Door Stuck |
+
 
 
 ## Device_tracker

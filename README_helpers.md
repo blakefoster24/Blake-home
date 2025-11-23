@@ -118,6 +118,11 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
+| `counter.door_stuck` | Door Stuck | min=0, max=1000, step=1, restore=False |
+
+
+
+
 
 ---
-_Generated: 2025-11-22T02:00:59.218957-06:00_
+_Generated: 2025-11-23T02:00:00.484155-06:00_
