@@ -1358,7 +1358,8 @@
         target:
           entity_id: scene.all_off
     else:
-    - if:
+    - alias: Arriving Branch
+      if:
       - condition: template
         alias: First door open since "home"
         value_template: '{{ home_ts > 0 and prev_door_ts is number and home_ts > prev_door_ts
@@ -1402,15 +1403,20 @@
             hours: 0
             minutes: 3
             seconds: 0
+        timeout:
+          hours: 0
+          minutes: 30
+          seconds: 0
+          milliseconds: 0
+        continue_on_timeout: false
       - action: light.turn_off
         metadata: {}
         data: {}
         target:
           entity_id: light.main_lights
-      alias: Arriving Branch
   trace:
     stored_traces: 50
-  mode: single
+  mode: restart
 - id: '1763883487543'
   alias: Bedroom Ceiling Lights (3) -> Set My Room
   description: ''
@@ -1429,6 +1435,7 @@
       minutes: 0
       seconds: 5
       milliseconds: 0
+    continue_on_timeout: false
   - wait_for_trigger:
     - trigger: state
       entity_id:
@@ -1438,6 +1445,7 @@
       minutes: 0
       seconds: 5
       milliseconds: 0
+    continue_on_timeout: false
   - action: scene.turn_on
     metadata: {}
     data: {}
