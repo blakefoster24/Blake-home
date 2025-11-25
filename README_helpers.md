@@ -13,11 +13,6 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 
-| `input_boolean.door_helper` | Door Helper |  |
-
-
-
-
 | `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle |  |
 
 
@@ -125,4 +120,4 @@ Auto-generated list of helpers created via the UI. Safe to publish.
 
 
 ---
-_Generated: 2025-11-24T02:00:00.483809-06:00_
+_Generated: 2025-11-25T02:00:00.506840-06:00_

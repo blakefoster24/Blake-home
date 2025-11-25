@@ -166,8 +166,6 @@ Auto-generated list of entities. Safe to publish.
 | Entity ID | Name |
 |---|---|
 
-| `input_boolean.door_helper` | Door Helper |
-
 | `input_boolean.im_awake_toggle_helper` | I’m Awake Toggle |
 
 | `input_boolean.phone_active` | Phone active |

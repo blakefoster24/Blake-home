@@ -354,11 +354,6 @@
   - trigger: time
     at: '13:00:00'
     id: 1pm
-  - trigger: event
-    event_type: mobile_app_notification_action
-    event_data:
-      action: enter_comp_day_mmddyyyy
-    alias: Holiday Comp Date Entered
   conditions: []
   actions:
   - choose:
@@ -367,20 +362,6 @@
         id:
         - 1pm
       sequence:
-      - alias: Scheduled off = Tomorrow
-        if:
-        - alias: Scheduled Off = Tomorrow
-          condition: template
-          value_template: "{% set comp = states('input_datetime.scheduled_off') %}\n{%
-            if comp in ['unknown', 'unavailable', 'none', ''] %}\n  false\n{% else
-            %}\n  {% set tomorrow = (now().date() + timedelta(days=1)).strftime('%Y-%m-%d')
-            %}\n  {{ comp == tomorrow }}\n{% endif %}"
-        then:
-        - action: input_boolean.turn_off
-          metadata: {}
-          data: {}
-          target:
-            entity_id: input_boolean.workday_tomorrow_toggle
       - alias: 'Workday Schedule '
         if:
         - condition: state
@@ -443,77 +424,111 @@
             entity_id:
             - input_boolean.workday_today_toggle
         alias: Workday tomorrow toggle -> alarms
-    - conditions: []
+    - conditions:
+      - condition: trigger
+        id:
+        - 9:45am
+      - condition: template
+        value_template: "{%- set worked = [\n  '2025-11-27','2026-05-25','2026-12-25','2027-07-04','2028-01-01',\n
+          \ '2028-09-04','2029-01-15','2029-11-22','2030-05-27','2030-12-25'\n] -%}\n\n{%-
+          set today = now().date() -%}\n\n{%- for d in worked -%}\n  {%- if (as_datetime(d
+          ~ ' 00:00:00').date() - today).days == 7 -%}\n    true\n  {%- endif -%}\n{%-
+          endfor -%}\n\nfalse"
+        alias: Holiday in 7 days
+        enabled: true
       sequence:
-      - choose:
-        - conditions:
-          - condition: trigger
-            id:
-            - 9:45am
-          - condition: template
-            value_template: "{%- set worked = [\n  '2025-11-27','2026-05-25','2026-12-25','2027-07-04','2028-01-01',\n
-              \ '2028-09-04','2029-01-15','2029-11-22','2030-05-27','2030-12-25'\n]
-              -%}\n\n{%- set today = now().date() -%}\n\n{%- for d in worked -%}\n
-              \ {%- if (as_datetime(d ~ ' 00:00:00').date() - today).days == 7 -%}\n
-              \   true\n  {%- endif -%}\n{%- endfor -%}\n\nfalse"
-            alias: Holiday in 7 days
-          sequence:
-          - action: notify.mobile_app_blakes_iphone
-            metadata: {}
+      - sequence:
+        - action: notify.mobile_app_blakes_iphone
+          metadata: {}
+          data:
+            title: You work a holiday next week
+            message: 'Enter the date you want off (MM-DD-YYYY). Example: 11-27-2025'
             data:
-              title: You work a holiday next week
-              message: 'Enter the date you want off (MM-DD-YYYY). Example: 11-27-2025'
-              data:
-                tag: comp_day_prompt
-                actions:
-                - action: enter_comp_day_mmddyyyy
-                  title: Enter comp day
-                  behavior: textInput
-                  textInputButtonTitle: Save
-                  textInputPlaceholder: MM-DD-YYYY
-            alias: Request holiday comp date
-          alias: Holiday in 7 days
-        - conditions:
-          - condition: template
-            value_template: "{{ trigger is defined\n   and trigger.platform == 'event'\n
-              \  and trigger.event.event_type == 'mobile_app_notification_action'\n
-              \  and trigger.event.data.action == 'enter_comp_day_mmddyyyy' }}"
-            alias: Holiday Comp Date Entered
-          sequence:
-          - variables:
-              raw_input: '{{ trigger.event.data.reply_text | default('''') | trim
-                }}'
-          - if:
+              actions:
+              - action: enter_comp_day_mmddyyyy
+                title: Enter comp day
+                behavior: textInput
+                textInputButtonTitle: Save
+                textInputPlaceholder: MM-DD-YYYY
+          alias: Request holiday comp date
+        - alias: Proper Date Loop
+          repeat:
+            until:
             - condition: template
-              value_template: "{{ raw_input is string and raw_input != '' and\n   (raw_input
-                | regex_match('^\\\\d{1,2}-\\\\d{1,2}-\\\\d{4}$')) }}\n"
-              alias: Correct holiday comp date format
-            then:
+              value_template: "{% set ok = false %}\n\n{% if raw_input is string\n
+                \     and raw_input != ''\n      and (raw_input | regex_match('^\\\\d{1,2}-\\\\d{1,2}-\\\\d{4}$'))
+                %}\n  {% set parts = raw_input.split('-') %}\n  {% set mm = parts[0].zfill(2)
+                %}\n  {% set dd = parts[1].zfill(2) %}\n  {% set yyyy = parts[2] %}\n
+                \ {% set iso = yyyy ~ '-' ~ mm ~ '-' ~ dd %}\n  {# try to parse as
+                a real date #}\n  {% set dt = as_datetime(iso ~ ' 00:00:00', default=None)
+                %}\n  {% if dt is not none and dt.date() > now().date() %}\n    {%
+                set ok = true %}\n  {% endif %}\n{% endif %}\n\n{{ ok }}"
+              alias: Valid Date
+            sequence:
+            - wait_for_trigger:
+              - trigger: event
+                event_type: mobile_app_notification_action
+                event_data:
+                  action: enter_comp_day_mmddyyyy
+              timeout:
+                hours: 1
+                minutes: 0
+                seconds: 0
+                milliseconds: 0
+              continue_on_timeout: false
+              alias: Wait For Notification Response
             - variables:
-                parts: '{{ raw_input.split(''-'') }}'
-                mm: '{{ parts[0].zfill(2) }}'
-                dd: '{{ parts[1].zfill(2) }}'
-                yyyy: '{{ parts[2] }}'
-                iso_date: '{{ yyyy ~ ''-'' ~ mm ~ ''-'' ~ dd }}'
-            - action: input_datetime.set_datetime
-              metadata: {}
-              data:
-                date: '{{ iso_date }}'
-              target:
-                entity_id: input_datetime.scheduled_off
-            - action: notify.mobile_app_blakes_iphone
-              metadata: {}
-              data:
-                message: Comp day set to {{ iso_date }} (from {{ raw_input }})
-              alias: Notification = date set
-            else:
-            - action: notify.mobile_app_blakes_iphone
-              metadata: {}
-              data:
-                message: 'Invalid date. Please reply with MM-DD-YYYY (example: 11-27-2025).'
-              alias: Notification = invalid date
-            alias: Holiday date format (correct/incorrect)
-          alias: Holiday comp date entered
+                raw_input: '{{ wait.trigger.event.data.reply_text | default('''')
+                  | trim }}'
+            - if:
+              - condition: not
+                conditions:
+                - condition: template
+                  value_template: "{% set ok = false %}\n\n{% if raw_input is string\n
+                    \     and raw_input != ''\n      and (raw_input | regex_match('^\\\\d{1,2}-\\\\d{1,2}-\\\\d{4}$'))
+                    %}\n  {% set parts = raw_input.split('-') %}\n  {% set mm = parts[0].zfill(2)
+                    %}\n  {% set dd = parts[1].zfill(2) %}\n  {% set yyyy = parts[2]
+                    %}\n  {% set iso = yyyy ~ '-' ~ mm ~ '-' ~ dd %}\n  {# try to
+                    parse as a real date #}\n  {% set dt = as_datetime(iso ~ ' 00:00:00',
+                    default=None) %}\n  {% if dt is not none and dt.date() > now().date()
+                    %}\n    {% set ok = true %}\n  {% endif %}\n{% endif %}\n\n{{
+                    ok }}"
+                  alias: Valid Date
+                alias: (Not) Valid Date
+              then:
+              - alias: Request VALID Date
+                action: notify.mobile_app_blakes_iphone
+                metadata: {}
+                data:
+                  message: 'Enter the date you want off in the proper format (MM-DD-YYYY).
+                    Example: 11-27-2025'
+                  data:
+                    tag: comp_day_prompt
+                    actions:
+                    - action: enter_comp_day_mmddyyyy
+                      title: Enter comp day
+                      behavior: textInput
+                      textInputButtonTitle: Save
+                      textInputPlaceholder: MM-DD-YYYY
+                  title: Invalid date format
+              alias: 'Invalid Date -> Re-send '
+        - variables:
+            parts: '{{ raw_input.split(''-'') }}'
+            mm: '{{ parts[0].zfill(2) }}'
+            dd: '{{ parts[1].zfill(2) }}'
+            yyyy: '{{ parts[2] }}'
+            iso_date: '{{ yyyy ~ ''-'' ~ mm ~ ''-'' ~ dd }}'
+        - action: input_datetime.set_datetime
+          metadata: {}
+          data:
+            date: '{{ iso_date }}'
+          target:
+            entity_id: input_datetime.scheduled_off
+        - alias: Notification = date set
+          action: notify.mobile_app_blakes_iphone
+          metadata: {}
+          data:
+            message: Comp day set to {{ raw_input }}
       alias: Holiday in 7 days
   mode: single
 - id: '1759838752481'
@@ -693,17 +708,12 @@
     entity_id:
     - binary_sensor.front_door
     to:
-    id: Front door
-  - trigger: state
-    entity_id:
-    - binary_sensor.front_door
-    to:
     - 'on'
     for:
       hours: 0
-      minutes: 15
+      minutes: 5
       seconds: 0
-    id: Still open
+    id: Stuck open
   conditions: []
   actions:
   - choose:
@@ -774,60 +784,17 @@
     - conditions:
       - condition: trigger
         id:
-        - Still open
-        - Front door
+        - Stuck open
       sequence:
-      - choose:
-        - conditions:
-          - condition: trigger
-            id:
-            - Front door
-          sequence:
-          - if:
-            - condition: state
-              entity_id: binary_sensor.front_door
-              state:
-              - 'on'
-            then:
-            - action: input_boolean.turn_on
-              metadata: {}
-              data: {}
-              target:
-                entity_id: input_boolean.door_helper
-            - delay:
-                hours: 0
-                minutes: 0
-                seconds: 5
-                milliseconds: 0
-            - action: input_datetime.set_datetime
-              metadata: {}
-              data:
-                datetime: '{{ now().isoformat() }}'
-              target:
-                entity_id: input_datetime.last_door_open
-            else:
-            - action: input_boolean.turn_off
-              metadata: {}
-              data: {}
-              target:
-                entity_id: input_boolean.door_helper
-          alias: Mirror door sensor
-        - conditions:
-          - condition: trigger
-            id:
-            - Still open
-          sequence:
-          - action: input_boolean.turn_off
-            metadata: {}
-            data: {}
-            target:
-              entity_id: input_boolean.door_helper
-          - action: counter.increment
-            metadata: {}
-            data: {}
-            target:
-              entity_id: counter.door_stuck
-          alias: Force Close
+      - action: counter.increment
+        metadata: {}
+        data: {}
+        target:
+          entity_id: counter.door_stuck
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: Front door sensor still open
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
@@ -910,7 +877,7 @@
   conditions:
   - condition: time
     after: '22:00:00'
-    before: 06:00:00
+    before: 08:00:00
   - condition: state
     entity_id: media_player.bedroom_tv
     state: idle
@@ -1024,7 +991,7 @@
         - Time window - last chance
       - alias: Door hasn’t opened in the last hour
         condition: template
-        value_template: "{% set s = states.input_boolean.door_helper %} {{ s.state
+        value_template: "{% set s = states.binary_sensor.front_door %} {{ s.state
           in ['unavailable', 'unknown']\n   or (as_timestamp(now()) - as_timestamp(s.last_changed))
           > 3600 }}\n"
       sequence:
@@ -1191,17 +1158,23 @@
             wait_for_trigger:
             - trigger: state
               entity_id:
-              - input_boolean.door_helper
+              - binary_sensor.front_door
               to:
               - 'on'
               from:
               - 'off'
             timeout:
-              hours: 1
+              hours: 0
               minutes: 0
               seconds: 0
               milliseconds: 0
             continue_on_timeout: false
+          - action: input_datetime.set_datetime
+            metadata: {}
+            data:
+              datetime: '{{ now().isoformat() }}'
+            target:
+              entity_id: input_datetime.last_door_open
           - action: scene.turn_on
             metadata: {}
             data: {}
@@ -1277,7 +1250,7 @@
   triggers:
   - trigger: state
     entity_id:
-    - input_boolean.door_helper
+    - binary_sensor.front_door
     to:
     - 'on'
   conditions: []
@@ -1326,6 +1299,12 @@
         }} | Prev_door_ts: {{ fmt(prev_door_ts) }} | Home_ts - Prev_door_ts = {{ home_delta
         }}s | First opening: {{ true if first_open_bool == true else false if first_open_bool
         == false else 'n/a' }}\n"
+  - action: input_datetime.set_datetime
+    metadata: {}
+    data:
+      datetime: '{{ now().isoformat() }}'
+    target:
+      entity_id: input_datetime.last_door_open
   - alias: Leaving Or Arriving
     if:
     - condition: template
@@ -1398,17 +1377,18 @@
         - trigger: state
           entity_id:
           - binary_sensor.motion_1_motion
-          to: 'off'
+          to:
+          - 'off'
           for:
             hours: 0
-            minutes: 3
+            minutes: 8
             seconds: 0
         timeout:
-          hours: 0
-          minutes: 30
+          hours: 1
+          minutes: 0
           seconds: 0
           milliseconds: 0
-        continue_on_timeout: false
+        continue_on_timeout: true
       - action: light.turn_off
         metadata: {}
         data: {}
