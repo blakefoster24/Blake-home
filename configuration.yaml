@@ -38,18 +38,18 @@ shell_command:
 
   write_log_slice: |
     bash -lc 'mkdir -p /config/diagnostics && {
-    echo "===== $(date -Iseconds) — last 1000 lines =====";
-    tail -n 1000 /config/home-assistant.log || true;
+    echo "===== $(date -Iseconds) — last 1500 lines =====";
+    tail -n 1500 /config/home-assistant.log || true;
     } > /config/diagnostics/last_log.txt'
-    
-    # Diagnostics: recent automation lines from the log
+
   write_automation_runs: |
     bash -lc 'mkdir -p /config/diagnostics && {
     echo "===== $(date -Iseconds) — automation runs (recent) =====";
-    tail -n 2000 /config/home-assistant.log \
-    | grep -iE "(homeassistant.components.automation|automation|triggered|queued|running|executing|alexa|cloud|scene\.turn_on|light\.turn_(on|off))" \
+    tail -n 3000 /config/home-assistant.log \
+    | grep -iE "(homeassistant.components.automation|homeassistant.components.script|automation|script|triggered|queued|running|executing|condition|alexa|cloud|scene\.|light\.)" \
     || true;
     } > /config/diagnostics/automation_runs.txt'
+
 
   # Quick path test (optional)
   write_diag_test: |
