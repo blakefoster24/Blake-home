@@ -698,9 +698,6 @@
   - trigger: time
     at: 08:55:00
     id: Time window - last chance
-  - trigger: time
-    at: 09:29:00
-    id: '9:29'
   - trigger: state
     entity_id:
     - input_boolean.im_awake_toggle_helper
@@ -769,9 +766,10 @@
         - Time window - last chance
       - alias: Door hasn’t opened in the last hour
         condition: template
-        value_template: "{% set s = states.binary_sensor.front_door %} {{ s.state
-          in ['unavailable', 'unknown']\n   or (as_timestamp(now()) - as_timestamp(s.last_changed))
-          > 3600 }}\n"
+        value_template: '{{ (as_timestamp(now()) - state_attr(''input_datetime.last_door_open'',''timestamp'')
+          | default(0)) > 3600 }}
+
+          '
       sequence:
       - event: hue_event
         event_data:
@@ -919,106 +917,70 @@
             target:
               entity_id: media_player.everywhere
       alias: Last time window & Haven’t Left
-    - conditions: []
+    - conditions:
+      - condition: trigger
+        id:
+        - Awake toggle
       sequence:
-      - choose:
-        - conditions:
-          - condition: trigger
-            id:
-            - Awake toggle
-          sequence:
-          - action: automation.turn_off
-            target:
-              entity_id: automation.door_automation
-            data:
-              stop_actions: true
-          - alias: Wait for -> door open
-            wait_for_trigger:
-            - trigger: state
-              entity_id:
-              - binary_sensor.front_door
-              to:
-              - 'on'
-              from:
-              - 'off'
-            timeout:
-              hours: 0
-              minutes: 0
-              seconds: 0
-              milliseconds: 0
-            continue_on_timeout: false
-          - action: input_datetime.set_datetime
-            metadata: {}
-            data:
-              datetime: '{{ now().isoformat() }}'
-            target:
-              entity_id: input_datetime.last_door_open
-          - action: scene.turn_on
-            metadata: {}
-            data: {}
-            target:
-              entity_id: scene.all_off
-          - alias: 'Pause and Reset Volume on Alexa '
-            sequence:
-            - action: media_player.media_stop
-              metadata: {}
-              data: {}
-              target:
-                entity_id: media_player.everywhere
-            - action: media_player.volume_set
-              metadata: {}
-              data:
-                volume_level: 0.4
-              target:
-                entity_id: media_player.everywhere
-          - action: input_boolean.turn_off
-            metadata: {}
-            data: {}
-            target:
-              entity_id: input_boolean.im_awake_toggle_helper
-          - action: input_datetime.set_datetime
-            metadata: {}
-            data:
-              datetime: '{{ now().isoformat() }}'
-            target:
-              entity_id: input_datetime.last_door_open
-          - action: automation.turn_on
-            target:
-              entity_id: automation.door_automation
-            data: {}
-        - conditions:
-          - condition: trigger
-            id:
-            - '9:29'
-          sequence:
-          - action: scene.turn_on
-            metadata: {}
-            data: {}
-            target:
-              entity_id: scene.all_off
-          - alias: 'Pause and Reset Volume on Alexa '
-            sequence:
-            - action: media_player.media_stop
-              metadata: {}
-              data: {}
-              target:
-                entity_id: media_player.everywhere
-            - action: media_player.volume_set
-              metadata: {}
-              data:
-                volume_level: 0.4
-              target:
-                entity_id: media_player.everywhere
-          - action: input_boolean.turn_off
-            metadata: {}
-            data: {}
-            target:
-              entity_id: input_boolean.im_awake_toggle_helper
-          - action: automation.turn_on
-            target:
-              entity_id: automation.door_automation
-            data: {}
-      alias: Leaving Branch
+      - action: automation.turn_off
+        target:
+          entity_id: automation.door_automation
+        data:
+          stop_actions: true
+      - alias: Wait for -> door open
+        wait_for_trigger:
+        - trigger: state
+          entity_id:
+          - binary_sensor.front_door
+          to:
+          - 'on'
+          from:
+          - 'off'
+        timeout:
+          hours: 1
+          minutes: 0
+          seconds: 0
+          milliseconds: 0
+        continue_on_timeout: true
+      - if:
+        - condition: template
+          value_template: '{{ wait.trigger is not none }}
+
+            '
+        then:
+        - action: input_datetime.set_datetime
+          metadata: {}
+          data:
+            datetime: '{{ now().isoformat() }}'
+          target:
+            entity_id: input_datetime.last_door_open
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.all_off
+      - alias: 'Pause and Reset Volume on Alexa '
+        sequence:
+        - action: media_player.media_stop
+          metadata: {}
+          data: {}
+          target:
+            entity_id: media_player.everywhere
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.4
+          target:
+            entity_id: media_player.everywhere
+      - action: input_boolean.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: input_boolean.im_awake_toggle_helper
+      - action: automation.turn_on
+        target:
+          entity_id: automation.door_automation
+        data: {}
   trace:
     stored_traces: 50
   mode: parallel
