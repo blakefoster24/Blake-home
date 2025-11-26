@@ -38,23 +38,33 @@ shell_command:
 
   write_log_slice: |
     bash -lc 'mkdir -p /config/diagnostics && {
-    echo "===== $(date -Iseconds) — last 1500 lines =====";
-    tail -n 1500 /config/home-assistant.log || true;
+    echo "===== $(date -Iseconds) — last 1000 lines =====";
+    if [ -f /config/home-assistant.log ]; then
+      tail -n 1000 /config/home-assistant.log 2>&1 || echo "Error executing tail command.";
+    else
+      echo "ERROR: File /config/home-assistant.log does not exist.";
+      echo "Listing /config directory for debugging:";
+      ls -la /config/;
+    fi
     } > /config/diagnostics/last_log.txt'
-
+    
   write_automation_runs: |
     bash -lc 'mkdir -p /config/diagnostics && {
     echo "===== $(date -Iseconds) — automation runs (recent) =====";
-    tail -n 3000 /config/home-assistant.log \
-    | grep -iE "(homeassistant.components.automation|homeassistant.components.script|automation|script|triggered|queued|running|executing|condition|alexa|cloud|scene\.|light\.)" \
-    || true;
+    if [ -f /config/home-assistant.log ]; then
+      tail -n 2000 /config/home-assistant.log 2>&1 \
+      | grep -iE "(homeassistant.components.automation|automation|triggered|queued|running|executing|alexa|cloud|scene\.turn_on|light\.turn_(on|off))" \
+      || echo "No recent automation logs found matching criteria.";
+    else
+      echo "ERROR: File /config/home-assistant.log does not exist.";
+    fi
     } > /config/diagnostics/automation_runs.txt'
-
 
   # Quick path test (optional)
   write_diag_test: |
     bash -lc 'mkdir -p /config/diagnostics &&
               echo "Diag test at $(date -Iseconds)" > /config/diagnostics/diag_test.txt'
+
 panel_custom:
   - name: panel_entities
     sidebar_title: Entities / Helpers

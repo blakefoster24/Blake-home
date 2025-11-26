@@ -1,1 +1,36 @@
-===== 2025-11-26T05:03:25-06:00 — last 1000 lines =====
+===== 2025-11-26T05:11:44-06:00 — last 1000 lines =====
+ERROR: File /config/home-assistant.log does not exist.
+Listing /config directory for debugging:
+total 60696
+drwxr-xr-x   13 root     root          4096 Nov 26 05:10 .
+drwxr-xr-x    1 root     root          4096 Nov 15 21:05 ..
+-rw-r--r--    1 root     root             9 Nov 15 21:06 .HA_VERSION
+drwxr-xr-x    2 root     root          4096 Nov 26 04:37 .cloud
+drwxr-xr-x    7 root     root          4096 Nov 26 05:09 .git
+-rw-------    1 root     root           127 Nov 26 05:03 .git-credentials
+-rw-r--r--    1 root     root           547 Sep 30 00:14 .gitignore
+-rw-r--r--    1 root     root            84 Nov 26 05:10 .ha_run.lock
+drwxr-xr-x    2 root     root          4096 Nov 26 05:11 .storage
+-rw-r--r--    1 root     root          5213 Nov 26 05:11 README_entities.md
+-rw-r--r--    1 root     root          1578 Nov 26 05:11 README_helpers.md
+-rw-r--r--    1 root     root          1353 Oct 19 01:17 Raw Links
+-rw-r--r--    1 root     root         38500 Nov 26 04:42 automations.yaml
+drwxr-xr-x    5 root     root          4096 Sep 29 11:45 blueprints
+-rw-r--r--    1 root     root          3283 Nov 26 05:09 configuration.yaml
+drwxr-xr-x    5 root     root          4096 Nov 24 10:15 custom_components
+drwxr-xr-x    2 root     root          4096 Oct 28 21:23 custom_icons
+drwxr-xr-x    2 root     root          4096 Sep 20 11:41 deps
+drwxr-xr-x    2 root     root          4096 Oct 19 01:17 diagnostics
+-rw-r--r--    1 root     root        380829 Nov 13 03:21 home-assistant.log.1
+-rw-r--r--    1 root     root             0 Nov 26 05:10 home-assistant.log.fault
+-rw-r--r--    1 root     root        232834 Nov 15 21:04 home-assistant.log.old
+-rw-r--r--    1 root     root      60010496 Nov 26 05:10 home-assistant_v2.db
+-rw-r--r--    1 root     root         32768 Nov 26 05:11 home-assistant_v2.db-shm
+-rw-r--r--    1 root     root       1326672 Nov 26 05:11 home-assistant_v2.db-wal
+-rw-r--r--    1 root     root             0 Oct 11 01:30 home-assistant_v2.db.corrupt.2025-10-14T00:39:04.685519+00:00
+drwxr-xr-x    7 root     root          4096 Nov  6 07:18 image
+-rw-r--r--    1 root     root         15305 Nov 19 08:48 scenes.yaml
+-rw-r--r--    1 root     root          3376 Nov 12 00:14 scripts.yaml
+-rw-r--r--    1 root     root           161 Sep 20 11:41 secrets.yaml
+drwxr-xr-x    2 root     root          4096 Sep 20 11:41 tts
+drwxr-xr-x    4 root     root          4096 Nov  2 23:20 www
