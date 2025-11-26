@@ -341,196 +341,6 @@
           entity_id: scene.goodnight_scene
   mode: parallel
   max: 10
-- id: '1759721039676'
-  alias: 'Work Schedule Automations '
-  description: ''
-  triggers:
-  - trigger: time
-    at: 09:45:00
-    id: 9:45am
-  - trigger: time
-    at: '23:00:00'
-    id: 11pm
-  - trigger: time
-    at: '13:00:00'
-    id: 1pm
-  conditions: []
-  actions:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id:
-        - 1pm
-      sequence:
-      - alias: 'Workday Schedule '
-        if:
-        - condition: state
-          state: 'on'
-          entity_id: binary_sensor.workday_tomorrow_template_sensor
-        - alias: Tomorrow is NOT scheduled off
-          condition: not
-          conditions:
-          - alias: Scheduled Off = Tomorrow
-            condition: template
-            value_template: "{% set comp = states('input_datetime.scheduled_off')
-              %}\n{% if comp in ['unknown', 'unavailable', 'none', ''] %}\n  false\n{%
-              else %}\n  {% set tomorrow = (now().date() + timedelta(days=1)).strftime('%Y-%m-%d')
-              %}\n  {{ comp == tomorrow }}\n{% endif %}"
-        then:
-        - action: input_boolean.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: input_boolean.workday_tomorrow_toggle
-        else:
-        - action: input_boolean.turn_off
-          metadata: {}
-          data: {}
-          target:
-            entity_id: input_boolean.workday_tomorrow_toggle
-    - conditions:
-      - condition: trigger
-        id:
-        - 11pm
-      sequence:
-      - if:
-        - condition: state
-          state: 'on'
-          entity_id: input_boolean.workday_tomorrow_toggle
-        then:
-        - action: notify.blake_foster30_gmail_com
-          metadata: {}
-          data:
-            message: Work Alarm ON
-            title: Work Alarm ON
-            target: blake.foster30@gmail.com
-        - action: input_boolean.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id:
-            - input_boolean.workday_today_toggle
-        else:
-        - action: notify.blake_foster30_gmail_com
-          metadata: {}
-          data:
-            message: Work Alarm OFF
-            title: Work Alarm OFF
-            target: blake.foster30@gmail.com
-        - action: input_boolean.turn_off
-          metadata: {}
-          data: {}
-          target:
-            entity_id:
-            - input_boolean.workday_today_toggle
-        alias: Workday tomorrow toggle -> alarms
-    - conditions:
-      - condition: trigger
-        id:
-        - 9:45am
-      - condition: template
-        value_template: "{%- set worked = [\n  '2025-11-27','2026-05-25','2026-12-25','2027-07-04','2028-01-01',\n
-          \ '2028-09-04','2029-01-15','2029-11-22','2030-05-27','2030-12-25'\n] -%}\n\n{%-
-          set today = now().date() -%}\n\n{%- for d in worked -%}\n  {%- if (as_datetime(d
-          ~ ' 00:00:00').date() - today).days == 7 -%}\n    true\n  {%- endif -%}\n{%-
-          endfor -%}\n\nfalse"
-        alias: Holiday in 7 days
-        enabled: true
-      sequence:
-      - sequence:
-        - action: notify.mobile_app_blakes_iphone
-          metadata: {}
-          data:
-            title: You work a holiday next week
-            message: 'Enter the date you want off (MM-DD-YYYY). Example: 11-27-2025'
-            data:
-              actions:
-              - action: enter_comp_day_mmddyyyy
-                title: Enter comp day
-                behavior: textInput
-                textInputButtonTitle: Save
-                textInputPlaceholder: MM-DD-YYYY
-          alias: Request holiday comp date
-        - alias: Proper Date Loop
-          repeat:
-            until:
-            - condition: template
-              value_template: "{% set ok = false %}\n\n{% if raw_input is string\n
-                \     and raw_input != ''\n      and (raw_input | regex_match('^\\\\d{1,2}-\\\\d{1,2}-\\\\d{4}$'))
-                %}\n  {% set parts = raw_input.split('-') %}\n  {% set mm = parts[0].zfill(2)
-                %}\n  {% set dd = parts[1].zfill(2) %}\n  {% set yyyy = parts[2] %}\n
-                \ {% set iso = yyyy ~ '-' ~ mm ~ '-' ~ dd %}\n  {# try to parse as
-                a real date #}\n  {% set dt = as_datetime(iso ~ ' 00:00:00', default=None)
-                %}\n  {% if dt is not none and dt.date() > now().date() %}\n    {%
-                set ok = true %}\n  {% endif %}\n{% endif %}\n\n{{ ok }}"
-              alias: Valid Date
-            sequence:
-            - wait_for_trigger:
-              - trigger: event
-                event_type: mobile_app_notification_action
-                event_data:
-                  action: enter_comp_day_mmddyyyy
-              timeout:
-                hours: 1
-                minutes: 0
-                seconds: 0
-                milliseconds: 0
-              continue_on_timeout: false
-              alias: Wait For Notification Response
-            - variables:
-                raw_input: '{{ wait.trigger.event.data.reply_text | default('''')
-                  | trim }}'
-            - if:
-              - condition: not
-                conditions:
-                - condition: template
-                  value_template: "{% set ok = false %}\n\n{% if raw_input is string\n
-                    \     and raw_input != ''\n      and (raw_input | regex_match('^\\\\d{1,2}-\\\\d{1,2}-\\\\d{4}$'))
-                    %}\n  {% set parts = raw_input.split('-') %}\n  {% set mm = parts[0].zfill(2)
-                    %}\n  {% set dd = parts[1].zfill(2) %}\n  {% set yyyy = parts[2]
-                    %}\n  {% set iso = yyyy ~ '-' ~ mm ~ '-' ~ dd %}\n  {# try to
-                    parse as a real date #}\n  {% set dt = as_datetime(iso ~ ' 00:00:00',
-                    default=None) %}\n  {% if dt is not none and dt.date() > now().date()
-                    %}\n    {% set ok = true %}\n  {% endif %}\n{% endif %}\n\n{{
-                    ok }}"
-                  alias: Valid Date
-                alias: (Not) Valid Date
-              then:
-              - alias: Request VALID Date
-                action: notify.mobile_app_blakes_iphone
-                metadata: {}
-                data:
-                  message: 'Enter the date you want off in the proper format (MM-DD-YYYY).
-                    Example: 11-27-2025'
-                  data:
-                    tag: comp_day_prompt
-                    actions:
-                    - action: enter_comp_day_mmddyyyy
-                      title: Enter comp day
-                      behavior: textInput
-                      textInputButtonTitle: Save
-                      textInputPlaceholder: MM-DD-YYYY
-                  title: Invalid date format
-              alias: 'Invalid Date -> Re-send '
-        - variables:
-            parts: '{{ raw_input.split(''-'') }}'
-            mm: '{{ parts[0].zfill(2) }}'
-            dd: '{{ parts[1].zfill(2) }}'
-            yyyy: '{{ parts[2] }}'
-            iso_date: '{{ yyyy ~ ''-'' ~ mm ~ ''-'' ~ dd }}'
-        - action: input_datetime.set_datetime
-          metadata: {}
-          data:
-            date: '{{ iso_date }}'
-          target:
-            entity_id: input_datetime.scheduled_off
-        - alias: Notification = date set
-          action: notify.mobile_app_blakes_iphone
-          metadata: {}
-          data:
-            message: Comp day set to {{ raw_input }}
-      alias: Holiday in 7 days
-  mode: single
 - id: '1759838752481'
   alias: Light Triggers Light
   description: ''
@@ -702,10 +512,6 @@
     id: Phone trigger
   - trigger: state
     entity_id:
-    - binary_sensor.motion_1_motion
-    id: Motion sensor
-  - trigger: state
-    entity_id:
     - binary_sensor.front_door
     to:
     - 'on'
@@ -753,34 +559,6 @@
             entity_id: input_number.phone_charging_distance
           data:
             value: 10
-    - conditions:
-      - condition: trigger
-        id:
-        - Motion sensor
-      sequence:
-      - choose:
-        - conditions:
-          - condition: state
-            entity_id: binary_sensor.motion_1_motion
-            state: 'on'
-          sequence:
-          - action: input_datetime.set_datetime
-            metadata: {}
-            data:
-              timestamp: '{{ now().timestamp() }}'
-            target:
-              entity_id: input_datetime.last_motion_on
-        - conditions:
-          - condition: state
-            entity_id: binary_sensor.motion_1_motion
-            state: 'off'
-          sequence:
-          - action: input_datetime.set_datetime
-            metadata: {}
-            data:
-              timestamp: 0
-            target:
-              entity_id: input_datetime.last_motion_on
     - conditions:
       - condition: trigger
         id:
@@ -1256,13 +1034,24 @@
   conditions: []
   actions:
   - variables:
-      motion_ts: '{{ state_attr(''input_datetime.last_motion_on'',''timestamp'') }}'
+      motion_ts: "{% if is_state('binary_sensor.motion_1_motion', 'on') %}\n  {{ as_timestamp(states.binary_sensor.motion_1_motion.last_changed)
+        }}\n{% else %}\n  0\n{% endif %}\n"
       door_open_trigger: '{{ as_timestamp(trigger.to_state.last_changed) if trigger
-        is defined else now().timestamp() }}'
+        is defined else now().timestamp() }}
+
+        '
       prev_door_ts: '{{ state_attr(''input_datetime.last_door_open'',''timestamp'')
-        }}'
+        }}
+
+        '
       home_ts: "{% if is_state('person.blake_foster','home') %}\n  {{ as_timestamp(states.person.blake_foster.last_changed)
         }}\n{% else %}\n  0\n{% endif %}\n"
+  - action: input_datetime.set_datetime
+    metadata: {}
+    data:
+      datetime: '{{ now().isoformat() }}'
+    target:
+      entity_id: input_datetime.last_door_open
   - alias: Log Variables
     action: logbook.log
     metadata: {}
@@ -1299,12 +1088,6 @@
         }} | Prev_door_ts: {{ fmt(prev_door_ts) }} | Home_ts - Prev_door_ts = {{ home_delta
         }}s | First opening: {{ true if first_open_bool == true else false if first_open_bool
         == false else 'n/a' }}\n"
-  - action: input_datetime.set_datetime
-    metadata: {}
-    data:
-      datetime: '{{ now().isoformat() }}'
-    target:
-      entity_id: input_datetime.last_door_open
   - alias: Leaving Or Arriving
     if:
     - condition: template
@@ -1432,3 +1215,196 @@
     target:
       entity_id: scene.set_my_room
   mode: single
+- id: '1764120623172'
+  alias: Work Schedule Automations
+  description: ''
+  triggers:
+  - trigger: time
+    at: 09:45:00
+    id: 9:45am
+  - trigger: time
+    at: '23:00:00'
+    id: 11pm
+  - trigger: time
+    at: '13:00:00'
+    id: 1pm
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - 1pm
+      sequence:
+      - alias: 'Workday Schedule '
+        if:
+        - condition: state
+          state: 'on'
+          entity_id: binary_sensor.workday_tomorrow_template_sensor
+        - alias: Tomorrow is NOT scheduled off
+          condition: not
+          conditions:
+          - alias: Scheduled Off = Tomorrow
+            condition: template
+            value_template: "{% set comp = states('input_datetime.scheduled_off')
+              %}\n{% if comp in ['unknown', 'unavailable', 'none', ''] %}\n  false\n{%
+              else %}\n  {% set tomorrow = (now().date() + timedelta(days=1)).strftime('%Y-%m-%d')
+              %}\n  {{ comp == tomorrow }}\n{% endif %}"
+        then:
+        - action: input_boolean.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.workday_tomorrow_toggle
+        else:
+        - action: input_boolean.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.workday_tomorrow_toggle
+    - conditions:
+      - condition: trigger
+        id:
+        - 11pm
+      sequence:
+      - if:
+        - condition: state
+          state: 'on'
+          entity_id: input_boolean.workday_tomorrow_toggle
+        then:
+        - action: notify.blake_foster30_gmail_com
+          metadata: {}
+          data:
+            message: Work Alarm ON
+            title: Work Alarm ON
+            target: blake.foster30@gmail.com
+        - action: input_boolean.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id:
+            - input_boolean.workday_today_toggle
+        else:
+        - action: notify.blake_foster30_gmail_com
+          metadata: {}
+          data:
+            message: Work Alarm OFF
+            title: Work Alarm OFF
+            target: blake.foster30@gmail.com
+        - action: input_boolean.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id:
+            - input_boolean.workday_today_toggle
+        alias: Workday tomorrow toggle -> alarms
+    - conditions:
+      - condition: trigger
+        id:
+        - 9:45am
+      - condition: template
+        value_template: "{%- set worked = [\n  '2025-11-27','2026-05-25','2026-12-25','2027-07-04','2028-01-01',\n
+          \ '2028-09-04','2029-01-15','2029-11-22','2030-05-27','2030-12-25'\n] -%}\n{%-
+          set today = now().date() -%}\n{%- for d in worked -%}\n  {%- if (as_datetime(d
+          ~ ' 00:00:00').date() - today).days == 7 -%}\n    true\n  {%- endif -%}\n{%-
+          endfor -%}\nfalse"
+        alias: Holiday in 7 days
+        enabled: true
+      sequence:
+      - sequence:
+        - action: notify.mobile_app_blakes_iphone
+          metadata: {}
+          data:
+            title: You work a holiday next week
+            message: 'Enter the date you want off (MM-DD-YYYY). Example: 11-27-2025'
+            data:
+              actions:
+              - action: enter_comp_day_mmddyyyy
+                title: Enter comp day
+                behavior: textInput
+                textInputButtonTitle: Save
+                textInputPlaceholder: MM-DD-YYYY
+          alias: Request holiday comp date
+        - alias: Proper Date Loop
+          repeat:
+            until:
+            - condition: template
+              value_template: "{% if raw_input is defined and raw_input is string
+                \n      and raw_input != '' \n      and (raw_input | regex_match('^\\\\d{1,2}-\\\\d{1,2}-\\\\d{4}$'))
+                %}\n  {% set parts = raw_input.split('-') %}\n  {% set iso = parts[2]
+                ~ '-' ~ parts[0].zfill(2) ~ '-' ~ parts[1].zfill(2) %}\n  {% set dt
+                = as_datetime(iso ~ ' 00:00:00', default=None) %}\n  {{ dt is not
+                none and dt.date() > now().date() }}\n{% else %}\n  {{ false }}\n{%
+                endif %}"
+              alias: Valid Date
+            sequence:
+            - alias: Wait For Notification Response
+              wait_for_trigger:
+              - trigger: event
+                event_type: mobile_app_notification_action
+                event_data:
+                  action: enter_comp_day_mmddyyyy
+              timeout:
+                hours: 1
+                minutes: 0
+                seconds: 0
+                milliseconds: 0
+              continue_on_timeout: true
+            - if:
+              - condition: template
+                value_template: '{{ wait.trigger is none }}'
+              then:
+              - stop: User did not reply within 1 hour. Stopping loop.
+            - variables:
+                raw_input: '{{ wait.trigger.event.data.reply_text | default('''')
+                  | trim }}'
+            - if:
+              - condition: not
+                conditions:
+                - condition: template
+                  value_template: "{% set ok = false %}\n{% if raw_input is string\n
+                    \     and raw_input != ''\n      and (raw_input | regex_match('^\\\\d{1,2}-\\\\d{1,2}-\\\\d{4}$'))
+                    %}\n  {% set parts = raw_input.split('-') %}\n  {% set mm = parts[0].zfill(2)
+                    %}\n  {% set dd = parts[1].zfill(2) %}\n  {% set yyyy = parts[2]
+                    %}\n  {% set iso = yyyy ~ '-' ~ mm ~ '-' ~ dd %}\n  {% set dt
+                    = as_datetime(iso ~ ' 00:00:00', default=None) %}\n  {% if dt
+                    is not none and dt.date() > now().date() %}\n    {% set ok = true
+                    %}\n  {% endif %}\n{% endif %}\n{{ ok }}"
+                  alias: Valid Date
+                alias: (Not) Valid Date
+              then:
+              - alias: Request VALID Date
+                action: notify.mobile_app_blakes_iphone
+                metadata: {}
+                data:
+                  message: 'Enter the date you want off in the proper format (MM-DD-YYYY).
+                    Example: 11-27-2025'
+                  data:
+                    tag: comp_day_prompt
+                    actions:
+                    - action: enter_comp_day_mmddyyyy
+                      title: Enter comp day
+                      behavior: textInput
+                      textInputButtonTitle: Save
+                      textInputPlaceholder: MM-DD-YYYY
+                  title: Invalid date format
+              else:
+              - variables:
+                  parts: '{{ raw_input.split(''-'') }}'
+                  mm: '{{ parts[0].zfill(2) }}'
+                  dd: '{{ parts[1].zfill(2) }}'
+                  yyyy: '{{ parts[2] }}'
+                  iso_date: '{{ yyyy ~ ''-'' ~ mm ~ ''-'' ~ dd }}'
+              - action: input_datetime.set_datetime
+                metadata: {}
+                data:
+                  date: '{{ iso_date }}'
+                target:
+                  entity_id: input_datetime.scheduled_off
+              - alias: Notification = date set
+                action: notify.mobile_app_blakes_iphone
+                metadata: {}
+                data:
+                  message: Comp day set to {{ raw_input }}
+  mode: parallel
+  max: 10
