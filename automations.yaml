@@ -398,7 +398,7 @@
         target:
           entity_id: scene.full_lamp
       alias: Ceiling Light -> Lamp
-  mode: parallel
+  mode: restart
 - id: '1760424497591'
   alias: Thermostat
   description: ''
@@ -438,6 +438,10 @@
       - condition: time
         after: 08:59:00
         before: '15:50:00'
+      - condition: state
+        entity_id: person.blake_foster
+        state:
+        - not_home
       sequence:
       - action: scene.turn_on
         metadata: {}
