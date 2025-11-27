@@ -26,41 +26,24 @@ shell_command:
              (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
              git -c credential.helper='store --file=/config/.git-credentials' push origin main"
 
-  write_entities_md: |
-    bash -lc 'cat > /config/README_entities.md << "EOF"
-    {{ content }}
-    EOF'
+  write_entities_md: "cat > /config/README_entities.md <<EOF_ENTITIES\n$CONTENT\nEOF_ENTITIES"
 
-  write_helpers_md: |
-    bash -lc 'cat > /config/README_helpers.md << "EOF"
-    {{ content }}
-    EOF'
+  write_helpers_md: "cat > /config/README_helpers.md <<EOF_HELPERS\n$CONTENT\nEOF_HELPERS"
 
   write_log_slice: |
     bash -lc 'mkdir -p /config/diagnostics && {
     echo "===== $(date -Iseconds) — last 1000 lines =====";
-    if [ -f /config/home-assistant.log ]; then
-      tail -n 1000 /config/home-assistant.log 2>&1 || echo "Error executing tail command.";
-    else
-      echo "ERROR: File /config/home-assistant.log does not exist.";
-      echo "Listing /config directory for debugging:";
-      ls -la /config/;
-    fi
+    tail -n 1000 /config/home-assistant.log || true;
     } > /config/diagnostics/last_log.txt'
-    
+
   write_automation_runs: |
     bash -lc 'mkdir -p /config/diagnostics && {
     echo "===== $(date -Iseconds) — automation runs (recent) =====";
-    if [ -f /config/home-assistant.log ]; then
-      tail -n 2000 /config/home-assistant.log 2>&1 \
-      | grep -iE "(homeassistant.components.automation|automation|triggered|queued|running|executing|alexa|cloud|scene\.turn_on|light\.turn_(on|off))" \
-      || echo "No recent automation logs found matching criteria.";
-    else
-      echo "ERROR: File /config/home-assistant.log does not exist.";
-    fi
+    tail -n 2000 /config/home-assistant.log \
+    | grep -iE "(homeassistant.components.automation|automation|triggered|queued|running|executing|alexa|cloud|scene\.turn_on|light\.turn_(on|off))" \
+    || true;
     } > /config/diagnostics/automation_runs.txt'
 
-  # Quick path test (optional)
   write_diag_test: |
     bash -lc 'mkdir -p /config/diagnostics &&
               echo "Diag test at $(date -Iseconds)" > /config/diagnostics/diag_test.txt'
