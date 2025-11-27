@@ -26,13 +26,8 @@ shell_command:
              (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
              git -c credential.helper='store --file=/config/.git-credentials' push origin main"
 
-  write_entities_md: |
-    bash -lc 'cat > /config/README_entities.md << "EOF"
-    {{ content }}
-    EOF'
-
-  write_helpers_md: |
-    bash -lc 'cat > /config/README_helpers.md << "EOF"
+  write_ha_overview: >
+    bash -lc 'cat > /config/HA_Overview.md << "EOF"
     {{ content }}
     EOF'
 

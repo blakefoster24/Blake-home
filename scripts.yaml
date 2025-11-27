@@ -1,69 +1,3 @@
-create_push_ha_info_to_github:
-  alias: Create & Push HA Info to Github
-  sequence:
-  - action: shell_command.write_entities_md
-    data:
-      content: '# Home Assistant — Entities (Snapshot)
-
-        Auto-generated list of entities. Safe to publish.
-
-
-        {% for domain, items in states | groupby(''domain'') %}
-
-        ## {{ domain | capitalize }}
-
-        | Entity ID | Name |
-
-        |---|---|
-
-        {% for s in items | sort(attribute=''entity_id'') %}
-
-        | `{{ s.entity_id }}` | {{ s.name }} |
-
-        {% endfor %}
-
-
-        {% endfor %}
-
-
-        ---
-
-        _Generated: {{ now().isoformat() }}_'
-  - action: shell_command.write_helpers_md
-    data:
-      content: "# Home Assistant — UI Helpers (Snapshot)\nAuto-generated list of helpers
-        created via the UI. Safe to publish.\n\n{% set sections = [\n  ('input_boolean',
-        '\U0001F39A Input Booleans'),\n  ('input_number',  '\U0001F522 Input Numbers'),\n
-        \ ('input_text',    '✏️ Input Texts'),\n  ('input_select',  '\U0001F4CB Input
-        Selects'),\n  ('input_datetime','\U0001F5D3 Input Datetimes'),\n  ('input_button',
-        \ '\U0001F518 Input Buttons'),\n  ('timer',         '⏱ Timers'),\n  ('counter',
-        \      '\U0001F501 Counters')\n] %}\n\n{% for domain, title in sections %}\n{%
-        set items = states[domain] | list %}\n{% if items | count > 0 %}\n## {{ title
-        }}\n| Entity ID | Friendly Name | Key Attributes |\n|---|---|---|\n{% for
-        s in items | sort(attribute='entity_id') %}\n{% if domain == 'input_number'
-        %}\n{% set attr = \"min=\" ~ (s.attributes.min|default('')) ~ \", max=\" ~
-        (s.attributes.max|default('')) ~ \", step=\" ~ (s.attributes.step|default(''))
-        %}\n{% elif domain == 'input_text' %}\n{% set attr = \"min=\" ~ (s.attributes.min|default(''))
-        ~ \", max=\" ~ (s.attributes.max|default('')) ~ \", mode=\" ~ (s.attributes.mode|default(''))
-        %}\n{% elif domain == 'input_select' %}\n{% set attr = \"options=\" ~ (s.attributes.options|default([])|join(',
-        ')) %}\n{% elif domain == 'input_datetime' %}\n{% set attr = \"has_date=\"
-        ~ (s.attributes.has_date|default(false)) ~ \", has_time=\" ~ (s.attributes.has_time|default(false))
-        %}\n{% elif domain == 'timer' %}\n{% set attr = \"duration=\" ~ (s.attributes.duration|default(''))
-        ~ \", restore=\" ~ (s.attributes.restore|default(false)) %}\n{% elif domain
-        == 'counter' %}\n{% set attr = \"min=\" ~ (s.attributes.minimum|default(''))
-        ~ \", max=\" ~ (s.attributes.maximum|default('')) ~ \", step=\" ~ (s.attributes.step|default(false))
-        ~ \", restore=\" ~ (s.attributes.restore|default(false)) %}\n{% else %}\n{%
-        set attr = \"\" %}\n{% endif %}\n| `{{ s.entity_id }}` | {{ s.name }} | {{
-        attr }} |\n{% endfor %}\n\n{% endif %}\n{% endfor %}\n\n---\n_Generated: {{
-        now().isoformat() }}_"
-  - action: shell_command.write_log_slice
-    data: {}
-  - action: shell_command.write_automation_runs
-    data: {}
-  - action: shell_command.ha_git_commit_push
-    data: {}
-  mode: single
-  description: ''
 find_remote:
   sequence:
   - action: remote.send_command
@@ -77,3 +11,41 @@ find_remote:
       entity_id: remote.bedroom_tv
   alias: Find Remote
   description: ''
+create_push_ha_info_to_github_3:
+  alias: Create & Push HA Info to Github 3
+  description: Generates HA_Overview.md with helpers and entities, runs diagnostics,
+    and pushes to GitHub.
+  sequence:
+  - action: shell_command.write_ha_overview
+    data:
+      content: "# Home Assistant Configuration\n_Last Updated: {{ now().isoformat()
+        }}_\n\n## \U0001F6E0 UI Helpers\nBelow are the input helpers configured in
+        Home Assistant.\n\n{% set helpers = ['input_boolean', 'input_button', 'input_datetime',
+        'input_number', 'input_select', 'input_text', 'counter', 'timer', 'schedule']
+        %}\n{% for domain in helpers %}\n{% set assets = states[domain] | list %}\n{%
+        if assets | count > 0 %}\n### {{ domain | replace('input_', '') | capitalize
+        }}\n| Entity ID | Name | State | Attributes |\n|---|---|---|---|\n{% for s
+        in assets | sort(attribute='entity_id') %}\n{% set details = [] %}\n{% if
+        domain == 'input_number' %}\n  {% set details = details + ['min=' ~ s.attributes.min,
+        'max=' ~ s.attributes.max, 'step=' ~ s.attributes.step] %}\n{% elif domain
+        == 'input_select' %}\n  {% set details = details + ['options=' ~ s.attributes.options
+        | join(', ')] %}\n{% elif domain == 'input_datetime' %}\n  {% set details
+        = details + ['has_date=' ~ s.attributes.has_date, 'has_time=' ~ s.attributes.has_time]
+        %}\n{% elif domain == 'timer' %}\n   {% set details = details + ['duration='
+        ~ s.attributes.duration] %}\n{% elif domain == 'counter' %}\n   {% set details
+        = details + ['min=' ~ s.attributes.minimum, 'max=' ~ s.attributes.maximum]
+        %}\n{% endif %}\n| `{{ s.entity_id }}` | **{{ s.name }}** | {{ s.state }}
+        | {{ details | join(', ') }} |\n{% endfor %}\n\n{% endif %}\n{% endfor %}\n\n---\n\n##
+        \U0001F3E0 All Entities (By Domain)\n{% for domain, items in states | groupby('domain')
+        %}\n{% if domain not in helpers and domain != 'group' %}\n<details><summary><b>{{
+        domain | title }} ({{ items | length }})</b></summary>\n\n| Entity ID | Name
+        | State |\n|---|---|---|\n{% for s in items | sort(attribute='entity_id')
+        %}\n| `{{ s.entity_id }}` | {{ s.name }} | {{ s.state }} |\n{% endfor %}\n</details>\n\n{%
+        endif %}\n{% endfor %}\n"
+  - action: shell_command.write_log_slice
+    data: {}
+  - action: shell_command.write_automation_runs
+    data: {}
+  - action: shell_command.ha_git_commit_push
+    data: {}
+  mode: single
