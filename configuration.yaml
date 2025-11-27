@@ -39,16 +39,22 @@ shell_command:
   write_log_slice: |
     bash -lc 'mkdir -p /config/diagnostics && {
     echo "===== $(date -Iseconds) — last 1000 lines =====";
-    tail -n 1000 /config/home-assistant.log || true;
+    tail -n 1000 /config/home-assistant.log 2>&1 || echo "Command failed";
     } > /config/diagnostics/last_log.txt'
-    
+
   write_automation_runs: |
     bash -lc 'mkdir -p /config/diagnostics && {
     echo "===== $(date -Iseconds) — automation runs (recent) =====";
-    tail -n 2000 /config/home-assistant.log \
-    | grep -iE "(homeassistant.components.automation|automation|triggered|queued|running|executing|alexa|cloud|scene\.turn_on|light\.turn_(on|off))" \
-    || true;
+    if [ -f /config/home-assistant.log ]; then
+      tail -n 2000 /config/home-assistant.log \
+      | grep -iE "(homeassistant.components.automation|automation|triggered|queued|running|executing|alexa|cloud|scene\.turn_on|light\.turn_(on|off))" \
+      || true;
+    else
+      echo "Error: /config/home-assistant.log not found";
+    fi
     } > /config/diagnostics/automation_runs.txt'
+
+  # ... existing commands ...
 
   # Quick path test (optional)
   write_diag_test: |
