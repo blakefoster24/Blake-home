@@ -1,2 +1,2 @@
-===== 2025-11-27T05:15:59-06:00 — automation runs (recent) =====
+===== 2025-11-27T05:51:11-06:00 — automation runs (recent) =====
 Error: /config/home-assistant.log not found

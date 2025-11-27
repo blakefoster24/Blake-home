@@ -1,4 +1,4 @@
-_Last Updated: 2025-11-27T05:15:59.114686-06:00_
+_Last Updated: 2025-11-27T05:51:11.508797-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.

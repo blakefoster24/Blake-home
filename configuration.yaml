@@ -49,7 +49,11 @@ shell_command:
     fi
     } > /config/diagnostics/automation_runs.txt'
 
-  # ... existing commands ...
+  write_error_log: |
+    bash -lc 'mkdir -p /config/diagnostics && {
+    echo "===== $(date -Iseconds) — Recent Errors & Warnings =====";
+    grep -iE "(ERROR|WARNING|CRITICAL|FATAL)" /config/home-assistant.log | tail -n 500 || true;
+    } > /config/diagnostics/error_log.txt'
 
   # Quick path test (optional)
   write_diag_test: |

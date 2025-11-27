@@ -11,10 +11,11 @@ find_remote:
       entity_id: remote.bedroom_tv
   alias: Find Remote
   description: ''
-create_push_ha_info_to_github_3:
-  alias: Create & Push HA Info to Github 3
-  description: Generates HA_Overview.md with helpers and entities, runs diagnostics,
-    and pushes to GitHub.
+create_push_ha_info_to_github_2:
+  alias: Create & Push HA Info to Github
+  description: Generates HA_Overview.md, runs diagnostics (logs/errors), and pushes
+    to GitHub.
+  mode: single
   sequence:
   - action: shell_command.write_ha_overview
     data:
@@ -46,6 +47,7 @@ create_push_ha_info_to_github_3:
     data: {}
   - action: shell_command.write_automation_runs
     data: {}
+  - action: shell_command.write_error_log
+    data: {}
   - action: shell_command.ha_git_commit_push
     data: {}
-  mode: single
