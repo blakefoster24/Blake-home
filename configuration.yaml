@@ -26,9 +26,10 @@ shell_command:
              (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
              git -c credential.helper='store --file=/config/.git-credentials' push origin main"
 
-  write_entities_md: "cat > /config/README_entities.md <<EOF_ENTITIES\n$CONTENT\nEOF_ENTITIES"
+  # FIXED: Uses lowercase $content to match the script variable
+  write_entities_md: "cat > /config/README_entities.md <<EOF_ENTITIES\n$content\nEOF_ENTITIES"
 
-  write_helpers_md: "cat > /config/README_helpers.md <<EOF_HELPERS\n$CONTENT\nEOF_HELPERS"
+  write_helpers_md: "cat > /config/README_helpers.md <<EOF_HELPERS\n$content\nEOF_HELPERS"
 
   write_log_slice: |
     bash -lc 'mkdir -p /config/diagnostics && {
@@ -43,10 +44,6 @@ shell_command:
     | grep -iE "(homeassistant.components.automation|automation|triggered|queued|running|executing|alexa|cloud|scene\.turn_on|light\.turn_(on|off))" \
     || true;
     } > /config/diagnostics/automation_runs.txt'
-
-  write_diag_test: |
-    bash -lc 'mkdir -p /config/diagnostics &&
-              echo "Diag test at $(date -Iseconds)" > /config/diagnostics/diag_test.txt'
 
 panel_custom:
   - name: panel_entities
