@@ -1,4 +1,4 @@
-===== 2025-11-27T05:14:46-06:00 — last 1000 lines =====
+===== 2025-11-27T05:15:59-06:00 — last 1000 lines =====
 tail: can't open '/config/home-assistant.log': No such file or directory
 tail: no files
 Command failed
