@@ -438,10 +438,6 @@
       - condition: time
         after: 08:59:00
         before: '15:50:00'
-      - condition: state
-        entity_id: person.blake_foster
-        state:
-        - not_home
       sequence:
       - action: scene.turn_on
         metadata: {}
@@ -471,22 +467,96 @@
             before: '15:50:00'
           alias: Blake Home 9am-4pm
       sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.thermostat_ideal_morning
+      - choose:
+        - conditions:
+          - condition: numeric_state
+            entity_id: sensor.openweathermap_temperature_2
+            below: 51
+          sequence:
+          - alias: Heat - 68
+            action: climate.set_temperature
+            metadata: {}
+            data:
+              hvac_mode: heat
+              temperature: 68
+            target:
+              device_id: b43f8797bfe54ded21e44c051fec8167
+        - conditions:
+          - condition: numeric_state
+            entity_id: sensor.openweathermap_temperature_2
+            below: 72
+            above: 50
+          sequence:
+          - alias: Heat/Cool - 67/70
+            action: climate.set_temperature
+            metadata: {}
+            data:
+              hvac_mode: heat_cool
+              target_temp_high: 70
+              target_temp_low: 67
+            target:
+              device_id: b43f8797bfe54ded21e44c051fec8167
+        - conditions:
+          - condition: numeric_state
+            entity_id: sensor.openweathermap_temperature_2
+            above: 72
+          sequence:
+          - alias: Cool - 68
+            action: climate.set_temperature
+            metadata: {}
+            data:
+              hvac_mode: cool
+              temperature: 68
+            target:
+              device_id: b43f8797bfe54ded21e44c051fec8167
       alias: Ideal Morning Branch
     - conditions:
       - condition: trigger
         id:
         - 4pm
       sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.thermostat_ideal_evening
+      - choose:
+        - conditions:
+          - condition: numeric_state
+            entity_id: sensor.openweathermap_temperature_2
+            below: 55
+          sequence:
+          - action: climate.set_temperature
+            metadata: {}
+            data:
+              hvac_mode: heat
+              temperature: 70
+            target:
+              device_id: b43f8797bfe54ded21e44c051fec8167
+            alias: Heat - 70
+        - conditions:
+          - condition: numeric_state
+            entity_id: sensor.openweathermap_temperature_2
+            below: 80
+            above: 54
+          sequence:
+          - alias: Heat/Cool - 68/72
+            action: climate.set_temperature
+            metadata: {}
+            data:
+              hvac_mode: heat_cool
+              target_temp_high: 70
+              target_temp_low: 67
+            target:
+              device_id: b43f8797bfe54ded21e44c051fec8167
+        - conditions:
+          - condition: numeric_state
+            entity_id: sensor.openweathermap_temperature_2
+            above: 79
+          sequence:
+          - alias: Cool - 69
+            action: climate.set_temperature
+            metadata: {}
+            data:
+              hvac_mode: cool
+              temperature: 69
+            target:
+              device_id: b43f8797bfe54ded21e44c051fec8167
       alias: Ideal Evening Branch
   mode: single
 - id: '1761047102816'
