@@ -194,8 +194,11 @@
   - trigger: time
     at: 02:00:00
   actions:
-  - action: script.create_push_ha_info_to_github
+  - action: script.turn_on
+    metadata: {}
     data: {}
+    target:
+      entity_id: script.create_push_ha_info_to_github
   mode: single
 - id: '1759463858553'
   alias: Hue Dimmer Switch
@@ -423,15 +426,12 @@
   actions:
   - choose:
     - conditions:
-      - condition: or
+      - alias: Blake Away
+        condition: or
         conditions:
         - condition: trigger
           id:
-          - 9am
-        - condition: trigger
-          id:
           - Blake away
-        alias: 9am or Blake Away
       - condition: state
         entity_id: input_boolean.workday_today_toggle
         state: 'on'
