@@ -1,27 +1,2 @@
-===== $(date -Iseconds) — last 1000 lines =====
-ERROR: home-assistant.log not found. Directory listing:
-total 148
-drwxr-xr-x   13 root     root          4096 Nov 28 05:16 .
-drwxr-xr-x    1 root     root          4096 Nov 15 21:05 ..
--rw-r--r--    1 root     root             9 Nov 15 21:06 .HA_VERSION
-drwxr-xr-x    2 root     root          4096 Nov 28 05:13 .cloud
-drwxr-xr-x    7 root     root          4096 Nov 28 05:17 .git
--rw-------    1 root     root           127 Nov 28 04:29 .git-credentials
--rw-r--r--    1 root     root           547 Sep 30 00:14 .gitignore
--rw-r--r--    1 root     root            82 Nov 27 23:58 .ha_run.lock
-drwxr-xr-x    2 root     root          4096 Nov 28 05:16 .storage
--rw-r--r--    1 root     root          7084 Nov 28 05:17 HA_Overview.md
--rw-r--r--    1 root     root          1353 Oct 19 01:17 Raw Links
--rw-r--r--    1 root     root         40789 Nov 28 05:12 automations.yaml
-drwxr-xr-x    5 root     root          4096 Sep 29 11:45 blueprints
--rw-r--r--    1 root     root          3132 Nov 28 04:33 configuration.yaml
-drwxr-xr-x    5 root     root          4096 Nov 24 10:15 custom_components
-drwxr-xr-x    2 root     root          4096 Oct 28 21:23 custom_icons
-drwxr-xr-x    2 root     root          4096 Sep 20 11:41 deps
-drwxr-xr-x    2 root     root          4096 Nov 27 05:51 diagnostics
-drwxr-xr-x    7 root     root          4096 Nov  6 07:18 image
--rw-r--r--    1 root     root         14803 Nov 28 05:16 scenes.yaml
--rw-r--r--    1 root     root          2793 Nov 27 05:48 scripts.yaml
--rw-r--r--    1 root     root           161 Sep 20 11:41 secrets.yaml
-drwxr-xr-x    2 root     root          4096 Sep 20 11:41 tts
-drwxr-xr-x    4 root     root          4096 Nov  2 23:20 www
+===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
+403: Forbidden

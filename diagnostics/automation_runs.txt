@@ -1,2 +1,1 @@
 ===== $(date -Iseconds) — automation runs (recent) =====
-Error: home-assistant.log not found

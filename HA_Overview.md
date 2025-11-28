@@ -1,4 +1,4 @@
-_Last Updated: 2025-11-28T05:17:46.278959-06:00_
+_Last Updated: 2025-11-28T05:24:19.532422-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -349,6 +349,6 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `media_player.bedroom_tv` | Bedroom Tv | idle |
+| `media_player.bedroom_tv` | Bedroom Tv | playing |
 
 | `media_player.blake_s_echo_dot` | Blakes
