@@ -1,4 +1,4 @@
-_Last Updated: 2025-11-28T11:51:50.788774-06:00_
+_Last Updated: 2025-11-28T11:59:51.601647-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -47,7 +47,7 @@ Below are the input helpers configured in Home Assistant.
 
   
 
-| `input_datetime.last_door_open` | **Last Door Open** | 2025-11-27 22:41:09 | has_date=True, has_time=True |
+| `input_datetime.last_door_open` | **Last Door Open** | 2025-11-28 11:59:05 | has_date=True, has_time=True |
 
 
 
@@ -349,7 +349,7 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `media_player.bedroom_tv` | Bedroom Tv | on |
+| `media_player.bedroom_tv` | Bedroom Tv | playing |
 
 | `media_player.blake_s_echo_dot` | Blake's Echo Dot | idle |
 
@@ -409,7 +409,7 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `scene.all_lights` | All Lights | 2025-11-28T04:41:09.507483+00:00 |
+| `scene.all_lights` | All Lights | 2025-11-28T17:59:05.887307+00:00 |
 
 | `scene.all_lights_off` | All Lights Off | 2025-11-28T17:03:50.165128+00:00 |
 
@@ -419,7 +419,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `scene.dimmed` | Dimmed | 2025-10-03T00:53:59.712594+00:00 |
 
-| `scene.full_lamp` | Full Lamp | 2025-11-28T04:41:09.647665+00:00 |
+| `scene.full_lamp` | Full Lamp | 2025-11-28T17:59:06.077266+00:00 |
 
 | `scene.goodnight_scene` | Goodnight | 2025-11-28T13:00:01.749068+00:00 |
 
@@ -467,7 +467,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.backup_last_successful_automatic_backup` | Backup Last successful automatic backup | 2025-11-28T11:02:07+00:00 |
 
-| `sensor.backup_next_scheduled_automatic_backup` | Backup Next scheduled automatic backup | 2025-11-29T11:43:44+00:00 |
+| `sensor.backup_next_scheduled_automatic_backup` | Backup Next scheduled automatic backup | 2025-11-29T11:37:10+00:00 |
 
 | `sensor.bathroom_light_auto_off_at` | Bathroom Light Auto-off at | unknown |
 
@@ -505,7 +505,7 @@ Below are the input helpers configured in Home Assistant.
 O'Fallon MO 63368
 United States |
 
-| `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger | Launch |
+| `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger | Periodic |
 
 | `sensor.blakes_iphone_location_permission` | Blakes iPhone Location permission | Authorized Always |
 
@@ -565,17 +565,17 @@ United States |
 
 | `sensor.main_lights_auto_off_at` | Main Lights Auto-off at | unknown |
 
-| `sensor.main_lights_current` | Main Lights Current | 0.0 |
+| `sensor.main_lights_current` | Main Lights Current | 0.01 |
 
 | `sensor.main_lights_current_consumption` | Main Lights Current consumption | 0.0 |
 
 | `sensor.main_lights_signal_level` | Main Lights Signal level | 3 |
 
-| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 2.616 |
+| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 2.619 |
 
-| `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.0 |
+| `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.003 |
 
-| `sensor.main_lights_voltage` | Main Lights Voltage | 123.5 |
+| `sensor.main_lights_voltage` | Main Lights Voltage | 123.6 |
 
 | `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 69.908 |
 
@@ -583,9 +583,9 @@ United States |
 
 | `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | sunny |
 
-| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 20.984 |
+| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 21.038 |
 
-| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 30.038 |
+| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 28.49 |
 
 | `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 57 |
 
@@ -597,7 +597,7 @@ United States |
 
 | `sensor.openweathermap_snow_2` | OpenWeatherMap Snow intensity | 0.0 |
 
-| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 33.152 |
+| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 33.206 |
 
 | `sensor.openweathermap_uv_index_2` | OpenWeatherMap UV index | 2.01 |
 
@@ -607,11 +607,11 @@ United States |
 
 | `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 800 |
 
-| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 0 |
+| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 26 |
 
-| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | unknown |
+| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 5.01073729420186 |
 
-| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 3.44488188976378 |
+| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 5.01073729420186 |
 
 | `sensor.shelly_ceiling_fan_energy` | Bedroom Ceiling Fan Energy | 5.220341 |
 
@@ -619,7 +619,7 @@ United States |
 
 | `sensor.shelly_ceiling_lights_energy` | Bedroom Ceiling Lights Energy | 3.496112 |
 
-| `sensor.shelly_ceiling_lights_power` | Bedroom Ceiling Lights Power | 0.0 |
+| `sensor.shelly_ceiling_lights_power` | Bedroom Ceiling Lights Power | 0 |
 
 | `sensor.sun_next_dawn` | Sun Next dawn | 2025-11-29T12:30:42+00:00 |
 

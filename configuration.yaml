@@ -34,19 +34,19 @@ shell_command:
   write_log_slice: >
     bash -c "cd /config && mkdir -p diagnostics && {
     echo '===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====';
-    curl -s -H \"Authorization: Bearer \${SUPERVISOR_TOKEN}\" http://supervisor/core/logs | tail -n 1000;
+    curl -s -H \"Authorization: Bearer ${SUPERVISOR_TOKEN}\" http://supervisor/core/logs | tail -n 1000;
     } > diagnostics/last_log.txt"
 
   write_automation_runs: >
     bash -c "cd /config && mkdir -p diagnostics && {
     echo '===== $(date -Iseconds) — automation runs (recent) =====';
-    curl -s -H \"Authorization: Bearer \${SUPERVISOR_TOKEN}\" http://supervisor/core/logs | tail -n 5000 | grep -iE '(homeassistant.components.automation|automation|triggered|queued|running|executing|alexa|cloud|scene\.turn_on|light\.turn_(on|off))' || true;
+    curl -s -H \"Authorization: Bearer ${SUPERVISOR_TOKEN}\" http://supervisor/core/logs | tail -n 5000 | grep -iE '(homeassistant.components.automation|automation|triggered|queued|running|executing|alexa|cloud|scene\.turn_on|light\.turn_(on|off))' || true;
     } > diagnostics/automation_runs.txt"
 
   write_error_log: >
     bash -c "cd /config && mkdir -p diagnostics && {
     echo '===== $(date -Iseconds) — Recent Errors & Warnings =====';
-    curl -s -H \"Authorization: Bearer \${SUPERVISOR_TOKEN}\" http://supervisor/core/logs | grep -iE '(ERROR|WARNING|CRITICAL|FATAL)' | tail -n 500 || true;
+    curl -s -H \"Authorization: Bearer ${SUPERVISOR_TOKEN}\" http://supervisor/core/logs | grep -iE '(ERROR|WARNING|CRITICAL|FATAL)' | tail -n 500 || true;
     } > diagnostics/error_log.txt"
 
   # Quick path test (optional)
