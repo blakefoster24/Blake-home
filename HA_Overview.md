@@ -1,4 +1,4 @@
-_Last Updated: 2025-11-27T23:50:18.620871-06:00_
+_Last Updated: 2025-11-28T00:00:20.528798-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -74,7 +74,7 @@ Below are the input helpers configured in Home Assistant.
 
   
 
-| `input_number.phone_charging_distance` | **Phone Charging -> Distance** | 0.011 | min=0.0, max=100.0, step=0.01 |
+| `input_number.phone_charging_distance` | **Phone Charging -> Distance** | 0.012 | min=0.0, max=100.0, step=0.01 |
 
 
 
@@ -215,7 +215,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `binary_sensor.shelly_ceiling_lights_overvoltage` | Bedroom Ceiling Lights Overvoltage | off |
 
-| `binary_sensor.workday_tomorrow_template_sensor` | Workday Tomorrow Template Sensor | on |
+| `binary_sensor.workday_tomorrow_template_sensor` | Workday Tomorrow Template Sensor | off |
 
 </details>
 
@@ -349,6 +349,6 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `media_player.bedroom_tv` | Bedroom Tv | playing |
+| `media_player.bedroom_tv` | Bedroom Tv | paused |
 
 | `media_player.blake_s_echo_dot` | Blakes
