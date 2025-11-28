@@ -1,4 +1,4 @@
-_Last Updated: 2025-11-28T11:02:46.152697-06:00_
+_Last Updated: 2025-11-28T11:04:04.504819-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -287,13 +287,13 @@ Below are the input helpers configured in Home Assistant.
 
 | `event.front_door_sensor_button` | Front Door Sensor Button | 2025-10-19T05:12:22.248+00:00 |
 
-| `event.hue_dimmer_switch_button_1` | Hue Dimmer Switch Button 1 | 2025-11-28T14:50:53.125+00:00 |
+| `event.hue_dimmer_switch_button_1` | Hue Dimmer Switch Button 1 | 2025-11-28T17:03:53.732+00:00 |
 
 | `event.hue_dimmer_switch_button_2` | Hue Dimmer Switch Button 2 | 2025-11-27T01:36:36.755+00:00 |
 
 | `event.hue_dimmer_switch_button_3` | Hue Dimmer Switch Button 3 | 2025-11-25T06:39:24.278+00:00 |
 
-| `event.hue_dimmer_switch_button_4` | Hue Dimmer Switch Button 4 | 2025-11-27T01:40:27.820+00:00 |
+| `event.hue_dimmer_switch_button_4` | Hue Dimmer Switch Button 4 | 2025-11-28T17:03:50.153+00:00 |
 
 </details>
 
