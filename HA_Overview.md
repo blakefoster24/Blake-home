@@ -1,4 +1,4 @@
-_Last Updated: 2025-11-27T05:51:11.508797-06:00_
+_Last Updated: 2025-11-27T23:50:18.620871-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -21,7 +21,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-| `input_boolean.workday_today_toggle` | **Workday Today Toggle** | on |  |
+| `input_boolean.workday_today_toggle` | **Workday Today Toggle** | off |  |
 
 
 
@@ -29,7 +29,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-| `input_boolean.workday_tomorrow_toggle` | **Workday Tomorrow Toggle** | on |  |
+| `input_boolean.workday_tomorrow_toggle` | **Workday Tomorrow Toggle** | off |  |
 
 
 
@@ -47,7 +47,7 @@ Below are the input helpers configured in Home Assistant.
 
   
 
-| `input_datetime.last_door_open` | **Last Door Open** | 2025-11-26 20:49:30 | has_date=True, has_time=True |
+| `input_datetime.last_door_open` | **Last Door Open** | 2025-11-27 22:41:09 | has_date=True, has_time=True |
 
 
 
@@ -74,7 +74,7 @@ Below are the input helpers configured in Home Assistant.
 
   
 
-| `input_number.phone_charging_distance` | **Phone Charging -> Distance** | 0.012 | min=0.0, max=100.0, step=0.01 |
+| `input_number.phone_charging_distance` | **Phone Charging -> Distance** | 0.011 | min=0.0, max=100.0, step=0.01 |
 
 
 
@@ -287,7 +287,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `event.front_door_sensor_button` | Front Door Sensor Button | 2025-10-19T05:12:22.248+00:00 |
 
-| `event.hue_dimmer_switch_button_1` | Hue Dimmer Switch Button 1 | 2025-11-27T10:01:18.703+00:00 |
+| `event.hue_dimmer_switch_button_1` | Hue Dimmer Switch Button 1 | 2025-11-28T05:11:22.253+00:00 |
 
 | `event.hue_dimmer_switch_button_2` | Hue Dimmer Switch Button 2 | 2025-11-27T01:36:36.755+00:00 |
 

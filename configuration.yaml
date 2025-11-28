@@ -31,34 +31,35 @@ shell_command:
     {{ content }}
     EOF'
 
-  write_log_slice: |
-    bash -lc 'mkdir -p /config/diagnostics && {
-    echo "===== $(date -Iseconds) — last 1000 lines =====";
-    tail -n 1000 /config/home-assistant.log 2>&1 || echo "Command failed";
-    } > /config/diagnostics/last_log.txt'
+  write_log_slice: >
+    bash -c "cd /config && mkdir -p diagnostics && {
+    echo '===== $(date -Iseconds) — last 1000 lines =====';
+    if [ -f home-assistant.log ]; then tail -n 1000 home-assistant.log; else echo 'ERROR: home-assistant.log not found. Directory listing:'; ls -la; fi;
+    } > diagnostics/last_log.txt"
 
-  write_automation_runs: |
-    bash -lc 'mkdir -p /config/diagnostics && {
-    echo "===== $(date -Iseconds) — automation runs (recent) =====";
-    if [ -f /config/home-assistant.log ]; then
-      tail -n 2000 /config/home-assistant.log \
-      | grep -iE "(homeassistant.components.automation|automation|triggered|queued|running|executing|alexa|cloud|scene\.turn_on|light\.turn_(on|off))" \
-      || true;
+  write_automation_runs: >
+    bash -c "cd /config && mkdir -p diagnostics && {
+    echo '===== $(date -Iseconds) — automation runs (recent) =====';
+    if [ -f home-assistant.log ]; then
+      tail -n 2000 home-assistant.log | grep -iE '(homeassistant.components.automation|automation|triggered|queued|running|executing|alexa|cloud|scene\.turn_on|light\.turn_(on|off))' || true;
     else
-      echo "Error: /config/home-assistant.log not found";
-    fi
-    } > /config/diagnostics/automation_runs.txt'
+      echo 'Error: home-assistant.log not found';
+    fi;
+    } > diagnostics/automation_runs.txt"
 
-  write_error_log: |
-    bash -lc 'mkdir -p /config/diagnostics && {
-    echo "===== $(date -Iseconds) — Recent Errors & Warnings =====";
-    grep -iE "(ERROR|WARNING|CRITICAL|FATAL)" /config/home-assistant.log | tail -n 500 || true;
-    } > /config/diagnostics/error_log.txt'
+  write_error_log: >
+    bash -c "cd /config && mkdir -p diagnostics && {
+    echo '===== $(date -Iseconds) — Recent Errors & Warnings =====';
+    if [ -f home-assistant.log ]; then
+      grep -iE '(ERROR|WARNING|CRITICAL|FATAL)' home-assistant.log | tail -n 500 || true;
+    else
+      echo 'Error: home-assistant.log not found';
+    fi;
+    } > diagnostics/error_log.txt"
 
-  # Quick path test (optional)
-  write_diag_test: |
-    bash -lc 'mkdir -p /config/diagnostics &&
-              echo "Diag test at $(date -Iseconds)" > /config/diagnostics/diag_test.txt'
+  # Quick path test - verifies file visibility
+  write_diag_test: >
+    bash -c "cd /config && mkdir -p diagnostics && ls -la > diagnostics/diag_test.txt"
 
 panel_custom:
   - name: panel_entities
