@@ -35,13 +35,15 @@ create_push_ha_info_to_github_2:
         %}\n{% elif domain == 'timer' %}\n   {% set details = details + ['duration='
         ~ s.attributes.duration] %}\n{% elif domain == 'counter' %}\n   {% set details
         = details + ['min=' ~ s.attributes.minimum, 'max=' ~ s.attributes.maximum]
-        %}\n{% endif %}\n| `{{ s.entity_id }}` | **{{ s.name }}** | {{ s.state }}
-        | {{ details | join(', ') }} |\n{% endfor %}\n\n{% endif %}\n{% endfor %}\n\n---\n\n##
-        \U0001F3E0 All Entities (By Domain)\n{% for domain, items in states | groupby('domain')
-        %}\n{% if domain not in helpers and domain != 'group' %}\n<details><summary><b>{{
-        domain | title }} ({{ items | length }})</b></summary>\n\n| Entity ID | Name
-        | State |\n|---|---|---|\n{% for s in items | sort(attribute='entity_id')
-        %}\n| `{{ s.entity_id }}` | {{ s.name }} | {{ s.state }} |\n{% endfor %}\n</details>\n\n{%
+        %}\n{% endif %}\n| `{{ s.entity_id }}` | **{{ s.name | replace(\"'\", \"'\\\\''\")
+        }}** | {{ s.state | replace(\"'\", \"'\\\\''\") }} | {{ details | join(',
+        ') | replace(\"'\", \"'\\\\''\") }} |\n{% endfor %}\n\n{% endif %}\n{% endfor
+        %}\n\n---\n\n## \U0001F3E0 All Entities (By Domain)\n{% for domain, items
+        in states | groupby('domain') %}\n{% if domain not in helpers and domain !=
+        'group' %}\n<details><summary><b>{{ domain | title }} ({{ items | length }})</b></summary>\n\n|
+        Entity ID | Name | State |\n|---|---|---|\n{% for s in items | sort(attribute='entity_id')
+        %}\n| `{{ s.entity_id }}` | {{ s.name | replace(\"'\", \"'\\\\''\") }} | {{
+        s.state | replace(\"'\", \"'\\\\''\") }} |\n{% endfor %}\n</details>\n\n{%
         endif %}\n{% endfor %}\n"
   - action: shell_command.write_log_slice
     data: {}

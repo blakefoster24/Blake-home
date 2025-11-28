@@ -1,4 +1,4 @@
-_Last Updated: 2025-11-28T11:04:04.504819-06:00_
+_Last Updated: 2025-11-28T11:51:50.788774-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -349,6 +349,478 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `media_player.bedroom_tv` | Bedroom Tv | paused |
+| `media_player.bedroom_tv` | Bedroom Tv | on |
 
-| `media_player.blake_s_echo_dot` | Blakes
+| `media_player.blake_s_echo_dot` | Blake's Echo Dot | idle |
+
+| `media_player.blake_s_echo_pop` | Blake's Echo Pop | idle |
+
+| `media_player.everywhere` | Everywhere | idle |
+
+| `media_player.this_device` | This Device | idle |
+
+</details>
+
+
+
+
+<details><summary><b>Number (3)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `number.bathroom_light_turn_off_in` | Bathroom Light Turn off in | 120 |
+
+| `number.closet_light_turn_off_in` | Closet Light Turn off in | 120 |
+
+| `number.main_lights_turn_off_in` | Main Lights Turn off in | 120 |
+
+</details>
+
+
+
+
+<details><summary><b>Person (1)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `person.blake_foster` | Blake Foster | home |
+
+</details>
+
+
+
+
+<details><summary><b>Remote (1)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `remote.bedroom_tv` | Bedroom Tv Remote | on |
+
+</details>
+
+
+
+
+<details><summary><b>Scene (12)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `scene.all_lights` | All Lights | 2025-11-28T04:41:09.507483+00:00 |
+
+| `scene.all_lights_off` | All Lights Off | 2025-11-28T17:03:50.165128+00:00 |
+
+| `scene.all_off` | All Off | 2025-11-28T03:58:24.228130+00:00 |
+
+| `scene.bedroom_lights_off` | Bedroom Lights Off | 2025-11-23T08:05:00.823984+00:00 |
+
+| `scene.dimmed` | Dimmed | 2025-10-03T00:53:59.712594+00:00 |
+
+| `scene.full_lamp` | Full Lamp | 2025-11-28T04:41:09.647665+00:00 |
+
+| `scene.goodnight_scene` | Goodnight | 2025-11-28T13:00:01.749068+00:00 |
+
+| `scene.im_awake` | I’m Awake | 2025-11-19T14:48:00.759367+00:00 |
+
+| `scene.night_light` | Night Light | 2025-09-26T00:17:04.739409+00:00 |
+
+| `scene.set_my_room` | Set My Room | 2025-11-28T17:03:53.737713+00:00 |
+
+| `scene.thermostat_away` | Thermostat Away | 2025-11-28T11:16:07.638935+00:00 |
+
+| `scene.thermostat_ideal_evening` | Thermostat 68/70 | 2025-11-28T11:14:37.942932+00:00 |
+
+</details>
+
+
+
+
+<details><summary><b>Script (2)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `script.create_push_ha_info_to_github` | Create & Push HA Info to Github | on |
+
+| `script.find_remote` | Find Remote | off |
+
+</details>
+
+
+
+
+<details><summary><b>Sensor (89)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `sensor.50_onn_roku_tv_active_app` | Bedroom TV Active app | YouTube |
+
+| `sensor.50_onn_roku_tv_active_app_id` | Bedroom TV Active app ID | 837 |
+
+| `sensor.backup_backup_manager_state` | Backup Backup Manager state | idle |
+
+| `sensor.backup_last_attempted_automatic_backup` | Backup Last attempted automatic backup | 2025-11-28T11:01:22+00:00 |
+
+| `sensor.backup_last_successful_automatic_backup` | Backup Last successful automatic backup | 2025-11-28T11:02:07+00:00 |
+
+| `sensor.backup_next_scheduled_automatic_backup` | Backup Next scheduled automatic backup | 2025-11-29T11:43:44+00:00 |
+
+| `sensor.bathroom_light_auto_off_at` | Bathroom Light Auto-off at | unknown |
+
+| `sensor.bathroom_light_signal_level` | Bathroom Light Signal level | 3 |
+
+| `sensor.bedroom_ceiling_fan_energy_consumed` | Bedroom Ceiling Fan Energy consumed | 5.220341 |
+
+| `sensor.blake_foster30_gmail_com_vacation_end_date` | blake.foster30@gmail.com Vacation end date | unknown |
+
+| `sensor.blake_s_echo_dot_next_alarm` | Blake's Echo Dot next Alarm | unknown |
+
+| `sensor.blake_s_echo_dot_next_reminder` | Blake's Echo Dot next Reminder | unknown |
+
+| `sensor.blake_s_echo_dot_next_timer` | Blake's Echo Dot next Timer | unknown |
+
+| `sensor.blake_s_echo_pop_next_alarm` | Blake's Echo Pop next Alarm | unknown |
+
+| `sensor.blake_s_echo_pop_next_reminder` | Blake's Echo Pop next Reminder | unknown |
+
+| `sensor.blake_s_echo_pop_next_timer` | Blake's Echo Pop next Timer | unknown |
+
+| `sensor.blakes_iphone_app_version` | Blakes iPhone App Version | 2025.10.0 |
+
+| `sensor.blakes_iphone_audio_output` | Blakes iPhone Audio Output | Built-in Speaker |
+
+| `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 100 |
+
+| `sensor.blakes_iphone_battery_state` | Blakes iPhone Battery State | Full |
+
+| `sensor.blakes_iphone_bssid` | Blakes iPhone BSSID | e6:f7:5b:a5:be:b3 |
+
+| `sensor.blakes_iphone_connection_type` | Blakes iPhone Connection Type | Wi-Fi |
+
+| `sensor.blakes_iphone_geocoded_location` | Blakes iPhone Geocoded Location | 1104 Watermark Dr
+O'Fallon MO 63368
+United States |
+
+| `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger | Launch |
+
+| `sensor.blakes_iphone_location_permission` | Blakes iPhone Location permission | Authorized Always |
+
+| `sensor.blakes_iphone_sim_1` | Blakes iPhone SIM 1 | -- |
+
+| `sensor.blakes_iphone_sim_2` | Blakes iPhone SIM 2 | -- |
+
+| `sensor.blakes_iphone_ssid` | Blakes iPhone SSID | ATTEPISyDS |
+
+| `sensor.blakes_iphone_storage` | Blakes iPhone Storage | 58.71 |
+
+| `sensor.bthome_sensor_3370_battery` | Motion 1 Battery | 100 |
+
+| `sensor.bthome_sensor_3370_illuminance` | Motion 1 Illuminance | 10.0 |
+
+| `sensor.bthome_sensor_3370_packet_id` | Motion 1 Packet Id | 79 |
+
+| `sensor.bthome_sensor_3370_signal_strength` | Motion 1 Signal Strength | -65 |
+
+| `sensor.closet_light_auto_off_at` | Closet Light Auto-off at | unknown |
+
+| `sensor.closet_light_signal_level` | Closet Light Signal level | 3 |
+
+| `sensor.front_door_sensor_battery` | Front Door Sensor Battery | 91 |
+
+| `sensor.front_door_sensor_illuminance` | Front Door Sensor Illuminance | 12.0 |
+
+| `sensor.front_door_sensor_rotation` | Front Door Sensor Rotation | 0.0 |
+
+| `sensor.hue_dimmer_switch_1_battery` | Hue Dimmer Switch Battery | 100 |
+
+| `sensor.ipad_app_version` | iPad App Version | 2025.10.0 |
+
+| `sensor.ipad_audio_output` | iPad Audio Output | unavailable |
+
+| `sensor.ipad_battery_level` | iPad Battery Level | 100 |
+
+| `sensor.ipad_battery_state` | iPad Battery State | Charging |
+
+| `sensor.ipad_bssid` | iPad BSSID | e6:f7:5b:a5:be:b3 |
+
+| `sensor.ipad_connection_type` | iPad Connection Type | unavailable |
+
+| `sensor.ipad_geocoded_location` | iPad Geocoded Location | 1109 Watermark Dr
+O'Fallon MO 63368
+United States |
+
+| `sensor.ipad_last_update_trigger` | iPad Last Update Trigger | unavailable |
+
+| `sensor.ipad_location_permission` | iPad Location permission | Authorized Always |
+
+| `sensor.ipad_sim_1` | iPad SIM 1 | unavailable |
+
+| `sensor.ipad_ssid` | iPad SSID | ATTEPISyDS |
+
+| `sensor.ipad_storage` | iPad Storage | unavailable |
+
+| `sensor.main_lights_auto_off_at` | Main Lights Auto-off at | unknown |
+
+| `sensor.main_lights_current` | Main Lights Current | 0.0 |
+
+| `sensor.main_lights_current_consumption` | Main Lights Current consumption | 0.0 |
+
+| `sensor.main_lights_signal_level` | Main Lights Signal level | 3 |
+
+| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 2.616 |
+
+| `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.0 |
+
+| `sensor.main_lights_voltage` | Main Lights Voltage | 123.5 |
+
+| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 69.908 |
+
+| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 0 |
+
+| `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | sunny |
+
+| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 20.984 |
+
+| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 30.038 |
+
+| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 57 |
+
+| `sensor.openweathermap_precipitation_kind_2` | OpenWeatherMap Precipitation kind | None |
+
+| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.9678951701996 |
+
+| `sensor.openweathermap_rain_2` | OpenWeatherMap Rain intensity | 0.0 |
+
+| `sensor.openweathermap_snow_2` | OpenWeatherMap Snow intensity | 0.0 |
+
+| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 33.152 |
+
+| `sensor.openweathermap_uv_index_2` | OpenWeatherMap UV index | 2.01 |
+
+| `sensor.openweathermap_visibility_2` | OpenWeatherMap Visibility | 32808.3989501312 |
+
+| `sensor.openweathermap_weather_2` | OpenWeatherMap Weather | clear sky |
+
+| `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 800 |
+
+| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 0 |
+
+| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | unknown |
+
+| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 3.44488188976378 |
+
+| `sensor.shelly_ceiling_fan_energy` | Bedroom Ceiling Fan Energy | 5.220341 |
+
+| `sensor.shelly_ceiling_fan_power` | Bedroom Ceiling Fan Power | 0.0 |
+
+| `sensor.shelly_ceiling_lights_energy` | Bedroom Ceiling Lights Energy | 3.496112 |
+
+| `sensor.shelly_ceiling_lights_power` | Bedroom Ceiling Lights Power | 0.0 |
+
+| `sensor.sun_next_dawn` | Sun Next dawn | 2025-11-29T12:30:42+00:00 |
+
+| `sensor.sun_next_dusk` | Sun Next dusk | 2025-11-28T23:11:50+00:00 |
+
+| `sensor.sun_next_midnight` | Sun Next midnight | 2025-11-29T05:51:17+00:00 |
+
+| `sensor.sun_next_noon` | Sun Next noon | 2025-11-29T17:51:01+00:00 |
+
+| `sensor.sun_next_rising` | Sun Next rising | 2025-11-29T13:00:33+00:00 |
+
+| `sensor.sun_next_setting` | Sun Next setting | 2025-11-28T22:42:03+00:00 |
+
+| `sensor.this_device_next_alarm` | This Device next Alarm | unknown |
+
+| `sensor.this_device_next_reminder` | This Device next Reminder | unknown |
+
+| `sensor.this_device_next_timer` | This Device next Timer | unknown |
+
+</details>
+
+
+
+
+<details><summary><b>Stt (1)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `stt.home_assistant_cloud` | Home Assistant Cloud | unknown |
+
+</details>
+
+
+
+
+<details><summary><b>Sun (1)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `sun.sun` | Sun | above_horizon |
+
+</details>
+
+
+
+
+<details><summary><b>Switch (32)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `switch.alexa_media_player_pre_release` | Alexa Media Player Pre-release | off |
+
+| `switch.bathroom_light` | Bathroom Light | off |
+
+| `switch.bathroom_light_auto_off_enabled` | Bathroom Light Auto-off enabled | off |
+
+| `switch.bathroom_light_auto_update_enabled` | Bathroom Light Auto-update enabled | on |
+
+| `switch.bathroom_light_led` | Bathroom Light LED | off |
+
+| `switch.bedroom_ceiling_fan` | Bedroom ceiling fan | off |
+
+| `switch.bedroom_ceiling_lights` | Bedroom Ceiling Lights | off |
+
+| `switch.bedroom_fan` | Fan | off |
+
+| `switch.blake_s_echo_dot_do_not_disturb_switch` | Blake's Echo Dot do not disturb switch | off |
+
+| `switch.blake_s_echo_dot_repeat_switch` | Blake's Echo Dot repeat switch | unavailable |
+
+| `switch.blake_s_echo_dot_shuffle_switch` | Blake's Echo Dot shuffle switch | unavailable |
+
+| `switch.blake_s_echo_pop_do_not_disturb_switch` | Blake's Echo Pop do not disturb switch | off |
+
+| `switch.blake_s_echo_pop_repeat_switch` | Blake's Echo Pop repeat switch | unavailable |
+
+| `switch.blake_s_echo_pop_shuffle_switch` | Blake's Echo Pop shuffle switch | unavailable |
+
+| `switch.closet_light` | Closet Light | off |
+
+| `switch.closet_light_auto_off_enabled` | Closet Light Auto-off enabled | off |
+
+| `switch.closet_light_auto_update_enabled` | Closet Light Auto-update enabled | on |
+
+| `switch.closet_light_led` | Closet Light LED | off |
+
+| `switch.custom_icons_pre_release` | Custom Icons Pre-release | off |
+
+| `switch.everywhere_do_not_disturb_switch` | Everywhere do not disturb switch | off |
+
+| `switch.everywhere_repeat_switch` | Everywhere repeat switch | unavailable |
+
+| `switch.everywhere_shuffle_switch` | Everywhere shuffle switch | unavailable |
+
+| `switch.fan_outlet_led` | Fan Outlet LED | off |
+
+| `switch.file_editor` | File editor | on |
+
+| `switch.hacs_pre_release` | HACS Pre-release | off |
+
+| `switch.main_lights` | Main Lights | off |
+
+| `switch.main_lights_auto_off_enabled` | Main Lights Auto-off enabled | off |
+
+| `switch.main_lights_auto_update_enabled` | Main Lights Auto-update enabled | on |
+
+| `switch.main_lights_led` | Main Lights LED | off |
+
+| `switch.nest_thermostat` | Nest Thermostat | on |
+
+| `switch.shelly_device_aioshelly_ble_integration` | Shelly Device aioshelly_ble_integration | on |
+
+| `switch.this_device_do_not_disturb_switch` | This Device do not disturb switch | off |
+
+</details>
+
+
+
+
+<details><summary><b>Tag (1)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `tag.apartment_lock` | Apartment lock | unknown |
+
+</details>
+
+
+
+
+
+
+<details><summary><b>Tts (1)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `tts.home_assistant_cloud` | Home Assistant Cloud | unknown |
+
+</details>
+
+
+
+
+<details><summary><b>Update (12)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `update.alexa_media_player_update` | Alexa Media Player update | off |
+
+| `update.card_mod_update` | card-mod update | off |
+
+| `update.custom_icons_update` | Custom Icons update | off |
+
+| `update.file_editor_update` | File editor Update | off |
+
+| `update.hacs_update` | HACS update | off |
+
+| `update.home_assistant_core_update` | Home Assistant Core Update | on |
+
+| `update.home_assistant_matter_hub_3_0_0_alpha_76_update` | Home-Assistant-Matter-Hub (3.0.0-alpha.76) Update | off |
+
+| `update.home_assistant_operating_system_update` | Home Assistant Operating System Update | off |
+
+| `update.home_assistant_supervisor_update` | Home Assistant Supervisor Update | off |
+
+| `update.matter_server_update` | Matter Server Update | off |
+
+| `update.shelly_device_firmware` | Shelly Device Firmware | off |
+
+| `update.terminal_ssh_update` | Terminal & SSH Update | off |
+
+</details>
+
+
+
+
+<details><summary><b>Weather (1)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `weather.openweathermap_2` | OpenWeatherMap | sunny |
+
+</details>
+
+
+
+
+<details><summary><b>Zone (2)</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+
+| `zone.home` | Home | 1 |
+
+| `zone.work` | Work | 0 |
+
+</details> EOF
