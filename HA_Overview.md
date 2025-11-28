@@ -1,4 +1,4 @@
-_Last Updated: 2025-11-28T05:24:19.532422-06:00_
+_Last Updated: 2025-11-28T11:02:46.152697-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -17,7 +17,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-| `input_boolean.phone_active` | **Phone active** | on |  |
+| `input_boolean.phone_active` | **Phone active** | off |  |
 
 
 
@@ -287,7 +287,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `event.front_door_sensor_button` | Front Door Sensor Button | 2025-10-19T05:12:22.248+00:00 |
 
-| `event.hue_dimmer_switch_button_1` | Hue Dimmer Switch Button 1 | 2025-11-28T05:11:22.253+00:00 |
+| `event.hue_dimmer_switch_button_1` | Hue Dimmer Switch Button 1 | 2025-11-28T14:50:53.125+00:00 |
 
 | `event.hue_dimmer_switch_button_2` | Hue Dimmer Switch Button 2 | 2025-11-27T01:36:36.755+00:00 |
 
@@ -335,7 +335,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `light.home` | Home | on |
 
-| `light.living_room_lamp` | Living Room Lamp | on |
+| `light.living_room_lamp` | Living Room Lamp | off |
 
 | `light.main_lights` | Main Lights | off |
 
@@ -349,6 +349,6 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `media_player.bedroom_tv` | Bedroom Tv | playing |
+| `media_player.bedroom_tv` | Bedroom Tv | paused |
 
 | `media_player.blake_s_echo_dot` | Blakes
