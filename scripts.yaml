@@ -53,3 +53,208 @@ create_push_ha_info_to_github_2:
     data: {}
   - action: shell_command.ha_git_commit_push
     data: {}
+play_music_alexa:
+  alias: Play Music Alexa
+  sequence:
+  - action: media_player.volume_set
+    metadata: {}
+    data:
+      volume_level: 0.01
+    target:
+      entity_id: media_player.everywhere
+  - action: media_player.shuffle_set
+    metadata: {}
+    data:
+      shuffle: true
+    target:
+      entity_id: media_player.everywhere
+  - action: media_player.media_next_track
+    metadata: {}
+    data: {}
+    target:
+      entity_id: media_player.everywhere
+    enabled: true
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - action: media_player.media_next_track
+    metadata: {}
+    data: {}
+    target:
+      entity_id: media_player.everywhere
+    enabled: true
+  - alias: Music Playing Check
+    if:
+    - condition: state
+      entity_id: media_player.everywhere
+      state: playing
+    then: []
+    else:
+    - action: media_player.volume_set
+      metadata: {}
+      data:
+        volume_level: 0.01
+      target:
+        entity_id:
+        - media_player.blake_s_echo_pop
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 2
+        milliseconds: 0
+    - action: media_player.volume_set
+      metadata: {}
+      data:
+        volume_level: 0.01
+      target:
+        entity_id: media_player.everywhere
+    - action: media_player.play_media
+      metadata: {}
+      data:
+        media:
+          media_content_id: music alarm
+          media_content_type: routine
+      target:
+        entity_id:
+        - media_player.blake_s_echo_pop
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 5
+        milliseconds: 0
+    - action: media_player.shuffle_set
+      metadata: {}
+      data:
+        shuffle: true
+      target:
+        entity_id: media_player.everywhere
+    - action: media_player.media_next_track
+      metadata: {}
+      data: {}
+      target:
+        entity_id: media_player.everywhere
+      enabled: true
+  - alias: Incrementally raise volume
+    sequence:
+    - action: media_player.volume_set
+      metadata: {}
+      data:
+        volume_level: 0.02
+      target:
+        entity_id: media_player.everywhere
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 2
+        milliseconds: 0
+    - action: media_player.volume_set
+      metadata: {}
+      data:
+        volume_level: 0.05
+      target:
+        entity_id: media_player.everywhere
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 2
+        milliseconds: 0
+    - action: media_player.volume_set
+      metadata: {}
+      data:
+        volume_level: 0.1
+      target:
+        entity_id: media_player.everywhere
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 2
+        milliseconds: 0
+    - action: media_player.volume_set
+      metadata: {}
+      data:
+        volume_level: 0.12
+      target:
+        entity_id: media_player.everywhere
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 2
+        milliseconds: 0
+    - action: media_player.volume_set
+      metadata: {}
+      data:
+        volume_level: 0.15
+      target:
+        entity_id: media_player.everywhere
+  - action: input_boolean.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.disable_toggle
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 15
+      milliseconds: 0
+  - action: light.turn_on
+    metadata: {}
+    data:
+      transition: 15
+    target:
+      entity_id: light.bedroom_lamp
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 15
+      milliseconds: 0
+  - action: fan.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: fan.bedroom_fan
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 45
+      milliseconds: 0
+  - action: light.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.bedroom_ceiling_lights
+  - wait_for_trigger:
+    - trigger: device
+      device_id: 6e3f05f16e73548265ce22e622f4a268
+      domain: hue
+      type: short_release
+      subtype: 4
+      id: bottom_short
+    - trigger: template
+      value_template: "{{ is_state('binary_sensor.front_door', 'on') \n   and is_state('binary_sensor.motion_1_motion',
+        'on') \n   and as_timestamp(states.binary_sensor.motion_1_motion.last_changed)
+        < as_timestamp(states.binary_sensor.front_door.last_changed) }}\n"
+      alias: Door - Leaving Logic
+    timeout:
+      hours: 0
+      minutes: 30
+      seconds: 0
+      milliseconds: 0
+  - action: media_player.media_stop
+    metadata: {}
+    data: {}
+    target:
+      entity_id: media_player.everywhere
+  - action: media_player.volume_set
+    metadata: {}
+    data:
+      volume_level: 0.4
+    target:
+      entity_id: media_player.everywhere
+  - action: input_boolean.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.disable_toggle
+  description: ''

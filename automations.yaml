@@ -327,6 +327,10 @@
     - conditions:
       - condition: trigger
         id: bottom_short
+      - condition: state
+        entity_id: input_boolean.disable_toggle
+        state:
+        - 'off'
       sequence:
       - action: scene.turn_on
         metadata: {}
@@ -1021,6 +1025,7 @@
           value_template: '{{ wait.trigger is not none }}
 
             '
+          alias: Trigger Fired
         then:
         - action: input_datetime.set_datetime
           metadata: {}
