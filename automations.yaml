@@ -1279,9 +1279,17 @@
       sequence:
       - alias: 'Workday Schedule '
         if:
-        - condition: state
-          state: 'on'
-          entity_id: binary_sensor.workday_tomorrow_template_sensor
+        - condition: or
+          conditions:
+          - condition: state
+            state: 'on'
+            entity_id: binary_sensor.workday_tomorrow_template_sensor
+          - condition: template
+            value_template: '{{ states(''input_datetime.working_override'') == (now()
+              + timedelta(days=1)).strftime(''%Y-%m-%d'') }}
+
+              '
+            alias: Working Override = Tomorrow
         - alias: Tomorrow is NOT scheduled off
           condition: not
           conditions:
@@ -1303,6 +1311,7 @@
           data: {}
           target:
             entity_id: input_boolean.workday_tomorrow_toggle
+      alias: 1pm set workday tomorrow toggle
     - conditions:
       - condition: trigger
         id:
@@ -1339,6 +1348,7 @@
             entity_id:
             - input_boolean.workday_today_toggle
         alias: Workday tomorrow toggle -> alarms
+      alias: 11pm send shortcut email, set workday today toggle
     - conditions:
       - condition: trigger
         id:
@@ -1394,6 +1404,7 @@
             - if:
               - condition: template
                 value_template: '{{ wait.trigger is none }}'
+                alias: 'Trigger times out '
               then:
               - stop: User did not reply within 1 hour. Stopping loop.
             - variables:
@@ -1447,5 +1458,6 @@
                 metadata: {}
                 data:
                   message: Comp day set to {{ raw_input }}
+      alias: Holiday Comp
   mode: parallel
   max: 10
