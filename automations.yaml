@@ -634,6 +634,12 @@
       minutes: 5
       seconds: 0
     id: Stuck open
+  - trigger: state
+    entity_id:
+    - person.blake_foster
+    to:
+    - home
+    id: Blake Home
   conditions: []
   actions:
   - choose:
@@ -687,6 +693,17 @@
         metadata: {}
         data:
           message: Front door sensor still open
+    - conditions:
+      - condition: trigger
+        id:
+        - Blake Home
+      sequence:
+      - action: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.home_timestamp
+        data:
+          datetime: '{{ now().isoformat() }}'
+        alias: Set Home Timestamp
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
@@ -1125,8 +1142,8 @@
         }}
 
         '
-      home_ts: "{% if is_state('person.blake_foster','home') %}\n  {{ as_timestamp(states.person.blake_foster.last_changed)
-        }}\n{% else %}\n  0\n{% endif %}\n"
+      home_ts: "{% if is_state('person.blake_foster','home') %}\n  {{ state_attr('input_datetime.home_timestamp',
+        'timestamp') }}\n{% else %}\n  0\n{% endif %}\n"
   - action: input_datetime.set_datetime
     metadata: {}
     data:

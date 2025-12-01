@@ -1,19 +1,4 @@
 ===== $(date -Iseconds) — automation runs (recent) =====
-[32m2025-12-01 00:48:39.759 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
-[32m2025-12-01 00:48:39.760 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
-[32m2025-12-01 02:00:00.431 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
-[32m2025-12-01 02:00:00.432 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
-[32m2025-12-01 02:00:00.434 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
-[32m2025-12-01 02:00:00.435 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 02:00:00.782 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 02:00:00.924 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 02:00:01.064 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 02:00:01.201 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 03:22:43.006 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
-[32m2025-12-01 03:22:43.009 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-01 03:22:43.009 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service[0m
-[32m2025-12-01 03:37:33.463 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-01 03:37:33.463 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
 [32m2025-12-01 03:39:49.514 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
 [32m2025-12-01 03:39:49.514 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
 [32m2025-12-01 03:40:48.420 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
@@ -61,3 +46,20 @@
 [32m2025-12-01 05:22:18.486 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
 [32m2025-12-01 05:22:18.795 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
 [32m2025-12-01 05:22:18.928 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 05:22:19.066 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 05:22:19.201 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 05:22:20.983 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
+[32m2025-12-01 05:22:20.984 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
+[32m2025-12-01 05:22:22.736 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
+[32m2025-12-01 05:22:22.737 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
+[32m2025-12-01 05:24:33.709 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
+[32m2025-12-01 05:24:33.709 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
+[32m2025-12-01 05:25:08.738 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
+[32m2025-12-01 05:25:08.738 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
+[32m2025-12-01 05:38:01.873 INFO (MainThread) [homeassistant.components.automation.helper_automation] Initialized trigger Helper Automation[0m
+[32m2025-12-01 05:38:47.363 INFO (MainThread) [homeassistant.components.automation.helper_automation] Initialized trigger Helper Automation[0m
+[32m2025-12-01 05:40:58.537 INFO (MainThread) [homeassistant.components.automation.door_automation] Initialized trigger Door Automation[0m
+[32m2025-12-01 05:45:19.464 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
+[32m2025-12-01 05:45:19.465 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 05:45:19.780 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 05:45:19.917 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
