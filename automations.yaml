@@ -797,6 +797,11 @@
         - '1 Long press '
       sequence:
       - sequence:
+        - action: input_boolean.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.im_awake_toggle_helper
         - action: light.turn_on
           metadata: {}
           data: {}
@@ -813,16 +818,16 @@
             transition: 15
           target:
             entity_id: light.bedroom_lamp
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 5
+            milliseconds: 0
         - action: fan.turn_off
           metadata: {}
           data: {}
           target:
             entity_id: fan.bedroom_fan
-        - action: input_boolean.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: input_boolean.im_awake_toggle_helper
       alias: Wake up Sequence
     - conditions:
       - condition: trigger
@@ -837,7 +842,7 @@
           device_id: 6e3f05f16e73548265ce22e622f4a268
           type: long_press
           subtype: 1
-      alias: First time window
+      alias: time window - late
     - conditions:
       - condition: trigger
         id:
@@ -855,13 +860,13 @@
           type: long_press
           subtype: 1
         alias: Trigger Wake-up Sequence
-      - action: light.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.bedroom_ceiling_lights
       - alias: Play Music Alexa
         sequence:
+        - action: input_boolean.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.disable_toggle
         - action: media_player.volume_set
           metadata: {}
           data:
@@ -942,58 +947,57 @@
             target:
               entity_id: media_player.everywhere
             enabled: true
-        - alias: Incrementally raise volume
+        - repeat:
+            count: 4
+            sequence:
+            - action: media_player.volume_set
+              metadata: {}
+              data:
+                volume_level: '{{ 0.02 + (repeat.index * 0.03) }}'
+              target:
+                entity_id: media_player.everywhere
+            - delay:
+                hours: 0
+                minutes: 0
+                seconds: 2
+                milliseconds: 0
+          alias: Raise Volume
+        - action: light.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.bedroom_ceiling_lights
+        - wait_for_trigger:
+          - trigger: device
+            device_id: 6e3f05f16e73548265ce22e622f4a268
+            domain: hue
+            type: short_release
+            subtype: 4
+            id: bottom_short
+          timeout:
+            hours: 0
+            minutes: 30
+            seconds: 0
+            milliseconds: 0
+          continue_on_timeout: true
+        - alias: 'Pause and Reset Volume on Alexa '
           sequence:
+          - action: media_player.media_stop
+            metadata: {}
+            data: {}
+            target:
+              entity_id: media_player.everywhere
           - action: media_player.volume_set
             metadata: {}
             data:
-              volume_level: 0.02
+              volume_level: 0.4
             target:
               entity_id: media_player.everywhere
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 2
-              milliseconds: 0
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.05
-            target:
-              entity_id: media_player.everywhere
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 2
-              milliseconds: 0
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.1
-            target:
-              entity_id: media_player.everywhere
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 2
-              milliseconds: 0
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.12
-            target:
-              entity_id: media_player.everywhere
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 2
-              milliseconds: 0
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.15
-            target:
-              entity_id: media_player.everywhere
+        - action: input_boolean.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.disable_toggle
       alias: Last time window & Haven’t Left
     - conditions:
       - condition: trigger
