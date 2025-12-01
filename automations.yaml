@@ -426,16 +426,28 @@
     - person.blake_foster
     to: not_home
     id: Blake away
+  - trigger: template
+    value_template: "{{ states('sensor.nest_thermostat_temperature') | float > 75
+      \n   or states('sensor.nest_thermostat_temperature') | float < 64 }}\n"
+    id: '64 > Thermostat Temperature > 75  '
+    alias: '64 > Thermostat Temperature > 75  '
+  - trigger: template
+    value_template: "{% set current = states('sensor.nest_thermostat_temperature')
+      | float(0) %}\n{% set target = state_attr('climate.nest_thermostat', 'temperature')
+      %}\n{% set high = state_attr('climate.nest_thermostat', 'target_temp_high')
+      %}\n{% set low = state_attr('climate.nest_thermostat', 'target_temp_low') %}\n\n{%
+      if target != None %}\n  {{ (current - target) | abs > 5 }}\n{% elif high !=
+      None and low != None %}\n  {{ (current > high + 5) or (current < low - 5) }}\n{%
+      else %}\n  false\n{% endif %}\n"
+    alias: Temperature > 5* from Setpoint
+    id: 'Set-point discrepancy '
   conditions: []
   actions:
   - choose:
     - conditions:
-      - alias: Blake Away
-        condition: or
-        conditions:
-        - condition: trigger
-          id:
-          - Blake away
+      - condition: trigger
+        id:
+        - Blake away
       - condition: state
         entity_id: input_boolean.workday_today_toggle
         state: 'on'
@@ -503,7 +515,7 @@
         - conditions:
           - condition: numeric_state
             entity_id: sensor.openweathermap_temperature_2
-            above: 72
+            above: 71
           sequence:
           - alias: Cool - 68
             action: climate.set_temperature
@@ -513,7 +525,7 @@
               temperature: 68
             target:
               device_id: b43f8797bfe54ded21e44c051fec8167
-      alias: Ideal Morning Branch
+      alias: Morning Branch
     - conditions:
       - condition: trigger
         id:
@@ -561,7 +573,31 @@
               temperature: 69
             target:
               device_id: b43f8797bfe54ded21e44c051fec8167
-      alias: Ideal Evening Branch
+      alias: Evening Branch
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: trigger
+          id:
+          - 'Set-point discrepancy '
+        - condition: and
+          conditions:
+          - condition: trigger
+            id:
+            - '64 > Thermostat Temperature > 75  '
+          - condition: state
+            entity_id: person.blake_foster
+            state:
+            - home
+          alias: Home and 64 > temp > 75
+      sequence:
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: 'Current temperature is: {{ states(''sensor.nest_thermostat_temperature'')
+            | float | round | int }}°'
+          title: Check Thermostat!
+      alias: 'Temperature Notification '
   mode: single
 - id: '1761047102816'
   alias: Test Bay
