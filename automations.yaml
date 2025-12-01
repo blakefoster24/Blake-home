@@ -1301,6 +1301,9 @@
   description: ''
   triggers:
   - trigger: time
+    at: 00:01:00
+    id: '12:01'
+  - trigger: time
     at: 09:45:00
     id: 9:45am
   - trigger: time
@@ -1330,6 +1333,7 @@
 
               '
             alias: Working Override = Tomorrow
+          alias: Work tomorrow sensor OR work override = tomorrow
         - alias: Tomorrow is NOT scheduled off
           condition: not
           conditions:
@@ -1389,6 +1393,44 @@
             - input_boolean.workday_today_toggle
         alias: Workday tomorrow toggle -> alarms
       alias: 11pm send shortcut email, set workday today toggle
+    - conditions:
+      - condition: trigger
+        id:
+        - '12:01'
+      sequence:
+      - choose:
+        - conditions:
+          - condition: template
+            value_template: '{{ states(''input_datetime.scheduled_off'') == (now()
+              - timedelta(days=1)).strftime(''%Y-%m-%d'') }}
+
+              '
+            alias: Scheduled Off = Yesterday
+          sequence:
+          - action: input_datetime.set_datetime
+            metadata: {}
+            data:
+              timestamp: 0
+            target:
+              entity_id: input_datetime.scheduled_off
+            alias: Clear Scheduled Off
+        - conditions:
+          - condition: template
+            value_template: '{{ states(''input_datetime.working_override'') == (now()
+              - timedelta(days=1)).strftime(''%Y-%m-%d'') }}
+
+              '
+            alias: Working Override = Yesterday
+          sequence:
+          - action: input_datetime.set_datetime
+            metadata: {}
+            data:
+              timestamp: 0
+            target:
+              entity_id: input_datetime.working_override
+            alias: Clear Working Override
+        alias: Clear Work Override / Off Helpers
+      alias: Clear Work Schedule Helpers
     - conditions:
       - condition: trigger
         id:

@@ -1,74 +1,4 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-[32m2025-11-30 22:37:17.404 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-11-30 22:37:17.408 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-11-30 22:37:17.408 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 22:37:17.410 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
-[32m2025-11-30 22:37:17.478 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Restarting[0m
-[32m2025-11-30 22:37:17.483 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-11-30 22:37:17.484 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-11-30 22:37:17.486 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-11-30 22:37:17.486 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 22:37:19.803 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-11-30 22:37:19.805 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-11-30 22:37:19.806 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-11-30 22:37:19.807 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 22:37:19.914 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
-[32m2025-11-30 22:37:21.916 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
-[32m2025-11-30 22:37:21.921 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 22:42:23.842 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-11-30 22:42:23.844 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-11-30 22:42:23.845 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-11-30 22:42:23.846 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 22:42:23.850 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
-[32m2025-11-30 22:42:25.852 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
-[32m2025-11-30 22:42:25.854 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 22:51:12.430 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-11-30 22:51:12.432 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-11-30 22:51:12.433 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-11-30 22:51:12.434 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 22:51:15.130 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-11-30 22:51:15.131 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-11-30 22:51:15.144 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-11-30 22:51:15.145 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 22:51:15.146 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
-[32m2025-11-30 22:51:17.149 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
-[32m2025-11-30 22:51:17.150 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 22:51:22.934 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-11-30 22:51:22.935 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-11-30 22:51:22.937 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-11-30 22:51:22.937 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 22:51:24.638 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-11-30 22:51:24.639 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-11-30 22:51:24.641 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-11-30 22:51:24.641 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 22:51:24.642 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
-[32m2025-11-30 22:51:26.647 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
-[32m2025-11-30 22:51:26.649 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 22:59:54.014 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-11-30 22:59:54.016 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-11-30 22:59:54.017 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-11-30 22:59:54.018 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 22:59:54.022 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
-[32m2025-11-30 22:59:56.024 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
-[32m2025-11-30 22:59:56.025 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-11-30 23:00:00.132 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2025-11-30 23:00:00.134 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Running automation actions[0m
-[32m2025-11-30 23:00:00.136 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Running automation actions[0m
-[32m2025-11-30 23:00:00.136 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[32m2025-11-30 23:00:00.504 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[32m2025-12-01 00:21:48.731 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-01 00:21:48.732 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-01 00:21:48.734 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-12-01 00:21:48.734 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 00:21:51.040 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-01 00:21:51.041 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-01 00:21:51.043 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-12-01 00:21:51.043 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 00:21:51.047 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
-[32m2025-12-01 00:21:53.049 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
-[32m2025-12-01 00:21:53.051 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[31m2025-12-01 00:22:39.105 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281471966916224] Provided temperature 32.22222222222222 is not valid. Accepted range is 10.0 to 32.22[0m
-[31m2025-12-01 00:22:39.123 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281471966916224] Provided temperature 32.22222222222222 is not valid. Accepted range is 10.0 to 32.22[0m
 [31m2025-12-01 00:22:39.289 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [281471966916224] Provided temperature 32.22222222222222 is not valid. Accepted range is 10.0 to 32.22[0m
 [32m2025-12-01 00:48:39.759 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
 [32m2025-12-01 00:48:39.760 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
@@ -99,3 +29,73 @@
 [32m2025-12-01 04:07:45.739 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
 [32m2025-12-01 04:07:45.740 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
 [32m2025-12-01 04:07:46.050 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 04:07:46.187 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 04:07:46.324 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 04:07:46.459 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 04:21:03.300 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-01 04:21:03.301 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
+[32m2025-12-01 04:21:09.694 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
+[32m2025-12-01 04:22:51.951 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
+[32m2025-12-01 04:26:43.840 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
+[32m2025-12-01 04:27:11.544 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
+[32m2025-12-01 04:27:27.498 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
+[32m2025-12-01 04:29:44.236 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
+[32m2025-12-01 04:30:03.880 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-01 04:30:03.881 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step Clear Scheduled Off[0m
+[32m2025-12-01 04:30:10.579 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-01 04:30:10.579 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step Clear Working Override[0m
+[31m2025-12-01 04:38:09.157 ERROR (MainThread) [frontend.js.modern.202511050] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: undefined is not an object (evaluating 'Object.getOwnPropertyNames(t)')
+getOwnPropertyNames ([native code]::)
+o (node_modules/deep-freeze/index.js:4:29)
+_handleConfigChanged (src/panels/lovelace/editor/card-editor/hui-dialog-edit-card.ts:275:34)
+this (node_modules/lit-html/src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this._updateConfigElement (src/panels/lovelace/editor/hui-element-editor.ts:110:16)[0m
+[31m2025-12-01 04:46:11.406 ERROR (MainThread) [frontend.js.modern.202511050] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: undefined is not an object (evaluating 'Object.getOwnPropertyNames(t)')
+getOwnPropertyNames ([native code]::)
+o (node_modules/deep-freeze/index.js:4:29)
+_handleConfigChanged (src/panels/lovelace/editor/card-editor/hui-dialog-edit-card.ts:275:34)
+this (node_modules/lit-html/src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this._updateConfigElement (src/panels/lovelace/editor/hui-element-editor.ts:110:16)[0m
+[31m2025-12-01 04:49:15.597 ERROR (MainThread) [frontend.js.modern.202511050] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: undefined is not an object (evaluating 'Object.getOwnPropertyNames(t)')
+getOwnPropertyNames ([native code]::)
+o (node_modules/deep-freeze/index.js:4:29)
+_handleConfigChanged (src/panels/lovelace/editor/card-editor/hui-dialog-edit-card.ts:275:34)
+this (node_modules/lit-html/src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this._updateConfigElement (src/panels/lovelace/editor/hui-element-editor.ts:110:16)[0m
+[32m2025-12-01 04:59:05.338 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-01 04:59:05.339 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
+[32m2025-12-01 05:03:10.443 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
+[32m2025-12-01 05:03:10.444 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
+[31m2025-12-01 05:04:31.200 ERROR (MainThread) [frontend.js.modern.202511050] Uncaught error from WebKit 605.1.15 on iOS 18.7
+TypeError: undefined is not an object (evaluating 'Object.getOwnPropertyNames(t)')
+getOwnPropertyNames ([native code]::)
+o (node_modules/deep-freeze/index.js:4:29)
+_handleConfigChanged (src/panels/lovelace/editor/card-editor/hui-dialog-edit-card.ts:275:34)
+this (node_modules/lit-html/src/lit-html.ts:2109:33)
+dispatchEvent ([native code]::)
+event (src/common/dom/fire_event.ts:75:21)
+this._updateConfigElement (src/panels/lovelace/editor/hui-element-editor.ts:110:16)[0m
+[32m2025-12-01 05:10:52.238 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-01 05:10:52.239 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step Clear Working Override[0m
+[32m2025-12-01 05:10:59.288 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-01 05:10:59.289 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step Clear Scheduled Off[0m
+[32m2025-12-01 05:11:09.416 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
+[32m2025-12-01 05:11:09.416 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
+[32m2025-12-01 05:11:11.315 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
+[32m2025-12-01 05:11:11.315 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
+[32m2025-12-01 05:13:46.191 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-01 05:13:46.191 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step Clear Scheduled Off[0m
+[32m2025-12-01 05:13:55.223 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-01 05:13:55.223 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step Clear Working Override[0m
+[32m2025-12-01 05:22:18.485 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
+[32m2025-12-01 05:22:18.486 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 05:22:18.795 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m

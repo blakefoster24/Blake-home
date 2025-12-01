@@ -219,3 +219,18 @@ play_music_alexa:
         entity_id: input_boolean.disable_toggle
     alias: Music Off
   description: ''
+set_date_to_today:
+  alias: Set Date to Today
+  icon: mdi:calendar-today
+  mode: parallel
+  fields:
+    target_entity:
+      description: The input_datetime entity to set to today's date
+      example: input_datetime.scheduled_off
+  sequence:
+  - action: input_datetime.set_datetime
+    target:
+      entity_id: '{{ target_entity }}'
+    data:
+      date: '{{ now().strftime(''%Y-%m-%d'') }}'
+  description: ''

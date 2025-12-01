@@ -1,4 +1,4 @@
-_Last Updated: 2025-12-01T04:07:45.740848-06:00_
+_Last Updated: 2025-12-01T05:22:18.486547-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -63,13 +63,13 @@ Below are the input helpers configured in Home Assistant.
 
   
 
-| `input_datetime.scheduled_off` | **Scheduled Off** | 2025-11-28 | has_date=True, has_time=False |
+| `input_datetime.scheduled_off` | **Scheduled Off** | 1969-12-31 | has_date=True, has_time=False |
 
 
 
   
 
-| `input_datetime.working_override` | **Working Override** | 2025-11-29 | has_date=True, has_time=False |
+| `input_datetime.working_override` | **Working Override** | 1969-12-31 | has_date=True, has_time=False |
 
 
 
@@ -450,7 +450,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-<details><summary><b>Script (3)</b></summary>
+<details><summary><b>Script (4)</b></summary>
 
 | Entity ID | Name | State |
 |---|---|---|
@@ -460,6 +460,8 @@ Below are the input helpers configured in Home Assistant.
 | `script.create_push_ha_info_to_github` | Create & Push HA Info to Github | on |
 
 | `script.find_remote` | Find Remote | off |
+
+| `script.set_date_to_today` | Set Date to Today | off |
 
 </details>
 
@@ -519,7 +521,7 @@ Below are the input helpers configured in Home Assistant.
 O'Fallon MO 63368
 United States |
 
-| `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger | Periodic |
+| `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger | Launch |
 
 | `sensor.blakes_iphone_location_permission` | Blakes iPhone Location permission | Authorized Always |
 
@@ -529,7 +531,7 @@ United States |
 
 | `sensor.blakes_iphone_ssid` | Blakes iPhone SSID | ATTEPISyDS |
 
-| `sensor.blakes_iphone_storage` | Blakes iPhone Storage | 58.36 |
+| `sensor.blakes_iphone_storage` | Blakes iPhone Storage | 58.29 |
 
 | `sensor.bthome_sensor_3370_battery` | Motion 1 Battery | 100 |
 
@@ -589,29 +591,29 @@ United States |
 
 | `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.0 |
 
-| `sensor.main_lights_voltage` | Main Lights Voltage | 123.4 |
+| `sensor.main_lights_voltage` | Main Lights Voltage | 121.9 |
 
-| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 70.538 |
+| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 69.53 |
 
 | `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 100 |
 
 | `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | cloudy |
 
-| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 18.626 |
+| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 18.896 |
 
-| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 19.166 |
+| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 18.032 |
 
 | `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 81 |
 
 | `sensor.openweathermap_precipitation_kind_2` | OpenWeatherMap Precipitation kind | None |
 
-| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.9533913958099 |
+| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.9388876214202 |
 
 | `sensor.openweathermap_rain_2` | OpenWeatherMap Rain intensity | 0.0 |
 
 | `sensor.openweathermap_snow_2` | OpenWeatherMap Snow intensity | 0.0 |
 
-| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 23.018 |
+| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 23.306 |
 
 | `sensor.openweathermap_uv_index_2` | OpenWeatherMap UV index | 0 |
 
@@ -621,11 +623,11 @@ United States |
 
 | `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 804 |
 
-| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 48 |
+| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 146 |
 
-| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 4.00411596277738 |
+| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 5.9949892627058 |
 
-| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 2.9974946313529 |
+| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 4.00411596277738 |
 
 | `sensor.shelly_ceiling_fan_energy` | Bedroom Ceiling Fan Energy | 5.293935 |
 
