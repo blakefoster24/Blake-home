@@ -1,28 +1,4 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-[32m2025-12-01 03:37:33.463 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
-[32m2025-12-01 03:39:49.514 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-01 03:39:49.514 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
-[32m2025-12-01 03:40:48.420 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-01 03:40:48.420 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
-[32m2025-12-01 03:45:41.450 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
-[32m2025-12-01 03:50:08.843 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
-[32m2025-12-01 03:50:49.926 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
-[32m2025-12-01 03:59:33.728 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
-[32m2025-12-01 04:06:51.363 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
-[32m2025-12-01 04:07:45.739 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
-[32m2025-12-01 04:07:45.740 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 04:07:46.050 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 04:07:46.187 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 04:07:46.324 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 04:07:46.459 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 04:21:03.300 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-01 04:21:03.301 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
-[32m2025-12-01 04:21:09.694 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
-[32m2025-12-01 04:22:51.951 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
-[32m2025-12-01 04:26:43.840 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
-[32m2025-12-01 04:27:11.544 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
-[32m2025-12-01 04:27:27.498 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
-[32m2025-12-01 04:29:44.236 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
 [32m2025-12-01 04:30:03.880 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
 [32m2025-12-01 04:30:03.881 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step Clear Scheduled Off[0m
 [32m2025-12-01 04:30:10.579 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
@@ -99,3 +75,27 @@ this._updateConfigElement (src/panels/lovelace/editor/hui-element-editor.ts:110:
 [32m2025-12-01 05:45:19.464 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
 [32m2025-12-01 05:45:19.465 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
 [32m2025-12-01 05:45:19.780 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 05:45:19.917 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 05:45:20.055 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 05:45:20.191 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 06:05:10.107 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2025-12-01 06:05:10.109 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-01 06:05:10.122 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
+[32m2025-12-01 06:05:10.123 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 06:05:10.124 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
+[32m2025-12-01 06:05:12.127 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
+[32m2025-12-01 06:05:12.128 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 06:09:48.081 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
+[32m2025-12-01 06:10:16.501 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2025-12-01 06:10:16.502 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-01 06:10:16.504 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
+[32m2025-12-01 06:10:16.504 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 06:10:16.510 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
+[32m2025-12-01 06:10:18.512 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
+[32m2025-12-01 06:10:18.514 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 06:12:24.114 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
+[32m2025-12-01 06:14:18.815 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
+[32m2025-12-01 06:19:29.923 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
+[32m2025-12-01 06:20:58.457 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
+[32m2025-12-01 06:20:58.458 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 06:20:58.774 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m

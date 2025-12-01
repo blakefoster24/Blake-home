@@ -426,12 +426,13 @@
     - person.blake_foster
     to: not_home
     id: Blake away
-  - trigger: template
-    value_template: "{{ states('sensor.nest_thermostat_temperature') | float > 75
+  - alias: 64 > Thermostat Temperature > 76
+    trigger: template
+    value_template: "{{ states('sensor.nest_thermostat_temperature') | float > 76
       \n   or states('sensor.nest_thermostat_temperature') | float < 64 }}\n"
-    id: '64 > Thermostat Temperature > 75  '
-    alias: '64 > Thermostat Temperature > 75  '
-  - trigger: template
+    id: 64 > Thermostat Temperature > 76
+  - alias: Temperature > 5* from Setpoint
+    trigger: template
     value_template: "{% set current = states('sensor.nest_thermostat_temperature')
       | float(0) %}\n{% set target = state_attr('climate.nest_thermostat', 'temperature')
       %}\n{% set high = state_attr('climate.nest_thermostat', 'target_temp_high')
@@ -439,8 +440,11 @@
       if target != None %}\n  {{ (current - target) | abs > 5 }}\n{% elif high !=
       None and low != None %}\n  {{ (current > high + 5) or (current < low - 5) }}\n{%
       else %}\n  false\n{% endif %}\n"
-    alias: Temperature > 5* from Setpoint
-    id: 'Set-point discrepancy '
+    id: Set-point discrepancy
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
   conditions: []
   actions:
   - choose:
@@ -574,30 +578,35 @@
             target:
               device_id: b43f8797bfe54ded21e44c051fec8167
       alias: Evening Branch
-    - conditions:
-      - condition: or
-        conditions:
-        - condition: trigger
-          id:
-          - 'Set-point discrepancy '
-        - condition: and
-          conditions:
+    - conditions: []
+      sequence:
+      - choose:
+        - conditions:
           - condition: trigger
             id:
-            - '64 > Thermostat Temperature > 75  '
+            - 64 > Thermostat Temperature > 76
           - condition: state
             entity_id: person.blake_foster
             state:
             - home
-          alias: Home and 64 > temp > 75
-      sequence:
-      - action: notify.mobile_app_blakes_iphone
-        metadata: {}
-        data:
-          message: 'Current temperature is: {{ states(''sensor.nest_thermostat_temperature'')
-            | float | round | int }}°'
-          title: Check Thermostat!
-      alias: 'Temperature Notification '
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.thermostat_ideal_evening
+        - conditions:
+          - condition: trigger
+            id:
+            - Set-point discrepancy
+          sequence:
+          - action: notify.mobile_app_blakes_iphone
+            metadata: {}
+            data:
+              message: 'Current temperature is: {{ states(''sensor.nest_thermostat_temperature'')
+                | float | round | int }}°'
+              title: Check Thermostat!
+      alias: Temperature Issue
   mode: single
 - id: '1761047102816'
   alias: Test Bay

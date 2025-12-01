@@ -1,4 +1,4 @@
-_Last Updated: 2025-12-01T05:45:19.465986-06:00_
+_Last Updated: 2025-12-01T06:20:58.458683-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -521,7 +521,7 @@ Below are the input helpers configured in Home Assistant.
 O'Fallon MO 63368
 United States |
 
-| `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger | Launch |
+| `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger | Periodic |
 
 | `sensor.blakes_iphone_location_permission` | Blakes iPhone Location permission | Authorized Always |
 
@@ -531,15 +531,15 @@ United States |
 
 | `sensor.blakes_iphone_ssid` | Blakes iPhone SSID | ATTEPISyDS |
 
-| `sensor.blakes_iphone_storage` | Blakes iPhone Storage | 58.29 |
+| `sensor.blakes_iphone_storage` | Blakes iPhone Storage | 58.28 |
 
 | `sensor.bthome_sensor_3370_battery` | Motion 1 Battery | 100 |
 
-| `sensor.bthome_sensor_3370_illuminance` | Motion 1 Illuminance | 29.0 |
+| `sensor.bthome_sensor_3370_illuminance` | Motion 1 Illuminance | 0.0 |
 
-| `sensor.bthome_sensor_3370_packet_id` | Motion 1 Packet Id | 218 |
+| `sensor.bthome_sensor_3370_packet_id` | Motion 1 Packet Id | 220 |
 
-| `sensor.bthome_sensor_3370_signal_strength` | Motion 1 Signal Strength | -68 |
+| `sensor.bthome_sensor_3370_signal_strength` | Motion 1 Signal Strength | -66 |
 
 | `sensor.closet_light_auto_off_at` | Closet Light Auto-off at | unknown |
 
@@ -581,7 +581,7 @@ United States |
 
 | `sensor.main_lights_auto_off_at` | Main Lights Auto-off at | unknown |
 
-| `sensor.main_lights_current` | Main Lights Current | 0.01 |
+| `sensor.main_lights_current` | Main Lights Current | 0.0 |
 
 | `sensor.main_lights_current_consumption` | Main Lights Current consumption | 0.0 |
 
@@ -593,17 +593,17 @@ United States |
 
 | `sensor.main_lights_voltage` | Main Lights Voltage | 121.9 |
 
-| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 69.53 |
+| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 68.504 |
 
 | `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 100 |
 
 | `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | cloudy |
 
-| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 18.86 |
+| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 18.734 |
 
-| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 17.96 |
+| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 18.14 |
 
-| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 81 |
+| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 80 |
 
 | `sensor.openweathermap_precipitation_kind_2` | OpenWeatherMap Precipitation kind | None |
 
@@ -613,7 +613,7 @@ United States |
 
 | `sensor.openweathermap_snow_2` | OpenWeatherMap Snow intensity | 0.0 |
 
-| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 23.252 |
+| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 23.396 |
 
 | `sensor.openweathermap_uv_index_2` | OpenWeatherMap UV index | 0 |
 
@@ -623,9 +623,9 @@ United States |
 
 | `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 804 |
 
-| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 162 |
+| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 169 |
 
-| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 7.00161059413028 |
+| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 5.9949892627058 |
 
 | `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 4.00411596277738 |
 
