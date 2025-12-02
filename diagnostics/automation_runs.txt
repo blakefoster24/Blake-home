@@ -1,65 +1,80 @@
 ===== $(date -Iseconds) — automation runs (recent) =====
-[32m2025-12-01 04:30:03.881 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step Clear Scheduled Off[0m
-[32m2025-12-01 04:30:10.579 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-01 04:30:10.579 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step Clear Working Override[0m
-[32m2025-12-01 04:59:05.338 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-01 04:59:05.339 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
-[32m2025-12-01 05:03:10.443 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
-[32m2025-12-01 05:03:10.444 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
-[32m2025-12-01 05:10:52.238 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-01 05:10:52.239 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step Clear Working Override[0m
-[32m2025-12-01 05:10:59.288 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-01 05:10:59.289 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step Clear Scheduled Off[0m
-[32m2025-12-01 05:11:09.416 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
-[32m2025-12-01 05:11:09.416 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
-[32m2025-12-01 05:11:11.315 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
-[32m2025-12-01 05:11:11.315 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
-[32m2025-12-01 05:13:46.191 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-01 05:13:46.191 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step Clear Scheduled Off[0m
-[32m2025-12-01 05:13:55.223 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-01 05:13:55.223 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step Clear Working Override[0m
-[32m2025-12-01 05:22:18.485 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
-[32m2025-12-01 05:22:18.486 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 05:22:18.795 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 05:22:18.928 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 05:22:19.066 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 05:22:19.201 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 05:22:20.983 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
-[32m2025-12-01 05:22:20.984 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
-[32m2025-12-01 05:22:22.736 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
-[32m2025-12-01 05:22:22.737 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
-[32m2025-12-01 05:24:33.709 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
-[32m2025-12-01 05:24:33.709 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
-[32m2025-12-01 05:25:08.738 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Running script sequence[0m
-[32m2025-12-01 05:25:08.738 INFO (MainThread) [homeassistant.components.script.set_date_to_today] Set Date to Today: Executing step call service[0m
-[32m2025-12-01 05:38:01.873 INFO (MainThread) [homeassistant.components.automation.helper_automation] Initialized trigger Helper Automation[0m
-[32m2025-12-01 05:38:47.363 INFO (MainThread) [homeassistant.components.automation.helper_automation] Initialized trigger Helper Automation[0m
-[32m2025-12-01 05:40:58.537 INFO (MainThread) [homeassistant.components.automation.door_automation] Initialized trigger Door Automation[0m
-[32m2025-12-01 05:45:19.464 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
-[32m2025-12-01 05:45:19.465 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 05:45:19.780 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 05:45:19.917 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 05:45:20.055 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 05:45:20.191 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 06:05:10.107 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-01 06:05:10.109 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-01 06:05:10.122 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-12-01 06:05:10.123 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 06:05:10.124 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
-[32m2025-12-01 06:05:12.127 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
-[32m2025-12-01 06:05:12.128 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 06:09:48.081 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
-[32m2025-12-01 06:10:16.501 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-01 06:10:16.502 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-01 06:10:16.504 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-12-01 06:10:16.504 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 06:10:16.510 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
-[32m2025-12-01 06:10:18.512 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
-[32m2025-12-01 06:10:18.514 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 06:12:24.114 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
-[32m2025-12-01 06:14:18.815 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
-[32m2025-12-01 06:19:29.923 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
-[32m2025-12-01 06:20:58.457 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
-[32m2025-12-01 06:20:58.458 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 06:20:58.774 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-01 06:20:58.913 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-01 21:51:29.874 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-01 21:51:29.876 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
+[32m2025-12-01 21:51:29.894 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 21:51:32.332 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2025-12-01 21:51:32.333 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-01 21:51:32.335 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
+[32m2025-12-01 21:51:32.335 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 21:51:32.339 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
+[32m2025-12-01 21:51:34.341 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
+[32m2025-12-01 21:51:34.343 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 21:54:47.520 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2025-12-01 21:54:47.522 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-01 21:54:47.523 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
+[32m2025-12-01 21:54:47.524 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 21:54:49.973 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2025-12-01 21:54:49.975 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-01 21:54:49.976 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
+[32m2025-12-01 21:54:49.977 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 21:54:49.983 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
+[32m2025-12-01 21:54:51.985 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
+[32m2025-12-01 21:54:51.987 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 21:55:44.234 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2025-12-01 21:55:44.235 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-01 21:55:44.237 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
+[32m2025-12-01 21:55:44.238 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 21:55:46.626 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2025-12-01 21:55:46.627 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-01 21:55:46.629 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
+[32m2025-12-01 21:55:46.630 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 21:55:46.635 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
+[32m2025-12-01 21:55:48.637 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
+[32m2025-12-01 21:55:48.639 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 22:00:02.554 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2025-12-01 22:00:02.555 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-01 22:00:02.557 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
+[32m2025-12-01 22:00:02.557 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[32m2025-12-01 22:00:02.565 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
+[32m2025-12-01 22:00:04.568 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
+[32m2025-12-01 22:00:04.569 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[33m2025-12-01 22:16:23.888 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): Timeout error occurred accessing AlexaAPI: An exception of type CancelledError occurred. Arguments:
+[33m2025-12-01 22:26:28.087 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 22:26:28.087 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 22:36:32.105 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 22:36:32.106 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 22:46:36.462 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 22:46:36.463 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 22:56:41.246 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 22:56:41.247 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[32m2025-12-01 23:00:00.342 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
+[32m2025-12-01 23:00:00.344 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Running automation actions[0m
+[32m2025-12-01 23:00:00.345 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Running automation actions[0m
+[32m2025-12-01 23:00:00.346 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
+[32m2025-12-01 23:00:00.762 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
+[33m2025-12-01 23:06:44.988 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 23:06:44.989 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 23:16:49.154 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 23:16:49.154 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[32m2025-12-01 23:21:58.332 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2025-12-01 23:21:58.333 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-01 23:21:58.335 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
+[32m2025-12-01 23:21:58.336 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[33m2025-12-01 23:26:53.089 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 23:26:53.089 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 23:36:57.212 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 23:36:57.212 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[32m2025-12-01 23:42:06.369 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2025-12-01 23:42:06.370 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-01 23:42:06.372 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
+[32m2025-12-01 23:42:06.372 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[33m2025-12-01 23:47:01.458 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 23:47:01.458 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 23:57:06.054 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-01 23:57:06.055 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[32m2025-12-02 00:01:00.340 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
+[32m2025-12-02 00:01:00.343 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
+[32m2025-12-02 00:06:12.237 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
+[32m2025-12-02 00:06:12.238 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-02 00:06:12.629 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-02 00:06:12.765 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
