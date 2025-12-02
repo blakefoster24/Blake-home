@@ -1,89 +1,4 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-[32m2025-12-01 21:51:29.873 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-01 21:51:29.874 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-01 21:51:29.876 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-12-01 21:51:29.894 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 21:51:32.332 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-01 21:51:32.333 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-01 21:51:32.335 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-12-01 21:51:32.335 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 21:51:32.339 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
-[32m2025-12-01 21:51:34.341 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
-[32m2025-12-01 21:51:34.343 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 21:54:47.520 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-01 21:54:47.522 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-01 21:54:47.523 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-12-01 21:54:47.524 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 21:54:49.973 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-01 21:54:49.975 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-01 21:54:49.976 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-12-01 21:54:49.977 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 21:54:49.983 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
-[32m2025-12-01 21:54:51.985 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
-[32m2025-12-01 21:54:51.987 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 21:55:44.234 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-01 21:55:44.235 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-01 21:55:44.237 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-12-01 21:55:44.238 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 21:55:46.626 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-01 21:55:46.627 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-01 21:55:46.629 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-12-01 21:55:46.630 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 21:55:46.635 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
-[32m2025-12-01 21:55:48.637 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
-[32m2025-12-01 21:55:48.639 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 22:00:02.554 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-01 22:00:02.555 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-01 22:00:02.557 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-12-01 22:00:02.557 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[32m2025-12-01 22:00:02.565 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step delay 0:00:02[0m
-[32m2025-12-01 22:00:04.568 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step assigning variables[0m
-[32m2025-12-01 22:00:04.569 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[33m2025-12-01 22:16:23.888 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): Timeout error occurred accessing AlexaAPI: An exception of type CancelledError occurred. Arguments:
-()[0m
-[33m2025-12-01 22:26:28.087 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-01 22:26:28.087 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-01 22:36:32.105 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-01 22:36:32.106 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-01 22:46:36.462 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-01 22:46:36.463 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-01 22:56:41.246 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-01 22:56:41.247 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[32m2025-12-01 23:00:00.342 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2025-12-01 23:00:00.344 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Running automation actions[0m
-[32m2025-12-01 23:00:00.345 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Running automation actions[0m
-[32m2025-12-01 23:00:00.346 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[32m2025-12-01 23:00:00.762 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[33m2025-12-01 23:06:44.988 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-01 23:06:44.989 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-01 23:16:49.154 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-01 23:16:49.154 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[32m2025-12-01 23:21:58.332 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-01 23:21:58.333 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-01 23:21:58.335 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-12-01 23:21:58.336 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[33m2025-12-01 23:26:53.089 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-01 23:26:53.089 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-01 23:36:57.212 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-01 23:36:57.212 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[32m2025-12-01 23:42:06.369 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-01 23:42:06.370 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
 [32m2025-12-01 23:42:06.372 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
 [32m2025-12-01 23:42:06.372 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
 [33m2025-12-01 23:47:01.458 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
@@ -99,3 +14,88 @@
 [32m2025-12-02 00:06:12.237 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
 [32m2025-12-02 00:06:12.238 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
 [32m2025-12-02 00:06:12.629 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-02 00:06:12.765 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-02 00:06:12.904 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-02 00:06:13.041 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[33m2025-12-02 00:07:10.070 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 00:07:10.070 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[31m2025-12-02 00:11:22.582 ERROR (MainThread) [homeassistant] Error doing job: Task exception was never retrieved (None)
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/_websocket/writer.py", line 240, in _send_compressed_frame_async_locked
+    self._write_websocket_frame(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        (
+        ^
+    ...<8 lines>...
+        0x40,
+        ^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.13/site-packages/aiohttp/_websocket/writer.py", line 151, in _write_websocket_frame
+    raise ClientConnectionResetError("Cannot write to closing transport")
+aiohttp.client_exceptions.ClientConnectionResetError: Cannot write to closing transport[0m
+[33m2025-12-02 00:17:14.137 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 00:17:14.138 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 00:27:18.083 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 00:27:18.083 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 00:37:22.165 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 00:37:22.165 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[32m2025-12-02 00:45:39.011 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2025-12-02 00:45:39.012 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-02 00:45:39.026 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
+[32m2025-12-02 00:45:39.027 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[33m2025-12-02 00:47:26.472 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 00:47:26.473 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 00:57:31.094 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 00:57:31.095 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 01:07:35.099 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 01:07:35.099 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 01:17:39.092 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 01:17:39.092 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[32m2025-12-02 01:20:49.969 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2025-12-02 01:20:49.971 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-02 01:20:49.972 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
+[32m2025-12-02 01:20:49.973 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
+[33m2025-12-02 01:27:43.176 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 01:27:43.176 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 01:37:47.056 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 01:37:47.057 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 01:47:51.559 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 01:47:51.560 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 01:57:56.207 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-02 01:57:56.208 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[32m2025-12-02 01:58:53.564 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
+[32m2025-12-02 01:58:53.578 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
+[32m2025-12-02 01:58:53.775 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
+[32m2025-12-02 01:58:53.776 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
+[32m2025-12-02 01:58:53.793 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
+[32m2025-12-02 01:58:58.778 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Timeout reached, abort script.[0m
+[32m2025-12-02 02:00:00.432 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
+[32m2025-12-02 02:00:00.432 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
+[32m2025-12-02 02:00:00.434 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
+[32m2025-12-02 02:00:00.435 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-02 02:00:00.830 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m

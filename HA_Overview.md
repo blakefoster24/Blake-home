@@ -1,4 +1,4 @@
-_Last Updated: 2025-12-02T00:06:12.238578-06:00_
+_Last Updated: 2025-12-02T02:00:00.435709-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -21,7 +21,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-| `input_boolean.phone_active` | **Phone active** | on |  |
+| `input_boolean.phone_active` | **Phone active** | off |  |
 
 
 
@@ -341,7 +341,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `fan.bedroom_ceiling_fan` | Bedroom Ceiling Fan | off |
 
-| `fan.bedroom_fan` | Fan | off |
+| `fan.bedroom_fan` | Fan | on |
 
 </details>
 
@@ -361,17 +361,17 @@ Below are the input helpers configured in Home Assistant.
 
 | `light.bathroom_light` | Bathroom Light | off |
 
-| `light.bedroom_ceiling_lights` | Bedroom Ceiling Lights | on |
+| `light.bedroom_ceiling_lights` | Bedroom Ceiling Lights | off |
 
-| `light.bedroom_lamp` | Bedroom Lamp | on |
+| `light.bedroom_lamp` | Bedroom Lamp | off |
 
-| `light.closet_light` | Closet Light | on |
+| `light.closet_light` | Closet Light | off |
 
 | `light.home` | Home | on |
 
 | `light.living_room_lamp` | Living Room Lamp | on |
 
-| `light.main_lights` | Main Lights | on |
+| `light.main_lights` | Main Lights | off |
 
 </details>
 
@@ -383,7 +383,7 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `media_player.bedroom_tv` | Bedroom Tv | idle |
+| `media_player.bedroom_tv` | Bedroom Tv | off |
 
 | `media_player.blake_s_echo_dot` | Blake's Echo Dot | paused |
 
@@ -445,7 +445,7 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `remote.bedroom_tv` | Bedroom Tv Remote | on |
+| `remote.bedroom_tv` | Bedroom Tv Remote | off |
 
 </details>
 
@@ -469,7 +469,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `scene.full_lamp` | Full Lamp | 2025-12-02T02:55:38.993447+00:00 |
 
-| `scene.goodnight_scene` | Goodnight | 2025-12-01T13:36:10.320574+00:00 |
+| `scene.goodnight_scene` | Goodnight | 2025-12-02T07:58:53.579863+00:00 |
 
 | `scene.im_awake` | I’m Awake | 2025-12-01T14:41:59.590662+00:00 |
 
@@ -523,9 +523,9 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `sensor.50_onn_roku_tv_active_app` | Bedroom TV Active app | YouTube |
+| `sensor.50_onn_roku_tv_active_app` | Bedroom TV Active app | unknown |
 
-| `sensor.50_onn_roku_tv_active_app_id` | Bedroom TV Active app ID | 837 |
+| `sensor.50_onn_roku_tv_active_app_id` | Bedroom TV Active app ID | unknown |
 
 | `sensor.backup_backup_manager_state` | Backup Backup Manager state | idle |
 
@@ -539,15 +539,15 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.bathroom_light_signal_level` | Bathroom Light Signal level | 3 |
 
-| `sensor.bed_presence_bb8594_left_pressure` | Bed Presence Sensor Left Pressure | 96.0955200195312 |
+| `sensor.bed_presence_bb8594_left_pressure` | Bed Presence Sensor Left Pressure | 95.8774185180664 |
 
-| `sensor.bed_presence_bb8594_right_pressure` | Bed Presence Sensor Right Pressure | 93.2452850341797 |
+| `sensor.bed_presence_bb8594_right_pressure` | Bed Presence Sensor Right Pressure | 93.2532501220703 |
 
-| `sensor.bed_presence_bb8594_uptime` | Bed Presence Sensor Uptime | 9720.7998046875 |
+| `sensor.bed_presence_bb8594_uptime` | Bed Presence Sensor Uptime | 16561.001953125 |
 
-| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Presence Sensor WiFi Signal dB | -50.0 |
+| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Presence Sensor WiFi Signal dB | -59.0 |
 
-| `sensor.bed_presence_bb8594_wifi_signal_percent` | Bed Presence Sensor WiFi Signal Percent | 100.0 |
+| `sensor.bed_presence_bb8594_wifi_signal_percent` | Bed Presence Sensor WiFi Signal Percent | 82.0 |
 
 | `sensor.bedroom_ceiling_fan_energy_consumed` | Bedroom Ceiling Fan Energy consumed | 5.293935 |
 
@@ -569,7 +569,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.blakes_iphone_audio_output` | Blakes iPhone Audio Output | Built-in Speaker |
 
-| `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 75 |
+| `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 55 |
 
 | `sensor.blakes_iphone_battery_state` | Blakes iPhone Battery State | Not Charging |
 
@@ -581,7 +581,7 @@ Below are the input helpers configured in Home Assistant.
 O'Fallon MO 63368
 United States |
 
-| `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger | Launch |
+| `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger | Background Fetch |
 
 | `sensor.blakes_iphone_location_permission` | Blakes iPhone Location permission | Authorized Always |
 
@@ -591,7 +591,7 @@ United States |
 
 | `sensor.blakes_iphone_ssid` | Blakes iPhone SSID | ATTEPISyDS |
 
-| `sensor.blakes_iphone_storage` | Blakes iPhone Storage | 58.26 |
+| `sensor.blakes_iphone_storage` | Blakes iPhone Storage | 58.25 |
 
 | `sensor.bthome_sensor_3370_battery` | Motion 1 Battery | 100 |
 
@@ -641,49 +641,49 @@ United States |
 
 | `sensor.main_lights_auto_off_at` | Main Lights Auto-off at | unknown |
 
-| `sensor.main_lights_current` | Main Lights Current | 0.51 |
+| `sensor.main_lights_current` | Main Lights Current | 0.01 |
 
-| `sensor.main_lights_current_consumption` | Main Lights Current consumption | 57.9 |
+| `sensor.main_lights_current_consumption` | Main Lights Current consumption | 0.0 |
 
 | `sensor.main_lights_signal_level` | Main Lights Signal level | 3 |
 
-| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 0.172 |
+| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 0.281 |
 
-| `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.006 |
+| `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.115 |
 
-| `sensor.main_lights_voltage` | Main Lights Voltage | 123.4 |
+| `sensor.main_lights_voltage` | Main Lights Voltage | 123.8 |
 
-| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 70.682 |
+| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 68.558 |
 
-| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 75 |
+| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 100 |
 
 | `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | cloudy |
 
 | `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 20.894 |
 
-| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 15.422 |
+| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 15.134 |
 
-| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 88 |
+| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 89 |
 
 | `sensor.openweathermap_precipitation_kind_2` | OpenWeatherMap Precipitation kind | None |
 
-| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.7648423287434 |
+| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.7793461031332 |
 
 | `sensor.openweathermap_rain_2` | OpenWeatherMap Rain intensity | 0.0 |
 
 | `sensor.openweathermap_snow_2` | OpenWeatherMap Snow intensity | 0.0 |
 
-| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 23.576 |
+| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 23.342 |
 
 | `sensor.openweathermap_uv_index_2` | OpenWeatherMap UV index | 0 |
 
 | `sensor.openweathermap_visibility_2` | OpenWeatherMap Visibility | 32808.3989501312 |
 
-| `sensor.openweathermap_weather_2` | OpenWeatherMap Weather | broken clouds |
+| `sensor.openweathermap_weather_2` | OpenWeatherMap Weather | overcast clouds |
 
-| `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 803 |
+| `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 804 |
 
-| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 290 |
+| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 310 |
 
 | `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | unknown |
 
@@ -695,7 +695,7 @@ United States |
 
 | `sensor.shelly_ceiling_lights_energy` | Bedroom Ceiling Lights Energy | 3.910706 |
 
-| `sensor.shelly_ceiling_lights_power` | Bedroom Ceiling Lights Power | 32.9 |
+| `sensor.shelly_ceiling_lights_power` | Bedroom Ceiling Lights Power | 0 |
 
 | `sensor.sun_next_dawn` | Sun Next dawn | 2025-12-02T12:33:29+00:00 |
 
@@ -763,9 +763,9 @@ United States |
 
 | `switch.bedroom_ceiling_fan` | Bedroom ceiling fan | off |
 
-| `switch.bedroom_ceiling_lights` | Bedroom Ceiling Lights | on |
+| `switch.bedroom_ceiling_lights` | Bedroom Ceiling Lights | off |
 
-| `switch.bedroom_fan` | Fan | off |
+| `switch.bedroom_fan` | Fan | on |
 
 | `switch.blake_s_echo_dot_do_not_disturb_switch` | Blake's Echo Dot do not disturb switch | on |
 
@@ -779,7 +779,7 @@ United States |
 
 | `switch.blake_s_echo_pop_shuffle_switch` | Blake's Echo Pop shuffle switch | unavailable |
 
-| `switch.closet_light` | Closet Light | on |
+| `switch.closet_light` | Closet Light | off |
 
 | `switch.closet_light_auto_off_enabled` | Closet Light Auto-off enabled | off |
 
@@ -801,7 +801,7 @@ United States |
 
 | `switch.hacs_pre_release` | HACS Pre-release | off |
 
-| `switch.main_lights` | Main Lights | on |
+| `switch.main_lights` | Main Lights | off |
 
 | `switch.main_lights_auto_off_enabled` | Main Lights Auto-off enabled | off |
 
