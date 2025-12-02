@@ -54,7 +54,7 @@ create_push_ha_info_to_github_2:
   - action: shell_command.ha_git_commit_push
     data: {}
 play_music_alexa:
-  alias: Play Music Alexa
+  alias: Alarm Music
   sequence:
   - action: input_boolean.turn_on
     metadata: {}
@@ -155,7 +155,7 @@ play_music_alexa:
   - delay:
       hours: 0
       minutes: 0
-      seconds: 5
+      seconds: 10
       milliseconds: 0
   - action: light.turn_on
     metadata: {}
@@ -183,7 +183,8 @@ play_music_alexa:
     data: {}
     target:
       entity_id: light.bedroom_ceiling_lights
-  - sequence:
+  - alias: Music Off
+    sequence:
     - wait_for_trigger:
       - trigger: device
         device_id: 6e3f05f16e73548265ce22e622f4a268
@@ -212,12 +213,11 @@ play_music_alexa:
         volume_level: 0.4
       target:
         entity_id: media_player.everywhere
-    - action: input_boolean.turn_off
-      metadata: {}
-      data: {}
-      target:
-        entity_id: input_boolean.disable_toggle
-    alias: Music Off
+  - action: input_boolean.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.disable_toggle
   description: ''
 set_date_to_today:
   alias: Set Date to Today

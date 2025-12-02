@@ -300,13 +300,7 @@
     - conditions:
       - condition: trigger
         id: up_long
-      sequence:
-      - action: light.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id:
-          - light.closet_light
+      sequence: []
     - conditions:
       - condition: trigger
         id: down_short
@@ -630,9 +624,6 @@
   alias: Helper Automation
   description: ''
   triggers:
-  - entity_id: sensor.blakes_iphone_battery_state
-    trigger: state
-    id: Phone trigger
   - trigger: state
     entity_id:
     - binary_sensor.front_door
@@ -652,42 +643,6 @@
   conditions: []
   actions:
   - choose:
-    - conditions:
-      - condition: trigger
-        id:
-        - Phone trigger
-      sequence:
-      - if:
-        - condition: template
-          value_template: '{{ states(''sensor.blakes_iphone_battery_state'') in [''Charging'',''Full'']
-            }}'
-          alias: Phone Plugged In
-        then:
-        - action: notify.mobile_app_blakes_iphone
-          data:
-            message: request_location_update
-        - delay:
-            hours: 0
-            minutes: 0
-            seconds: 2
-            milliseconds: 0
-        - variables:
-            miles: '{% set km = distance(''device_tracker.blakes_iphone'',''zone.home'')
-              %} {{ ((km if km is number else 0) * 0.621371) | float(0) | round(3)
-              }}
-
-              '
-        - action: input_number.set_value
-          target:
-            entity_id: input_number.phone_charging_distance
-          data:
-            value: '{{ miles }}'
-        else:
-        - action: input_number.set_value
-          target:
-            entity_id: input_number.phone_charging_distance
-          data:
-            value: 10
     - conditions:
       - condition: trigger
         id:
@@ -830,20 +785,14 @@
     subtype: 1
     unique_id: cdb2dfb8-edb8-4c9a-83ef-5519e2338c0a
     trigger: device
-    id: '1 Long press '
+    id: 1 Long press
     alias: 1 Long Press (I’m awake Scene)
   - trigger: time
     at: 08:40:00
-    id: Time window - late
+    id: Late Time Window
   - trigger: time
     at: 08:55:00
-    id: Time window - last chance
-  - trigger: state
-    entity_id:
-    - input_boolean.im_awake_toggle_helper
-    to:
-    - 'on'
-    id: Awake toggle
+    id: Last Time Window
   conditions:
   - condition: state
     state: 'on'
@@ -859,11 +808,6 @@
         - '1 Long press '
       sequence:
       - sequence:
-        - action: input_boolean.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: input_boolean.im_awake_toggle_helper
         - action: light.turn_on
           metadata: {}
           data: {}
@@ -877,171 +821,61 @@
         - action: light.turn_on
           metadata: {}
           data:
-            transition: 25
+            brightness_pct: 75
+            transition: 15
           target:
             entity_id: light.bedroom_lamp
         - delay:
             hours: 0
             minutes: 0
-            seconds: 5
+            seconds: 10
             milliseconds: 0
         - action: fan.turn_off
           metadata: {}
           data: {}
           target:
             entity_id: fan.bedroom_fan
-      alias: Wake up Sequence
-    - conditions:
-      - condition: trigger
-        id:
-        - Time window - late
-      - condition: state
-        entity_id: input_boolean.im_awake_toggle_helper
-        state: 'off'
-      sequence:
-      - event: hue_event
-        event_data:
-          device_id: 6e3f05f16e73548265ce22e622f4a268
-          type: long_press
-          subtype: 1
-      alias: time window - late
-    - conditions:
-      - condition: trigger
-        id:
-        - Time window - last chance
-      - alias: Door hasn’t opened in the last hour
-        condition: template
-        value_template: '{{ (as_timestamp(now()) - state_attr(''input_datetime.last_door_open'',''timestamp'')
-          | default(0)) > 3600 }}
-
-          '
-      sequence:
-      - event: hue_event
-        event_data:
-          device_id: 6e3f05f16e73548265ce22e622f4a268
-          type: long_press
-          subtype: 1
-        alias: Trigger Wake-up Sequence
-      - alias: Play Music Alexa
-        sequence:
-        - action: input_boolean.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: input_boolean.disable_toggle
-        - action: media_player.volume_set
-          metadata: {}
-          data:
-            volume_level: 0.01
-          target:
-            entity_id: media_player.everywhere
-        - action: media_player.shuffle_set
-          metadata: {}
-          data:
-            shuffle: true
-          target:
-            entity_id: media_player.everywhere
-        - action: media_player.media_next_track
-          metadata: {}
-          data: {}
-          target:
-            entity_id: media_player.everywhere
-          enabled: true
-        - delay:
-            hours: 0
-            minutes: 0
-            seconds: 5
-            milliseconds: 0
-        - action: media_player.media_next_track
-          metadata: {}
-          data: {}
-          target:
-            entity_id: media_player.everywhere
-          enabled: true
-        - alias: Music Playing Check
-          if:
-          - condition: state
-            entity_id: media_player.everywhere
-            state: playing
-          then: []
-          else:
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.01
-            target:
-              entity_id:
-              - media_player.blake_s_echo_pop
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 2
-              milliseconds: 0
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.01
-            target:
-              entity_id: media_player.everywhere
-          - action: media_player.play_media
-            metadata: {}
-            data:
-              media:
-                media_content_id: music alarm
-                media_content_type: routine
-            target:
-              entity_id:
-              - media_player.blake_s_echo_pop
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 5
-              milliseconds: 0
-          - action: media_player.shuffle_set
-            metadata: {}
-            data:
-              shuffle: true
-            target:
-              entity_id: media_player.everywhere
-          - action: media_player.media_next_track
-            metadata: {}
-            data: {}
-            target:
-              entity_id: media_player.everywhere
-            enabled: true
-        - repeat:
-            count: 4
-            sequence:
-            - action: media_player.volume_set
-              metadata: {}
-              data:
-                volume_level: '{{ 0.02 + (repeat.index * 0.03) }}'
-              target:
-                entity_id: media_player.everywhere
-            - delay:
-                hours: 0
-                minutes: 0
-                seconds: 2
-                milliseconds: 0
-          alias: Raise Volume
         - action: light.turn_on
           metadata: {}
-          data: {}
+          data:
+            brightness_pct: 100
+            transition: 5
           target:
-            entity_id: light.bedroom_ceiling_lights
-        - wait_for_trigger:
-          - trigger: device
-            device_id: 6e3f05f16e73548265ce22e622f4a268
-            domain: hue
-            type: short_release
-            subtype: 4
-            id: bottom_short
+            entity_id: light.bedroom_lamp
+      - alias: Leaving Sequence
+        sequence:
+        - action: automation.turn_off
+          target:
+            entity_id: automation.door_automation
+          data:
+            stop_actions: true
+        - alias: Wait for -> door open
+          wait_for_trigger:
+          - trigger: state
+            entity_id:
+            - binary_sensor.front_door
+            to:
+            - 'on'
           timeout:
-            hours: 0
-            minutes: 30
+            hours: 1
+            minutes: 0
             seconds: 0
             milliseconds: 0
           continue_on_timeout: true
+        - if:
+          - condition: template
+            value_template: '{{ wait.trigger is not none }}
+
+              '
+            alias: Trigger Fired
+          then:
+          - action: input_datetime.set_datetime
+            metadata: {}
+            data:
+              datetime: '{{ now().isoformat() }}'
+            target:
+              entity_id: input_datetime.last_door_open
+          alias: If triggered - Set door timestamp
         - alias: 'Pause and Reset Volume on Alexa '
           sequence:
           - action: media_player.media_stop
@@ -1055,77 +889,61 @@
               volume_level: 0.4
             target:
               entity_id: media_player.everywhere
-        - action: input_boolean.turn_off
+        - action: scene.turn_on
           metadata: {}
           data: {}
           target:
-            entity_id: input_boolean.disable_toggle
-      alias: Last time window & Haven’t Left
+            entity_id: scene.all_off
+        - action: automation.turn_on
+          target:
+            entity_id: automation.door_automation
+          data: {}
+      alias: Wake up Sequence -> Leave Sequence
     - conditions:
       - condition: trigger
         id:
-        - Awake toggle
+        - Late Time Window
+      - condition: state
+        entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_left
+        state:
+        - 'on'
       sequence:
-      - action: automation.turn_off
-        target:
-          entity_id: automation.door_automation
-        data:
-          stop_actions: true
-      - alias: Wait for -> door open
-        wait_for_trigger:
-        - trigger: state
-          entity_id:
-          - binary_sensor.front_door
-          to:
-          - 'on'
-          from:
-          - 'off'
-        timeout:
-          hours: 1
-          minutes: 0
-          seconds: 0
-          milliseconds: 0
-        continue_on_timeout: true
-      - if:
-        - condition: template
-          value_template: '{{ wait.trigger is not none }}
+      - event: hue_event
+        event_data:
+          device_id: 6e3f05f16e73548265ce22e622f4a268
+          type: long_press
+          subtype: 1
+      alias: Late Time Window & in bed
+    - conditions:
+      - condition: trigger
+        id:
+        - Last Time Window
+      - condition: or
+        conditions:
+        - alias: Door hasn’t opened in the last hour
+          condition: template
+          value_template: '{{ (as_timestamp(now()) - state_attr(''input_datetime.last_door_open'',''timestamp'')
+            | default(0)) > 3600 }}
 
             '
-          alias: Trigger Fired
-        then:
-        - action: input_datetime.set_datetime
-          metadata: {}
-          data:
-            datetime: '{{ now().isoformat() }}'
-          target:
-            entity_id: input_datetime.last_door_open
-      - action: scene.turn_on
+        - condition: state
+          entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_left
+          state:
+          - 'on'
+        alias: Door hasn’t opened < 1hr | left bed presence
+      sequence:
+      - event: hue_event
+        event_data:
+          device_id: 6e3f05f16e73548265ce22e622f4a268
+          type: long_press
+          subtype: 1
+        alias: Trigger Wake-up Sequence
+      - action: script.turn_on
         metadata: {}
         data: {}
         target:
-          entity_id: scene.all_off
-      - alias: 'Pause and Reset Volume on Alexa '
-        sequence:
-        - action: media_player.media_stop
-          metadata: {}
-          data: {}
-          target:
-            entity_id: media_player.everywhere
-        - action: media_player.volume_set
-          metadata: {}
-          data:
-            volume_level: 0.4
-          target:
-            entity_id: media_player.everywhere
-      - action: input_boolean.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.im_awake_toggle_helper
-      - action: automation.turn_on
-        target:
-          entity_id: automation.door_automation
-        data: {}
+          entity_id: script.alarm_music_script
+      alias: Last Time Window & (Haven’t Left | in bed)
   trace:
     stored_traces: 50
   mode: parallel
@@ -1204,16 +1022,10 @@
     then:
     - alias: Leaving Branch
       if:
-      - condition: and
-        conditions:
-        - condition: template
-          alias: Phone plugged in
-          value_template: '{{ states(''sensor.blakes_iphone_battery_state'') | lower
-            in [''charging'', ''full''] }}'
-        - condition: numeric_state
-          entity_id: input_number.phone_charging_distance
-          below: 0.1
-        alias: Phone Charging & Close
+      - condition: state
+        entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_either
+        state:
+        - 'on'
       then:
       - action: light.turn_off
         metadata: {}
@@ -1271,7 +1083,14 @@
           - 'off'
           for:
             hours: 0
-            minutes: 8
+            minutes: 10
+            seconds: 0
+        - trigger: state
+          entity_id:
+          - binary_sensor.bed_presence_bb8594_bed_occupied_both
+          for:
+            hours: 0
+            minutes: 1
             seconds: 0
         timeout:
           hours: 1
