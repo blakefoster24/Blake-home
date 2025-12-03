@@ -255,15 +255,15 @@ create_push_ha_info_to_github_newest:
   sequence:
   - action: shell_command.write_ha_overview
     data:
-      content: "# Home Assistant Configuration _Last Updated: {{ now().isoformat()
-        }}_\n## \U0001F6E0 UI Helpers Below are the input helpers configured in Home
-        Assistant.\n{% set helpers = ['input_boolean', 'input_button', 'input_datetime',
+      content: "# Home Assistant Configuration\n_Last Updated: {{ now().isoformat()
+        }}_\n\n## \U0001F6E0 UI Helpers\nBelow are the input helpers configured in
+        Home Assistant.\n\n{% set helpers = ['input_boolean', 'input_button', 'input_datetime',
         'input_number', 'input_select', 'input_text', 'counter', 'timer', 'schedule']
-        %} {% for domain in helpers %} {% set assets = states[domain] | list %} {%
-        if assets | count > 0 %} ### {{ domain | replace('input_', '') | capitalize
-        }} | Entity ID | Name | State | Attributes | |---|---|---|---| {% for s in
-        assets | sort(attribute='entity_id') %} {% set details = [] %} {% if domain
-        == 'input_number' %}\n  {% set details = details + ['min=' ~ s.attributes.min,
+        %}\n{% for domain in helpers %}\n{% set assets = states[domain] | list %}\n{%
+        if assets | count > 0 %}\n### {{ domain | replace('input_', '') | capitalize
+        }}\n| Entity ID | Name | State | Attributes |\n|---|---|---|---|\n{% for s
+        in assets | sort(attribute='entity_id') %}\n{% set details = [] %}\n{% if
+        domain == 'input_number' %}\n  {% set details = details + ['min=' ~ s.attributes.min,
         'max=' ~ s.attributes.max, 'step=' ~ s.attributes.step] %}\n{% elif domain
         == 'input_select' %}\n  {% set details = details + ['options=' ~ s.attributes.options
         | join(', ')] %}\n{% elif domain == 'input_datetime' %}\n  {% set details
@@ -271,16 +271,16 @@ create_push_ha_info_to_github_newest:
         %}\n{% elif domain == 'timer' %}\n   {% set details = details + ['duration='
         ~ s.attributes.duration] %}\n{% elif domain == 'counter' %}\n   {% set details
         = details + ['min=' ~ s.attributes.minimum, 'max=' ~ s.attributes.maximum]
-        %}\n{% endif %} | `{{ s.entity_id }}` | **{{ s.name | replace(\"'\", \"'\\\\''\")
+        %}\n{% endif %}\n| `{{ s.entity_id }}` | **{{ s.name | replace(\"'\", \"'\\\\''\")
         }}** | {{ s.state | replace(\"'\", \"'\\\\''\") }} | {{ details | join(',
-        ') | replace(\"'\", \"'\\\\''\") }} | {% endfor %}\n{% endif %} {% endfor
-        %}\n---\n## \U0001F3E0 All Entities (By Domain) {% for domain, items in states
-        | groupby('domain') %} {% if domain not in helpers and domain != 'group' %}
-        <details><summary><b>{{ domain | title }} ({{ items | length }})</b></summary>\n|
-        Entity ID | Name | State | |---|---|---| {% for s in items | sort(attribute='entity_id')
-        %} | `{{ s.entity_id }}` | {{ s.name | replace(\"'\", \"'\\\\''\") }} | {{
-        s.state | replace(\"'\", \"'\\\\''\") }} | {% endfor %} </details>\n{% endif
-        %} {% endfor %}"
+        ') | replace(\"'\", \"'\\\\''\") }} |\n{% endfor %}\n\n{% endif %}\n{% endfor
+        %}\n\n---\n\n## \U0001F3E0 All Entities (By Domain)\n{% for domain, items
+        in states | groupby('domain') %}\n{% if domain not in helpers and domain !=
+        'group' %}\n<details><summary><b>{{ domain | title }} ({{ items | length }})</b></summary>\n\n|
+        Entity ID | Name | State |\n|---|---|---|\n{% for s in items | sort(attribute='entity_id')
+        %}\n| `{{ s.entity_id }}` | {{ s.name | replace(\"'\", \"'\\\\''\") }} | {{
+        s.state | replace(\"'\", \"'\\\\''\") }} |\n{% endfor %}\n</details>\n\n{%
+        endif %}\n{% endfor %}\n"
   - action: shell_command.write_log_slice
   - action: shell_command.write_automation_runs
   - action: shell_command.write_error_log

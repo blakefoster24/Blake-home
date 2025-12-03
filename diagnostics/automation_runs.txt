@@ -1,50 +1,4 @@
 ===== $(date -Iseconds) — automation runs (recent) =====
-[32m2025-12-02 09:12:06.789 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Flic Button: Choose at step 1: choice 1: Executing step call service[0m
-[32m2025-12-02 09:14:26.776 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Running automation actions[0m
-[32m2025-12-02 09:14:26.776 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step assigning variables[0m
-[32m2025-12-02 09:14:26.787 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step call service[0m
-[32m2025-12-02 09:14:26.790 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step Log Variables[0m
-[32m2025-12-02 09:14:26.813 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Running automation actions[0m
-[32m2025-12-02 09:14:26.814 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Leaving Branch: Running automation actions[0m
-[32m2025-12-02 09:14:26.815 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Leaving Branch: Executing step call service[0m
-[32m2025-12-02 09:14:26.852 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Music Off: Executing step call service[0m
-[32m2025-12-02 09:14:26.854 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Music Off: Executing step call service[0m
-[32m2025-12-02 09:14:26.867 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Executing step call service[0m
-[32m2025-12-02 09:14:26.891 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
-[32m2025-12-02 09:14:26.892 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2025-12-02 09:14:26.894 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
-[32m2025-12-02 09:14:27.318 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Executing step call service[0m
-[32m2025-12-02 09:14:31.894 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Timeout reached, abort script.[0m
-[32m2025-12-02 09:17:57.519 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
-[32m2025-12-02 09:17:57.523 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn off Branch: Running automation actions[0m
-[32m2025-12-02 09:17:57.526 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn off Branch: Executing step call service[0m
-[32m2025-12-02 09:17:57.538 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
-[32m2025-12-02 09:17:57.540 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Away Branch: Running automation actions[0m
-[32m2025-12-02 09:17:57.541 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Away Branch: Executing step call service[0m
-[32m2025-12-02 09:20:00.198 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
-[32m2025-12-02 09:20:00.201 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Temperature Issue: Running automation actions[0m
-[33m2025-12-02 09:21:33.155 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-02 09:21:33.156 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-02 09:31:37.160 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-02 09:31:37.160 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-02 09:41:41.091 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-02 09:41:41.091 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[32m2025-12-02 09:45:00.483 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[33m2025-12-02 09:51:45.493 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-02 09:51:45.493 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[32m2025-12-02 12:18:34.975 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
-[32m2025-12-02 12:18:34.978 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn off Branch: Running automation actions[0m
-[32m2025-12-02 12:18:34.982 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn off Branch: Executing step call service[0m
-[32m2025-12-02 12:18:34.991 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
-[32m2025-12-02 12:18:34.993 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Away Branch: Running automation actions[0m
-[32m2025-12-02 12:18:34.993 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Away Branch: Executing step call service[0m
-[32m2025-12-02 13:00:00.330 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2025-12-02 13:00:00.332 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 1pm set workday tomorrow toggle: Running automation actions[0m
-[32m2025-12-02 13:00:00.339 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 1pm set workday tomorrow toggle: Workday Schedule : Running automation actions[0m
-[32m2025-12-02 13:00:00.340 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 1pm set workday tomorrow toggle: Workday Schedule : Executing step call service[0m
-[32m2025-12-02 15:41:08.468 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
-[32m2025-12-02 15:41:08.470 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Running automation actions[0m
-[32m2025-12-02 15:41:08.471 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Executing step call service[0m
 [32m2025-12-02 16:00:00.203 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
 [32m2025-12-02 16:00:00.206 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Evening Branch: Running automation actions[0m
 [32m2025-12-02 16:00:00.207 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Evening Branch: Choose at step 1: choice 1: Running automation actions[0m
@@ -86,3 +40,26 @@
 [32m2025-12-02 18:45:19.609 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
 [32m2025-12-02 18:45:20.003 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
 [32m2025-12-02 18:45:20.139 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-02 18:45:20.278 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-02 18:45:20.414 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-02 18:45:21.247 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[31m2025-12-02 18:45:21.248 ERROR (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Error executing script. Service not found for call_service at pos 6: Action shell_command.prepare_ai_context_zip not found[0m
+[33m2025-12-02 18:46:25.959 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alexa_media which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
+[32m2025-12-02 18:47:08.960 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Initialized trigger Flic Button[0m
+[32m2025-12-02 18:47:08.964 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Initialized trigger Living Room Lamp[0m
+[32m2025-12-02 18:47:08.966 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Initialized trigger Nightly GitHub sync[0m
+[32m2025-12-02 18:47:08.979 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Initialized trigger Hue Dimmer Switch[0m
+[32m2025-12-02 18:47:08.988 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Initialized trigger Light Triggers Light[0m
+[32m2025-12-02 18:47:08.998 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
+[32m2025-12-02 18:47:08.999 INFO (MainThread) [homeassistant.components.automation.test_bay] Initialized trigger Test Bay[0m
+[32m2025-12-02 18:47:09.000 INFO (MainThread) [homeassistant.components.automation.helper_automation] Initialized trigger Helper Automation[0m
+[32m2025-12-02 18:47:09.005 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Initialized trigger Battery Low Automation [0m
+[32m2025-12-02 18:47:09.007 INFO (MainThread) [homeassistant.components.automation.goodnight] Initialized trigger Goodnight[0m
+[32m2025-12-02 18:47:09.011 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
+[32m2025-12-02 18:47:09.012 INFO (MainThread) [homeassistant.components.automation.door_automation] Initialized trigger Door Automation[0m
+[32m2025-12-02 18:47:09.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Initialized trigger Bedroom Ceiling Lights (3) -> Set My Room[0m
+[32m2025-12-02 18:47:09.022 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
+[32m2025-12-02 19:02:45.945 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Running script sequence[0m
+[32m2025-12-02 19:02:45.946 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-02 19:02:46.349 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-02 19:02:46.486 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
