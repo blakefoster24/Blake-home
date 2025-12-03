@@ -1,15 +1,4 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-s6-rc: info: service fix-attrs successfully started
-s6-rc: info: service legacy-cont-init: starting
-s6-rc: info: service legacy-cont-init successfully started
-s6-rc: info: service legacy-services: starting
-services-up: info: copying legacy longrun home-assistant (no readiness notification)
-s6-rc: info: service legacy-services successfully started
-[33m2025-12-02 19:10:34.506 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alexa_media which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[33m2025-12-02 19:10:34.510 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration custom_icons which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[33m2025-12-02 19:10:34.513 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[32m2025-12-02 19:10:45.228 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 19:10:45.235 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
 [32m2025-12-02 19:10:45.237 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
 [32m2025-12-02 19:10:45.238 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
 [32m2025-12-02 19:10:45.240 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
@@ -99,3 +88,14 @@ s6-rc: info: service legacy-services successfully started
 [32m2025-12-03 04:22:54.780 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Running script sequence[0m
 [32m2025-12-03 04:22:54.780 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
 [32m2025-12-03 04:22:55.168 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-03 04:22:55.304 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-03 04:22:55.441 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-03 04:22:55.578 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-03 04:22:56.435 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-03 04:22:56.725 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[33m2025-12-03 04:26:41.942 WARNING (Recorder) [homeassistant.components.recorder.entity_registry] Cannot migrate history for entity_id `script.create_push_ha_info_to_github_newest` to `script.create_push_ha_info_to_github` because the new entity_id is already in use[0m
+[33m2025-12-03 04:28:17.776 WARNING (Recorder) [homeassistant.components.recorder.entity_registry] Cannot migrate history for entity_id `script.create_push_ha_info_to_github` to `script.create_push_ha_info_to_github_newest` because the new entity_id is already in use[0m
+[32m2025-12-03 04:29:57.266 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Initialized trigger Nightly GitHub sync[0m
+[32m2025-12-03 04:31:29.063 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Running script sequence[0m
+[32m2025-12-03 04:31:29.064 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-03 04:31:29.474 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m

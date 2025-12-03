@@ -1,4 +1,4 @@
-_Last Updated: 2025-12-03T04:22:54.781485-06:00_
+_Last Updated: 2025-12-03T04:31:29.064646-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -472,16 +472,14 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-<details><summary><b>Script (5)</b></summary>
+<details><summary><b>Script (4)</b></summary>
 
 | Entity ID | Name | State |
 |---|---|---|
 
 | `script.alarm_music_script` | Alarm Music Script | off |
 
-| `script.create_push_ha_info_to_github` | Create & Push HA Info to Github | off |
-
-| `script.create_push_ha_info_to_github_newest` | Create & Push HA Info to Github newest | on |
+| `script.create_push_ha_info_to_github_gemini_zip` | Create & Push HA Info to GitHub & Gemini Zip | on |
 
 | `script.find_remote` | Find Remote | off |
 
@@ -527,11 +525,11 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.bathroom_light_signal_level` | Bathroom Light Signal level | 3 |
 
-| `sensor.bed_presence_bb8594_left_pressure` | Bed Presence Sensor Left Pressure | 96.3679046630859 |
+| `sensor.bed_presence_bb8594_left_pressure` | Bed Presence Sensor Left Pressure | 96.0628204345703 |
 
-| `sensor.bed_presence_bb8594_right_pressure` | Bed Presence Sensor Right Pressure | 90.5023498535156 |
+| `sensor.bed_presence_bb8594_right_pressure` | Bed Presence Sensor Right Pressure | 90.5722198486328 |
 
-| `sensor.bed_presence_bb8594_uptime` | Bed Presence Sensor Uptime | 111544.078125 |
+| `sensor.bed_presence_bb8594_uptime` | Bed Presence Sensor Uptime | 112024.109375 |
 
 | `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Presence Sensor WiFi Signal dB | -53.0 |
 
@@ -557,7 +555,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.blakes_iphone_audio_output` | Blakes iPhone Audio Output | Built-in Speaker |
 
-| `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 80 |
+| `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 85 |
 
 | `sensor.blakes_iphone_battery_state` | Blakes iPhone Battery State | Charging |
 
@@ -579,7 +577,7 @@ United States |
 
 | `sensor.blakes_iphone_ssid` | Blakes iPhone SSID | ATTEPISyDS |
 
-| `sensor.blakes_iphone_storage` | Blakes iPhone Storage | 57.95 |
+| `sensor.blakes_iphone_storage` | Blakes iPhone Storage | 57.94 |
 
 | `sensor.bthome_sensor_3370_battery` | Motion 1 Battery | 100 |
 
@@ -629,7 +627,7 @@ United States |
 
 | `sensor.main_lights_auto_off_at` | Main Lights Auto-off at | unknown |
 
-| `sensor.main_lights_current` | Main Lights Current | 0.0 |
+| `sensor.main_lights_current` | Main Lights Current | 0.01 |
 
 | `sensor.main_lights_current_consumption` | Main Lights Current consumption | 0.0 |
 
@@ -639,17 +637,17 @@ United States |
 
 | `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.0 |
 
-| `sensor.main_lights_voltage` | Main Lights Voltage | 123.1 |
+| `sensor.main_lights_voltage` | Main Lights Voltage | 122.9 |
 
-| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 67.568 |
+| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 68.648 |
 
-| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 21 |
+| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 19 |
 
 | `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | partlycloudy |
 
-| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 19.4 |
+| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 19.202 |
 
-| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 16.052 |
+| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 15.818 |
 
 | `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 90 |
 
@@ -661,7 +659,7 @@ United States |
 
 | `sensor.openweathermap_snow_2` | OpenWeatherMap Snow intensity | 0.0 |
 
-| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 21.596 |
+| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 21.398 |
 
 | `sensor.openweathermap_uv_index_2` | OpenWeatherMap UV index | 0 |
 
@@ -671,9 +669,9 @@ United States |
 
 | `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 801 |
 
-| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 161 |
+| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 143 |
 
-| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 7.00161059413028 |
+| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 5.9949892627058 |
 
 | `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 4.00411596277738 |
 

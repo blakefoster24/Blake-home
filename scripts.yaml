@@ -11,48 +11,6 @@ find_remote:
       entity_id: remote.bedroom_tv
   alias: Find Remote
   description: ''
-create_push_ha_info_to_github_2:
-  alias: Create & Push HA Info to Github
-  description: Generates HA_Overview.md, runs diagnostics (logs/errors), and pushes
-    to GitHub.
-  mode: single
-  sequence:
-  - action: shell_command.write_ha_overview
-    data:
-      content: "# Home Assistant Configuration\n_Last Updated: {{ now().isoformat()
-        }}_\n\n## \U0001F6E0 UI Helpers\nBelow are the input helpers configured in
-        Home Assistant.\n\n{% set helpers = ['input_boolean', 'input_button', 'input_datetime',
-        'input_number', 'input_select', 'input_text', 'counter', 'timer', 'schedule']
-        %}\n{% for domain in helpers %}\n{% set assets = states[domain] | list %}\n{%
-        if assets | count > 0 %}\n### {{ domain | replace('input_', '') | capitalize
-        }}\n| Entity ID | Name | State | Attributes |\n|---|---|---|---|\n{% for s
-        in assets | sort(attribute='entity_id') %}\n{% set details = [] %}\n{% if
-        domain == 'input_number' %}\n  {% set details = details + ['min=' ~ s.attributes.min,
-        'max=' ~ s.attributes.max, 'step=' ~ s.attributes.step] %}\n{% elif domain
-        == 'input_select' %}\n  {% set details = details + ['options=' ~ s.attributes.options
-        | join(', ')] %}\n{% elif domain == 'input_datetime' %}\n  {% set details
-        = details + ['has_date=' ~ s.attributes.has_date, 'has_time=' ~ s.attributes.has_time]
-        %}\n{% elif domain == 'timer' %}\n   {% set details = details + ['duration='
-        ~ s.attributes.duration] %}\n{% elif domain == 'counter' %}\n   {% set details
-        = details + ['min=' ~ s.attributes.minimum, 'max=' ~ s.attributes.maximum]
-        %}\n{% endif %}\n| `{{ s.entity_id }}` | **{{ s.name | replace(\"'\", \"'\\\\''\")
-        }}** | {{ s.state | replace(\"'\", \"'\\\\''\") }} | {{ details | join(',
-        ') | replace(\"'\", \"'\\\\''\") }} |\n{% endfor %}\n\n{% endif %}\n{% endfor
-        %}\n\n---\n\n## \U0001F3E0 All Entities (By Domain)\n{% for domain, items
-        in states | groupby('domain') %}\n{% if domain not in helpers and domain !=
-        'group' %}\n<details><summary><b>{{ domain | title }} ({{ items | length }})</b></summary>\n\n|
-        Entity ID | Name | State |\n|---|---|---|\n{% for s in items | sort(attribute='entity_id')
-        %}\n| `{{ s.entity_id }}` | {{ s.name | replace(\"'\", \"'\\\\''\") }} | {{
-        s.state | replace(\"'\", \"'\\\\''\") }} |\n{% endfor %}\n</details>\n\n{%
-        endif %}\n{% endfor %}\n"
-  - action: shell_command.write_log_slice
-    data: {}
-  - action: shell_command.write_automation_runs
-    data: {}
-  - action: shell_command.write_error_log
-    data: {}
-  - action: shell_command.ha_git_commit_push
-    data: {}
 play_music_alexa:
   alias: Alarm Music
   sequence:

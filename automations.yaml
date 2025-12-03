@@ -198,7 +198,7 @@
     metadata: {}
     data: {}
     target:
-      entity_id: script.create_push_ha_info_to_github
+      entity_id: script.create_push_ha_info_to_github_gemini_zip
   mode: single
 - id: '1759463858553'
   alias: Hue Dimmer Switch
