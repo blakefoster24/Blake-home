@@ -53,16 +53,9 @@ shell_command:
   write_diag_test: >
     bash -c "cd /config && mkdir -p diagnostics && ls -la > diagnostics/diag_test.txt"
 
-  prepare_ai_context_zip: >
-    zip -j /config/www/ha_ai_context.zip 
-    /config/configuration.yaml 
-    /config/automations.yaml 
-    /config/scripts.yaml 
-    /config/scenes.yaml 
-    /config/HA_Overview.md 
-    /config/diagnostics/last_log.txt 
-    /config/diagnostics/automation_runs.txt
-    /config/diagnostics/error_log.txt
+  # UPDATED: Flat Python one-liner. No indentation to break.
+  prepare_ai_context_zip: "python3 -c \"import zipfile, os; files = ['/config/configuration.yaml', '/config/automations.yaml', '/config/scripts.yaml', '/config/scenes.yaml', '/config/HA_Overview.md', '/config/diagnostics/last_log.txt', '/config/diagnostics/automation_runs.txt', '/config/diagnostics/error_log.txt']; z = zipfile.ZipFile('/config/www/ha_ai_context.zip', 'w', zipfile.ZIP_DEFLATED); [z.write(f, os.path.basename(f)) for f in files if os.path.exists(f)]; z.close()\""
+
 
 panel_custom:
   - name: panel_entities

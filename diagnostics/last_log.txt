@@ -1,54 +1,4 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-[32m2025-12-02 15:41:08.471 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Executing step call service[0m
-[32m2025-12-02 16:00:00.203 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
-[32m2025-12-02 16:00:00.206 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Evening Branch: Running automation actions[0m
-[32m2025-12-02 16:00:00.207 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Evening Branch: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-02 16:00:00.208 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Evening Branch: Choose at step 1: choice 1: Executing step Heat - 70[0m
-[32m2025-12-02 16:50:35.001 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Running automation actions[0m
-[32m2025-12-02 16:50:35.002 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-02 16:50:35.003 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 1 of 2[0m
-[32m2025-12-02 16:50:35.003 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
-[32m2025-12-02 16:50:35.004 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
-[32m2025-12-02 16:50:35.019 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
-[32m2025-12-02 16:50:35.023 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
-[32m2025-12-02 16:50:35.029 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Temperature Issue: Running automation actions[0m
-[32m2025-12-02 16:50:36.005 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
-[32m2025-12-02 16:50:36.135 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 2 of 2[0m
-[32m2025-12-02 16:50:36.136 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
-[32m2025-12-02 16:50:36.137 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
-[32m2025-12-02 16:50:37.139 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
-[32m2025-12-02 17:54:48.453 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Running automation actions[0m
-[32m2025-12-02 17:54:48.454 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-02 17:54:48.455 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 1 of 2[0m
-[32m2025-12-02 17:54:48.455 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
-[32m2025-12-02 17:54:48.456 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
-[32m2025-12-02 17:54:49.458 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
-[32m2025-12-02 17:54:49.587 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 2 of 2[0m
-[32m2025-12-02 17:54:49.588 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
-[32m2025-12-02 17:54:49.589 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
-[32m2025-12-02 17:54:50.591 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
-[32m2025-12-02 18:41:31.495 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Running automation actions[0m
-[32m2025-12-02 18:41:31.497 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-02 18:41:31.497 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 1 of 2[0m
-[32m2025-12-02 18:41:31.498 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
-[32m2025-12-02 18:41:31.499 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
-[32m2025-12-02 18:41:32.500 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
-[32m2025-12-02 18:41:32.523 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 2 of 2[0m
-[32m2025-12-02 18:41:32.523 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
-[32m2025-12-02 18:41:32.524 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
-[32m2025-12-02 18:41:33.527 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
-[32m2025-12-02 18:45:19.609 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Running script sequence[0m
-[32m2025-12-02 18:45:19.609 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
-[32m2025-12-02 18:45:20.003 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
-[32m2025-12-02 18:45:20.139 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
-[32m2025-12-02 18:45:20.278 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
-[32m2025-12-02 18:45:20.414 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
-[32m2025-12-02 18:45:21.247 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
-[31m2025-12-02 18:45:21.248 ERROR (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Error executing script. Service not found for call_service at pos 6: Action shell_command.prepare_ai_context_zip not found[0m
-s6-rc: info: service legacy-services: stopping
-[00:46:12] INFO: [32mHome Assistant Core finish process exit code 0[0m
-[00:46:12] INFO: [32mHome Assistant Core service shutdown[0m
-s6-rc: info: service legacy-services successfully stopped
 s6-rc: info: service legacy-cont-init: stopping
 s6-rc: info: service legacy-cont-init successfully stopped
 s6-rc: info: service fix-attrs: stopping
@@ -64,38 +14,88 @@ s6-rc: info: service legacy-cont-init successfully started
 s6-rc: info: service legacy-services: starting
 services-up: info: copying legacy longrun home-assistant (no readiness notification)
 s6-rc: info: service legacy-services successfully started
-[33m2025-12-02 18:46:25.959 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alexa_media which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[33m2025-12-02 18:46:25.963 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration custom_icons which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[33m2025-12-02 18:46:25.966 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[32m2025-12-02 18:46:36.723 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 18:46:36.730 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 18:46:36.732 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 18:46:36.733 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 18:46:36.736 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 18:46:36.738 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 18:46:36.739 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 18:46:36.743 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 18:46:36.744 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 18:46:36.746 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 18:46:36.748 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 18:46:36.750 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 18:46:36.751 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-02 18:47:05.499 INFO (MainThread) [homeassistant.components.scene] Setting up hue.scene[0m
-[32m2025-12-02 18:47:07.567 INFO (MainThread) [homeassistant.core] Starting Home Assistant 2025.11.2[0m
-[32m2025-12-02 18:47:08.960 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Initialized trigger Flic Button[0m
-[32m2025-12-02 18:47:08.964 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Initialized trigger Living Room Lamp[0m
-[32m2025-12-02 18:47:08.966 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Initialized trigger Nightly GitHub sync[0m
-[32m2025-12-02 18:47:08.979 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Initialized trigger Hue Dimmer Switch[0m
-[32m2025-12-02 18:47:08.988 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Initialized trigger Light Triggers Light[0m
-[32m2025-12-02 18:47:08.998 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
-[32m2025-12-02 18:47:08.999 INFO (MainThread) [homeassistant.components.automation.test_bay] Initialized trigger Test Bay[0m
-[32m2025-12-02 18:47:09.000 INFO (MainThread) [homeassistant.components.automation.helper_automation] Initialized trigger Helper Automation[0m
-[32m2025-12-02 18:47:09.005 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Initialized trigger Battery Low Automation [0m
-[32m2025-12-02 18:47:09.007 INFO (MainThread) [homeassistant.components.automation.goodnight] Initialized trigger Goodnight[0m
-[32m2025-12-02 18:47:09.011 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[32m2025-12-02 18:47:09.012 INFO (MainThread) [homeassistant.components.automation.door_automation] Initialized trigger Door Automation[0m
-[32m2025-12-02 18:47:09.013 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Initialized trigger Bedroom Ceiling Lights (3) -> Set My Room[0m
-[32m2025-12-02 18:47:09.022 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
-[32m2025-12-02 19:02:45.945 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Running script sequence[0m
-[32m2025-12-02 19:02:45.946 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
-[32m2025-12-02 19:02:46.349 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[33m2025-12-02 19:10:34.506 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alexa_media which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
+[33m2025-12-02 19:10:34.510 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration custom_icons which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
+[33m2025-12-02 19:10:34.513 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
+[32m2025-12-02 19:10:45.228 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
+[32m2025-12-02 19:10:45.235 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
+[32m2025-12-02 19:10:45.237 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
+[32m2025-12-02 19:10:45.238 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
+[32m2025-12-02 19:10:45.240 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
+[32m2025-12-02 19:10:45.242 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
+[32m2025-12-02 19:10:45.244 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
+[32m2025-12-02 19:10:45.245 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
+[32m2025-12-02 19:10:45.252 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
+[32m2025-12-02 19:10:45.254 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
+[32m2025-12-02 19:10:45.255 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
+[32m2025-12-02 19:10:45.258 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
+[32m2025-12-02 19:10:45.260 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
+[32m2025-12-02 19:11:14.478 INFO (MainThread) [homeassistant.components.scene] Setting up hue.scene[0m
+[32m2025-12-02 19:11:16.212 INFO (MainThread) [homeassistant.core] Starting Home Assistant 2025.11.2[0m
+[32m2025-12-02 19:11:17.429 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Initialized trigger Flic Button[0m
+[32m2025-12-02 19:11:17.435 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Initialized trigger Living Room Lamp[0m
+[32m2025-12-02 19:11:17.437 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Initialized trigger Nightly GitHub sync[0m
+[32m2025-12-02 19:11:17.453 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Initialized trigger Hue Dimmer Switch[0m
+[32m2025-12-02 19:11:17.454 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Initialized trigger Light Triggers Light[0m
+[32m2025-12-02 19:11:17.460 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
+[32m2025-12-02 19:11:17.461 INFO (MainThread) [homeassistant.components.automation.test_bay] Initialized trigger Test Bay[0m
+[32m2025-12-02 19:11:17.462 INFO (MainThread) [homeassistant.components.automation.helper_automation] Initialized trigger Helper Automation[0m
+[32m2025-12-02 19:11:17.465 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Initialized trigger Battery Low Automation [0m
+[32m2025-12-02 19:11:17.469 INFO (MainThread) [homeassistant.components.automation.goodnight] Initialized trigger Goodnight[0m
+[32m2025-12-02 19:11:17.472 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
+[32m2025-12-02 19:11:17.473 INFO (MainThread) [homeassistant.components.automation.door_automation] Initialized trigger Door Automation[0m
+[32m2025-12-02 19:11:17.474 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Initialized trigger Bedroom Ceiling Lights (3) -> Set My Room[0m
+[32m2025-12-02 19:11:17.477 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
+[32m2025-12-02 19:45:18.495 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
+[32m2025-12-02 19:45:18.502 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Running automation actions[0m
+[32m2025-12-02 19:45:18.503 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Executing step call service[0m
+[32m2025-12-02 19:45:18.516 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
+[32m2025-12-02 19:45:18.522 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Temperature Issue: Running automation actions[0m
+[32m2025-12-02 19:45:18.525 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2025-12-02 19:45:18.529 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 2: Running automation actions[0m
+[32m2025-12-02 19:45:18.530 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 2: Executing step Set Home Timestamp[0m
+[32m2025-12-02 19:48:47.755 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Running automation actions[0m
+[32m2025-12-02 19:48:47.756 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step assigning variables[0m
+[32m2025-12-02 19:48:47.766 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step call service[0m
+[32m2025-12-02 19:48:47.771 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step Log Variables[0m
+[32m2025-12-02 19:48:47.779 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Running automation actions[0m
+[32m2025-12-02 19:48:47.781 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Arriving Branch: Running automation actions[0m
+[32m2025-12-02 19:48:47.782 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Arriving Branch: Executing step call service[0m
+[32m2025-12-02 19:48:47.878 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions[0m
+[32m2025-12-02 19:48:47.880 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Ceiling Light -> Lamp: Running automation actions[0m
+[32m2025-12-02 19:48:47.881 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Ceiling Light -> Lamp: Executing step call service[0m
+[32m2025-12-02 19:48:47.887 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
+[32m2025-12-02 19:48:47.889 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
+[32m2025-12-02 19:48:47.897 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
+[32m2025-12-02 19:48:47.964 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Arriving Branch: Executing step call service[0m
+[32m2025-12-02 19:48:48.336 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions[0m
+[32m2025-12-02 19:48:48.338 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Running automation actions[0m
+[32m2025-12-02 19:48:48.338 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Executing step call service[0m
+[32m2025-12-02 19:48:48.367 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Executing step wait for trigger (timeout: 0:45:00)[0m
+[32m2025-12-02 19:48:48.369 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Initialized trigger[0m
+[32m2025-12-02 19:48:52.890 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Timeout reached, abort script.[0m
+[32m2025-12-02 20:33:48.372 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Executing step call service[0m
+[32m2025-12-02 21:36:14.848 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
+[32m2025-12-02 21:36:14.850 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Running automation actions[0m
+[32m2025-12-02 21:36:14.851 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Executing step call service[0m
+[32m2025-12-02 22:59:09.710 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
+[32m2025-12-02 22:59:09.711 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
+[32m2025-12-02 22:59:09.858 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
+[32m2025-12-02 22:59:09.859 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
+[32m2025-12-02 22:59:09.860 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
+[32m2025-12-02 22:59:14.860 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Timeout reached, abort script.[0m
+[32m2025-12-02 23:00:00.221 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
+[32m2025-12-02 23:00:00.223 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Running automation actions[0m
+[32m2025-12-02 23:00:00.225 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Running automation actions[0m
+[32m2025-12-02 23:00:00.225 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
+[32m2025-12-02 23:00:00.666 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
+[31m2025-12-02 23:11:24.372 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device[0m
+[32m2025-12-03 00:01:00.221 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
+[32m2025-12-03 00:01:00.223 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
+[32m2025-12-03 00:56:14.830 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
+[32m2025-12-03 01:36:14.848 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
+[32m2025-12-03 02:00:00.396 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
+[32m2025-12-03 02:00:00.396 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
+[32m2025-12-03 02:00:00.398 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
+[32m2025-12-03 02:00:00.399 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-03 02:00:00.801 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
