@@ -1,101 +1,101 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-[33m2025-12-02 04:59:12.124 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[32m2025-12-02 09:12:06.789 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Flic Button: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-02 09:12:06.789 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Flic Button: Choose at step 1: choice 1: Executing step call service[0m
+[32m2025-12-02 09:14:26.776 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Running automation actions[0m
+[32m2025-12-02 09:14:26.776 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step assigning variables[0m
+[32m2025-12-02 09:14:26.787 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step call service[0m
+[32m2025-12-02 09:14:26.790 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step Log Variables[0m
+[32m2025-12-02 09:14:26.813 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Running automation actions[0m
+[32m2025-12-02 09:14:26.814 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Leaving Branch: Running automation actions[0m
+[32m2025-12-02 09:14:26.815 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Leaving Branch: Executing step call service[0m
+[32m2025-12-02 09:14:26.852 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Music Off: Executing step call service[0m
+[32m2025-12-02 09:14:26.854 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Music Off: Executing step call service[0m
+[32m2025-12-02 09:14:26.867 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Executing step call service[0m
+[32m2025-12-02 09:14:26.891 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
+[32m2025-12-02 09:14:26.892 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
+[32m2025-12-02 09:14:26.894 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
+[32m2025-12-02 09:14:27.318 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Executing step call service[0m
+[32m2025-12-02 09:14:31.894 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Timeout reached, abort script.[0m
+[32m2025-12-02 09:17:57.519 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
+[32m2025-12-02 09:17:57.523 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn off Branch: Running automation actions[0m
+[32m2025-12-02 09:17:57.526 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn off Branch: Executing step call service[0m
+[32m2025-12-02 09:17:57.538 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
+[32m2025-12-02 09:17:57.540 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Away Branch: Running automation actions[0m
+[32m2025-12-02 09:17:57.541 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Away Branch: Executing step call service[0m
+[32m2025-12-02 09:20:00.198 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
+[32m2025-12-02 09:20:00.201 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Temperature Issue: Running automation actions[0m
+[33m2025-12-02 09:21:33.155 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
 ('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 04:59:12.125 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-02 09:21:33.156 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
 ('Cannot serialize non-str key None',)[0m
-[32m2025-12-02 05:03:10.515 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
-[32m2025-12-02 05:03:10.516 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-02 05:03:10.518 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Running automation actions[0m
-[32m2025-12-02 05:03:10.519 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Choose at step 1: choice 1: If at step 1: Executing step call service[0m
-[33m2025-12-02 05:09:16.053 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[31m2025-12-02 09:26:41.802 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device[0m
+[33m2025-12-02 09:31:37.160 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
 ('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 05:09:16.053 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-02 09:31:37.160 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
 ('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 05:19:20.093 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-02 09:41:41.091 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
 ('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 05:19:20.093 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-02 09:41:41.091 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
 ('Cannot serialize non-str key None',)[0m
-[32m2025-12-02 05:26:10.478 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
-[32m2025-12-02 05:26:10.479 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-02 05:26:10.480 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service[0m
-[33m2025-12-02 05:29:24.121 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[32m2025-12-02 09:45:00.483 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
+[33m2025-12-02 09:51:45.493 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
 ('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 05:29:24.122 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+[33m2025-12-02 09:51:45.493 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
 ('Cannot serialize non-str key None',)[0m
-[32m2025-12-02 05:38:17.085 INFO (MainThread) [homeassistant.components.automation.door_automation] Initialized trigger Door Automation[0m
-[32m2025-12-02 05:38:32.357 INFO (MainThread) [homeassistant.components.automation.door_automation] Initialized trigger Door Automation[0m
-[32m2025-12-02 05:39:23.209 INFO (MainThread) [homeassistant.components.automation.door_automation] Initialized trigger Door Automation[0m
-[33m2025-12-02 05:39:28.106 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 05:39:28.106 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[32m2025-12-02 05:39:56.718 INFO (MainThread) [homeassistant.components.automation.helper_automation] Initialized trigger Helper Automation[0m
-[32m2025-12-02 05:40:05.202 INFO (MainThread) [homeassistant.components.automation.helper_automation] Initialized trigger Helper Automation[0m
-[33m2025-12-02 05:49:32.466 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 05:49:32.466 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[32m2025-12-02 05:56:33.808 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[33m2025-12-02 05:59:37.062 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 05:59:37.062 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[32m2025-12-02 06:01:03.113 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[32m2025-12-02 06:04:50.979 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[32m2025-12-02 06:05:11.870 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[32m2025-12-02 06:05:21.575 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[32m2025-12-02 06:06:27.767 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[32m2025-12-02 06:08:26.848 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[33m2025-12-02 06:09:41.075 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 06:09:41.076 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[32m2025-12-02 06:10:48.173 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[32m2025-12-02 06:11:44.040 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[32m2025-12-02 06:14:08.240 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[32m2025-12-02 06:15:22.016 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[33m2025-12-02 06:19:45.072 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 06:19:45.073 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 06:29:49.243 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 06:29:49.244 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[32m2025-12-02 06:35:52.573 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[32m2025-12-02 06:36:08.416 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-02 06:36:08.417 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
-[32m2025-12-02 06:36:57.344 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-02 06:36:57.345 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
-[32m2025-12-02 06:37:13.597 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[32m2025-12-02 06:37:29.144 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-02 06:37:29.145 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
-[32m2025-12-02 06:38:18.452 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-02 06:38:18.453 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
-[32m2025-12-02 06:38:28.336 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[33m2025-12-02 06:39:53.093 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 06:39:53.094 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[32m2025-12-02 06:41:22.148 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Initialized trigger Hue Dimmer Switch[0m
-[33m2025-12-02 06:49:57.484 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 06:49:57.485 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[32m2025-12-02 06:53:14.921 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Running automation actions[0m
-[32m2025-12-02 06:53:14.923 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-02 06:53:14.923 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 1 of 2[0m
-[32m2025-12-02 06:53:14.924 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
-[32m2025-12-02 06:53:14.930 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
-[32m2025-12-02 06:53:15.932 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
-[32m2025-12-02 06:53:15.957 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 2 of 2[0m
-[32m2025-12-02 06:53:15.958 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
-[32m2025-12-02 06:53:15.959 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
-[32m2025-12-02 06:53:16.961 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
-[33m2025-12-02 07:00:02.887 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[33m2025-12-02 07:00:02.888 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5d3dd010>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-('Cannot serialize non-str key None',)[0m
-[32m2025-12-02 07:07:46.479 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
-[32m2025-12-02 07:07:46.480 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
-[32m2025-12-02 07:07:46.869 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[33m2025-12-02 11:42:08.368 WARNING (MainThread) [homeassistant.components.template.trigger] Error evaluating 'template' trigger for 'Thermostat': ValueError: Template error: float got invalid input 'unavailable' when rendering template '{{ states('sensor.nest_thermostat_temperature') | float > 76 
+   or states('sensor.nest_thermostat_temperature') | float < 64 }}' but no default was specified[0m
+[33m2025-12-02 11:54:52.947 WARNING (MainThread) [homeassistant.components.template.trigger] Error evaluating 'template' trigger for 'Thermostat': ValueError: Template error: float got invalid input 'unavailable' when rendering template '{{ states('sensor.nest_thermostat_temperature') | float > 76 
+   or states('sensor.nest_thermostat_temperature') | float < 64 }}' but no default was specified[0m
+[32m2025-12-02 12:18:34.975 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
+[32m2025-12-02 12:18:34.978 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn off Branch: Running automation actions[0m
+[32m2025-12-02 12:18:34.982 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn off Branch: Executing step call service[0m
+[32m2025-12-02 12:18:34.991 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
+[32m2025-12-02 12:18:34.993 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Away Branch: Running automation actions[0m
+[32m2025-12-02 12:18:34.993 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Away Branch: Executing step call service[0m
+[32m2025-12-02 13:00:00.330 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
+[32m2025-12-02 13:00:00.332 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 1pm set workday tomorrow toggle: Running automation actions[0m
+[32m2025-12-02 13:00:00.339 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 1pm set workday tomorrow toggle: Workday Schedule : Running automation actions[0m
+[32m2025-12-02 13:00:00.340 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 1pm set workday tomorrow toggle: Workday Schedule : Executing step call service[0m
+[32m2025-12-02 15:41:08.468 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
+[32m2025-12-02 15:41:08.470 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Running automation actions[0m
+[32m2025-12-02 15:41:08.471 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Executing step call service[0m
+[32m2025-12-02 16:00:00.203 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
+[32m2025-12-02 16:00:00.206 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Evening Branch: Running automation actions[0m
+[32m2025-12-02 16:00:00.207 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Evening Branch: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-02 16:00:00.208 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Evening Branch: Choose at step 1: choice 1: Executing step Heat - 70[0m
+[32m2025-12-02 16:50:35.001 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Running automation actions[0m
+[32m2025-12-02 16:50:35.002 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-02 16:50:35.003 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 1 of 2[0m
+[32m2025-12-02 16:50:35.003 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
+[32m2025-12-02 16:50:35.004 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
+[32m2025-12-02 16:50:35.019 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
+[32m2025-12-02 16:50:35.023 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
+[32m2025-12-02 16:50:35.029 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Temperature Issue: Running automation actions[0m
+[32m2025-12-02 16:50:36.005 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
+[32m2025-12-02 16:50:36.135 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 2 of 2[0m
+[32m2025-12-02 16:50:36.136 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
+[32m2025-12-02 16:50:36.137 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
+[32m2025-12-02 16:50:37.139 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
+[32m2025-12-02 17:54:48.453 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Running automation actions[0m
+[32m2025-12-02 17:54:48.454 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-02 17:54:48.455 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 1 of 2[0m
+[32m2025-12-02 17:54:48.455 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
+[32m2025-12-02 17:54:48.456 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
+[32m2025-12-02 17:54:49.458 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
+[32m2025-12-02 17:54:49.587 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 2 of 2[0m
+[32m2025-12-02 17:54:49.588 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
+[32m2025-12-02 17:54:49.589 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
+[32m2025-12-02 17:54:50.591 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
+[32m2025-12-02 18:41:31.495 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Running automation actions[0m
+[32m2025-12-02 18:41:31.497 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-02 18:41:31.497 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 1 of 2[0m
+[32m2025-12-02 18:41:31.498 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
+[32m2025-12-02 18:41:31.499 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
+[32m2025-12-02 18:41:32.500 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
+[32m2025-12-02 18:41:32.523 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 2 of 2[0m
+[32m2025-12-02 18:41:32.523 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
+[32m2025-12-02 18:41:32.524 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
+[32m2025-12-02 18:41:33.527 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
+[32m2025-12-02 18:45:19.609 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Running script sequence[0m
+[32m2025-12-02 18:45:19.609 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-02 18:45:20.003 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m

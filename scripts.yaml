@@ -56,171 +56,184 @@ create_push_ha_info_to_github_2:
 play_music_alexa:
   alias: Alarm Music
   sequence:
-  - action: input_boolean.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: input_boolean.disable_toggle
-  - alias: Play Music
-    sequence:
-    - action: media_player.volume_set
-      metadata: {}
-      data:
-        volume_level: 0.01
-      target:
-        entity_id: media_player.everywhere
-    - action: media_player.shuffle_set
-      metadata: {}
-      data:
-        shuffle: true
-      target:
-        entity_id: media_player.everywhere
-    - action: media_player.media_next_track
-      metadata: {}
-      data: {}
-      target:
-        entity_id: media_player.everywhere
-      enabled: true
-    - delay:
-        hours: 0
-        minutes: 0
-        seconds: 5
-        milliseconds: 0
-    - action: media_player.media_next_track
-      metadata: {}
-      data: {}
-      target:
-        entity_id: media_player.everywhere
-      enabled: true
-  - alias: Music Playing Check
-    if:
-    - condition: state
-      entity_id: media_player.everywhere
-      state: playing
-    then: []
-    else:
-    - action: media_player.volume_set
-      metadata: {}
-      data:
-        volume_level: 0.01
-      target:
-        entity_id:
-        - media_player.blake_s_echo_pop
-    - delay:
-        hours: 0
-        minutes: 0
-        seconds: 2
-        milliseconds: 0
-    - action: media_player.play_media
-      metadata: {}
-      data:
-        media:
-          media_content_id: music alarm
-          media_content_type: routine
-      target:
-        entity_id:
-        - media_player.blake_s_echo_pop
-    - delay:
-        hours: 0
-        minutes: 0
-        seconds: 5
-        milliseconds: 0
-    - action: media_player.shuffle_set
-      metadata: {}
-      data:
-        shuffle: true
-      target:
-        entity_id: media_player.everywhere
-    - action: media_player.media_next_track
-      metadata: {}
-      data: {}
-      target:
-        entity_id: media_player.everywhere
-      enabled: true
-  - repeat:
-      count: 4
+  - parallel:
+    - alias: Music Off
       sequence:
-      - action: media_player.volume_set
+      - action: input_boolean.turn_on
         metadata: {}
-        data:
-          volume_level: '{{ 0.02 + (repeat.index * 0.3) }}'
+        data: {}
+        target:
+          entity_id: input_boolean.disable_toggle
+      - wait_for_trigger:
+        - trigger: device
+          device_id: 6e3f05f16e73548265ce22e622f4a268
+          domain: hue
+          type: short_release
+          subtype: 4
+          id: bottom_short
+        - trigger: template
+          value_template: "{{ is_state('binary_sensor.front_door', 'on') \n   and
+            is_state('binary_sensor.motion_1_motion', 'on') \n   and as_timestamp(states.binary_sensor.motion_1_motion.last_changed)
+            < as_timestamp(states.binary_sensor.front_door.last_changed) }}\n"
+          alias: Door - Leaving Logic
+        timeout:
+          hours: 0
+          minutes: 30
+          seconds: 0
+          milliseconds: 0
+      - action: media_player.media_stop
+        metadata: {}
+        data: {}
         target:
           entity_id: media_player.everywhere
       - delay:
           hours: 0
           minutes: 0
-          seconds: 2
+          seconds: 30
           milliseconds: 0
-    alias: Volume Up
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 10
-      milliseconds: 0
-  - action: light.turn_on
-    metadata: {}
-    data:
-      transition: 15
-    target:
-      entity_id: light.bedroom_lamp
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 10
-      milliseconds: 0
-  - action: fan.turn_off
-    metadata: {}
-    data: {}
-    target:
-      entity_id: fan.bedroom_fan
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 45
-      milliseconds: 0
-  - action: light.turn_on
-    metadata: {}
-    data: {}
-    target:
-      entity_id: light.bedroom_ceiling_lights
-  - alias: Music Off
-    sequence:
-    - wait_for_trigger:
-      - trigger: device
-        device_id: 6e3f05f16e73548265ce22e622f4a268
-        domain: hue
-        type: short_release
-        subtype: 4
-        id: bottom_short
-      - trigger: template
-        value_template: "{{ is_state('binary_sensor.front_door', 'on') \n   and is_state('binary_sensor.motion_1_motion',
-          'on') \n   and as_timestamp(states.binary_sensor.motion_1_motion.last_changed)
-          < as_timestamp(states.binary_sensor.front_door.last_changed) }}\n"
-        alias: Door - Leaving Logic
-      timeout:
-        hours: 0
-        minutes: 30
-        seconds: 0
-        milliseconds: 0
-    - action: media_player.media_stop
-      metadata: {}
-      data: {}
-      target:
-        entity_id: media_player.everywhere
-    - action: media_player.volume_set
-      metadata: {}
-      data:
-        volume_level: 0.4
-      target:
-        entity_id: media_player.everywhere
-  - action: input_boolean.turn_off
-    metadata: {}
-    data: {}
-    target:
-      entity_id: input_boolean.disable_toggle
+      - action: media_player.volume_set
+        metadata: {}
+        data:
+          volume_level: 0.4
+        target:
+          entity_id: media_player.everywhere
+      - action: input_boolean.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: input_boolean.disable_toggle
+    - sequence:
+      - alias: Play Music
+        sequence:
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.01
+          target:
+            entity_id: media_player.everywhere
+        - action: media_player.shuffle_set
+          metadata: {}
+          data:
+            shuffle: true
+          target:
+            entity_id: media_player.everywhere
+        - action: media_player.media_next_track
+          metadata: {}
+          data: {}
+          target:
+            entity_id: media_player.everywhere
+          enabled: true
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 5
+            milliseconds: 0
+        - action: media_player.media_next_track
+          metadata: {}
+          data: {}
+          target:
+            entity_id: media_player.everywhere
+          enabled: true
+      - alias: Music Playing Check
+        if:
+        - condition: state
+          entity_id: media_player.everywhere
+          state: playing
+        then: []
+        else:
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.01
+          target:
+            entity_id:
+            - media_player.blake_s_echo_pop
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 2
+            milliseconds: 0
+        - action: media_player.play_media
+          metadata: {}
+          data:
+            media:
+              media_content_id: music alarm
+              media_content_type: routine
+          target:
+            entity_id:
+            - media_player.blake_s_echo_pop
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.01
+          target:
+            entity_id: media_player.everywhere
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 5
+            milliseconds: 0
+        - action: media_player.shuffle_set
+          metadata: {}
+          data:
+            shuffle: true
+          target:
+            entity_id: media_player.everywhere
+        - action: media_player.media_next_track
+          metadata: {}
+          data: {}
+          target:
+            entity_id: media_player.everywhere
+          enabled: true
+      - alias: Volume Up
+        repeat:
+          count: 4
+          sequence:
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: '{{ 0.02 + (repeat.index * 0.03) }}'
+            target:
+              entity_id: media_player.everywhere
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 10
+          milliseconds: 0
+      - action: light.turn_on
+        metadata: {}
+        data:
+          transition: 15
+        target:
+          entity_id: light.bedroom_lamp
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 10
+          milliseconds: 0
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.bedroom_ceiling_lights
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 45
+          milliseconds: 0
+      - action: fan.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: fan.bedroom_fan
   description: ''
 set_date_to_today:
-  alias: Set Date to Today
+  alias: Scheduled Off & Working Override dashboard script
   icon: mdi:calendar-today
   mode: parallel
   fields:
@@ -234,3 +247,49 @@ set_date_to_today:
     data:
       date: '{{ now().strftime(''%Y-%m-%d'') }}'
   description: ''
+create_push_ha_info_to_github_newest:
+  alias: Create & Push HA Info to Github newest
+  description: Generates HA_Overview.md, runs diagnostics, pushes to GitHub, AND creates
+    a zip for download.
+  mode: single
+  sequence:
+  - action: shell_command.write_ha_overview
+    data:
+      content: "# Home Assistant Configuration _Last Updated: {{ now().isoformat()
+        }}_\n## \U0001F6E0 UI Helpers Below are the input helpers configured in Home
+        Assistant.\n{% set helpers = ['input_boolean', 'input_button', 'input_datetime',
+        'input_number', 'input_select', 'input_text', 'counter', 'timer', 'schedule']
+        %} {% for domain in helpers %} {% set assets = states[domain] | list %} {%
+        if assets | count > 0 %} ### {{ domain | replace('input_', '') | capitalize
+        }} | Entity ID | Name | State | Attributes | |---|---|---|---| {% for s in
+        assets | sort(attribute='entity_id') %} {% set details = [] %} {% if domain
+        == 'input_number' %}\n  {% set details = details + ['min=' ~ s.attributes.min,
+        'max=' ~ s.attributes.max, 'step=' ~ s.attributes.step] %}\n{% elif domain
+        == 'input_select' %}\n  {% set details = details + ['options=' ~ s.attributes.options
+        | join(', ')] %}\n{% elif domain == 'input_datetime' %}\n  {% set details
+        = details + ['has_date=' ~ s.attributes.has_date, 'has_time=' ~ s.attributes.has_time]
+        %}\n{% elif domain == 'timer' %}\n   {% set details = details + ['duration='
+        ~ s.attributes.duration] %}\n{% elif domain == 'counter' %}\n   {% set details
+        = details + ['min=' ~ s.attributes.minimum, 'max=' ~ s.attributes.maximum]
+        %}\n{% endif %} | `{{ s.entity_id }}` | **{{ s.name | replace(\"'\", \"'\\\\''\")
+        }}** | {{ s.state | replace(\"'\", \"'\\\\''\") }} | {{ details | join(',
+        ') | replace(\"'\", \"'\\\\''\") }} | {% endfor %}\n{% endif %} {% endfor
+        %}\n---\n## \U0001F3E0 All Entities (By Domain) {% for domain, items in states
+        | groupby('domain') %} {% if domain not in helpers and domain != 'group' %}
+        <details><summary><b>{{ domain | title }} ({{ items | length }})</b></summary>\n|
+        Entity ID | Name | State | |---|---|---| {% for s in items | sort(attribute='entity_id')
+        %} | `{{ s.entity_id }}` | {{ s.name | replace(\"'\", \"'\\\\''\") }} | {{
+        s.state | replace(\"'\", \"'\\\\''\") }} | {% endfor %} </details>\n{% endif
+        %} {% endfor %}"
+  - action: shell_command.write_log_slice
+  - action: shell_command.write_automation_runs
+  - action: shell_command.write_error_log
+  - action: shell_command.ha_git_commit_push
+  - action: shell_command.prepare_ai_context_zip
+  - action: notify.mobile_app_blakes_iphone
+    data:
+      title: Backup Complete
+      message: GitHub updated & Zip ready. Tap to download.
+      data:
+        url: /local/ha_ai_context.zip
+        clickAction: /local/ha_ai_context.zip
