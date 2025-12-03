@@ -1,4 +1,4 @@
-_Last Updated: 2025-12-03T02:00:00.399934-06:00_
+_Last Updated: 2025-12-03T04:22:54.781485-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -21,7 +21,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-| `input_boolean.phone_active` | **Phone active** | off |  |
+| `input_boolean.phone_active` | **Phone active** | on |  |
 
 
 
@@ -309,7 +309,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `event.front_door_sensor_button` | Front Door Sensor Button | 2025-10-19T05:12:22.248+00:00 |
 
-| `event.hue_dimmer_switch_button_1` | Hue Dimmer Switch Button 1 | 2025-12-02T14:45:18.661+00:00 |
+| `event.hue_dimmer_switch_button_1` | Hue Dimmer Switch Button 1 | 2025-12-03T10:16:10.365+00:00 |
 
 | `event.hue_dimmer_switch_button_2` | Hue Dimmer Switch Button 2 | 2025-11-27T01:36:36.755+00:00 |
 
@@ -329,7 +329,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `fan.bedroom_ceiling_fan` | Bedroom Ceiling Fan | off |
 
-| `fan.bedroom_fan` | Fan | on |
+| `fan.bedroom_fan` | Fan | off |
 
 </details>
 
@@ -349,7 +349,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `light.bedroom_ceiling_lights` | Bedroom Ceiling Lights | off |
 
-| `light.bedroom_lamp` | Bedroom Lamp | off |
+| `light.bedroom_lamp` | Bedroom Lamp | on |
 
 | `light.closet_light` | Closet Light | off |
 
@@ -369,7 +369,7 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `media_player.bedroom_tv` | Bedroom Tv | off |
+| `media_player.bedroom_tv` | Bedroom Tv | on |
 
 | `media_player.blake_s_echo_dot` | Blake's Echo Dot | idle |
 
@@ -431,7 +431,7 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `remote.bedroom_tv` | Bedroom Tv Remote | off |
+| `remote.bedroom_tv` | Bedroom Tv Remote | on |
 
 </details>
 
@@ -461,7 +461,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `scene.night_light` | Night Light | 2025-09-26T00:17:04.739409+00:00 |
 
-| `scene.set_my_room` | Set My Room | 2025-12-02T14:45:18.666821+00:00 |
+| `scene.set_my_room` | Set My Room | 2025-12-03T10:16:10.374704+00:00 |
 
 | `scene.thermostat_away` | Thermostat Away | 2025-12-02T18:18:34.994764+00:00 |
 
@@ -479,9 +479,9 @@ Below are the input helpers configured in Home Assistant.
 
 | `script.alarm_music_script` | Alarm Music Script | off |
 
-| `script.create_push_ha_info_to_github` | Create & Push HA Info to Github | on |
+| `script.create_push_ha_info_to_github` | Create & Push HA Info to Github | off |
 
-| `script.create_push_ha_info_to_github_newest` | Create & Push HA Info to Github newest | off |
+| `script.create_push_ha_info_to_github_newest` | Create & Push HA Info to Github newest | on |
 
 | `script.find_remote` | Find Remote | off |
 
@@ -511,9 +511,9 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `sensor.50_onn_roku_tv_active_app` | Bedroom TV Active app | unknown |
+| `sensor.50_onn_roku_tv_active_app` | Bedroom TV Active app | YouTube |
 
-| `sensor.50_onn_roku_tv_active_app_id` | Bedroom TV Active app ID | unknown |
+| `sensor.50_onn_roku_tv_active_app_id` | Bedroom TV Active app ID | 837 |
 
 | `sensor.backup_backup_manager_state` | Backup Backup Manager state | idle |
 
@@ -527,15 +527,15 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.bathroom_light_signal_level` | Bathroom Light Signal level | 3 |
 
-| `sensor.bed_presence_bb8594_left_pressure` | Bed Presence Sensor Left Pressure | 96.1734390258789 |
+| `sensor.bed_presence_bb8594_left_pressure` | Bed Presence Sensor Left Pressure | 96.3679046630859 |
 
-| `sensor.bed_presence_bb8594_right_pressure` | Bed Presence Sensor Right Pressure | 93.1140594482422 |
+| `sensor.bed_presence_bb8594_right_pressure` | Bed Presence Sensor Right Pressure | 90.5023498535156 |
 
-| `sensor.bed_presence_bb8594_uptime` | Bed Presence Sensor Uptime | 102963.8125 |
+| `sensor.bed_presence_bb8594_uptime` | Bed Presence Sensor Uptime | 111544.078125 |
 
-| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Presence Sensor WiFi Signal dB | -55.0 |
+| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Presence Sensor WiFi Signal dB | -53.0 |
 
-| `sensor.bed_presence_bb8594_wifi_signal_percent` | Bed Presence Sensor WiFi Signal Percent | 90.0 |
+| `sensor.bed_presence_bb8594_wifi_signal_percent` | Bed Presence Sensor WiFi Signal Percent | 94.0 |
 
 | `sensor.bedroom_ceiling_fan_energy_consumed` | Bedroom Ceiling Fan Energy consumed | 5.448011 |
 
@@ -569,7 +569,7 @@ Below are the input helpers configured in Home Assistant.
 O'Fallon MO 63368
 United States |
 
-| `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger | Periodic |
+| `sensor.blakes_iphone_last_update_trigger` | Blakes iPhone Last Update Trigger | Launch |
 
 | `sensor.blakes_iphone_location_permission` | Blakes iPhone Location permission | Authorized Always |
 
@@ -579,21 +579,21 @@ United States |
 
 | `sensor.blakes_iphone_ssid` | Blakes iPhone SSID | ATTEPISyDS |
 
-| `sensor.blakes_iphone_storage` | Blakes iPhone Storage | 58.02 |
+| `sensor.blakes_iphone_storage` | Blakes iPhone Storage | 57.95 |
 
 | `sensor.bthome_sensor_3370_battery` | Motion 1 Battery | 100 |
 
 | `sensor.bthome_sensor_3370_illuminance` | Motion 1 Illuminance | 0.0 |
 
-| `sensor.bthome_sensor_3370_packet_id` | Motion 1 Packet Id | 14 |
+| `sensor.bthome_sensor_3370_packet_id` | Motion 1 Packet Id | 17 |
 
-| `sensor.bthome_sensor_3370_signal_strength` | Motion 1 Signal Strength | -70 |
+| `sensor.bthome_sensor_3370_signal_strength` | Motion 1 Signal Strength | -72 |
 
 | `sensor.closet_light_auto_off_at` | Closet Light Auto-off at | unknown |
 
 | `sensor.closet_light_signal_level` | Closet Light Signal level | 3 |
 
-| `sensor.front_door_sensor_battery` | Front Door Sensor Battery | 92 |
+| `sensor.front_door_sensor_battery` | Front Door Sensor Battery | 91 |
 
 | `sensor.front_door_sensor_illuminance` | Front Door Sensor Illuminance | 15.0 |
 
@@ -639,41 +639,41 @@ United States |
 
 | `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.0 |
 
-| `sensor.main_lights_voltage` | Main Lights Voltage | 123.3 |
+| `sensor.main_lights_voltage` | Main Lights Voltage | 123.1 |
 
-| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 67.64 |
+| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 67.568 |
 
-| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 27 |
+| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 21 |
 
 | `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | partlycloudy |
 
-| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 19.076 |
+| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 19.4 |
 
-| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 16.214 |
+| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 16.052 |
 
-| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 88 |
+| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 90 |
 
 | `sensor.openweathermap_precipitation_kind_2` | OpenWeatherMap Precipitation kind | None |
 
-| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.7793461031332 |
+| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.7648423287434 |
 
 | `sensor.openweathermap_rain_2` | OpenWeatherMap Rain intensity | 0.0 |
 
 | `sensor.openweathermap_snow_2` | OpenWeatherMap Snow intensity | 0.0 |
 
-| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 21.74 |
+| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 21.596 |
 
 | `sensor.openweathermap_uv_index_2` | OpenWeatherMap UV index | 0 |
 
 | `sensor.openweathermap_visibility_2` | OpenWeatherMap Visibility | 32808.3989501312 |
 
-| `sensor.openweathermap_weather_2` | OpenWeatherMap Weather | scattered clouds |
+| `sensor.openweathermap_weather_2` | OpenWeatherMap Weather | few clouds |
 
-| `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 802 |
+| `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 801 |
 
-| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 129 |
+| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 161 |
 
-| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 5.01073729420186 |
+| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 7.00161059413028 |
 
 | `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 4.00411596277738 |
 
@@ -753,7 +753,7 @@ United States |
 
 | `switch.bedroom_ceiling_lights` | Bedroom Ceiling Lights | off |
 
-| `switch.bedroom_fan` | Fan | on |
+| `switch.bedroom_fan` | Fan | off |
 
 | `switch.blake_s_echo_dot_do_not_disturb_switch` | Blake's Echo Dot do not disturb switch | on |
 

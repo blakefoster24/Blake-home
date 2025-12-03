@@ -1,13 +1,4 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-s6-rc: info: service legacy-cont-init: stopping
-s6-rc: info: service legacy-cont-init successfully stopped
-s6-rc: info: service fix-attrs: stopping
-s6-rc: info: service fix-attrs successfully stopped
-s6-rc: info: service s6rc-oneshot-runner: stopping
-s6-rc: info: service s6rc-oneshot-runner successfully stopped
-s6-rc: info: service s6rc-oneshot-runner: starting
-s6-rc: info: service s6rc-oneshot-runner successfully started
-s6-rc: info: service fix-attrs: starting
 s6-rc: info: service fix-attrs successfully started
 s6-rc: info: service legacy-cont-init: starting
 s6-rc: info: service legacy-cont-init successfully started
@@ -99,3 +90,12 @@ s6-rc: info: service legacy-services successfully started
 [32m2025-12-03 02:00:00.398 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Running script sequence[0m
 [32m2025-12-03 02:00:00.399 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
 [32m2025-12-03 02:00:00.801 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-03 02:00:00.937 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-03 02:00:01.078 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-03 02:00:01.214 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_2] Create & Push HA Info to Github: Executing step call service[0m
+[32m2025-12-03 04:16:10.367 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
+[32m2025-12-03 04:16:10.369 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-03 04:16:10.370 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service[0m
+[32m2025-12-03 04:22:54.780 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Running script sequence[0m
+[32m2025-12-03 04:22:54.780 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-03 04:22:55.168 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
