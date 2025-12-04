@@ -243,11 +243,19 @@ create_push_ha_info_to_github_newest:
   - action: shell_command.write_automation_runs
   - action: shell_command.write_error_log
   - action: shell_command.ha_git_commit_push
-  - action: shell_command.prepare_ai_context_zip
-  - action: notify.mobile_app_blakes_iphone
-    data:
-      title: Backup Complete
-      message: GitHub updated & Zip ready. Tap to download.
+  - alias: Skip AI Zip file actions during daily commit
+    if:
+    - condition: template
+      value_template: '{{ context.user_id is not none }}
+
+        '
+      alias: 'Triggered by dashboard button '
+    then:
+    - action: shell_command.prepare_ai_context_zip
+    - action: notify.mobile_app_blakes_iphone
       data:
-        url: /local/ha_ai_context.zip
-        clickAction: /local/ha_ai_context.zip
+        title: Backup Complete
+        message: GitHub updated & Zip ready. Tap to download.
+        data:
+          url: /local/ha_ai_context.zip
+          clickAction: /local/ha_ai_context.zip

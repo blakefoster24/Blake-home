@@ -1,14 +1,4 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-s6-rc: info: service fix-attrs successfully started
-s6-rc: info: service legacy-cont-init: starting
-s6-rc: info: service legacy-cont-init successfully started
-s6-rc: info: service legacy-services: starting
-services-up: info: copying legacy longrun home-assistant (no readiness notification)
-s6-rc: info: service legacy-services successfully started
-[33m2025-12-03 19:08:04.209 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alexa_media which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[33m2025-12-03 19:08:04.213 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration custom_icons which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[33m2025-12-03 19:08:04.216 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[33m2025-12-03 19:08:04.219 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alexa_media which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
 [33m2025-12-03 19:08:04.222 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration custom_icons which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
 [33m2025-12-03 19:08:04.224 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
 [32m2025-12-03 19:08:19.589 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
@@ -99,3 +89,13 @@ s6-rc: info: service legacy-services successfully started
 [32m2025-12-04 02:00:00.380 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Running script sequence[0m
 [32m2025-12-04 02:00:00.380 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
 [32m2025-12-04 02:00:00.790 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-04 02:00:00.960 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-04 02:00:01.100 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-04 02:00:01.239 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-04 02:00:02.398 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-04 02:00:02.700 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[33m2025-12-04 02:05:54.966 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff3df05d30>,), {'max_record_size': 10}): Timeout error occurred accessing AlexaAPI: An exception of type CancelledError occurred. Arguments:
+()[0m
+[32m2025-12-04 02:11:27.444 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Running script sequence[0m
+[32m2025-12-04 02:11:27.444 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
+[32m2025-12-04 02:11:27.826 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
