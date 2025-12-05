@@ -206,7 +206,6 @@ set_date_to_today:
       date: '{{ now().strftime(''%Y-%m-%d'') }}'
   description: ''
 create_push_ha_info_to_github_newest:
-  alias: Create & Push HA Info to Github newest
   description: Generates HA_Overview.md, runs diagnostics, pushes to GitHub, AND creates
     a zip for download.
   mode: single
@@ -259,3 +258,4 @@ create_push_ha_info_to_github_newest:
         data:
           url: /local/ha_ai_context.zip
           clickAction: /local/ha_ai_context.zip
+  alias: Push Ha Info to GitHub & Create AI Zip File
