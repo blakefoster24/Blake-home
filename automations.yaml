@@ -609,15 +609,7 @@
   - trigger: event
     event_type: ''
     id: Manual trigger
-  conditions:
-  - condition: or
-    conditions:
-    - condition: numeric_state
-      entity_id: input_number.test
-      above: 10
-    - condition: numeric_state
-      entity_id: input_number.test
-      above: 1
+  conditions: []
   actions: []
   mode: single
 - id: '1761198863619'
