@@ -405,11 +405,14 @@
   description: ''
   triggers:
   - trigger: time
-    at: 09:20:00
-    id: 9am
+    at: 09:00:00
+    id: Morning Time Window
   - trigger: time
     at: '16:00:00'
-    id: 4pm
+    id: Afternoon Time Window
+  - trigger: time
+    at: '22:00:00'
+    id: Night Time Window
   - trigger: state
     entity_id:
     - person.blake_foster
@@ -462,15 +465,15 @@
     - conditions:
       - condition: or
         conditions:
-        - condition: and
+        - alias: 9am ≠ Workday
+          condition: and
           conditions:
           - condition: trigger
             id:
-            - 9am
+            - Morning Time Window
           - condition: state
             entity_id: input_boolean.workday_today_toggle
             state: 'off'
-          alias: 9am ≠ Workday
         - condition: and
           conditions:
           - condition: trigger
@@ -515,6 +518,54 @@
             entity_id: sensor.openweathermap_temperature_2
             above: 71
           sequence:
+          - alias: Cool - 67
+            action: climate.set_temperature
+            metadata: {}
+            data:
+              hvac_mode: cool
+              temperature: 67
+            target:
+              device_id: b43f8797bfe54ded21e44c051fec8167
+      alias: Morning Branch
+    - conditions:
+      - condition: trigger
+        id:
+        - Afternoon Time Window
+      sequence:
+      - choose:
+        - conditions:
+          - condition: numeric_state
+            entity_id: sensor.openweathermap_temperature_2
+            below: 55
+          sequence:
+          - alias: Heat - 68
+            action: climate.set_temperature
+            metadata: {}
+            data:
+              hvac_mode: heat
+              temperature: 68
+            target:
+              device_id: b43f8797bfe54ded21e44c051fec8167
+        - conditions:
+          - condition: numeric_state
+            entity_id: sensor.openweathermap_temperature_2
+            below: 80
+            above: 54
+          sequence:
+          - alias: Heat/Cool - 68/72
+            action: climate.set_temperature
+            metadata: {}
+            data:
+              hvac_mode: heat_cool
+              target_temp_high: 70
+              target_temp_low: 67
+            target:
+              device_id: b43f8797bfe54ded21e44c051fec8167
+        - conditions:
+          - condition: numeric_state
+            entity_id: sensor.openweathermap_temperature_2
+            above: 79
+          sequence:
           - alias: Cool - 68
             action: climate.set_temperature
             metadata: {}
@@ -523,11 +574,11 @@
               temperature: 68
             target:
               device_id: b43f8797bfe54ded21e44c051fec8167
-      alias: Morning Branch
+      alias: Evening Branch
     - conditions:
       - condition: trigger
         id:
-        - 4pm
+        - Night Time Window
       sequence:
       - choose:
         - conditions:
@@ -535,14 +586,14 @@
             entity_id: sensor.openweathermap_temperature_2
             below: 55
           sequence:
-          - action: climate.set_temperature
+          - alias: Heat - 70
+            action: climate.set_temperature
             metadata: {}
             data:
               hvac_mode: heat
               temperature: 70
             target:
               device_id: b43f8797bfe54ded21e44c051fec8167
-            alias: Heat - 70
         - conditions:
           - condition: numeric_state
             entity_id: sensor.openweathermap_temperature_2
@@ -568,10 +619,10 @@
             metadata: {}
             data:
               hvac_mode: cool
-              temperature: 69
+              temperature: 68
             target:
               device_id: b43f8797bfe54ded21e44c051fec8167
-      alias: Evening Branch
+      alias: Night Branch
     - conditions: []
       sequence:
       - choose:
@@ -601,16 +652,6 @@
                 | float | round | int }}°'
               title: Check Thermostat!
       alias: Temperature Issue
-  mode: single
-- id: '1761047102816'
-  alias: Test Bay
-  description: ''
-  triggers:
-  - trigger: event
-    event_type: ''
-    id: Manual trigger
-  conditions: []
-  actions: []
   mode: single
 - id: '1761198863619'
   alias: Helper Automation
@@ -649,6 +690,9 @@
         metadata: {}
         data:
           message: Front door sensor still open
+          data:
+            interruption-level: time-sensitive
+          title: Door Did Not Close
     - conditions:
       - condition: trigger
         id:
@@ -785,6 +829,12 @@
   - trigger: time
     at: 08:55:00
     id: Last Time Window
+  - trigger: state
+    entity_id:
+    - binary_sensor.bed_presence_bb8594_bed_occupied_left
+    to:
+    - 'off'
+    id: Bed clear
   conditions:
   - condition: state
     state: 'on'
@@ -797,7 +847,7 @@
     - conditions:
       - condition: trigger
         id:
-        - '1 Long press '
+        - 1 Long press
       sequence:
       - sequence:
         - action: light.turn_on
@@ -910,7 +960,8 @@
       - condition: trigger
         id:
         - Last Time Window
-      - condition: or
+      - alias: Door hasn’t opened < 1hr | left bed presence
+        condition: or
         conditions:
         - alias: Door hasn’t opened in the last hour
           condition: template
@@ -918,11 +969,6 @@
             | default(0)) > 3600 }}
 
             '
-        - condition: state
-          entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_left
-          state:
-          - 'on'
-        alias: Door hasn’t opened < 1hr | left bed presence
       sequence:
       - event: hue_event
         event_data:
@@ -936,6 +982,16 @@
         target:
           entity_id: script.alarm_music_script
       alias: Last Time Window & (Haven’t Left | in bed)
+    - conditions:
+      - condition: trigger
+        id:
+        - Bed clear
+      sequence:
+      - action: alexa_devices.send_text_command
+        metadata: {}
+        data:
+          text_command: What’s the weather today?
+          device_id: 2f6a789579ab6135e38f2b96727755b1
   trace:
     stored_traces: 50
   mode: parallel
@@ -1012,6 +1068,38 @@
       value_template: '{{ motion_ts is number and motion_ts > 0 and motion_ts < door_open_trigger
         }}'
     then:
+    - alias: Door Closed in 5 minutes
+      wait_for_trigger:
+      - trigger: state
+        entity_id:
+        - binary_sensor.front_door
+        to:
+        - 'off'
+      continue_on_timeout: true
+      timeout:
+        hours: 0
+        minutes: 5
+        seconds: 0
+        milliseconds: 0
+    - alias: Motion -> clear for 8s | within 30s
+      wait_for_trigger:
+      - trigger: state
+        entity_id:
+        - binary_sensor.motion_1_motion
+        from:
+        - 'on'
+        to:
+        - 'off'
+        for:
+          hours: 0
+          minutes: 0
+          seconds: 5
+      timeout:
+        hours: 0
+        minutes: 0
+        seconds: 30
+        milliseconds: 0
+      continue_on_timeout: false
     - alias: Leaving Branch
       if:
       - condition: state
@@ -1030,6 +1118,13 @@
         data: {}
         target:
           entity_id: scene.all_off
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: Everything’s off!
+          title: Goodbye
+          data:
+            interruption level: time-sensitive
     else:
     - alias: Arriving Branch
       if:

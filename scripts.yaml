@@ -52,7 +52,7 @@ play_music_alexa:
       - action: media_player.volume_set
         metadata: {}
         data:
-          volume_level: 0.4
+          volume_level: 0.3
         target:
           entity_id: media_player.everywhere
       - action: input_boolean.turn_off
@@ -63,73 +63,21 @@ play_music_alexa:
     - sequence:
       - alias: Play Music
         sequence:
+        - action: alexa_devices.send_text_command
+          metadata: {}
+          data:
+            text_command: Shuffle Alex warren on everywhere group
+            device_id: 2f6a789579ab6135e38f2b96727755b1
         - action: media_player.volume_set
           metadata: {}
           data:
-            volume_level: 0.01
-          target:
-            entity_id: media_player.everywhere
-        - action: media_player.shuffle_set
-          metadata: {}
-          data:
-            shuffle: true
-          target:
-            entity_id: media_player.everywhere
-        - action: media_player.media_next_track
-          metadata: {}
-          data: {}
-          target:
-            entity_id: media_player.everywhere
-          enabled: true
-        - delay:
-            hours: 0
-            minutes: 0
-            seconds: 5
-            milliseconds: 0
-        - action: media_player.media_next_track
-          metadata: {}
-          data: {}
-          target:
-            entity_id: media_player.everywhere
-          enabled: true
-      - alias: Music Playing Check
-        if:
-        - condition: state
-          entity_id: media_player.everywhere
-          state: playing
-        then: []
-        else:
-        - action: media_player.volume_set
-          metadata: {}
-          data:
-            volume_level: 0.01
-          target:
-            entity_id:
-            - media_player.blake_s_echo_pop
-        - delay:
-            hours: 0
-            minutes: 0
-            seconds: 2
-            milliseconds: 0
-        - action: media_player.play_media
-          metadata: {}
-          data:
-            media:
-              media_content_id: music alarm
-              media_content_type: routine
-          target:
-            entity_id:
-            - media_player.blake_s_echo_pop
-        - action: media_player.volume_set
-          metadata: {}
-          data:
-            volume_level: 0.01
+            volume_level: 0
           target:
             entity_id: media_player.everywhere
         - delay:
             hours: 0
             minutes: 0
-            seconds: 5
+            seconds: 3
             milliseconds: 0
         - action: media_player.shuffle_set
           metadata: {}
@@ -137,20 +85,42 @@ play_music_alexa:
             shuffle: true
           target:
             entity_id: media_player.everywhere
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 7
+            milliseconds: 0
         - action: media_player.media_next_track
           metadata: {}
           data: {}
           target:
             entity_id: media_player.everywhere
           enabled: true
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 3
+            milliseconds: 0
+        - action: media_player.media_next_track
+          metadata: {}
+          data: {}
+          target:
+            entity_id: media_player.everywhere
+          enabled: true
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.01
+          target:
+            entity_id: media_player.everywhere
       - alias: Volume Up
         repeat:
-          count: 4
+          count: 7
           sequence:
           - action: media_player.volume_set
             metadata: {}
             data:
-              volume_level: '{{ 0.02 + (repeat.index * 0.03) }}'
+              volume_level: '{{(repeat.index * 0.02) }}'
             target:
               entity_id: media_player.everywhere
           - delay:

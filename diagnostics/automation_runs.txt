@@ -1,54 +1,96 @@
 ===== $(date -Iseconds) — automation runs (recent) =====
-[33m2025-12-04 22:33:23.558 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff60af16a0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-04 22:33:23.558 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff60af16a0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-04 22:43:28.486 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff60af16a0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-04 22:43:28.487 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff60af16a0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-04 22:53:33.493 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff60af16a0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-04 22:53:33.494 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff60af16a0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[32m2025-12-04 22:55:30.830 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
-[32m2025-12-04 22:55:30.830 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
-[32m2025-12-04 22:55:30.920 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
-[32m2025-12-04 22:55:30.921 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2025-12-04 22:55:30.940 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
-[32m2025-12-04 22:55:35.922 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Timeout reached, abort script.[0m
-[32m2025-12-04 23:00:00.366 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2025-12-04 23:00:00.369 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Running automation actions[0m
-[32m2025-12-04 23:00:00.370 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Running automation actions[0m
-[32m2025-12-04 23:00:00.375 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[32m2025-12-04 23:00:00.865 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[33m2025-12-04 23:03:38.524 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff60af16a0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-04 23:03:38.525 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff60af16a0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-04 23:13:43.349 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff60af16a0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-04 23:13:43.349 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff60af16a0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-04 23:23:48.928 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff60af16a0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[33m2025-12-04 23:23:48.929 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff60af16a0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
-[32m2025-12-05 00:01:00.443 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2025-12-05 00:01:00.445 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
-[32m2025-12-05 02:00:00.088 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
-[32m2025-12-05 02:00:00.088 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
-[32m2025-12-05 02:00:00.091 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Running script sequence[0m
-[32m2025-12-05 02:00:00.091 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
-[32m2025-12-05 02:00:00.490 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
-[32m2025-12-05 02:00:00.633 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
-[32m2025-12-05 02:00:00.776 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
-[32m2025-12-05 02:00:00.917 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Create & Push HA Info to Github newest: Executing step call service[0m
-[32m2025-12-05 02:36:49.033 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Running automation actions[0m
-[32m2025-12-05 02:36:49.035 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-05 02:36:49.036 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 1 of 2[0m
-[32m2025-12-05 02:36:49.037 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
-[32m2025-12-05 02:36:49.044 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
-[32m2025-12-05 02:36:50.046 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
-[32m2025-12-05 02:36:50.187 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeating sequence: Iteration 2 of 2[0m
-[32m2025-12-05 02:36:50.188 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Running automation actions[0m
-[32m2025-12-05 02:36:50.189 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step delay 0:00:01[0m
-[32m2025-12-05 02:36:51.190 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Choose at step 1: choice 1: Repeat at step 1: Executing step call service[0m
-[32m2025-12-05 02:52:15.606 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
-[32m2025-12-05 02:52:15.609 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-05 02:52:15.609 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service[0m
-[32m2025-12-05 02:55:50.201 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
-[32m2025-12-05 02:55:50.204 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 6: Running automation actions[0m
-[32m2025-12-05 02:55:50.204 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 6: Executing step call service[0m
-[32m2025-12-05 03:05:58.340 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2025-12-05 03:05:58.341 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2025-12-05 03:05:58.725 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2025-12-05 03:05:58.863 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2025-12-05 23:53:09.374 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Volume Up: Running websocket_api script[0m
+[32m2025-12-05 23:53:09.374 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Volume Up: Executing step call service[0m
+[32m2025-12-05 23:53:09.377 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Volume Up: Executing step delay 0:00:02[0m
+[32m2025-12-05 23:53:11.380 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Volume Up: Running websocket_api script[0m
+[32m2025-12-05 23:53:11.380 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Volume Up: Executing step call service[0m
+[32m2025-12-05 23:53:11.383 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Volume Up: Executing step delay 0:00:02[0m
+[32m2025-12-05 23:53:13.385 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Volume Up: Running websocket_api script[0m
+[32m2025-12-05 23:53:13.386 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Volume Up: Executing step call service[0m
+[32m2025-12-05 23:53:13.389 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Volume Up: Executing step delay 0:00:02[0m
+[32m2025-12-05 23:53:15.391 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Volume Up: Running websocket_api script[0m
+[32m2025-12-05 23:53:15.392 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Volume Up: Executing step call service[0m
+[32m2025-12-05 23:53:15.395 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Volume Up: Executing step delay 0:00:02[0m
+[32m2025-12-05 23:53:36.735 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-05 23:53:36.737 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Weather - pause and restart music if playing: Running websocket_api script[0m
+[32m2025-12-05 23:53:36.737 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Weather - pause and restart music if playing: Executing step call service[0m
+[32m2025-12-05 23:53:36.746 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Weather - pause and restart music if playing: Executing step call service[0m
+[32m2025-12-05 23:53:36.912 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Weather - pause and restart music if playing: Executing step delay 0:00:10[0m
+[32m2025-12-05 23:53:46.913 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Weather - pause and restart music if playing: Executing step call service[0m
+[32m2025-12-05 23:54:07.997 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-05 23:54:07.997 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
+[32m2025-12-05 23:54:40.336 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
+[32m2025-12-05 23:55:14.170 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-05 23:55:14.171 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Pause and Reset Volume on Alexa : Running websocket_api script[0m
+[32m2025-12-05 23:55:14.171 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Pause and Reset Volume on Alexa : Executing step call service[0m
+[32m2025-12-05 23:55:14.173 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Pause and Reset Volume on Alexa : Executing step call service[0m
+[32m2025-12-05 23:55:28.215 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Running script sequence[0m
+[32m2025-12-05 23:55:28.216 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: Music Off: Running script sequence[0m
+[32m2025-12-05 23:55:28.217 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: Music Off: Executing step call service[0m
+[32m2025-12-05 23:55:28.219 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: Music Off: Executing step wait for trigger (timeout: 0:30:00)[0m
+[32m2025-12-05 23:55:28.224 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: Music Off: Initialized trigger[0m
+[32m2025-12-05 23:55:28.226 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Running script sequence[0m
+[32m2025-12-05 23:55:28.226 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Play Music: Running script sequence[0m
+[32m2025-12-05 23:55:28.227 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Play Music: Executing step call service[0m
+[32m2025-12-05 23:55:28.387 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Play Music: Executing step call service[0m
+[32m2025-12-05 23:55:28.389 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Play Music: Executing step delay 0:00:03[0m
+[32m2025-12-05 23:55:31.392 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Play Music: Executing step call service[0m
+[32m2025-12-05 23:55:31.398 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Play Music: Executing step delay 0:00:07[0m
+[32m2025-12-05 23:55:38.400 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Play Music: Executing step call service[0m
+[32m2025-12-05 23:55:38.407 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Play Music: Executing step delay 0:00:03[0m
+[32m2025-12-05 23:55:41.409 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Play Music: Executing step call service[0m
+[32m2025-12-05 23:55:41.415 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Play Music: Executing step call service[0m
+[32m2025-12-05 23:55:41.418 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Repeating Volume Up: Iteration 1 of 7[0m
+[32m2025-12-05 23:55:41.419 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Running script sequence[0m
+[32m2025-12-05 23:55:41.420 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step call service[0m
+[32m2025-12-05 23:55:41.422 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step delay 0:00:02[0m
+[32m2025-12-05 23:55:43.427 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Repeating Volume Up: Iteration 2 of 7[0m
+[32m2025-12-05 23:55:43.428 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Running script sequence[0m
+[32m2025-12-05 23:55:43.429 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step call service[0m
+[32m2025-12-05 23:55:43.432 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step delay 0:00:02[0m
+[32m2025-12-05 23:55:45.434 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Repeating Volume Up: Iteration 3 of 7[0m
+[32m2025-12-05 23:55:45.435 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Running script sequence[0m
+[32m2025-12-05 23:55:45.436 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step call service[0m
+[32m2025-12-05 23:55:45.438 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step delay 0:00:02[0m
+[32m2025-12-05 23:55:47.440 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Repeating Volume Up: Iteration 4 of 7[0m
+[32m2025-12-05 23:55:47.441 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Running script sequence[0m
+[32m2025-12-05 23:55:47.442 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step call service[0m
+[32m2025-12-05 23:55:47.445 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step delay 0:00:02[0m
+[32m2025-12-05 23:55:49.447 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Repeating Volume Up: Iteration 5 of 7[0m
+[32m2025-12-05 23:55:49.448 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Running script sequence[0m
+[32m2025-12-05 23:55:49.449 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step call service[0m
+[32m2025-12-05 23:55:49.451 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step delay 0:00:02[0m
+[32m2025-12-05 23:55:51.454 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Repeating Volume Up: Iteration 6 of 7[0m
+[32m2025-12-05 23:55:51.455 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Running script sequence[0m
+[32m2025-12-05 23:55:51.455 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step call service[0m
+[32m2025-12-05 23:55:51.458 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step delay 0:00:02[0m
+[32m2025-12-05 23:55:53.462 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Repeating Volume Up: Iteration 7 of 7[0m
+[32m2025-12-05 23:55:53.463 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Running script sequence[0m
+[32m2025-12-05 23:55:53.463 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step call service[0m
+[32m2025-12-05 23:55:53.466 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Volume Up: Executing step delay 0:00:02[0m
+[32m2025-12-05 23:55:55.469 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Executing step delay 0:00:10[0m
+[32m2025-12-05 23:56:05.471 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Executing step call service[0m
+[32m2025-12-05 23:56:05.615 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Executing step delay 0:00:10[0m
+[32m2025-12-05 23:56:15.617 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Executing step call service[0m
+[32m2025-12-05 23:56:15.729 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Executing step delay 0:00:45[0m
+[32m2025-12-05 23:56:15.742 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions[0m
+[32m2025-12-05 23:56:15.744 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Ceiling Light -> Lamp: Running automation actions[0m
+[32m2025-12-05 23:56:15.744 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Ceiling Light -> Lamp: Executing step call service[0m
+[32m2025-12-05 23:56:15.756 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
+[32m2025-12-05 23:56:15.757 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
+[32m2025-12-05 23:56:15.758 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
+[32m2025-12-05 23:56:20.758 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Timeout reached, abort script.[0m
+[32m2025-12-05 23:56:25.484 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
+[32m2025-12-05 23:56:25.496 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: Music Off: Executing step call service[0m
+[32m2025-12-05 23:56:25.498 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: Music Off: Executing step delay 0:00:30[0m
+[32m2025-12-05 23:56:55.500 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: Music Off: Executing step call service[0m
+[32m2025-12-05 23:56:55.503 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: Music Off: Executing step call service[0m
+[32m2025-12-05 23:57:00.732 INFO (MainThread) [homeassistant.components.script.play_music_alexa] Alarm Music: Parallel action at step 1: parallel 2: Executing step call service[0m
+[32m2025-12-05 23:57:29.206 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-05 23:57:29.206 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
+[32m2025-12-05 23:57:43.817 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-05 23:57:43.818 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
+[32m2025-12-05 23:59:04.332 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2025-12-05 23:59:04.333 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2025-12-05 23:59:04.756 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2025-12-05 23:59:04.902 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
