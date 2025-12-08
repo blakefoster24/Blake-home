@@ -1,101 +1,101 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-[33m2025-12-06 23:23:56.320 WARNING (MainThread) [homeassistant.core] Task <Task pending name='service call background homeassistant.restart' coro=<ServiceRegistry._run_service_call_catch_exceptions() running at /usr/src/homeassistant/homeassistant/core.py:2855> wait_for=<Task pending name='admin service homeassistant.restart' coro=<async_setup.<locals>.async_handle_core_service() running at /usr/src/homeassistant/homeassistant/components/homeassistant/__init__.py:238> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[set.remove(), Task.task_wakeup()]> cb=[set.remove()]> was still running after final writes shutdown stage; Integrations should cancel non-critical tasks when receiving the stop event to prevent delaying shutdown[0m
-[05:24:06] INFO: [32mHome Assistant Core finish process exit code 0[0m
-[05:24:06] INFO: [32mHome Assistant Core service shutdown[0m
-s6-rc: info: service legacy-services successfully stopped
-s6-rc: info: service legacy-cont-init: stopping
-s6-rc: info: service legacy-cont-init successfully stopped
-s6-rc: info: service fix-attrs: stopping
-s6-rc: info: service fix-attrs successfully stopped
-s6-rc: info: service s6rc-oneshot-runner: stopping
-s6-rc: info: service s6rc-oneshot-runner successfully stopped
-s6-rc: info: service s6rc-oneshot-runner: starting
-s6-rc: info: service s6rc-oneshot-runner successfully started
-s6-rc: info: service fix-attrs: starting
-s6-rc: info: service fix-attrs successfully started
-s6-rc: info: service legacy-cont-init: starting
-s6-rc: info: service legacy-cont-init successfully started
-s6-rc: info: service legacy-services: starting
-services-up: info: copying legacy longrun home-assistant (no readiness notification)
-s6-rc: info: service legacy-services successfully started
-[33m2025-12-06 23:24:34.942 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alexa_media which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[33m2025-12-06 23:24:34.946 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration custom_icons which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[33m2025-12-06 23:24:34.949 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[33m2025-12-06 23:24:34.952 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration alexa_media which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[33m2025-12-06 23:24:34.954 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration custom_icons which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[33m2025-12-06 23:24:34.957 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant[0m
-[32m2025-12-06 23:24:46.658 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-06 23:24:46.663 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-06 23:24:46.667 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-06 23:24:46.669 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-06 23:24:46.670 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-06 23:24:46.672 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-06 23:24:46.677 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-06 23:24:46.678 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-06 23:24:46.680 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-06 23:24:46.681 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-06 23:24:46.684 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-06 23:24:46.686 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[32m2025-12-06 23:24:46.688 INFO (MainThread) [homeassistant.components.scene] Setting up homeassistant.scene[0m
-[33m2025-12-06 23:24:54.134 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-06 23:25:09.411 INFO (MainThread) [homeassistant.components.scene] Setting up hue.scene[0m
-[32m2025-12-06 23:25:25.200 INFO (MainThread) [homeassistant.core] Starting Home Assistant 2025.12.0[0m
-[32m2025-12-06 23:25:26.322 INFO (MainThread) [homeassistant.components.automation.flic_butttons] Initialized trigger Flic Button[0m
-[32m2025-12-06 23:25:26.328 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Initialized trigger Living Room Lamp[0m
-[32m2025-12-06 23:25:26.330 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Initialized trigger Nightly GitHub sync[0m
-[32m2025-12-06 23:25:26.343 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Initialized trigger Hue Dimmer Switch[0m
-[32m2025-12-06 23:25:26.350 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Initialized trigger Light Triggers Light[0m
-[32m2025-12-06 23:25:26.358 INFO (MainThread) [homeassistant.components.automation.thermostat] Initialized trigger Thermostat[0m
-[32m2025-12-06 23:25:26.360 INFO (MainThread) [homeassistant.components.automation.helper_automation] Initialized trigger Helper Automation[0m
-[32m2025-12-06 23:25:26.362 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Initialized trigger Battery Low Automation [0m
-[32m2025-12-06 23:25:26.366 INFO (MainThread) [homeassistant.components.automation.goodnight] Initialized trigger Goodnight[0m
-[32m2025-12-06 23:25:26.371 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[32m2025-12-06 23:25:26.372 INFO (MainThread) [homeassistant.components.automation.door_automation] Initialized trigger Door Automation[0m
-[32m2025-12-06 23:25:26.373 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Initialized trigger Bedroom Ceiling Lights (3) -> Set My Room[0m
-[32m2025-12-06 23:25:26.375 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Initialized trigger Work Schedule Automations[0m
-[33m2025-12-06 23:30:11.135 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-06 23:35:11.127 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-06 23:40:11.155 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-06 23:45:11.135 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-06 23:50:11.140 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-06 23:55:11.214 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 00:00:11.164 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-07 00:01:00.463 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2025-12-07 00:01:00.466 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
-[33m2025-12-07 00:05:11.126 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 00:10:11.159 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 00:15:11.404 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 00:20:12.148 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-07 00:24:27.600 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
-[32m2025-12-07 00:24:27.603 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-07 00:24:27.603 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service[0m
-[33m2025-12-07 00:25:12.176 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 00:30:12.126 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 00:35:12.115 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 00:40:12.131 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 00:45:12.120 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 00:50:12.152 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 00:53:55.320 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [281472174702112] Blake Foster from 127.0.0.1 (Home Assistant/2025.12.1 (io.robbie.HomeAssistant; build:2025.1546; iOS 26.1.0)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds[0m
-[33m2025-12-07 00:55:12.375 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 00:57:05.320 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [281472125052032] Blake Foster from 127.0.0.1 (Home Assistant/2025.12.1 (io.robbie.HomeAssistant; build:2025.1546; iOS 26.1.0)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds[0m
-[33m2025-12-07 01:00:13.125 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 01:05:13.137 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 01:10:13.110 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 01:15:13.112 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 01:20:13.143 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 01:25:13.174 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 01:30:13.153 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 01:35:13.210 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 01:40:13.149 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 01:45:13.163 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-07 01:47:38.627 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
-[32m2025-12-07 01:47:38.627 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
-[33m2025-12-07 01:50:13.204 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 01:55:13.143 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-07 01:55:21.319 WARNING (MainThread) [homeassistant.components.websocket_api.http.connection] [281472125282848] Blake Foster from 127.0.0.1 (Home Assistant/2025.12.1 (io.robbie.HomeAssistant; build:2025.1546; iOS 26.1.0)): Disconnected: Received error message during command phase: No PONG received after 27.5 seconds[0m
-[31m2025-12-07 01:59:53.483 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device[0m
-[32m2025-12-07 02:00:00.253 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
-[32m2025-12-07 02:00:00.254 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
-[32m2025-12-07 02:00:00.256 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2025-12-07 02:00:00.257 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2025-12-07 02:00:00.670 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2025-12-08 01:42:20.979 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
+[32m2025-12-08 01:42:20.988 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 9: Running automation actions[0m
+[32m2025-12-08 01:42:20.988 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 9: Executing step call service[0m
+[32m2025-12-08 01:42:21.989 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
+[32m2025-12-08 01:42:21.990 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-08 01:42:21.990 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service[0m
+[32m2025-12-08 01:42:24.007 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
+[32m2025-12-08 01:42:24.016 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 9: Running automation actions[0m
+[32m2025-12-08 01:42:24.016 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 9: Executing step call service[0m
+[32m2025-12-08 01:42:27.365 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
+[32m2025-12-08 01:42:27.375 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 9: Running automation actions[0m
+[32m2025-12-08 01:42:27.376 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 9: Executing step call service[0m
+[32m2025-12-08 01:42:27.379 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
+[32m2025-12-08 01:42:27.380 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-08 01:42:27.384 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service[0m
+[32m2025-12-08 01:42:29.383 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
+[32m2025-12-08 01:42:29.385 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-08 01:42:29.385 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service[0m
+[32m2025-12-08 01:42:47.287 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
+[32m2025-12-08 01:42:47.293 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 9: Running automation actions[0m
+[32m2025-12-08 01:42:47.294 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 9: Executing step call service[0m
+[32m2025-12-08 01:42:51.120 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Running automation actions[0m
+[32m2025-12-08 01:42:51.122 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-08 01:42:51.122 INFO (MainThread) [homeassistant.components.automation.hue_dimmer_switch] Hue Dimmer Switch: Choose at step 1: choice 1: Executing step call service[0m
+[33m2025-12-08 01:42:53.110 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:42:53.111 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:43:57.191 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:43:57.192 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:45:01.087 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:45:01.087 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:45:27.270 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-08 01:46:05.146 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:46:05.147 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:47:09.107 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:47:09.108 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:48:13.092 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:48:13.093 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:49:17.119 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:49:17.119 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:50:21.099 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:50:21.099 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:50:27.263 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-08 01:51:25.079 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:51:25.079 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:52:29.177 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:52:29.177 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:53:33.049 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:53:33.050 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:54:37.103 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:54:37.103 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:55:27.405 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-08 01:55:41.124 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:55:41.124 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:56:45.146 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:56:45.146 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:57:49.103 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:57:49.104 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:58:53.705 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:58:53.705 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:59:58.213 WARNING (MainThread) [alexapy.helpers] alexaapi.get_customer_history_records((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {'max_record_size': 10}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[33m2025-12-08 01:59:58.213 WARNING (MainThread) [alexapy.helpers] alexaapi.get_last_device_serial((<alexapy.alexalogin.AlexaLogin object at 0xffff5ed83cb0>,), {}): An error occurred accessing AlexaAPI: An exception of type TypeError occurred. Arguments:
+('Cannot serialize non-str key None',)[0m
+[32m2025-12-08 02:00:00.254 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
+[32m2025-12-08 02:00:00.255 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
+[32m2025-12-08 02:00:00.257 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2025-12-08 02:00:00.258 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2025-12-08 02:00:00.697 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m

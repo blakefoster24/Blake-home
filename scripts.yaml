@@ -63,6 +63,17 @@ play_music_alexa:
     - sequence:
       - alias: Play Music
         sequence:
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.01
+          target:
+            entity_id: media_player.blake_s_echo_pop
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 3
+            milliseconds: 0
         - action: alexa_devices.send_text_command
           metadata: {}
           data:
@@ -144,21 +155,21 @@ play_music_alexa:
           minutes: 0
           seconds: 10
           milliseconds: 0
-      - action: light.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.bedroom_ceiling_lights
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 45
-          milliseconds: 0
       - action: fan.turn_off
         metadata: {}
         data: {}
         target:
           entity_id: fan.bedroom_fan
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 45
+          milliseconds: 0
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.bedroom_ceiling_lights
   description: ''
 set_date_to_today:
   alias: Scheduled Off & Working Override dashboard script
