@@ -23,12 +23,12 @@ play_music_alexa:
         target:
           entity_id: input_boolean.disable_toggle
       - wait_for_trigger:
-        - trigger: device
-          device_id: 6e3f05f16e73548265ce22e622f4a268
-          domain: hue
-          type: short_release
-          subtype: 4
-          id: bottom_short
+        - alias: Off Short
+          trigger: event
+          event_type: zha_event
+          event_data:
+            device_ieee: 00:17:88:01:02:18:b1:7a
+            command: off_short_release
         - trigger: template
           value_template: "{{ is_state('binary_sensor.front_door', 'on') \n   and
             is_state('binary_sensor.motion_1_motion', 'on') \n   and as_timestamp(states.binary_sensor.motion_1_motion.last_changed)

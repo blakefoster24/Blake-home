@@ -53,6 +53,10 @@
       - condition: trigger
         id:
         - Flic_Hold Trigger
+      - condition: state
+        entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_left
+        state:
+        - 'off'
       sequence:
       - action: scene.turn_on
         metadata: {}
@@ -200,148 +204,6 @@
     target:
       entity_id: script.create_push_ha_info_to_github_gemini_zip
   mode: single
-- id: '1759463858553'
-  alias: Hue Dimmer Switch
-  description: ''
-  triggers:
-  - trigger: device
-    device_id: 6e3f05f16e73548265ce22e622f4a268
-    domain: hue
-    type: short_release
-    subtype: 1
-    id: top_short
-  - trigger: device
-    device_id: 6e3f05f16e73548265ce22e622f4a268
-    domain: hue
-    type: long_press
-    subtype: 1
-    id: top_long
-  - trigger: device
-    device_id: 6e3f05f16e73548265ce22e622f4a268
-    domain: hue
-    type: short_release
-    subtype: 2
-    id: up_short
-  - trigger: device
-    device_id: 6e3f05f16e73548265ce22e622f4a268
-    domain: hue
-    type: repeat
-    subtype: 2
-    id: up_repeat
-  - trigger: device
-    device_id: 6e3f05f16e73548265ce22e622f4a268
-    domain: hue
-    type: long_press
-    subtype: 2
-    id: up_long
-  - trigger: device
-    device_id: 6e3f05f16e73548265ce22e622f4a268
-    domain: hue
-    type: short_release
-    subtype: 3
-    id: down_short
-  - trigger: device
-    device_id: 6e3f05f16e73548265ce22e622f4a268
-    domain: hue
-    type: repeat
-    subtype: 3
-    id: down_repeat
-  - trigger: device
-    device_id: 6e3f05f16e73548265ce22e622f4a268
-    domain: hue
-    type: long_press
-    subtype: 3
-    id: down_long
-  - trigger: device
-    device_id: 6e3f05f16e73548265ce22e622f4a268
-    domain: hue
-    type: short_release
-    subtype: 4
-    id: bottom_short
-  - trigger: device
-    device_id: 6e3f05f16e73548265ce22e622f4a268
-    domain: hue
-    type: long_press
-    subtype: 4
-    id: bottom_long
-  actions:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id: top_short
-      sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.set_my_room
-    - conditions:
-      - condition: trigger
-        id: top_long
-      sequence: []
-    - conditions:
-      - condition: trigger
-        id: up_short
-      sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.full_lamp
-      - action: light.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.bedroom_ceiling_lights
-    - conditions:
-      - condition: trigger
-        id: up_repeat
-      sequence: []
-    - conditions:
-      - condition: trigger
-        id: up_long
-      sequence: []
-    - conditions:
-      - condition: trigger
-        id: down_short
-      sequence:
-      - action: fan.toggle
-        metadata: {}
-        data: {}
-        target:
-          entity_id: fan.bedroom_ceiling_fan
-    - conditions:
-      - condition: trigger
-        id: down_repeat
-      sequence: []
-    - conditions:
-      - condition: trigger
-        id: down_long
-      sequence: []
-    - conditions:
-      - condition: trigger
-        id: bottom_short
-      - condition: state
-        entity_id: input_boolean.disable_toggle
-        state:
-        - 'off'
-      sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.all_lights_off
-    - conditions:
-      - condition: trigger
-        id: bottom_long
-      sequence:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.goodnight_scene
-  mode: parallel
-  max: 10
 - id: '1759838752481'
   alias: Light Triggers Light
   description: ''
@@ -815,14 +677,13 @@
   alias: Workday Wake-up
   description: ''
   triggers:
-  - device_id: 6e3f05f16e73548265ce22e622f4a268
-    domain: hue
-    type: long_press
-    subtype: 1
-    unique_id: cdb2dfb8-edb8-4c9a-83ef-5519e2338c0a
-    trigger: device
-    id: 1 Long press
-    alias: 1 Long Press (I’m awake Scene)
+  - trigger: event
+    id: on_short
+    alias: Hue Dimmer - On Short
+    event_type: zha_event
+    event_data:
+      device_ieee: 00:17:88:01:02:18:b1:7a
+      command: on_short_release
   - trigger: time
     at: 08:40:00
     id: Late Time Window
@@ -847,7 +708,7 @@
     - conditions:
       - condition: trigger
         id:
-        - 1 Long press
+        - on_short
       sequence:
       - sequence:
         - action: light.turn_on
@@ -870,7 +731,7 @@
         - delay:
             hours: 0
             minutes: 0
-            seconds: 10
+            seconds: 5
             milliseconds: 0
         - action: fan.turn_off
           metadata: {}
@@ -918,19 +779,6 @@
             target:
               entity_id: input_datetime.last_door_open
           alias: If triggered - Set door timestamp
-        - alias: 'Pause and Reset Volume on Alexa '
-          sequence:
-          - action: media_player.media_stop
-            metadata: {}
-            data: {}
-            target:
-              entity_id: media_player.everywhere
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.4
-            target:
-              entity_id: media_player.everywhere
         - action: scene.turn_on
           metadata: {}
           data: {}
@@ -950,11 +798,11 @@
         state:
         - 'on'
       sequence:
-      - event: hue_event
+      - event: zha_event
         event_data:
-          device_id: 6e3f05f16e73548265ce22e622f4a268
-          type: long_press
-          subtype: 1
+          device_ieee: 00:17:88:01:02:18:b1:7a
+          command: on_short_release
+        alias: Trigger Wake-Up Option
       alias: Late Time Window & in bed
     - conditions:
       - condition: trigger
@@ -969,13 +817,16 @@
             | default(0)) > 3600 }}
 
             '
+        - condition: state
+          entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_left
+          state:
+          - 'on'
       sequence:
-      - event: hue_event
+      - event: zha_event
         event_data:
-          device_id: 6e3f05f16e73548265ce22e622f4a268
-          type: long_press
-          subtype: 1
-        alias: Trigger Wake-up Sequence
+          device_ieee: 00:17:88:01:02:18:b1:7a
+          command: on_short_release
+        alias: Trigger Wake-Up Option
       - action: script.turn_on
         metadata: {}
         data: {}
@@ -1475,3 +1326,198 @@
       alias: Holiday Comp
   mode: parallel
   max: 10
+- id: '1765185651976'
+  alias: Hue Dimmer
+  description: Test Hue dimmer via ZHA events
+  triggers:
+  - trigger: event
+    id: on_short
+    alias: on_short
+    event_type: zha_event
+    event_data:
+      device_ieee: 00:17:88:01:02:18:b1:7a
+      command: on_short_release
+  - trigger: event
+    id: on_long
+    alias: on_long
+    event_type: zha_event
+    event_data:
+      device_ieee: 00:17:88:01:02:18:b1:7a
+      command: on_hold
+  - trigger: event
+    id: up_short
+    alias: up_short
+    event_type: zha_event
+    event_data:
+      device_ieee: 00:17:88:01:02:18:b1:7a
+      command: up_short_release
+  - trigger: event
+    id: up_long
+    alias: up_long
+    event_type: zha_event
+    event_data:
+      device_ieee: 00:17:88:01:02:18:b1:7a
+      command: up_hold
+  - trigger: event
+    id: down_short
+    alias: down_short
+    event_type: zha_event
+    event_data:
+      device_ieee: 00:17:88:01:02:18:b1:7a
+      command: down_short_release
+  - trigger: event
+    id: down_long
+    alias: down_long
+    event_type: zha_event
+    event_data:
+      device_ieee: 00:17:88:01:02:18:b1:7a
+      command: down_hold
+  - trigger: event
+    id: off_short
+    alias: off_short
+    event_type: zha_event
+    event_data:
+      device_ieee: 00:17:88:01:02:18:b1:7a
+      command: off_short_release
+  - trigger: event
+    id: off_long
+    alias: off_long
+    event_type: zha_event
+    event_data:
+      device_ieee: 00:17:88:01:02:18:b1:7a
+      command: off_hold
+  conditions: []
+  actions:
+  - choose:
+    - alias: On Button
+      conditions:
+      - condition: trigger
+        id:
+        - on_short
+        - on_long
+      sequence:
+      - alias: On Short / Long
+        choose:
+        - conditions:
+          - condition: trigger
+            id: on_short
+          - condition: not
+            conditions:
+            - alias: Workday & 8-9:30am
+              condition: and
+              conditions:
+              - condition: state
+                entity_id: input_boolean.workday_today_toggle
+                state:
+                - 'on'
+              - condition: time
+                after: 08:00:00
+                before: 09:30:00
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.set_my_room
+            data: {}
+          alias: On Short
+        - conditions:
+          - condition: trigger
+            id:
+            - on_long
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.set_my_room
+            data: {}
+          alias: On Long
+    - alias: Up Button
+      conditions:
+      - condition: trigger
+        id:
+        - up_short
+        - up_long
+      sequence:
+      - alias: Up Short / Long
+        choose:
+        - conditions:
+          - condition: trigger
+            id: up_short
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.full_lamp
+            data: {}
+          - action: light.turn_off
+            metadata: {}
+            target:
+              entity_id: light.bedroom_ceiling_lights
+            data: {}
+          alias: Up Short
+        - conditions:
+          - condition: trigger
+            id:
+            - up_long
+          sequence: []
+          alias: Up Long
+    - alias: Down Button
+      conditions:
+      - condition: trigger
+        id:
+        - down_short
+        - down_long
+      sequence:
+      - alias: Down Short / Long
+        choose:
+        - conditions:
+          - condition: trigger
+            id: down_short
+          sequence:
+          - action: fan.toggle
+            metadata: {}
+            target:
+              entity_id: fan.bedroom_ceiling_fan
+            data: {}
+          alias: Down Short
+        - conditions:
+          - condition: trigger
+            id:
+            - down_long
+          sequence: []
+          alias: Down Long
+    - alias: Off Button
+      conditions:
+      - condition: trigger
+        id:
+        - off_short
+        - off_long
+      sequence:
+      - alias: Off Short / Long
+        choose:
+        - conditions:
+          - condition: trigger
+            id: off_short
+          - condition: state
+            entity_id: input_boolean.disable_toggle
+            state:
+            - 'off'
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.bedroom_lights_off
+            data: {}
+          alias: Off Short
+        - conditions:
+          - condition: trigger
+            id:
+            - off_long
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.goodnight_scene
+            data: {}
+          alias: Off Long
+  mode: single
