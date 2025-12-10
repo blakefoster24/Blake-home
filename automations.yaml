@@ -919,38 +919,6 @@
       value_template: '{{ motion_ts is number and motion_ts > 0 and motion_ts < door_open_trigger
         }}'
     then:
-    - alias: Door Closed in 5 minutes
-      wait_for_trigger:
-      - trigger: state
-        entity_id:
-        - binary_sensor.front_door
-        to:
-        - 'off'
-      continue_on_timeout: true
-      timeout:
-        hours: 0
-        minutes: 5
-        seconds: 0
-        milliseconds: 0
-    - alias: Motion -> clear for 8s | within 30s
-      wait_for_trigger:
-      - trigger: state
-        entity_id:
-        - binary_sensor.motion_1_motion
-        from:
-        - 'on'
-        to:
-        - 'off'
-        for:
-          hours: 0
-          minutes: 0
-          seconds: 5
-      timeout:
-        hours: 0
-        minutes: 0
-        seconds: 30
-        milliseconds: 0
-      continue_on_timeout: false
     - alias: Leaving Branch
       if:
       - condition: state
@@ -964,6 +932,20 @@
         target:
           entity_id: light.main_lights
       else:
+      - wait_for_trigger:
+        - trigger: state
+          entity_id:
+          - person.blake_foster
+          to:
+          - not_home
+          from:
+          - home
+        timeout:
+          hours: 0
+          minutes: 30
+          seconds: 0
+          milliseconds: 0
+        continue_on_timeout: false
       - action: scene.turn_on
         metadata: {}
         data: {}
@@ -1030,6 +1012,8 @@
             hours: 0
             minutes: 1
             seconds: 0
+          to:
+          - 'on'
         timeout:
           hours: 1
           minutes: 0
