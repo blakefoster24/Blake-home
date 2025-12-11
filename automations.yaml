@@ -696,6 +696,10 @@
     to:
     - 'off'
     id: Bed clear
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 3
   conditions:
   - condition: state
     state: 'on'
@@ -946,6 +950,19 @@
           seconds: 0
           milliseconds: 0
         continue_on_timeout: false
+      - condition: state
+        state:
+        - 'off'
+        entity_id: binary_sensor.motion_1_motion
+        for:
+          hours: 0
+          minutes: 5
+          seconds: 0
+      - condition: state
+        state:
+        - 'off'
+        - 'on'
+        entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_either
       - action: scene.turn_on
         metadata: {}
         data: {}
