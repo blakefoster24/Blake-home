@@ -1,101 +1,101 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-[33m2025-12-10 22:21:32.135 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-10 22:26:32.145 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-10 22:31:32.143 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-10 22:36:32.169 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-10 22:41:32.122 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-10 22:42:31.735 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
-[32m2025-12-10 22:42:31.737 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Running automation actions[0m
-[32m2025-12-10 22:42:31.737 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Executing step call service[0m
-[33m2025-12-10 22:46:32.117 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-10 22:52:02.276 WARNING (MainThread) [aioamazondevices] Connection error to https://alexa.amazon.com/api/devices-v2/device: ConnectionTimeoutError('Connection timeout to host https://alexa.amazon.com/api/devices-v2/device')[0m
-[31m2025-12-10 22:52:02.277 ERROR (MainThread) [homeassistant.components.alexa_devices] Error fetching Blake.foster30@gmail.com data: Error connecting: CannotConnect('Connection error during GET')[0m
-[33m2025-12-10 22:57:03.184 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-10 23:00:00.070 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2025-12-10 23:00:00.072 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Running automation actions[0m
-[32m2025-12-10 23:00:00.074 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Running automation actions[0m
-[32m2025-12-10 23:00:00.074 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[32m2025-12-10 23:00:00.511 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[33m2025-12-10 23:02:03.173 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-10 23:06:23.381 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions[0m
-[32m2025-12-10 23:06:23.382 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Ceiling Light -> Lamp: Running automation actions[0m
-[32m2025-12-10 23:06:23.383 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Ceiling Light -> Lamp: Executing step call service[0m
-[32m2025-12-10 23:06:23.390 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
-[32m2025-12-10 23:06:23.391 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2025-12-10 23:06:23.392 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
-[32m2025-12-10 23:06:28.392 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Timeout reached, abort script.[0m
-[33m2025-12-10 23:07:03.167 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-10 23:12:03.144 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[31m2025-12-10 23:16:19.983 ERROR (MainThread) [frontend.js.modern.202512030] Uncaught error from WebKit 605.1.15 on iOS 18.7
-TypeError: undefined is not an object (evaluating 'Object.getOwnPropertyNames(e)')
-getOwnPropertyNames ([native code]::)
-o (node_modules/deep-freeze/index.js:4:29)
-_handleConfigChanged (src/panels/lovelace/editor/card-editor/hui-dialog-edit-card.ts:278:34)
-this (node_modules/lit-html/src/lit-html.ts:2109:33)
-dispatchEvent ([native code]::)
-event (src/common/dom/fire_event.ts:75:21)
-this._updateConfigElement (src/panels/lovelace/editor/hui-element-editor.ts:110:16)[0m
-[33m2025-12-10 23:17:03.140 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-10 23:22:03.158 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[31m2025-12-10 23:22:15.979 ERROR (MainThread) [frontend.js.modern.202512030] Uncaught error from WebKit 605.1.15 on iOS 18.7
-TypeError: undefined is not an object (evaluating 'Object.getOwnPropertyNames(e)')
-getOwnPropertyNames ([native code]::)
-o (node_modules/deep-freeze/index.js:4:29)
-_handleConfigChanged (src/panels/lovelace/editor/card-editor/hui-dialog-edit-card.ts:278:34)
-this (node_modules/lit-html/src/lit-html.ts:2109:33)
-dispatchEvent ([native code]::)
-event (src/common/dom/fire_event.ts:75:21)
-this._updateConfigElement (src/panels/lovelace/editor/hui-element-editor.ts:110:16)[0m
-[33m2025-12-10 23:27:03.143 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-10 23:32:03.155 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-10 23:37:03.142 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-10 23:42:03.169 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-10 23:47:03.126 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-10 23:48:37.632 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
-[32m2025-12-10 23:48:37.634 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2025-12-10 23:48:37.635 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
-[32m2025-12-10 23:48:42.635 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Timeout reached, abort script.[0m
-[32m2025-12-10 23:48:49.311 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions[0m
-[32m2025-12-10 23:48:49.313 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Ceiling Light -> Lamp: Running automation actions[0m
-[32m2025-12-10 23:48:49.313 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Ceiling Light -> Lamp: Executing step call service[0m
-[32m2025-12-10 23:48:49.333 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
-[32m2025-12-10 23:48:49.334 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2025-12-10 23:48:49.335 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
-[33m2025-12-10 23:48:54.232 WARNING (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Already running[0m
-[32m2025-12-10 23:48:54.236 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2025-12-10 23:48:54.238 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
-[32m2025-12-10 23:48:59.238 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Timeout reached, abort script.[0m
-[33m2025-12-10 23:52:03.207 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-10 23:57:03.171 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-11 00:01:00.336 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2025-12-11 00:01:00.338 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
-[33m2025-12-11 00:02:03.180 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[31m2025-12-11 00:04:03.429 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device[0m
-[33m2025-12-11 00:07:03.176 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 00:12:03.173 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 00:17:03.147 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 00:22:03.153 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 00:27:03.196 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 00:32:03.156 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 00:37:03.151 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 00:42:03.147 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 00:47:03.366 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 00:52:04.146 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 00:57:04.143 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 01:02:04.147 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 01:07:04.185 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 01:12:04.124 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 01:17:04.197 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 01:22:04.146 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 01:27:04.199 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 01:32:04.153 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 01:37:04.144 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 01:42:04.137 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 01:47:04.191 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 01:52:04.176 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 01:57:04.168 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-11 02:00:00.325 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
-[32m2025-12-11 02:00:00.326 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
-[32m2025-12-11 02:00:00.328 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2025-12-11 02:00:00.329 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2025-12-11 02:00:00.812 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2025-12-11 20:47:20.140 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 20:52:20.148 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 20:57:20.172 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 21:02:20.144 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 21:07:20.138 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 21:12:20.144 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 21:17:20.197 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 21:22:20.167 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 21:27:20.178 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 21:32:20.174 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 21:37:20.147 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 21:42:20.147 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 21:47:20.160 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 21:52:20.139 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 21:57:20.177 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[32m2025-12-11 22:00:00.182 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
+[32m2025-12-11 22:00:00.187 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Night Branch: Running automation actions[0m
+[32m2025-12-11 22:00:00.192 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Night Branch: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-11 22:00:00.193 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Night Branch: Choose at step 1: choice 1: Executing step Heat - 70[0m
+[33m2025-12-11 22:02:20.126 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 22:07:20.231 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 22:12:20.116 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 22:17:20.130 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 22:22:20.141 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 22:27:20.141 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 22:32:20.183 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 22:37:20.357 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 22:42:21.233 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 22:47:21.144 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[32m2025-12-11 22:48:56.179 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Running automation actions[0m
+[32m2025-12-11 22:48:56.180 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step assigning variables[0m
+[32m2025-12-11 22:48:56.182 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step call service[0m
+[32m2025-12-11 22:48:56.190 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step Log Variables[0m
+[32m2025-12-11 22:48:56.206 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Running automation actions[0m
+[32m2025-12-11 22:48:56.207 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Leaving Branch: Running automation actions[0m
+[32m2025-12-11 22:48:56.208 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Leaving Branch: Executing step call service[0m
+[33m2025-12-11 22:52:21.140 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 22:57:21.203 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[32m2025-12-11 23:00:00.070 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
+[32m2025-12-11 23:00:00.072 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Running automation actions[0m
+[32m2025-12-11 23:00:00.073 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Running automation actions[0m
+[32m2025-12-11 23:00:00.074 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
+[32m2025-12-11 23:00:00.465 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
+[33m2025-12-11 23:02:21.114 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 23:07:21.203 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 23:12:21.122 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 23:17:21.230 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[32m2025-12-11 23:17:43.232 INFO (MainThread) [zigpy_znp.zigbee.application] Permitting joins for 254 seconds[0m
+[36m2025-12-11 23:17:43.234 DEBUG (MainThread) [zigpy_znp.api] Sending request: ZDO.MgmtPermitJoinReq.Req(AddrMode=<AddrMode.NWK: 2>, Dst=0x0000, Duration=254, TCSignificance=1)[0m
+[36m2025-12-11 23:17:43.256 DEBUG (MainThread) [zigpy_znp.api] Received command: ZDO.MgmtPermitJoinReq.Rsp(Status=<Status.SUCCESS: 0>)[0m
+[36m2025-12-11 23:17:43.259 DEBUG (MainThread) [zigpy_znp.api] Received command: ZDO.MgmtPermitJoinRsp.Callback(Src=0x0000, Status=<Status.SUCCESS: 0>)[0m
+[36m2025-12-11 23:17:43.263 DEBUG (MainThread) [zigpy_znp.api] Received command: ZDO.MsgCbIncoming.Callback(Src=0x0000, IsBroadcast=<Bool.false: 0>, ClusterId=32822, SecurityUse=0, TSN=3, MacDst=0x0000, Data=b'\x00')[0m
+[36m2025-12-11 23:17:43.268 DEBUG (MainThread) [zigpy.application] Received a packet: ZigbeePacket(timestamp=datetime.datetime(2025, 12, 12, 5, 17, 43, 268370, tzinfo=datetime.timezone.utc), priority=None, src=AddrModeAddress(addr_mode=<AddrMode.NWK: 2>, address=0x0000), src_ep=0, dst=AddrModeAddress(addr_mode=<AddrMode.NWK: 2>, address=0x0000), dst_ep=0, source_route=None, extended_timeout=False, tsn=3, profile_id=0, cluster_id=32822, data=Serialized[b'\x03\x00'], tx_options=<TransmitOptions.NONE: 0>, radius=0, non_member_radius=0, lqi=None, rssi=None)[0m
+[36m2025-12-11 23:17:43.280 DEBUG (MainThread) [zigpy.zdo] [0x0000:zdo] ZDO request ZDOCmd.Mgmt_Permit_Joining_rsp: [<Status.SUCCESS: 0>][0m
+[36m2025-12-11 23:17:43.280 DEBUG (MainThread) [zigpy.zdo] [0x0000:zdo] No handler for ZDO request:ZDOCmd.Mgmt_Permit_Joining_rsp([<Status.SUCCESS: 0>])[0m
+[36m2025-12-11 23:17:44.606 DEBUG (MainThread) [zigpy.application] Feeding watchdog[0m
+[36m2025-12-11 23:17:44.607 DEBUG (MainThread) [zigpy_znp.api] Sending request: SYS.Ping.Req()[0m
+[36m2025-12-11 23:17:44.631 DEBUG (MainThread) [zigpy_znp.api] Received command: SYS.Ping.Rsp(Capabilities=<MTCapabilities.SYS|AF|ZDO|UTIL|GP|APP_CNF: 1625>)[0m
+[33m2025-12-11 23:22:21.186 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 23:27:21.155 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 23:32:21.163 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 23:37:21.223 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 23:42:21.123 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 23:47:21.150 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 23:52:21.158 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-11 23:57:21.142 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[32m2025-12-12 00:01:00.336 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
+[32m2025-12-12 00:01:00.338 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
+[33m2025-12-12 00:02:21.227 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 00:07:21.162 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 00:12:21.133 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 00:17:21.150 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 00:22:21.133 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 00:27:21.132 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 00:32:21.196 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 00:37:21.144 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 00:42:21.141 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 00:47:21.156 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[32m2025-12-12 00:50:53.575 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
+[32m2025-12-12 00:50:53.576 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
+[33m2025-12-12 00:52:21.172 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 00:57:21.148 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 01:02:21.158 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[31m2025-12-12 01:03:08.430 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device[0m
+[33m2025-12-12 01:07:21.141 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 01:12:21.140 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 01:17:21.119 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 01:22:21.217 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 01:27:21.163 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 01:32:21.224 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 01:37:21.137 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 01:42:21.164 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 01:47:21.135 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 01:52:21.171 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-12 01:57:21.136 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[32m2025-12-12 02:00:00.325 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
+[32m2025-12-12 02:00:00.326 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
+[32m2025-12-12 02:00:00.328 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2025-12-12 02:00:00.329 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2025-12-12 02:00:00.785 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m

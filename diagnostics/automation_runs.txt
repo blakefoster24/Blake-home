@@ -1,40 +1,27 @@
 ===== $(date -Iseconds) — automation runs (recent) =====
-[32m2025-12-10 22:42:31.735 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
-[32m2025-12-10 22:42:31.737 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Running automation actions[0m
-[32m2025-12-10 22:42:31.737 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Executing step call service[0m
-[33m2025-12-10 22:52:02.276 WARNING (MainThread) [aioamazondevices] Connection error to https://alexa.amazon.com/api/devices-v2/device: ConnectionTimeoutError('Connection timeout to host https://alexa.amazon.com/api/devices-v2/device')[0m
-[31m2025-12-10 22:52:02.277 ERROR (MainThread) [homeassistant.components.alexa_devices] Error fetching Blake.foster30@gmail.com data: Error connecting: CannotConnect('Connection error during GET')[0m
-[32m2025-12-10 23:00:00.070 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2025-12-10 23:00:00.072 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Running automation actions[0m
-[32m2025-12-10 23:00:00.074 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Running automation actions[0m
-[32m2025-12-10 23:00:00.074 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[32m2025-12-10 23:00:00.511 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[32m2025-12-10 23:06:23.381 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions[0m
-[32m2025-12-10 23:06:23.382 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Ceiling Light -> Lamp: Running automation actions[0m
-[32m2025-12-10 23:06:23.383 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Ceiling Light -> Lamp: Executing step call service[0m
-[32m2025-12-10 23:06:23.390 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
-[32m2025-12-10 23:06:23.391 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2025-12-10 23:06:23.392 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
-[32m2025-12-10 23:06:28.392 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Timeout reached, abort script.[0m
-[32m2025-12-10 23:48:37.632 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
-[32m2025-12-10 23:48:37.634 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2025-12-10 23:48:37.635 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
-[32m2025-12-10 23:48:42.635 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Timeout reached, abort script.[0m
-[32m2025-12-10 23:48:49.311 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions[0m
-[32m2025-12-10 23:48:49.313 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Ceiling Light -> Lamp: Running automation actions[0m
-[32m2025-12-10 23:48:49.313 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Ceiling Light -> Lamp: Executing step call service[0m
-[32m2025-12-10 23:48:49.333 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
-[32m2025-12-10 23:48:49.334 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2025-12-10 23:48:49.335 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
-[33m2025-12-10 23:48:54.232 WARNING (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Already running[0m
-[32m2025-12-10 23:48:54.236 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2025-12-10 23:48:54.238 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Initialized trigger[0m
-[32m2025-12-10 23:48:59.238 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Timeout reached, abort script.[0m
-[32m2025-12-11 00:01:00.336 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2025-12-11 00:01:00.338 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
-[32m2025-12-11 02:00:00.325 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
-[32m2025-12-11 02:00:00.326 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
-[32m2025-12-11 02:00:00.328 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2025-12-11 02:00:00.329 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2025-12-11 02:00:00.812 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2025-12-11 02:00:01.922 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2025-12-11 22:00:00.182 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
+[32m2025-12-11 22:00:00.187 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Night Branch: Running automation actions[0m
+[32m2025-12-11 22:00:00.192 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Night Branch: Choose at step 1: choice 1: Running automation actions[0m
+[32m2025-12-11 22:00:00.193 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Night Branch: Choose at step 1: choice 1: Executing step Heat - 70[0m
+[32m2025-12-11 22:48:56.179 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Running automation actions[0m
+[32m2025-12-11 22:48:56.180 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step assigning variables[0m
+[32m2025-12-11 22:48:56.182 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step call service[0m
+[32m2025-12-11 22:48:56.190 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step Log Variables[0m
+[32m2025-12-11 22:48:56.206 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Running automation actions[0m
+[32m2025-12-11 22:48:56.207 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Leaving Branch: Running automation actions[0m
+[32m2025-12-11 22:48:56.208 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Leaving Branch: Executing step call service[0m
+[32m2025-12-11 23:00:00.070 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
+[32m2025-12-11 23:00:00.072 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Running automation actions[0m
+[32m2025-12-11 23:00:00.073 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Running automation actions[0m
+[32m2025-12-11 23:00:00.074 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
+[32m2025-12-11 23:00:00.465 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
+[32m2025-12-12 00:01:00.336 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
+[32m2025-12-12 00:01:00.338 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
+[32m2025-12-12 00:50:53.575 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
+[32m2025-12-12 00:50:53.576 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
+[32m2025-12-12 02:00:00.325 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
+[32m2025-12-12 02:00:00.326 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
+[32m2025-12-12 02:00:00.328 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2025-12-12 02:00:00.329 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2025-12-12 02:00:00.785 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2025-12-12 02:00:00.922 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
