@@ -1,101 +1,101 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-[33m2025-12-11 20:47:20.140 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 20:52:20.148 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 20:57:20.172 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 21:02:20.144 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 21:07:20.138 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 21:12:20.144 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 21:17:20.197 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 21:22:20.167 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 21:27:20.178 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 21:32:20.174 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 21:37:20.147 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 21:42:20.147 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 21:47:20.160 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 21:52:20.139 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 21:57:20.177 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-11 22:00:00.182 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
-[32m2025-12-11 22:00:00.187 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Night Branch: Running automation actions[0m
-[32m2025-12-11 22:00:00.192 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Night Branch: Choose at step 1: choice 1: Running automation actions[0m
-[32m2025-12-11 22:00:00.193 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Night Branch: Choose at step 1: choice 1: Executing step Heat - 70[0m
-[33m2025-12-11 22:02:20.126 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 22:07:20.231 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 22:12:20.116 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 22:17:20.130 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 22:22:20.141 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 22:27:20.141 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 22:32:20.183 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 22:37:20.357 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 22:42:21.233 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 22:47:21.144 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-11 22:48:56.179 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Running automation actions[0m
-[32m2025-12-11 22:48:56.180 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step assigning variables[0m
-[32m2025-12-11 22:48:56.182 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step call service[0m
-[32m2025-12-11 22:48:56.190 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Executing step Log Variables[0m
-[32m2025-12-11 22:48:56.206 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Running automation actions[0m
-[32m2025-12-11 22:48:56.207 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Leaving Branch: Running automation actions[0m
-[32m2025-12-11 22:48:56.208 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving Or Arriving: Leaving Branch: Executing step call service[0m
-[33m2025-12-11 22:52:21.140 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 22:57:21.203 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-11 23:00:00.070 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2025-12-11 23:00:00.072 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Running automation actions[0m
-[32m2025-12-11 23:00:00.073 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Running automation actions[0m
-[32m2025-12-11 23:00:00.074 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[32m2025-12-11 23:00:00.465 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[33m2025-12-11 23:02:21.114 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 23:07:21.203 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 23:12:21.122 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 23:17:21.230 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-11 23:17:43.232 INFO (MainThread) [zigpy_znp.zigbee.application] Permitting joins for 254 seconds[0m
-[36m2025-12-11 23:17:43.234 DEBUG (MainThread) [zigpy_znp.api] Sending request: ZDO.MgmtPermitJoinReq.Req(AddrMode=<AddrMode.NWK: 2>, Dst=0x0000, Duration=254, TCSignificance=1)[0m
-[36m2025-12-11 23:17:43.256 DEBUG (MainThread) [zigpy_znp.api] Received command: ZDO.MgmtPermitJoinReq.Rsp(Status=<Status.SUCCESS: 0>)[0m
-[36m2025-12-11 23:17:43.259 DEBUG (MainThread) [zigpy_znp.api] Received command: ZDO.MgmtPermitJoinRsp.Callback(Src=0x0000, Status=<Status.SUCCESS: 0>)[0m
-[36m2025-12-11 23:17:43.263 DEBUG (MainThread) [zigpy_znp.api] Received command: ZDO.MsgCbIncoming.Callback(Src=0x0000, IsBroadcast=<Bool.false: 0>, ClusterId=32822, SecurityUse=0, TSN=3, MacDst=0x0000, Data=b'\x00')[0m
-[36m2025-12-11 23:17:43.268 DEBUG (MainThread) [zigpy.application] Received a packet: ZigbeePacket(timestamp=datetime.datetime(2025, 12, 12, 5, 17, 43, 268370, tzinfo=datetime.timezone.utc), priority=None, src=AddrModeAddress(addr_mode=<AddrMode.NWK: 2>, address=0x0000), src_ep=0, dst=AddrModeAddress(addr_mode=<AddrMode.NWK: 2>, address=0x0000), dst_ep=0, source_route=None, extended_timeout=False, tsn=3, profile_id=0, cluster_id=32822, data=Serialized[b'\x03\x00'], tx_options=<TransmitOptions.NONE: 0>, radius=0, non_member_radius=0, lqi=None, rssi=None)[0m
-[36m2025-12-11 23:17:43.280 DEBUG (MainThread) [zigpy.zdo] [0x0000:zdo] ZDO request ZDOCmd.Mgmt_Permit_Joining_rsp: [<Status.SUCCESS: 0>][0m
-[36m2025-12-11 23:17:43.280 DEBUG (MainThread) [zigpy.zdo] [0x0000:zdo] No handler for ZDO request:ZDOCmd.Mgmt_Permit_Joining_rsp([<Status.SUCCESS: 0>])[0m
-[36m2025-12-11 23:17:44.606 DEBUG (MainThread) [zigpy.application] Feeding watchdog[0m
-[36m2025-12-11 23:17:44.607 DEBUG (MainThread) [zigpy_znp.api] Sending request: SYS.Ping.Req()[0m
-[36m2025-12-11 23:17:44.631 DEBUG (MainThread) [zigpy_znp.api] Received command: SYS.Ping.Rsp(Capabilities=<MTCapabilities.SYS|AF|ZDO|UTIL|GP|APP_CNF: 1625>)[0m
-[33m2025-12-11 23:22:21.186 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 23:27:21.155 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 23:32:21.163 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 23:37:21.223 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 23:42:21.123 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 23:47:21.150 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 23:52:21.158 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-11 23:57:21.142 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-12 00:01:00.336 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2025-12-12 00:01:00.338 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
-[33m2025-12-12 00:02:21.227 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 00:07:21.162 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 00:12:21.133 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 00:17:21.150 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 00:22:21.133 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 00:27:21.132 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 00:32:21.196 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 00:37:21.144 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 00:42:21.141 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 00:47:21.156 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-12 00:50:53.575 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
-[32m2025-12-12 00:50:53.576 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
-[33m2025-12-12 00:52:21.172 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 00:57:21.148 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 01:02:21.158 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[31m2025-12-12 01:03:08.430 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device[0m
-[33m2025-12-12 01:07:21.141 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 01:12:21.140 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 01:17:21.119 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 01:22:21.217 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 01:27:21.163 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 01:32:21.224 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 01:37:21.137 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 01:42:21.164 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 01:47:21.135 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 01:52:21.171 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-12 01:57:21.136 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-12 02:00:00.325 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
-[32m2025-12-12 02:00:00.326 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
-[32m2025-12-12 02:00:00.328 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2025-12-12 02:00:00.329 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2025-12-12 02:00:00.785 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2025-12-12 23:54:41.943 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
+[32m2025-12-12 23:54:41.943 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:54:41.947 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:54:42.039 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:54:42.542 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:54:42.639 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:54:43.141 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 2 of 2[0m
+[32m2025-12-12 23:54:43.141 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
+[32m2025-12-12 23:54:43.142 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:54:43.145 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:54:43.223 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:54:43.724 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:54:43.823 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:55:21.084 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Initialized trigger Battery Low Automation [0m
+[32m2025-12-12 23:55:31.017 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-12 23:55:31.018 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 1 of 3[0m
+[32m2025-12-12 23:55:31.018 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
+[32m2025-12-12 23:55:31.019 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:55:31.034 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:55:31.127 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:55:31.629 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:55:31.708 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:55:32.210 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 2 of 3[0m
+[32m2025-12-12 23:55:32.211 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
+[32m2025-12-12 23:55:32.211 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:55:32.214 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:55:32.301 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:55:32.803 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:55:32.902 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:55:33.405 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 3 of 3[0m
+[32m2025-12-12 23:55:33.405 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
+[32m2025-12-12 23:55:33.406 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:55:33.409 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:55:33.547 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:55:34.049 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:55:34.309 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:56:03.400 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2025-12-12 23:56:03.400 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 1 of 3[0m
+[32m2025-12-12 23:56:03.401 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
+[32m2025-12-12 23:56:03.401 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:56:03.404 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:56:03.492 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:56:03.994 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:56:04.192 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:56:04.694 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 2 of 3[0m
+[32m2025-12-12 23:56:04.694 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
+[32m2025-12-12 23:56:04.695 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:56:04.698 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:56:04.795 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:56:05.297 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:56:05.501 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:56:06.005 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 3 of 3[0m
+[32m2025-12-12 23:56:06.005 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
+[32m2025-12-12 23:56:06.006 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:56:06.009 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:56:06.118 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:56:06.620 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
+[32m2025-12-12 23:56:06.802 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
+[32m2025-12-12 23:56:40.219 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
+[33m2025-12-12 23:57:34.134 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[32m2025-12-13 00:01:00.336 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
+[32m2025-12-13 00:01:00.338 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
+[33m2025-12-13 00:02:34.161 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 00:07:34.135 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 00:12:34.140 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 00:17:34.150 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[32m2025-12-13 00:19:13.371 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions[0m
+[32m2025-12-13 00:19:13.373 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Running automation actions[0m
+[32m2025-12-13 00:19:13.373 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Executing step call service[0m
+[32m2025-12-13 00:19:13.476 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Executing step wait for trigger (timeout: 0:45:00)[0m
+[32m2025-12-13 00:19:13.478 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Initialized trigger[0m
+[32m2025-12-13 00:20:13.370 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Executing step call service[0m
+[33m2025-12-13 00:22:34.164 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 00:27:34.155 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 00:32:34.112 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 00:37:34.136 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 00:42:34.191 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 00:47:34.127 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 00:52:34.127 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 00:57:34.193 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 01:02:34.175 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 01:07:34.135 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 01:12:34.123 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 01:17:34.121 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 01:22:34.126 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 01:27:34.243 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[32m2025-12-13 01:31:59.595 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
+[32m2025-12-13 01:31:59.595 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
+[33m2025-12-13 01:32:34.128 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 01:37:34.136 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 01:42:34.133 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[31m2025-12-13 01:44:14.429 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device[0m
+[33m2025-12-13 01:47:34.143 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 01:52:34.136 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[33m2025-12-13 01:57:34.167 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
+[32m2025-12-13 02:00:00.325 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
+[32m2025-12-13 02:00:00.326 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
+[32m2025-12-13 02:00:00.328 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2025-12-13 02:00:00.328 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2025-12-13 02:00:00.787 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m

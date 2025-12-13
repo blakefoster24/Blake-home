@@ -1,4 +1,4 @@
-_Last Updated: 2025-12-12T02:00:00.329554-06:00_
+_Last Updated: 2025-12-13T02:00:00.329388-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -25,7 +25,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-| `input_boolean.workday_today_toggle` | **Workday Today Toggle** | on |  |
+| `input_boolean.workday_today_toggle` | **Workday Today Toggle** | off |  |
 
 
 
@@ -33,7 +33,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-| `input_boolean.workday_tomorrow_toggle` | **Workday Tomorrow Toggle** | on |  |
+| `input_boolean.workday_tomorrow_toggle` | **Workday Tomorrow Toggle** | off |  |
 
 
 
@@ -51,13 +51,13 @@ Below are the input helpers configured in Home Assistant.
 
   
 
-| `input_datetime.home_timestamp` | **Home Timestamp** | 2025-12-11 17:54:34 | has_date=True, has_time=True |
+| `input_datetime.home_timestamp` | **Home Timestamp** | 2025-12-12 22:18:43 | has_date=True, has_time=True |
 
 
 
   
 
-| `input_datetime.last_door_open` | **Last Door Open** | 2025-12-11 22:48:56 | has_date=True, has_time=True |
+| `input_datetime.last_door_open` | **Last Door Open** | 2025-12-12 22:40:17 | has_date=True, has_time=True |
 
 
 
@@ -339,7 +339,7 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `event.backup_automatic_backup` | Backup Automatic backup | 2025-12-11T11:21:35.843+00:00 |
+| `event.backup_automatic_backup` | Backup Automatic backup | 2025-12-12T11:18:00.621+00:00 |
 
 | `event.bthome_sensor_3370_button` | Motion 1 Button | 2025-10-19T05:15:17.292+00:00 |
 
@@ -490,32 +490,34 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-<details><summary><b>Scene (12)</b></summary>
+<details><summary><b>Scene (13)</b></summary>
 
 | Entity ID | Name | State |
 |---|---|---|
 
-| `scene.all_lights` | All Lights | 2025-12-11T23:55:45.536885+00:00 |
+| `scene.all_lights` | All Lights | 2025-12-13T02:30:26.742315+00:00 |
 
 | `scene.all_lights_off` | All Lights Off | 2025-12-08T08:37:10.612154+00:00 |
 
-| `scene.all_off` | All Off | 2025-12-11T15:11:57.980647+00:00 |
+| `scene.all_off` | All Off | 2025-12-12T15:02:25.941133+00:00 |
 
-| `scene.bedroom_lights_off` | Bedroom Lights Off | 2025-12-12T01:56:06.439656+00:00 |
+| `scene.bedroom_lights_off` | Bedroom Lights Off | 2025-12-13T04:29:27.255562+00:00 |
 
 | `scene.dimmed` | Dimmed | 2025-12-01T04:20:32.143898+00:00 |
 
-| `scene.full_lamp` | Full Lamp | 2025-12-11T23:55:46.151901+00:00 |
+| `scene.full_lamp` | Full Lamp | 2025-12-13T04:21:16.022725+00:00 |
 
-| `scene.goodnight_scene` | Goodnight | 2025-12-12T06:50:53.577138+00:00 |
+| `scene.goodnight_scene` | Goodnight | 2025-12-13T07:31:59.597010+00:00 |
 
 | `scene.im_awake` | I’m Awake | 2025-12-02T12:31:03.745110+00:00 |
 
+| `scene.lamp_snapshot` | lamp_snapshot | 2025-12-13T05:56:06.622257+00:00 |
+
 | `scene.night_light` | Night Light | 2025-09-26T00:17:04.739409+00:00 |
 
-| `scene.set_my_room` | Set My Room | 2025-12-12T05:02:16.423549+00:00 |
+| `scene.set_my_room` | Set My Room | 2025-12-13T04:49:04.687891+00:00 |
 
-| `scene.thermostat_away` | Thermostat Away | 2025-12-11T15:14:27.930293+00:00 |
+| `scene.thermostat_away` | Thermostat Away | 2025-12-12T15:04:01.785031+00:00 |
 
 | `scene.thermostat_ideal_evening` | Thermostat 68/70 | 2025-11-28T11:14:37.942932+00:00 |
 
@@ -571,23 +573,23 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.backup_backup_manager_state` | Backup Backup Manager state | idle |
 
-| `sensor.backup_last_attempted_automatic_backup` | Backup Last attempted automatic backup | 2025-12-11T11:20:11+00:00 |
+| `sensor.backup_last_attempted_automatic_backup` | Backup Last attempted automatic backup | 2025-12-12T11:16:40+00:00 |
 
-| `sensor.backup_last_successful_automatic_backup` | Backup Last successful automatic backup | 2025-12-11T11:21:35+00:00 |
+| `sensor.backup_last_successful_automatic_backup` | Backup Last successful automatic backup | 2025-12-12T11:18:00+00:00 |
 
-| `sensor.backup_next_scheduled_automatic_backup` | Backup Next scheduled automatic backup | 2025-12-12T11:16:40+00:00 |
+| `sensor.backup_next_scheduled_automatic_backup` | Backup Next scheduled automatic backup | 2025-12-13T11:35:52+00:00 |
 
 | `sensor.bathroom_light_auto_off_at` | Bathroom Light Auto-off at | unknown |
 
-| `sensor.bathroom_light_signal_level` | Bathroom Light Signal level | 3 |
+| `sensor.bathroom_light_signal_level` | Bathroom Light Signal level | 2 |
 
-| `sensor.bed_presence_bb8594_left_pressure` | Bed Presence Sensor Left Pressure | 96.1095352172852 |
+| `sensor.bed_presence_bb8594_left_pressure` | Bed Presence Sensor Left Pressure | 96.0186614990234 |
 
-| `sensor.bed_presence_bb8594_right_pressure` | Bed Presence Sensor Right Pressure | 87.7146301269531 |
+| `sensor.bed_presence_bb8594_right_pressure` | Bed Presence Sensor Right Pressure | 87.788444519043 |
 
-| `sensor.bed_presence_bb8594_uptime` | Bed Presence Sensor Uptime | 145163.59375 |
+| `sensor.bed_presence_bb8594_uptime` | Bed Presence Sensor Uptime | 231566.40625 |
 
-| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Presence Sensor WiFi Signal dB | -49.0 |
+| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Presence Sensor WiFi Signal dB | -48.0 |
 
 | `sensor.bed_presence_bb8594_wifi_signal_percent` | Bed Presence Sensor WiFi Signal Percent | 100.0 |
 
@@ -623,9 +625,9 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.blakes_iphone_app_version` | Blakes iPhone App Version | 2025.12.1 |
 
-| `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 100 |
+| `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 80 |
 
-| `sensor.blakes_iphone_battery_state` | Blakes iPhone Battery State | Full |
+| `sensor.blakes_iphone_battery_state` | Blakes iPhone Battery State | Charging |
 
 | `sensor.blakes_iphone_geocoded_location` | Blakes iPhone Geocoded Location | 1109 Watermark Dr
 O'Fallon MO 63368
@@ -637,9 +639,9 @@ United States |
 
 | `sensor.bthome_sensor_3370_illuminance` | Motion 1 Illuminance | 0.0 |
 
-| `sensor.bthome_sensor_3370_packet_id` | Motion 1 Packet Id | 53 |
+| `sensor.bthome_sensor_3370_packet_id` | Motion 1 Packet Id | 79 |
 
-| `sensor.bthome_sensor_3370_signal_strength` | Motion 1 Signal Strength | -66 |
+| `sensor.bthome_sensor_3370_signal_strength` | Motion 1 Signal Strength | -71 |
 
 | `sensor.closet_light_auto_off_at` | Closet Light Auto-off at | unknown |
 
@@ -651,7 +653,7 @@ United States |
 
 | `sensor.everywhere_next_timer` | Everywhere Next timer | unavailable |
 
-| `sensor.front_door_sensor_battery` | Front Door Sensor Battery | 92 |
+| `sensor.front_door_sensor_battery` | Front Door Sensor Battery | 93 |
 
 | `sensor.front_door_sensor_illuminance` | Front Door Sensor Illuminance | 0.0 |
 
@@ -677,47 +679,47 @@ United States |
 
 | `sensor.main_lights_signal_level` | Main Lights Signal level | 3 |
 
-| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 1.399 |
+| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 1.495 |
 
 | `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.0 |
 
-| `sensor.main_lights_voltage` | Main Lights Voltage | 123.0 |
+| `sensor.main_lights_voltage` | Main Lights Voltage | 123.3 |
 
-| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 67.658 |
+| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 68.612 |
 
-| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 56 |
+| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 100 |
 
-| `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | cloudy |
+| `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | snowy |
 
-| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 29.426 |
+| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 29.444 |
 
-| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 25.826 |
+| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 26.204 |
 
-| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 83 |
+| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 87 |
 
-| `sensor.openweathermap_precipitation_kind_2` | OpenWeatherMap Precipitation kind | None |
+| `sensor.openweathermap_precipitation_kind_2` | OpenWeatherMap Precipitation kind | Snow |
 
-| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.7068272311845 |
+| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.8373612006921 |
 
 | `sensor.openweathermap_rain_2` | OpenWeatherMap Rain intensity | 0.0 |
 
-| `sensor.openweathermap_snow_2` | OpenWeatherMap Snow intensity | 0.0 |
+| `sensor.openweathermap_snow_2` | OpenWeatherMap Snow intensity | 0.062992125984252 |
 
-| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 33.692 |
+| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 32.54 |
 
 | `sensor.openweathermap_uv_index_2` | OpenWeatherMap UV index | 0 |
 
 | `sensor.openweathermap_visibility_2` | OpenWeatherMap Visibility | 32808.3989501312 |
 
-| `sensor.openweathermap_weather_2` | OpenWeatherMap Weather | broken clouds |
+| `sensor.openweathermap_weather_2` | OpenWeatherMap Weather | snow |
 
-| `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 803 |
+| `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 601 |
 
-| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 52 |
+| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 250 |
 
-| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 11.0057265569077 |
+| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | unknown |
 
-| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 9.99910522548318 |
+| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 6.9121331424481 |
 
 | `sensor.philips_rwl020_battery` | Hue Dimmer Battery | 100.0 |
 
@@ -733,29 +735,29 @@ United States |
 
 | `sensor.slzb_mr1_connection_mode` | SLZB-MR1 Connection mode | wifi |
 
-| `sensor.slzb_mr1_core_chip_temp` | SLZB-MR1 Core chip temp | 127.994 |
+| `sensor.slzb_mr1_core_chip_temp` | SLZB-MR1 Core chip temp | 129.992 |
 
 | `sensor.slzb_mr1_firmware_channel` | SLZB-MR1 Firmware channel | release |
 
-| `sensor.slzb_mr1_zigbee_chip_temp` | SLZB-MR1 Zigbee chip temp | 121.946 |
+| `sensor.slzb_mr1_zigbee_chip_temp` | SLZB-MR1 Zigbee chip temp | 124.484 |
 
-| `sensor.slzb_mr1_zigbee_chip_temp_2` | SLZB-MR1 Zigbee chip temp | 124.232 |
+| `sensor.slzb_mr1_zigbee_chip_temp_2` | SLZB-MR1 Zigbee chip temp | 125.384 |
 
 | `sensor.slzb_mr1_zigbee_type` | SLZB-MR1 Zigbee type | thread |
 
 | `sensor.slzb_mr1_zigbee_type_2` | SLZB-MR1 Zigbee type | coordinator |
 
-| `sensor.sun_next_dawn` | Sun Next dawn | 2025-12-12T12:41:41+00:00 |
+| `sensor.sun_next_dawn` | Sun Next dawn | 2025-12-13T12:42:24+00:00 |
 
-| `sensor.sun_next_dusk` | Sun Next dusk | 2025-12-12T23:11:44+00:00 |
+| `sensor.sun_next_dusk` | Sun Next dusk | 2025-12-13T23:11:58+00:00 |
 
-| `sensor.sun_next_midnight` | Sun Next midnight | 2025-12-13T05:57:14+00:00 |
+| `sensor.sun_next_midnight` | Sun Next midnight | 2025-12-14T05:57:43+00:00 |
 
-| `sensor.sun_next_noon` | Sun Next noon | 2025-12-12T17:56:25+00:00 |
+| `sensor.sun_next_noon` | Sun Next noon | 2025-12-13T17:56:53+00:00 |
 
-| `sensor.sun_next_rising` | Sun Next rising | 2025-12-12T13:12:03+00:00 |
+| `sensor.sun_next_rising` | Sun Next rising | 2025-12-13T13:12:47+00:00 |
 
-| `sensor.sun_next_setting` | Sun Next setting | 2025-12-12T22:41:22+00:00 |
+| `sensor.sun_next_setting` | Sun Next setting | 2025-12-13T22:41:35+00:00 |
 
 | `sensor.xkglowrgb_0451_estimated_distance` | XKGlowRGB 0451 Estimated distance | unavailable |
 
@@ -941,7 +943,7 @@ United States |
 | Entity ID | Name | State |
 |---|---|---|
 
-| `weather.openweathermap_2` | OpenWeatherMap | cloudy |
+| `weather.openweathermap_2` | OpenWeatherMap | snowy |
 
 </details>
 

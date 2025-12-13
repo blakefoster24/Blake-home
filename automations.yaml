@@ -190,6 +190,8 @@
         target:
           entity_id: light.living_room_lamp
       alias: Turn off Branch
+  trace:
+    stored_traces: 50
   mode: single
 - id: nightly_github_sync
   alias: Nightly GitHub sync
@@ -448,12 +450,12 @@
             entity_id: sensor.openweathermap_temperature_2
             below: 55
           sequence:
-          - alias: Heat - 70
+          - alias: Heat 70
             action: climate.set_temperature
             metadata: {}
             data:
               hvac_mode: heat
-              temperature: 68
+              temperature: 70
             target:
               device_id: b43f8797bfe54ded21e44c051fec8167
         - conditions:
@@ -514,6 +516,8 @@
                 | float | round | int }}°'
               title: Check Thermostat!
       alias: Temperature Issue
+  trace:
+    stored_traces: 50
   mode: single
 - id: '1761198863619'
   alias: Helper Automation
@@ -535,6 +539,16 @@
     to:
     - home
     id: Blake Home
+  - trigger: state
+    entity_id:
+    - binary_sensor.motion_1_motion
+    to:
+    - 'on'
+    for:
+      hours: 0
+      minutes: 15
+      seconds: 0
+    id: Motion
   conditions: []
   actions:
   - choose:
@@ -566,6 +580,18 @@
         data:
           datetime: '{{ now().isoformat() }}'
         alias: Set Home Timestamp
+    - conditions:
+      - condition: trigger
+        id:
+        - Motion
+      sequence:
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          data:
+            interruption-level: time-sensitive
+          title: Motion stuck on detected
+          message: 'Check motion sensor '
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
@@ -592,17 +618,34 @@
       - repeat:
           count: 2
           sequence:
+          - action: scene.create
+            metadata: {}
+            data:
+              scene_id: lamp_snapshot
+              snapshot_entities:
+              - light.bedroom_lamp
+          - action: light.toggle
+            metadata: {}
+            target:
+              entity_id: light.bedroom_lamp
+            data:
+              transition: 0
           - delay:
               hours: 0
               minutes: 0
-              seconds: 1
-              milliseconds: 0
-          - action: light.turn_on
+              seconds: 0
+              milliseconds: 500
+          - action: scene.turn_on
             metadata: {}
-            data:
-              flash: short
             target:
-              entity_id: light.bedroom_lamp
+              entity_id: scene.lamp_snapshot
+            data:
+              transition: 0
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 0
+              milliseconds: 500
     - conditions:
       - condition: trigger
         id:
@@ -611,17 +654,34 @@
       - repeat:
           count: 3
           sequence:
+          - action: scene.create
+            metadata: {}
+            data:
+              scene_id: lamp_snapshot
+              snapshot_entities:
+              - light.bedroom_lamp
+          - action: light.toggle
+            metadata: {}
+            target:
+              entity_id: light.bedroom_lamp
+            data:
+              transition: 0
           - delay:
               hours: 0
               minutes: 0
-              seconds: 1
-              milliseconds: 0
-          - action: light.turn_on
+              seconds: 0
+              milliseconds: 500
+          - action: scene.turn_on
             metadata: {}
-            data:
-              flash: short
             target:
-              entity_id: light.bedroom_lamp
+              entity_id: scene.lamp_snapshot
+            data:
+              transition: 0
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 0
+              milliseconds: 500
   mode: single
 - id: '1761579203292'
   alias: Goodnight
@@ -664,6 +724,14 @@
       hours: 0
       minutes: 19
       seconds: 0
+  - condition: state
+    entity_id: person.blake_foster
+    state:
+    - home
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
   actions:
   - action: scene.turn_on
     metadata: {}
@@ -685,10 +753,10 @@
       device_ieee: 00:17:88:01:02:18:b1:7a
       command: on_short_release
   - trigger: time
-    at: 08:40:00
+    at: 08:35:00
     id: Late Time Window
   - trigger: time
-    at: 08:55:00
+    at: 08:50:00
     id: Last Time Window
   - trigger: state
     entity_id:
