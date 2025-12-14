@@ -1,101 +1,101 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-[32m2025-12-12 23:54:41.943 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
-[32m2025-12-12 23:54:41.943 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:54:41.947 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:54:42.039 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:54:42.542 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:54:42.639 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:54:43.141 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 2 of 2[0m
-[32m2025-12-12 23:54:43.141 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
-[32m2025-12-12 23:54:43.142 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:54:43.145 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:54:43.223 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:54:43.724 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:54:43.823 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:55:21.084 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Initialized trigger Battery Low Automation [0m
-[32m2025-12-12 23:55:31.017 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-12 23:55:31.018 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 1 of 3[0m
-[32m2025-12-12 23:55:31.018 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
-[32m2025-12-12 23:55:31.019 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:55:31.034 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:55:31.127 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:55:31.629 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:55:31.708 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:55:32.210 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 2 of 3[0m
-[32m2025-12-12 23:55:32.211 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
-[32m2025-12-12 23:55:32.211 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:55:32.214 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:55:32.301 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:55:32.803 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:55:32.902 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:55:33.405 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 3 of 3[0m
-[32m2025-12-12 23:55:33.405 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
-[32m2025-12-12 23:55:33.406 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:55:33.409 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:55:33.547 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:55:34.049 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:55:34.309 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:56:03.400 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2025-12-12 23:56:03.400 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 1 of 3[0m
-[32m2025-12-12 23:56:03.401 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
-[32m2025-12-12 23:56:03.401 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:56:03.404 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:56:03.492 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:56:03.994 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:56:04.192 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:56:04.694 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 2 of 3[0m
-[32m2025-12-12 23:56:04.694 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
-[32m2025-12-12 23:56:04.695 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:56:04.698 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:56:04.795 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:56:05.297 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:56:05.501 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:56:06.005 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeating sequence: Iteration 3 of 3[0m
-[32m2025-12-12 23:56:06.005 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Running websocket_api script[0m
-[32m2025-12-12 23:56:06.006 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:56:06.009 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:56:06.118 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:56:06.620 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step call service[0m
-[32m2025-12-12 23:56:06.802 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Repeat at step 1: Executing step delay 0:00:00.500000[0m
-[32m2025-12-12 23:56:40.219 INFO (MainThread) [homeassistant.components.automation.workday_wake_up] Initialized trigger Workday Wake-up[0m
-[33m2025-12-12 23:57:34.134 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-13 00:01:00.336 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2025-12-13 00:01:00.338 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
-[33m2025-12-13 00:02:34.161 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 00:07:34.135 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 00:12:34.140 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 00:17:34.150 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-13 00:19:13.371 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Running automation actions[0m
-[32m2025-12-13 00:19:13.373 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Running automation actions[0m
-[32m2025-12-13 00:19:13.373 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Executing step call service[0m
-[32m2025-12-13 00:19:13.476 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Executing step wait for trigger (timeout: 0:45:00)[0m
-[32m2025-12-13 00:19:13.478 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Initialized trigger[0m
-[32m2025-12-13 00:20:13.370 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Triggers Light: Choose at step 1: Closet Light -> Bathroom Light: Executing step call service[0m
-[33m2025-12-13 00:22:34.164 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 00:27:34.155 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 00:32:34.112 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 00:37:34.136 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 00:42:34.191 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 00:47:34.127 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 00:52:34.127 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 00:57:34.193 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 01:02:34.175 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 01:07:34.135 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 01:12:34.123 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 01:17:34.121 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 01:22:34.126 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 01:27:34.243 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-13 01:31:59.595 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
-[32m2025-12-13 01:31:59.595 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
-[33m2025-12-13 01:32:34.128 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 01:37:34.136 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 01:42:34.133 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[31m2025-12-13 01:44:14.429 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device[0m
-[33m2025-12-13 01:47:34.143 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 01:52:34.136 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[33m2025-12-13 01:57:34.167 WARNING (MainThread) [aioamazondevices] Failed to obtain notification data.  Timers and alarms have not been updated[0m
-[32m2025-12-13 02:00:00.325 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
-[32m2025-12-13 02:00:00.326 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
-[32m2025-12-13 02:00:00.328 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2025-12-13 02:00:00.328 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2025-12-13 02:00:00.787 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2025-12-14 02:00:00.326 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
+[32m2025-12-14 02:00:00.328 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2025-12-14 02:00:00.328 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2025-12-14 02:00:00.335 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'minimum' when rendering '# Home Assistant Configuration
+_Last Updated: {{ now().isoformat() }}_
+
+## 🛠 UI Helpers
+Below are the input helpers configured in Home Assistant.
+
+{% set helpers = ['input_boolean', 'input_button', 'input_datetime', 'input_number', 'input_select', 'input_text', 'counter', 'timer', 'schedule'] %}
+{% for domain in helpers %}
+{% set assets = states[domain] | list %}
+{% if assets | count > 0 %}
+### {{ domain | replace('input_', '') | capitalize }}
+| Entity ID | Name | State | Attributes |
+|---|---|---|---|
+{% for s in assets | sort(attribute='entity_id') %}
+{% set details = [] %}
+{% if domain == 'input_number' %}
+  {% set details = details + ['min=' ~ s.attributes.min, 'max=' ~ s.attributes.max, 'step=' ~ s.attributes.step] %}
+{% elif domain == 'input_select' %}
+  {% set details = details + ['options=' ~ s.attributes.options | join(', ')] %}
+{% elif domain == 'input_datetime' %}
+  {% set details = details + ['has_date=' ~ s.attributes.has_date, 'has_time=' ~ s.attributes.has_time] %}
+{% elif domain == 'timer' %}
+   {% set details = details + ['duration=' ~ s.attributes.duration] %}
+{% elif domain == 'counter' %}
+   {% set details = details + ['min=' ~ s.attributes.minimum, 'max=' ~ s.attributes.maximum] %}
+{% endif %}
+| `{{ s.entity_id }}` | **{{ s.name | replace("'", "'\\''") }}** | {{ s.state | replace("'", "'\\''") }} | {{ details | join(', ') | replace("'", "'\\''") }} |
+{% endfor %}
+
+{% endif %}
+{% endfor %}
+
+---
+
+## 🏠 All Entities (By Domain)
+{% for domain, items in states | groupby('domain') %}
+{% if domain not in helpers and domain != 'group' %}
+<details><summary><b>{{ domain | title }} ({{ items | length }})</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+{% for s in items | sort(attribute='entity_id') %}
+| `{{ s.entity_id }}` | {{ s.name | replace("'", "'\\''") }} | {{ s.state | replace("'", "'\\''") }} |
+{% endfor %}
+</details>
+
+{% endif %}
+{% endfor %}'[0m
+[33m2025-12-14 02:00:00.336 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'maximum' when rendering '# Home Assistant Configuration
+_Last Updated: {{ now().isoformat() }}_
+
+## 🛠 UI Helpers
+Below are the input helpers configured in Home Assistant.
+
+{% set helpers = ['input_boolean', 'input_button', 'input_datetime', 'input_number', 'input_select', 'input_text', 'counter', 'timer', 'schedule'] %}
+{% for domain in helpers %}
+{% set assets = states[domain] | list %}
+{% if assets | count > 0 %}
+### {{ domain | replace('input_', '') | capitalize }}
+| Entity ID | Name | State | Attributes |
+|---|---|---|---|
+{% for s in assets | sort(attribute='entity_id') %}
+{% set details = [] %}
+{% if domain == 'input_number' %}
+  {% set details = details + ['min=' ~ s.attributes.min, 'max=' ~ s.attributes.max, 'step=' ~ s.attributes.step] %}
+{% elif domain == 'input_select' %}
+  {% set details = details + ['options=' ~ s.attributes.options | join(', ')] %}
+{% elif domain == 'input_datetime' %}
+  {% set details = details + ['has_date=' ~ s.attributes.has_date, 'has_time=' ~ s.attributes.has_time] %}
+{% elif domain == 'timer' %}
+   {% set details = details + ['duration=' ~ s.attributes.duration] %}
+{% elif domain == 'counter' %}
+   {% set details = details + ['min=' ~ s.attributes.minimum, 'max=' ~ s.attributes.maximum] %}
+{% endif %}
+| `{{ s.entity_id }}` | **{{ s.name | replace("'", "'\\''") }}** | {{ s.state | replace("'", "'\\''") }} | {{ details | join(', ') | replace("'", "'\\''") }} |
+{% endfor %}
+
+{% endif %}
+{% endfor %}
+
+---
+
+## 🏠 All Entities (By Domain)
+{% for domain, items in states | groupby('domain') %}
+{% if domain not in helpers and domain != 'group' %}
+<details><summary><b>{{ domain | title }} ({{ items | length }})</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+{% for s in items | sort(attribute='entity_id') %}
+| `{{ s.entity_id }}` | {{ s.name | replace("'", "'\\''") }} | {{ s.state | replace("'", "'\\''") }} |
+{% endfor %}
+</details>
+
+{% endif %}
+{% endfor %}'[0m
+[32m2025-12-14 02:00:00.885 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
