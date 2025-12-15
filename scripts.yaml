@@ -184,7 +184,7 @@ set_date_to_today:
     target:
       entity_id: '{{ target_entity }}'
     data:
-      date: '{{ now().strftime(''%Y-%m-%d'') }}'
+      date: '{{ (now() - timedelta(days=1)).strftime(''%Y-%m-%d'') }}'
   description: ''
 create_push_ha_info_to_github_newest:
   description: Generates HA_Overview.md, runs diagnostics, pushes to GitHub, AND creates

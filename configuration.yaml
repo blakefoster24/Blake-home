@@ -8,6 +8,9 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+zha:
+  custom_quirks_path: /config/zha_quirks/
+
 logger:
   default: warning
   logs:

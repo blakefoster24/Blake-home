@@ -541,11 +541,7 @@
       device_class: tv
       friendly_name: Living Room TV
       supported_features: 19901
-      volume_level: 0.22
-      is_volume_muted: false
-      app_name: SmartCast Home
-      source: SmartCast Home
-      state: 'on'
+      state: 'off'
     light.kitchen_lights:
       supported_color_modes:
       - onoff
@@ -1168,14 +1164,14 @@
       - YouTube
       - YouTube TV
       - discovery+
-      device_class: tv
-      friendly_name: Bedroom Tv
-      supported_features: 151481
       media_content_type: app
       app_id: '837'
       app_name: YouTube
       source: YouTube
+      device_class: tv
       entity_picture: /api/media_player_proxy/media_player.bedroom_tv?token=f250ba5b20719749b3d894acd292e9683a6159d66687e64cb649ea2b44fbd0af&cache=642a348a145c8aed
+      friendly_name: Bedroom Tv
+      supported_features: 151481
       state: 'on'
     light.bedroom_lamp:
       min_color_temp_kelvin: 2202
@@ -1561,11 +1557,7 @@
       device_class: tv
       friendly_name: Living Room TV
       supported_features: 19901
-      volume_level: 0.22
-      is_volume_muted: false
-      app_name: SmartCast Home
-      source: SmartCast Home
-      state: 'on'
+      state: 'off'
     light.kitchen_lights:
       supported_color_modes:
       - onoff
