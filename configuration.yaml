@@ -77,11 +77,5 @@ panel_custom:
     url_path: 'config/automation'
     module_url: /api/hassio/app/entrypoint.js
     embed_iframe: true
-    require_admin: true    
-  - name: panel_hacs
-    sidebar_title: HACS
-    sidebar_icon: mdi:home-group
-    url_path: 'hacs/entry'
-    module_url: /api/hassio/app/entrypoint.js
-    embed_iframe: true
     require_admin: true
+    
