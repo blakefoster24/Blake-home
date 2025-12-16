@@ -548,7 +548,23 @@
       hours: 0
       minutes: 15
       seconds: 0
-    id: Motion
+    id: Motion stuck
+  - trigger: state
+    entity_id:
+    - binary_sensor.motion_1_motion
+    to:
+    - 'on'
+    id: Motion detected
+  - trigger: state
+    entity_id:
+    - binary_sensor.bed_presence_bb8594_bed_occupied_either
+    id: Bed changes
+  - trigger: state
+    entity_id:
+    - binary_sensor.aqara_fp300_presence
+    to:
+    - 'on'
+    id: Presence detected
   conditions: []
   actions:
   - choose:
@@ -597,6 +613,19 @@
             interruption-level: time-sensitive
           title: Motion stuck on detected
           message: 'Check motion sensor '
+    - conditions:
+      - condition: trigger
+        id:
+        - Motion detected
+        - Bed changes
+        - Presence detected
+      sequence:
+      - action: input_datetime.set_datetime
+        metadata: {}
+        target:
+          entity_id: input_datetime.inside_sensor_combo
+        data:
+          datetime: '{{ now().isoformat() }}'
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
@@ -938,8 +967,6 @@
       presence_ts: "{% if is_state('binary_sensor.aqara_fp300_presence', 'on') %}\n
         \ {{ as_timestamp(states.binary_sensor.aqara_fp300_presence.last_changed)
         }}\n{% else %}\n  0\n{% endif %}\n"
-      motion_ts: "{% if is_state('binary_sensor.motion_1_motion', 'on') %}\n  {{ as_timestamp(states.binary_sensor.motion_1_motion.last_changed)
-        }}\n{% else %}\n  0\n{% endif %}\n"
       door_open_trigger: '{{ as_timestamp(trigger.to_state.last_changed) if trigger
         is defined else now().timestamp() }}
 
@@ -960,8 +987,8 @@
     action: logbook.log
     metadata: {}
     data:
-      name: "{% if motion_ts is number and motion_ts > 0 %}\n  {% set motion_delta
-        = (door_open_trigger - motion_ts) | round(2) %}\n  {% set direction = 'leaving'
+      name: "{% if presence_ts is number and presence_ts > 0 %}\n  {% set motion_delta
+        = (door_open_trigger - presence_ts) | round(2) %}\n  {% set direction = 'leaving'
         if motion_delta > 0 else 'arriving' %}\n{% else %}\n  {% set motion_delta
         = 'n/a' %}\n  {% set direction = 'arriving' %}\n{% endif %}\n{% if home_ts
         is number and home_ts > 0 and prev_door_ts is number and prev_door_ts > 0
@@ -971,24 +998,24 @@
         }} | Δmotion: {{ motion_delta }}s | first opening: {{ true if first_open_bool
         == true else false if first_open_bool == false else 'n/a' }} | Δhome: {{ home_delta
         }}s"
-      message: "{% if motion_ts is number and motion_ts > 0 %}\n  {% set motion_delta
-        = (door_open_trigger - motion_ts) | round(2) %}\n  {% set direction = 'leaving'
+      message: "{% if presence_ts is number and presence_ts > 0 %}\n  {% set motion_delta
+        = (door_open_trigger - presence_ts) | round(2) %}\n  {% set direction = 'leaving'
         if motion_delta > 0 else 'arriving' %}\n{% else %}\n  {% set motion_delta
         = 'n/a' %}\n  {% set direction = 'arriving' %}\n{% endif %}\n{% if home_ts
         is number and home_ts > 0 and prev_door_ts is number and prev_door_ts > 0
         %}\n  {% set home_delta = (home_ts - prev_door_ts) | round(2) %}\n  {% set
         first_open_bool = home_delta > 0 %}\n{% else %}\n  {% set home_delta = 'n/a'
         %}\n  {% set first_open_bool = 'n/a' %}\n{% endif %}\n{% set valid_ts = [door_open_trigger,
-        motion_ts, home_ts, prev_door_ts]\n   | select('number') | select('gt', 0)
-        | list %}\n{% set dates = valid_ts\n   | map('timestamp_custom', '%Y-%m-%d')\n
-        \  | list %}\n{% set unique_dates = dates | unique | list %} {% set show_dates
-        = (unique_dates | length) > 1 %}\n{% macro fmt(ts) %}\n  {% if ts is number
-        and ts > 0 %}\n    {% if show_dates %}\n      {{ ts | timestamp_custom('%Y-%m-%d
-        %I:%M:%S %p') }}\n    {% else %}\n      {{ ts | timestamp_custom('%I:%M:%S
-        %p') }}\n    {% endif %}\n  {% else %}\n    n/a\n  {% endif %}\n{% endmacro
-        %}\n[DIRECTION LOGIC] | Door_open_trigger: {{ fmt(door_open_trigger) }} |
-        Motion_ts: {{ fmt(motion_ts) }} | Door_open_trigger - Motion_ts = {{ motion_delta
-        }}s | Direction: {{ direction }} |\n[FIRST OPENING LOGIC] | Home_ts: {{ fmt(home_ts)
+        home_ts, prev_door_ts]\n   | select('number') | select('gt', 0) | list %}\n{%
+        set dates = valid_ts\n   | map('timestamp_custom', '%Y-%m-%d')\n   | list
+        %}\n{% set unique_dates = dates | unique | list %} {% set show_dates = (unique_dates
+        | length) > 1 %}\n{% macro fmt(ts) %}\n  {% if ts is number and ts > 0 %}\n
+        \   {% if show_dates %}\n      {{ ts | timestamp_custom('%Y-%m-%d %I:%M:%S
+        %p') }}\n    {% else %}\n      {{ ts | timestamp_custom('%I:%M:%S %p') }}\n
+        \   {% endif %}\n  {% else %}\n    n/a\n  {% endif %}\n{% endmacro %}\n[DIRECTION
+        LOGIC] | Door_open_trigger: {{ fmt(door_open_trigger) }} | Presence_ts: {{
+        fmt(presence_ts) }} | Door_open_trigger - Presence_ts = {{ motion_delta }}s
+        | Direction: {{ direction }} |\n[FIRST OPENING LOGIC] | Home_ts: {{ fmt(home_ts)
         }} | Prev_door_ts: {{ fmt(prev_door_ts) }} | Home_ts - Prev_door_ts = {{ home_delta
         }}s | First opening: {{ true if first_open_bool == true else false if first_open_bool
         == false else 'n/a' }}\n"
@@ -1028,10 +1055,10 @@
         = {{ motion_delta_p }}s | Direction: {{ direction_p }} |\n"
   - alias: Leaving Or Arriving
     if:
-    - condition: template
-      alias: True = Leaving (Motion TS < Door open TS)
-      value_template: '{{ motion_ts is number and motion_ts > 0 and motion_ts < door_open_trigger
-        }}'
+    - alias: True = Leaving (Presence TS < Door open TS)
+      condition: template
+      value_template: '{{ presence_ts is number and presence_ts > 0 and presence_ts
+        < door_open_trigger }}'
     then:
     - alias: Leaving Branch
       if:
@@ -1060,27 +1087,16 @@
           seconds: 0
           milliseconds: 0
         continue_on_timeout: false
-      - delay:
-          hours: 0
-          minutes: 5
-          seconds: 0
-          milliseconds: 0
-      - condition: state
-        state:
-        - 'off'
-        entity_id: binary_sensor.motion_1_motion
-        for:
-          hours: 0
-          minutes: 3
-          seconds: 0
-      - condition: state
-        state:
-        - 'off'
-        entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_either
-        for:
-          hours: 0
-          minutes: 5
-          seconds: 0
+      - wait_for_trigger:
+        - trigger: state
+          entity_id:
+          - binary_sensor.apartment_presence
+          to:
+          - 'off'
+          for:
+            hours: 0
+            minutes: 8
+            seconds: 0
       - action: scene.turn_on
         metadata: {}
         data: {}
@@ -1093,6 +1109,10 @@
           title: Goodbye
           data:
             interruption level: time-sensitive
+      - variables:
+          blake_away_wait_result: '{{ wait }}'
+      - variables:
+          apt_presence_wait_result: '{{ wait }}'
     else:
     - alias: Arriving Branch
       if:
@@ -1134,6 +1154,15 @@
         - trigger: state
           entity_id:
           - binary_sensor.motion_1_motion
+          to:
+          - 'off'
+          for:
+            hours: 0
+            minutes: 10
+            seconds: 0
+        - trigger: state
+          entity_id:
+          - binary_sensor.aqara_fp300_presence
           to:
           - 'off'
           for:
