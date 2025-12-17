@@ -525,6 +525,12 @@
   triggers:
   - trigger: state
     entity_id:
+    - person.blake_foster
+    to:
+    - home
+    id: Blake Home
+  - trigger: state
+    entity_id:
     - binary_sensor.front_door
     to:
     - 'on'
@@ -535,12 +541,6 @@
     id: Stuck open
   - trigger: state
     entity_id:
-    - person.blake_foster
-    to:
-    - home
-    id: Blake Home
-  - trigger: state
-    entity_id:
     - binary_sensor.motion_1_motion
     to:
     - 'on'
@@ -549,25 +549,20 @@
       minutes: 15
       seconds: 0
     id: Motion stuck
-  - trigger: state
-    entity_id:
-    - binary_sensor.motion_1_motion
-    to:
-    - 'on'
-    id: Motion detected
-  - trigger: state
-    entity_id:
-    - binary_sensor.bed_presence_bb8594_bed_occupied_either
-    id: Bed changes
-  - trigger: state
-    entity_id:
-    - binary_sensor.aqara_fp300_presence
-    to:
-    - 'on'
-    id: Presence detected
   conditions: []
   actions:
   - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Blake Home
+      sequence:
+      - action: input_datetime.set_datetime
+        target:
+          entity_id: input_datetime.home_timestamp
+        data:
+          datetime: '{{ now().isoformat() }}'
+        alias: Set Home Timestamp
     - conditions:
       - condition: trigger
         id:
@@ -588,17 +583,6 @@
     - conditions:
       - condition: trigger
         id:
-        - Blake Home
-      sequence:
-      - action: input_datetime.set_datetime
-        target:
-          entity_id: input_datetime.home_timestamp
-        data:
-          datetime: '{{ now().isoformat() }}'
-        alias: Set Home Timestamp
-    - conditions:
-      - condition: trigger
-        id:
         - Motion
       sequence:
       - action: counter.increment
@@ -613,19 +597,6 @@
             interruption-level: time-sensitive
           title: Motion stuck on detected
           message: 'Check motion sensor '
-    - conditions:
-      - condition: trigger
-        id:
-        - Motion detected
-        - Bed changes
-        - Presence detected
-      sequence:
-      - action: input_datetime.set_datetime
-        metadata: {}
-        target:
-          entity_id: input_datetime.inside_sensor_combo
-        data:
-          datetime: '{{ now().isoformat() }}'
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
@@ -649,15 +620,15 @@
         id:
         - iPhone battery
       sequence:
+      - action: scene.create
+        metadata: {}
+        data:
+          scene_id: lamp_snapshot
+          snapshot_entities:
+          - light.bedroom_lamp
       - repeat:
           count: 2
           sequence:
-          - action: scene.create
-            metadata: {}
-            data:
-              scene_id: lamp_snapshot
-              snapshot_entities:
-              - light.bedroom_lamp
           - action: light.toggle
             metadata: {}
             target:
@@ -685,15 +656,15 @@
         id:
         - iPad battery
       sequence:
+      - action: scene.create
+        metadata: {}
+        data:
+          scene_id: lamp_snapshot
+          snapshot_entities:
+          - light.bedroom_lamp
       - repeat:
           count: 3
           sequence:
-          - action: scene.create
-            metadata: {}
-            data:
-              scene_id: lamp_snapshot
-              snapshot_entities:
-              - light.bedroom_lamp
           - action: light.toggle
             metadata: {}
             target:
@@ -963,246 +934,236 @@
     - 'on'
   conditions: []
   actions:
-  - variables:
-      presence_ts: "{% if is_state('binary_sensor.aqara_fp300_presence', 'on') %}\n
-        \ {{ as_timestamp(states.binary_sensor.aqara_fp300_presence.last_changed)
-        }}\n{% else %}\n  0\n{% endif %}\n"
-      door_open_trigger: '{{ as_timestamp(trigger.to_state.last_changed) if trigger
-        is defined else now().timestamp() }}
+  - alias: Logic
+    sequence:
+    - variables:
+        presence_ts: "{% if is_state('binary_sensor.aqara_fp300_presence', 'on') %}\n
+          \ {{ as_timestamp(states.binary_sensor.aqara_fp300_presence.last_changed)
+          }}\n{% else %}\n  0\n{% endif %}\n"
+        door_open_trigger: '{{ as_timestamp(trigger.to_state.last_changed) if trigger
+          is defined else now().timestamp() }}
 
-        '
-      prev_door_ts: '{{ state_attr(''input_datetime.last_door_open'',''timestamp'')
-        }}
+          '
+        prev_door_ts: '{{ state_attr(''input_datetime.last_door_open'',''timestamp'')
+          }}
 
-        '
-      home_ts: "{% if is_state('person.blake_foster','home') %}\n  {{ state_attr('input_datetime.home_timestamp',
-        'timestamp') }}\n{% else %}\n  0\n{% endif %}\n"
-  - action: input_datetime.set_datetime
-    metadata: {}
-    data:
-      datetime: '{{ now().isoformat() }}'
-    target:
-      entity_id: input_datetime.last_door_open
-  - alias: Log Variables
-    action: logbook.log
-    metadata: {}
-    data:
-      name: "{% if presence_ts is number and presence_ts > 0 %}\n  {% set motion_delta
-        = (door_open_trigger - presence_ts) | round(2) %}\n  {% set direction = 'leaving'
-        if motion_delta > 0 else 'arriving' %}\n{% else %}\n  {% set motion_delta
-        = 'n/a' %}\n  {% set direction = 'arriving' %}\n{% endif %}\n{% if home_ts
-        is number and home_ts > 0 and prev_door_ts is number and prev_door_ts > 0
-        %}\n  {% set home_delta = (home_ts - prev_door_ts) | round(2) %}\n  {% set
-        first_open_bool = home_delta > 0 %}\n{% else %}\n  {% set home_delta = 'n/a'
-        %}\n  {% set first_open_bool = 'n/a' %}\n{% endif %}\n{{ direction | capitalize
-        }} | Δmotion: {{ motion_delta }}s | first opening: {{ true if first_open_bool
-        == true else false if first_open_bool == false else 'n/a' }} | Δhome: {{ home_delta
-        }}s"
-      message: "{% if presence_ts is number and presence_ts > 0 %}\n  {% set motion_delta
-        = (door_open_trigger - presence_ts) | round(2) %}\n  {% set direction = 'leaving'
-        if motion_delta > 0 else 'arriving' %}\n{% else %}\n  {% set motion_delta
-        = 'n/a' %}\n  {% set direction = 'arriving' %}\n{% endif %}\n{% if home_ts
-        is number and home_ts > 0 and prev_door_ts is number and prev_door_ts > 0
-        %}\n  {% set home_delta = (home_ts - prev_door_ts) | round(2) %}\n  {% set
-        first_open_bool = home_delta > 0 %}\n{% else %}\n  {% set home_delta = 'n/a'
-        %}\n  {% set first_open_bool = 'n/a' %}\n{% endif %}\n{% set valid_ts = [door_open_trigger,
-        home_ts, prev_door_ts]\n   | select('number') | select('gt', 0) | list %}\n{%
-        set dates = valid_ts\n   | map('timestamp_custom', '%Y-%m-%d')\n   | list
-        %}\n{% set unique_dates = dates | unique | list %} {% set show_dates = (unique_dates
-        | length) > 1 %}\n{% macro fmt(ts) %}\n  {% if ts is number and ts > 0 %}\n
-        \   {% if show_dates %}\n      {{ ts | timestamp_custom('%Y-%m-%d %I:%M:%S
-        %p') }}\n    {% else %}\n      {{ ts | timestamp_custom('%I:%M:%S %p') }}\n
-        \   {% endif %}\n  {% else %}\n    n/a\n  {% endif %}\n{% endmacro %}\n[DIRECTION
-        LOGIC] | Door_open_trigger: {{ fmt(door_open_trigger) }} | Presence_ts: {{
-        fmt(presence_ts) }} | Door_open_trigger - Presence_ts = {{ motion_delta }}s
-        | Direction: {{ direction }} |\n[FIRST OPENING LOGIC] | Home_ts: {{ fmt(home_ts)
-        }} | Prev_door_ts: {{ fmt(prev_door_ts) }} | Home_ts - Prev_door_ts = {{ home_delta
-        }}s | First opening: {{ true if first_open_bool == true else false if first_open_bool
-        == false else 'n/a' }}\n"
-  - alias: Motion sensor - presence sensor comparison
-    action: logbook.log
-    metadata: {}
-    data:
-      name: "{% if motion_ts is number and motion_ts > 0 %}\n  {% set motion_delta
-        = (door_open_trigger - motion_ts) | round(2) %}\n  {% set direction = 'leaving'
-        if motion_delta > 0 else 'arriving' %}\n{% else %}\n  {% set motion_delta
-        = 'n/a' %}\n  {% set direction = 'arriving' %}\n{% endif %}\n\n{% if presence_ts
-        is number and presence_ts > 0 %}\n  {% set motion_delta_p = (door_open_trigger
-        - presence_ts) | round(2) %}\n  {% set direction_p = 'leaving' if motion_delta_p
-        > 0 else 'arriving' %}\n{% else %}\n  {% set motion_delta_p = 'n/a' %}\n  {%
-        set direction_p = 'arriving' %}\n{% endif %}\n\n{{ direction | capitalize
-        }} | Δmotion: {{ motion_delta }}s | {{ direction_p | capitalize }} | Δmotion_p:
-        {{ motion_delta_p }}s\n"
-      message: "{% if motion_ts is number and motion_ts > 0 %}\n  {% set motion_delta
-        = (door_open_trigger - motion_ts) | round(2) %}\n  {% set direction = 'leaving'
-        if motion_delta > 0 else 'arriving' %}\n{% else %}\n  {% set motion_delta
-        = 'n/a' %}\n  {% set direction = 'arriving' %}\n{% endif %}\n{% if presence_ts
-        is number and presence_ts > 0 %}\n  {% set motion_delta_p = (door_open_trigger
-        - presence_ts) | round(2) %}\n  {% set direction_p = 'leaving' if motion_delta_p
-        > 0 else 'arriving' %}\n{% else %}\n  {% set motion_delta_p = 'n/a' %}\n  {%
-        set direction_p = 'arriving' %}\n{% endif %}\n\n{% set valid_ts = [door_open_trigger,
-        motion_ts, presence_ts]\n   | select('number') | select('gt', 0) | list %}\n{%
-        set dates = valid_ts\n   | map('timestamp_custom', '%Y-%m-%d')\n   | list
-        %}\n{% set unique_dates = dates | unique | list %} {% set show_dates = (unique_dates
-        | length) > 1 %}\n{% macro fmt(ts) %}\n  {% if ts is number and ts > 0 %}\n
-        \   {% if show_dates %}\n      {{ ts | timestamp_custom('%Y-%m-%d %I:%M:%S
-        %p') }}\n    {% else %}\n      {{ ts | timestamp_custom('%I:%M:%S %p') }}\n
-        \   {% endif %}\n  {% else %}\n    n/a\n  {% endif %}\n{% endmacro %}\n[DIRECTION
-        LOGIC] | Door_open_trigger: {{ fmt(door_open_trigger) }} | Motion_ts: {{ fmt(motion_ts)
-        }} | Door_open_trigger - Motion_ts = {{ motion_delta }}s | Direction: {{ direction
-        }} |\n\n[PRESENCE DIRECTION LOGIC] | Door_open_trigger: {{ fmt(door_open_trigger)
-        }} | presence_ts: {{ fmt(presence_ts) }} | Door_open_trigger - Presence_ts
-        = {{ motion_delta_p }}s | Direction: {{ direction_p }} |\n"
-  - alias: Leaving Or Arriving
-    if:
-    - alias: True = Leaving (Presence TS < Door open TS)
-      condition: template
-      value_template: '{{ presence_ts is number and presence_ts > 0 and presence_ts
-        < door_open_trigger }}'
-    then:
-    - alias: Leaving Branch
-      if:
-      - condition: state
-        entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_either
-        state:
-        - 'on'
-      then:
-      - action: light.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.main_lights
-      else:
-      - wait_for_trigger:
-        - trigger: state
-          entity_id:
-          - person.blake_foster
-          to:
-          - not_home
-          from:
-          - home
-        timeout:
-          hours: 0
-          minutes: 30
-          seconds: 0
-          milliseconds: 0
-        continue_on_timeout: false
-      - wait_for_trigger:
-        - trigger: state
-          entity_id:
-          - binary_sensor.apartment_presence
-          to:
-          - 'off'
-          for:
-            hours: 0
-            minutes: 8
-            seconds: 0
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.all_off
-      - action: notify.mobile_app_blakes_iphone
-        metadata: {}
-        data:
-          message: Everything’s off!
-          title: Goodbye
-          data:
-            interruption level: time-sensitive
-      - variables:
-          blake_away_wait_result: '{{ wait }}'
-      - variables:
-          apt_presence_wait_result: '{{ wait }}'
-    else:
-    - alias: Arriving Branch
-      if:
-      - condition: template
-        alias: First door open since "home"
-        value_template: '{{ home_ts > 0 and prev_door_ts is number and home_ts > prev_door_ts
-          }}'
-      then:
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.all_lights
-      - action: media_player.play_media
-        metadata: {}
-        data:
-          media:
-            media_content_id: '837'
-            media_content_type: app
-            metadata:
-              title: YouTube
-              thumbnail: http://192.168.1.68:8060/query/icon/837
-              media_class: app
-              children_media_class:
-              navigateIds:
-              - {}
-              - media_content_type: apps
-                media_content_id: ''
-              browse_entity_id: media_player.bedroom_tv
-        target:
-          entity_id: media_player.bedroom_tv
-      else:
-      - action: light.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.main_lights
-      - wait_for_trigger:
-        - trigger: state
-          entity_id:
-          - binary_sensor.motion_1_motion
-          to:
-          - 'off'
-          for:
-            hours: 0
-            minutes: 10
-            seconds: 0
-        - trigger: state
-          entity_id:
-          - binary_sensor.aqara_fp300_presence
-          to:
-          - 'off'
-          for:
-            hours: 0
-            minutes: 10
-            seconds: 0
-        - trigger: state
-          entity_id:
-          - binary_sensor.bed_presence_bb8594_bed_occupied_both
-          for:
-            hours: 0
-            minutes: 1
-            seconds: 0
-          to:
-          - 'on'
-        timeout:
-          hours: 1
-          minutes: 0
-          seconds: 0
-          milliseconds: 0
+          '
+        home_ts: "{% if is_state('person.blake_foster','home') %}\n  {{ state_attr('input_datetime.home_timestamp',
+          'timestamp') }}\n{% else %}\n  0\n{% endif %}\n"
+    - action: input_datetime.set_datetime
+      metadata: {}
+      data:
+        datetime: '{{ now().isoformat() }}'
+      target:
+        entity_id: input_datetime.last_door_open
+    - alias: Log Variables
+      action: logbook.log
+      metadata: {}
+      data:
+        name: "{% if presence_ts is number and presence_ts > 0 %}\n  {% set motion_delta
+          = (door_open_trigger - presence_ts) | round(2) %}\n  {% set direction =
+          'leaving' if motion_delta > 0 else 'arriving' %}\n{% else %}\n  {% set motion_delta
+          = 'n/a' %}\n  {% set direction = 'arriving' %}\n{% endif %}\n{% if home_ts
+          is number and home_ts > 0 and prev_door_ts is number and prev_door_ts >
+          0 %}\n  {% set home_delta = (home_ts - prev_door_ts) | round(2) %}\n  {%
+          set first_open_bool = home_delta > 0 %}\n{% else %}\n  {% set home_delta
+          = 'n/a' %}\n  {% set first_open_bool = 'n/a' %}\n{% endif %}\n{{ direction
+          | capitalize }} | Δmotion: {{ motion_delta }}s | first opening: {{ true
+          if first_open_bool == true else false if first_open_bool == false else 'n/a'
+          }} | Δhome: {{ home_delta }}s"
+        message: "{% if presence_ts is number and presence_ts > 0 %}\n  {% set motion_delta
+          = (door_open_trigger - presence_ts) | round(2) %}\n  {% set direction =
+          'leaving' if motion_delta > 0 else 'arriving' %}\n{% else %}\n  {% set motion_delta
+          = 'n/a' %}\n  {% set direction = 'arriving' %}\n{% endif %}\n{% if home_ts
+          is number and home_ts > 0 and prev_door_ts is number and prev_door_ts >
+          0 %}\n  {% set home_delta = (home_ts - prev_door_ts) | round(2) %}\n  {%
+          set first_open_bool = home_delta > 0 %}\n{% else %}\n  {% set home_delta
+          = 'n/a' %}\n  {% set first_open_bool = 'n/a' %}\n{% endif %}\n{% set valid_ts
+          = [door_open_trigger, home_ts, prev_door_ts]\n   | select('number') | select('gt',
+          0) | list %}\n{% set dates = valid_ts\n   | map('timestamp_custom', '%Y-%m-%d')\n
+          \  | list %}\n{% set unique_dates = dates | unique | list %} {% set show_dates
+          = (unique_dates | length) > 1 %}\n{% macro fmt(ts) %}\n  {% if ts is number
+          and ts > 0 %}\n    {% if show_dates %}\n      {{ ts | timestamp_custom('%Y-%m-%d
+          %I:%M:%S %p') }}\n    {% else %}\n      {{ ts | timestamp_custom('%I:%M:%S
+          %p') }}\n    {% endif %}\n  {% else %}\n    n/a\n  {% endif %}\n{% endmacro
+          %}\n[DIRECTION LOGIC] | Door_open_trigger: {{ fmt(door_open_trigger) }}
+          | Presence_ts: {{ fmt(presence_ts) }} | Door_open_trigger - Presence_ts
+          = {{ motion_delta }}s | Direction: {{ direction }} |\n[FIRST OPENING LOGIC]
+          | Home_ts: {{ fmt(home_ts) }} | Prev_door_ts: {{ fmt(prev_door_ts) }} |
+          Home_ts - Prev_door_ts = {{ home_delta }}s | First opening: {{ true if first_open_bool
+          == true else false if first_open_bool == false else 'n/a' }}\n"
+  - alias: Leaving / Arriving
+    choose:
+    - conditions:
+      - alias: True = Leaving (Presence TS < Door open TS)
+        condition: template
+        value_template: '{{ presence_ts is number and presence_ts > 0 and presence_ts
+          < door_open_trigger }}'
+      sequence:
+      - wait_template: "{{ is_state('binary_sensor.apartment_presence', 'off') and
+          \n   (now() - states.binary_sensor.apartment_presence.last_changed).total_seconds()
+          > 480 }}"
         continue_on_timeout: true
-      - action: light.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.main_lights
-      - if:
+        timeout: 00:10
+        alias: Apt Presence off for 8 minutes
+      - alias: Apt presence wait results
+        choose:
+        - conditions:
+          - alias: Apt Presence wait passed
+            condition: template
+            value_template: '{{ wait.completed }}'
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: scene.all_off
+          - action: notify.mobile_app_blakes_iphone
+            metadata: {}
+            data:
+              message: Everything’s off!
+              title: Goodbye
+              data:
+                interruption level: time-sensitive
+          alias: Apt presence wait passed
+        - conditions:
+          - alias: Apt Presence wait failed
+            condition: template
+            value_template: '{{ not wait.completed }}'
+          sequence:
+          - alias: Main area clear for 2 minutes
+            if:
+            - condition: state
+              entity_id: binary_sensor.aqara_fp300_presence
+              state:
+              - 'off'
+              for:
+                hours: 0
+                minutes: 2
+                seconds: 0
+            - condition: state
+              entity_id: binary_sensor.motion_1_motion
+              state:
+              - 'off'
+              for:
+                hours: 0
+                minutes: 2
+                seconds: 0
+            - condition: state
+              entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_either
+              state:
+              - 'on'
+            then:
+            - action: light.turn_off
+              metadata: {}
+              target:
+                entity_id:
+                - light.main_lights
+                - light.kitchen_lights
+                - light.living_room_ceiling_lights
+                - light.bathroom_light
+                - light.closet_light
+              data: {}
+          alias: Apt presence wait timed out
+      alias: Leaving Branch
+    - conditions:
+      - condition: not
+        conditions:
+        - alias: True = Leaving (Presence TS < Door open TS)
+          condition: template
+          value_template: '{{ presence_ts is number and presence_ts > 0 and presence_ts
+            < door_open_trigger }}'
+        alias: Not  (leaving logic)
+      sequence:
+      - alias: First Opening
+        if:
         - condition: template
-          value_template: "{{ is_state('person.rachel', 'home') \n   and (now() -
-            states.person.rachel.last_changed).total_seconds() < 300 \n   and (now()
-            - states('sensor.uptime') | as_datetime | default(now())).total_seconds()
-            > 300 }}\n"
-          alias: Rachel arrives < 5 minutes
+          alias: First door open since "home"
+          value_template: '{{ home_ts > 0 and prev_door_ts is number and home_ts >
+            prev_door_ts }}'
         then:
-        - action: fan.turn_on
+        - action: scene.turn_on
           metadata: {}
-          target:
-            entity_id: fan.bedroom_ceiling_fan
           data: {}
-        alias: Rachel arrives = fan on
+          target:
+            entity_id: scene.all_lights
+        - action: media_player.play_media
+          metadata: {}
+          data:
+            media:
+              media_content_id: '837'
+              media_content_type: app
+              metadata:
+                title: YouTube
+                thumbnail: http://192.168.1.68:8060/query/icon/837
+                media_class: app
+                children_media_class:
+                navigateIds:
+                - {}
+                - media_content_type: apps
+                  media_content_id: ''
+                browse_entity_id: media_player.bedroom_tv
+          target:
+            entity_id: media_player.bedroom_tv
+        - alias: Rachel arrives = fan on
+          if:
+          - condition: template
+            value_template: "{{ is_state('person.rachel', 'home') \n   and (now()
+              - states.person.rachel.last_changed).total_seconds() < 300 \n   and
+              (now() - states('sensor.uptime') | as_datetime | default(now())).total_seconds()
+              > 300 }}\n"
+            alias: Rachel arrived < 5 minutes
+          then:
+          - action: fan.turn_on
+            metadata: {}
+            target:
+              entity_id: fan.bedroom_ceiling_fan
+            data: {}
+        else:
+        - action: light.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.main_lights
+        - alias: Rachel arrives = fan on
+          if:
+          - condition: template
+            value_template: "{{ is_state('person.rachel', 'home') \n   and (now()
+              - states.person.rachel.last_changed).total_seconds() < 300 \n   and
+              (now() - states('sensor.uptime') | as_datetime | default(now())).total_seconds()
+              > 300 }}\n"
+            alias: Rachel arrived < 5 minutes
+          then:
+          - action: fan.turn_on
+            metadata: {}
+            target:
+              entity_id: fan.bedroom_ceiling_fan
+            data: {}
+        - wait_for_trigger:
+          - trigger: state
+            entity_id:
+            - binary_sensor.bed_presence_bb8594_bed_occupied_both
+            for:
+              hours: 0
+              minutes: 2
+              seconds: 0
+            to:
+            - 'on'
+          timeout:
+            hours: 0
+            minutes: 20
+            seconds: 0
+            milliseconds: 0
+          continue_on_timeout: false
+        - action: light.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id:
+            - light.main_lights
+            - light.living_room_ceiling_lights
+            - light.kitchen_lights
+      alias: Arriving branch
   trace:
     stored_traces: 50
   mode: restart
@@ -1683,26 +1644,25 @@
             data: {}
           alias: Off Long
   mode: single
-- id: '1765759990806'
-  alias: Rachel’s fan
+- id: '1765956018522'
+  alias: Living Room TV Ghost Buster
   description: ''
   triggers:
   - trigger: state
     entity_id:
-    - device_tracker.rachels_phone
+    - media_player.living_room_tv
     to:
-    - home
+    - 'on'
   conditions: []
   actions:
-  - wait_for_trigger:
-    - trigger: state
-      entity_id:
-      - binary_sensor.front_door
-      to:
-      - 'on'
-  - action: fan.turn_on
+  - action: media_player.turn_off
     metadata: {}
     target:
-      entity_id: fan.bedroom_ceiling_fan
+      entity_id: media_player.living_room_tv
     data: {}
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
   mode: single
