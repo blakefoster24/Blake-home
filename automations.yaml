@@ -937,9 +937,9 @@
   - alias: Logic
     sequence:
     - variables:
-        presence_ts: "{% if is_state('binary_sensor.aqara_fp300_presence', 'on') %}\n
-          \ {{ as_timestamp(states.binary_sensor.aqara_fp300_presence.last_changed)
-          }}\n{% else %}\n  0\n{% endif %}\n"
+        presence_ts: "{% if is_state('binary_sensor.kitchen_presence', 'on') %}\n
+          \ {{ as_timestamp(states.binary_sensor.kitchen_presence.last_changed) }}\n{%
+          else %}\n  0\n{% endif %}\n"
         door_open_trigger: '{{ as_timestamp(trigger.to_state.last_changed) if trigger
           is defined else now().timestamp() }}
 
@@ -1034,7 +1034,7 @@
           - alias: Main area clear for 2 minutes
             if:
             - condition: state
-              entity_id: binary_sensor.aqara_fp300_presence
+              entity_id: binary_sensor.kitchen_presence
               state:
               - 'off'
               for:
@@ -1659,6 +1659,11 @@
     metadata: {}
     target:
       entity_id: media_player.living_room_tv
+    data: {}
+  - action: media_player.turn_off
+    metadata: {}
+    target:
+      device_id: ffad53a462a74519cb8e5954726536eb
     data: {}
   - delay:
       hours: 0
