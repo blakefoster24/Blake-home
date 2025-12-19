@@ -240,3 +240,38 @@ create_push_ha_info_to_github_newest:
           url: /local/ha_ai_context.zip
           clickAction: /local/ha_ai_context.zip
   alias: Push Ha Info to GitHub & Create AI Zip File
+thermostat_short_change:
+  sequence:
+  - action: scene.create
+    metadata: {}
+    data:
+      scene_id: thermostat_setting
+      snapshot_entities:
+      - climate.nest_thermostat
+  - action: climate.set_temperature
+    metadata: {}
+    target:
+      entity_id: climate.nest_thermostat
+    data:
+      temperature: 65
+      hvac_mode: cool
+  - delay:
+      hours: 0
+      minutes: 30
+      seconds: 0
+      milliseconds: 0
+  - action: scene.turn_on
+    metadata: {}
+    target:
+      entity_id: scene.thermostat_setting
+    data: {}
+  alias: 'Thermostat short change '
+  description: ''
+find_my_phone:
+  alias: Find My Phone
+  use_blueprint:
+    path: ggoulart/Find My Apple Device.yaml
+    input:
+      apple_device: f2f0fd38cf7bfe7c575b14a75d8b8413
+      apple_account: blake.foster30@gmail.com
+  description: ''
