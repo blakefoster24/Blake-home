@@ -737,6 +737,10 @@
       hours: 0
       minutes: 30
       seconds: 0
+  - condition: state
+    entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_left
+    state:
+    - 'on'
   actions:
   - action: scene.turn_on
     metadata: {}
