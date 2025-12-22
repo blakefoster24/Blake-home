@@ -1,7 +1,7 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-[32m2025-12-21 02:00:00.305 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2025-12-21 02:00:00.306 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[33m2025-12-21 02:00:00.312 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'minimum' when rendering '# Home Assistant Configuration
+[32m2025-12-22 02:00:00.306 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2025-12-22 02:00:00.306 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2025-12-22 02:00:00.313 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'minimum' when rendering '# Home Assistant Configuration
 _Last Updated: {{ now().isoformat() }}_
 
 ## 🛠 UI Helpers
@@ -49,7 +49,7 @@ Below are the input helpers configured in Home Assistant.
 
 {% endif %}
 {% endfor %}'[0m
-[33m2025-12-21 02:00:00.312 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'maximum' when rendering '# Home Assistant Configuration
+[33m2025-12-22 02:00:00.313 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'maximum' when rendering '# Home Assistant Configuration
 _Last Updated: {{ now().isoformat() }}_
 
 ## 🛠 UI Helpers
@@ -97,5 +97,5 @@ Below are the input helpers configured in Home Assistant.
 
 {% endif %}
 {% endfor %}'[0m
-[33m2025-12-21 02:00:00.350 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
-[32m2025-12-21 02:00:01.105 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2025-12-22 02:00:00.353 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2025-12-22 02:00:01.106 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m

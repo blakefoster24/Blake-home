@@ -1004,12 +1004,12 @@
         value_template: '{{ presence_ts is number and presence_ts > 0 and presence_ts
           < door_open_trigger }}'
       sequence:
-      - wait_template: "{{ is_state('binary_sensor.apartment_presence', 'off') and
+      - alias: Apt Presence off for 5 minutes
+        wait_template: "{{ is_state('binary_sensor.apartment_presence', 'off') and
           \n   (now() - states.binary_sensor.apartment_presence.last_changed).total_seconds()
-          > 480 }}"
+          > 350 }}"
         continue_on_timeout: true
         timeout: 00:10
-        alias: Apt Presence off for 8 minutes
       - alias: Apt presence wait results
         choose:
         - conditions:
@@ -1035,39 +1035,30 @@
             condition: template
             value_template: '{{ not wait.completed }}'
           sequence:
-          - alias: Main area clear for 2 minutes
-            if:
-            - condition: state
-              entity_id: binary_sensor.kitchen_presence
-              state:
-              - 'off'
+          - wait_for_trigger:
+            - trigger: state
+              entity_id:
+              - binary_sensor.bed_presence_bb8594_bed_occupied_either
               for:
                 hours: 0
-                minutes: 2
+                minutes: 4
                 seconds: 0
-            - condition: state
-              entity_id: binary_sensor.motion_1_motion
-              state:
-              - 'off'
-              for:
-                hours: 0
-                minutes: 2
-                seconds: 0
-            - condition: state
-              entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_either
-              state:
-              - 'on'
-            then:
-            - action: light.turn_off
-              metadata: {}
-              target:
-                entity_id:
-                - light.main_lights
-                - light.kitchen_lights
-                - light.living_room_ceiling_lights
-                - light.bathroom_light
-                - light.closet_light
-              data: {}
+            timeout:
+              hours: 0
+              minutes: 10
+              seconds: 0
+              milliseconds: 0
+            continue_on_timeout: false
+          - action: light.turn_off
+            metadata: {}
+            target:
+              entity_id:
+              - light.main_lights
+              - light.kitchen_lights
+              - light.living_room_ceiling_lights
+              - light.bathroom_light
+              - light.closet_light
+            data: {}
           alias: Apt presence wait timed out
       alias: Leaving Branch
     - conditions:
