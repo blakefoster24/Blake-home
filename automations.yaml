@@ -338,15 +338,19 @@
           - condition: state
             entity_id: input_boolean.workday_today_toggle
             state: 'off'
-        - condition: and
+        - alias: Blake Home 9am-4pm
+          condition: and
           conditions:
           - condition: trigger
             id:
             - Blake’s home
+          - condition: state
+            entity_id: input_boolean.workday_today_toggle
+            state:
+            - 'on'
           - condition: time
             after: 08:59:00
             before: '15:50:00'
-          alias: Blake Home 9am-4pm
       sequence:
       - choose:
         - conditions:
@@ -365,7 +369,7 @@
         - conditions:
           - condition: numeric_state
             entity_id: sensor.openweathermap_temperature_2
-            below: 72
+            below: 68
             above: 50
           sequence:
           - alias: Heat/Cool - 67/70
@@ -380,7 +384,7 @@
         - conditions:
           - condition: numeric_state
             entity_id: sensor.openweathermap_temperature_2
-            above: 71
+            above: 67
           sequence:
           - alias: Cool - 67
             action: climate.set_temperature
@@ -400,7 +404,7 @@
         - conditions:
           - condition: numeric_state
             entity_id: sensor.openweathermap_temperature_2
-            below: 55
+            below: 61
           sequence:
           - alias: Heat 70
             action: climate.set_temperature
@@ -414,7 +418,7 @@
           - condition: numeric_state
             entity_id: sensor.openweathermap_temperature_2
             below: 80
-            above: 54
+            above: 60
           sequence:
           - alias: Heat/Cool - 68/72
             action: climate.set_temperature
@@ -448,7 +452,7 @@
         - conditions:
           - condition: numeric_state
             entity_id: sensor.openweathermap_temperature_2
-            below: 55
+            below: 61
           sequence:
           - alias: Heat 70
             action: climate.set_temperature
@@ -462,7 +466,7 @@
           - condition: numeric_state
             entity_id: sensor.openweathermap_temperature_2
             below: 80
-            above: 54
+            above: 60
           sequence:
           - alias: Heat/Cool - 68/72
             action: climate.set_temperature
