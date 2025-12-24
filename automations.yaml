@@ -587,7 +587,7 @@
     - conditions:
       - condition: trigger
         id:
-        - Motion
+        - Motion stuck
       sequence:
       - action: counter.increment
         metadata: {}

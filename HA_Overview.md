@@ -1,4 +1,4 @@
-_Last Updated: 2025-12-23T02:00:03.283153-06:00_
+_Last Updated: 2025-12-24T02:00:00.313288-06:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -47,13 +47,13 @@ Below are the input helpers configured in Home Assistant.
 
   
 
-| `input_datetime.home_timestamp` | **Home Timestamp** | 2025-12-22 18:09:42 | has_date=True, has_time=True |
+| `input_datetime.home_timestamp` | **Home Timestamp** | 2025-12-23 18:24:52 | has_date=True, has_time=True |
 
 
 
   
 
-| `input_datetime.last_door_open` | **Last Door Open** | 2025-12-22 21:32:40 | has_date=True, has_time=True |
+| `input_datetime.last_door_open` | **Last Door Open** | 2025-12-23 18:33:28 | has_date=True, has_time=True |
 
 
 
@@ -168,7 +168,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-<details><summary><b>Binary_sensor (50)</b></summary>
+<details><summary><b>Binary_sensor (58)</b></summary>
 
 | Entity ID | Name | State |
 |---|---|---|
@@ -187,7 +187,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `binary_sensor.bathroom_light_overheated` | Bathroom Light Overheated | off |
 
-| `binary_sensor.bed_presence_bb8594_bed_occupied_both` | Bed Presence Sensor Bed Occupied Both | on |
+| `binary_sensor.bed_presence_bb8594_bed_occupied_both` | Bed Presence Sensor Bed Occupied Both | off |
 
 | `binary_sensor.bed_presence_bb8594_bed_occupied_either` | Bed Presence Sensor Bed Occupied Either | on |
 
@@ -197,9 +197,11 @@ Below are the input helpers configured in Home Assistant.
 
 | `binary_sensor.bed_presence_bb8594_bed_occupied_left_normal` | Bed Presence Sensor Bed Occupied Left (Normal) | on |
 
-| `binary_sensor.bed_presence_bb8594_bed_occupied_right` | Bed Presence Sensor Bed Occupied Right | on |
+| `binary_sensor.bed_presence_bb8594_bed_occupied_right` | Bed Presence Sensor Bed Occupied Right | off |
 
 | `binary_sensor.bed_presence_bb8594_status` | Bed Presence Sensor Status | on |
+
+| `binary_sensor.bedroom_presence` | Everything Presence Lite Occupancy | on |
 
 | `binary_sensor.blake_s_echo_dot_connectivity` | Blake's Echo Dot Connectivity | on |
 
@@ -208,6 +210,20 @@ Below are the input helpers configured in Home Assistant.
 | `binary_sensor.closet_light_cloud_connection` | Closet Light Cloud connection | on |
 
 | `binary_sensor.closet_light_overheated` | Closet Light Overheated | off |
+
+| `binary_sensor.everything_presence_lite_922d28_target_1_active` | Everything Presence Lite Target 1 Active | on |
+
+| `binary_sensor.everything_presence_lite_922d28_target_2_active` | Everything Presence Lite Target 2 Active | off |
+
+| `binary_sensor.everything_presence_lite_922d28_target_3_active` | Everything Presence Lite Target 3 Active | off |
+
+| `binary_sensor.everything_presence_lite_922d28_zone_1_occupancy` | Everything Presence Lite Zone 1 Occupancy | on |
+
+| `binary_sensor.everything_presence_lite_922d28_zone_2_occupancy` | Everything Presence Lite Zone 2 Occupancy | off |
+
+| `binary_sensor.everything_presence_lite_922d28_zone_3_occupancy` | Everything Presence Lite Zone 3 Occupancy | off |
+
+| `binary_sensor.everything_presence_lite_922d28_zone_4_occupancy` | Everything Presence Lite Zone 4 Occupancy | off |
 
 | `binary_sensor.everywhere_connectivity` | Everywhere Connectivity | on |
 
@@ -231,7 +247,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `binary_sensor.main_lights_cloud_connection` | Main Lights Cloud connection | on |
 
-| `binary_sensor.motion_1_motion` | Motion 1 | off |
+| `binary_sensor.motion_1_motion` | Motion 1 | on |
 
 | `binary_sensor.philips_rwl020_binary_input` | Hue Dimmer Binary input | off |
 
@@ -265,20 +281,20 @@ Below are the input helpers configured in Home Assistant.
 
 | `binary_sensor.slzb_mr1_internet` | SLZB-MR1 Internet | on |
 
-| `binary_sensor.space_heater_cloud_connection` | Space Heater Cloud connection | on |
+| `binary_sensor.space_heater_cloud_connection` | Space Heater Cloud connection | unavailable |
 
-| `binary_sensor.space_heater_overheated` | Space Heater Overheated | off |
+| `binary_sensor.space_heater_overheated` | Space Heater Overheated | unavailable |
 
-| `binary_sensor.space_heater_overloaded` | Space Heater Overloaded | off |
+| `binary_sensor.space_heater_overloaded` | Space Heater Overloaded | unavailable |
 
-| `binary_sensor.workday_tomorrow_template_sensor` | Workday Tomorrow Template Sensor | on |
+| `binary_sensor.workday_tomorrow_template_sensor` | Workday Tomorrow Template Sensor | off |
 
 </details>
 
 
 
 
-<details><summary><b>Button (16)</b></summary>
+<details><summary><b>Button (19)</b></summary>
 
 | Entity ID | Name | State |
 |---|---|---|
@@ -302,6 +318,12 @@ Below are the input helpers configured in Home Assistant.
 | `button.bed_presence_bb8594_restart` | Bed Presence Sensor Restart | unknown |
 
 | `button.bedroom_lamp_identify` | Bedroom Lamp Identify | 2025-12-08T08:30:05.569038+00:00 |
+
+| `button.everything_presence_lite_922d28_esp_reboot` | Everything Presence Lite ESP Reboot | unknown |
+
+| `button.everything_presence_lite_922d28_factory_reset_mmwave_sensor` | Everything Presence Lite Factory Reset mmWave Sensor | unknown |
+
+| `button.everything_presence_lite_922d28_reboot_mmwave_sensor` | Everything Presence Lite Reboot mmWave Sensor | unknown |
 
 | `button.living_room_lamp_identify` | Living Room Lamp Identify | 2025-12-12T05:16:53.886398+00:00 |
 
@@ -346,7 +368,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-<details><summary><b>Device_tracker (10)</b></summary>
+<details><summary><b>Device_tracker (11)</b></summary>
 
 | Entity ID | Name | State |
 |---|---|---|
@@ -360,6 +382,8 @@ Below are the input helpers configured in Home Assistant.
 | `device_tracker.ipad` | iPad | home |
 
 | `device_tracker.rachels_phone` | Rachels Phone | not_home |
+
+| `device_tracker.rivian_phone_key_2060` | Rivian Phone Key 2060 | home |
 
 | `device_tracker.s58cdfccea0786690c_d4a2` | S58cdfccea0786690C D4A2 | not_home |
 
@@ -381,7 +405,7 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `event.backup_automatic_backup` | Backup Automatic backup | 2025-12-22T15:45:01.060+00:00 |
+| `event.backup_automatic_backup` | Backup Automatic backup | 2025-12-23T10:54:24.173+00:00 |
 
 | `event.bthome_sensor_3370_button` | Motion 1 Button | 2025-10-19T05:15:17.292+00:00 |
 
@@ -412,7 +436,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-<details><summary><b>Light (9)</b></summary>
+<details><summary><b>Light (10)</b></summary>
 
 | Entity ID | Name | State |
 |---|---|---|
@@ -424,6 +448,8 @@ Below are the input helpers configured in Home Assistant.
 | `light.bedroom_lamp` | Bedroom Lamp | off |
 
 | `light.closet_light` | Closet Light | off |
+
+| `light.everything_presence_lite_922d28_esp32_led` | Everything Presence Lite ESP32 LED | off |
 
 | `light.kitchen_lights` | Kitchen Lights | off |
 
@@ -447,11 +473,11 @@ Below are the input helpers configured in Home Assistant.
 
 | `media_player.bedroom_tv` | Bedroom Tv | off |
 
-| `media_player.blake_s_echo_dot` | Blake's Echo Dot | idle |
+| `media_player.blake_s_echo_dot` | Blake's Echo Dot | paused |
 
-| `media_player.blake_s_echo_pop` | Blake's Echo Pop | idle |
+| `media_player.blake_s_echo_pop` | Blake's Echo Pop | paused |
 
-| `media_player.everywhere` | Everywhere | idle |
+| `media_player.everywhere` | Everywhere | paused |
 
 | `media_player.living_room_tv` | Living Room TV | unavailable |
 
@@ -482,7 +508,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-<details><summary><b>Number (27)</b></summary>
+<details><summary><b>Number (56)</b></summary>
 
 | Entity ID | Name | State |
 |---|---|---|
@@ -527,6 +553,64 @@ Below are the input helpers configured in Home Assistant.
 
 | `number.closet_light_turn_off_in` | Closet Light Turn off in | 120 |
 
+| `number.everything_presence_lite_922d28_illuminance_offset` | Everything Presence Lite Illuminance Offset | 0.0 |
+
+| `number.everything_presence_lite_922d28_installation_angle` | Everything Presence Lite Installation Angle | 0.0 |
+
+| `number.everything_presence_lite_922d28_max_distance` | Everything Presence Lite Max Distance | 600.0 |
+
+| `number.everything_presence_lite_922d28_occupancy_mask_1_begin_x` | Everything Presence Lite Occupancy Mask 1 Begin X | -6000.0 |
+
+| `number.everything_presence_lite_922d28_occupancy_mask_1_begin_y` | Everything Presence Lite Occupancy Mask 1 Begin Y | -1560.0 |
+
+| `number.everything_presence_lite_922d28_occupancy_mask_1_end_x` | Everything Presence Lite Occupancy Mask 1 End X | -6000.0 |
+
+| `number.everything_presence_lite_922d28_occupancy_mask_1_end_y` | Everything Presence Lite Occupancy Mask 1 End Y | -1560.0 |
+
+| `number.everything_presence_lite_922d28_occupancy_mask_2_begin_x` | Everything Presence Lite Occupancy Mask 2 Begin X | -6000.0 |
+
+| `number.everything_presence_lite_922d28_occupancy_mask_2_begin_y` | Everything Presence Lite Occupancy Mask 2 Begin Y | -1560.0 |
+
+| `number.everything_presence_lite_922d28_occupancy_mask_2_end_x` | Everything Presence Lite Occupancy Mask 2 End X | -6000.0 |
+
+| `number.everything_presence_lite_922d28_occupancy_mask_2_end_y` | Everything Presence Lite Occupancy Mask 2 End Y | -1560.0 |
+
+| `number.everything_presence_lite_922d28_occupancy_off_delay` | Everything Presence Lite Occupancy Off Delay | 15.0 |
+
+| `number.everything_presence_lite_922d28_stale_target_reset_timeout` | Everything Presence Lite Stale Target Reset Timeout | 3.0 |
+
+| `number.everything_presence_lite_922d28_zone_1_begin_x` | Everything Presence Lite Zone 1 Begin X | -4000.0 |
+
+| `number.everything_presence_lite_922d28_zone_1_begin_y` | Everything Presence Lite Zone 1 Begin Y | 0.0 |
+
+| `number.everything_presence_lite_922d28_zone_1_end_x` | Everything Presence Lite Zone 1 End X | 4000.0 |
+
+| `number.everything_presence_lite_922d28_zone_1_end_y` | Everything Presence Lite Zone 1 End Y | 6000.0 |
+
+| `number.everything_presence_lite_922d28_zone_1_occupancy_off_delay` | Everything Presence Lite Zone 1 Occupancy Off Delay | 15.0 |
+
+| `number.everything_presence_lite_922d28_zone_2_begin_x` | Everything Presence Lite Zone 2 Begin X | -6000.0 |
+
+| `number.everything_presence_lite_922d28_zone_2_begin_y` | Everything Presence Lite Zone 2 Begin Y | -1560.0 |
+
+| `number.everything_presence_lite_922d28_zone_2_end_x` | Everything Presence Lite Zone 2 End X | -6000.0 |
+
+| `number.everything_presence_lite_922d28_zone_2_end_y` | Everything Presence Lite Zone 2 End Y | -1560.0 |
+
+| `number.everything_presence_lite_922d28_zone_2_occupancy_off_delay` | Everything Presence Lite Zone 2 Occupancy Off Delay | 15.0 |
+
+| `number.everything_presence_lite_922d28_zone_3_begin_x` | Everything Presence Lite Zone 3 Begin X | -6000.0 |
+
+| `number.everything_presence_lite_922d28_zone_3_begin_y` | Everything Presence Lite Zone 3 Begin Y | -1560.0 |
+
+| `number.everything_presence_lite_922d28_zone_3_end_x` | Everything Presence Lite Zone 3 End X | -6000.0 |
+
+| `number.everything_presence_lite_922d28_zone_4_begin_x` | Everything Presence Lite Zone 4 Begin X | -6000.0 |
+
+| `number.everything_presence_lite_922d28_zone_4_end_x` | Everything Presence Lite Zone 4 End X | -6000.0 |
+
+| `number.everything_presence_lite_922d28_zone_4_occupancy_off_delay` | Everything Presence Lite Zone 4 Occupancy Off Delay | 15.0 |
+
 | `number.kitchen_lights_turn_off_in` | Kitchen Lights Turn off in | 120 |
 
 | `number.living_room_ceiling_fan_turn_off_in` | Living Room Ceiling Fan Turn off in | 120 |
@@ -537,9 +621,9 @@ Below are the input helpers configured in Home Assistant.
 
 | `number.main_lights_turn_off_in` | Main Lights Turn off in | 120 |
 
-| `number.space_heater_power_protection` | Space Heater Power protection | 0 |
+| `number.space_heater_power_protection` | Space Heater Power protection | unavailable |
 
-| `number.space_heater_turn_off_in` | Space Heater Turn off in | 120 |
+| `number.space_heater_turn_off_in` | Space Heater Turn off in | unavailable |
 
 </details>
 
@@ -577,31 +661,31 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `scene.all_lights` | All Lights | 2025-12-23T03:32:46.695565+00:00 |
+| `scene.all_lights` | All Lights | 2025-12-24T00:33:28.503230+00:00 |
 
 | `scene.all_lights_off` | All Lights Off | 2025-12-14T00:08:33.465716+00:00 |
 
-| `scene.all_off` | All Off | 2025-12-23T00:22:52.488520+00:00 |
+| `scene.all_off` | All Off | 2025-12-23T15:08:19.421517+00:00 |
 
 | `scene.bedroom_lights_off` | Bedroom Lights Off | 2025-12-23T06:12:23.133030+00:00 |
 
 | `scene.dimmed` | Dimmed | 2025-12-14T20:06:22.380333+00:00 |
 
-| `scene.full_lamp` | Full Lamp | 2025-12-23T04:10:45.727895+00:00 |
+| `scene.full_lamp` | Full Lamp | 2025-12-24T00:33:29.221010+00:00 |
 
-| `scene.goodnight_scene` | Goodnight | 2025-12-23T06:12:26.967415+00:00 |
+| `scene.goodnight_scene` | Goodnight | 2025-12-24T05:30:37.127988+00:00 |
 
 | `scene.im_awake` | I’m Awake | 2025-12-02T12:31:03.745110+00:00 |
 
-| `scene.lamp_snapshot` | lamp_snapshot | 2025-12-22T14:45:18.557324+00:00 |
+| `scene.lamp_snapshot` | lamp_snapshot | 2025-12-24T03:20:31.491563+00:00 |
 
 | `scene.night_light` | Night Light | 2025-09-26T00:17:04.739409+00:00 |
 
-| `scene.set_my_room` | Set My Room | 2025-12-23T04:09:44.363739+00:00 |
+| `scene.set_my_room` | Set My Room | 2025-12-24T02:27:45.286774+00:00 |
 
 | `scene.temp_thermostat_snapshot` | temp_thermostat_snapshot | 2025-12-22T14:02:12.711937+00:00 |
 
-| `scene.thermostat_away` | Thermostat Away | 2025-12-21T15:13:34.355203+00:00 |
+| `scene.thermostat_away` | Thermostat Away | 2025-12-23T19:41:26.065313+00:00 |
 
 | `scene.thermostat_ideal_evening` | Thermostat 68/70 | 2025-11-28T11:14:37.942932+00:00 |
 
@@ -632,7 +716,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-<details><summary><b>Select (11)</b></summary>
+<details><summary><b>Select (14)</b></summary>
 
 | Entity ID | Name | State |
 |---|---|---|
@@ -657,6 +741,12 @@ Below are the input helpers configured in Home Assistant.
 
 | `select.bedroom_lamp_start_up_behavior` | Bedroom Lamp Start-up behavior | PreviousValue |
 
+| `select.everything_presence_lite_922d28_extra_entities_update` | Everything Presence Lite Extra entities update | Every update |
+
+| `select.everything_presence_lite_922d28_tracking_behaviour` | Everything Presence Lite Tracking Behaviour | Above + Speed and Resolution |
+
+| `select.everything_presence_lite_922d28_update_speed` | Everything Presence Lite Update speed | Normal (0.3s) |
+
 | `select.living_room_lamp_start_up_behavior` | Living Room Lamp Start-up behavior | PreviousValue |
 
 </details>
@@ -664,7 +754,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-<details><summary><b>Sensor (140)</b></summary>
+<details><summary><b>Sensor (167)</b></summary>
 
 | Entity ID | Name | State |
 |---|---|---|
@@ -675,33 +765,33 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.aqara_fp300_battery` | Aqara FP300 Battery | 100.0 |
 
-| `sensor.aqara_fp300_humidity` | Aqara FP300 Humidity | 32.0 |
+| `sensor.aqara_fp300_humidity` | Aqara FP300 Humidity | 39.0 |
 
 | `sensor.aqara_fp300_illuminance` | Aqara FP300 Illuminance | 0 |
 
 | `sensor.aqara_fp300_target_distance` | Aqara FP300 Target distance | unknown |
 
-| `sensor.aqara_fp300_temperature` | Aqara FP300 Temperature | 69.98 |
+| `sensor.aqara_fp300_temperature` | Aqara FP300 Temperature | 70.448 |
 
 | `sensor.backup_backup_manager_state` | Backup Backup Manager state | idle |
 
-| `sensor.backup_last_attempted_automatic_backup` | Backup Last attempted automatic backup | 2025-12-22T11:43:04+00:00 |
+| `sensor.backup_last_attempted_automatic_backup` | Backup Last attempted automatic backup | 2025-12-23T10:53:02+00:00 |
 
-| `sensor.backup_last_successful_automatic_backup` | Backup Last successful automatic backup | 2025-12-22T11:44:30+00:00 |
+| `sensor.backup_last_successful_automatic_backup` | Backup Last successful automatic backup | 2025-12-23T10:54:23+00:00 |
 
-| `sensor.backup_next_scheduled_automatic_backup` | Backup Next scheduled automatic backup | 2025-12-23T10:53:02+00:00 |
+| `sensor.backup_next_scheduled_automatic_backup` | Backup Next scheduled automatic backup | 2025-12-24T10:56:03+00:00 |
 
 | `sensor.bathroom_light_auto_off_at` | Bathroom Light Auto-off at | unknown |
 
-| `sensor.bathroom_light_signal_level` | Bathroom Light Signal level | 2 |
+| `sensor.bathroom_light_signal_level` | Bathroom Light Signal level | 3 |
 
-| `sensor.bed_presence_bb8594_left_pressure` | Bed Presence Sensor Left Pressure | 95.2942657470703 |
+| `sensor.bed_presence_bb8594_left_pressure` | Bed Presence Sensor Left Pressure | 96.0543441772461 |
 
-| `sensor.bed_presence_bb8594_right_pressure` | Bed Presence Sensor Right Pressure | 92.2950057983398 |
+| `sensor.bed_presence_bb8594_right_pressure` | Bed Presence Sensor Right Pressure | 90.1773834228516 |
 
-| `sensor.bed_presence_bb8594_uptime` | Bed Presence Sensor Uptime | 1095533.625 |
+| `sensor.bed_presence_bb8594_uptime` | Bed Presence Sensor Uptime | 1181936.25 |
 
-| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Presence Sensor WiFi Signal dB | -49.0 |
+| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Presence Sensor WiFi Signal dB | -48.0 |
 
 | `sensor.bed_presence_bb8594_wifi_signal_percent` | Bed Presence Sensor WiFi Signal Percent | 100.0 |
 
@@ -753,15 +843,67 @@ United States |
 
 | `sensor.bthome_sensor_3370_battery` | Motion 1 Battery | 100 |
 
-| `sensor.bthome_sensor_3370_illuminance` | Motion 1 Illuminance | 10.0 |
+| `sensor.bthome_sensor_3370_illuminance` | Motion 1 Illuminance | 36.0 |
 
-| `sensor.bthome_sensor_3370_packet_id` | Motion 1 Packet Id | 79 |
+| `sensor.bthome_sensor_3370_packet_id` | Motion 1 Packet Id | 102 |
 
-| `sensor.bthome_sensor_3370_signal_strength` | Motion 1 Signal Strength | -67 |
+| `sensor.bthome_sensor_3370_signal_strength` | Motion 1 Signal Strength | -56 |
 
 | `sensor.closet_light_auto_off_at` | Closet Light Auto-off at | unknown |
 
 | `sensor.closet_light_signal_level` | Closet Light Signal level | 3 |
+
+| `sensor.everything_presence_lite_922d28_illuminance` | Everything Presence Lite Illuminance | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_mmwave_firmware` | Everything Presence Lite mmWave Firmware | V2.04 |
+
+| `sensor.everything_presence_lite_922d28_occupancy_mask_1_target_count` | Everything Presence Lite Occupancy Mask 1 Target Count | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_occupancy_mask_2_target_count` | Everything Presence Lite Occupancy Mask 2 Target Count | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -54.9764747619629 |
+
+| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 11.7304992675781 |
+
+| `sensor.everything_presence_lite_922d28_target_1_resolution` | Everything Presence Lite Target 1 Resolution | 14.1732283464567 |
+
+| `sensor.everything_presence_lite_922d28_target_1_speed` | Everything Presence Lite Target 1 Speed | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | 9.60629921259843 |
+
+| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 6.73228346456693 |
+
+| `sensor.everything_presence_lite_922d28_target_2_angle` | Everything Presence Lite Target 2 Angle | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_target_2_distance` | Everything Presence Lite Target 2 Distance | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_target_2_resolution` | Everything Presence Lite Target 2 Resolution | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_target_2_speed` | Everything Presence Lite Target 2 Speed | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_target_2_x` | Everything Presence Lite Target 2 X | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_target_2_y` | Everything Presence Lite Target 2 Y | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_target_3_angle` | Everything Presence Lite Target 3 Angle | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_target_3_distance` | Everything Presence Lite Target 3 Distance | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_target_3_resolution` | Everything Presence Lite Target 3 Resolution | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_target_3_speed` | Everything Presence Lite Target 3 Speed | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_target_3_x` | Everything Presence Lite Target 3 X | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_target_3_y` | Everything Presence Lite Target 3 Y | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_zone_2_target_count` | Everything Presence Lite Zone 2 Target Count | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_zone_3_target_count` | Everything Presence Lite Zone 3 Target Count | 0.0 |
+
+| `sensor.everything_presence_lite_922d28_zone_4_target_count` | Everything Presence Lite Zone 4 Target Count | 0.0 |
+
+| `sensor.everything_presence_lite_zone_1_target_count` | Everything Presence Lite Zone 1 Target Count | 1.0 |
 
 | `sensor.everywhere_next_alarm` | Everywhere Next alarm | unavailable |
 
@@ -769,15 +911,15 @@ United States |
 
 | `sensor.everywhere_next_timer` | Everywhere Next timer | unavailable |
 
-| `sensor.front_door_sensor_battery` | Front Door Sensor Battery | 91 |
+| `sensor.front_door_sensor_battery` | Front Door Sensor Battery | 90 |
 
-| `sensor.front_door_sensor_illuminance` | Front Door Sensor Illuminance | 0.0 |
+| `sensor.front_door_sensor_illuminance` | Front Door Sensor Illuminance | 18.0 |
 
 | `sensor.front_door_sensor_rotation` | Front Door Sensor Rotation | 0.0 |
 
 | `sensor.ipad_app_version` | iPad App Version | 2025.12.1 |
 
-| `sensor.ipad_battery_level` | iPad Battery Level | 75 |
+| `sensor.ipad_battery_level` | iPad Battery Level | 5 |
 
 | `sensor.ipad_battery_state` | iPad Battery State | Charging |
 
@@ -807,33 +949,33 @@ United States |
 
 | `sensor.main_lights_signal_level` | Main Lights Signal level | 3 |
 
-| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 3.433 |
+| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 3.522 |
 
 | `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.0 |
 
-| `sensor.main_lights_voltage` | Main Lights Voltage | 124.2 |
+| `sensor.main_lights_voltage` | Main Lights Voltage | 124.4 |
 
-| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 70.628 |
+| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 70.682 |
 
-| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 93 |
+| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 100 |
 
 | `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | cloudy |
 
-| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 42.278 |
+| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 46.058 |
 
-| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 44.492 |
+| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 47.696 |
 
-| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 86 |
+| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 94 |
 
 | `sensor.openweathermap_precipitation_kind_2` | OpenWeatherMap Precipitation kind | None |
 
-| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.7648423287434 |
+| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.8518649750818 |
 
 | `sensor.openweathermap_rain_2` | OpenWeatherMap Rain intensity | 0.0 |
 
 | `sensor.openweathermap_snow_2` | OpenWeatherMap Snow intensity | 0.0 |
 
-| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 46.22 |
+| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 47.696 |
 
 | `sensor.openweathermap_uv_index_2` | OpenWeatherMap UV index | 0 |
 
@@ -843,13 +985,13 @@ United States |
 
 | `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 804 |
 
-| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 214 |
+| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 70 |
 
-| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 5.9949892627058 |
+| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 2.9974946313529 |
 
-| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 4.00411596277738 |
+| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 1.99087329992842 |
 
-| `sensor.philips_rwl020_battery` | Hue Dimmer Battery | 69.5 |
+| `sensor.philips_rwl020_battery` | Hue Dimmer Battery | 100.0 |
 
 | `sensor.phone_browser_browser_height` | phone browser Browser height | unavailable |
 
@@ -871,7 +1013,7 @@ United States |
 
 | `sensor.rachels_phone_audio_output` | Rachels Phone Audio Output | unavailable |
 
-| `sensor.rachels_phone_battery_level` | Rachels Phone Battery Level | 90 |
+| `sensor.rachels_phone_battery_level` | Rachels Phone Battery Level | 25 |
 
 | `sensor.rachels_phone_battery_state` | Rachels Phone Battery State | Not Charging |
 
@@ -893,6 +1035,8 @@ United States |
 
 | `sensor.rachels_phone_storage` | Rachels Phone Storage | unavailable |
 
+| `sensor.rivian_phone_key_2060_estimated_distance` | Rivian Phone Key 2060 Estimated distance | 72.1784776902887 |
+
 | `sensor.s58cdfccea0786690c_d4a2_estimated_distance` | S58cdfccea0786690C D4A2 Estimated distance | unavailable |
 
 | `sensor.scd0ed4bcbf3abdf0c_652d_estimated_distance` | Estimated distance | unavailable |
@@ -911,43 +1055,43 @@ United States |
 
 | `sensor.slzb_mr1_connection_mode` | SLZB-MR1 Connection mode | wifi |
 
-| `sensor.slzb_mr1_core_chip_temp` | SLZB-MR1 Core chip temp | 134.996 |
+| `sensor.slzb_mr1_core_chip_temp` | SLZB-MR1 Core chip temp | 131.0 |
 
 | `sensor.slzb_mr1_firmware_channel` | SLZB-MR1 Firmware channel | release |
 
-| `sensor.slzb_mr1_zigbee_chip_temp` | SLZB-MR1 Zigbee chip temp | 132.206 |
+| `sensor.slzb_mr1_zigbee_chip_temp` | SLZB-MR1 Zigbee chip temp | 126.554 |
 
-| `sensor.slzb_mr1_zigbee_chip_temp_2` | SLZB-MR1 Zigbee chip temp | 131.468 |
+| `sensor.slzb_mr1_zigbee_chip_temp_2` | SLZB-MR1 Zigbee chip temp | 125.636 |
 
 | `sensor.slzb_mr1_zigbee_type` | SLZB-MR1 Zigbee type | thread |
 
 | `sensor.slzb_mr1_zigbee_type_2` | SLZB-MR1 Zigbee type | coordinator |
 
-| `sensor.space_heater_auto_off_at` | Space Heater Auto-off at | unknown |
+| `sensor.space_heater_auto_off_at` | Space Heater Auto-off at | unavailable |
 
-| `sensor.space_heater_current` | Space Heater Current | 0.13 |
+| `sensor.space_heater_current` | Space Heater Current | unavailable |
 
-| `sensor.space_heater_current_consumption` | Space Heater Current consumption | 2.2 |
+| `sensor.space_heater_current_consumption` | Space Heater Current consumption | unavailable |
 
-| `sensor.space_heater_signal_level` | Space Heater Signal level | 3 |
+| `sensor.space_heater_signal_level` | Space Heater Signal level | unavailable |
 
-| `sensor.space_heater_this_month_s_consumption` | Space Heater This month's consumption | 0.3 |
+| `sensor.space_heater_this_month_s_consumption` | Space Heater This month's consumption | unavailable |
 
-| `sensor.space_heater_today_s_consumption` | Space Heater Today's consumption | 0.004 |
+| `sensor.space_heater_today_s_consumption` | Space Heater Today's consumption | unavailable |
 
-| `sensor.space_heater_voltage` | Space Heater Voltage | 123.2 |
+| `sensor.space_heater_voltage` | Space Heater Voltage | unavailable |
 
-| `sensor.sun_next_dawn` | Sun Next dawn | 2025-12-23T12:48:10+00:00 |
+| `sensor.sun_next_dawn` | Sun Next dawn | 2025-12-24T12:48:36+00:00 |
 
-| `sensor.sun_next_dusk` | Sun Next dusk | 2025-12-23T23:16:07+00:00 |
+| `sensor.sun_next_dusk` | Sun Next dusk | 2025-12-24T23:16:42+00:00 |
 
-| `sensor.sun_next_midnight` | Sun Next midnight | 2025-12-24T06:02:38+00:00 |
+| `sensor.sun_next_midnight` | Sun Next midnight | 2025-12-25T06:03:07+00:00 |
 
-| `sensor.sun_next_noon` | Sun Next noon | 2025-12-23T18:01:45+00:00 |
+| `sensor.sun_next_noon` | Sun Next noon | 2025-12-24T18:02:15+00:00 |
 
-| `sensor.sun_next_rising` | Sun Next rising | 2025-12-23T13:18:39+00:00 |
+| `sensor.sun_next_rising` | Sun Next rising | 2025-12-24T13:19:04+00:00 |
 
-| `sensor.sun_next_setting` | Sun Next setting | 2025-12-23T22:45:39+00:00 |
+| `sensor.sun_next_setting` | Sun Next setting | 2025-12-24T22:46:14+00:00 |
 
 | `sensor.uptime` | Uptime | 2025-12-19T04:37:24+00:00 |
 
@@ -982,7 +1126,7 @@ United States |
 
 
 
-<details><summary><b>Switch (60)</b></summary>
+<details><summary><b>Switch (63)</b></summary>
 
 | Entity ID | Name | State |
 |---|---|---|
@@ -1047,11 +1191,17 @@ United States |
 
 | `switch.custom_icons_pre_release` | Custom Icons Pre-release | off |
 
+| `switch.everything_presence_lite_922d28_mmwave_bluetooth` | Everything Presence Lite mmWave Bluetooth | off |
+
+| `switch.everything_presence_lite_922d28_stale_target_reset` | Everything Presence Lite Stale Target Reset | off |
+
+| `switch.everything_presence_lite_922d28_upside_down_mounting` | Everything Presence Lite Upside Down Mounting | off |
+
 | `switch.everywhere_do_not_disturb_switch` | Everywhere do not disturb switch | off |
 
 | `switch.everywhere_repeat_switch` | Everywhere repeat switch | off |
 
-| `switch.everywhere_shuffle_switch` | Everywhere shuffle switch | off |
+| `switch.everywhere_shuffle_switch` | Everywhere shuffle switch | on |
 
 | `switch.fan_outlet_led` | Fan Outlet LED | off |
 
@@ -1099,13 +1249,13 @@ United States |
 
 | `switch.slzb_mr1_led_night_mode` | SLZB-MR1 LED night mode | off |
 
-| `switch.space_heater` | Space Heater | on |
+| `switch.space_heater` | Space Heater | unavailable |
 
-| `switch.space_heater_auto_off_enabled` | Space Heater Auto-off enabled | off |
+| `switch.space_heater_auto_off_enabled` | Space Heater Auto-off enabled | unavailable |
 
-| `switch.space_heater_auto_update_enabled` | Space Heater Auto-update enabled | on |
+| `switch.space_heater_auto_update_enabled` | Space Heater Auto-update enabled | unavailable |
 
-| `switch.space_heater_led` | Space Heater LED | off |
+| `switch.space_heater_led` | Space Heater LED | unavailable |
 
 </details>
 
@@ -1126,7 +1276,7 @@ United States |
 
 
 
-<details><summary><b>Update (24)</b></summary>
+<details><summary><b>Update (26)</b></summary>
 
 | Entity ID | Name | State |
 |---|---|---|
@@ -1144,6 +1294,10 @@ United States |
 | `update.card_mod_update` | card-mod update | off |
 
 | `update.custom_icons_update` | Custom Icons update | off |
+
+| `update.everything_presence_lite_922d28_everything_presence_lite_firmware` | Everything Presence Lite Everything Presence Lite Firmware | off |
+
+| `update.everything_presence_zone_configurator_update` | Everything Presence Zone Configurator Update | off |
 
 | `update.file_editor_update` | File editor Update | off |
 
