@@ -68,7 +68,7 @@ play_music_alexa:
           data:
             volume_level: 0.01
           target:
-            entity_id: media_player.blake_s_echo_pop
+            entity_id: media_player.blake_s_echo_spot
         - delay:
             hours: 0
             minutes: 0
@@ -78,7 +78,7 @@ play_music_alexa:
           metadata: {}
           data:
             text_command: Shuffle Alex warren on everywhere group
-            device_id: 2f6a789579ab6135e38f2b96727755b1
+            device_id: ba7e4aed08d0947fa03068f398842568
         - action: media_player.volume_set
           metadata: {}
           data:
