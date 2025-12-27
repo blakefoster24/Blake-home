@@ -1,7 +1,7 @@
 ===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====
-[32m2025-12-26 13:11:37.394 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2025-12-26 13:11:37.395 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[33m2025-12-26 13:11:37.400 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'minimum' when rendering '# Home Assistant Configuration
+{% endif %}
+{% endfor %}'[0m
+[33m2025-12-27 02:00:00.069 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'min' when rendering '# Home Assistant Configuration
 _Last Updated: {{ now().isoformat() }}_
 
 ## 🛠 UI Helpers
@@ -25,7 +25,7 @@ Below are the input helpers configured in Home Assistant.
 {% elif domain == 'timer' %}
    {% set details = details + ['duration=' ~ s.attributes.duration] %}
 {% elif domain == 'counter' %}
-   {% set details = details + ['min=' ~ s.attributes.minimum, 'max=' ~ s.attributes.maximum] %}
+   {% set details = details + ['min=' ~ s.attributes.min, 'max=' ~ s.attributes.max] %}
 {% endif %}
 | `{{ s.entity_id }}` | **{{ s.name | replace("'", "'\\''") }}** | {{ s.state | replace("'", "'\\''") }} | {{ details | join(', ') | replace("'", "'\\''") }} |
 {% endfor %}
@@ -49,7 +49,7 @@ Below are the input helpers configured in Home Assistant.
 
 {% endif %}
 {% endfor %}'[0m
-[33m2025-12-26 13:11:37.401 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'maximum' when rendering '# Home Assistant Configuration
+[33m2025-12-27 02:00:00.071 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'max' when rendering '# Home Assistant Configuration
 _Last Updated: {{ now().isoformat() }}_
 
 ## 🛠 UI Helpers
@@ -73,7 +73,7 @@ Below are the input helpers configured in Home Assistant.
 {% elif domain == 'timer' %}
    {% set details = details + ['duration=' ~ s.attributes.duration] %}
 {% elif domain == 'counter' %}
-   {% set details = details + ['min=' ~ s.attributes.minimum, 'max=' ~ s.attributes.maximum] %}
+   {% set details = details + ['min=' ~ s.attributes.min, 'max=' ~ s.attributes.max] %}
 {% endif %}
 | `{{ s.entity_id }}` | **{{ s.name | replace("'", "'\\''") }}** | {{ s.state | replace("'", "'\\''") }} | {{ details | join(', ') | replace("'", "'\\''") }} |
 {% endfor %}
@@ -97,5 +97,5 @@ Below are the input helpers configured in Home Assistant.
 
 {% endif %}
 {% endfor %}'[0m
-[33m2025-12-26 13:11:37.441 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
-[32m2025-12-26 13:11:38.708 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2025-12-27 02:00:00.114 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2025-12-27 02:00:01.432 INFO (MainThread) [homeassistant.components.script.create_push_ha_info_to_github_newest] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m

@@ -208,8 +208,8 @@ create_push_ha_info_to_github_newest:
         = details + ['has_date=' ~ s.attributes.has_date, 'has_time=' ~ s.attributes.has_time]
         %}\n{% elif domain == 'timer' %}\n   {% set details = details + ['duration='
         ~ s.attributes.duration] %}\n{% elif domain == 'counter' %}\n   {% set details
-        = details + ['min=' ~ s.attributes.minimum, 'max=' ~ s.attributes.maximum]
-        %}\n{% endif %}\n| `{{ s.entity_id }}` | **{{ s.name | replace(\"'\", \"'\\\\''\")
+        = details + ['min=' ~ s.attributes.min, 'max=' ~ s.attributes.max] %}\n{%
+        endif %}\n| `{{ s.entity_id }}` | **{{ s.name | replace(\"'\", \"'\\\\''\")
         }}** | {{ s.state | replace(\"'\", \"'\\\\''\") }} | {{ details | join(',
         ') | replace(\"'\", \"'\\\\''\") }} |\n{% endfor %}\n\n{% endif %}\n{% endfor
         %}\n\n---\n\n## \U0001F3E0 All Entities (By Domain)\n{% for domain, items

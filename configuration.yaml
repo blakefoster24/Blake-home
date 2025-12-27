@@ -56,6 +56,12 @@ shell_command:
   prepare_ai_context_zip: "python3 -c \"import zipfile, os; files = ['/config/configuration.yaml', '/config/automations.yaml', '/config/scripts.yaml', '/config/scenes.yaml', '/config/HA_Overview.md', '/config/diagnostics/last_log.txt', '/config/diagnostics/automation_runs.txt', '/config/diagnostics/error_log.txt']; z = zipfile.ZipFile('/config/www/ha_ai_context.zip', 'w', zipfile.ZIP_DEFLATED); [z.write(f, os.path.basename(f)) for f in files if os.path.exists(f)]; z.close()\""
 
 
+recorder:
+  exclude:
+    domains:
+      - shell_command
+
+
 panel_custom:
   - name: panel_entities
     sidebar_title: Entities / Helpers
