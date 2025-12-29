@@ -310,3 +310,53 @@ temporary_thermostat_adjustment:
       entity_id: scene.temp_thermostat_snapshot
     data:
       transition: 1
+set_room_2:
+  sequence:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.lights_off_except_bedroom
+  - action: light.turn_off
+    metadata: {}
+    target:
+      entity_id: light.bedroom_ceiling_lights
+    data: {}
+  - action: scene.turn_on
+    metadata: {}
+    target:
+      entity_id: scene.full_lamp
+    data: {}
+  - action: fan.turn_off
+    metadata: {}
+    target:
+      entity_id: fan.bedroom_fan
+    data: {}
+  - if:
+    - condition: state
+      entity_id: media_player.bedroom_tv
+      state:
+      - playing
+    then: []
+    else:
+    - action: media_player.play_media
+      metadata: {}
+      target:
+        entity_id: media_player.bedroom_tv
+      data:
+        media:
+          media_content_id: '837'
+          media_content_type: app
+          metadata:
+            title: YouTube
+            thumbnail: http://192.168.1.68:8060/query/icon/837
+            media_class: app
+            children_media_class:
+            navigateIds:
+            - {}
+            - media_content_type: apps
+              media_content_id: ''
+            browse_entity_id: media_player.bedroom_tv
+  mode: single
+  alias: Set Room
+  description: ''

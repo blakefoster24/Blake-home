@@ -1808,3 +1808,53 @@
       entity_only: true
     light.kitchen_lights:
       entity_only: true
+- id: '1766965928208'
+  name: Lights off except bedroom
+  entities:
+    light.bathroom_light:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Bathroom Light
+      supported_features: 0
+      state: 'off'
+    light.main_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      icon: mdi:lightbulb-multiple
+      friendly_name: Main Lights
+      supported_features: 0
+      state: 'off'
+    light.kitchen_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Kitchen Lights
+      supported_features: 0
+      state: 'off'
+    light.living_room_ceiling_lights:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Living Room Ceiling Lights
+      supported_features: 0
+      state: 'off'
+    light.closet_light:
+      supported_color_modes:
+      - onoff
+      color_mode:
+      friendly_name: Closet Light
+      supported_features: 0
+      state: 'off'
+  metadata:
+    light.bathroom_light:
+      entity_only: true
+    light.main_lights:
+      entity_only: true
+    light.kitchen_lights:
+      entity_only: true
+    light.living_room_ceiling_lights:
+      entity_only: true
+    light.closet_light:
+      entity_only: true

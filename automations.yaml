@@ -1195,11 +1195,11 @@
       seconds: 5
       milliseconds: 0
     continue_on_timeout: false
-  - action: scene.turn_on
+  - action: script.turn_on
     metadata: {}
-    data: {}
     target:
-      entity_id: scene.set_my_room
+      entity_id: script.set_room_2
+    data: {}
   mode: single
 - id: '1764120623172'
   alias: Work Schedule Automations
@@ -1536,10 +1536,10 @@
                 after: 08:00:00
                 before: 09:30:00
           sequence:
-          - action: scene.turn_on
+          - action: script.turn_on
             metadata: {}
             target:
-              entity_id: scene.set_my_room
+              entity_id: script.set_room_2
             data: {}
           alias: On Short
         - conditions:
@@ -1547,10 +1547,10 @@
             id:
             - on_long
           sequence:
-          - action: scene.turn_on
+          - action: script.turn_on
             metadata: {}
             target:
-              entity_id: scene.set_my_room
+              entity_id: script.set_room_2
             data: {}
           alias: On Long
     - alias: Up Button
@@ -1642,31 +1642,4 @@
               entity_id: scene.goodnight_scene
             data: {}
           alias: Off Long
-  mode: single
-- id: '1765956018522'
-  alias: Living Room TV Ghost Buster
-  description: ''
-  triggers:
-  - trigger: state
-    entity_id:
-    - media_player.living_room_tv
-    to:
-    - 'on'
-  conditions: []
-  actions:
-  - action: media_player.turn_off
-    metadata: {}
-    target:
-      entity_id: media_player.living_room_tv
-    data: {}
-  - action: media_player.turn_off
-    metadata: {}
-    target:
-      device_id: ffad53a462a74519cb8e5954726536eb
-    data: {}
-  - delay:
-      hours: 0
-      minutes: 5
-      seconds: 0
-      milliseconds: 0
   mode: single
