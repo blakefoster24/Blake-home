@@ -873,6 +873,13 @@
           target:
             entity_id: automation.door_automation
           data: {}
+        - action: notify.mobile_app_blakes_iphone
+          metadata: {}
+          data:
+            message: Everything’s off!
+            title: Goodbye
+            data:
+              interruption level: time-sensitive
       alias: Wake up Sequence -> Leave Sequence
     - conditions:
       - condition: trigger
