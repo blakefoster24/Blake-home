@@ -618,18 +618,18 @@
     id: iPad battery
   conditions: []
   actions:
+  - action: scene.create
+    metadata: {}
+    data:
+      scene_id: lamp_snapshot
+      snapshot_entities:
+      - light.bedroom_lamp
   - choose:
     - conditions:
       - condition: trigger
         id:
         - iPhone battery
       sequence:
-      - action: scene.create
-        metadata: {}
-        data:
-          scene_id: lamp_snapshot
-          snapshot_entities:
-          - light.bedroom_lamp
       - repeat:
           count: 2
           sequence:
@@ -660,12 +660,6 @@
         id:
         - iPad battery
       sequence:
-      - action: scene.create
-        metadata: {}
-        data:
-          scene_id: lamp_snapshot
-          snapshot_entities:
-          - light.bedroom_lamp
       - repeat:
           count: 3
           sequence:
@@ -691,6 +685,11 @@
               minutes: 0
               seconds: 0
               milliseconds: 500
+  - action: scene.delete
+    metadata: {}
+    target:
+      entity_id: scene.lamp_snapshot
+    data: {}
   mode: single
 - id: '1761579203292'
   alias: Goodnight
@@ -1273,37 +1272,37 @@
         id:
         - 11pm
       sequence:
-      - if:
+      - alias: Workday tomorrow toggle -> alarms
+        if:
         - condition: state
           state: 'on'
           entity_id: input_boolean.workday_tomorrow_toggle
         then:
-        - action: notify.blake_foster30_gmail_com
-          metadata: {}
-          data:
-            message: Work Alarm ON
-            title: Work Alarm ON
-            target: blake.foster30@gmail.com
         - action: input_boolean.turn_on
           metadata: {}
           data: {}
           target:
             entity_id:
             - input_boolean.workday_today_toggle
-        else:
         - action: notify.blake_foster30_gmail_com
           metadata: {}
           data:
-            message: Work Alarm OFF
-            title: Work Alarm OFF
+            message: Work Alarm ON
+            title: Work Alarm ON
             target: blake.foster30@gmail.com
+        else:
         - action: input_boolean.turn_off
           metadata: {}
           data: {}
           target:
             entity_id:
             - input_boolean.workday_today_toggle
-        alias: Workday tomorrow toggle -> alarms
+        - action: notify.blake_foster30_gmail_com
+          metadata: {}
+          data:
+            message: Work Alarm OFF
+            title: Work Alarm OFF
+            target: blake.foster30@gmail.com
       alias: 11pm send shortcut email, set workday today toggle
     - conditions:
       - condition: trigger
