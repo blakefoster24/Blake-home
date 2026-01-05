@@ -250,14 +250,12 @@ find_my_phone:
   description: ''
 temporary_thermostat_adjustment:
   alias: Temporary Thermostat Adjustment
-  description: Sets the thermostat to a specific mode and temperature for a set duration,
-    then reverts.
+  description: Sets the thermostat for a set duration and reverts. No helper required.
   icon: mdi:thermostat-clock
   mode: restart
   fields:
     hvac_mode:
       name: HVAC Mode
-      description: Cool or Heat?
       selector:
         select:
           options:
@@ -265,28 +263,28 @@ temporary_thermostat_adjustment:
             value: cool
           - label: Heat
             value: heat
-      required: true
-      default: cool
     target_temp:
       name: Target Temperature
-      description: Target Degrees
       selector:
         number:
           min: 60
           max: 85
           unit_of_measurement: °F
-      required: true
-      default: 70
+    temp_step:
+      name: Temp Step
+      selector:
+        number:
+          min: -5
+          max: 5
+          step: 1
     duration:
       name: Duration (Minutes)
-      description: How long to hold?
       selector:
         number:
           min: 10
           max: 240
           step: 5
           unit_of_measurement: min
-      required: true
       default: 30
   sequence:
   - action: scene.create
@@ -296,20 +294,27 @@ temporary_thermostat_adjustment:
       snapshot_entities:
       - climate.nest_thermostat
   - action: climate.set_temperature
-    metadata: {}
     target:
       entity_id: climate.nest_thermostat
     data:
-      hvac_mode: '{{ hvac_mode }}'
-      temperature: '{{ target_temp }}'
+      hvac_mode: "{% if hvac_mode is defined and hvac_mode in ['heat', 'cool'] %}\n
+        \ {{ hvac_mode }}\n{% else %}\n  {{ states('climate.nest_thermostat') }}\n{%
+        endif %}\n"
+      temperature: "{% set current = state_attr('climate.nest_thermostat', 'temperature')
+        | float(70) %} {% if target_temp is defined and target_temp is number %}\n
+        \ {{ target_temp | int }}\n{% elif temp_step is defined and temp_step is number
+        %}\n  {{ (current + temp_step) | round(0) | int }}\n{% else %}\n  {{ current
+        | int }}\n{% endif %}\n"
   - delay:
-      minutes: '{{ duration }}'
+      minutes: '{{ duration | default(30) | int }}'
   - action: scene.turn_on
+    target:
+      entity_id: scene.temp_thermostat_snapshot
+  - action: scene.delete
     metadata: {}
     target:
       entity_id: scene.temp_thermostat_snapshot
-    data:
-      transition: 1
+    data: {}
 set_room_2:
   sequence:
   - action: scene.turn_on
@@ -359,4 +364,85 @@ set_room_2:
             browse_entity_id: media_player.bedroom_tv
   mode: single
   alias: Set Room
+  description: ''
+temporary_thermostat_adjustment1:
+  alias: Temporary Thermostat Adjustment
+  description: Sets the thermostat for a set duration, with support for step adjustments.
+  icon: mdi:thermostat-clock
+  mode: restart
+  fields:
+    hvac_mode:
+      name: HVAC Mode
+      selector:
+        select:
+          options:
+          - label: Cool
+            value: cool
+          - label: Heat
+            value: heat
+    target_temp:
+      name: Target Temperature
+      selector:
+        number:
+          min: 60
+          max: 85
+          unit_of_measurement: °F
+    temp_step:
+      name: Temp Step
+      selector:
+        number:
+          min: -5
+          max: 5
+          step: 1
+    duration:
+      name: Duration (Minutes)
+      selector:
+        number:
+          min: 10
+          max: 240
+          step: 5
+          unit_of_measurement: min
+      required: true
+      default: 30
+  sequence:
+  - action: scene.create
+    data:
+      scene_id: temp_thermostat_snapshot
+      snapshot_entities:
+      - climate.nest_thermostat
+  - action: climate.set_temperature
+    target:
+      entity_id: climate.nest_thermostat
+    data:
+      hvac_mode: '{{ hvac_mode if hvac_mode is defined and hvac_mode != none else
+        states(''climate.nest_thermostat'') }}'
+      temperature: "{% set current = state_attr('climate.nest_thermostat', 'temperature')
+        | float(70) %} {% if temp_step is defined and temp_step != none %}\n  {{ (current
+        + temp_step) | round(0) }}\n{% else %}\n  {{ target_temp | default(current)
+        }}\n{% endif %}\n"
+  - delay:
+      minutes: '{{ duration | default(30) }}'
+  - action: scene.turn_on
+    target:
+      entity_id: scene.temp_thermostat_snapshot
+    data:
+      transition: 1
+revert_thermostat_adjustment:
+  sequence:
+  - action: scene.turn_on
+    metadata: {}
+    target:
+      entity_id: scene.temp_thermostat_snapshot
+    data: {}
+  - action: script.turn_off
+    metadata: {}
+    target:
+      entity_id: script.temporary_thermostat_adjustment
+    data: {}
+  - action: scene.delete
+    metadata: {}
+    target:
+      entity_id: scene.temp_thermostat_snapshot
+    data: {}
+  alias: Revert Thermostat Adjustment
   description: ''
