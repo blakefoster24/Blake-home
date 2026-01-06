@@ -263,6 +263,9 @@ temporary_thermostat_adjustment:
             value: cool
           - label: Heat
             value: heat
+      default:
+        '[object Object]':
+      required: true
     target_temp:
       name: Target Temperature
       selector:
@@ -270,13 +273,8 @@ temporary_thermostat_adjustment:
           min: 60
           max: 85
           unit_of_measurement: °F
-    temp_step:
-      name: Temp Step
-      selector:
-        number:
-          min: -5
-          max: 5
-          step: 1
+      default: 70
+      required: true
     duration:
       name: Duration (Minutes)
       selector:
@@ -286,6 +284,7 @@ temporary_thermostat_adjustment:
           step: 5
           unit_of_measurement: min
       default: 30
+      required: true
   sequence:
   - action: scene.create
     metadata: {}
@@ -297,16 +296,10 @@ temporary_thermostat_adjustment:
     target:
       entity_id: climate.nest_thermostat
     data:
-      hvac_mode: "{% if hvac_mode is defined and hvac_mode in ['heat', 'cool'] %}\n
-        \ {{ hvac_mode }}\n{% else %}\n  {{ states('climate.nest_thermostat') }}\n{%
-        endif %}\n"
-      temperature: "{% set current = state_attr('climate.nest_thermostat', 'temperature')
-        | float(70) %} {% if target_temp is defined and target_temp is number %}\n
-        \ {{ target_temp | int }}\n{% elif temp_step is defined and temp_step is number
-        %}\n  {{ (current + temp_step) | round(0) | int }}\n{% else %}\n  {{ current
-        | int }}\n{% endif %}\n"
+      hvac_mode: '{{ hvac_mode }}'
+      temperature: '{{ target_temp }}'
   - delay:
-      minutes: '{{ duration | default(30) | int }}'
+      minutes: '{{ duration }}'
   - action: scene.turn_on
     target:
       entity_id: scene.temp_thermostat_snapshot
