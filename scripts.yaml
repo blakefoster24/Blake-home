@@ -250,16 +250,13 @@ find_my_phone:
   description: ''
 temporary_thermostat_adjustment:
   alias: Temporary Thermostat Adjustment
-  description: Combined script to start or revert temporary thermostat settings using
-    native metadata schema.
+  description: Overrides HVAC Temporarily
   icon: mdi:thermostat-clock
   mode: restart
   fields:
     hvac_mode:
       name: HVAC Mode
-      description: Select the target heating or cooling mode.
-      required: true
-      default: cool
+      required: false
       selector:
         select:
           options:
@@ -269,9 +266,7 @@ temporary_thermostat_adjustment:
             value: heat
     target_temp:
       name: Target Temperature
-      description: Set the temporary target degrees.
-      required: true
-      default: 70
+      required: false
       selector:
         number:
           min: 60
@@ -281,9 +276,7 @@ temporary_thermostat_adjustment:
           mode: slider
     duration:
       name: Duration (Minutes)
-      description: How long to hold the temperature before reverting.
       required: true
-      default: 30
       selector:
         number:
           min: 10
@@ -291,14 +284,13 @@ temporary_thermostat_adjustment:
           step: 5
           unit_of_measurement: min
           mode: box
+      default: 30
   sequence:
   - choose:
-    - conditions:
-      - condition: not
-        conditions:
-        - condition: template
-          value_template: '{{ action_type == ''revert'' }}'
-          alias: Action type = Revert
+    - alias: Start Sequence
+      conditions:
+      - condition: template
+        value_template: '{{ action_type != ''revert'' }}'
       sequence:
       - action: scene.create
         metadata: {}
@@ -317,24 +309,23 @@ temporary_thermostat_adjustment:
           minutes: '{{ duration }}'
       - action: scene.turn_on
         metadata: {}
+        data: {}
         target:
           entity_id: scene.temp_thermostat_snapshot
-        data: {}
       - action: scene.delete
         metadata: {}
         target:
           entity_id: scene.temp_thermostat_snapshot
         data: {}
-      alias: Start Script
-    - conditions:
+    - alias: Manual Revert Sequence
+      conditions:
       - condition: template
         value_template: '{{ action_type == ''revert'' }}'
-        alias: Action type = Revert
       sequence:
       - action: scene.turn_on
-        metadata: {}
         target:
           entity_id: scene.temp_thermostat_snapshot
+        metadata: {}
         data: {}
       - action: scene.delete
         metadata: {}

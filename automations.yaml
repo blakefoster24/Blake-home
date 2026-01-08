@@ -306,7 +306,28 @@
       hours: 0
       minutes: 20
       seconds: 0
-  conditions: []
+  - trigger: template
+    value_template: "{{ states('sensor.c_expansion_attic_temperature') | float < 50\n
+      \     or states('sensor.nest_temperature_sensor_stairwell_g_temperature') |
+      float < 50 }}"
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
+    alias: Attic Expansion C or Stairwell G drop below 50* for 30min
+    id: Expansion C
+  conditions:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: script.temporary_thermostat_adjustment
+      state:
+      - 'off'
+    - condition: trigger
+      id:
+      - Set-point discrepancy
+      - 64 > Thermostat Temperature > 76
+      - Expansion C
   actions:
   - choose:
     - conditions:
@@ -351,6 +372,24 @@
           - condition: time
             after: 08:59:00
             before: '15:50:00'
+        - condition: and
+          conditions:
+          - condition: time
+            after: 08:59:00
+            before: '16:00:00'
+          - condition: not
+            conditions:
+            - condition: trigger
+              id:
+              - Blake’s home
+              - Blake away
+              - 64 > Thermostat Temperature > 76
+              - Set-point discrepancy
+              - Expansion C
+              - Morning Time Window
+              - Afternoon Time Window
+              - Night Time Window
+          alias: 8am - 4pm not trigger
       sequence:
       - choose:
         - conditions:
@@ -396,9 +435,29 @@
               device_id: b43f8797bfe54ded21e44c051fec8167
       alias: Morning Branch
     - conditions:
-      - condition: trigger
-        id:
-        - Afternoon Time Window
+      - condition: or
+        conditions:
+        - condition: trigger
+          id:
+          - Afternoon Time Window
+        - alias: 4pm-9:59pm - not trigger
+          condition: and
+          conditions:
+          - condition: time
+            after: '15:59:00'
+            before: '22:00:00'
+          - condition: not
+            conditions:
+            - condition: trigger
+              id:
+              - Blake’s home
+              - Blake away
+              - 64 > Thermostat Temperature > 76
+              - Set-point discrepancy
+              - Expansion C
+              - Morning Time Window
+              - Afternoon Time Window
+              - Night Time Window
       sequence:
       - choose:
         - conditions:
@@ -444,9 +503,29 @@
               device_id: b43f8797bfe54ded21e44c051fec8167
       alias: Evening Branch
     - conditions:
-      - condition: trigger
-        id:
-        - Night Time Window
+      - condition: or
+        conditions:
+        - condition: trigger
+          id:
+          - Night Time Window
+        - alias: 9pm-9am - not trigger
+          condition: and
+          conditions:
+          - condition: time
+            after: '21:59:00'
+            before: 09:00:00
+          - condition: not
+            conditions:
+            - condition: trigger
+              id:
+              - Blake’s home
+              - Blake away
+              - 64 > Thermostat Temperature > 76
+              - Set-point discrepancy
+              - Expansion C
+              - Morning Time Window
+              - Afternoon Time Window
+              - Night Time Window
       sequence:
       - choose:
         - conditions:
@@ -520,6 +599,21 @@
                 | float | round | int }}°'
               title: Check Thermostat!
       alias: Temperature Issue
+    - conditions:
+      - condition: trigger
+        id:
+        - Expansion C
+      sequence:
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: 'Current Expansion C temperature is: {{ states(''sensor.c_expansion_attic_temperature'')
+            | float | round | int }}°
+
+            Current Stairwell G temperature is: {{ states(''sensor.nest_temperature_sensor_stairwell_g_temperature'')
+            | float | round | int }}°'
+          title: Work Attic Temperature Issue!
+      alias: Work Temperature Issue
   trace:
     stored_traces: 50
   mode: single
