@@ -43,7 +43,7 @@ play_music_alexa:
         metadata: {}
         data: {}
         target:
-          entity_id: media_player.everywhere
+          entity_id: media_player.all_echo
       - delay:
           hours: 0
           minutes: 0
@@ -54,7 +54,7 @@ play_music_alexa:
         data:
           volume_level: 0.3
         target:
-          entity_id: media_player.everywhere
+          entity_id: media_player.all_echo
       - action: input_boolean.turn_off
         metadata: {}
         data: {}
@@ -84,7 +84,7 @@ play_music_alexa:
           data:
             volume_level: 0
           target:
-            entity_id: media_player.everywhere
+            entity_id: media_player.all_echo
         - delay:
             hours: 0
             minutes: 0
@@ -95,7 +95,7 @@ play_music_alexa:
           data:
             shuffle: true
           target:
-            entity_id: media_player.everywhere
+            entity_id: media_player.all_echo
         - delay:
             hours: 0
             minutes: 0
@@ -104,9 +104,9 @@ play_music_alexa:
         - action: media_player.media_next_track
           metadata: {}
           data: {}
-          target:
-            entity_id: media_player.everywhere
           enabled: true
+          target:
+            entity_id: media_player.all_echo
         - delay:
             hours: 0
             minutes: 0
@@ -115,15 +115,15 @@ play_music_alexa:
         - action: media_player.media_next_track
           metadata: {}
           data: {}
-          target:
-            entity_id: media_player.everywhere
           enabled: true
+          target:
+            entity_id: media_player.all_echo
         - action: media_player.volume_set
           metadata: {}
           data:
             volume_level: 0.01
           target:
-            entity_id: media_player.everywhere
+            entity_id: media_player.all_echo
       - alias: Volume Up
         repeat:
           count: 7
@@ -133,7 +133,7 @@ play_music_alexa:
             data:
               volume_level: '{{(repeat.index * 0.02) }}'
             target:
-              entity_id: media_player.everywhere
+              entity_id: media_player.all_echo
           - delay:
               hours: 0
               minutes: 0
