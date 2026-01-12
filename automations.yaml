@@ -1638,11 +1638,104 @@
                 after: 08:00:00
                 before: 09:30:00
           sequence:
-          - action: script.turn_on
-            metadata: {}
-            target:
-              entity_id: script.set_room_2
-            data: {}
+          - if:
+            - condition: state
+              entity_id: media_player.bedroom_tv
+              state:
+              - 'on'
+            then:
+            - alias: check lamp
+              if:
+              - condition: state
+                entity_id: light.bedroom_lamp
+                state:
+                - 'on'
+              then:
+              - action: scene.apply
+                metadata: {}
+                data:
+                  entities:
+                    light.main_lights:
+                      state: 'off'
+                    light.bedroom_ceiling_lights:
+                      state: 'off'
+                    light.closet_light:
+                      state: 'off'
+                    light.bathroom_light:
+                      state: 'off'
+                    fan.bedroom_fan:
+                      state: 'off'
+                    fan.living_room_ceiling_fan:
+                      state: 'off'
+                    light.living_room_ceiling_lights:
+                      state: 'off'
+                    light.kitchen_lights:
+                      state: 'off'
+                alias: 'Set my room (without): Bedroom Tv & Lamp'
+              else:
+              - action: scene.apply
+                metadata: {}
+                data:
+                  entities:
+                    light.bedroom_lamp:
+                      state: 'on'
+                      color temp: 327
+                    light.main_lights:
+                      state: 'off'
+                    light.bedroom_ceiling_lights:
+                      state: 'off'
+                    light.closet_light:
+                      state: 'off'
+                    light.bathroom_light:
+                      state: 'off'
+                    fan.bedroom_fan:
+                      state: 'off'
+                    fan.living_room_ceiling_fan:
+                      state: 'off'
+                    light.living_room_ceiling_lights:
+                      state: 'off'
+                    light.kitchen_lights:
+                      state: 'off'
+                alias: 'Set my room (without): Bedroom Tv'
+            else:
+            - alias: check lamp
+              if:
+              - condition: state
+                entity_id: light.bedroom_lamp
+                state:
+                - 'on'
+                alias: 'Set my room (without): Lamp'
+              then:
+              - action: scene.apply
+                metadata: {}
+                data:
+                  entities:
+                    media_player.bedroom_tv:
+                      state: 'on'
+                      source: YouTube
+                    light.main_lights:
+                      state: 'off'
+                    light.bedroom_ceiling_lights:
+                      state: 'off'
+                    light.closet_light:
+                      state: 'off'
+                    light.bathroom_light:
+                      state: 'off'
+                    fan.bedroom_fan:
+                      state: 'off'
+                    fan.living_room_ceiling_fan:
+                      state: 'off'
+                    light.living_room_ceiling_lights:
+                      state: 'off'
+                    light.kitchen_lights:
+                      state: 'off'
+              else:
+              - action: scene.turn_on
+                metadata: {}
+                target:
+                  entity_id: scene.set_my_room
+                data: {}
+            alias: Bedroom Tv on/off
           alias: On Short
         - conditions:
           - condition: trigger
@@ -1687,7 +1780,7 @@
           - action: scene.turn_on
             metadata: {}
             target:
-              entity_id: scene.lights_off_except_bedroom
+              entity_id: scene.dimmed
             data: {}
           alias: Up Long
     - alias: Down Button
@@ -1713,7 +1806,12 @@
           - condition: trigger
             id:
             - down_long
-          sequence: []
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.lights_off_except_bedroom
+            data: {}
           alias: Down Long
     - alias: Off Button
       conditions:
