@@ -923,6 +923,7 @@
             transition: 5
           target:
             entity_id: light.bedroom_lamp
+        alias: Wake Up Scene Sequence
       - alias: Leaving Sequence
         sequence:
         - action: automation.turn_off
@@ -1848,3 +1849,162 @@
             data: {}
           alias: Off Long
   mode: single
+- id: '1768260220196'
+  alias: New automation
+  description: ''
+  triggers:
+  - trigger: event
+    id: on_short
+    alias: Hue Dimmer - On Short
+    event_type: zha_event
+    event_data:
+      device_ieee: 00:17:88:01:02:18:b1:7a
+      command: on_short_release
+  - trigger: time
+    at: 08:35:00
+    id: Late Time Window
+  conditions:
+  - condition: state
+    state: 'on'
+    entity_id: input_boolean.workday_today_toggle
+  - condition: time
+    after: 08:00:00
+    before: 09:30:00
+  actions:
+  - parallel:
+    - sequence:
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.bathroom_light
+      - action: light.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: light.closet_light
+      - action: light.turn_on
+        metadata: {}
+        data:
+          brightness_pct: 75
+          transition: 15
+        target:
+          entity_id: light.bedroom_lamp
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 5
+          milliseconds: 0
+      - action: fan.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: fan.bedroom_fan
+      - action: light.turn_on
+        metadata: {}
+        data:
+          brightness_pct: 100
+          transition: 5
+        target:
+          entity_id: light.bedroom_lamp
+      alias: Wake Up Scene Sequence
+    - alias: Leaving Sequence
+      sequence:
+      - action: automation.turn_off
+        target:
+          entity_id: automation.door_automation
+        data:
+          stop_actions: true
+      - alias: Wait for -> door open
+        wait_for_trigger:
+        - trigger: state
+          entity_id:
+          - binary_sensor.front_door
+          to:
+          - 'on'
+        timeout:
+          hours: 1
+          minutes: 0
+          seconds: 0
+          milliseconds: 0
+        continue_on_timeout: true
+      - if:
+        - condition: template
+          value_template: '{{ wait.trigger is not none }}
+
+            '
+          alias: Trigger Fired
+        then:
+        - action: input_datetime.set_datetime
+          metadata: {}
+          data:
+            datetime: '{{ now().isoformat() }}'
+          target:
+            entity_id: input_datetime.last_door_open
+        alias: If triggered - Set door timestamp
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.all_off
+      - action: automation.turn_on
+        target:
+          entity_id: automation.door_automation
+        data: {}
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: Everything’s off!
+          title: Goodbye
+          data:
+            interruption level: time-sensitive
+    - alias: Alarm script at 8:50
+      sequence:
+      - wait_for_trigger:
+        - trigger: time
+          at: 08:50:00
+        continue_on_timeout: false
+        timeout:
+          hours: 1
+          minutes: 0
+          seconds: 0
+          milliseconds: 0
+      - wait_template: '{{ (as_timestamp(now()) - state_attr(''input_datetime.last_door_open'',''timestamp'')
+          | default(0)) > 3600 }}
+
+          '
+        continue_on_timeout: false
+        timeout: '30'
+      - action: script.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: script.alarm_music_script
+    - alias: Out of bed = weather
+      sequence:
+      - wait_for_trigger:
+        - trigger: state
+          entity_id:
+          - binary_sensor.bed_presence_bb8594_bed_occupied_left
+          from:
+          - 'on'
+          to:
+          - 'off'
+          for:
+            hours: 0
+            minutes: 0
+            seconds: 3
+        continue_on_timeout: false
+        timeout:
+          hours: 1
+          minutes: 0
+          seconds: 0
+          milliseconds: 0
+      - action: alexa_devices.send_text_command
+        metadata: {}
+        data:
+          text_command: What’s the weather today?
+          device_id: ba7e4aed08d0947fa03068f398842568
+  mode: single
+  trace:
+    stored_traces: 50
