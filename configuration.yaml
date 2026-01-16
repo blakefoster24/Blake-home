@@ -86,3 +86,10 @@ panel_custom:
     module_url: /api/hassio/app/entrypoint.js
     embed_iframe: true
     require_admin: true
+  - name: panel_zigbee
+    sidebar_title: Zigbee
+    sidebar_icon: mdi:zigbee
+    url_path: 'config/zha'
+    module_url: /api/hassio/app/entrypoint.js
+    embed_iframe: true
+    require_admin: true
