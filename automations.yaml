@@ -381,16 +381,6 @@
       hours: 0
       minutes: 20
       seconds: 0
-  - trigger: template
-    value_template: "{{ states('sensor.c_expansion_attic_temperature') | float < 50\n
-      \     or states('sensor.nest_temperature_sensor_stairwell_g_temperature') |
-      float < 50 }}"
-    for:
-      hours: 0
-      minutes: 30
-      seconds: 0
-    alias: Attic Expansion C or Stairwell G drop below 50* for 30min
-    id: Expansion C
   conditions:
   - condition: or
     conditions:
@@ -674,21 +664,6 @@
                 | float | round | int }}°'
               title: Check Thermostat!
       alias: Temperature Issue
-    - conditions:
-      - condition: trigger
-        id:
-        - Expansion C
-      sequence:
-      - action: notify.mobile_app_blakes_iphone
-        metadata: {}
-        data:
-          message: 'Current Expansion C temperature is: {{ states(''sensor.c_expansion_attic_temperature'')
-            | float | round | int }}°
-
-            Current Stairwell G temperature is: {{ states(''sensor.nest_temperature_sensor_stairwell_g_temperature'')
-            | float | round | int }}°'
-          title: Work Attic Temperature Issue!
-      alias: Work Temperature Issue
   trace:
     stored_traces: 50
   mode: single
@@ -922,191 +897,6 @@
   trace:
     stored_traces: 50
   mode: single
-- id: '1762355968615'
-  alias: Workday Wake-up
-  description: ''
-  triggers:
-  - trigger: event
-    id: on_short
-    alias: Hue Dimmer - On Short
-    event_type: zha_event
-    event_data:
-      device_ieee: 00:17:88:01:02:18:b1:7a
-      command: on_short_release
-  - trigger: time
-    at: 08:35:00
-    id: Late Time Window
-  - trigger: time
-    at: 08:50:00
-    id: Last Time Window
-  - trigger: state
-    entity_id:
-    - binary_sensor.bed_presence_bb8594_bed_occupied_left
-    to:
-    - 'off'
-    id: Bed clear
-    for:
-      hours: 0
-      minutes: 0
-      seconds: 3
-  conditions:
-  - condition: state
-    state: 'on'
-    entity_id: input_boolean.workday_today_toggle
-  - condition: time
-    after: 08:00:00
-    before: 09:30:00
-  actions:
-  - choose:
-    - conditions:
-      - condition: trigger
-        id:
-        - on_short
-      sequence:
-      - sequence:
-        - action: light.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: light.bathroom_light
-        - action: light.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: light.closet_light
-        - action: light.turn_on
-          metadata: {}
-          data:
-            brightness_pct: 75
-            transition: 15
-          target:
-            entity_id: light.bedroom_lamp
-        - delay:
-            hours: 0
-            minutes: 0
-            seconds: 5
-            milliseconds: 0
-        - action: fan.turn_off
-          metadata: {}
-          data: {}
-          target:
-            entity_id: fan.bedroom_fan
-        - action: light.turn_on
-          metadata: {}
-          data:
-            brightness_pct: 100
-            transition: 5
-          target:
-            entity_id: light.bedroom_lamp
-        alias: Wake Up Scene Sequence
-      - alias: Leaving Sequence
-        sequence:
-        - action: automation.turn_off
-          target:
-            entity_id: automation.door_automation
-          data:
-            stop_actions: true
-        - alias: Wait for -> door open
-          wait_for_trigger:
-          - trigger: state
-            entity_id:
-            - binary_sensor.front_door
-            to:
-            - 'on'
-          timeout:
-            hours: 1
-            minutes: 0
-            seconds: 0
-            milliseconds: 0
-          continue_on_timeout: true
-        - if:
-          - condition: template
-            value_template: '{{ wait.trigger is not none }}
-
-              '
-            alias: Trigger Fired
-          then:
-          - action: input_datetime.set_datetime
-            metadata: {}
-            data:
-              datetime: '{{ now().isoformat() }}'
-            target:
-              entity_id: input_datetime.last_door_open
-          alias: If triggered - Set door timestamp
-        - action: scene.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: scene.all_off
-        - action: automation.turn_on
-          target:
-            entity_id: automation.door_automation
-          data: {}
-        - action: notify.mobile_app_blakes_iphone
-          metadata: {}
-          data:
-            message: Everything’s off!
-            title: Goodbye
-            data:
-              interruption level: time-sensitive
-      alias: Wake up Sequence -> Leave Sequence
-    - conditions:
-      - condition: trigger
-        id:
-        - Late Time Window
-      - condition: state
-        entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_left
-        state:
-        - 'on'
-      sequence:
-      - event: zha_event
-        event_data:
-          device_ieee: 00:17:88:01:02:18:b1:7a
-          command: on_short_release
-        alias: Trigger Wake-Up Option
-      alias: Late Time Window & in bed
-    - conditions:
-      - condition: trigger
-        id:
-        - Last Time Window
-      - alias: Door hasn’t opened < 1hr | left bed presence
-        condition: or
-        conditions:
-        - alias: Door hasn’t opened in the last hour
-          condition: template
-          value_template: '{{ (as_timestamp(now()) - state_attr(''input_datetime.last_door_open'',''timestamp'')
-            | default(0)) > 3600 }}
-
-            '
-        - condition: state
-          entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_left
-          state:
-          - 'on'
-      sequence:
-      - event: zha_event
-        event_data:
-          device_ieee: 00:17:88:01:02:18:b1:7a
-          command: on_short_release
-        alias: Trigger Wake-Up Option
-      - action: script.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: script.alarm_music_script
-      alias: Last Time Window & (Haven’t Left | in bed)
-    - conditions:
-      - condition: trigger
-        id:
-        - Bed clear
-      sequence:
-      - action: alexa_devices.send_text_command
-        metadata: {}
-        data:
-          text_command: What’s the weather today?
-          device_id: ba7e4aed08d0947fa03068f398842568
-  trace:
-    stored_traces: 50
-  mode: parallel
 - id: '1762858969202'
   alias: Door Automation
   description: ''
@@ -1947,7 +1737,8 @@
     before: 09:30:00
   actions:
   - parallel:
-    - sequence:
+    - alias: Wake Up Scene Sequence
+      sequence:
       - action: light.turn_on
         metadata: {}
         data: {}
@@ -1982,7 +1773,30 @@
           transition: 5
         target:
           entity_id: light.bedroom_lamp
-      alias: Wake Up Scene Sequence
+      - wait_for_trigger:
+        - trigger: time
+          at: 08:40:00
+      - action: alexa_devices.send_text_command
+        metadata: {}
+        data:
+          text_command: Set Roku backlight to orange
+          device_id: ba7e4aed08d0947fa03068f398842568
+      - wait_for_trigger:
+        - trigger: time
+          at: 08:50:00
+      - action: alexa_devices.send_text_command
+        metadata: {}
+        data:
+          text_command: Set Roku backlight to red
+          device_id: ba7e4aed08d0947fa03068f398842568
+      - wait_for_trigger:
+        - trigger: time
+          at: 08:55:00
+      - action: alexa_devices.send_text_command
+        metadata: {}
+        data:
+          device_id: ba7e4aed08d0947fa03068f398842568
+          text_command: Set the flash red scene to on
     - alias: Leaving Sequence
       sequence:
       - action: automation.turn_off
@@ -2022,6 +1836,11 @@
         data: {}
         target:
           entity_id: scene.all_off
+      - action: alexa_devices.send_text_command
+        metadata: {}
+        data:
+          device_id: ba7e4aed08d0947fa03068f398842568
+          text_command: turn off Roku backlight
       - action: automation.turn_on
         target:
           entity_id: automation.door_automation
@@ -2083,3 +1902,172 @@
   mode: single
   trace:
     stored_traces: 50
+- id: '1768690632254'
+  alias: Work Attic Temperature Notifications
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.a_expansion_attic_temperature
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+    below: 50
+    id: Expansion A
+  - trigger: numeric_state
+    entity_id:
+    - sensor.c_expansion_attic_temperature
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+    below: 50
+    id: Expansion C
+  - trigger: numeric_state
+    entity_id:
+    - sensor.d_expansion_attic_temperature
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+    below: 50
+    id: Expansion D
+  - trigger: numeric_state
+    entity_id:
+    - sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+    below: 50
+    id: A Sensor
+  - trigger: numeric_state
+    entity_id:
+    - sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+    below: 50
+    id: D Sensor
+  - trigger: numeric_state
+    entity_id:
+    - sensor.nest_temperature_sensor_stairwell_g_temperature
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+    below: 50
+    id: C Sensor
+  - trigger: numeric_state
+    entity_id:
+    - sensor.a_expansion_attic_temperature
+    - sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature
+    - sensor.d_expansion_attic_temperature
+    - sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature
+    - sensor.c_expansion_attic_temperature
+    - sensor.nest_temperature_sensor_stairwell_g_temperature
+    below: 44
+    id: all sensors lowest
+  - trigger: numeric_state
+    entity_id:
+    - sensor.a_expansion_attic_temperature
+    - sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature
+    - sensor.d_expansion_attic_temperature
+    - sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature
+    - sensor.c_expansion_attic_temperature
+    - sensor.nest_temperature_sensor_stairwell_g_temperature
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+    below: 48
+    id: all sensors highest
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Expansion A
+        - A Sensor
+      sequence:
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: 'Current Expansion A temperature is: {{ states(''sensor.a_expansion_attic_temperature'')
+            | float | round | int }}°
+
+            Current Expansion A Sensor temperature is: {{ states(''sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature'')
+            | float | round | int }}°'
+          title: Attic A Temperature Issue!
+    - conditions:
+      - condition: trigger
+        id:
+        - Expansion C
+        - C Sensor
+      sequence:
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: 'Current Expansion C temperature is: {{ states(''sensor.c_expansion_attic_temperature'')
+            | float | round | int }}°
+
+            Current Expansion C sensor temperature is: {{ states(''sensor.nest_temperature_sensor_stairwell_g_temperature'')
+            | float | round | int }}°'
+          title: Attic C Temperature Issue!
+    - conditions:
+      - condition: trigger
+        id:
+        - Expansion D
+        - D Sensor
+      sequence:
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: 'Current Expansion D temperature is: {{ states(''sensor.d_expansion_attic_temperature'')
+            | float | round | int }}°
+
+            Current Expansion D sensor temperature is: {{ states(''sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'')
+            | float | round | int }}°'
+          title: Attic D Temperature Issue!
+    - conditions:
+      - condition: trigger
+        id:
+        - all sensors highest
+      sequence:
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: "Current Expansion A temperature is: {{ states('sensor.a_expansion_attic_temperature')
+            | float | round | int }}°\nCurrent Expansion A Sensor temperature is:
+            {{ states('sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature')
+            | float | round | int }}°\nCurrent Expansion C temperature is: {{ states('sensor.c_expansion_attic_temperature')
+            | float | round | int }}°\nCurrent Expansion C sensor temperature is:
+            {{ states('sensor.nest_temperature_sensor_stairwell_g_temperature') |
+            float | round | int }}°\nExpansion D temperature is: {{ states('sensor.d_expansion_attic_temperature')
+            | float | round | int }}° \nCurrent Expansion D sensor temperature is:
+            {{ states('sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature')
+            | float | round | int }}°"
+          title: Attic Temperature Issue!
+    - conditions:
+      - condition: trigger
+        id:
+        - all sensors lowest
+      sequence:
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: "Current Expansion A temperature is: {{ states('sensor.a_expansion_attic_temperature')
+            | float | round | int }}°\nCurrent Expansion A Sensor temperature is:
+            {{ states('sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature')
+            | float | round | int }}°\nCurrent Expansion C temperature is: {{ states('sensor.c_expansion_attic_temperature')
+            | float | round | int }}°\nCurrent Expansion C sensor temperature is:
+            {{ states('sensor.nest_temperature_sensor_stairwell_g_temperature') |
+            float | round | int }}°\nExpansion D temperature is: {{ states('sensor.d_expansion_attic_temperature')
+            | float | round | int }}° \nCurrent Expansion D sensor temperature is:
+            {{ states('sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature')
+            | float | round | int }}°"
+          title: Attic Temperature Emergency!
+  mode: single
