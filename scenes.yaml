@@ -1618,12 +1618,12 @@
       friendly_name: Bedroom Lamp
       supported_features: 40
       state: 'off'
-  icon: mdi:lightbulb-group-off
   metadata:
     light.bedroom_ceiling_lights:
       entity_only: true
     light.bedroom_lamp:
       entity_only: true
+  icon: local:bedroom_lights_off
 - id: '1760530227300'
   name: Thermostat 68/70
   entities:
@@ -1667,7 +1667,7 @@
   metadata:
     climate.nest_thermostat:
       entity_only: true
-  icon: mdi:thermostat-cog
+  icon: mdi:home-thermometer-outline
 - id: '1760928794381'
   name: All Lights
   entities:
@@ -1675,6 +1675,7 @@
       supported_color_modes:
       - onoff
       color_mode: onoff
+      icon: local:closet_light
       friendly_name: Closet Light
       supported_features: 0
       state: 'on'
@@ -1682,6 +1683,7 @@
       supported_color_modes:
       - onoff
       color_mode: onoff
+      icon: local:bedroom_ceiling_lights
       friendly_name: Bedroom Ceiling Lights
       supported_features: 0
       state: 'on'
@@ -1696,7 +1698,7 @@
       supported_color_modes:
       - onoff
       color_mode: onoff
-      icon: mdi:lightbulb-multiple
+      icon: mdi:light-recessed
       friendly_name: Main Lights
       supported_features: 0
       state: 'on'
@@ -1704,6 +1706,7 @@
       supported_color_modes:
       - onoff
       color_mode: onoff
+      icon: local:living_room_ceiling_lights
       friendly_name: Living Room Ceiling Lights
       supported_features: 0
       state: 'on'
@@ -1711,6 +1714,7 @@
       supported_color_modes:
       - onoff
       color_mode: onoff
+      icon: local:kitchen_ceiling_lights
       friendly_name: Kitchen Lights
       supported_features: 0
       state: 'on'
