@@ -1776,19 +1776,29 @@
       - wait_for_trigger:
         - trigger: time
           at: 08:40:00
-      - action: alexa_devices.send_text_command
+      - action: light.turn_on
         metadata: {}
         data:
-          text_command: Set Roku backlight to orange
-          device_id: ba7e4aed08d0947fa03068f398842568
+          rgb_color:
+          - 255
+          - 73
+          - 0
+          brightness: 255
+        target:
+          entity_id: light.bedroom_tv_backlight
       - wait_for_trigger:
         - trigger: time
           at: 08:50:00
-      - action: alexa_devices.send_text_command
+      - action: light.turn_on
         metadata: {}
         data:
-          text_command: Set Roku backlight to red
-          device_id: ba7e4aed08d0947fa03068f398842568
+          rgb_color:
+          - 255
+          - 0
+          - 0
+          brightness: 255
+        target:
+          entity_id: light.bedroom_tv_backlight
       - wait_for_trigger:
         - trigger: time
           at: 08:55:00
@@ -1796,7 +1806,12 @@
         metadata: {}
         data:
           device_id: ba7e4aed08d0947fa03068f398842568
-          text_command: Set the flash red scene to on
+          text_command: Turn on backlight late scene
+      - action: light.turn_off
+        metadata: {}
+        target:
+          entity_id: light.bedroom_tv_backlight
+        data: {}
     - alias: Leaving Sequence
       sequence:
       - action: automation.turn_off

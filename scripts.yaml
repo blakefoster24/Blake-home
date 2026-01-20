@@ -382,3 +382,17 @@ set_room_2:
   mode: single
   alias: Set Room
   description: ''
+roku_backlight:
+  sequence:
+  - action: light.turn_on
+    metadata: {}
+    target:
+      entity_id: light.bedroom_tv_backlight
+    data: {}
+  - action: alexa_devices.send_text_command
+    metadata: {}
+    data:
+      text_command: Set Roku backlight to video mode
+      device_id: ba7e4aed08d0947fa03068f398842568
+  alias: Roku Backlight
+  description: ''
