@@ -663,6 +663,12 @@
               message: 'Current temperature is: {{ states(''sensor.nest_thermostat_temperature'')
                 | float | round | int }}°'
               title: Check Thermostat!
+              data:
+                push:
+                  sound:
+                    name: default
+                    critical: 1
+                    volume: 0.5
       alias: Temperature Issue
   trace:
     stored_traces: 50
@@ -1504,7 +1510,8 @@
                 after: 08:00:00
                 before: 09:30:00
           sequence:
-          - if:
+          - alias: Bedroom Tv on/off
+            if:
             - condition: state
               entity_id: media_player.bedroom_tv
               state:
@@ -1570,7 +1577,6 @@
                 entity_id: light.bedroom_lamp
                 state:
                 - 'on'
-                alias: 'Set my room (without): Lamp'
               then:
               - action: scene.apply
                 metadata: {}
@@ -1601,7 +1607,6 @@
                 target:
                   entity_id: scene.set_my_room
                 data: {}
-            alias: Bedroom Tv on/off
           alias: On Short
         - conditions:
           - condition: trigger
@@ -2017,6 +2022,12 @@
             Current Expansion A Sensor temperature is: {{ states(''sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature'')
             | float | round | int }}°'
           title: Attic A Temperature Issue!
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1
     - conditions:
       - condition: trigger
         id:
@@ -2032,6 +2043,12 @@
             Current Expansion C sensor temperature is: {{ states(''sensor.nest_temperature_sensor_stairwell_g_temperature'')
             | float | round | int }}°'
           title: Attic C Temperature Issue!
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1
     - conditions:
       - condition: trigger
         id:
@@ -2047,6 +2064,12 @@
             Current Expansion D sensor temperature is: {{ states(''sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'')
             | float | round | int }}°'
           title: Attic D Temperature Issue!
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1
     - conditions:
       - condition: trigger
         id:
@@ -2066,6 +2089,34 @@
             {{ states('sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature')
             | float | round | int }}°"
           title: Attic Temperature Issue!
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: "{% set id = trigger.entity_id %}\n{% if 'a_expansion' in id %}\n
+            \ {% set area = 'Expansion A' %}\n  {% set s1 = 'sensor.a_expansion_attic_temperature'
+            %}\n  {% set s2 = 'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature'
+            %}\n{% elif 'c_expansion' in id or 'stairwell_g' in id %}\n  {% set area
+            = 'Expansion C' %}\n  {% set s1 = 'sensor.c_expansion_attic_temperature'
+            %}\n  {% set s2 = 'sensor.nest_temperature_sensor_stairwell_g_temperature'
+            %}\n{% elif 'd_expansion' in id %}\n  {% set area = 'Expansion D' %}\n
+            \ {% set s1 = 'sensor.d_expansion_attic_temperature' %}\n  {% set s2 =
+            'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'
+            %}\n{% endif %}\n\n{{ area }} Alert!\n{{ state_attr(s1, 'friendly_name')
+            }}: {{ states(s1) | float | round | int }}°\n{{ state_attr(s2, 'friendly_name')
+            }}: {{ states(s2) | float | round | int }}°\n"
+          title: Attic Temperature Below 48!
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1
     - conditions:
       - condition: trigger
         id:
@@ -2085,4 +2136,63 @@
             {{ states('sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature')
             | float | round | int }}°"
           title: Attic Temperature Emergency!
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          message: "{% set id = trigger.entity_id %}\n{% if 'a_expansion' in id %}\n
+            \ {% set area = 'Expansion A' %}\n  {% set s1 = 'sensor.a_expansion_attic_temperature'
+            %}\n  {% set s2 = 'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature'
+            %}\n{% elif 'c_expansion' in id or 'stairwell_g' in id %}\n  {% set area
+            = 'Expansion C' %}\n  {% set s1 = 'sensor.c_expansion_attic_temperature'
+            %}\n  {% set s2 = 'sensor.nest_temperature_sensor_stairwell_g_temperature'
+            %}\n{% elif 'd_expansion' in id %}\n  {% set area = 'Expansion D' %}\n
+            \ {% set s1 = 'sensor.d_expansion_attic_temperature' %}\n  {% set s2 =
+            'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'
+            %}\n{% endif %}\n\n{{ area }} Alert!\n{{ state_attr(s1, 'friendly_name')
+            }}: {{ states(s1) | float | round | int }}°\n{{ state_attr(s2, 'friendly_name')
+            }}: {{ states(s2) | float | round | int }}°\n"
+          title: Attic Temperature Below 44!
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1
+  mode: single
+- id: '1768967873851'
+  alias: Washing Machine / Dryer
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - sensor.washing_machine_vibration
+    - sensor.dryer_vibration
+    from:
+    - 'on'
+    to:
+    - 'off'
+    for:
+      hours: 0
+      minutes: 3
+      seconds: 0
+  conditions: []
+  actions:
+  - action: tts.cloud_say
+    metadata: {}
+    data:
+      cache: false
+      entity_id: '{% if is_state(''binary_sensor.bed_presence_bb8594_bed_occupied_left'',
+        ''on'') %} media_player.blake_s_echo_spot {% elif is_state(''binary_sensor.kitchen_presence'',
+        ''on'') %} media_player.blake_s_echo_dot {% else %} media_player.everywhere
+        {% endif %}
+
+        '
+      message: '{{ ''Washing Machine'' if ''washing'' in trigger.entity_id else ''Dryer''
+        }} has finished'
   mode: single

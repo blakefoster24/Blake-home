@@ -305,28 +305,28 @@ temporary_thermostat_adjustment:
         data:
           hvac_mode: '{{ hvac_mode }}'
           temperature: '{{ target_temp }}'
-      - delay:
-          minutes: '{{ duration }}'
+      - action: timer.start
+        metadata: {}
+        target:
+          entity_id: timer.timer_helper
+        data:
+          duration: '{{ duration | float(30) * 60 }}'
+      - wait_for_trigger:
+        - trigger: event
+          event_type: timer.finished
+          event_data:
+            entity_id: timer.timer_helper
+        continue_on_timeout: true
+        timeout:
+          hours: 2
+          minutes: 0
+          seconds: 0
+          milliseconds: 0
       - action: scene.turn_on
         metadata: {}
         data: {}
         target:
           entity_id: scene.temp_thermostat_snapshot
-      - action: scene.delete
-        metadata: {}
-        target:
-          entity_id: scene.temp_thermostat_snapshot
-        data: {}
-    - alias: Manual Revert Sequence
-      conditions:
-      - condition: template
-        value_template: '{{ action_type == ''revert'' }}'
-      sequence:
-      - action: scene.turn_on
-        target:
-          entity_id: scene.temp_thermostat_snapshot
-        metadata: {}
-        data: {}
       - action: scene.delete
         metadata: {}
         target:
@@ -388,7 +388,8 @@ roku_backlight:
     metadata: {}
     target:
       entity_id: light.bedroom_tv_backlight
-    data: {}
+    data:
+      brightness_pct: 100
   - action: alexa_devices.send_text_command
     metadata: {}
     data:
