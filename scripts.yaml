@@ -389,6 +389,12 @@ roku_backlight:
     target:
       entity_id: light.bedroom_tv_backlight
     data:
+      brightness_pct: 50
+  - action: light.turn_on
+    metadata: {}
+    target:
+      entity_id: light.bedroom_tv_backlight
+    data:
       brightness_pct: 100
   - action: alexa_devices.send_text_command
     metadata: {}

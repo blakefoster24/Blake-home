@@ -207,14 +207,9 @@
       entity_id: script.create_push_ha_info_to_github_gemini_zip
   mode: single
 - id: '1759838752481'
-  alias: Light Triggers Light
+  alias: Light Automations
   description: ''
   triggers:
-  - trigger: state
-    entity_id:
-    - light.closet_light
-    to: 'on'
-    id: Closet light on
   - trigger: state
     entity_id:
     - switch.bedroom_ceiling_lights
@@ -240,38 +235,17 @@
       minutes: 2
       seconds: 0
     id: Bed both
+  - trigger: state
+    entity_id:
+    - binary_sensor.closet_motion
+    id: Closet motion
+  - trigger: state
+    entity_id:
+    - binary_sensor.bathroom_presence
+    id: 'Bathroom presence '
   conditions: []
   actions:
   - choose:
-    - conditions:
-      - condition: trigger
-        id:
-        - Closet light on
-      - condition: state
-        entity_id: light.bathroom_light
-        state: 'off'
-      sequence:
-      - action: light.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.bathroom_light
-      - wait_for_trigger:
-        - trigger: state
-          entity_id:
-          - light.closet_light
-          to: 'off'
-        timeout:
-          hours: 0
-          minutes: 45
-          seconds: 0
-          milliseconds: 0
-      - action: light.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.bathroom_light
-      alias: Closet Light -> Bathroom Light
     - conditions:
       - condition: trigger
         id:
@@ -295,39 +269,20 @@
             id:
             - Bed left
           sequence:
-          - condition: state
-            state:
-            - 'off'
-            entity_id: binary_sensor.kitchen_presence
-          - condition: state
-            state:
-            - 'off'
-            entity_id: binary_sensor.motion_1_motion
-          - if:
-            - condition: light.is_on
-              target:
-                entity_id:
-                - light.bathroom_light
-                - light.closet_light
-              options:
-                behavior: any
-            then:
-            - delay:
-                hours: 0
-                minutes: 5
-                seconds: 0
-                milliseconds: 0
-            - action: scene.turn_on
-              metadata: {}
-              target:
-                entity_id: scene.lights_off_except_bedroom
-              data: {}
-            else:
-            - action: scene.turn_on
-              metadata: {}
-              target:
-                entity_id: scene.lights_off_except_bedroom
-              data: {}
+          - wait_template: '{{ is_state(''binary_sensor.bathroom_presence'', ''off'')
+
+              and is_state(''binary_sensor.closet_motion'', ''off'')
+
+              and is_state(''binary_sensor.kitchen_presence'', ''off'')
+
+              and is_state(''binary_sensor.living_room_motion'', ''off'') }}'
+            continue_on_timeout: false
+            timeout: 00:10:00
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.lights_off_except_bedroom
+            data: {}
         - conditions:
           - condition: trigger
             id:
@@ -338,6 +293,50 @@
             target:
               entity_id: scene.lights_off_except_bedroom
             data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - Closet motion
+      sequence:
+      - if:
+        - condition: state
+          entity_id: binary_sensor.closet_motion
+          state:
+          - 'on'
+        then:
+        - action: light.turn_on
+          metadata: {}
+          target:
+            entity_id: light.closet_light
+          data: {}
+        else:
+        - action: light.turn_off
+          metadata: {}
+          target:
+            entity_id: light.closet_light
+          data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - 'Bathroom presence '
+      sequence:
+      - if:
+        - condition: state
+          entity_id: binary_sensor.bathroom_presence
+          state:
+          - 'on'
+        then:
+        - action: light.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.bathroom_light
+        else:
+        - action: light.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.bathroom_light
   mode: restart
 - id: '1760424497591'
   alias: Thermostat
@@ -1731,7 +1730,7 @@
       device_ieee: 00:17:88:01:02:18:b1:7a
       command: on_short_release
   - trigger: time
-    at: 08:35:00
+    at: 08:50:00
     id: Late Time Window
   conditions:
   - condition: state
