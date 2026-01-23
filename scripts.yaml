@@ -390,12 +390,22 @@ roku_backlight:
       entity_id: light.bedroom_tv_backlight
     data:
       brightness_pct: 50
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
   - action: light.turn_on
     metadata: {}
     target:
       entity_id: light.bedroom_tv_backlight
     data:
       brightness_pct: 100
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
   - action: alexa_devices.send_text_command
     metadata: {}
     data:

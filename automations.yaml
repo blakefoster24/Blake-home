@@ -1928,60 +1928,6 @@
   - trigger: numeric_state
     entity_id:
     - sensor.a_expansion_attic_temperature
-    for:
-      hours: 0
-      minutes: 20
-      seconds: 0
-    below: 50
-    id: Expansion A
-  - trigger: numeric_state
-    entity_id:
-    - sensor.c_expansion_attic_temperature
-    for:
-      hours: 0
-      minutes: 20
-      seconds: 0
-    below: 50
-    id: Expansion C
-  - trigger: numeric_state
-    entity_id:
-    - sensor.d_expansion_attic_temperature
-    for:
-      hours: 0
-      minutes: 20
-      seconds: 0
-    below: 50
-    id: Expansion D
-  - trigger: numeric_state
-    entity_id:
-    - sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature
-    for:
-      hours: 0
-      minutes: 20
-      seconds: 0
-    below: 50
-    id: A Sensor
-  - trigger: numeric_state
-    entity_id:
-    - sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature
-    for:
-      hours: 0
-      minutes: 20
-      seconds: 0
-    below: 50
-    id: D Sensor
-  - trigger: numeric_state
-    entity_id:
-    - sensor.nest_temperature_sensor_stairwell_g_temperature
-    for:
-      hours: 0
-      minutes: 20
-      seconds: 0
-    below: 50
-    id: C Sensor
-  - trigger: numeric_state
-    entity_id:
-    - sensor.a_expansion_attic_temperature
     - sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature
     - sensor.d_expansion_attic_temperature
     - sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature
@@ -2009,91 +1955,8 @@
     - conditions:
       - condition: trigger
         id:
-        - Expansion A
-        - A Sensor
-      sequence:
-      - action: notify.mobile_app_blakes_iphone
-        metadata: {}
-        data:
-          message: 'Current Expansion A temperature is: {{ states(''sensor.a_expansion_attic_temperature'')
-            | float | round | int }}°
-
-            Current Expansion A Sensor temperature is: {{ states(''sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature'')
-            | float | round | int }}°'
-          title: Attic A Temperature Issue!
-          data:
-            push:
-              sound:
-                name: default
-                critical: 1
-                volume: 1
-    - conditions:
-      - condition: trigger
-        id:
-        - Expansion C
-        - C Sensor
-      sequence:
-      - action: notify.mobile_app_blakes_iphone
-        metadata: {}
-        data:
-          message: 'Current Expansion C temperature is: {{ states(''sensor.c_expansion_attic_temperature'')
-            | float | round | int }}°
-
-            Current Expansion C sensor temperature is: {{ states(''sensor.nest_temperature_sensor_stairwell_g_temperature'')
-            | float | round | int }}°'
-          title: Attic C Temperature Issue!
-          data:
-            push:
-              sound:
-                name: default
-                critical: 1
-                volume: 1
-    - conditions:
-      - condition: trigger
-        id:
-        - Expansion D
-        - D Sensor
-      sequence:
-      - action: notify.mobile_app_blakes_iphone
-        metadata: {}
-        data:
-          message: 'Current Expansion D temperature is: {{ states(''sensor.d_expansion_attic_temperature'')
-            | float | round | int }}°
-
-            Current Expansion D sensor temperature is: {{ states(''sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'')
-            | float | round | int }}°'
-          title: Attic D Temperature Issue!
-          data:
-            push:
-              sound:
-                name: default
-                critical: 1
-                volume: 1
-    - conditions:
-      - condition: trigger
-        id:
         - all sensors highest
       sequence:
-      - action: notify.mobile_app_blakes_iphone
-        metadata: {}
-        data:
-          message: "Current Expansion A temperature is: {{ states('sensor.a_expansion_attic_temperature')
-            | float | round | int }}°\nCurrent Expansion A Sensor temperature is:
-            {{ states('sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature')
-            | float | round | int }}°\nCurrent Expansion C temperature is: {{ states('sensor.c_expansion_attic_temperature')
-            | float | round | int }}°\nCurrent Expansion C sensor temperature is:
-            {{ states('sensor.nest_temperature_sensor_stairwell_g_temperature') |
-            float | round | int }}°\nExpansion D temperature is: {{ states('sensor.d_expansion_attic_temperature')
-            | float | round | int }}° \nCurrent Expansion D sensor temperature is:
-            {{ states('sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature')
-            | float | round | int }}°"
-          title: Attic Temperature Issue!
-          data:
-            push:
-              sound:
-                name: default
-                critical: 1
-                volume: 1
       - action: notify.mobile_app_blakes_iphone
         metadata: {}
         data:
@@ -2124,26 +1987,6 @@
       - action: notify.mobile_app_blakes_iphone
         metadata: {}
         data:
-          message: "Current Expansion A temperature is: {{ states('sensor.a_expansion_attic_temperature')
-            | float | round | int }}°\nCurrent Expansion A Sensor temperature is:
-            {{ states('sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature')
-            | float | round | int }}°\nCurrent Expansion C temperature is: {{ states('sensor.c_expansion_attic_temperature')
-            | float | round | int }}°\nCurrent Expansion C sensor temperature is:
-            {{ states('sensor.nest_temperature_sensor_stairwell_g_temperature') |
-            float | round | int }}°\nExpansion D temperature is: {{ states('sensor.d_expansion_attic_temperature')
-            | float | round | int }}° \nCurrent Expansion D sensor temperature is:
-            {{ states('sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature')
-            | float | round | int }}°"
-          title: Attic Temperature Emergency!
-          data:
-            push:
-              sound:
-                name: default
-                critical: 1
-                volume: 1
-      - action: notify.mobile_app_blakes_iphone
-        metadata: {}
-        data:
           message: "{% set id = trigger.entity_id %}\n{% if 'a_expansion' in id %}\n
             \ {% set area = 'Expansion A' %}\n  {% set s1 = 'sensor.a_expansion_attic_temperature'
             %}\n  {% set s2 = 'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature'
@@ -2156,7 +1999,7 @@
             %}\n{% endif %}\n\n{{ area }} Alert!\n{{ state_attr(s1, 'friendly_name')
             }}: {{ states(s1) | float | round | int }}°\n{{ state_attr(s2, 'friendly_name')
             }}: {{ states(s2) | float | round | int }}°\n"
-          title: Attic Temperature Below 44!
+          title: Attic Temperature Below 44!!
           data:
             push:
               sound:
@@ -2170,28 +2013,75 @@
   triggers:
   - trigger: state
     entity_id:
-    - sensor.washing_machine_vibration
-    - sensor.dryer_vibration
+    - binary_sensor.dryer
+    - binary_sensor.washing_machine
     from:
     - 'on'
     to:
     - 'off'
     for:
       hours: 0
-      minutes: 3
+      minutes: 5
       seconds: 0
-  conditions: []
-  actions:
-  - action: tts.cloud_say
-    metadata: {}
-    data:
-      cache: false
-      entity_id: '{% if is_state(''binary_sensor.bed_presence_bb8594_bed_occupied_left'',
-        ''on'') %} media_player.blake_s_echo_spot {% elif is_state(''binary_sensor.kitchen_presence'',
-        ''on'') %} media_player.blake_s_echo_dot {% else %} media_player.everywhere
-        {% endif %}
+  conditions:
+  - condition: or
+    conditions:
+    - condition: template
+      value_template: '{{ (trigger.to_state.last_changed - trigger.from_state.last_changed).total_seconds()
+        > 300 }}
 
         '
+  actions:
+  - action: notify.mobile_app_blakes_iphone
+    metadata: {}
+    data:
+      title: Laundrys Done!
       message: '{{ ''Washing Machine'' if ''washing'' in trigger.entity_id else ''Dryer''
         }} has finished'
+  - sequence:
+    - action: scene.create
+      metadata: {}
+      data:
+        snapshot_entities:
+        - media_player.blake_s_echo_spot
+        scene_id: spot_snap
+    - action: media_player.volume_set
+      metadata: {}
+      data:
+        volume_level: 0.6
+      target:
+        entity_id: media_player.all_echo
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 2
+        milliseconds: 0
+    - action: tts.cloud_say
+      metadata: {}
+      data:
+        cache: false
+        entity_id: '{% if is_state(''binary_sensor.bed_presence_bb8594_bed_occupied_left'',
+          ''on'') %} media_player.blake_s_echo_spot {% elif is_state(''binary_sensor.kitchen_presence'',
+          ''on'') %} media_player.blake_s_echo_dot {% else %} media_player.everywhere
+          {% endif %}
+
+          '
+        message: '{{ ''Washing Machine'' if ''washing'' in trigger.entity_id else
+          ''Dryer'' }} has finished!'
+    - action: scene.turn_on
+      metadata: {}
+      target:
+        entity_id: scene.spot_snap
+      data: {}
+    - action: scene.delete
+      metadata: {}
+      target:
+        entity_id: scene.spot_snap
+      data: {}
+    - action: notify.send_message
+      metadata: {}
+      target:
+        entity_id: notify.blake_s_echo_spot_announce
+      data:
+        message: 'Everything’s finished '
   mode: single
