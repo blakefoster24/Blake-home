@@ -2021,7 +2021,7 @@
     - 'off'
     for:
       hours: 0
-      minutes: 5
+      minutes: 10
       seconds: 0
   conditions:
   - condition: or
