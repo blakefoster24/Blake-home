@@ -23,39 +23,14 @@ logger:
     homeassistant.components.scene: info
 
 shell_command:
-  ha_git_commit_push: >
-    bash -c "cd /config &&
-             git config user.name 'Home Assistant' &&
-             git config user.email 'ha@local' &&
-             git -c credential.helper='store --file=/config/.git-credentials' add -A &&
-             (git diff --cached --quiet || git commit -m 'Auto commit $(date -Iseconds)') &&
-             git -c credential.helper='store --file=/config/.git-credentials' push origin main"
-
+  # 1. Generates the Markdown file (Must stay here for Jinja templates)
   write_ha_overview: >
     bash -lc 'cat > /config/HA_Overview.md << "EOF"
     {{ content }}
     EOF'
 
-  write_log_slice: >
-    bash -c "cd /config && mkdir -p diagnostics && {
-    echo '===== $(date -Iseconds) — last 1000 lines (via Supervisor API) =====';
-    curl -s -H \"Authorization: Bearer ${SUPERVISOR_TOKEN}\" http://supervisor/core/logs | tail -n 1000;
-    } > diagnostics/last_log.txt"
-
-  write_automation_runs: >
-    bash -c "cd /config && mkdir -p diagnostics && {
-    echo '===== $(date -Iseconds) — automation runs (recent) =====';
-    curl -s -H \"Authorization: Bearer ${SUPERVISOR_TOKEN}\" http://supervisor/core/logs | tail -n 5000 | grep -iE '(homeassistant.components.automation|automation|triggered|queued|running|executing|alexa|cloud|scene\.turn_on|light\.turn_(on|off))' || true;
-    } > diagnostics/automation_runs.txt"
-
-  write_error_log: >
-    bash -c "cd /config && mkdir -p diagnostics && {
-    echo '===== $(date -Iseconds) — Recent Errors & Warnings =====';
-    curl -s -H \"Authorization: Bearer ${SUPERVISOR_TOKEN}\" http://supervisor/core/logs | grep -iE '(ERROR|WARNING|CRITICAL|FATAL)' | tail -n 500 || true;
-    } > diagnostics/error_log.txt"
-
-  # UPDATED: Flat Python one-liner. No indentation to break.
-  prepare_ai_context_zip: "python3 -c \"import zipfile, os; files = ['/config/configuration.yaml', '/config/automations.yaml', '/config/scripts.yaml', '/config/scenes.yaml', '/config/HA_Overview.md', '/config/diagnostics/last_log.txt', '/config/diagnostics/automation_runs.txt', '/config/diagnostics/error_log.txt']; z = zipfile.ZipFile('/config/www/ha_ai_context.zip', 'w', zipfile.ZIP_DEFLATED); [z.write(f, os.path.basename(f)) for f in files if os.path.exists(f)]; z.close()\""
+  # 2. Runs Logs, Git, and Zip all in one Python script
+  perform_ha_backup_tasks: "python3 /config/ha_backup_manager.py"
 
 
 recorder:
