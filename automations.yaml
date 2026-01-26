@@ -304,17 +304,36 @@
           state:
           - 'on'
         then:
-        - action: light.turn_on
-          metadata: {}
-          target:
-            entity_id: light.closet_light
-          data: {}
+        - if:
+          - condition: state
+            entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_right
+            state:
+            - 'on'
+          then:
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id: light.closet_light
+            data: {}
+          else:
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id: light.closet_light
+            data: {}
+          alias: Check bed occupied right -> delay light if occupied
         else:
         - action: light.turn_off
           metadata: {}
           target:
             entity_id: light.closet_light
           data: {}
+        alias: Motion detected / motion clears
     - conditions:
       - condition: trigger
         id:
@@ -337,6 +356,7 @@
           data: {}
           target:
             entity_id: light.bathroom_light
+        alias: Bathroom detected / bathroom clears
   mode: restart
 - id: '1760424497591'
   alias: Thermostat
