@@ -77,7 +77,9 @@ play_music_alexa:
         - action: alexa_devices.send_text_command
           metadata: {}
           data:
-            text_command: Shuffle Alex warren on all echo group
+            text_command: '{% if action_type == ''dashboard'' %}   Shuffle {{ states(''input_text.alexa_music_search'')
+              }} on all echo group {% else %}   Shuffle Alex warren on all echo group
+              {% endif %}'
             device_id: ba7e4aed08d0947fa03068f398842568
         - action: media_player.volume_set
           metadata: {}
@@ -85,6 +87,12 @@ play_music_alexa:
             volume_level: 0
           target:
             entity_id: media_player.all_echo
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.alexa_music_search
+          data:
+            value: ''
         - delay:
             hours: 0
             minutes: 0
@@ -139,37 +147,44 @@ play_music_alexa:
               minutes: 0
               seconds: 2
               milliseconds: 0
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 10
-          milliseconds: 0
-      - action: light.turn_on
-        metadata: {}
-        data:
-          transition: 15
-        target:
-          entity_id: light.bedroom_lamp
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 10
-          milliseconds: 0
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 45
-          milliseconds: 0
-      - action: light.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.bedroom_ceiling_lights
-      - action: fan.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: fan.bedroom_fan
+      - if:
+        - condition: template
+          value_template: '{{ action_type != ''dashboard'' }}
+
+            '
+          alias: Checks for action type != dashboard
+        then:
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 10
+            milliseconds: 0
+        - action: light.turn_on
+          metadata: {}
+          data:
+            transition: 15
+          target:
+            entity_id: light.bedroom_lamp
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 10
+            milliseconds: 0
+        - action: light.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.bedroom_ceiling_lights
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 45
+            milliseconds: 0
+        - action: fan.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id: fan.bedroom_fan
   description: ''
 set_date_to_today:
   alias: Scheduled Off & Working Override dashboard script
@@ -186,60 +201,6 @@ set_date_to_today:
     data:
       date: '{{ (now() - timedelta(days=1)).strftime(''%Y-%m-%d'') }}'
   description: ''
-create_push_ha_info_to_github_newest:
-  description: Generates HA_Overview.md, runs diagnostics, pushes to GitHub, AND creates
-    a zip for download.
-  mode: single
-  sequence:
-  - action: shell_command.write_ha_overview
-    data:
-      content: "# Home Assistant Configuration\n_Last Updated: {{ now().isoformat()
-        }}_\n\n## \U0001F6E0 UI Helpers\nBelow are the input helpers configured in
-        Home Assistant.\n\n{% set helpers = ['input_boolean', 'input_button', 'input_datetime',
-        'input_number', 'input_select', 'input_text', 'counter', 'timer', 'schedule']
-        %}\n{% for domain in helpers %}\n{% set assets = states[domain] | list %}\n{%
-        if assets | count > 0 %}\n### {{ domain | replace('input_', '') | capitalize
-        }}\n| Entity ID | Name | State | Attributes |\n|---|---|---|---|\n{% for s
-        in assets | sort(attribute='entity_id') %}\n{% set details = [] %}\n{% if
-        domain == 'input_number' %}\n  {% set details = details + ['min=' ~ s.attributes.min,
-        'max=' ~ s.attributes.max, 'step=' ~ s.attributes.step] %}\n{% elif domain
-        == 'input_select' %}\n  {% set details = details + ['options=' ~ s.attributes.options
-        | join(', ')] %}\n{% elif domain == 'input_datetime' %}\n  {% set details
-        = details + ['has_date=' ~ s.attributes.has_date, 'has_time=' ~ s.attributes.has_time]
-        %}\n{% elif domain == 'timer' %}\n  {% set details = details + ['duration='
-        ~ s.attributes.duration] %}\n{% elif domain == 'counter' %}\n  {% set details
-        = details + ['min=' ~ s.attributes.min, 'max=' ~ s.attributes.max] %}\n{%
-        endif %}\n\n| `{{ s.entity_id }}` | **{{ s.name | replace(\"'\", \"'\\\\''\")
-        }}** | {{ s.state | replace(\"'\", \"'\\\\''\") }} | {{ details | join(',
-        ') | replace(\"'\", \"'\\\\''\") }} |\n{% endfor %}\n\n{% endif %}\n{% endfor
-        %}\n\n---\n\n## \U0001F3E0 All Entities (By Domain)\n{% for domain, items
-        in states | groupby('domain') %}\n{% if domain not in helpers and domain !=
-        'group' %}\n<details><summary><b>{{ domain | title }} ({{ items | length }})</b></summary>\n\n|
-        Entity ID | Name | State |\n|---|---|---|\n{% for s in items | sort(attribute='entity_id')
-        %}\n| `{{ s.entity_id }}` | {{ s.name | replace(\"'\", \"'\\\\''\") }} | {{
-        s.state | replace(\"'\", \"'\\\\''\") }} |\n{% endfor %}\n</details>\n\n{%
-        endif %}\n{% endfor %}\n"
-  - action: shell_command.write_log_slice
-  - action: shell_command.write_automation_runs
-  - action: shell_command.write_error_log
-  - action: shell_command.ha_git_commit_push
-  - alias: Skip AI Zip file actions during daily commit
-    if:
-    - condition: template
-      value_template: '{{ context.user_id is not none }}
-
-        '
-      alias: 'Triggered by dashboard button '
-    then:
-    - action: shell_command.prepare_ai_context_zip
-    - action: notify.mobile_app_blakes_iphone
-      data:
-        title: Backup Complete
-        message: GitHub updated & Zip ready. Tap to download.
-        data:
-          url: /local/ha_ai_context.zip
-          clickAction: /local/ha_ai_context.zip
-  alias: Push Ha Info to GitHub & Create AI Zip File
 find_my_phone:
   alias: Find My Phone
   use_blueprint:
@@ -414,7 +375,7 @@ roku_backlight:
   alias: Roku Backlight
   description: ''
 push_ha_info_to_github_create_ai_zip_file_now:
-  alias: Push Ha Info to GitHub & Create AI Zip File now
+  alias: Push Ha Info to GitHub & Create AI Zip File
   description: Generates HA_Overview.md, runs diagnostics, pushes to GitHub, AND creates
     a zip for download.
   mode: single

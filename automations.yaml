@@ -215,6 +215,7 @@
     - switch.bedroom_ceiling_lights
     to: 'on'
     id: Bedroom ceiling lights on
+    enabled: true
   - trigger: state
     entity_id:
     - binary_sensor.bed_presence_bb8594_bed_occupied_left
@@ -1750,7 +1751,7 @@
       device_ieee: 00:17:88:01:02:18:b1:7a
       command: on_short_release
   - trigger: time
-    at: 08:50:00
+    at: 08:30:00
     id: Late Time Window
   conditions:
   - condition: state
@@ -1807,6 +1808,16 @@
           - 255
           - 73
           - 0
+          brightness: 100
+        target:
+          entity_id: light.bedroom_tv_backlight
+      - action: light.turn_on
+        metadata: {}
+        data:
+          rgb_color:
+          - 255
+          - 73
+          - 0
           brightness: 255
         target:
           entity_id: light.bedroom_tv_backlight
@@ -1830,7 +1841,48 @@
         metadata: {}
         data:
           device_id: ba7e4aed08d0947fa03068f398842568
-          text_command: Turn on backlight late scene
+          text_command: turn on backlight late
+      - repeat:
+          while:
+          - condition: state
+            entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_left
+            state:
+            - 'on'
+          sequence:
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 1
+              milliseconds: 0
+          - action: light.turn_off
+            metadata: {}
+            target:
+              entity_id:
+              - light.bedroom_lamp
+              - light.bedroom_ceiling_lights
+            data: {}
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 1
+              milliseconds: 0
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id:
+              - light.bedroom_ceiling_lights
+            data: {}
+          - action: notify.send_message
+            metadata: {}
+            target:
+              entity_id: notify.blake_s_echo_spot_speak
+            data:
+              message: Get Up Blake, Your late!
+          - delay:
+              hours: 0
+              minutes: 3
+              seconds: 0
+              milliseconds: 0
       - action: light.turn_off
         metadata: {}
         target:
