@@ -107,7 +107,7 @@ play_music_alexa:
         - delay:
             hours: 0
             minutes: 0
-            seconds: 7
+            seconds: 3
             milliseconds: 0
         - action: media_player.media_next_track
           metadata: {}
