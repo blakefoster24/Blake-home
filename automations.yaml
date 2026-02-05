@@ -1740,7 +1740,7 @@
           alias: Off Long
   mode: single
 - id: '1768260220196'
-  alias: New automation
+  alias: Workday Wakeup
   description: ''
   triggers:
   - trigger: event
@@ -1964,7 +1964,7 @@
         metadata: {}
         data: {}
         target:
-          entity_id: script.alarm_music_script
+          entity_id: script.alexa_music
     - alias: Out of bed = weather
       sequence:
       - wait_for_trigger:
