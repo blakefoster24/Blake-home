@@ -290,6 +290,15 @@ alexa_music:
           - 'off'
           from:
           - 'on'
+        - trigger: state
+          entity_id:
+          - binary_sensor.alexa_master_sensor
+          to:
+          - 'off'
+          for:
+            hours: 0
+            minutes: 2
+            seconds: 0
         timeout:
           hours: 0
           minutes: 30
@@ -449,5 +458,6 @@ alexa_music:
           data: {}
           target:
             entity_id: fan.bedroom_fan
+        alias: Wakeup Sequence
   alias: Alexa Music
   description: ''

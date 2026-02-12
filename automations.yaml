@@ -340,24 +340,50 @@
         id:
         - 'Bathroom presence '
       sequence:
-      - if:
-        - condition: state
-          entity_id: binary_sensor.bathroom_presence
-          state:
-          - 'on'
-        then:
-        - action: light.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: light.bathroom_light
-        else:
-        - action: light.turn_off
-          metadata: {}
-          data: {}
-          target:
-            entity_id: light.bathroom_light
-        alias: Bathroom detected / bathroom clears
+      - choose:
+        - conditions:
+          - condition: state
+            entity_id: binary_sensor.bathroom_presence
+            state:
+            - 'on'
+          sequence:
+          - action: light.turn_on
+            metadata: {}
+            target:
+              entity_id: light.bathroom_light
+            data: {}
+        - conditions:
+          - condition: state
+            entity_id: binary_sensor.bathroom_presence
+            state:
+            - 'off'
+          sequence:
+          - if:
+            - condition: numeric_state
+              entity_id: sensor.bathroom_humidity_derivative
+              above: 2
+            then:
+            - wait_for_trigger:
+              - trigger: numeric_state
+                entity_id:
+                - sensor.bathroom_humidity_derivative
+                for:
+                  hours: 0
+                  minutes: 1
+                  seconds: 0
+                below: -0.5
+              continue_on_timeout: false
+            - action: light.turn_off
+              metadata: {}
+              target:
+                entity_id: light.bathroom_light
+              data: {}
+            else:
+            - action: light.turn_off
+              metadata: {}
+              target:
+                entity_id: light.bathroom_light
+              data: {}
   mode: restart
 - id: '1760424497591'
   alias: Thermostat
