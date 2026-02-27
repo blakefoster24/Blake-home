@@ -204,7 +204,7 @@
     metadata: {}
     data: {}
     target:
-      entity_id: script.create_push_ha_info_to_github_gemini_zip
+      entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
   mode: single
 - id: '1759838752481'
   alias: Light Automations
@@ -361,7 +361,7 @@
           - if:
             - condition: numeric_state
               entity_id: sensor.bathroom_humidity_derivative
-              above: 2
+              above: 1
             then:
             - wait_for_trigger:
               - trigger: numeric_state
@@ -369,7 +369,7 @@
                 - sensor.bathroom_humidity_derivative
                 for:
                   hours: 0
-                  minutes: 1
+                  minutes: 2
                   seconds: 0
                 below: -0.5
               continue_on_timeout: false
@@ -428,6 +428,10 @@
       minutes: 20
       seconds: 0
   conditions:
+  - condition: state
+    entity_id: input_boolean.thermostat_automation_pause
+    state:
+    - 'off'
   - condition: or
     conditions:
     - condition: state
@@ -739,16 +743,9 @@
       minutes: 5
       seconds: 0
     id: Stuck open
-  - trigger: state
-    entity_id:
-    - binary_sensor.motion_1_motion
-    to:
-    - 'on'
-    for:
-      hours: 0
-      minutes: 15
-      seconds: 0
-    id: Motion stuck
+  - trigger: time
+    at: '23:00:00'
+    id: 11pm
   conditions: []
   actions:
   - choose:
@@ -797,6 +794,16 @@
             interruption-level: time-sensitive
           title: Motion stuck on detected
           message: 'Check motion sensor '
+    - conditions:
+      - condition: trigger
+        id:
+        - 11pm
+      sequence:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id: input_boolean.thermostat_automation_pause
+        data: {}
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
@@ -1948,6 +1955,10 @@
           target:
             entity_id: input_datetime.last_door_open
         alias: If triggered - Set door timestamp
+      - action: automation.turn_on
+        target:
+          entity_id: automation.door_automation
+        data: {}
       - action: scene.turn_on
         metadata: {}
         data: {}
@@ -1958,10 +1969,6 @@
         data:
           device_id: ba7e4aed08d0947fa03068f398842568
           text_command: turn off Roku backlight
-      - action: automation.turn_on
-        target:
-          entity_id: automation.door_automation
-        data: {}
       - action: notify.mobile_app_blakes_iphone
         metadata: {}
         data:
@@ -2077,6 +2084,18 @@
                 name: default
                 critical: 1
                 volume: 1
+      - alias: Notifications to other staff
+        action: notify.blake_foster30_gmail_com
+        metadata: {}
+        data:
+          message: "{% set sensors = [\n  'sensor.a_expansion_attic_temperature',\n
+            \ 'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n
+            \ 'sensor.c_expansion_attic_temperature',\n  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n
+            \ 'sensor.d_expansion_attic_temperature',\n  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'\n]
+            %}\n\n\U0001F321️ **Attic Temperature Report**\n{% for s in sensors %}\n-
+            {{ state_attr(s, 'friendly_name') }}: {{ states(s) | float(0) | round
+            | int }}°\n{%- endfor %}\n"
+          target: 3143230708@tmomail.net
     - conditions:
       - condition: trigger
         id:
@@ -2104,6 +2123,18 @@
                 name: default
                 critical: 1
                 volume: 1
+      - alias: Notifications to other staff
+        action: notify.blake_foster30_gmail_com
+        metadata: {}
+        data:
+          message: "{% set sensors = [\n  'sensor.a_expansion_attic_temperature',\n
+            \ 'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n
+            \ 'sensor.c_expansion_attic_temperature',\n  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n
+            \ 'sensor.d_expansion_attic_temperature',\n  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'\n]
+            %}\n\n\U0001F321️ **Attic Temperature Report**\n{% for s in sensors %}\n-
+            {{ state_attr(s, 'friendly_name') }}: {{ states(s) | float(0) | round
+            | int }}°\n{%- endfor %}\n"
+          target: 3143230708@tmomail.net
   mode: single
 - id: '1768967873851'
   alias: Washing Machine / Dryer
@@ -2111,38 +2142,30 @@
   triggers:
   - trigger: state
     entity_id:
-    - binary_sensor.dryer
     - binary_sensor.washing_machine
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
     from:
     - 'on'
     to:
     - 'off'
-    for:
-      hours: 0
-      minutes: 10
-      seconds: 0
-  conditions:
-  - condition: or
-    conditions:
-    - condition: template
-      value_template: '{{ (trigger.to_state.last_changed - trigger.from_state.last_changed).total_seconds()
-        > 300 }}
-
-        '
+  conditions: []
   actions:
   - action: notify.mobile_app_blakes_iphone
     metadata: {}
     data:
-      title: Laundrys Done!
+      title: Laundry Notification
       message: '{{ ''Washing Machine'' if ''washing'' in trigger.entity_id else ''Dryer''
         }} has finished'
   - sequence:
     - action: scene.create
       metadata: {}
       data:
+        scene_id: all_echo_snap
         snapshot_entities:
-        - media_player.blake_s_echo_spot
-        scene_id: spot_snap
+        - media_player.all_echo
     - action: media_player.volume_set
       metadata: {}
       data:
@@ -2157,29 +2180,23 @@
     - action: tts.cloud_say
       metadata: {}
       data:
-        cache: false
         entity_id: '{% if is_state(''binary_sensor.bed_presence_bb8594_bed_occupied_left'',
           ''on'') %} media_player.blake_s_echo_spot {% elif is_state(''binary_sensor.kitchen_presence'',
-          ''on'') %} media_player.blake_s_echo_dot {% else %} media_player.everywhere
+          ''on'') %} media_player.blake_s_echo_dot {% else %} media_player.all_echo
           {% endif %}
 
           '
         message: '{{ ''Washing Machine'' if ''washing'' in trigger.entity_id else
           ''Dryer'' }} has finished!'
+        cache: false
     - action: scene.turn_on
       metadata: {}
       target:
-        entity_id: scene.spot_snap
+        entity_id: scene.all_echo_snap
       data: {}
     - action: scene.delete
       metadata: {}
       target:
-        entity_id: scene.spot_snap
+        entity_id: scene.all_echo_snap
       data: {}
-    - action: notify.send_message
-      metadata: {}
-      target:
-        entity_id: notify.blake_s_echo_spot_announce
-      data:
-        message: 'Everything’s finished '
   mode: single
