@@ -304,6 +304,7 @@ alexa_music:
           minutes: 30
           seconds: 0
           milliseconds: 0
+        continue_on_timeout: false
       - action: media_player.media_stop
         metadata: {}
         data: {}
