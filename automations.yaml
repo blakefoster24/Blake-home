@@ -1668,9 +1668,9 @@
           sequence:
           - action: script.turn_on
             metadata: {}
-            target:
-              entity_id: script.set_room_2
             data: {}
+            target:
+              entity_id: script.set_my_room
           alias: On Long
     - alias: Up Button
       conditions:
