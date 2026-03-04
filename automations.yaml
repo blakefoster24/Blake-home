@@ -1830,7 +1830,7 @@
           brightness_pct: 100
           transition: 5
         target:
-          entity_id: light.bedroom_lamp
+          entity_id: light.bedroom_ceiling_lights
       - wait_for_trigger:
         - trigger: time
           at: 08:40:00
