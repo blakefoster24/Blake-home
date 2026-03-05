@@ -311,7 +311,7 @@ alexa_music:
             seconds: 0
         timeout:
           hours: 0
-          minutes: 30
+          minutes: 0
           seconds: 0
           milliseconds: 0
         continue_on_timeout: false
