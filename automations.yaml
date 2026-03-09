@@ -2159,44 +2159,55 @@
       title: Laundry Notification
       message: '{{ ''Washing Machine'' if ''washing'' in trigger.entity_id else ''Dryer''
         }} has finished'
-  - sequence:
-    - action: scene.create
-      metadata: {}
-      data:
-        scene_id: all_echo_snap
-        snapshot_entities:
-        - media_player.all_echo
-    - action: media_player.volume_set
-      metadata: {}
-      data:
-        volume_level: 0.6
-      target:
-        entity_id: media_player.all_echo
-    - delay:
-        hours: 0
-        minutes: 0
-        seconds: 2
-        milliseconds: 0
-    - action: tts.cloud_say
-      metadata: {}
-      data:
-        entity_id: '{% if is_state(''binary_sensor.bed_presence_bb8594_bed_occupied_left'',
-          ''on'') %} media_player.blake_s_echo_spot {% elif is_state(''binary_sensor.kitchen_presence'',
-          ''on'') %} media_player.blake_s_echo_dot {% else %} media_player.all_echo
-          {% endif %}
+  - if:
+    - condition: or
+      conditions:
+      - condition: person.is_home
+        target:
+          entity_id:
+          - person.blake_foster
+          - person.rachel
+        options:
+          behavior: any
+    then:
+    - sequence:
+      - action: tts.cloud_say
+        metadata: {}
+        data:
+          entity_id: '{% if is_state(''binary_sensor.bed_presence_bb8594_bed_occupied_left'',
+            ''on'') %} media_player.blake_s_echo_spot {% elif is_state(''binary_sensor.kitchen_presence'',
+            ''on'') %} media_player.blake_s_echo_dot {% else %} media_player.all_echo
+            {% endif %}
 
-          '
-        message: '{{ ''Washing Machine'' if ''washing'' in trigger.entity_id else
-          ''Dryer'' }} has finished!'
-        cache: false
-    - action: scene.turn_on
-      metadata: {}
-      target:
-        entity_id: scene.all_echo_snap
-      data: {}
-    - action: scene.delete
-      metadata: {}
-      target:
-        entity_id: scene.all_echo_snap
-      data: {}
+            '
+          message: '{{ ''Washing Machine'' if ''washing'' in trigger.entity_id else
+            ''Dryer'' }} has finished!'
+          cache: false
+      - action: scene.create
+        metadata: {}
+        data:
+          scene_id: all_echo_snap
+          snapshot_entities:
+          - media_player.all_echo
+      - action: media_player.volume_set
+        metadata: {}
+        data:
+          volume_level: 0.6
+        target:
+          entity_id: media_player.all_echo
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 2
+          milliseconds: 0
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.all_echo_snap
+        data: {}
+      - action: scene.delete
+        metadata: {}
+        target:
+          entity_id: scene.all_echo_snap
+        data: {}
   mode: single
