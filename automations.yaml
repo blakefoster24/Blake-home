@@ -1976,28 +1976,6 @@
           title: Goodbye
           data:
             interruption level: time-sensitive
-    - alias: Alarm script at 8:50
-      sequence:
-      - wait_for_trigger:
-        - trigger: time
-          at: 08:50:00
-        continue_on_timeout: false
-        timeout:
-          hours: 1
-          minutes: 0
-          seconds: 0
-          milliseconds: 0
-      - wait_template: '{{ (as_timestamp(now()) - state_attr(''input_datetime.last_door_open'',''timestamp'')
-          | default(0)) > 3600 }}
-
-          '
-        continue_on_timeout: false
-        timeout: '30'
-      - action: script.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: script.alexa_music
     - alias: Out of bed = weather
       sequence:
       - wait_for_trigger:
@@ -2023,6 +2001,28 @@
         data:
           text_command: What’s the weather today?
           device_id: ba7e4aed08d0947fa03068f398842568
+    - alias: Alarm script at 8:50
+      sequence:
+      - wait_for_trigger:
+        - trigger: time
+          at: 08:50:00
+        continue_on_timeout: false
+        timeout:
+          hours: 1
+          minutes: 0
+          seconds: 0
+          milliseconds: 0
+      - wait_template: '{{ (as_timestamp(now()) - state_attr(''input_datetime.last_door_open'',''timestamp'')
+          | default(0)) > 3600 }}
+
+          '
+        continue_on_timeout: false
+        timeout: '30'
+      - action: script.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: script.alexa_music
   mode: single
   trace:
     stored_traces: 50
