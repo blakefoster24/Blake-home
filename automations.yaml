@@ -428,10 +428,6 @@
       minutes: 20
       seconds: 0
   conditions:
-  - condition: state
-    entity_id: input_boolean.thermostat_automation_pause
-    state:
-    - 'off'
   - condition: or
     conditions:
     - condition: state
