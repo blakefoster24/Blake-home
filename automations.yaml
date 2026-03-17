@@ -1969,18 +1969,18 @@
       - action: notify.mobile_app_blakes_iphone
         metadata: {}
         data:
-          message: "{% set id = trigger.entity_id %}\n{% if 'a_expansion' in id %}\n
-            \ {% set area = 'Expansion A' %}\n  {% set s1 = 'sensor.a_expansion_attic_temperature'
-            %}\n  {% set s2 = 'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature'
-            %}\n{% elif 'c_expansion' in id or 'stairwell_g' in id %}\n  {% set area
-            = 'Expansion C' %}\n  {% set s1 = 'sensor.c_expansion_attic_temperature'
-            %}\n  {% set s2 = 'sensor.nest_temperature_sensor_stairwell_g_temperature'
-            %}\n{% elif 'd_expansion' in id %}\n  {% set area = 'Expansion D' %}\n
-            \ {% set s1 = 'sensor.d_expansion_attic_temperature' %}\n  {% set s2 =
-            'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'
-            %}\n{% endif %}\n\n{{ area }} Alert!\n{{ state_attr(s1, 'friendly_name')
-            }}: {{ states(s1) | float | round | int }}°\n{{ state_attr(s2, 'friendly_name')
-            }}: {{ states(s2) | float | round | int }}°\n"
+          message: "message: >\n  {% set id = trigger.entity_id %}\n  {% if 'a_expansion'
+            in id %}\n    {% set area = 'Expansion A' %}\n    {% set s1 = 'sensor.a_expansion_attic_temperature'
+            %}\n    {% set s2 = 'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature'
+            %}\n  {% elif 'c_expansion' in id or 'stairwell_g' in id %}\n    {% set
+            area = 'Expansion C' %}\n    {% set s1 = 'sensor.c_expansion_attic_temperature'
+            %}\n    {% set s2 = 'sensor.nest_temperature_sensor_stairwell_g_temperature'
+            %}\n  {% elif 'd_expansion' in id %}\n    {% set area = 'Expansion D'
+            %}\n    {% set s1 = 'sensor.d_expansion_attic_temperature' %}\n    {%
+            set s2 = 'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'
+            %}\n  {% endif %}\n\n  {{ area }} Alert!\n  {{ state_attr(s1, 'friendly_name')
+            }}: {{ states(s1) | float('unavailable') }}°\n  {{ state_attr(s2, 'friendly_name')
+            }}: {{ states(s2) | float('unavailable') }}°\n"
           title: Attic Temperature Below 48!
           data:
             push:
@@ -1992,13 +1992,13 @@
         action: notify.blake_foster30_gmail_com
         metadata: {}
         data:
-          message: "{% set sensors = [\n  'sensor.a_expansion_attic_temperature',\n
-            \ 'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n
-            \ 'sensor.c_expansion_attic_temperature',\n  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n
-            \ 'sensor.d_expansion_attic_temperature',\n  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'\n]
-            %}\n\n\U0001F321️ **Attic Temperature Report**\n{% for s in sensors %}\n-
-            {{ state_attr(s, 'friendly_name') }}: {{ states(s) | float(0) | round
-            | int }}°\n{%- endfor %}\n"
+          message: "message: >\n  {% set sensors = [\n    'sensor.a_expansion_attic_temperature',\n
+            \   'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n
+            \   'sensor.c_expansion_attic_temperature',\n    'sensor.nest_temperature_sensor_stairwell_g_temperature',\n
+            \   'sensor.d_expansion_attic_temperature',\n    'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'\n
+            \ ] %}\n\n  \U0001F321️ **Attic Temperature Report**\n  {% for s in sensors
+            %}\n  - {{ state_attr(s, 'friendly_name') }}: {{ states(s) | float('OFFLINE')
+            }}°\n  {%- endfor %}\n"
           target: 3143230708@tmomail.net
     - conditions:
       - condition: trigger
@@ -2008,18 +2008,18 @@
       - action: notify.mobile_app_blakes_iphone
         metadata: {}
         data:
-          message: "{% set id = trigger.entity_id %}\n{% if 'a_expansion' in id %}\n
-            \ {% set area = 'Expansion A' %}\n  {% set s1 = 'sensor.a_expansion_attic_temperature'
-            %}\n  {% set s2 = 'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature'
-            %}\n{% elif 'c_expansion' in id or 'stairwell_g' in id %}\n  {% set area
-            = 'Expansion C' %}\n  {% set s1 = 'sensor.c_expansion_attic_temperature'
-            %}\n  {% set s2 = 'sensor.nest_temperature_sensor_stairwell_g_temperature'
-            %}\n{% elif 'd_expansion' in id %}\n  {% set area = 'Expansion D' %}\n
-            \ {% set s1 = 'sensor.d_expansion_attic_temperature' %}\n  {% set s2 =
-            'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'
-            %}\n{% endif %}\n\n{{ area }} Alert!\n{{ state_attr(s1, 'friendly_name')
-            }}: {{ states(s1) | float | round | int }}°\n{{ state_attr(s2, 'friendly_name')
-            }}: {{ states(s2) | float | round | int }}°\n"
+          message: "message: >\n  {% set id = trigger.entity_id %}\n  {% if 'a_expansion'
+            in id %}\n    {% set area = 'Expansion A' %}\n    {% set s1 = 'sensor.a_expansion_attic_temperature'
+            %}\n    {% set s2 = 'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature'
+            %}\n  {% elif 'c_expansion' in id or 'stairwell_g' in id %}\n    {% set
+            area = 'Expansion C' %}\n    {% set s1 = 'sensor.c_expansion_attic_temperature'
+            %}\n    {% set s2 = 'sensor.nest_temperature_sensor_stairwell_g_temperature'
+            %}\n  {% elif 'd_expansion' in id %}\n    {% set area = 'Expansion D'
+            %}\n    {% set s1 = 'sensor.d_expansion_attic_temperature' %}\n    {%
+            set s2 = 'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'
+            %}\n  {% endif %}\n\n  {{ area }} Alert!\n  {{ state_attr(s1, 'friendly_name')
+            }}: {{ states(s1) | float('unavailable') }}°\n  {{ state_attr(s2, 'friendly_name')
+            }}: {{ states(s2) | float('unavailable') }}°\n"
           title: Attic Temperature Below 44!!
           data:
             push:
@@ -2031,13 +2031,13 @@
         action: notify.blake_foster30_gmail_com
         metadata: {}
         data:
-          message: "{% set sensors = [\n  'sensor.a_expansion_attic_temperature',\n
-            \ 'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n
-            \ 'sensor.c_expansion_attic_temperature',\n  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n
-            \ 'sensor.d_expansion_attic_temperature',\n  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'\n]
-            %}\n\n\U0001F321️ **Attic Temperature Report**\n{% for s in sensors %}\n-
-            {{ state_attr(s, 'friendly_name') }}: {{ states(s) | float(0) | round
-            | int }}°\n{%- endfor %}\n"
+          message: "message: >\n  {% set sensors = [\n    'sensor.a_expansion_attic_temperature',\n
+            \   'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n
+            \   'sensor.c_expansion_attic_temperature',\n    'sensor.nest_temperature_sensor_stairwell_g_temperature',\n
+            \   'sensor.d_expansion_attic_temperature',\n    'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature'\n
+            \ ] %}\n\n  \U0001F321️ **Attic Temperature Report**\n  {% for s in sensors
+            %}\n  - {{ state_attr(s, 'friendly_name') }}: {{ states(s) | float('OFFLINE')
+            }}°\n  {%- endfor %}\n"
           target: 3143230708@tmomail.net
   mode: single
 - id: '1768967873851'
