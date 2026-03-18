@@ -203,7 +203,7 @@ alexa_music:
       music_input: '{{ states(''input_text.alexa_music_search'') if is_search else
         states(''input_text.alarm_music'') }}'
       music_query: '{{ music_input if music_input not in ['''', ''unknown'', ''unavailable'']
-        else ''top 25'' }}'
+        else ''the top billboard hits'' }}'
       speaker_selection: '{{ states(''input_select.speakers'') if is_search else ''All
         Echo Group'' }}'
       speaker_voice_name: '{% set clean = speaker_selection.split('' ('')[0] %} {{
