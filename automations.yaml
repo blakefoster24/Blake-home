@@ -438,7 +438,6 @@
       id:
       - Set-point discrepancy
       - 64 > Thermostat Temperature > 76
-      - Expansion C
   actions:
   - choose:
     - conditions:
@@ -716,6 +715,56 @@
                     critical: 1
                     volume: 0.5
       alias: Temperature Issue
+    continue_on_error: true
+    enabled: false
+  - sequence:
+    - condition: trigger
+      id:
+      - Morning Time Window
+      - Afternoon Time Window
+      - Night Time Window
+    - choose:
+      - conditions:
+        - condition: numeric_state
+          entity_id: sensor.openweathermap_temperature_2
+          below: 51
+        sequence:
+        - alias: Heat 67
+          action: climate.set_temperature
+          metadata: {}
+          data:
+            hvac_mode: heat
+            temperature: 67
+          target:
+            device_id: b43f8797bfe54ded21e44c051fec8167
+      - conditions:
+        - condition: numeric_state
+          entity_id: sensor.openweathermap_temperature_2
+          below: 64
+          above: 50
+        sequence:
+        - alias: Heat/Cool - 66/68
+          action: climate.set_temperature
+          metadata: {}
+          data:
+            hvac_mode: heat_cool
+            target_temp_low: 66
+            target_temp_high: 68
+          target:
+            device_id: b43f8797bfe54ded21e44c051fec8167
+      - conditions:
+        - condition: numeric_state
+          entity_id: sensor.openweathermap_temperature_2
+          above: 64
+        sequence:
+        - alias: Cool - 67
+          action: climate.set_temperature
+          metadata: {}
+          data:
+            hvac_mode: cool
+            temperature: 67
+          target:
+            device_id: b43f8797bfe54ded21e44c051fec8167
   trace:
     stored_traces: 50
   mode: single
@@ -1021,6 +1070,7 @@
           | Home_ts: {{ fmt(home_ts) }} | Prev_door_ts: {{ fmt(prev_door_ts) }} |
           Home_ts - Prev_door_ts = {{ home_delta }}s | First opening: {{ true if first_open_bool
           == true else false if first_open_bool == false else 'n/a' }}\n"
+    continue_on_error: true
   - alias: Leaving / Arriving
     choose:
     - conditions:
@@ -1177,6 +1227,10 @@
             seconds: 0
             milliseconds: 0
           continue_on_timeout: false
+        - wait_template: "{{ is_state('binary_sensor.kitchen_presence', 'off') and
+            \n   (now() - states.binary_sensor.kitchen_presence.last_changed).total_seconds()
+            > 120 }}\n"
+          continue_on_timeout: true
         - action: light.turn_off
           metadata: {}
           data: {}
@@ -1186,6 +1240,7 @@
             - light.living_room_ceiling_lights
             - light.kitchen_lights
       alias: Arriving branch
+    continue_on_error: true
   trace:
     stored_traces: 50
   mode: restart
@@ -1927,6 +1982,7 @@
         data: {}
         target:
           entity_id: script.alexa_music
+    continue_on_error: true
   mode: single
   trace:
     stored_traces: 50
@@ -2039,6 +2095,7 @@
             %}\n  - {{ state_attr(s, 'friendly_name') }}: {{ states(s) | float('OFFLINE')
             }}°\n  {%- endfor %}\n"
           target: 3143230708@tmomail.net
+    continue_on_error: true
   mode: single
 - id: '1768967873851'
   alias: Washing Machine / Dryer
