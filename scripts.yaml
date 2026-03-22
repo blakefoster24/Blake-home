@@ -11,21 +11,6 @@ find_remote:
       entity_id: remote.bedroom_tv
   alias: Find Remote
   description: ''
-set_date_to_today:
-  alias: Scheduled Off & Working Override dashboard script
-  icon: mdi:calendar-today
-  mode: parallel
-  fields:
-    target_entity:
-      description: The input_datetime entity to set to today's date
-      example: input_datetime.scheduled_off
-  sequence:
-  - action: input_datetime.set_datetime
-    target:
-      entity_id: '{{ target_entity }}'
-    data:
-      date: '{{ (now() - timedelta(days=1)).strftime(''%Y-%m-%d'') }}'
-  description: ''
 find_my_phone:
   alias: Find My Phone
   use_blueprint:
