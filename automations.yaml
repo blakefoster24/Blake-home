@@ -439,6 +439,54 @@
       - Set-point discrepancy
       - 64 > Thermostat Temperature > 76
   actions:
+  - sequence:
+    - condition: trigger
+      id:
+      - Morning Time Window
+      - Afternoon Time Window
+      - Night Time Window
+    - choose:
+      - conditions:
+        - condition: numeric_state
+          entity_id: sensor.openweathermap_temperature_2
+          below: 51
+        sequence:
+        - alias: Heat 67
+          action: climate.set_temperature
+          metadata: {}
+          data:
+            hvac_mode: heat
+            temperature: 67
+          target:
+            device_id: b43f8797bfe54ded21e44c051fec8167
+      - conditions:
+        - condition: numeric_state
+          entity_id: sensor.openweathermap_temperature_2
+          below: 64
+          above: 50
+        sequence:
+        - alias: Heat/Cool - 66/68
+          action: climate.set_temperature
+          metadata: {}
+          data:
+            hvac_mode: heat_cool
+            target_temp_low: 66
+            target_temp_high: 68
+          target:
+            device_id: b43f8797bfe54ded21e44c051fec8167
+      - conditions:
+        - condition: numeric_state
+          entity_id: sensor.openweathermap_temperature_2
+          above: 64
+        sequence:
+        - alias: Cool - 67
+          action: climate.set_temperature
+          metadata: {}
+          data:
+            hvac_mode: cool
+            temperature: 67
+          target:
+            device_id: b43f8797bfe54ded21e44c051fec8167
   - choose:
     - conditions:
       - condition: trigger
@@ -717,54 +765,6 @@
       alias: Temperature Issue
     continue_on_error: true
     enabled: false
-  - sequence:
-    - condition: trigger
-      id:
-      - Morning Time Window
-      - Afternoon Time Window
-      - Night Time Window
-    - choose:
-      - conditions:
-        - condition: numeric_state
-          entity_id: sensor.openweathermap_temperature_2
-          below: 51
-        sequence:
-        - alias: Heat 67
-          action: climate.set_temperature
-          metadata: {}
-          data:
-            hvac_mode: heat
-            temperature: 67
-          target:
-            device_id: b43f8797bfe54ded21e44c051fec8167
-      - conditions:
-        - condition: numeric_state
-          entity_id: sensor.openweathermap_temperature_2
-          below: 64
-          above: 50
-        sequence:
-        - alias: Heat/Cool - 66/68
-          action: climate.set_temperature
-          metadata: {}
-          data:
-            hvac_mode: heat_cool
-            target_temp_low: 66
-            target_temp_high: 68
-          target:
-            device_id: b43f8797bfe54ded21e44c051fec8167
-      - conditions:
-        - condition: numeric_state
-          entity_id: sensor.openweathermap_temperature_2
-          above: 64
-        sequence:
-        - alias: Cool - 67
-          action: climate.set_temperature
-          metadata: {}
-          data:
-            hvac_mode: cool
-            temperature: 67
-          target:
-            device_id: b43f8797bfe54ded21e44c051fec8167
   trace:
     stored_traces: 50
   mode: single
@@ -849,6 +849,8 @@
         target:
           entity_id: input_boolean.thermostat_automation_pause
         data: {}
+        enabled: false
+      alias: Reset Thermostat Adjustment - 11pm
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
