@@ -808,6 +808,18 @@
     - conditions:
       - condition: trigger
         id:
+        - 11pm
+      sequence:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id: input_boolean.thermostat_automation_pause
+        data: {}
+        enabled: false
+      alias: Reset Thermostat Adjustment - 11pm
+    - conditions:
+      - condition: trigger
+        id:
         - Stuck open
       sequence:
       - action: counter.increment
@@ -822,35 +834,6 @@
           data:
             interruption-level: time-sensitive
           title: Door Did Not Close
-    - conditions:
-      - condition: trigger
-        id:
-        - Motion stuck
-      sequence:
-      - action: counter.increment
-        metadata: {}
-        target:
-          entity_id: counter.motion_anomaly
-        data: {}
-      - action: notify.mobile_app_blakes_iphone
-        metadata: {}
-        data:
-          data:
-            interruption-level: time-sensitive
-          title: Motion stuck on detected
-          message: 'Check motion sensor '
-    - conditions:
-      - condition: trigger
-        id:
-        - 11pm
-      sequence:
-      - action: input_boolean.turn_off
-        metadata: {}
-        target:
-          entity_id: input_boolean.thermostat_automation_pause
-        data: {}
-        enabled: false
-      alias: Reset Thermostat Adjustment - 11pm
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
@@ -1247,9 +1230,9 @@
     continue_on_timeout: false
   - action: script.turn_on
     metadata: {}
-    target:
-      entity_id: script.set_room_2
     data: {}
+    target:
+      entity_id: script.set_my_room
   mode: single
 - id: '1764120623172'
   alias: Work Schedule Automations
@@ -2084,63 +2067,174 @@
     - 'on'
     to:
     - 'off'
+    id: Washing machine done
+  - trigger: state
+    entity_id:
+    - binary_sensor.dryer
+    to:
+    - 'on'
+    from:
+    - 'off'
+    id: Dryer
+  - trigger: state
+    entity_id:
+    - binary_sensor.dryer
+    id: Dryer off
+    to:
+    - 'off'
+    for:
+      hours: 0
+      minutes: 8
+      seconds: 0
   conditions: []
   actions:
-  - action: notify.mobile_app_blakes_iphone
-    metadata: {}
-    data:
-      title: Laundry Notification
-      message: '{{ ''Washing Machine'' if ''washing'' in trigger.entity_id else ''Dryer''
-        }} has finished'
-  - if:
-    - condition: or
-      conditions:
-      - condition: person.is_home
-        target:
-          entity_id:
-          - person.blake_foster
-          - person.rachel
-        options:
-          behavior: any
-    then:
-    - sequence:
-      - action: tts.cloud_say
-        metadata: {}
-        data:
-          entity_id: '{% if is_state(''binary_sensor.bed_presence_bb8594_bed_occupied_left'',
-            ''on'') %} media_player.blake_s_echo_spot {% elif is_state(''binary_sensor.kitchen_presence'',
-            ''on'') %} media_player.blake_s_echo_dot {% else %} media_player.all_echo
-            {% endif %}
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Washing machine done
+      sequence:
+      - sequence:
+        - action: notify.mobile_app_blakes_iphone
+          metadata: {}
+          data:
+            title: Laundry Notification
+            message: Washing Machine has finished
+        - condition: state
+          state:
+          - home
+          entity_id: person.blake_foster
+        - condition: state
+          state:
+          - 'off'
+          entity_id: fan.bedroom_fan
+        - action: scene.create
+          metadata: {}
+          data:
+            scene_id: all_echo_snap
+            snapshot_entities:
+            - media_player.all_echo
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.6
+          target:
+            entity_id: media_player.all_echo
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 2
+            milliseconds: 0
+        - action: tts.cloud_say
+          metadata: {}
+          data:
+            entity_id: '{% if is_state(''binary_sensor.bed_presence_bb8594_bed_occupied_left'',
+              ''on'') %} media_player.blake_s_echo_spot {% elif is_state(''binary_sensor.kitchen_presence'',
+              ''on'') %} media_player.blake_s_echo_dot {% else %} media_player.all_echo
+              {% endif %}
 
-            '
-          message: '{{ ''Washing Machine'' if ''washing'' in trigger.entity_id else
-            ''Dryer'' }} has finished!'
-          cache: false
-      - action: scene.create
-        metadata: {}
-        data:
-          scene_id: all_echo_snap
-          snapshot_entities:
-          - media_player.all_echo
-      - action: media_player.volume_set
-        metadata: {}
-        data:
-          volume_level: 0.6
-        target:
-          entity_id: media_player.all_echo
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 2
-          milliseconds: 0
-      - action: scene.turn_on
-        metadata: {}
-        target:
-          entity_id: scene.all_echo_snap
-        data: {}
-      - action: scene.delete
-        metadata: {}
-        target:
-          entity_id: scene.all_echo_snap
-        data: {}
+              '
+            message: Washing Machine has finished!
+            cache: false
+        - action: scene.turn_on
+          metadata: {}
+          target:
+            entity_id: scene.all_echo_snap
+          data: {}
+        - action: scene.delete
+          metadata: {}
+          target:
+            entity_id: scene.all_echo_snap
+          data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - Dryer
+        - Dryer off
+      sequence:
+      - if:
+        - condition: trigger
+          id:
+          - Dryer
+        then:
+        - action: counter.increment
+          metadata: {}
+          data: {}
+          target:
+            entity_id: counter.dryer_vibration_counter
+        else:
+        - if:
+          - condition: counter.is_value
+            target:
+              entity_id: counter.dryer_vibration_counter
+            options:
+              threshold:
+                type: above
+                value:
+                  active_choice: number
+                  number: 4
+          then:
+          - action: counter.reset
+            metadata: {}
+            data: {}
+            target:
+              entity_id: counter.dryer_vibration_counter
+          - sequence:
+            - action: notify.mobile_app_blakes_iphone
+              metadata: {}
+              data:
+                title: Laundry Notification
+                message: Dryer has finished
+            - condition: state
+              state:
+              - home
+              entity_id: person.blake_foster
+            - condition: state
+              state:
+              - 'off'
+              entity_id: fan.bedroom_fan
+            - action: scene.create
+              metadata: {}
+              data:
+                scene_id: all_echo_snap
+                snapshot_entities:
+                - media_player.all_echo
+            - action: media_player.volume_set
+              metadata: {}
+              data:
+                volume_level: 0.6
+              target:
+                entity_id: media_player.all_echo
+            - delay:
+                hours: 0
+                minutes: 0
+                seconds: 2
+                milliseconds: 0
+            - action: tts.cloud_say
+              metadata: {}
+              data:
+                entity_id: '{% if is_state(''binary_sensor.bed_presence_bb8594_bed_occupied_left'',
+                  ''on'') %} media_player.blake_s_echo_spot {% elif is_state(''binary_sensor.kitchen_presence'',
+                  ''on'') %} media_player.blake_s_echo_dot {% else %} media_player.all_echo
+                  {% endif %}
+
+                  '
+                message: Dryer has finished!
+                cache: false
+            - action: scene.turn_on
+              metadata: {}
+              target:
+                entity_id: scene.all_echo_snap
+              data: {}
+            - action: scene.delete
+              metadata: {}
+              target:
+                entity_id: scene.all_echo_snap
+              data: {}
+          else:
+          - action: counter.reset
+            metadata: {}
+            data: {}
+            target:
+              entity_id: counter.dryer_vibration_counter
   mode: single
