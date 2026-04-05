@@ -431,7 +431,7 @@
   - condition: or
     conditions:
     - condition: state
-      entity_id: script.temporary_thermostat_adjustment
+      entity_id: input_boolean.thermostat_automation_pause
       state:
       - 'off'
     - condition: trigger
