@@ -1707,6 +1707,12 @@
   - condition: time
     after: 08:00:00
     before: 09:30:00
+  - condition: template
+    value_template: '{{ states(''input_datetime.working_override'') == (now() + timedelta(days=1)).strftime(''%Y-%m-%d'')
+      }}
+
+      '
+    alias: Working Override = Tomorrow
   actions:
   - parallel:
     - alias: Wake Up Scene Sequence
@@ -1781,14 +1787,14 @@
           brightness: 255
         target:
           entity_id: light.bedroom_tv_backlight
-      - wait_for_trigger:
-        - trigger: time
-          at: 08:55:00
       - action: alexa_devices.send_text_command
         metadata: {}
         data:
           device_id: ba7e4aed08d0947fa03068f398842568
           text_command: turn on backlight late
+      - wait_for_trigger:
+        - trigger: time
+          at: 08:55:00
       - repeat:
           while:
           - condition: state
