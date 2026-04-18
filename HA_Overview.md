@@ -1,4 +1,4 @@
-_Last Updated: 2026-04-17T02:00:00.169167-05:00_
+_Last Updated: 2026-04-18T02:00:00.168876-05:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -65,14 +65,14 @@ Below are the input helpers configured in Home Assistant.
   
 
 
-| `input_datetime.home_timestamp` | **Home Timestamp** | 2026-04-16 23:12:40 | has_date=True, has_time=True |
+| `input_datetime.home_timestamp` | **Home Timestamp** | 2026-04-17 21:16:51 | has_date=True, has_time=True |
 
 
 
   
 
 
-| `input_datetime.last_door_open` | **Last Door Open** | 2026-04-17 00:15:25 | has_date=True, has_time=True |
+| `input_datetime.last_door_open` | **Last Door Open** | 2026-04-17 21:50:40 | has_date=True, has_time=True |
 
 
 
@@ -445,7 +445,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `climate.d_expansion_attic` | D expansion attic | unavailable |
 
-| `climate.nest_thermostat` | Nest Thermostat | cool |
+| `climate.nest_thermostat` | Nest Thermostat | heat |
 
 </details>
 
@@ -483,7 +483,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `device_tracker.rachels_phone` | Rachels Phone | Rachel’s Home |
 
-| `device_tracker.rivian_phone_key_2060` | Rivian Phone Key 2060 | not_home |
+| `device_tracker.rivian_phone_key_2060` | Rivian Phone Key 2060 | home |
 
 | `device_tracker.rivian_phone_key_35fe` | rivian phone key 35fe | unavailable |
 
@@ -513,7 +513,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `device_tracker.rivian_phone_key_ec7f` | rivian phone key ec7f | unavailable |
 
-| `device_tracker.rivian_phone_key_f289` | Rivian Phone Key F289 | not_home |
+| `device_tracker.rivian_phone_key_f289` | Rivian Phone Key F289 | home |
 
 | `device_tracker.rivian_sensor_1_067a` | rivian sensor 1 067a | unavailable |
 
@@ -583,7 +583,7 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `event.backup_automatic_backup` | Backup Automatic backup | 2026-04-16T10:24:49.716+00:00 |
+| `event.backup_automatic_backup` | Backup Automatic backup | 2026-04-17T10:02:58.238+00:00 |
 
 | `event.bthome_sensor_3370_button` | Motion 1 - Shelly Button | 2025-10-19T05:15:17.292+00:00 |
 
@@ -627,7 +627,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `light.bedroom_ceiling_lights` | Bedroom Ceiling Lights | off |
 
-| `light.bedroom_lamp` | Bedroom Lamp | on |
+| `light.bedroom_lamp` | Bedroom Lamp | off |
 
 | `light.bedroom_tv_backlight` | Bedroom Tv Backlight | off |
 
@@ -655,7 +655,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `media_player.all_echo` | All Echo | paused |
 
-| `media_player.bedroom_tv` | Bedroom Tv | playing |
+| `media_player.bedroom_tv` | Bedroom Tv | off |
 
 | `media_player.blake_s_echo_dot` | Blake's Echo Dot | unavailable |
 
@@ -895,7 +895,7 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `remote.bedroom_tv` | Bedroom Tv Remote | on |
+| `remote.bedroom_tv` | Bedroom Tv Remote | off |
 
 </details>
 
@@ -907,21 +907,21 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `scene.all_lights` | All Lights | 2026-04-17T05:15:25.658315+00:00 |
+| `scene.all_lights` | All Lights | 2026-04-18T02:50:40.453861+00:00 |
 
-| `scene.all_off` | All Off | 2026-04-16T14:52:00.109425+00:00 |
+| `scene.all_off` | All Off | 2026-04-17T15:01:00.440405+00:00 |
 
-| `scene.bedroom_lights_off` | Bedroom Lights Off | 2026-04-14T13:25:05.726807+00:00 |
+| `scene.bedroom_lights_off` | Bedroom Lights Off | 2026-04-17T14:30:39.414873+00:00 |
 
 | `scene.dimmed` | Dimmed | 2026-04-16T07:13:03.920276+00:00 |
 
-| `scene.full_lamp` | Full Lamp | 2026-04-17T06:16:36.118506+00:00 |
+| `scene.full_lamp` | Full Lamp | 2026-04-18T03:14:46.273049+00:00 |
 
-| `scene.goodnight_scene` | Goodnight | 2026-04-16T14:00:12.517407+00:00 |
+| `scene.goodnight_scene` | Goodnight | 2026-04-18T06:09:08.086458+00:00 |
 
 | `scene.im_awake` | I’m Awake | 2026-04-09T17:49:30.369497+00:00 |
 
-| `scene.lights_off_except_bedroom` | Lights off except bedroom | 2026-04-17T05:22:08.306846+00:00 |
+| `scene.lights_off_except_bedroom` | Lights off except bedroom | 2026-04-18T06:19:11.926968+00:00 |
 
 | `scene.night_light` | Night Light | 2025-09-26T00:17:04.739409+00:00 |
 
@@ -1011,17 +1011,17 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `sensor.50_onn_roku_tv_active_app` | Bedroom TV Active app | YouTube |
+| `sensor.50_onn_roku_tv_active_app` | Bedroom TV Active app | unknown |
 
-| `sensor.50_onn_roku_tv_active_app_id` | Bedroom TV Active app ID | 837 |
+| `sensor.50_onn_roku_tv_active_app_id` | Bedroom TV Active app ID | unknown |
 
-| `sensor.a_expansion_attic_humidity` | A expansion attic Humidity | 27 |
+| `sensor.a_expansion_attic_humidity` | A expansion attic Humidity | 30 |
 
-| `sensor.a_expansion_attic_temperature` | A expansion attic Temperature | 94.1 |
+| `sensor.a_expansion_attic_temperature` | A expansion attic Temperature | 93.2 |
 
-| `sensor.akamatis_presence_sensor_b24c50_detection_distance` | Akamatis Presence Sensor b24c50 Detection Distance | 46.0629921259843 |
+| `sensor.akamatis_presence_sensor_b24c50_detection_distance` | Akamatis Presence Sensor b24c50 Detection Distance | 37.7952755905512 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g0_move_energy` | Akamatis Presence Sensor b24c50 g0 move energy | 4.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g0_move_energy` | Akamatis Presence Sensor b24c50 g0 move energy | 5.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g0_still_energy` | Akamatis Presence Sensor b24c50 g0 still energy | 0.0 |
 
@@ -1029,31 +1029,31 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.akamatis_presence_sensor_b24c50_g1_still_energy` | Akamatis Presence Sensor b24c50 g1 still energy | 0.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g2_move_energy` | Akamatis Presence Sensor b24c50 g2 move energy | 5.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g2_move_energy` | Akamatis Presence Sensor b24c50 g2 move energy | 9.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g2_still_energy` | Akamatis Presence Sensor b24c50 g2 still energy | 0.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g3_move_energy` | Akamatis Presence Sensor b24c50 g3 move energy | 4.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g3_move_energy` | Akamatis Presence Sensor b24c50 g3 move energy | 8.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g3_still_energy` | Akamatis Presence Sensor b24c50 g3 still energy | 5.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g4_move_energy` | Akamatis Presence Sensor b24c50 g4 move energy | 5.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g4_move_energy` | Akamatis Presence Sensor b24c50 g4 move energy | 4.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g4_still_energy` | Akamatis Presence Sensor b24c50 g4 still energy | 4.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g5_move_energy` | Akamatis Presence Sensor b24c50 g5 move energy | 3.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g5_move_energy` | Akamatis Presence Sensor b24c50 g5 move energy | 5.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g5_still_energy` | Akamatis Presence Sensor b24c50 g5 still energy | 4.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g6_move_energy` | Akamatis Presence Sensor b24c50 g6 move energy | 3.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g6_still_energy` | Akamatis Presence Sensor b24c50 g6 still energy | 5.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g6_still_energy` | Akamatis Presence Sensor b24c50 g6 still energy | 4.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g7_move_energy` | Akamatis Presence Sensor b24c50 g7 move energy | 4.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g7_move_energy` | Akamatis Presence Sensor b24c50 g7 move energy | 5.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g7_still_energy` | Akamatis Presence Sensor b24c50 g7 still energy | 5.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g7_still_energy` | Akamatis Presence Sensor b24c50 g7 still energy | 4.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g8_move_energy` | Akamatis Presence Sensor b24c50 g8 move energy | 6.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g8_move_energy` | Akamatis Presence Sensor b24c50 g8 move energy | 3.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g8_still_energy` | Akamatis Presence Sensor b24c50 g8 still energy | 4.0 |
 
@@ -1061,13 +1061,13 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.akamatis_presence_sensor_b24c50_move_energy` | Akamatis Presence Sensor b24c50 Move Energy | 0.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_moving_distance` | Akamatis Presence Sensor b24c50 Moving Distance | 57.4803149606299 |
+| `sensor.akamatis_presence_sensor_b24c50_moving_distance` | Akamatis Presence Sensor b24c50 Moving Distance | 55.9055118110236 |
 
 | `sensor.akamatis_presence_sensor_b24c50_presence_sensor_mac_address` | Akamatis Presence Sensor b24c50 presence sensor mac address | BC:AC:90:8F:FF:00 |
 
 | `sensor.akamatis_presence_sensor_b24c50_presence_sensor_version` | Akamatis Presence Sensor b24c50 presence sensor version | 2.44.25070917 |
 
-| `sensor.akamatis_presence_sensor_b24c50_still_distance` | Akamatis Presence Sensor b24c50 Still Distance | 57.4803149606299 |
+| `sensor.akamatis_presence_sensor_b24c50_still_distance` | Akamatis Presence Sensor b24c50 Still Distance | 55.9055118110236 |
 
 | `sensor.akamatis_presence_sensor_b24c50_still_energy` | Akamatis Presence Sensor b24c50 Still Energy | 100.0 |
 
@@ -1077,9 +1077,9 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.all_echo_next_timer` | Next timer | unavailable |
 
-| `sensor.apartment_humidity` | Apartment Humidity | 59 |
+| `sensor.apartment_humidity` | Apartment Humidity | 62 |
 
-| `sensor.apartment_temperature` | Apartment Temperature | 66.38 |
+| `sensor.apartment_temperature` | Apartment Temperature | 66.56 |
 
 | `sensor.aqara_fp300_battery` | Aqara FP300 Battery | 100.0 |
 
@@ -1093,41 +1093,41 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.backup_backup_manager_state` | Backup Backup Manager state | idle |
 
-| `sensor.backup_last_attempted_automatic_backup` | Backup Last attempted automatic backup | 2026-04-16T10:17:04+00:00 |
+| `sensor.backup_last_attempted_automatic_backup` | Backup Last attempted automatic backup | 2026-04-17T09:55:14+00:00 |
 
-| `sensor.backup_last_successful_automatic_backup` | Backup Last successful automatic backup | 2026-04-16T10:24:49+00:00 |
+| `sensor.backup_last_successful_automatic_backup` | Backup Last successful automatic backup | 2026-04-17T10:02:57+00:00 |
 
-| `sensor.backup_next_scheduled_automatic_backup` | Backup Next scheduled automatic backup | 2026-04-17T09:55:14+00:00 |
+| `sensor.backup_next_scheduled_automatic_backup` | Backup Next scheduled automatic backup | 2026-04-18T10:33:13+00:00 |
 
-| `sensor.bathroom_humidity` | Bathroom Humidity | 53.21 |
+| `sensor.bathroom_humidity` | Bathroom Humidity | 55.4 |
 
-| `sensor.bathroom_humidity_derivative` | Temp & Humidity Bathroom Humidity Derivative | 0.0 |
+| `sensor.bathroom_humidity_derivative` | Temp & Humidity Bathroom Humidity Derivative | 0.2 |
 
 | `sensor.bathroom_light_auto_off_at` | Bathroom Light Auto-off at | unknown |
 
 | `sensor.bathroom_light_signal_level` | Bathroom Light Signal level | 3 |
 
-| `sensor.bathroom_temperature` | Bathroom Temperature | 67.208 |
+| `sensor.bathroom_temperature` | Bathroom Temperature | 67.28 |
 
 | `sensor.bed_presence_bb8594_calibrated_left_pressure` | Bed Pressure Sensor Calibrated Left Pressure | 100.0 |
 
-| `sensor.bed_presence_bb8594_calibrated_right_pressure` | Bed Pressure Sensor Calibrated Right Pressure | 44.959716796875 |
+| `sensor.bed_presence_bb8594_calibrated_right_pressure` | Bed Pressure Sensor Calibrated Right Pressure | 25.596923828125 |
 
-| `sensor.bed_presence_bb8594_left_pressure` | Bed Pressure Sensor Left Pressure | 94.0714797973633 |
+| `sensor.bed_presence_bb8594_left_pressure` | Bed Pressure Sensor Left Pressure | 92.7221221923828 |
 
-| `sensor.bed_presence_bb8594_right_pressure` | Bed Pressure Sensor Right Pressure | 89.2479858398438 |
+| `sensor.bed_presence_bb8594_right_pressure` | Bed Pressure Sensor Right Pressure | 88.2798461914062 |
 
-| `sensor.bed_presence_bb8594_uptime` | Bed Pressure Sensor Uptime | 2266157.75 |
+| `sensor.bed_presence_bb8594_uptime` | Bed Pressure Sensor Uptime | 2352560.5 |
 
-| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Pressure Sensor WiFi Signal dB | -47.0 |
+| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Pressure Sensor WiFi Signal dB | -51.0 |
 
-| `sensor.bed_presence_bb8594_wifi_signal_percent` | Bed Pressure Sensor WiFi Signal Percent | 100.0 |
+| `sensor.bed_presence_bb8594_wifi_signal_percent` | Bed Pressure Sensor WiFi Signal Percent | 98.0 |
 
 | `sensor.bedroom_ceiling_fan_energy_consumed` | Bedroom Ceiling Fan Energy consumed | 18.337437 |
 
 | `sensor.blake_foster30_gmail_com_total_available_storage` | blake.foster30@gmail.com Total available storage | 5120.0 |
 
-| `sensor.blake_foster30_gmail_com_used_storage` | blake.foster30@gmail.com Used storage | 269.110728806816 |
+| `sensor.blake_foster30_gmail_com_used_storage` | blake.foster30@gmail.com Used storage | 269.195827165619 |
 
 | `sensor.blake_foster30_gmail_com_vacation_end_date` | blake.foster30@gmail.com Vacation end date | unknown |
 
@@ -1191,15 +1191,15 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.blakes_iphone_app_version` | Blakes iPhone App Version | 2026.4.0 |
 
-| `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 40 |
+| `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 65 |
 
 | `sensor.blakes_iphone_battery_state` | Blakes iPhone Battery State | Not Charging |
 
-| `sensor.blakes_iphone_geocoded_location` | Blakes iPhone Geocoded Location | 1100–1499 Watermark Dr
+| `sensor.blakes_iphone_geocoded_location` | Blakes iPhone Geocoded Location | 1002 Watermark Dr
 O'Fallon MO 63368
 United States |
 
-| `sensor.blakes_iphone_ssid` | Blakes iPhone SSID | Not Connected |
+| `sensor.blakes_iphone_ssid` | Blakes iPhone SSID | ATTEPISyDS |
 
 | `sensor.bleperipheralapp_4840_estimated_distance` | Estimated distance | unavailable |
 
@@ -1207,13 +1207,13 @@ United States |
 
 | `sensor.bthome_sensor_3370_illuminance` | Motion 1 - Shelly Illuminance | 39.0 |
 
-| `sensor.bthome_sensor_3370_packet_id` | Motion 1 - Shelly Packet Id | 135 |
+| `sensor.bthome_sensor_3370_packet_id` | Motion 1 - Shelly Packet Id | 142 |
 
-| `sensor.bthome_sensor_3370_signal_strength` | Motion 1 - Shelly Signal Strength | -74 |
+| `sensor.bthome_sensor_3370_signal_strength` | Motion 1 - Shelly Signal Strength | -63 |
 
-| `sensor.c_expansion_attic_humidity` | C Expansion attic Humidity | 33 |
+| `sensor.c_expansion_attic_humidity` | C Expansion attic Humidity | 36 |
 
-| `sensor.c_expansion_attic_temperature` | C Expansion attic Temperature | 91.94 |
+| `sensor.c_expansion_attic_temperature` | C Expansion attic Temperature | 88.7 |
 
 | `sensor.closet_light_auto_off_at` | Closet Light Auto-off at | unknown |
 
@@ -1223,7 +1223,7 @@ United States |
 
 | `sensor.d_expansion_attic_temperature` | D expansion attic Temperature | unavailable |
 
-| `sensor.everything_presence_lite_922d28_illuminance` | Everything Presence Lite Illuminance | 0.113188967108727 |
+| `sensor.everything_presence_lite_922d28_illuminance` | Everything Presence Lite Illuminance | 0.0 |
 
 | `sensor.everything_presence_lite_922d28_mmwave_firmware` | Everything Presence Lite mmWave Firmware | V2.04 |
 
@@ -1231,17 +1231,17 @@ United States |
 
 | `sensor.everything_presence_lite_922d28_occupancy_mask_2_target_count` | Everything Presence Lite Occupancy Mask 2 Target Count | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -3.41250920295715 |
+| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -46.3384437561035 |
 
-| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 123.683880182702 |
+| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 11.9182796928826 |
 
 | `sensor.everything_presence_lite_922d28_target_1_resolution` | Everything Presence Lite Target 1 Resolution | 14.1732283464567 |
 
 | `sensor.everything_presence_lite_922d28_target_1_speed` | Everything Presence Lite Target 1 Speed | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | -78.7795275590551 |
+| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | 0.669291338582677 |
 
-| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 95.3149606299213 |
+| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 11.8897637795276 |
 
 | `sensor.everything_presence_lite_922d28_target_2_angle` | Everything Presence Lite Target 2 Angle | 0.0 |
 
@@ -1283,7 +1283,7 @@ United States |
 
 | `sensor.front_door_sensor_battery` | Front Door Sensor Battery | 93 |
 
-| `sensor.front_door_sensor_illuminance` | Front Door Sensor Illuminance | 17.0 |
+| `sensor.front_door_sensor_illuminance` | Front Door Sensor Illuminance | 15.0 |
 
 | `sensor.front_door_sensor_rotation` | Front Door Sensor Rotation | 0.0 |
 
@@ -1317,17 +1317,17 @@ United States |
 
 | `sensor.main_lights_auto_off_at` | Main Lights Auto-off at | unknown |
 
-| `sensor.main_lights_current` | Main Lights Current | 0.01 |
+| `sensor.main_lights_current` | Main Lights Current | 0.0 |
 
 | `sensor.main_lights_current_consumption` | Main Lights Current consumption | 0.0 |
 
 | `sensor.main_lights_signal_level` | Main Lights Signal level | 3 |
 
-| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 0.176 |
+| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 0.184 |
 
-| `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.004 |
+| `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.0 |
 
-| `sensor.main_lights_voltage` | Main Lights Voltage | 124.1 |
+| `sensor.main_lights_voltage` | Main Lights Voltage | 122.5 |
 
 | `sensor.motion_2_battery` | Motion 2 - Third Reality Battery | 100.0 |
 
@@ -1343,45 +1343,45 @@ United States |
 
 | `sensor.nest_temperature_sensor_stairwell_g_temperature` | Nest Temperature Sensor (Stairwell G) Temperature | unavailable |
 
-| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 66.344 |
+| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 66.488 |
 
 | `sensor.niu_kqi_cf5e_estimated_distance` | NIU KQi CF5E Estimated distance | unavailable |
 
 | `sensor.niu_kqi_fcd3_estimated_distance` | NIU KQi FCD3 Estimated distance | unavailable |
 
-| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 4 |
+| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 100 |
 
-| `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | clear-night |
+| `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | rainy |
 
-| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 61.484 |
+| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 58.892 |
 
-| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 65.156 |
+| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 60.8 |
 
-| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 89 |
+| `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 94 |
 
-| `sensor.openweathermap_precipitation_kind_2` | OpenWeatherMap Precipitation kind | None |
+| `sensor.openweathermap_precipitation_kind_2` | OpenWeatherMap Precipitation kind | Rain |
 
-| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.6923234567948 |
+| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.6198045848461 |
 
-| `sensor.openweathermap_rain_2` | OpenWeatherMap Rain intensity | 0.0 |
+| `sensor.openweathermap_rain_2` | OpenWeatherMap Rain intensity | 0.0511811023622047 |
 
 | `sensor.openweathermap_snow_2` | OpenWeatherMap Snow intensity | 0.0 |
 
-| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 64.796 |
+| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 60.62 |
 
 | `sensor.openweathermap_uv_index_2` | OpenWeatherMap UV index | 0 |
 
-| `sensor.openweathermap_visibility_2` | OpenWeatherMap Visibility | 32808.3989501312 |
+| `sensor.openweathermap_visibility_2` | OpenWeatherMap Visibility | 6574.8031496063 |
 
-| `sensor.openweathermap_weather_2` | OpenWeatherMap Weather | clear sky |
+| `sensor.openweathermap_weather_2` | OpenWeatherMap Weather | moderate rain |
 
-| `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 800 |
+| `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 501 |
 
-| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 191 |
+| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 290 |
 
-| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 21.9890837508948 |
+| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 30.8026127415891 |
 
-| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 6.97924123120974 |
+| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 15.3006442376521 |
 
 | `sensor.philips_rwl020_battery` | Hue Dimmer Battery | 100.0 |
 
@@ -1411,7 +1411,7 @@ United States |
 
 | `sensor.rachels_phone_storage` | Rachels Phone Storage | unavailable |
 
-| `sensor.rivian_phone_key_2060_estimated_distance` | Rivian Phone Key 2060 Estimated distance | unavailable |
+| `sensor.rivian_phone_key_2060_estimated_distance` | Rivian Phone Key 2060 Estimated distance | 108.267716535433 |
 
 | `sensor.rivian_phone_key_35fe_estimated_distance` | Estimated distance | unavailable |
 
@@ -1441,7 +1441,7 @@ United States |
 
 | `sensor.rivian_phone_key_ec7f_estimated_distance` | Estimated distance | unavailable |
 
-| `sensor.rivian_phone_key_f289_estimated_distance` | Rivian Phone Key F289 Estimated distance | unavailable |
+| `sensor.rivian_phone_key_f289_estimated_distance` | Rivian Phone Key F289 Estimated distance | 75.4593175853018 |
 
 | `sensor.rivian_sensor_1_067a_estimated_distance` | Estimated distance | unavailable |
 
@@ -1501,9 +1501,9 @@ United States |
 
 | `sensor.shelly_ceiling_lights_power` | Bedroom Ceiling Lights Power | 0 |
 
-| `sensor.shellyplugusg4_58e6c509a06c_current` | shellyplugusg4-58e6c509a06c Current | 0.024 |
+| `sensor.shellyplugusg4_58e6c509a06c_current` | shellyplugusg4-58e6c509a06c Current | 0.025 |
 
-| `sensor.shellyplugusg4_58e6c509a06c_energy` | shellyplugusg4-58e6c509a06c Energy | 2.878259 |
+| `sensor.shellyplugusg4_58e6c509a06c_energy` | shellyplugusg4-58e6c509a06c Energy | 2.909819 |
 
 | `sensor.shellyplugusg4_58e6c509a06c_energy_returned` | shellyplugusg4-58e6c509a06c Energy returned | 0.0 |
 
@@ -1515,25 +1515,25 @@ United States |
 
 | `sensor.slzb_mr1_firmware_channel` | SLZB-MR1 Firmware channel | release |
 
-| `sensor.slzb_mr1_zigbee_chip_temp` | SLZB-MR1 Zigbee chip temp | 105.476 |
+| `sensor.slzb_mr1_zigbee_chip_temp` | SLZB-MR1 Zigbee chip temp | 106.628 |
 
-| `sensor.slzb_mr1_zigbee_chip_temp_2` | SLZB-MR1 Zigbee chip temp | 106.394 |
+| `sensor.slzb_mr1_zigbee_chip_temp_2` | SLZB-MR1 Zigbee chip temp | 107.834 |
 
 | `sensor.slzb_mr1_zigbee_type` | SLZB-MR1 Zigbee type | thread |
 
 | `sensor.slzb_mr1_zigbee_type_2` | SLZB-MR1 Zigbee type | coordinator |
 
-| `sensor.sun_next_dawn` | Sun Next dawn | 2026-04-17T10:55:39+00:00 |
+| `sensor.sun_next_dawn` | Sun Next dawn | 2026-04-18T10:54:11+00:00 |
 
-| `sensor.sun_next_dusk` | Sun Next dusk | 2026-04-18T01:09:43+00:00 |
+| `sensor.sun_next_dusk` | Sun Next dusk | 2026-04-19T01:10:45+00:00 |
 
-| `sensor.sun_next_midnight` | Sun Next midnight | 2026-04-18T06:02:06+00:00 |
+| `sensor.sun_next_midnight` | Sun Next midnight | 2026-04-19T06:01:53+00:00 |
 
-| `sensor.sun_next_noon` | Sun Next noon | 2026-04-17T18:02:29+00:00 |
+| `sensor.sun_next_noon` | Sun Next noon | 2026-04-18T18:02:16+00:00 |
 
-| `sensor.sun_next_rising` | Sun Next rising | 2026-04-17T11:23:47+00:00 |
+| `sensor.sun_next_rising` | Sun Next rising | 2026-04-18T11:22:22+00:00 |
 
-| `sensor.sun_next_setting` | Sun Next setting | 2026-04-18T00:41:30+00:00 |
+| `sensor.sun_next_setting` | Sun Next setting | 2026-04-19T00:42:27+00:00 |
 
 | `sensor.t8d02_e3bb_estimated_distance` | Estimated distance | unavailable |
 
@@ -1543,11 +1543,11 @@ United States |
 
 | `sensor.third_reality_inc_3rths0224z_battery` | Temp & Humidity Battery | 100.0 |
 
-| `sensor.third_reality_inc_3rvs01031z_battery` | Vibration Sensor 1 Battery | 77.0 |
+| `sensor.third_reality_inc_3rvs01031z_battery` | Vibration Sensor 1 Battery | 75.5 |
 
 | `sensor.uptime` | Uptime | 2026-04-11T20:50:15+00:00 |
 
-| `sensor.vibration_2_third_reality_battery` | Vibration Sensor 2 Battery | 70.5 |
+| `sensor.vibration_2_third_reality_battery` | Vibration Sensor 2 Battery | 70.0 |
 
 | `sensor.washing_machine_power` | Washing Machine Power | 1.3 |
 
@@ -1803,7 +1803,7 @@ United States |
 
 | `update.mushroom_update` | Mushroom Update | off |
 
-| `update.music_assistant_update` | Music Assistant Update | off |
+| `update.music_assistant_update` | Music Assistant Update | on |
 
 | `update.navbar_card_update` | Navbar card Update | off |
 
@@ -1861,7 +1861,7 @@ United States |
 | Entity ID | Name | State |
 |---|---|---|
 
-| `weather.openweathermap_2` | OpenWeatherMap | clear-night |
+| `weather.openweathermap_2` | OpenWeatherMap | rainy |
 
 </details>
 
