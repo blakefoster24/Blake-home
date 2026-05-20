@@ -1700,6 +1700,7 @@
   - trigger: time
     at: 08:30:00
     id: Late Time Window
+    enabled: false
   conditions:
   - condition: state
     state: 'on'
