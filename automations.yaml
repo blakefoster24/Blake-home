@@ -1698,9 +1698,9 @@
       device_ieee: 00:17:88:01:02:18:b1:7a
       command: on_short_release
   - trigger: time
-    at: 08:30:00
+    at: 08:45:00
     id: Late Time Window
-    enabled: false
+    enabled: true
   conditions:
   - condition: state
     state: 'on'
