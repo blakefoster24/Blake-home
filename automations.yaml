@@ -1891,6 +1891,7 @@
           title: Goodbye
           data:
             interruption level: time-sensitive
+      - stop: ''
     - alias: Out of bed = weather
       sequence:
       - wait_for_trigger:
