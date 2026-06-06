@@ -220,13 +220,6 @@ alexa_music:
             < as_timestamp(states.binary_sensor.front_door.last_changed) }}\n"
         - trigger: state
           entity_id:
-          - input_boolean.disable_toggle
-          to:
-          - 'off'
-          from:
-          - 'on'
-        - trigger: state
-          entity_id:
           - binary_sensor.alexa_master_sensor
           to:
           - 'off'
@@ -234,6 +227,10 @@ alexa_music:
             hours: 0
             minutes: 2
             seconds: 0
+        - trigger: switch.turned_off
+          target:
+            entity_id: input_boolean.disable_toggle
+          options: {}
       - action: media_player.media_stop
         metadata: {}
         data: {}

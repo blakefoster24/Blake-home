@@ -398,16 +398,6 @@
   - trigger: time
     at: '22:00:00'
     id: Night Time Window
-  - trigger: state
-    entity_id:
-    - person.blake_foster
-    to: home
-    id: Blake’s home
-  - trigger: state
-    entity_id:
-    - person.blake_foster
-    to: not_home
-    id: Blake away
   - alias: 64 > Thermostat Temperature > 76
     trigger: template
     value_template: "{{ states('sensor.nest_thermostat_temperature') | float > 76
@@ -427,67 +417,119 @@
       hours: 0
       minutes: 20
       seconds: 0
+  - trigger: temperature.crossed_threshold
+    target:
+      entity_id: sensor.openweathermap_temperature_2
+    options:
+      threshold:
+        type: below
+        value:
+          active_choice: number
+          number: 65
+          unit_of_measurement: °F
+    id: Below 65
+  - trigger: temperature.crossed_threshold
+    target:
+      entity_id: sensor.openweathermap_temperature_2
+    options:
+      threshold:
+        type: above
+        value:
+          active_choice: number
+          number: 70
+          unit_of_measurement: °F
+    id: Above 70
+  - trigger: zone.entered
+    target:
+      entity_id: person.blake_foster
+    options:
+      behavior: each
+      for: 00:00:00
+      zone: zone.home
+    id: Blake’s home
+  - trigger: zone.left
+    target:
+      entity_id: person.blake_foster
+    options:
+      behavior: each
+      for: 00:00:00
+      zone: zone.home
+    id: Blake away
   conditions:
   - condition: or
     conditions:
-    - condition: state
-      entity_id: input_boolean.thermostat_automation_pause
-      state:
-      - 'off'
     - condition: trigger
       id:
       - Set-point discrepancy
       - 64 > Thermostat Temperature > 76
+    - condition: state
+      entity_id: input_boolean.thermostat_automation_pause
+      state:
+      - 'off'
   actions:
-  - sequence:
-    - condition: trigger
-      id:
-      - Morning Time Window
-      - Afternoon Time Window
-      - Night Time Window
-    - choose:
-      - conditions:
-        - condition: numeric_state
-          entity_id: sensor.openweathermap_temperature_2
-          below: 51
-        sequence:
-        - alias: Heat 67
-          action: climate.set_temperature
-          metadata: {}
-          data:
-            hvac_mode: heat
-            temperature: 67
-          target:
-            device_id: b43f8797bfe54ded21e44c051fec8167
-      - conditions:
-        - condition: numeric_state
-          entity_id: sensor.openweathermap_temperature_2
-          below: 64
-          above: 50
-        sequence:
-        - alias: Heat/Cool - 66/68
-          action: climate.set_temperature
-          metadata: {}
-          data:
-            hvac_mode: heat_cool
-            target_temp_low: 66
-            target_temp_high: 68
-          target:
-            device_id: b43f8797bfe54ded21e44c051fec8167
-      - conditions:
-        - condition: numeric_state
-          entity_id: sensor.openweathermap_temperature_2
-          above: 64
-        sequence:
-        - alias: Cool - 67
-          action: climate.set_temperature
-          metadata: {}
-          data:
-            hvac_mode: cool
-            temperature: 67
-          target:
-            device_id: b43f8797bfe54ded21e44c051fec8167
   - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Below 65
+      - condition: not
+        conditions:
+        - alias: Home + workday + 9-4
+          condition: and
+          conditions:
+          - condition: switch.is_on
+            target:
+              entity_id: input_boolean.workday_today_toggle
+            options: {}
+          - condition: time
+            after: 09:00:00
+            before: '15:50:00'
+          - condition: zone.not_in_zone
+            target:
+              entity_id: person.blake_foster
+            options:
+              behavior: any
+              for: 00:00:00
+              zone: zone.home
+      sequence:
+      - action: climate.set_temperature
+        metadata: {}
+        target:
+          entity_id: climate.nest_thermostat
+        data:
+          temperature: 68
+          hvac_mode: heat
+    - conditions:
+      - condition: trigger
+        id:
+        - Above 70
+      - condition: not
+        conditions:
+        - alias: Home + workday + 9-4
+          condition: and
+          conditions:
+          - condition: switch.is_on
+            target:
+              entity_id: input_boolean.workday_today_toggle
+            options: {}
+          - condition: time
+            after: 09:00:00
+            before: '15:50:00'
+          - condition: zone.not_in_zone
+            target:
+              entity_id: person.blake_foster
+            options:
+              behavior: any
+              for: 00:00:00
+              zone: zone.home
+      sequence:
+      - action: climate.set_temperature
+        metadata: {}
+        target:
+          entity_id: climate.nest_thermostat
+        data:
+          temperature: 68
+          hvac_mode: cool
     - conditions:
       - condition: trigger
         id:
@@ -506,228 +548,38 @@
           entity_id: scene.thermostat_away
       alias: Away Branch
     - conditions:
-      - condition: or
-        conditions:
-        - alias: 9am ≠ Workday
-          condition: and
-          conditions:
-          - condition: trigger
-            id:
-            - Morning Time Window
-          - condition: state
-            entity_id: input_boolean.workday_today_toggle
-            state: 'off'
-        - alias: Blake Home 9am-4pm
-          condition: and
-          conditions:
-          - condition: trigger
-            id:
-            - Blake’s home
-          - condition: state
-            entity_id: input_boolean.workday_today_toggle
-            state:
-            - 'on'
-          - condition: time
-            after: 08:59:00
-            before: '15:50:00'
-        - condition: and
-          conditions:
-          - condition: time
-            after: 08:59:00
-            before: '16:00:00'
-          - condition: not
-            conditions:
-            - condition: trigger
-              id:
-              - Blake’s home
-              - Blake away
-              - 64 > Thermostat Temperature > 76
-              - Set-point discrepancy
-              - Expansion C
-              - Morning Time Window
-              - Afternoon Time Window
-              - Night Time Window
-          alias: 8am - 4pm not trigger
+      - condition: trigger
+        id:
+        - Blake’s home
+      - condition: switch.is_on
+        target:
+          entity_id: input_boolean.workday_today_toggle
+        options: {}
+      - condition: time
+        after: 08:59:00
+        before: '15:50:00'
       sequence:
-      - choose:
-        - conditions:
-          - condition: numeric_state
-            entity_id: sensor.openweathermap_temperature_2
-            below: 51
-          sequence:
-          - alias: Heat 70
-            action: climate.set_temperature
-            metadata: {}
-            data:
-              hvac_mode: heat
-              temperature: 70
-            target:
-              device_id: b43f8797bfe54ded21e44c051fec8167
-        - conditions:
-          - condition: numeric_state
-            entity_id: sensor.openweathermap_temperature_2
-            below: 68
-            above: 50
-          sequence:
-          - alias: Heat/Cool - 67/70
-            action: climate.set_temperature
-            metadata: {}
-            data:
-              hvac_mode: heat_cool
-              target_temp_high: 70
-              target_temp_low: 67
-            target:
-              device_id: b43f8797bfe54ded21e44c051fec8167
-        - conditions:
-          - condition: numeric_state
-            entity_id: sensor.openweathermap_temperature_2
-            above: 67
-          sequence:
-          - alias: Cool - 67
-            action: climate.set_temperature
-            metadata: {}
-            data:
-              hvac_mode: cool
-              temperature: 67
-            target:
-              device_id: b43f8797bfe54ded21e44c051fec8167
-      alias: Morning Branch
-    - conditions:
-      - condition: or
-        conditions:
-        - condition: trigger
-          id:
-          - Afternoon Time Window
-        - alias: 4pm-9:59pm - not trigger
-          condition: and
-          conditions:
-          - condition: time
-            after: '15:59:00'
-            before: '22:00:00'
-          - condition: not
-            conditions:
-            - condition: trigger
-              id:
-              - Blake’s home
-              - Blake away
-              - 64 > Thermostat Temperature > 76
-              - Set-point discrepancy
-              - Expansion C
-              - Morning Time Window
-              - Afternoon Time Window
-              - Night Time Window
-      sequence:
-      - choose:
-        - conditions:
-          - condition: numeric_state
-            entity_id: sensor.openweathermap_temperature_2
-            below: 61
-          sequence:
-          - alias: Heat 70
-            action: climate.set_temperature
-            metadata: {}
-            data:
-              hvac_mode: heat
-              temperature: 70
-            target:
-              device_id: b43f8797bfe54ded21e44c051fec8167
-        - conditions:
-          - condition: numeric_state
-            entity_id: sensor.openweathermap_temperature_2
-            below: 80
-            above: 60
-          sequence:
-          - alias: Heat/Cool - 68/72
-            action: climate.set_temperature
-            metadata: {}
-            data:
-              hvac_mode: heat_cool
-              target_temp_high: 70
-              target_temp_low: 67
-            target:
-              device_id: b43f8797bfe54ded21e44c051fec8167
-        - conditions:
-          - condition: numeric_state
-            entity_id: sensor.openweathermap_temperature_2
-            above: 79
-          sequence:
-          - alias: Cool - 68
-            action: climate.set_temperature
-            metadata: {}
-            data:
-              hvac_mode: cool
-              temperature: 68
-            target:
-              device_id: b43f8797bfe54ded21e44c051fec8167
-      alias: Evening Branch
-    - conditions:
-      - condition: or
-        conditions:
-        - condition: trigger
-          id:
-          - Night Time Window
-        - alias: 9pm-9am - not trigger
-          condition: and
-          conditions:
-          - condition: time
-            after: '21:59:00'
-            before: 09:00:00
-          - condition: not
-            conditions:
-            - condition: trigger
-              id:
-              - Blake’s home
-              - Blake away
-              - 64 > Thermostat Temperature > 76
-              - Set-point discrepancy
-              - Expansion C
-              - Morning Time Window
-              - Afternoon Time Window
-              - Night Time Window
-      sequence:
-      - choose:
-        - conditions:
-          - condition: numeric_state
-            entity_id: sensor.openweathermap_temperature_2
-            below: 61
-          sequence:
-          - alias: Heat 70
-            action: climate.set_temperature
-            metadata: {}
-            data:
-              hvac_mode: heat
-              temperature: 70
-            target:
-              device_id: b43f8797bfe54ded21e44c051fec8167
-        - conditions:
-          - condition: numeric_state
-            entity_id: sensor.openweathermap_temperature_2
-            below: 80
-            above: 60
-          sequence:
-          - alias: Heat/Cool - 68/72
-            action: climate.set_temperature
-            metadata: {}
-            data:
-              hvac_mode: heat_cool
-              target_temp_high: 70
-              target_temp_low: 67
-            target:
-              device_id: b43f8797bfe54ded21e44c051fec8167
-        - conditions:
-          - condition: numeric_state
-            entity_id: sensor.openweathermap_temperature_2
-            above: 79
-          sequence:
-          - alias: Cool - 69
-            action: climate.set_temperature
-            metadata: {}
-            data:
-              hvac_mode: cool
-              temperature: 68
-            target:
-              device_id: b43f8797bfe54ded21e44c051fec8167
-      alias: Night Branch
+      - if:
+        - condition: numeric_state
+          entity_id: sensor.openweathermap_temperature_2
+          above: 68
+        then:
+        - action: climate.set_temperature
+          metadata: {}
+          target:
+            entity_id: climate.nest_thermostat
+          data:
+            temperature: 68
+            hvac_mode: cool
+        else:
+        - action: climate.set_temperature
+          metadata: {}
+          target:
+            entity_id: climate.nest_thermostat
+          data:
+            temperature: 68
+            hvac_mode: heat
+      alias: Blake home during workday
     - conditions: []
       sequence:
       - choose:
@@ -764,7 +616,7 @@
                     volume: 0.5
       alias: Temperature Issue
     continue_on_error: true
-    enabled: false
+    enabled: true
   trace:
     stored_traces: 50
   mode: single
@@ -791,6 +643,11 @@
   - trigger: time
     at: '23:00:00'
     id: 11pm
+  - trigger: switch.turned_on
+    target:
+      entity_id: input_boolean.workday_toggle_helper
+    options: {}
+    id: workday wakeup leaving sequence completed
   conditions: []
   actions:
   - choose:
@@ -834,6 +691,33 @@
           data:
             interruption-level: time-sensitive
           title: Door Did Not Close
+    - conditions:
+      - condition: trigger
+        id:
+        - workday wakeup leaving sequence completed
+      - condition: template
+        value_template: '{{ state_attr(''automation.workday_wakeup'', ''current'')
+          > 0 }}
+
+          '
+        alias: Workday Wakeup Active
+      sequence:
+      - action: automation.turn_off
+        metadata: {}
+        target:
+          entity_id: automation.workday_wakeup
+        data:
+          stop_actions: true
+      - action: automation.turn_on
+        metadata: {}
+        target:
+          entity_id: automation.workday_wakeup
+        data: {}
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id: input_boolean.workday_toggle_helper
+        data: {}
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
@@ -1701,13 +1585,28 @@
     at: 08:45:00
     id: Late Time Window
     enabled: true
+  - trigger: time
+    at: 04:18:00
   conditions:
   - condition: state
     state: 'on'
     entity_id: input_boolean.workday_today_toggle
+    enabled: true
   - condition: time
     after: 08:00:00
     before: 09:30:00
+    enabled: true
+  - condition: state
+    entity_id: binary_sensor.apartment_presence
+    state:
+    - 'on'
+  - condition: zone.in_zone
+    target:
+      entity_id: person.blake_foster
+    options:
+      behavior: any
+      for: 00:00:00
+      zone: zone.home
   actions:
   - parallel:
     - alias: Wake Up Scene Sequence
@@ -1836,6 +1735,22 @@
         target:
           entity_id: light.bedroom_tv_backlight
         data: {}
+    - alias: Alarm script at 8:50
+      sequence:
+      - wait_for_trigger:
+        - trigger: time
+          at: 08:50:00
+        continue_on_timeout: false
+        timeout:
+          hours: 1
+          minutes: 0
+          seconds: 0
+          milliseconds: 0
+      - action: script.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: script.alexa_music
     - alias: Leaving Sequence
       sequence:
       - action: automation.turn_off
@@ -1884,6 +1799,12 @@
         data:
           device_id: ba7e4aed08d0947fa03068f398842568
           text_command: turn off Roku backlight
+      - wait_template: "{% set alexa_devices = [\n  'media_player.blake_s_echo_dot',\n
+          \ 'media_player.all_echo',\n  'media_player.blake_s_echo_pop',\n  'media_player.blake_s_echo_spot'\n]
+          %}\n{{ not expand(alexa_devices) | map(attribute='state') | select('eq',
+          'playing') | list | count > 0 }}\n"
+        continue_on_timeout: false
+        alias: No Echo ‘Playing’
       - action: notify.mobile_app_blakes_iphone
         metadata: {}
         data:
@@ -1891,7 +1812,11 @@
           title: Goodbye
           data:
             interruption level: time-sensitive
-      - stop: ''
+      - action: input_boolean.turn_on
+        metadata: {}
+        target:
+          entity_id: input_boolean.workday_toggle_helper
+        data: {}
     - alias: Out of bed = weather
       sequence:
       - wait_for_trigger:
@@ -1917,29 +1842,6 @@
         data:
           text_command: What’s the weather today?
           device_id: ba7e4aed08d0947fa03068f398842568
-    - alias: Alarm script at 8:50
-      sequence:
-      - wait_for_trigger:
-        - trigger: time
-          at: 08:50:00
-        continue_on_timeout: false
-        timeout:
-          hours: 1
-          minutes: 0
-          seconds: 0
-          milliseconds: 0
-      - wait_template: '{{ (as_timestamp(now()) - state_attr(''input_datetime.last_door_open'',''timestamp'')
-          | default(0)) > 3600 }}
-
-          '
-        continue_on_timeout: false
-        timeout: '30'
-      - action: script.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: script.alexa_music
-    continue_on_error: true
   mode: single
   trace:
     stored_traces: 50
