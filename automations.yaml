@@ -580,7 +580,11 @@
             temperature: 68
             hvac_mode: heat
       alias: Blake home during workday
-    - conditions: []
+    - conditions:
+      - condition: trigger
+        id:
+        - 64 > Thermostat Temperature > 76
+        - Set-point discrepancy
       sequence:
       - choose:
         - conditions:
