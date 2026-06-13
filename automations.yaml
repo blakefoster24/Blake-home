@@ -657,7 +657,7 @@
             entity_id: climate.nest_thermostat
           data:
             temperature: 68
-            hvac_mode: heat
+            hvac_mode: cool
         else:
         - action: climate.set_temperature
           metadata: {}
@@ -665,7 +665,7 @@
             entity_id: climate.nest_thermostat
           data:
             temperature: 68
-            hvac_mode: cool
+            hvac_mode: heat
     continue_on_error: true
     enabled: true
   trace:
