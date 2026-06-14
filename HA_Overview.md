@@ -1,4 +1,4 @@
-_Last Updated: 2026-06-13T20:39:54.516343-05:00_
+_Last Updated: 2026-06-13T20:40:23.705664-05:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -14,7 +14,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-| `input_boolean.disable_toggle` | **Disable toggle ** | on |  |
+| `input_boolean.disable_toggle` | **Disable toggle ** | off |  |
 
 
 
@@ -119,7 +119,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-| `input_text.alarm_music` | **Alarm Music** | My likes |  |
+| `input_text.alarm_music` | **Alarm Music** | No My likes |  |
 
 
 
@@ -241,9 +241,9 @@ Below are the input helpers configured in Home Assistant.
 
 | `binary_sensor.akamatis_presence_sensor_b24c50_still_target` | Akamatis Presence Sensor b24c50 Still Target | off |
 
-| `binary_sensor.alexa_master_sensor` | Alexa Master Sensor | off |
+| `binary_sensor.alexa_master_sensor` | Alexa Master Sensor | on |
 
-| `binary_sensor.all_echo` | All Echo | off |
+| `binary_sensor.all_echo` | All Echo | on |
 
 | `binary_sensor.all_echo_connectivity` | All Echo Connectivity | unavailable |
 
@@ -285,9 +285,9 @@ Below are the input helpers configured in Home Assistant.
 
 | `binary_sensor.echo_dot_active` | Echo Dot Active | off |
 
-| `binary_sensor.echo_pop_active` | Echo Pop Active | off |
+| `binary_sensor.echo_pop_active` | Echo Pop Active | on |
 
-| `binary_sensor.echo_spot_active` | Echo Spot Active | off |
+| `binary_sensor.echo_spot_active` | Echo Spot Active | on |
 
 | `binary_sensor.everything_presence_lite_922d28_target_1_active` | Everything Presence Lite Target 1 Active | on |
 
@@ -733,7 +733,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `media_player.all_echo_2` | All Echo | unavailable |
 
-| `media_player.bedroom_blake_s_echo_pop` | Blake's Echo Pop | paused |
+| `media_player.bedroom_blake_s_echo_pop` | Blake's Echo Pop | playing |
 
 | `media_player.bedroom_tv` | Bedroom Tv | idle |
 
@@ -743,7 +743,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `media_player.blake_s_echo_spot` | Blake's Echo Spot | paused |
 
-| `media_player.blake_s_echo_spot_2` | Blake's Echo Spot | paused |
+| `media_player.blake_s_echo_spot_2` | Blake's Echo Spot | playing |
 
 | `media_player.living_room` | Living Room | unavailable |
 
@@ -777,7 +777,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `notify.blake_s_echo_spot_speak` | Blake's Echo Spot Speak | 2026-06-03T14:10:15.586559+00:00 |
 
-| `notify.blakes_iphone` | Blakes iPhone | 2026-06-14T01:31:54.541843+00:00 |
+| `notify.blakes_iphone` | Blakes iPhone | 2026-06-14T01:40:00.732689+00:00 |
 
 | `notify.ipad` | iPad | unknown |
 
@@ -1125,7 +1125,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.akamatis_presence_sensor_b24c50_detection_distance` | Akamatis Presence Sensor b24c50 Detection Distance | 57.4803149606299 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g0_move_energy` | Akamatis Presence Sensor b24c50 g0 move energy | 2.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g0_move_energy` | Akamatis Presence Sensor b24c50 g0 move energy | 6.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g0_still_energy` | Akamatis Presence Sensor b24c50 g0 still energy | 0.0 |
 
@@ -1133,7 +1133,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.akamatis_presence_sensor_b24c50_g1_still_energy` | Akamatis Presence Sensor b24c50 g1 still energy | 0.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g2_move_energy` | Akamatis Presence Sensor b24c50 g2 move energy | 7.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g2_move_energy` | Akamatis Presence Sensor b24c50 g2 move energy | 8.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g2_still_energy` | Akamatis Presence Sensor b24c50 g2 still energy | 0.0 |
 
@@ -1141,25 +1141,25 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.akamatis_presence_sensor_b24c50_g3_still_energy` | Akamatis Presence Sensor b24c50 g3 still energy | 5.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g4_move_energy` | Akamatis Presence Sensor b24c50 g4 move energy | 2.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g4_move_energy` | Akamatis Presence Sensor b24c50 g4 move energy | 5.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g4_still_energy` | Akamatis Presence Sensor b24c50 g4 still energy | 4.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g5_move_energy` | Akamatis Presence Sensor b24c50 g5 move energy | 3.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g5_still_energy` | Akamatis Presence Sensor b24c50 g5 still energy | 3.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g5_still_energy` | Akamatis Presence Sensor b24c50 g5 still energy | 4.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g6_move_energy` | Akamatis Presence Sensor b24c50 g6 move energy | 6.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g6_still_energy` | Akamatis Presence Sensor b24c50 g6 still energy | 4.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g7_move_energy` | Akamatis Presence Sensor b24c50 g7 move energy | 1.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g7_move_energy` | Akamatis Presence Sensor b24c50 g7 move energy | 2.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g7_still_energy` | Akamatis Presence Sensor b24c50 g7 still energy | 4.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g8_move_energy` | Akamatis Presence Sensor b24c50 g8 move energy | 4.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g8_still_energy` | Akamatis Presence Sensor b24c50 g8 still energy | 3.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g8_still_energy` | Akamatis Presence Sensor b24c50 g8 still energy | 4.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_light` | Akamatis Presence Sensor b24c50 light | 0.0 |
 
@@ -1221,7 +1221,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.bed_presence_bb8594_right_pressure` | Bed Pressure Sensor Right Pressure | 87.5788192749023 |
 
-| `sensor.bed_presence_bb8594_uptime` | Bed Pressure Sensor Uptime | 3534625.25 |
+| `sensor.bed_presence_bb8594_uptime` | Bed Pressure Sensor Uptime | 3534685.25 |
 
 | `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Pressure Sensor WiFi Signal dB | -43.0 |
 
@@ -1335,17 +1335,17 @@ United States |
 
 | `sensor.everything_presence_lite_922d28_occupancy_mask_2_target_count` | Everything Presence Lite Occupancy Mask 2 Target Count | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -0.292601764202118 |
+| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -1.70981132984161 |
 
-| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 123.348061869464 |
+| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 124.03159794845 |
 
 | `sensor.everything_presence_lite_922d28_target_1_resolution` | Everything Presence Lite Target 1 Resolution | 14.1732283464567 |
 
 | `sensor.everything_presence_lite_922d28_target_1_speed` | Everything Presence Lite Target 1 Speed | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | -83.6220472440945 |
+| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | -81.8110236220472 |
 
-| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 90.6299212598425 |
+| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 93.1889763779528 |
 
 | `sensor.everything_presence_lite_922d28_target_2_angle` | Everything Presence Lite Target 2 Angle | 0.0 |
 
@@ -1421,7 +1421,7 @@ United States |
 
 | `sensor.main_lights_auto_off_at` | Main Lights Auto-off at | unknown |
 
-| `sensor.main_lights_current` | Main Lights Current | 0.0 |
+| `sensor.main_lights_current` | Main Lights Current | 0.01 |
 
 | `sensor.main_lights_current_consumption` | Main Lights Current consumption | 0.0 |
 
@@ -1431,7 +1431,7 @@ United States |
 
 | `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.015 |
 
-| `sensor.main_lights_voltage` | Main Lights Voltage | 123.6 |
+| `sensor.main_lights_voltage` | Main Lights Voltage | 123.8 |
 
 | `sensor.motion_2_battery` | Motion 2 - Third Reality Battery | 100.0 |
 
