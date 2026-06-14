@@ -1,5 +1,5 @@
-===== 2026-06-14T12:18:06.619103 — last_log.txt =====
-[33m2026-06-14 12:18:02.818 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'min' when rendering '# Home Assistant Configuration
+===== 2026-06-14T12:18:22.362019 — last_log.txt =====
+[33m2026-06-14 12:18:18.526 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'min' when rendering '# Home Assistant Configuration
 _Last Updated: {{ now().isoformat() }}_
 
 ## 🛠 UI Helpers
@@ -48,7 +48,7 @@ Below are the input helpers configured in Home Assistant.
 
 {% endif %}
 {% endfor %}'[0m
-[33m2026-06-14 12:18:02.818 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'max' when rendering '# Home Assistant Configuration
+[33m2026-06-14 12:18:18.526 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'max' when rendering '# Home Assistant Configuration
 _Last Updated: {{ now().isoformat() }}_
 
 ## 🛠 UI Helpers
@@ -97,5 +97,5 @@ Below are the input helpers configured in Home Assistant.
 
 {% endif %}
 {% endfor %}'[0m
-[33m2026-06-14 12:18:02.879 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
-[32m2026-06-14 12:18:05.960 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2026-06-14 12:18:18.585 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2026-06-14 12:18:21.727 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m

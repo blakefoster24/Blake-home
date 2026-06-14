@@ -1,4 +1,4 @@
-_Last Updated: 2026-06-14T12:18:02.810792-05:00_
+_Last Updated: 2026-06-14T12:18:18.518720-05:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -777,7 +777,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `notify.blake_s_echo_spot_speak` | Blake's Echo Spot Speak | 2026-06-03T14:10:15.586559+00:00 |
 
-| `notify.blakes_iphone` | Blakes iPhone | 2026-06-14T17:13:52.336436+00:00 |
+| `notify.blakes_iphone` | Blakes iPhone | 2026-06-14T17:18:08.457094+00:00 |
 
 | `notify.ipad` | iPad | unknown |
 
@@ -1125,29 +1125,29 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.akamatis_presence_sensor_b24c50_detection_distance` | Akamatis Presence Sensor b24c50 Detection Distance | 59.8425196850394 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g0_move_energy` | Akamatis Presence Sensor b24c50 g0 move energy | 3.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g0_move_energy` | Akamatis Presence Sensor b24c50 g0 move energy | 5.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g0_still_energy` | Akamatis Presence Sensor b24c50 g0 still energy | 0.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g1_move_energy` | Akamatis Presence Sensor b24c50 g1 move energy | 17.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g1_move_energy` | Akamatis Presence Sensor b24c50 g1 move energy | 18.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g1_still_energy` | Akamatis Presence Sensor b24c50 g1 still energy | 0.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g2_move_energy` | Akamatis Presence Sensor b24c50 g2 move energy | 8.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g2_move_energy` | Akamatis Presence Sensor b24c50 g2 move energy | 9.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g2_still_energy` | Akamatis Presence Sensor b24c50 g2 still energy | 0.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g3_move_energy` | Akamatis Presence Sensor b24c50 g3 move energy | 3.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g3_move_energy` | Akamatis Presence Sensor b24c50 g3 move energy | 4.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g3_still_energy` | Akamatis Presence Sensor b24c50 g3 still energy | 5.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g4_move_energy` | Akamatis Presence Sensor b24c50 g4 move energy | 3.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g4_still_energy` | Akamatis Presence Sensor b24c50 g4 still energy | 4.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g4_still_energy` | Akamatis Presence Sensor b24c50 g4 still energy | 5.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g5_move_energy` | Akamatis Presence Sensor b24c50 g5 move energy | 2.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g5_still_energy` | Akamatis Presence Sensor b24c50 g5 still energy | 3.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g5_still_energy` | Akamatis Presence Sensor b24c50 g5 still energy | 4.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g6_move_energy` | Akamatis Presence Sensor b24c50 g6 move energy | 2.0 |
 
@@ -1157,9 +1157,9 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.akamatis_presence_sensor_b24c50_g7_still_energy` | Akamatis Presence Sensor b24c50 g7 still energy | 4.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g8_move_energy` | Akamatis Presence Sensor b24c50 g8 move energy | 4.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g8_move_energy` | Akamatis Presence Sensor b24c50 g8 move energy | 5.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_g8_still_energy` | Akamatis Presence Sensor b24c50 g8 still energy | 3.0 |
+| `sensor.akamatis_presence_sensor_b24c50_g8_still_energy` | Akamatis Presence Sensor b24c50 g8 still energy | 4.0 |
 
 | `sensor.akamatis_presence_sensor_b24c50_light` | Akamatis Presence Sensor b24c50 light | 0.0 |
 
@@ -1217,9 +1217,9 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.bed_presence_bb8594_calibrated_right_pressure` | Bed Pressure Sensor Calibrated Right Pressure | 0.0 |
 
-| `sensor.bed_presence_bb8594_left_pressure` | Bed Pressure Sensor Left Pressure | 94.9974746704102 |
+| `sensor.bed_presence_bb8594_left_pressure` | Bed Pressure Sensor Left Pressure | 94.976921081543 |
 
-| `sensor.bed_presence_bb8594_right_pressure` | Bed Pressure Sensor Right Pressure | 84.5680847167969 |
+| `sensor.bed_presence_bb8594_right_pressure` | Bed Pressure Sensor Right Pressure | 84.9160079956055 |
 
 | `sensor.bed_presence_bb8594_uptime` | Bed Pressure Sensor Uptime | 3590906.5 |
 
@@ -1335,29 +1335,29 @@ United States |
 
 | `sensor.everything_presence_lite_922d28_occupancy_mask_2_target_count` | Everything Presence Lite Occupancy Mask 2 Target Count | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -50.0424499511719 |
+| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -50.9275016784668 |
 
-| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 11.4023800346795 |
+| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 15.3656834880198 |
 
 | `sensor.everything_presence_lite_922d28_target_1_resolution` | Everything Presence Lite Target 1 Resolution | 14.1732283464567 |
 
 | `sensor.everything_presence_lite_922d28_target_1_speed` | Everything Presence Lite Target 1 Speed | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | 1.37795275590551 |
+| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | 2.08661417322835 |
 
-| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 11.2992125984252 |
+| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 15.1968503937008 |
 
-| `sensor.everything_presence_lite_922d28_target_2_angle` | Everything Presence Lite Target 2 Angle | -6.07844161987305 |
+| `sensor.everything_presence_lite_922d28_target_2_angle` | Everything Presence Lite Target 2 Angle | -3.42590999603271 |
 
-| `sensor.everything_presence_lite_922d28_target_2_distance` | Everything Presence Lite Target 2 Distance | 127.528008889026 |
+| `sensor.everything_presence_lite_922d28_target_2_distance` | Everything Presence Lite Target 2 Distance | 122.541830708661 |
 
 | `sensor.everything_presence_lite_922d28_target_2_resolution` | Everything Presence Lite Target 2 Resolution | 14.1732283464567 |
 
 | `sensor.everything_presence_lite_922d28_target_2_speed` | Everything Presence Lite Target 2 Speed | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_2_x` | Everything Presence Lite Target 2 X | -76.5748031496063 |
+| `sensor.everything_presence_lite_922d28_target_2_x` | Everything Presence Lite Target 2 X | -78.0314960629921 |
 
-| `sensor.everything_presence_lite_922d28_target_2_y` | Everything Presence Lite Target 2 Y | 101.929133858268 |
+| `sensor.everything_presence_lite_922d28_target_2_y` | Everything Presence Lite Target 2 Y | 94.4488188976378 |
 
 | `sensor.everything_presence_lite_922d28_target_3_angle` | Everything Presence Lite Target 3 Angle | 0.0 |
 
