@@ -1,5 +1,26 @@
-===== 2026-06-13T20:31:52.661300 — last_log.txt =====
-[33m2026-06-13 20:31:48.973 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'min' when rendering '# Home Assistant Configuration
+===== 2026-06-13T20:39:58.399915 — last_log.txt =====
+{% endfor %}
+
+{% endif %}
+{% endfor %}
+
+---
+
+## 🏠 All Entities (By Domain)
+{% for domain, items in states | groupby('domain') %}
+{% if domain not in helpers and domain != 'group' %}
+<details><summary><b>{{ domain | title }} ({{ items | length }})</b></summary>
+
+| Entity ID | Name | State |
+|---|---|---|
+{% for s in items | sort(attribute='entity_id') %}
+| `{{ s.entity_id }}` | {{ s.name | replace("'", "'\\''") }} | {{ s.state | replace("'", "'\\''") }} |
+{% endfor %}
+</details>
+
+{% endif %}
+{% endfor %}'[0m
+[33m2026-06-13 20:39:54.523 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'max' when rendering '# Home Assistant Configuration
 _Last Updated: {{ now().isoformat() }}_
 
 ## 🛠 UI Helpers
@@ -48,54 +69,33 @@ Below are the input helpers configured in Home Assistant.
 
 {% endif %}
 {% endfor %}'[0m
-[33m2026-06-13 20:31:48.973 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'homeassistant.util.read_only_dict.ReadOnlyDict object' has no attribute 'max' when rendering '# Home Assistant Configuration
-_Last Updated: {{ now().isoformat() }}_
-
-## 🛠 UI Helpers
-Below are the input helpers configured in Home Assistant.
-
-{% set helpers = ['input_boolean', 'input_button', 'input_datetime', 'input_number', 'input_select', 'input_text', 'counter', 'timer', 'schedule'] %}
-{% for domain in helpers %}
-{% set assets = states[domain] | list %}
-{% if assets | count > 0 %}
-### {{ domain | replace('input_', '') | capitalize }}
-| Entity ID | Name | State | Attributes |
-|---|---|---|---|
-{% for s in assets | sort(attribute='entity_id') %}
-{% set details = [] %}
-{% if domain == 'input_number' %}
-  {% set details = details + ['min=' ~ s.attributes.min, 'max=' ~ s.attributes.max, 'step=' ~ s.attributes.step] %}
-{% elif domain == 'input_select' %}
-  {% set details = details + ['options=' ~ s.attributes.options | join(', ')] %}
-{% elif domain == 'input_datetime' %}
-  {% set details = details + ['has_date=' ~ s.attributes.has_date, 'has_time=' ~ s.attributes.has_time] %}
-{% elif domain == 'timer' %}
-  {% set details = details + ['duration=' ~ s.attributes.duration] %}
-{% elif domain == 'counter' %}
-  {% set details = details + ['min=' ~ s.attributes.min, 'max=' ~ s.attributes.max] %}
-{% endif %}
-
-| `{{ s.entity_id }}` | **{{ s.name | replace("'", "'\\''") }}** | {{ s.state | replace("'", "'\\''") }} | {{ details | join(', ') | replace("'", "'\\''") }} |
-{% endfor %}
-
-{% endif %}
-{% endfor %}
-
----
-
-## 🏠 All Entities (By Domain)
-{% for domain, items in states | groupby('domain') %}
-{% if domain not in helpers and domain != 'group' %}
-<details><summary><b>{{ domain | title }} ({{ items | length }})</b></summary>
-
-| Entity ID | Name | State |
-|---|---|---|
-{% for s in items | sort(attribute='entity_id') %}
-| `{{ s.entity_id }}` | {{ s.name | replace("'", "'\\''") }} | {{ s.state | replace("'", "'\\''") }} |
-{% endfor %}
-</details>
-
-{% endif %}
-{% endfor %}'[0m
-[33m2026-06-13 20:31:49.036 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
-[32m2026-06-13 20:31:52.027 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2026-06-13 20:39:54.587 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[31m2026-06-13 20:39:57.581 ERROR (MainThread) [aioamazondevices] Error processing push event type <PUSH_VOLUME_CHANGE>: {'dopplerId': {'deviceSerialNumber': 'GR72ML01542303HF', 'deviceType': 'A3EH2E0YZ30OD6'}, 'volumeSetting': 0, 'isMuted': False, 'destinationUserId': 'A3H3P67HOVTCPY'}
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.14/site-packages/aioamazondevices/implementation/http2.py", line 412, in _handle_part
+    await self.on_push_event.send(push_event_type, payload)
+  File "/usr/local/lib/python3.14/site-packages/aiosignal/__init__.py", line 52, in send
+    await receiver(*args, **kwargs)
+  File "/usr/local/lib/python3.14/site-packages/aioamazondevices/api.py", line 288, in _http2_push_event_handler
+    await self._emit_history_event()
+  File "/usr/local/lib/python3.14/site-packages/aioamazondevices/api.py", line 508, in _emit_history_event
+    await self._history_handler.get_vocal_history()
+  File "/usr/local/lib/python3.14/site-packages/aioamazondevices/implementation/history.py", line 75, in get_vocal_history
+    history_json = await self._vocal_history_json()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/aioamazondevices/implementation/history.py", line 56, in _vocal_history_json
+    _, raw_res = await self._http_wrapper.session_request(
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<8 lines>...
+    )
+    ^
+  File "/usr/local/lib/python3.14/site-packages/aioamazondevices/http_wrapper.py", line 379, in session_request
+    raise CannotAuthenticate(await self.http_phrase_error(resp.status))
+aioamazondevices.exceptions.CannotAuthenticate: Forbidden[0m
+[32m2026-06-13 20:39:57.602 INFO (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Parallel action at step 2: parallel 2: Play Music: Executing step call service[0m
+[32m2026-06-13 20:39:57.609 INFO (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Parallel action at step 2: parallel 2: Play Music: Executing step call service[0m
+[32m2026-06-13 20:39:57.661 INFO (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Parallel action at step 2: parallel 2: Repeating Volume Up: Iteration 1 of 7[0m
+[32m2026-06-13 20:39:57.662 INFO (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Parallel action at step 2: parallel 2: Volume Up: Running script sequence[0m
+[32m2026-06-13 20:39:57.666 INFO (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Parallel action at step 2: parallel 2: Volume Up: Executing step call service[0m
+[32m2026-06-13 20:39:57.670 INFO (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Parallel action at step 2: parallel 2: Volume Up: Executing step delay 0:00:02[0m
+[32m2026-06-13 20:39:57.729 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
