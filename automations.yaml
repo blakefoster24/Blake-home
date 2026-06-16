@@ -990,7 +990,6 @@
           | Home_ts: {{ fmt(home_ts) }} | Prev_door_ts: {{ fmt(prev_door_ts) }} |
           Home_ts - Prev_door_ts = {{ home_delta }}s | First opening: {{ true if first_open_bool
           == true else false if first_open_bool == false else 'n/a' }}\n"
-    continue_on_error: true
   - alias: Leaving / Arriving
     choose:
     - conditions:
@@ -1097,20 +1096,6 @@
                 browse_entity_id: media_player.bedroom_tv
           target:
             entity_id: media_player.bedroom_tv
-        - alias: Rachel arrives = fan on
-          if:
-          - condition: template
-            value_template: "{{ is_state('person.rachel', 'home') \n   and (now()
-              - states.person.rachel.last_changed).total_seconds() < 300 \n   and
-              (now() - states('sensor.uptime') | as_datetime | default(now())).total_seconds()
-              > 300 }}\n"
-            alias: Rachel arrived < 5 minutes
-          then:
-          - action: fan.turn_on
-            metadata: {}
-            target:
-              entity_id: fan.bedroom_ceiling_fan
-            data: {}
         else:
         - action: light.turn_on
           metadata: {}
@@ -1130,7 +1115,6 @@
             - light.living_room_ceiling_lights
             - light.kitchen_lights
       alias: Arriving branch
-    continue_on_error: true
   trace:
     stored_traces: 50
   mode: restart
