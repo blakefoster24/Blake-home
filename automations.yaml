@@ -696,7 +696,7 @@
     id: 11pm
   - trigger: switch.turned_on
     target:
-      entity_id: input_boolean.workday_toggle_helper
+      entity_id: input_boolean.general_toggle_helper
     options: {}
     id: workday wakeup leaving sequence completed
   conditions: []
@@ -723,7 +723,7 @@
         target:
           entity_id: input_boolean.thermostat_automation_pause
         data: {}
-        enabled: false
+        enabled: true
       alias: Reset Thermostat Adjustment - 11pm
     - conditions:
       - condition: trigger
@@ -766,9 +766,9 @@
         data: {}
       - action: input_boolean.turn_off
         metadata: {}
-        target:
-          entity_id: input_boolean.workday_toggle_helper
         data: {}
+        target:
+          entity_id: input_boolean.general_toggle_helper
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
@@ -1847,9 +1847,9 @@
             interruption level: time-sensitive
       - action: input_boolean.turn_on
         metadata: {}
-        target:
-          entity_id: input_boolean.workday_toggle_helper
         data: {}
+        target:
+          entity_id: input_boolean.general_toggle_helper
     - alias: Out of bed = weather
       sequence:
       - wait_for_trigger:
