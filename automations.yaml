@@ -419,24 +419,24 @@
       seconds: 0
   - trigger: temperature.crossed_threshold
     target:
-      entity_id: sensor.openweathermap_temperature_2
+      entity_id: climate.nest_thermostat
     options:
       threshold:
         type: below
         value:
           active_choice: number
-          number: 65
+          number: 67
           unit_of_measurement: °F
     id: Below 65
   - trigger: temperature.crossed_threshold
     target:
-      entity_id: sensor.openweathermap_temperature_2
+      entity_id: climate.nest_thermostat
     options:
       threshold:
         type: above
         value:
           active_choice: number
-          number: 70
+          number: 69
           unit_of_measurement: °F
     id: Above 70
   - trigger: zone.entered
@@ -561,7 +561,7 @@
       sequence:
       - if:
         - condition: numeric_state
-          entity_id: sensor.openweathermap_temperature_2
+          entity_id: sensor.nest_thermostat_temperature
           above: 68
         then:
         - action: climate.set_temperature
@@ -641,7 +641,7 @@
       - if:
         - condition: temperature.is_value
           target:
-            entity_id: sensor.openweathermap_feels_like_temperature_2
+            entity_id: sensor.nest_thermostat_temperature
           options:
             for: 00:00:00
             threshold:
