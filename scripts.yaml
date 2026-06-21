@@ -192,6 +192,31 @@ alexa_music:
         \ 'Echo Spot': 'media_player.blake_s_echo_spot'\n} %} {{ mapper.get(speaker_voice_name,
         'media_player.all_echo') }}"
     alias: Define Variables
+  - alias: Log Variables
+    action: logbook.log
+    metadata: {}
+    data:
+      message: 'action_type={{ action_type | default(''undefined'') }}
+
+        | is_search={{ is_search }}
+
+        | alexa_music_search={{ states(''input_text.alexa_music_search'') }}
+
+        | alarm_music={{ states(''input_text.alarm_music'') }}
+
+        | speakers={{ states(''input_select.speakers'') }}
+
+        | music_input={{ music_input }}
+
+        | music_query={{ music_query }}
+
+        | speaker_selection={{ speaker_selection }}
+
+        | speaker_voice_name={{ speaker_voice_name }}
+
+        | target_media_player={{ target_media_player }}'
+      name: Music Script Variables
+      entity_id: script.alexa_music
   - parallel:
     - alias: Music Off
       sequence:
