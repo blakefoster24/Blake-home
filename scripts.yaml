@@ -323,6 +323,7 @@ alexa_music:
             shuffle: true
           target:
             entity_id: '{{ target_media_player }}'
+          continue_on_error: true
         - delay:
             hours: 0
             minutes: 0

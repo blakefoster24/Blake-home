@@ -532,6 +532,18 @@
               behavior: any
               for: 00:00:00
               zone: zone.home
+      - condition: not
+        conditions:
+        - alias: workday + 8-9:30
+          condition: and
+          conditions:
+          - condition: switch.is_on
+            target:
+              entity_id: input_boolean.workday_today_toggle
+            options: {}
+          - condition: time
+            after: 07:55:00
+            before: '21:20:00'
       sequence:
       - action: climate.set_temperature
         metadata: {}
@@ -1216,7 +1228,8 @@
       sequence:
       - alias: 'Workday Schedule '
         if:
-        - condition: or
+        - alias: Work tomorrow sensor OR work override = tomorrow
+          condition: or
           conditions:
           - condition: state
             state: 'on'
@@ -1227,7 +1240,6 @@
 
               '
             alias: Working Override = Tomorrow
-          alias: Work tomorrow sensor OR work override = tomorrow
         - alias: Tomorrow is NOT scheduled off
           condition: not
           conditions:
@@ -1330,11 +1342,9 @@
         id:
         - 9:45am
       - condition: template
-        value_template: "{%- set worked = [\n  '2025-11-27','2026-05-25','2026-12-25','2027-07-04','2028-01-01',\n
-          \ '2028-09-04','2029-01-15','2029-11-22','2030-05-27','2030-12-25'\n] -%}\n{%-
-          set today = now().date() -%}\n{%- for d in worked -%}\n  {%- if (as_datetime(d
-          ~ ' 00:00:00').date() - today).days == 7 -%}\n    true\n  {%- endif -%}\n{%-
-          endfor -%}\nfalse"
+        value_template: "{%- set worked = [\n  '2026-07-04',\n  '2027-01-01',\n  '2027-09-06',\n
+          \ '2028-01-17',\n  '2028-11-23'\n] -%}\n{{ worked | select('eq', (now().date()
+          + timedelta(days=7)).isoformat()) | list | count > 0 }}"
         alias: Holiday in 7 days
         enabled: true
       sequence:
