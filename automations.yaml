@@ -386,12 +386,32 @@
                   seconds: 0
                 below: -0.5
               continue_on_timeout: false
+            - wait_for_trigger:
+              - trigger: occupancy.cleared
+                target:
+                  entity_id: binary_sensor.bathroom_presence
+                options:
+                  behavior: each
+                  for:
+                    hours: 0
+                    minutes: 0
+                    seconds: 30
             - action: light.turn_off
               metadata: {}
               target:
                 entity_id: light.bathroom_light
               data: {}
             else:
+            - wait_for_trigger:
+              - trigger: occupancy.cleared
+                target:
+                  entity_id: binary_sensor.bathroom_presence
+                options:
+                  behavior: each
+                  for:
+                    hours: 0
+                    minutes: 0
+                    seconds: 30
             - action: light.turn_off
               metadata: {}
               target:
