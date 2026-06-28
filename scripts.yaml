@@ -192,6 +192,17 @@ alexa_music:
         \ 'Echo Spot': 'media_player.blake_s_echo_spot'\n} %} {{ mapper.get(speaker_voice_name,
         'media_player.all_echo') }}"
     alias: Define Variables
+    note: "Is_search: evaluates if script should act as a “search music” or “alarm
+      music” via action_type\n\nmusic_input: picks the correct source for what to
+      play, either search selection or alarm selection depending on if is_search is
+      true or false\n\nmusic_selection: acts as a safety net, it’s the final selection
+      for what to play. It uses music_input unless it is in an invalid state, then
+      it defaults to “my soundtrack”\n\nspeaker_selection: picks the correct source
+      for where to play music, either input_selector it is_search is true, otherwise
+      it uses “all echo”.\n\nspeaker_voice_name: sanitizes the speaker selection to
+      create a simple friendly name to be used in the Alexa command action \n\nTarget_media_player:
+      maps the friendly name to an actual entity for use with media player actions
+      like volume, skip, and pause. "
   - alias: Log Variables
     action: logbook.log
     metadata: {}
@@ -225,6 +236,9 @@ alexa_music:
         data: {}
         target:
           entity_id: input_boolean.disable_toggle
+        note: 'Toggle is used as a flag for the script being active to change the
+          hue button 4 to stop script instead of its normal function, also allows
+          dashboard “stop” button to easily trigger the stop branch. '
       - wait_for_trigger:
         - alias: Off Short
           trigger: event
@@ -367,8 +381,9 @@ alexa_music:
               minutes: 0
               seconds: 2
               milliseconds: 0
-      - if:
-        - alias: Checks for action type != alexa_music
+      - alias: Wakeup Sequence
+        if:
+        - alias: Not triggered by search
           condition: template
           value_template: '{{ action_type != ''search_music'' }}
 
@@ -405,7 +420,6 @@ alexa_music:
           data: {}
           target:
             entity_id: fan.bedroom_fan
-        alias: Wakeup Sequence
   alias: Alexa Music
   description: ''
 set_my_room:
