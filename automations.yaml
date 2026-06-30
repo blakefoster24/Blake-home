@@ -256,22 +256,31 @@
       sequence:
       - alias: Lamp on / set room script
         parallel:
-        - sequence:
-          - condition: state
-            state:
-            - 'on'
-            entity_id: light.bedroom_ceiling_lights
-            for:
+        - alias: ceiling lights on -> lamp on
+          sequence:
+          - wait_for_trigger:
+            - trigger: state
+              entity_id:
+              - light.bedroom_ceiling_lights
+              to:
+              - 'on'
+              for:
+                hours: 0
+                minutes: 0
+                seconds: 2
+            timeout:
               hours: 0
               minutes: 0
-              seconds: 2
+              seconds: 5
+              milliseconds: 0
+            continue_on_timeout: false
           - action: scene.turn_on
             metadata: {}
             data: {}
             target:
               entity_id: scene.full_lamp
-          alias: ceiling lights on -> lamp on
-        - sequence:
+        - alias: Ceiling lights toggle (3) -> set room
+          sequence:
           - wait_for_trigger:
             - trigger: state
               entity_id:
@@ -297,7 +306,6 @@
             data: {}
             target:
               entity_id: script.set_my_room
-          alias: Ceiling lights toggle (3) -> set room
       alias: Ceiling Light = lamp or set room
     - conditions:
       - condition: trigger
@@ -435,6 +443,8 @@
               data: {}
             alias: Humidity if/then
   mode: restart
+  trace:
+    stored_traces: 30
 - id: '1760424497591'
   alias: Thermostat
   description: ''
