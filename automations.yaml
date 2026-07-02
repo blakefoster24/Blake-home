@@ -678,15 +678,21 @@
           - action: notify.mobile_app_blakes_iphone
             metadata: {}
             data:
-              message: 'Current temperature is: {{ states(''sensor.nest_thermostat_temperature'')
-                | float | round | int }}°'
-              title: Check Thermostat!
+              message: 'Current temperature is: {{ state_attr("climate.nest_thermostat",
+                "current_temperature") }}°
+
+                Set on: {{ states(''climate.nest_thermostat'') ~ '' - '' ~
+
+                state_attr(''climate.nest_thermostat'', ''temperature'') }}°
+
+                '
               data:
                 push:
                   sound:
                     name: default
                     critical: 1
                     volume: 0.5
+              title: Thermostat Discrepancy
       alias: Temperature Issue
     - conditions:
       - condition: trigger
