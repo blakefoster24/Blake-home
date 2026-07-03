@@ -1745,6 +1745,11 @@
   - parallel:
     - alias: Wake Up Scene Sequence
       sequence:
+      - action: script.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: script.alexa_music
       - action: light.turn_on
         metadata: {}
         data: {}
@@ -1755,40 +1760,6 @@
         data: {}
         target:
           entity_id: light.closet_light
-      - action: light.turn_on
-        metadata: {}
-        data:
-          brightness_pct: 75
-          transition: 15
-        target:
-          entity_id: light.bedroom_lamp
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 30
-          milliseconds: 0
-      - action: fan.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: fan.bedroom_fan
-      - action: script.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: script.alexa_music
-      - delay:
-          hours: 0
-          minutes: 1
-          seconds: 30
-          milliseconds: 0
-      - action: light.turn_on
-        metadata: {}
-        data:
-          brightness_pct: 100
-          transition: 5
-        target:
-          entity_id: light.bedroom_ceiling_lights
       - wait_for_trigger:
         - trigger: time
           at: 08:38:00

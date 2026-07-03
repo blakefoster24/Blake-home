@@ -402,24 +402,24 @@ alexa_music:
             entity_id: light.bedroom_lamp
         - delay:
             hours: 0
-            minutes: 0
-            seconds: 10
-            milliseconds: 0
-        - action: light.turn_on
-          metadata: {}
-          data: {}
-          target:
-            entity_id: light.bedroom_ceiling_lights
-        - delay:
-            hours: 0
-            minutes: 0
-            seconds: 45
+            minutes: 2
+            seconds: 0
             milliseconds: 0
         - action: fan.turn_off
           metadata: {}
           data: {}
           target:
             entity_id: fan.bedroom_fan
+        - delay:
+            hours: 0
+            minutes: 2
+            seconds: 0
+            milliseconds: 0
+        - action: light.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.bedroom_ceiling_lights
   alias: Alexa Music
   description: ''
 set_my_room:
