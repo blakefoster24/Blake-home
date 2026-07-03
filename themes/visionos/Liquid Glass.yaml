@@ -17,6 +17,7 @@ Liquid Glass:
       ha-card-background: rgba(0, 0, 0, 0.3)
       app-theme-color: rgb(0, 0, 0)
       custom-bg: rgba(0, 8, 73, 1)
+      custom-2: rgb()65, 47, 143)
       
   # Global
   lovelace-background: var(--background-image)
