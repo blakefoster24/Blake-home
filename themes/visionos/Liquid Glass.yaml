@@ -17,8 +17,7 @@ Liquid Glass:
       ha-card-background: rgba(0, 0, 0, 0.3)
       app-theme-color: rgb(0, 0, 0)
       custom-bg: rgba(0, 8, 73, 1)
-      custom-active: rgba(65, 47, 143, 1)
-      
+      custom-active: rgba(37, 21, 99, 1)
   # Global
   lovelace-background: var(--background-image)
   light-primary-color: rgb(241, 241, 241) # Icons on sidebar
