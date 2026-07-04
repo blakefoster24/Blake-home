@@ -8,6 +8,7 @@ Liquid Glass:
       ha-card-background: rgba(150, 150, 150, 0.3)
       app-theme-color: rgb(91, 138, 168) # Average header color, used on the top of the browser
       custom-bg: rgba(0, 84, 186, 1)
+      custom-active: rgba(37, 21, 99, 1)
       
     dark:
       background-image: "center / cover no-repeat fixed url('https://raw.githubusercontent.com/Nezz/homeassistant-visionos-theme/refs/heads/static/macOS_26_Dark.webp')"
@@ -30,6 +31,7 @@ Liquid Glass:
   text-primary-color: var(--primary-text-color)
   disabled-text-color: rgba(208, 208, 208, 0.5) # XXX: https://github.com/basnijholt/lovelace-ios-dark-mode-theme/issues/2
   text-dark-color: var(--primary-text-color)
+  text: white
   # Sidebar Menu
   sidebar-background-color: var(--secondary-background-color)
   sidebar-icon-color: var(--light-primary-color)
