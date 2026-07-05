@@ -796,6 +796,16 @@
       entity_id: input_boolean.general_toggle_helper
     options: {}
     id: workday wakeup leaving sequence completed
+  - trigger: switch.turned_on
+    target:
+      entity_id: input_boolean.dashboard_toggle
+    options:
+      behavior: each
+      for:
+        hours: 0
+        minutes: 5
+        seconds: 0
+    id: Dashboard toggle on 5min
   conditions: []
   actions:
   - choose:
@@ -866,6 +876,16 @@
         data: {}
         target:
           entity_id: input_boolean.general_toggle_helper
+    - conditions:
+      - condition: trigger
+        id:
+        - Dashboard toggle on 5min
+      sequence:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id: input_boolean.dashboard_toggle
+        data: {}
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
