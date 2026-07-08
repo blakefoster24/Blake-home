@@ -317,12 +317,14 @@
       - alias: Occupancy not detected outside bedroom for 5min
         wait_template: "{% set sensors = [\n  'binary_sensor.bathroom_presence',\n
           \ 'binary_sensor.closet_motion',\n  'binary_sensor.kitchen_presence',\n
-          \ 'binary_sensor.living_room_motion'\n] %}\n{% set threshold = 5 %}\n{#
-          Check that all sensors are off AND none have changed state in the last 10
-          minutes #}\n{{ sensors | map('is_state', 'off') | min \n   and sensors |
-          map('extract', states) \n   | map(attribute='last_changed') \n   | map('as_datetime')
-          | map('as_local') \n   | map('ge', now() - timedelta(minutes=threshold))
-          | list | sum == 0 }}\n"
+          \ 'binary_sensor.living_room_motion'\n] %}\n{% set threshold = 10 %}\n\n{#
+          1. Check if all sensors are 'off' #}\n{% set all_off = expand(sensors) |
+          map(attribute='state') | select('eq', 'off') | list | length == sensors
+          | length %}\n\n{# 2. Check if any sensor changed state in the last 10 minutes
+          #}\n{# (If last_changed is greater than now minus threshold, it changed
+          recently) #}\n{% set recent_changes = expand(sensors) | map(attribute='last_changed')
+          \n   | select('ge', now() - timedelta(minutes=threshold)) | list | length
+          %}\n\n{{ all_off and (recent_changes == 0) }}\n"
         continue_on_timeout: false
         timeout:
           hours: 0
