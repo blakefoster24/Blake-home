@@ -452,6 +452,8 @@ Frosted Glass:
       ha-card-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.15)'
       ha-view-sections-column-gap: '17px'
       ha-view-sections-column-min-width: 320px
+      custom-bg: 'var(--secondary-background-color)'
+      custom-active: 'var(--primary-color)'
 
       # Sliders, toggles, switches
       paper-slider-knob-color: 'rgb(106, 116, 211)'

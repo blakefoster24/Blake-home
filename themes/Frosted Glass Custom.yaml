@@ -171,7 +171,7 @@ Frosted Glass Custom:
 
         
           # Tokens
-          --token-rgb-primary: 106, 116, 211;
+          --token-rgb-primary: 92, 7, 1;
           --token-rgb-black: 0, 0, 0;
           --token-rgb-white: 240, 243, 255;
           --token-rgb-purple: 129, 45, 250;
@@ -181,8 +181,8 @@ Frosted Glass Custom:
           --token-rgb-indigo: 48, 63, 159;
           --token-rgb-blue: 33, 150, 243;
           --token-rgb-light-blue: 3, 169, 244;
-          --token-rgb-cyan: 106, 116, 211;
-          --token-rgb-teal: 106, 116, 211;
+          --token-rgb-cyan: 92, 7, 1;
+          --token-rgb-teal: 92, 7, 1;
           --token-rgb-green: 56, 142, 60;
           --token-rgb-light-green: 139, 195, 74;
           --token-rgb-lime: 205, 220, 57;
@@ -200,7 +200,7 @@ Frosted Glass Custom:
           --token-color-primary-light: rgb(167 182 199);
           --token-color-accent: rgb(var(--token-rgb-teal));
           --token-color-disabled: rgb(173 176 184);
-          --token-color-feedback-info: rgb(106, 116, 211);
+          --token-color-feedback-info: rgb(92, 7, 1);
           --token-color-feedback-warning: rgb(255, 219, 117);
           --token-color-feedback-error: rgb(234, 114, 135);
           --token-color-feedback-success: rgb(118, 214, 152);
@@ -374,29 +374,29 @@ Frosted Glass Custom:
       # =========================
       # COLORS & MISCELLANEOUS
       # =========================
-      ha-color-primary-05: '#050713'
-      ha-color-primary-10: '#0B0E27'
-      ha-color-primary-20: '#171C4E'
-      ha-color-primary-30: '#222A76'
-      ha-color-primary-40: '#2E399D'
-      ha-color-primary-50: '#6A73D3'
-      ha-color-primary-60: '#616CD0'
-      ha-color-primary-70: '#8890DC'
-      ha-color-primary-80: '#B0B5E7'
-      ha-color-primary-90: '#D7DAF3'
-      ha-color-primary-95: '#EFF0FA'
+      ha-color-primary-05: '#190100'
+      ha-color-primary-10: '#320300'
+      ha-color-primary-20: '#640701'
+      ha-color-primary-30: '#970B01'
+      ha-color-primary-40: '#C90F02'
+      ha-color-primary-50: '#5C0700'
+      ha-color-primary-60: '#FC4235'
+      ha-color-primary-70: '#FD7167'
+      ha-color-primary-80: '#FDA09A'
+      ha-color-primary-90: '#FECFCC'
+      ha-color-primary-95: '#FEECEA'
 
-      color-primary-05: '#050713'
-      color-primary-10: '#0B0E27'
-      color-primary-20: '#171C4E'
-      color-primary-30: '#222A76'
-      color-primary-40: '#2E399D'
-      color-primary-50: '#6A73D3'
-      color-primary-60: '#616CD0'
-      color-primary-70: '#8890DC'
-      color-primary-80: '#B0B5E7'
-      color-primary-90: '#D7DAF3'
-      color-primary-95: '#EFF0FA'
+      color-primary-05: '#190100'
+      color-primary-10: '#320300'
+      color-primary-20: '#640701'
+      color-primary-30: '#970B01'
+      color-primary-40: '#C90F02'
+      color-primary-50: '#5C0700'
+      color-primary-60: '#FC4235'
+      color-primary-70: '#FD7167'
+      color-primary-80: '#FDA09A'
+      color-primary-90: '#FECFCC'
+      color-primary-95: '#FEECEA'
       primary-text-color: 'rgba(19, 21, 54, 0.98)'
       secondary-text-color: 'rgba(19, 21, 54, 0.8)'
       text-primary-color: 'rgba(19, 21, 54, 0.98)'
@@ -409,20 +409,20 @@ Frosted Glass Custom:
       state-off-color: 'rgb(234, 114, 135)'
       label-badge-text-color: 'rgba(19, 21, 54, 0.85)'
       label-badge-red: 'rgb(234, 114, 135)'
-      label-badge-blue: 'rgb(106, 116, 211)'
+      label-badge-blue: 'rgb(92, 7, 1)'
       label-badge-green: 'rgb(78, 183, 128)'
       label-badge-yellow: 'rgb(255, 219, 117)'
       label-badge-grey: 'rgb(83, 90, 103)'
       ha-chip-text-color: 'rgb(0, 0, 0)'
 
-      primary-color: 'rgb(106, 116, 211)'
-      dark-primary-color: 'rgb(106, 116, 211)'
+      primary-color: 'rgb(92, 7, 1)'
+      dark-primary-color: 'rgb(92, 7, 1)'
       light-primary-color: 'rgb(167, 182, 199)'
-      accent-color: 'rgb(106, 116, 211)'
+      accent-color: 'rgb(92, 7, 1)'
       divider-color: 'rgba(224, 224, 224, 0.3)'
       scrollbar-thumb-color: 'rgb(180, 180, 180)'
       disabled-color: 'rgb(173, 176, 184)'
-      info-color: 'rgb(106, 116, 211)'
+      info-color: 'rgb(92, 7, 1)'
       success-color: 'rgb(118, 214, 152)'
       warning-color: 'rgb(255, 219, 117)'
       error-color: 'rgb(234, 114, 135)'
@@ -443,17 +443,17 @@ Frosted Glass Custom:
       ha-view-sections-column-min-width: 320px
 
       # Sliders, toggles, switches
-      paper-slider-knob-color: 'rgb(106, 116, 211)'
-      paper-slider-knob-start-color: 'rgb(106, 116, 211)'
-      paper-slider-pin-color: 'rgb(106, 116, 211)'
-      paper-slider-active-color: 'rgb(106, 116, 211)'
+      paper-slider-knob-color: 'rgb(92, 7, 1)'
+      paper-slider-knob-start-color: 'rgb(92, 7, 1)'
+      paper-slider-pin-color: 'rgb(92, 7, 1)'
+      paper-slider-active-color: 'rgb(92, 7, 1)'
       paper-slider-secondary-color: 'rgb(167, 182, 199)'
-      switch-checked-button-color: 'rgb(106, 116, 211)'
-      switch-checked-track-color: 'rgb(106, 116, 211)'
+      switch-checked-button-color: 'rgb(92, 7, 1)'
+      switch-checked-track-color: 'rgb(92, 7, 1)'
       switch-unchecked-button-color: 'rgba(0, 0, 0, 0.6)'
       switch-unchecked-track-color: 'rgba(0, 0, 0, 0.3)'
-      paper-toggle-button-checked-button-color: 'rgb(106, 116, 211)'
-      paper-toggle-button-checked-bar-color: 'rgb(106, 116, 211)'
+      paper-toggle-button-checked-button-color: 'rgb(92, 7, 1)'
+      paper-toggle-button-checked-bar-color: 'rgb(92, 7, 1)'
       paper-toggle-button-unchecked-button-color: 'rgba(0, 0, 0, 0.6)'
       paper-toggle-button-unchecked-bar-color: 'rgba(0, 0, 0, 0.3)'
       mdc-checkbox-unchecked-color: 'rgba(19, 21, 54, 0.75)'
@@ -471,15 +471,15 @@ Frosted Glass Custom:
       input-disabled-label-ink-color: 'rgba(19, 21, 54, 0.45)'
       input-idle-line-color: 'transparent'
       input-dropdown-icon-color: 'rgba(19, 21, 54, 0.8)'
-      input-hover-line-color: 'rgb(106, 116, 211)'
+      input-hover-line-color: 'rgb(92, 7, 1)'
       mdc-select-idle-line-color: 'transparent'
       mdc-text-field-idle-line-color: 'transparent'
 
       # Code Editor & Misc
       code-editor-background-color: 'rgba(234, 235, 238, 1)'
       codemirror-meta: 'rgba(19, 21, 54, 0.98)'
-      codemirror-property: 'rgb(106, 116, 211)'
-      codemirror-atom: 'rgb(106, 116, 211)'
+      codemirror-property: 'rgb(92, 7, 1)'
+      codemirror-atom: 'rgb(92, 7, 1)'
       codemirror-string: 'rgb(0, 77, 153)'
       codemirror-keyword: 'rgb(70, 112, 216)'
       codemirror-number: 'rgb(204, 85, 0)'
@@ -649,7 +649,7 @@ Frosted Glass Custom:
             0 0 2px 0 rgba(0, 0, 0, 0.18);
 
           /* Tokens - match structure to Light theme */
-          --token-rgb-primary: 106, 116, 211;
+          --token-rgb-primary: 17, 5, 59;
           --token-rgb-black: 0, 0, 0;
           --token-rgb-white: 234, 235, 238;
           --token-rgb-purple: 129, 45, 250;
@@ -659,8 +659,8 @@ Frosted Glass Custom:
           --token-rgb-indigo: 48, 63, 159;
           --token-rgb-blue: 33, 150, 243;
           --token-rgb-light-blue: 3, 169, 244;
-          --token-rgb-cyan: 106, 116, 211;
-          --token-rgb-teal: 106, 116, 211;
+          --token-rgb-cyan: 17, 5, 59;
+          --token-rgb-teal: 17, 5, 59;
           --token-rgb-green: 56, 142, 60;
           --token-rgb-light-green: 139, 195, 74;
           --token-rgb-lime: 205, 220, 57;
@@ -678,7 +678,7 @@ Frosted Glass Custom:
           --token-color-primary-light: rgb(167 182 199);
           --token-color-accent: rgb(var(--token-rgb-teal));
           --token-color-disabled: rgb(173 176 184);
-          --token-color-feedback-info: rgb(106, 116, 211);
+          --token-color-feedback-info: rgb(17, 5, 59);
           --token-color-feedback-warning: rgb(255, 219, 117);
           --token-color-feedback-error: rgb(234, 114, 135);
           --token-color-feedback-success: rgb(118, 214, 152);
@@ -865,30 +865,30 @@ Frosted Glass Custom:
       # COLORS & MISCELLANEOUS
       # =========================
       # 1.2.1 - change add HA 2025.8 primary color scale aligned to theme
-      ha-color-primary-05: '#050713'
-      ha-color-primary-10: '#0B0E27'
-      ha-color-primary-20: '#171C4E'
-      ha-color-primary-30: '#222A76'
-      ha-color-primary-40: '#2E399D'
-      ha-color-primary-50: '#6A73D3'   # base theme primary (kept)
-      ha-color-primary-60: '#616CD0'
-      ha-color-primary-70: '#8890DC'
-      ha-color-primary-80: '#B0B5E7'
-      ha-color-primary-90: '#D7DAF3'
-      ha-color-primary-95: '#EFF0FA'
+      ha-color-primary-05: '#060117'
+      ha-color-primary-10: '#0D032F'
+      ha-color-primary-20: '#1B075E'
+      ha-color-primary-30: '#280B8D'
+      ha-color-primary-40: '#360FBC'
+      ha-color-primary-50: '#10043B'   # base theme primary (kept)
+      ha-color-primary-60: '#6942EF'
+      ha-color-primary-70: '#8E71F3'
+      ha-color-primary-80: '#B4A0F7'
+      ha-color-primary-90: '#D9CFFB'
+      ha-color-primary-95: '#F0ECFD'
 
       # 1.2.1 - change add aliases for compatibility (some threads reference --color-primary-xx)
-      color-primary-05: '#050713'
-      color-primary-10: '#0B0E27'
-      color-primary-20: '#171C4E'
-      color-primary-30: '#222A76'
-      color-primary-40: '#2E399D'
-      color-primary-50: '#6A73D3'
-      color-primary-60: '#616CD0'
-      color-primary-70: '#8890DC'
-      color-primary-80: '#B0B5E7'
-      color-primary-90: '#D7DAF3'
-      color-primary-95: '#EFF0FA'
+      color-primary-05: '#060117'
+      color-primary-10: '#0D032F'
+      color-primary-20: '#1B075E'
+      color-primary-30: '#280B8D'
+      color-primary-40: '#360FBC'
+      color-primary-50: '#10043B'
+      color-primary-60: '#6942EF'
+      color-primary-70: '#8E71F3'
+      color-primary-80: '#B4A0F7'
+      color-primary-90: '#D9CFFB'
+      color-primary-95: '#F0ECFD'
       primary-text-color: 'rgba(234, 235, 238, 0.98)'
       secondary-text-color: 'rgba(234, 235, 238, 0.8)'
       text-primary-color: 'rgba(234, 235, 238, 0.98)'
@@ -901,20 +901,20 @@ Frosted Glass Custom:
       state-off-color: 'rgb(234, 114, 135)'
       label-badge-text-color: 'rgba(234, 235, 238, 0.85)'
       label-badge-red: 'rgb(234, 114, 135)'
-      label-badge-blue: 'rgb(106, 116, 211)'
+      label-badge-blue: 'rgb(17, 5, 59)'
       label-badge-green: 'rgb(78, 183, 128)'
       label-badge-yellow: 'rgb(255, 219, 117)'
       label-badge-grey: 'rgb(83, 90, 103)'
       ha-chip-text-color: 'rgb(234, 235, 238)'
 
-      primary-color: 'rgb(106, 116, 211)'
-      dark-primary-color: 'rgb(106, 116, 211)'
+      primary-color: 'rgb(17, 5, 59)'
+      dark-primary-color: 'rgb(17, 5, 59)'
       light-primary-color: 'rgb(167, 182, 199)'
-      accent-color: 'rgb(106, 116, 211)'
+      accent-color: 'rgb(17, 5, 59)'
       divider-color: 'rgba(84, 84, 98, 0.28)'
       scrollbar-thumb-color: 'rgb(68, 68, 88)'
       disabled-color: 'rgb(173, 176, 184)'
-      info-color: 'rgb(106, 116, 211)'
+      info-color: 'rgb(17, 5, 59)'
       success-color: 'rgb(118, 214, 152)'
       warning-color: 'rgb(255, 219, 117)'
       error-color: 'rgb(234, 114, 135)'
@@ -935,17 +935,17 @@ Frosted Glass Custom:
       ha-view-sections-column-min-width: 320px
 
       # Sliders, toggles, switches
-      paper-slider-knob-color: 'rgb(106, 116, 211)'
-      paper-slider-knob-start-color: 'rgb(106, 116, 211)'
-      paper-slider-pin-color: 'rgb(106, 116, 211)'
-      paper-slider-active-color: 'rgb(106, 116, 211)'
+      paper-slider-knob-color: 'rgb(17, 5, 59)'
+      paper-slider-knob-start-color: 'rgb(17, 5, 59)'
+      paper-slider-pin-color: 'rgb(17, 5, 59)'
+      paper-slider-active-color: 'rgb(17, 5, 59)'
       paper-slider-secondary-color: 'rgb(167, 182, 199)'
-      switch-checked-button-color: 'rgb(106, 116, 211)'
-      switch-checked-track-color: 'rgb(106, 116, 211)'
+      switch-checked-button-color: 'rgb(17, 5, 59)'
+      switch-checked-track-color: 'rgb(17, 5, 59)'
       switch-unchecked-button-color: 'rgba(234, 235, 238, 0.3)'
       switch-unchecked-track-color: 'rgba(234, 235, 238, 0.18)'
-      paper-toggle-button-checked-button-color: 'rgb(106, 116, 211)'
-      paper-toggle-button-checked-bar-color: 'rgb(106, 116, 211)'
+      paper-toggle-button-checked-button-color: 'rgb(17, 5, 59)'
+      paper-toggle-button-checked-bar-color: 'rgb(17, 5, 59)'
       paper-toggle-button-unchecked-button-color: 'rgba(234, 235, 238, 0.3)'
       paper-toggle-button-unchecked-bar-color: 'rgba(234, 235, 238, 0.18)'
       mdc-checkbox-unchecked-color: 'rgba(234, 235, 238, 0.75)'
@@ -963,15 +963,15 @@ Frosted Glass Custom:
       input-disabled-label-ink-color: 'rgba(234, 235, 238, 0.45)'
       input-idle-line-color: 'transparent'
       input-dropdown-icon-color: 'rgba(234, 235, 238, 0.8)'
-      input-hover-line-color: 'rgb(106, 116, 211)'
+      input-hover-line-color: 'rgb(17, 5, 59)'
       mdc-select-idle-line-color: 'transparent'
       mdc-text-field-idle-line-color: 'transparent'
 
       # Code Editor & Misc
       code-editor-background-color: 'rgba(25, 28, 45, 1)'
       codemirror-meta: 'rgba(234, 235, 238, 0.98)'
-      codemirror-property: 'rgb(106, 116, 211)'
-      codemirror-atom: 'rgb(106, 116, 211)'
+      codemirror-property: 'rgb(17, 5, 59)'
+      codemirror-atom: 'rgb(17, 5, 59)'
       codemirror-string: 'rgb(164, 209, 255)'
       codemirror-keyword: 'rgb(148, 182, 255)'
       codemirror-number: 'rgb(255, 171, 64)'
