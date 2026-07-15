@@ -408,7 +408,7 @@ Frosted Glass:
       color-primary-80: '#D2D5F2'
       color-primary-90: '#EAECF9'
       color-primary-95: '#F6F7FC'
-      primary-text-color: 'rgba(19, 21, 54, 0.98)'
+      primary-text-color: &contrast 'rgba(19, 21, 54, 0.98)'
       secondary-text-color: 'rgba(19, 21, 54, 0.8)'
       text-primary-color: 'rgba(19, 21, 54, 0.98)'
       disabled-text-color: 'rgba(19, 21, 54, 0.45)'
@@ -426,7 +426,7 @@ Frosted Glass:
       label-badge-grey: 'rgb(83, 90, 103)'
       ha-chip-text-color: 'rgb(0, 0, 0)'
 
-      primary-color: 'rgb(106, 116, 211)'
+      primary-color: &active 'rgb(106, 116, 211)'
       dark-primary-color: 'rgb(106, 116, 211)'
       light-primary-color: 'rgb(167, 182, 199)'
       accent-color: 'rgb(106, 116, 211)'
@@ -440,7 +440,7 @@ Frosted Glass:
       background-image: "center / cover no-repeat fixed url('https://cdn.jsdelivr.net/gh/wessamlauf/homeassistant-frosted-glass-themes@refs/heads/main/themes/frosted-glass-light-background.jpg')"
       lovelace-background: var(--background-image)
       primary-background-color: 'rgba(254, 244, 242, 1)'
-      secondary-background-color: 'rgba(245, 245, 245, 0.5)'
+      secondary-background-color: &bg 'rgba(245, 245, 245, 0.5)'
       clear-background-color: 'rgba(254, 244, 242, 0.9)'
       card-background-color: 'rgba(254, 244, 242, 0.9)'
       ha-card-background: 'rgba(254, 244, 242, 0.9)'
@@ -452,8 +452,9 @@ Frosted Glass:
       ha-card-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.15)'
       ha-view-sections-column-gap: '17px'
       ha-view-sections-column-min-width: 320px
-      custom-bg: 'var(--secondary-background-color)'
-      custom-active: 'var(--primary-color)'
+      custom-bg: *bg
+      custom-active: *active
+      custom-contrast: *contrast
 
       # Sliders, toggles, switches
       paper-slider-knob-color: 'rgb(106, 116, 211)'
@@ -907,7 +908,7 @@ Frosted Glass:
       color-primary-80: '#D2D5F2'
       color-primary-90: '#EAECF9'
       color-primary-95: '#F6F7FC'
-      primary-text-color: 'rgba(234, 235, 238, 0.98)'
+      primary-text-color: &dark-contrast 'rgba(234, 235, 238, 0.98)'
       secondary-text-color: 'rgba(234, 235, 238, 0.8)'
       text-primary-color: 'rgba(234, 235, 238, 0.98)'
       disabled-text-color: 'rgba(234, 235, 238, 0.45)'
@@ -925,7 +926,7 @@ Frosted Glass:
       label-badge-grey: 'rgb(83, 90, 103)'
       ha-chip-text-color: 'rgb(234, 235, 238)'
 
-      primary-color: 'rgb(106, 116, 211)'
+      primary-color: &dark-active 'rgb(106, 116, 211)'
       dark-primary-color: 'rgb(106, 116, 211)'
       light-primary-color: 'rgb(167, 182, 199)'
       accent-color: 'rgb(106, 116, 211)'
@@ -939,7 +940,7 @@ Frosted Glass:
       background-image: "center / cover no-repeat fixed url('https://cdn.jsdelivr.net/gh/wessamlauf/homeassistant-frosted-glass-themes@refs/heads/main/themes/frosted-glass-dark-background.jpg')"
       lovelace-background: 'var(--background-image)'
       primary-background-color: 'rgba(30, 30, 30, 1)'                                      # 1.2 change - improved background color for a darker feel 
-      secondary-background-color: 'rgba(30, 33, 54, 0.6)'
+      secondary-background-color: &dark-bg 'rgba(30, 33, 54, 0.6)'
       clear-background-color: 'rgba(30, 33, 54, 0.7)'
       card-background-color: 'rgba(30, 30, 30, 0.85)'
       ha-card-background: 'rgba(30, 30, 30, 0.9)'
@@ -951,6 +952,9 @@ Frosted Glass:
       ha-card-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.28)'
       ha-view-sections-column-gap: '17px'
       ha-view-sections-column-min-width: 320px
+      custom-bg: *dark-bg
+      custom-active: *dark-active
+      custom-contrast: *dark-contrast
 
       # Sliders, toggles, switches
       paper-slider-knob-color: 'rgb(106, 116, 211)'

@@ -9,7 +9,7 @@ Liquid Glass:
       app-theme-color: rgb(91, 138, 168) # Average header color, used on the top of the browser
       custom-bg: rgba(0, 84, 186, 1)
       custom-active: rgba(37, 21, 99, 1)
-      
+      custom-contrast: white
     dark:
       background-image: "center / cover no-repeat fixed url('https://raw.githubusercontent.com/Nezz/homeassistant-visionos-theme/refs/heads/static/macOS_26_Dark.webp')"
       primary-background-color: rgb(18, 11, 25)
@@ -19,6 +19,7 @@ Liquid Glass:
       app-theme-color: rgb(0, 0, 0)
       custom-bg: rgba(0, 8, 73, 1)
       custom-active: rgba(37, 21, 99, 1)
+      custom-contrast: white
   # Global
   lovelace-background: var(--background-image)
   light-primary-color: rgb(241, 241, 241) # Icons on sidebar

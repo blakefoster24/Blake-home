@@ -314,28 +314,55 @@
         id:
         - Bed left
       sequence:
-      - alias: Occupancy not detected outside bedroom for 5min
-        wait_template: "{% set sensors = [\n  'binary_sensor.bathroom_presence',\n
-          \ 'binary_sensor.closet_motion',\n  'binary_sensor.kitchen_presence',\n
-          \ 'binary_sensor.living_room_motion'\n] %}\n{% set threshold = 10 %}\n\n{#
-          1. Check if all sensors are 'off' #}\n{% set all_off = expand(sensors) |
-          map(attribute='state') | select('eq', 'off') | list | length == sensors
-          | length %}\n\n{# 2. Check if any sensor changed state in the last 10 minutes
-          #}\n{# (If last_changed is greater than now minus threshold, it changed
-          recently) #}\n{% set recent_changes = expand(sensors) | map(attribute='last_changed')
-          \n   | select('ge', now() - timedelta(minutes=threshold)) | list | length
-          %}\n\n{{ all_off and (recent_changes == 0) }}\n"
-        continue_on_timeout: false
-        timeout:
-          hours: 0
-          minutes: 20
-          seconds: 0
-          milliseconds: 0
-      - action: scene.turn_on
-        metadata: {}
-        target:
-          entity_id: scene.lights_off_except_bedroom
-        data: {}
+      - parallel:
+        - sequence:
+          - alias: Occupancy not detected outside bedroom for 5min
+            wait_template: "{% set sensors = [\n  'binary_sensor.bathroom_presence',\n
+              \ 'binary_sensor.closet_motion',\n  'binary_sensor.kitchen_presence',\n
+              \ 'binary_sensor.living_room_motion'\n] %}\n{% set threshold = 10 %}\n\n{#
+              1. Check if all sensors are 'off' #}\n{% set all_off = expand(sensors)
+              | map(attribute='state') | select('eq', 'off') | list | length == sensors
+              | length %}\n\n{# 2. Check if any sensor changed state in the last 10
+              minutes #}\n{# (If last_changed is greater than now minus threshold,
+              it changed recently) #}\n{% set recent_changes = expand(sensors) | map(attribute='last_changed')
+              \n   | select('ge', now() - timedelta(minutes=threshold)) | list | length
+              %}\n\n{{ all_off and (recent_changes == 0) }}\n"
+            continue_on_timeout: false
+            timeout:
+              hours: 0
+              minutes: 20
+              seconds: 0
+              milliseconds: 0
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.lights_off_except_bedroom
+            data: {}
+          alias: Lights off outside bedroom
+        - alias: Bedroom lamp only
+          sequence:
+          - alias: Bed Left Occupied > 3min
+            wait_template: '{{ is_state(''binary_sensor.bed_presence_bb8594_bed_occupied_left'',
+              ''on'') and (now() - states.binary_sensor.bed_presence_bb8594_bed_occupied_left.last_changed).total_seconds()
+              >= 240 }}
+
+              '
+            timeout:
+              hours: 0
+              minutes: 0
+              seconds: 0
+              milliseconds: 0
+            continue_on_timeout: false
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.full_lamp
+            data: {}
+          - action: light.turn_off
+            metadata: {}
+            target:
+              entity_id: light.bedroom_ceiling_lights
+            data: {}
     - conditions:
       - condition: trigger
         id:
