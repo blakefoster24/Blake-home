@@ -10,6 +10,8 @@ Liquid Glass:
       custom-bg: rgba(0, 84, 186, 1)
       custom-active: rgba(37, 21, 99, 1)
       custom-contrast: white
+      custom-radius: 20px
+      custom-border: 1px solid rgba(255, 255, 255, 0.2)
     dark:
       background-image: "center / cover no-repeat fixed url('https://raw.githubusercontent.com/Nezz/homeassistant-visionos-theme/refs/heads/static/macOS_26_Dark.webp')"
       primary-background-color: rgb(18, 11, 25)
@@ -20,6 +22,8 @@ Liquid Glass:
       custom-bg: rgba(0, 8, 73, 1)
       custom-active: rgba(37, 21, 99, 1)
       custom-contrast: white
+      custom-radius: 20px
+      custom-border: 1px solid rgba(255, 255, 255, 0.2)
   # Global
   lovelace-background: var(--background-image)
   light-primary-color: rgb(241, 241, 241) # Icons on sidebar
