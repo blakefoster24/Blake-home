@@ -456,7 +456,9 @@ Frosted Glass:
       custom-active: *active #primary-color
       custom-contrast: *contrast #primary-text-color
       custom-radius: 20px
-      custom-border: 1px solid rgba(255, 255, 255, 0.2)
+      custom-button-border: 1px solid rgba(255, 255, 255, 0.2)
+      custom-border:  1px solid rgba(255, 255, 255, 0.2)
+      
 
 
       # Sliders, toggles, switches
@@ -959,8 +961,8 @@ Frosted Glass:
       custom-active: *dark-active
       custom-contrast: *dark-contrast
       custom-radius: 20px
-      custom-border: 1px solid rgba(255, 255, 255, 0.2)
-
+      custom-button-border: 1px solid rgba(255, 255, 255, 0.2)
+      custom-border:  .5px solid rgba(255, 255, 255, 0.2)
 
       # Sliders, toggles, switches
       paper-slider-knob-color: 'rgb(106, 116, 211)'

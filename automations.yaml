@@ -315,18 +315,19 @@
         - Bed left
       sequence:
       - parallel:
-        - sequence:
+        - alias: Lights off outside bedroom
+          sequence:
           - alias: Occupancy not detected outside bedroom for 5min
             wait_template: "{% set sensors = [\n  'binary_sensor.bathroom_presence',\n
               \ 'binary_sensor.closet_motion',\n  'binary_sensor.kitchen_presence',\n
-              \ 'binary_sensor.living_room_motion'\n] %}\n{% set threshold = 10 %}\n\n{#
-              1. Check if all sensors are 'off' #}\n{% set all_off = expand(sensors)
-              | map(attribute='state') | select('eq', 'off') | list | length == sensors
-              | length %}\n\n{# 2. Check if any sensor changed state in the last 10
-              minutes #}\n{# (If last_changed is greater than now minus threshold,
-              it changed recently) #}\n{% set recent_changes = expand(sensors) | map(attribute='last_changed')
-              \n   | select('ge', now() - timedelta(minutes=threshold)) | list | length
-              %}\n\n{{ all_off and (recent_changes == 0) }}\n"
+              \ 'binary_sensor.living_room_motion'\n] %}\n{% set threshold = 5 %}\n{#
+              1. Expand the sensor list once to save resources #}\n{% set entities
+              = expand(sensors) %}\n\n{# 2. Check for any 'on' states or changes within
+              the threshold #}\n{% set any_on = entities | selectattr('state', 'eq',
+              'on') | list | count > 0 %}\n{% set any_recent = entities | selectattr('last_changed',
+              'ge', now() - timedelta(minutes=threshold)) | list | count > 0 %}\n\n{#
+              3. Return true only if nothing is 'on' AND nothing changed recently
+              #}\n{{ not any_on and not any_recent }}\n"
             continue_on_timeout: false
             timeout:
               hours: 0
@@ -338,7 +339,6 @@
             target:
               entity_id: scene.lights_off_except_bedroom
             data: {}
-          alias: Lights off outside bedroom
         - alias: Bedroom lamp only
           sequence:
           - alias: Bed Left Occupied > 3min
@@ -347,12 +347,6 @@
               >= 240 }}
 
               '
-            timeout:
-              hours: 0
-              minutes: 0
-              seconds: 0
-              milliseconds: 0
-            continue_on_timeout: false
           - action: scene.turn_on
             metadata: {}
             target:
@@ -486,10 +480,9 @@
     value_template: "{% set current = states('sensor.nest_thermostat_temperature')
       | float(0) %}\n{% set target = state_attr('climate.nest_thermostat', 'temperature')
       %}\n{% set high = state_attr('climate.nest_thermostat', 'target_temp_high')
-      %}\n{% set low = state_attr('climate.nest_thermostat', 'target_temp_low') %}\n\n{%
-      if target != None %}\n  {{ (current - target) | abs > 5 }}\n{% elif high !=
-      None and low != None %}\n  {{ (current > high + 5) or (current < low - 5) }}\n{%
-      else %}\n  false\n{% endif %}\n"
+      %}\n{% set low = state_attr('climate.nest_thermostat', 'target_temp_low') %}\n\n{{
+      (target is not none and (current - target) | abs > 5)\n   or (high is not none
+      and low is not none and (current > high + 5 or current < low - 5)) }}\n"
     id: Set-point discrepancy
     for:
       hours: 0
@@ -1026,14 +1019,15 @@
   - condition: time
     after: '22:00:00'
     before: 08:00:00
-  - condition: state
+  - alias: Bedroom Tv Idle > 15 min
+    condition: state
     entity_id: media_player.bedroom_tv
-    state: idle
+    state:
+    - idle
     for:
       hours: 0
       minutes: 15
       seconds: 0
-    alias: Bedroom Tv Idle > 15 min
   - condition: state
     entity_id: input_boolean.phone_active
     state: 'off'
@@ -1053,6 +1047,10 @@
     entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_left
     state:
     - 'on'
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
   actions:
   - action: scene.turn_on
     metadata: {}
@@ -1442,11 +1440,11 @@
       - condition: trigger
         id:
         - 9:45am
-      - condition: template
-        value_template: "{%- set worked = [\n  '2026-07-04',\n  '2027-01-01',\n  '2027-09-06',\n
-          \ '2028-01-17',\n  '2028-11-23'\n] -%}\n{{ worked | select('eq', (now().date()
-          + timedelta(days=7)).isoformat()) | list | count > 0 }}"
-        alias: Holiday in 7 days
+      - alias: Holiday in 7 days
+        condition: template
+        value_template: "{% set worked = [\n  '2026-07-04', '2027-01-01', '2027-09-06',
+          '2028-01-17', '2028-11-23'\n] %}\n{{ (now().date() + timedelta(days=7)).isoformat()
+          in worked }}\n"
         enabled: true
       sequence:
       - sequence:
@@ -2168,12 +2166,9 @@
         - action: tts.cloud_say
           metadata: {}
           data:
-            entity_id: '{% if is_state(''binary_sensor.bed_presence_bb8594_bed_occupied_left'',
-              ''on'') %} media_player.blake_s_echo_spot {% elif is_state(''binary_sensor.kitchen_presence'',
-              ''on'') %} media_player.blake_s_echo_dot {% else %} media_player.all_echo
-              {% endif %}
-
-              '
+            entity_id: "{{ iif(is_state('binary_sensor.bed_presence_bb8594_bed_occupied_left',
+              'on'), 'media_player.blake_s_echo_spot', \n   iif(is_state('binary_sensor.kitchen_presence',
+              'on'), 'media_player.blake_s_echo_dot', 'media_player.all_echo')) }}\n"
             message: Washing Machine has finished!
             cache: false
         - action: scene.turn_on
@@ -2253,12 +2248,10 @@
             - action: tts.cloud_say
               metadata: {}
               data:
-                entity_id: '{% if is_state(''binary_sensor.bed_presence_bb8594_bed_occupied_left'',
-                  ''on'') %} media_player.blake_s_echo_spot {% elif is_state(''binary_sensor.kitchen_presence'',
-                  ''on'') %} media_player.blake_s_echo_dot {% else %} media_player.all_echo
-                  {% endif %}
-
-                  '
+                entity_id: "{{ iif(is_state('binary_sensor.bed_presence_bb8594_bed_occupied_left',
+                  'on'), 'media_player.blake_s_echo_spot', \n   iif(is_state('binary_sensor.kitchen_presence',
+                  'on'), 'media_player.blake_s_echo_dot', 'media_player.all_echo'))
+                  }}\n"
                 message: Dryer has finished!
                 cache: false
             - action: scene.turn_on
