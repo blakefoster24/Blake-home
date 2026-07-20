@@ -347,11 +347,6 @@
               >= 240 }}
 
               '
-          - action: scene.turn_on
-            metadata: {}
-            target:
-              entity_id: scene.full_lamp
-            data: {}
           - action: light.turn_off
             metadata: {}
             target:
