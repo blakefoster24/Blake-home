@@ -182,7 +182,7 @@ alexa_music:
       music_input: '{{ states(''input_text.alexa_music_search'') if is_search else
         states(''input_text.alarm_music'') }}'
       music_query: '{{ music_input if music_input not in ['''', ''unknown'', ''unavailable'']
-        else ''my soundtrack'' }}'
+        else ''My Soundtrack'' }}'
       speaker_selection: '{{ states(''input_select.speakers'') if is_search else ''All
         Echo Group'' }}'
       speaker_voice_name: '{% set clean = speaker_selection.split('' ('')[0] %} {{
@@ -202,11 +202,11 @@ alexa_music:
 
       music_selection: acts as a safety net, it’s the final selection for what to
       play. It uses music_input unless it is in an invalid state, then it defaults
-      to “my soundtrack”
+      to “My Soundtrack”
 
 
-      speaker_selection: picks the correct source for where to play music, either
-      input_selector it is_search is true, otherwise it uses “all echo”.
+      speaker_selection: picks ithe correct source for where to play music, either
+      input_selector if is_search is true, otherwise it uses “all echo”.
 
 
       speaker_voice_name: sanitizes the speaker selection to create a simple friendly
@@ -240,109 +240,86 @@ alexa_music:
         | target_media_player={{ target_media_player }}'
       name: Music Script Variables
       entity_id: script.alexa_music
+  - alias: Variable Log Dashboard
+    action: input_text.set_value
+    metadata: {}
+    target:
+      entity_id: input_text.script_variables
+    data:
+      value: '
+
+        Variables:
+
+        Mode: {{ ''Manual Search'' if is_search else ''Automatic'' }}
+
+        Music query: {{ (''music search'' if is_search else ''alarm music'') if music_input
+        not in ['''', ''unknown'', ''unavailable''] else ''defaulted:'' }} {{ music_query
+        }}
+
+        speaker_selection: {{ speaker_selection if is_search else ''defaulted to:
+        '' ~ speaker_selection }}
+
+        Target: {{ target_media_player }}
+
+        '
+  - action: input_boolean.turn_on
+    metadata: {}
+    target:
+      entity_id: input_boolean.disable_toggle
+    data: {}
   - parallel:
-    - alias: Music Off
-      sequence:
-      - action: input_boolean.turn_on
-        metadata: {}
-        data: {}
+    - wait_for_trigger:
+      - trigger: switch.turned_off
         target:
           entity_id: input_boolean.disable_toggle
-        note: 'Toggle is used as a flag for the script being active to change the
-          hue button 4 to stop script instead of its normal function, also allows
-          dashboard “stop” button to easily trigger the stop branch. '
-      - wait_for_trigger:
-        - alias: Off Short
-          trigger: event
-          event_type: zha_event
-          event_data:
-            device_ieee: 00:17:88:01:02:18:b1:7a
-            command: off_short_release
-        - alias: Door - Leaving Logic
-          trigger: template
-          value_template: "{{ is_state('binary_sensor.front_door', 'on') \n   and
-            is_state('binary_sensor.kitchen_presence', 'on') \n   and as_timestamp(states.binary_sensor.kitchen_presence.last_changed)
-            < as_timestamp(states.binary_sensor.front_door.last_changed) }}\n"
-        - trigger: state
-          entity_id:
-          - binary_sensor.alexa_master_sensor
-          to:
-          - 'off'
-          for:
-            hours: 0
-            minutes: 2
-            seconds: 0
-        - trigger: switch.turned_off
-          target:
-            entity_id: input_boolean.disable_toggle
-          options: {}
-      - action: media_player.media_stop
-        metadata: {}
-        data: {}
-        target:
-          entity_id:
-          - media_player.all_echo
-          - media_player.blake_s_echo_dot
-          - media_player.blake_s_echo_pop
-          - media_player.blake_s_echo_spot
-      - action: input_boolean.turn_off
-        metadata: {}
-        data: {}
-        target:
-          entity_id: input_boolean.disable_toggle
-      - action: input_text.set_value
-        metadata: {}
-        target:
-          entity_id: input_text.alexa_music_search
-        data:
-          value: ''
-      - action: input_select.select_option
-        metadata: {}
-        target:
-          entity_id: input_select.speakers
-        data:
-          option: All Echo (All Alexa Devices)
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 30
-          milliseconds: 0
-      - action: media_player.volume_set
-        metadata: {}
-        data:
-          volume_level: 0.3
-        target:
-          entity_id: media_player.all_echo
+        options:
+          behavior: each
+          for: 00:00:00
     - sequence:
       - alias: Play Music
         sequence:
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: 'Echo Spot & All Echo volume: 0.0'
         - action: media_player.volume_set
           metadata: {}
           data:
             volume_level: 0
           target:
-            entity_id: media_player.blake_s_echo_spot
+            entity_id:
+            - media_player.blake_s_echo_spot
+            - media_player.all_echo
         - delay:
             hours: 0
             minutes: 0
             seconds: 3
             milliseconds: 0
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: 'Command alexa: Shuffle {{ music_query }} on {{ speaker_voice_name
+              }}'
         - action: alexa_devices.send_text_command
           metadata: {}
           data:
             device_id: ba7e4aed08d0947fa03068f398842568
             text_command: Shuffle {{ music_query }} on {{ speaker_voice_name }}
-        - action: media_player.volume_set
-          metadata: {}
-          data:
-            volume_level: 0
-          target:
-            entity_id: media_player.all_echo
         - delay:
             hours: 0
             minutes: 0
             seconds: 3
             milliseconds: 0
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: Shuffle - {{ target_media_player }}
         - action: media_player.shuffle_set
           metadata: {}
           data:
@@ -355,6 +332,12 @@ alexa_music:
             minutes: 0
             seconds: 3
             milliseconds: 0
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: Skip - {{ target_media_player }}
         - action: media_player.media_next_track
           metadata: {}
           data: {}
@@ -382,6 +365,12 @@ alexa_music:
         repeat:
           count: 7
           sequence:
+          - action: input_text.set_value
+            metadata: {}
+            target:
+              entity_id: input_text.script_tracking
+            data:
+              value: 'Raising All Echo Volume: {{(repeat.index * 0.02) }}'
           - action: media_player.volume_set
             metadata: {}
             data:
@@ -393,6 +382,12 @@ alexa_music:
               minutes: 0
               seconds: 2
               milliseconds: 0
+      - action: input_text.set_value
+        metadata: {}
+        target:
+          entity_id: input_text.script_tracking
+        data:
+          value: Playing...
       - alias: Wakeup Sequence
         if:
         - alias: Not triggered by search

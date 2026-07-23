@@ -818,6 +818,13 @@
         minutes: 5
         seconds: 0
     id: Dashboard toggle on 5min
+  - trigger: switch.turned_on
+    target:
+      entity_id: input_boolean.disable_toggle
+    options:
+      behavior: each
+      for: 00:00:00
+    id: Music disable toggle - on
   conditions: []
   actions:
   - choose:
@@ -898,6 +905,110 @@
         target:
           entity_id: input_boolean.dashboard_toggle
         data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - Music disable toggle - on
+      sequence:
+      - alias: Music Off
+        sequence:
+        - wait_for_trigger:
+          - alias: Off Short
+            trigger: event
+            event_type: zha_event
+            event_data:
+              device_ieee: 00:17:88:01:02:18:b1:7a
+              command: off_short_release
+          - alias: Door - Leaving Logic
+            trigger: template
+            value_template: "{{ is_state('binary_sensor.front_door', 'on') \n   and
+              is_state('binary_sensor.kitchen_presence', 'on') \n   and as_timestamp(states.binary_sensor.kitchen_presence.last_changed)
+              < as_timestamp(states.binary_sensor.front_door.last_changed) }}\n"
+          - trigger: state
+            entity_id:
+            - sensor.recent_alexa
+            to: none
+            for:
+              hours: 0
+              minutes: 2
+              seconds: 0
+          - trigger: switch.turned_off
+            target:
+              entity_id: input_boolean.disable_toggle
+            options: {}
+        - action: script.turn_off
+          metadata: {}
+          target:
+            entity_id: script.alexa_music
+          data: {}
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: Stop media on Every Echo Device
+        - action: media_player.media_stop
+          metadata: {}
+          data: {}
+          target:
+            entity_id:
+            - media_player.all_echo
+            - media_player.blake_s_echo_dot
+            - media_player.blake_s_echo_pop
+            - media_player.blake_s_echo_spot
+        - action: input_boolean.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id: input_boolean.disable_toggle
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: Reset Selections
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.alexa_music_search
+          data:
+            value: ''
+        - action: input_select.select_option
+          metadata: {}
+          target:
+            entity_id: input_select.speakers
+          data:
+            option: All Echo (All Alexa Devices)
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 3
+            milliseconds: 0
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: 'Reset All Echo Volume: 0.3'
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.3
+          target:
+            entity_id: media_player.all_echo
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 3
+            milliseconds: 0
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id:
+            - input_text.script_variables
+            - input_text.script_tracking
+          data:
+            value: ''
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
