@@ -524,6 +524,9 @@
   - trigger: time
     at: 08:00:00
     id: 8am
+  - trigger: time
+    at: '23:00:00'
+    id: 11pm
   conditions:
   - condition: or
     conditions:
@@ -591,18 +594,6 @@
               behavior: any
               for: 00:00:00
               zone: zone.home
-      - condition: not
-        conditions:
-        - alias: workday + 8-9:30
-          condition: and
-          conditions:
-          - condition: switch.is_on
-            target:
-              entity_id: input_boolean.workday_today_toggle
-            options: {}
-          - condition: time
-            after: 07:55:00
-            before: '21:20:00'
       sequence:
       - action: climate.set_temperature
         metadata: {}
@@ -619,7 +610,7 @@
         entity_id: input_boolean.workday_today_toggle
         state: 'on'
       - condition: time
-        after: 08:59:00
+        after: 08:40:00
         before: '15:50:00'
       sequence:
       - action: scene.turn_on
@@ -775,6 +766,18 @@
         data:
           temperature: 70
           hvac_mode: heat
+    - conditions:
+      - condition: trigger
+        id:
+        - 11pm
+      sequence:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id: input_boolean.thermostat_automation_pause
+        data: {}
+        enabled: true
+      alias: Reset thermostat pause toggle
     continue_on_error: true
     enabled: true
   trace:
@@ -800,9 +803,6 @@
       minutes: 5
       seconds: 0
     id: Stuck open
-  - trigger: time
-    at: '23:00:00'
-    id: 11pm
   - trigger: switch.turned_on
     target:
       entity_id: input_boolean.general_toggle_helper
@@ -818,13 +818,13 @@
         minutes: 5
         seconds: 0
     id: Dashboard toggle on 5min
-  - trigger: switch.turned_on
+  - trigger: switch.turned_off
     target:
       entity_id: input_boolean.disable_toggle
     options:
       behavior: each
       for: 00:00:00
-    id: Music disable toggle - on
+    id: Music disable = Off
   conditions: []
   actions:
   - choose:
@@ -839,18 +839,6 @@
         data:
           datetime: '{{ now().isoformat() }}'
         alias: Set Home Timestamp
-    - conditions:
-      - condition: trigger
-        id:
-        - 11pm
-      sequence:
-      - action: input_boolean.turn_off
-        metadata: {}
-        target:
-          entity_id: input_boolean.thermostat_automation_pause
-        data: {}
-        enabled: true
-      alias: Reset Thermostat Adjustment - 11pm
     - conditions:
       - condition: trigger
         id:
@@ -908,107 +896,18 @@
     - conditions:
       - condition: trigger
         id:
-        - Music disable toggle - on
+        - Music disable = Off
       sequence:
-      - alias: Music Off
-        sequence:
-        - wait_for_trigger:
-          - alias: Off Short
-            trigger: event
-            event_type: zha_event
-            event_data:
-              device_ieee: 00:17:88:01:02:18:b1:7a
-              command: off_short_release
-          - alias: Door - Leaving Logic
-            trigger: template
-            value_template: "{{ is_state('binary_sensor.front_door', 'on') \n   and
-              is_state('binary_sensor.kitchen_presence', 'on') \n   and as_timestamp(states.binary_sensor.kitchen_presence.last_changed)
-              < as_timestamp(states.binary_sensor.front_door.last_changed) }}\n"
-          - trigger: state
-            entity_id:
-            - sensor.recent_alexa
-            to: none
-            for:
-              hours: 0
-              minutes: 2
-              seconds: 0
-          - trigger: switch.turned_off
-            target:
-              entity_id: input_boolean.disable_toggle
-            options: {}
-        - action: script.turn_off
-          metadata: {}
-          target:
-            entity_id: script.alexa_music
-          data: {}
-        - action: input_text.set_value
-          metadata: {}
-          target:
-            entity_id: input_text.script_tracking
-          data:
-            value: Stop media on Every Echo Device
-        - action: media_player.media_stop
-          metadata: {}
-          data: {}
-          target:
-            entity_id:
-            - media_player.all_echo
-            - media_player.blake_s_echo_dot
-            - media_player.blake_s_echo_pop
-            - media_player.blake_s_echo_spot
-        - action: input_boolean.turn_off
-          metadata: {}
-          data: {}
-          target:
-            entity_id: input_boolean.disable_toggle
-        - action: input_text.set_value
-          metadata: {}
-          target:
-            entity_id: input_text.script_tracking
-          data:
-            value: Reset Selections
-        - action: input_text.set_value
-          metadata: {}
-          target:
-            entity_id: input_text.alexa_music_search
-          data:
-            value: ''
-        - action: input_select.select_option
-          metadata: {}
-          target:
-            entity_id: input_select.speakers
-          data:
-            option: All Echo (All Alexa Devices)
-        - delay:
-            hours: 0
-            minutes: 0
-            seconds: 3
-            milliseconds: 0
-        - action: input_text.set_value
-          metadata: {}
-          target:
-            entity_id: input_text.script_tracking
-          data:
-            value: 'Reset All Echo Volume: 0.3'
-        - action: media_player.volume_set
-          metadata: {}
-          data:
-            volume_level: 0.3
-          target:
-            entity_id: media_player.all_echo
-        - delay:
-            hours: 0
-            minutes: 0
-            seconds: 3
-            milliseconds: 0
-        - action: input_text.set_value
-          metadata: {}
-          target:
-            entity_id:
-            - input_text.script_variables
-            - input_text.script_tracking
-          data:
-            value: ''
+      - action: script.turn_off
+        metadata: {}
+        target:
+          entity_id: script.alexa_music
+        data: {}
+      - action: script.alexa_music
+        target:
+          entity_id: script.alexa_music
+        data:
+          action_type: stop
   mode: restart
 - id: '1761312420129'
   alias: 'Battery Low Automation '
@@ -1712,6 +1611,45 @@
     event_data:
       device_ieee: 00:17:88:01:02:18:b1:7a
       command: off_hold
+  - event_type: zha_event
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 1
+      cluster_id: 6
+      command: 'on'
+    trigger: event
+    alias: 1 - 1
+  - event_type: zha_event
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 1
+      cluster_id: 5
+      command: recall
+      params:
+        scene_id: 1
+    alias: 1 - 2
+    trigger: event
+  - event_type: zha_event
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 1
+      cluster_id: 5
+      command: recall
+      params:
+        scene_id: 2
+    alias: 1 - 3
+    trigger: event
+  - event_type: zha_event
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 1
+      cluster_id: 8
+      command: step
+      params:
+        step_mode: 0
+        step_size: 20
+    alias: 1 - hold
+    trigger: event
   conditions: []
   actions:
   - choose:
@@ -1861,17 +1799,19 @@
   alias: Workday Wakeup
   description: ''
   triggers:
-  - trigger: event
-    id: on_short
-    alias: Hue Dimmer - On Short
-    event_type: zha_event
-    event_data:
-      device_ieee: 00:17:88:01:02:18:b1:7a
-      command: on_short_release
   - trigger: time
     at: 08:30:00
     id: Late Time Window
     enabled: true
+  - alias: Button 1 - Single
+    event_type: zha_event
+    id: button_1_single
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 1
+      cluster_id: 6
+      command: 'on'
+    trigger: event
   conditions:
   - condition: state
     state: 'on'
@@ -2376,4 +2316,385 @@
             data: {}
             target:
               entity_id: counter.dryer_vibration_counter
+  mode: single
+- id: '1784855386625'
+  alias: Shelly Button 4
+  description: Handles single, double, triple presses, and holds for all 4 buttons
+  triggers:
+  - alias: Button 1 - Single
+    event_type: zha_event
+    id: button_1_single
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 1
+      cluster_id: 6
+      command: 'on'
+    trigger: event
+  - alias: Button 1 - Double
+    event_type: zha_event
+    id: button_1_double
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 1
+      cluster_id: 5
+      command: recall
+      params:
+        scene_id: 1
+    trigger: event
+  - alias: Button 1 - Triple
+    event_type: zha_event
+    id: button_1_triple
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 1
+      cluster_id: 5
+      command: recall
+      params:
+        scene_id: 2
+    trigger: event
+  - alias: Button 1 - Hold
+    event_type: zha_event
+    id: button_1_hold
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 1
+      cluster_id: 8
+      command: step
+      params:
+        step_mode: 0
+        step_size: 20
+    trigger: event
+  - alias: Button 2 - Single
+    event_type: zha_event
+    id: button_2_single
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 1
+      cluster_id: 6
+      command: 'off'
+    trigger: event
+  - alias: Button 2 - Double
+    event_type: zha_event
+    id: button_2_double
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 2
+      cluster_id: 5
+      command: recall
+      params:
+        scene_id: 1
+    trigger: event
+  - alias: Button 2 - Triple
+    event_type: zha_event
+    id: button_2_triple
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 2
+      cluster_id: 5
+      command: recall
+      params:
+        scene_id: 2
+    trigger: event
+  - alias: Button 2 - Hold
+    event_type: zha_event
+    id: button_2_hold
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 1
+      cluster_id: 8
+      command: step
+      params:
+        step_mode: 1
+        step_size: 20
+    trigger: event
+  - alias: Button 3 - Single
+    event_type: zha_event
+    id: button_3_single
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 2
+      cluster_id: 6
+      command: 'on'
+    trigger: event
+  - alias: Button 3 - Double
+    event_type: zha_event
+    id: button_3_double
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 3
+      cluster_id: 5
+      command: recall
+      params:
+        scene_id: 1
+    trigger: event
+  - alias: Button 3 - Triple
+    event_type: zha_event
+    id: button_3_triple
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 3
+      cluster_id: 5
+      command: recall
+      params:
+        scene_id: 2
+    trigger: event
+  - alias: Button 3 - Hold
+    event_type: zha_event
+    id: button_3_hold
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 2
+      cluster_id: 8
+      command: step
+      params:
+        step_mode: 0
+        step_size: 20
+    trigger: event
+  - alias: Button 4 - Single
+    event_type: zha_event
+    id: button_4_single
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 2
+      cluster_id: 6
+      command: 'off'
+    trigger: event
+  - alias: Button 4 - Double
+    event_type: zha_event
+    id: button_4_double
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 4
+      cluster_id: 5
+      command: recall
+      params:
+        scene_id: 1
+    trigger: event
+  - alias: Button 4 - Triple
+    event_type: zha_event
+    id: button_4_triple
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 4
+      cluster_id: 5
+      command: recall
+      params:
+        scene_id: 2
+    trigger: event
+  - alias: Button 4 - Hold
+    event_type: zha_event
+    id: button_4_hold
+    event_data:
+      device_ieee: c0:2c:ed:ff:fe:41:e1:25
+      endpoint_id: 2
+      cluster_id: 8
+      command: step
+      params:
+        step_mode: 1
+        step_size: 20
+    trigger: event
+  conditions: []
+  actions:
+  - choose:
+    - alias: Button 1
+      conditions:
+      - condition: trigger
+        id:
+        - button_1_single
+        - button_1_double
+        - button_1_triple
+        - button_1_hold
+      sequence:
+      - alias: Button 1 Presses
+        choose:
+        - conditions:
+          - condition: trigger
+            id:
+            - button_1_single
+          - condition: not
+            conditions:
+            - alias: Workday & 8-9:30am
+              condition: and
+              conditions:
+              - condition: state
+                entity_id: input_boolean.workday_today_toggle
+                state:
+                - 'on'
+              - condition: time
+                after: 08:00:00
+                before: 09:30:00
+          sequence:
+          - action: script.turn_on
+            metadata: {}
+            target:
+              entity_id: script.set_my_room
+            data: {}
+          alias: 1 - Single
+        - conditions:
+          - condition: trigger
+            id:
+            - button_1_double
+          sequence:
+          - action: script.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: script.set_my_room
+          alias: 1 - Double
+        - conditions:
+          - condition: trigger
+            id:
+            - button_1_triple
+          sequence: []
+          alias: 1 - Triple
+        - conditions:
+          - condition: trigger
+            id:
+            - button_1_hold
+          sequence: []
+          alias: 1 - Hold
+    - alias: Button 2
+      conditions:
+      - condition: trigger
+        id:
+        - button_2_single
+        - button_2_double
+        - button_2_triple
+        - button_2_hold
+      sequence:
+      - alias: Button 2 Presses
+        choose:
+        - conditions:
+          - condition: trigger
+            id:
+            - button_2_single
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.full_lamp
+            data: {}
+          - action: light.turn_off
+            metadata: {}
+            target:
+              entity_id: light.bedroom_ceiling_lights
+            data: {}
+          alias: 2 - Single
+        - conditions:
+          - condition: trigger
+            id:
+            - button_2_double
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.dimmed
+            data: {}
+          alias: 2 - Double
+        - conditions:
+          - condition: trigger
+            id:
+            - button_2_triple
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.lights_off_except_bedroom
+            data: {}
+          alias: 2 - Triple
+        - conditions:
+          - condition: trigger
+            id:
+            - button_2_hold
+          sequence: []
+          alias: 2 - Hold
+    - alias: Button 3
+      conditions:
+      - condition: trigger
+        id:
+        - button_3_single
+        - button_3_double
+        - button_3_triple
+        - button_3_hold
+      sequence:
+      - alias: Button 3 Presses
+        choose:
+        - conditions:
+          - condition: trigger
+            id:
+            - button_3_single
+          sequence:
+          - action: fan.toggle
+            metadata: {}
+            target:
+              entity_id: fan.bedroom_ceiling_fan
+            data: {}
+          alias: 3 - Single
+        - conditions:
+          - condition: trigger
+            id:
+            - button_3_double
+          sequence: []
+          alias: 3 - Double
+        - conditions:
+          - condition: trigger
+            id:
+            - button_3_triple
+          sequence: []
+          alias: 3 - Triple
+        - conditions:
+          - condition: trigger
+            id:
+            - button_3_hold
+          sequence: []
+          alias: 3 - Hold
+    - alias: Button 4
+      conditions:
+      - condition: trigger
+        id:
+        - button_4_single
+        - button_4_double
+        - button_4_triple
+        - button_4_hold
+      sequence:
+      - alias: Button 4 Presses
+        choose:
+        - conditions:
+          - condition: trigger
+            id:
+            - button_4_single
+          - condition: state
+            entity_id: input_boolean.disable_toggle
+            state:
+            - 'off'
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.bedroom_lights_off
+            data: {}
+          alias: 4 - Single
+        - conditions:
+          - condition: trigger
+            id:
+            - button_4_double
+          sequence: []
+          alias: 4 - Double
+        - conditions:
+          - condition: trigger
+            id:
+            - button_4_triple
+          sequence: []
+          alias: 4 - Triple
+        - conditions:
+          - condition: trigger
+            id:
+            - button_4_hold
+          sequence:
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.goodnight_scene
+            data: {}
+          alias: 4 - Hold
   mode: single
