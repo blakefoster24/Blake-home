@@ -1193,3 +1193,24 @@
       entity_only: true
     light.closet_light:
       entity_only: true
+- id: '1785047897170'
+  name: Volume scene test
+  entities:
+    media_player.all_echo_2:
+      volume_level: 0.3
+      is_volume_muted: false
+      media_content_type: music
+      media_duration: 182
+      media_position: 38
+      media_position_updated_at: '2026-07-26T06:22:06.524855+00:00'
+      media_title: Bloodline
+      media_artist: Alex Warren & Jelly Roll
+      media_album_name: You'll Be Alright, Kid
+      device_class: speaker
+      entity_picture: /api/media_player_proxy/media_player.all_echo_2?token=453594d1ac8cfdc71a46e701304e5f50c5a1511dd0a67ee64b11a78d4fe79822&cache=1d4fd0197ff6c302
+      friendly_name: All Echo
+      supported_features: 22077
+      state: paused
+  metadata:
+    media_player.all_echo_2:
+      entity_only: true
