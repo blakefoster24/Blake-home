@@ -1611,45 +1611,6 @@
     event_data:
       device_ieee: 00:17:88:01:02:18:b1:7a
       command: off_hold
-  - event_type: zha_event
-    event_data:
-      device_ieee: c0:2c:ed:ff:fe:41:e1:25
-      endpoint_id: 1
-      cluster_id: 6
-      command: 'on'
-    trigger: event
-    alias: 1 - 1
-  - event_type: zha_event
-    event_data:
-      device_ieee: c0:2c:ed:ff:fe:41:e1:25
-      endpoint_id: 1
-      cluster_id: 5
-      command: recall
-      params:
-        scene_id: 1
-    alias: 1 - 2
-    trigger: event
-  - event_type: zha_event
-    event_data:
-      device_ieee: c0:2c:ed:ff:fe:41:e1:25
-      endpoint_id: 1
-      cluster_id: 5
-      command: recall
-      params:
-        scene_id: 2
-    alias: 1 - 3
-    trigger: event
-  - event_type: zha_event
-    event_data:
-      device_ieee: c0:2c:ed:ff:fe:41:e1:25
-      endpoint_id: 1
-      cluster_id: 8
-      command: step
-      params:
-        step_mode: 0
-        step_size: 20
-    alias: 1 - hold
-    trigger: event
   conditions: []
   actions:
   - choose:

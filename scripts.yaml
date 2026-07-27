@@ -209,7 +209,8 @@ alexa_music:
           - trigger: state
             entity_id:
             - sensor.recent_alexa
-            to: none
+            to:
+            - none
             for:
               hours: 0
               minutes: 2
@@ -348,6 +349,11 @@ alexa_music:
             data:
               device_id: ba7e4aed08d0947fa03068f398842568
               text_command: Shuffle {{ music_query }} on {{ speaker_voice_name }}
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 3
+              milliseconds: 500
           - action: media_player.volume_set
             metadata: {}
             data:
@@ -402,12 +408,6 @@ alexa_music:
             enabled: true
             target:
               entity_id: '{{ target_media_player }}'
-          - action: media_player.volume_set
-            metadata: {}
-            data:
-              volume_level: 0.01
-            target:
-              entity_id: media_player.all_echo_2
         - alias: Volume Up
           repeat:
             count: 7
