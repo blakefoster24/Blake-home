@@ -219,15 +219,6 @@ alexa_music:
             target:
               entity_id: input_boolean.disable_toggle
             options: {}
-        - alias: Variable Log Dashboard
-          action: input_text.set_value
-          metadata: {}
-          target:
-            entity_id: input_text.script_variables
-          data:
-            value: '
-
-              '
         - action: input_boolean.turn_off
           metadata: {}
           target:
@@ -483,21 +474,36 @@ alexa_music:
           entity_id: input_text.script_tracking
         data:
           value: Stop media on Every Echo Device
-      - action: media_player.media_stop
-        metadata: {}
-        data: {}
-        target:
-          entity_id:
-          - media_player.all_echo_2
-          - media_player.blake_s_echo_dot_2
-          - media_player.blake_s_echo_pop_2
-          - media_player.blake_s_echo_spot_2
+        alias: 'Script tracking: stop all echo devices'
+      - repeat:
+          until:
+          - condition: template
+            value_template: "{% set alexa_devices = [\n  'media_player.blake_s_echo_dot',\n
+              \ 'media_player.all_echo',\n  'media_player.blake_s_echo_pop',\n  'media_player.blake_s_echo_spot'\n]
+              %}\n{{ not expand(alexa_devices) | map(attribute='state') | select('eq',
+              'playing') | list | count > 0 }}\n"
+          sequence:
+          - action: media_player.media_stop
+            metadata: {}
+            data: {}
+            target:
+              entity_id:
+              - media_player.all_echo_2
+              - media_player.blake_s_echo_dot_2
+              - media_player.blake_s_echo_pop_2
+              - media_player.blake_s_echo_spot_2
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 3
+              milliseconds: 0
       - action: input_text.set_value
         metadata: {}
         target:
           entity_id: input_text.script_tracking
         data:
           value: Reseting Selections
+        alias: 'Script tracking: resetting selections'
       - action: input_text.set_value
         metadata: {}
         target:
@@ -521,6 +527,7 @@ alexa_music:
           entity_id: input_text.script_tracking
         data:
           value: Reset All Echo Volume - 0.3
+        alias: 'Script tracking: resetting echo volume'
       - action: media_player.volume_set
         metadata: {}
         data:
@@ -535,11 +542,6 @@ alexa_music:
           - input_text.script_tracking
         data:
           value: ''
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 3
-          milliseconds: 0
   alias: Alexa Music
   description: ''
 set_my_room:

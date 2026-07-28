@@ -805,11 +805,6 @@
     id: Stuck open
   - trigger: switch.turned_on
     target:
-      entity_id: input_boolean.general_toggle_helper
-    options: {}
-    id: workday wakeup leaving sequence completed
-  - trigger: switch.turned_on
-    target:
       entity_id: input_boolean.dashboard_toggle
     options:
       behavior: each
@@ -818,6 +813,13 @@
         minutes: 5
         seconds: 0
     id: Dashboard toggle on 5min
+  - trigger: switch.turned_off
+    target:
+      entity_id: input_boolean.workday_today_toggle
+    options:
+      behavior: each
+      for: 00:00:00
+    id: Manual workday off
   - trigger: switch.turned_off
     target:
       entity_id: input_boolean.disable_toggle
@@ -844,11 +846,6 @@
         id:
         - Stuck open
       sequence:
-      - action: counter.increment
-        metadata: {}
-        data: {}
-        target:
-          entity_id: counter.door_stuck
       - action: notify.mobile_app_blakes_iphone
         metadata: {}
         data:
@@ -859,7 +856,17 @@
     - conditions:
       - condition: trigger
         id:
-        - workday wakeup leaving sequence completed
+        - Dashboard toggle on 5min
+      sequence:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id: input_boolean.dashboard_toggle
+        data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - Manual workday off
       - condition: template
         value_template: '{{ state_attr(''automation.workday_wakeup'', ''current'')
           > 0 }}
@@ -878,21 +885,40 @@
         target:
           entity_id: automation.workday_wakeup
         data: {}
-      - action: input_boolean.turn_off
+      - action: automation.turn_on
         metadata: {}
-        data: {}
         target:
-          entity_id: input_boolean.general_toggle_helper
-    - conditions:
-      - condition: trigger
-        id:
-        - Dashboard toggle on 5min
-      sequence:
+          entity_id: automation.door_automation
+        data: {}
       - action: input_boolean.turn_off
         metadata: {}
         target:
-          entity_id: input_boolean.dashboard_toggle
+          entity_id: input_boolean.disable_toggle
         data: {}
+      - action: input_boolean.turn_on
+        metadata: {}
+        target:
+          entity_id: input_boolean.workday_today_toggle
+        data: {}
+      - action: script.roku_backlight
+        metadata: {}
+        data: {}
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 5
+          milliseconds: 0
+      - action: light.turn_off
+        metadata: {}
+        target:
+          entity_id: light.bedroom_tv_backlight
+        data: {}
+      - action: script.turn_on
+        metadata: {}
+        target:
+          entity_id: script.set_my_room
+        data: {}
+      alias: 'Manually end and reset wakeup automation '
     - conditions:
       - condition: trigger
         id:
@@ -908,7 +934,10 @@
           entity_id: script.alexa_music
         data:
           action_type: stop
-  mode: restart
+  mode: parallel
+  max: 10
+  trace:
+    stored_traces: 50
 - id: '1761312420129'
   alias: 'Battery Low Automation '
   description: ''
@@ -1875,6 +1904,7 @@
             target:
               entity_id:
               - light.bedroom_ceiling_lights
+              - light.bedroom_lamp
             data: {}
           - action: notify.send_message
             metadata: {}
@@ -1887,6 +1917,14 @@
               minutes: 2
               seconds: 0
               milliseconds: 0
+      - action: script.roku_backlight
+        metadata: {}
+        data: {}
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 5
+          milliseconds: 0
       - action: light.turn_off
         metadata: {}
         target:
@@ -1935,17 +1973,22 @@
         data: {}
         target:
           entity_id: scene.all_off
-      - action: alexa_devices.send_text_command
+      - action: input_boolean.turn_off
         metadata: {}
-        data:
-          device_id: ba7e4aed08d0947fa03068f398842568
-          text_command: turn off Roku backlight
+        target:
+          entity_id: input_boolean.disable_toggle
+        data: {}
       - wait_template: "{% set alexa_devices = [\n  'media_player.blake_s_echo_dot',\n
           \ 'media_player.all_echo',\n  'media_player.blake_s_echo_pop',\n  'media_player.blake_s_echo_spot'\n]
           %}\n{{ not expand(alexa_devices) | map(attribute='state') | select('eq',
           'playing') | list | count > 0 }}\n"
         continue_on_timeout: false
         alias: No Echo ‘Playing’
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 10
+          milliseconds: 0
       - action: notify.mobile_app_blakes_iphone
         metadata: {}
         data:
@@ -1953,11 +1996,11 @@
           title: Goodbye
           data:
             interruption level: time-sensitive
-      - action: input_boolean.turn_on
+      - action: input_boolean.turn_off
         metadata: {}
-        data: {}
         target:
-          entity_id: input_boolean.general_toggle_helper
+          entity_id: input_boolean.workday_today_toggle
+        data: {}
     - alias: Out of bed = weather
       sequence:
       - wait_for_trigger:
@@ -2659,3 +2702,5 @@
             data: {}
           alias: 4 - Hold
   mode: single
+  trace:
+    stored_traces: 50
