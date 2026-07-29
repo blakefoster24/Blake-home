@@ -399,38 +399,43 @@ alexa_music:
             enabled: true
             target:
               entity_id: '{{ target_media_player }}'
-        - alias: Volume Up
-          repeat:
-            count: 7
-            sequence:
-            - action: input_text.set_value
-              metadata: {}
-              target:
-                entity_id: input_text.script_tracking
-              data:
-                value: Raising All Echo Volume - {{(repeat.index * 0.02) }}
-            - action: media_player.volume_set
-              metadata: {}
-              data:
-                volume_level: '{{(repeat.index * 0.02) }}'
-              target:
-                entity_id: media_player.all_echo_2
-            - delay:
-                hours: 0
-                minutes: 0
-                seconds: 2
-                milliseconds: 0
-        - action: input_text.set_value
-          metadata: {}
-          target:
-            entity_id: input_text.script_tracking
-          data:
-            value: Playing...
+          - alias: Volume Up
+            repeat:
+              count: 7
+              sequence:
+              - action: input_text.set_value
+                metadata: {}
+                target:
+                  entity_id: input_text.script_tracking
+                data:
+                  value: Raising All Echo Volume - {{(repeat.index * 0.02) }}
+              - action: media_player.volume_set
+                metadata: {}
+                data:
+                  volume_level: '{{(repeat.index * 0.02) }}'
+                target:
+                  entity_id: media_player.all_echo_2
+              - delay:
+                  hours: 0
+                  minutes: 0
+                  seconds: 2
+                  milliseconds: 0
+          - action: input_text.set_value
+            metadata: {}
+            target:
+              entity_id: input_text.script_tracking
+            data:
+              value: Playing...
         - alias: Wakeup Sequence
           if:
           - alias: Not triggered by search
             condition: template
             value_template: '{{ action_type != ''search_music'' }}
+
+              '
+          - alias: Action type /= manual wakeup
+            condition: template
+            value_template: '{{ action_type != ''manual wakeup'' }}
 
               '
           then:
@@ -460,6 +465,28 @@ alexa_music:
               minutes: 2
               seconds: 0
               milliseconds: 0
+          - action: light.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.bedroom_ceiling_lights
+          else:
+          - alias: manual wakeup
+            condition: template
+            value_template: '{{ action_type == ''manual wakeup'' }}
+
+              '
+          - action: light.turn_on
+            metadata: {}
+            data:
+              transition: 15
+            target:
+              entity_id: light.bedroom_lamp
+          - action: fan.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: fan.bedroom_fan
           - action: light.turn_on
             metadata: {}
             data: {}

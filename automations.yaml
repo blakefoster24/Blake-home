@@ -1795,7 +1795,7 @@
     enabled: true
   - alias: Button 1 - Single
     event_type: zha_event
-    id: button_1_single
+    id: manual wakeup
     event_data:
       device_ieee: c0:2c:ed:ff:fe:41:e1:25
       endpoint_id: 1
@@ -1826,11 +1826,11 @@
   - parallel:
     - alias: Wake Up Scene Sequence
       sequence:
-      - action: script.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: script.alexa_music
+      - action: script.alexa_music
+        data:
+          action_type: '{{ trigger.id }}
+
+            '
       - action: light.turn_on
         metadata: {}
         data: {}
