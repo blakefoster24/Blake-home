@@ -3,16 +3,7 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-07-30T02:00:04.223091 =====
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.14/site-packages/httpcore/_async/http2.py", line 455, in _read_incoming_data
-    raise exc
-  File "/usr/local/lib/python3.14/site-packages/httpcore/_async/http2.py", line 441, in _read_incoming_data
-    data = await self._network_stream.read(self.READ_NUM_BYTES, timeout)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.14/site-packages/httpcore/_backends/anyio.py", line 32, in read
-    with map_exceptions(exc_map):
-         ~~~~~~~~~~~~~~^^^^^^^^^
+===== 2026-07-30T02:11:18.462584 =====
   File "/usr/local/lib/python3.14/contextlib.py", line 162, in __exit__
     self.gen.throw(value)
     ~~~~~~~~~~~~~~^^^^^^^
@@ -104,12 +95,21 @@ httpx.ReadError[0m
 [32m2026-07-30 02:00:00.441 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 [33m2026-07-30 02:00:00.502 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 [32m2026-07-30 02:00:03.515 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2026-07-30 02:00:51.425 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-30 02:00:58.537 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-30 02:01:05.652 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-07-30 02:06:13.341 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-30 02:06:22.574 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-07-30 02:11:14.647 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-07-30 02:11:14.647 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2026-07-30 02:11:14.701 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2026-07-30 02:11:17.795 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-07-30T02:00:04.329461 =====
+===== 2026-07-30T02:11:18.574383 =====
 [32m2026-07-30 01:29:59.220 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [32m2026-07-30 01:29:59.221 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 [32m2026-07-30 01:30:02.334 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
@@ -143,12 +143,15 @@ LOG: automation_runs.txt
 [32m2026-07-30 02:00:00.441 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [32m2026-07-30 02:00:00.441 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 [32m2026-07-30 02:00:03.515 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2026-07-30 02:11:14.647 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-07-30 02:11:14.647 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2026-07-30 02:11:17.795 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-07-30T02:00:04.436199 =====
+===== 2026-07-30T02:11:18.688339 =====
 httpcore.ReadError
 httpx.ReadError[0m
 [31m2026-07-30 01:28:52.458 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device[0m
@@ -172,3 +175,9 @@ httpx.ReadError[0m
 [33m2026-07-30 01:56:35.786 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:188]: Component bh1750.sensor set Warning flag: unspecified[0m
 [33m2026-07-30 01:56:38.426 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:203]: Component bh1750.sensor cleared Warning flag[0m
 [33m2026-07-30 02:00:00.502 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-07-30 02:00:51.425 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-30 02:00:58.537 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-30 02:01:05.652 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-07-30 02:06:13.341 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-30 02:06:22.574 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-07-30 02:11:14.701 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
