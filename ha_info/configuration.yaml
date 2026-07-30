@@ -1,0 +1,75 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+    themes: !include_dir_merge_named themes
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+zha:
+  custom_quirks_path: /config/zha_quirks/
+
+logger:
+  default: warning
+  logs:
+    homeassistant.core: info
+    homeassistant.components.automation: info
+    homeassistant.components.script: info
+    homeassistant.helpers.script: info
+    homeassistant.components.scene: info
+
+shell_command:
+  # 1. Generates the Markdown file inside the ha_info folder
+  write_ha_overview: >
+    bash -lc 'cat > /config/ha_info/HA_Overview.md << "EOF"
+    {{ content }}
+    EOF'
+
+  # 2. Runs the Python script from its new path
+  perform_ha_backup_tasks: "python3 /config/ha_info/ha_backup_manager.py"
+
+
+recorder:
+  exclude:
+    domains:
+      - shell_command
+
+
+panel_custom:
+  - name: panel_entities
+    sidebar_title: Entities / Helpers
+    sidebar_icon: mdi:shape
+    url_path: 'config/entities'
+    module_url: /api/hassio/app/entrypoint.js
+    embed_iframe: true
+    require_admin: true
+  - name: panel_helpers
+    sidebar_title: Helpers
+    sidebar_icon: mdi:tools
+    url_path: 'config/helpers'
+    module_url: /api/hassio/app/entrypoint.js
+    embed_iframe: true
+    require_admin: true
+  - name: panel_automations
+    sidebar_title: Automations / Scenes
+    sidebar_icon: mdi:robot
+    url_path: 'config/automation'
+    module_url: /api/hassio/app/entrypoint.js
+    embed_iframe: true
+    require_admin: true
+  - name: panel_zigbee
+    sidebar_title: Zigbee
+    sidebar_icon: mdi:zigbee
+    url_path: 'config/zha'
+    module_url: /api/hassio/app/entrypoint.js
+    embed_iframe: true
+    require_admin: true
+  - name: panel_developer_tools
+    sidebar_title: Developer Tools
+    sidebar_icon: mdi:hammer
+    url_path: 'config/developer-tools/yaml'
+    module_url: /api/hassio/app/entrypoint.js
+    embed_iframe: true
+    require_admin: true

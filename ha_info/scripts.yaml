@@ -1,0 +1,1126 @@
+find_remote:
+  sequence:
+  - action: remote.send_command
+    metadata: {}
+    data:
+      num_repeats: 1
+      delay_secs: 0.4
+      hold_secs: 0
+      command: find_remote
+    target:
+      entity_id: remote.bedroom_tv
+  alias: Find Remote
+  description: ''
+find_my_phone:
+  alias: Find My Phone
+  use_blueprint:
+    path: ggoulart/Find My Apple Device.yaml
+    input:
+      apple_device: f2f0fd38cf7bfe7c575b14a75d8b8413
+      apple_account: blake.foster30@gmail.com
+  description: ''
+temporary_thermostat_adjustment:
+  alias: Temporary Thermostat Adjustment
+  description: Overrides HVAC Temporarily
+  icon: mdi:thermostat-clock
+  mode: restart
+  fields:
+    hvac_mode:
+      name: HVAC Mode
+      required: false
+      selector:
+        select:
+          options:
+          - label: Cool
+            value: cool
+          - label: Heat
+            value: heat
+    target_temp:
+      name: Target Temperature
+      required: false
+      selector:
+        number:
+          min: 60
+          max: 85
+          step: 1
+          unit_of_measurement: °F
+          mode: slider
+    duration:
+      name: Duration (Minutes)
+      required: true
+      selector:
+        number:
+          min: 10
+          max: 240
+          step: 5
+          unit_of_measurement: min
+          mode: box
+      default: 30
+  sequence:
+  - action: scene.create
+    metadata: {}
+    data:
+      scene_id: temp_thermostat_snapshot
+      snapshot_entities:
+      - climate.nest_thermostat
+  - action: climate.set_temperature
+    metadata: {}
+    target:
+      entity_id: climate.nest_thermostat
+    data:
+      hvac_mode: '{{ hvac_mode }}'
+      temperature: '{{ target_temp }}'
+  - action: timer.start
+    metadata: {}
+    target:
+      entity_id: timer.timer_helper
+    data:
+      duration: '{{ duration | float(30) * 60 }}'
+  - wait_for_trigger:
+    - trigger: event
+      event_type: timer.finished
+      event_data:
+        entity_id: timer.timer_helper
+    continue_on_timeout: true
+    timeout:
+      hours: 2
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.temp_thermostat_snapshot
+  - action: scene.delete
+    metadata: {}
+    target:
+      entity_id: scene.temp_thermostat_snapshot
+    data: {}
+roku_backlight:
+  sequence:
+  - action: light.turn_on
+    metadata: {}
+    target:
+      entity_id: light.bedroom_tv_backlight
+    data:
+      brightness_pct: 50
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - action: light.turn_on
+    metadata: {}
+    target:
+      entity_id: light.bedroom_tv_backlight
+    data:
+      brightness_pct: 100
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - action: alexa_devices.send_text_command
+    metadata: {}
+    data:
+      text_command: Set Roku backlight to video mode
+      device_id: ba7e4aed08d0947fa03068f398842568
+  alias: Roku Backlight
+  description: ''
+push_ha_info_to_github_create_ai_zip_file_now:
+  alias: Push Ha Info to GitHub & Create AI Zip File
+  description: Generates HA_Overview.md, runs diagnostics, pushes to GitHub, AND creates
+    a zip for download.
+  mode: single
+  sequence:
+  - action: shell_command.write_ha_overview
+    data:
+      content: "# Home Assistant Configuration\n_Last Updated: {{ now().isoformat()
+        }}_\n\n## \U0001F6E0 UI Helpers\nBelow are the input helpers configured in
+        Home Assistant.\n\n{% set helpers = ['input_boolean', 'input_button', 'input_datetime',
+        'input_number', 'input_select', 'input_text', 'counter', 'timer', 'schedule']
+        %}\n{% for domain in helpers %}\n{% set assets = states[domain] | list %}\n{%
+        if assets | count > 0 %}\n### {{ domain | replace('input_', '') | capitalize
+        }}\n| Entity ID | Name | State | Attributes |\n|---|---|---|---|\n{% for s
+        in assets | sort(attribute='entity_id') %}\n{% set details = [] %}\n{% if
+        domain == 'input_number' %}\n  {% set details = details + ['min=' ~ s.attributes.get('min',
+        'none'), 'max=' ~ s.attributes.get('max', 'none'), 'step=' ~ s.attributes.get('step',
+        'none')] %}\n{% elif domain == 'input_select' %}\n  {% set details = details
+        + ['options=' ~ s.attributes.get('options', []) | join(', ')] %}\n{% elif
+        domain == 'input_datetime' %}\n  {% set details = details + ['has_date=' ~
+        s.attributes.get('has_date', 'false'), 'has_time=' ~ s.attributes.get('has_time',
+        'false')] %}\n{% elif domain == 'timer' %}\n  {% set details = details + ['duration='
+        ~ s.attributes.get('duration', 'none')] %}\n{% elif domain == 'counter' %}\n
+        \ {% set details = details + ['min=' ~ s.attributes.get('min', 'none'), 'max='
+        ~ s.attributes.get('max', 'none')] %}\n{% endif %}\n| `{{ s.entity_id }}`
+        | **{{ s.name | replace(\"'\", \"'\\\\''\") }}** | {{ s.state | replace(\"'\",
+        \"'\\\\''\") }} | {{ details | join(', ') | replace(\"'\", \"'\\\\''\") }}
+        |\n{% endfor %}\n\n{% endif %}\n{% endfor %}\n\n---\n\n## \U0001F3E0 All Entities
+        (By Domain)\n{% for domain, items in states | groupby('domain') %}\n{% if
+        domain not in helpers and domain != 'group' %}\n<details><summary><b>{{ domain
+        | title }} ({{ items | length }})</b></summary>\n\n| Entity ID | Name | State
+        |\n|---|---|---|\n{% for s in items | sort(attribute='entity_id') %}\n| `{{
+        s.entity_id }}` | {{ s.name | replace(\"'\", \"'\\\\''\") }} | {{ s.state
+        | replace(\"'\", \"'\\\\''\") }} |\n{% endfor %}\n</details>\n\n{% endif %}\n{%
+        endfor %}\n"
+  - action: shell_command.perform_ha_backup_tasks
+  - alias: Send Notification if triggered by User
+    if:
+    - condition: template
+      value_template: '{{ context.user_id is not none }}'
+    then:
+    - action: notify.mobile_app_blakes_iphone
+      data:
+        title: Backup Complete
+        message: GitHub updated & Zip ready. Tap to download.
+        data:
+          url: /local/ha_ai_context.zip
+          clickAction: /local/ha_ai_context.zip
+alexa_music:
+  sequence:
+  - if:
+    - alias: Not triggered by stop
+      condition: template
+      value_template: '{{ action_type != ''stop'' }}
+
+        '
+    then:
+    - parallel:
+      - sequence:
+        - action: input_boolean.turn_on
+          metadata: {}
+          target:
+            entity_id: input_boolean.disable_toggle
+          data: {}
+        - wait_for_trigger:
+          - alias: Button 4 - Single
+            event_type: zha_event
+            id: button_4_single
+            event_data:
+              device_ieee: c0:2c:ed:ff:fe:41:e1:25
+              endpoint_id: 2
+              cluster_id: 6
+              command: 'off'
+            trigger: event
+          - alias: Door - Leaving Logic
+            trigger: template
+            value_template: "{{ is_state('binary_sensor.front_door', 'on') \n   and
+              is_state('binary_sensor.kitchen_presence', 'on') \n   and as_timestamp(states.binary_sensor.kitchen_presence.last_changed)
+              < as_timestamp(states.binary_sensor.front_door.last_changed) }}\n"
+          - trigger: state
+            entity_id:
+            - sensor.recent_alexa
+            to:
+            - none
+            for:
+              hours: 0
+              minutes: 2
+              seconds: 0
+          - trigger: switch.turned_off
+            target:
+              entity_id: input_boolean.disable_toggle
+            options: {}
+        - action: input_boolean.turn_off
+          metadata: {}
+          target:
+            entity_id: input_boolean.disable_toggle
+          data: {}
+      - sequence:
+        - alias: Variables
+          sequence:
+          - variables:
+              is_search: '{{ action_type | default(''none'') == ''search_music'' }}'
+              music_input: '{{ states(''input_text.alexa_music_search'') if is_search
+                else states(''input_text.alarm_music'') }}'
+              music_query: '{{ music_input if music_input not in ['''', ''unknown'',
+                ''unavailable''] else ''My Soundtrack'' }}'
+              speaker_selection: '{{ states(''input_select.speakers'') if is_search
+                else ''All Echo Group'' }}'
+              speaker_choice: '{{ speaker_selection if speaker_selection not in ['''',
+                ''unknown'', ''unavailable''] else ''All Echo Group'' }}'
+              speaker_voice_name: '{% set clean = speaker_choice.split('' ('')[0]
+                %} {{ ''All Echo Group'' if clean | lower == ''default'' else clean
+                }}'
+              target_media_player: "{% set mapper = {\n  'All Echo Group': 'media_player.all_echo_2',\n
+                \ 'Echo Dot': 'media_player.blake_s_echo_dot_2',\n  'Echo Pop': 'media_player.blake_s_echo_pop_2',\n
+                \ 'Echo Spot': 'media_player.blake_s_echo_spot_2'\n} %} {{ mapper.get(speaker_voice_name,
+                'media_player.all_echo_2') }}"
+            alias: Define Variables
+            note: 'Is_search: evaluates if script should act as a “search music” or
+              “alarm music” depending on if "action_type: is_search" was passed to
+              the script when run.
+
+              music_input: picks the correct source for what to play, either ''input.input_text.alexa_music_search''
+              if ''variable: ''is_search'' is true otherwise ''input_text.alarm_music''.
+
+              music_selection: acts as a safety net, it’s the final selection for
+              what to play. It uses variable: ''music_input'' unless it''s in an invalid
+              state, then it defaults to “My Soundtrack”.
+
+              speaker_selection: picks the correct source for where to play music,
+              either ''input_select.speakers'' if variable: ''is_search'' is true,
+              otherwise it uses “all echo”.
+
+              speaker_choice: acts as a safety net, it’s the final selection for what
+              speskers to use. It uses variable: speaker_selection unless it''s in
+              an invalid state, then it defaults to “All Echo Group”.
+
+              speaker_voice_name: sanitizes the speaker selection to create a simple
+              friendly name to be used in Alexa voice command actions.
+
+
+              Target_media_player: maps the friendly name to the corresponding entity
+              ID to be used in media player actions, such as volume control, skip,
+              pause, etc. '
+          - alias: Log Variables
+            action: logbook.log
+            metadata: {}
+            data:
+              message: 'action_type={{ action_type | default(''undefined'') }}
+
+                | is_search={{ is_search }}
+
+                | alexa_music_search={{ states(''input_text.alexa_music_search'')
+                }}
+
+                | alarm_music={{ states(''input_text.alarm_music'') }}
+
+                | speakers={{ states(''input_select.speakers'') }}
+
+                | music_input={{ music_input }}
+
+                | music_query={{ music_query }}
+
+                | speaker_selection={{ speaker_selection }}
+
+                | speaker_voice_name={{ speaker_voice_name }}
+
+                | target_media_player={{ target_media_player }}'
+              name: Music Script Variables
+              entity_id: script.alexa_music
+          - alias: Variable Log Dashboard
+            action: input_text.set_value
+            metadata: {}
+            target:
+              entity_id: input_text.script_variables
+            data:
+              value: '
+
+                {{ ''Manual Search'' if is_search else ''Automatic'' }}
+
+                {{ ''Music Search: '' if is_search else ''Alarm Music: '' }}{% if
+                music_input not in ['''', ''unknown'', ''unavailable''] %}{{ music_query
+                }} on {% else %} Default: {{ music_query }} on {% endif %}{% if speaker_selection
+                not in ['''', ''unknown'', ''unavailable''] %}{{ speaker_voice_name
+                }}{% else %}Default: {{ speaker_voice_name }}{% endif %}'
+        - alias: Play Music
+          sequence:
+          - action: input_text.set_value
+            metadata: {}
+            target:
+              entity_id: input_text.script_tracking
+            data:
+              value: Set Echo Spot & All Echo volume - 0.0
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0
+            target:
+              entity_id:
+              - media_player.blake_s_echo_spot_2
+              - media_player.all_echo_2
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 3
+              milliseconds: 0
+          - action: input_text.set_value
+            metadata: {}
+            target:
+              entity_id: input_text.script_tracking
+            data:
+              value: 'Command alexa: Shuffle {{ music_query }} on {{ speaker_voice_name
+                }}'
+          - action: alexa_devices.send_text_command
+            metadata: {}
+            data:
+              device_id: ba7e4aed08d0947fa03068f398842568
+              text_command: Shuffle {{ music_query }} on {{ speaker_voice_name }}
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 3
+              milliseconds: 500
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: 0
+            target:
+              entity_id:
+              - media_player.blake_s_echo_spot_2
+              - media_player.all_echo_2
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 3
+              milliseconds: 0
+          - action: input_text.set_value
+            metadata: {}
+            target:
+              entity_id: input_text.script_tracking
+            data:
+              value: Shuffle - {{ speaker_voice_name }}
+          - action: media_player.shuffle_set
+            metadata: {}
+            data:
+              shuffle: true
+            target:
+              entity_id: '{{ target_media_player }}'
+            continue_on_error: true
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 3
+              milliseconds: 0
+          - action: input_text.set_value
+            metadata: {}
+            target:
+              entity_id: input_text.script_tracking
+            data:
+              value: Skip Track - {{ speaker_voice_name }}
+          - action: media_player.media_next_track
+            metadata: {}
+            data: {}
+            enabled: true
+            target:
+              entity_id: '{{ target_media_player }}'
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 3
+              milliseconds: 0
+          - action: media_player.media_next_track
+            metadata: {}
+            data: {}
+            enabled: true
+            target:
+              entity_id: '{{ target_media_player }}'
+          - alias: Volume Up
+            repeat:
+              count: 7
+              sequence:
+              - action: input_text.set_value
+                metadata: {}
+                target:
+                  entity_id: input_text.script_tracking
+                data:
+                  value: Raising All Echo Volume - {{(repeat.index * 0.02) }}
+              - action: media_player.volume_set
+                metadata: {}
+                data:
+                  volume_level: '{{(repeat.index * 0.02) }}'
+                target:
+                  entity_id: media_player.all_echo_2
+              - delay:
+                  hours: 0
+                  minutes: 0
+                  seconds: 2
+                  milliseconds: 0
+          - action: input_text.set_value
+            metadata: {}
+            target:
+              entity_id: input_text.script_tracking
+            data:
+              value: Playing...
+        - alias: Wakeup Sequence
+          if:
+          - alias: Not triggered by search
+            condition: template
+            value_template: '{{ action_type != ''search_music'' }}
+
+              '
+          - alias: Action type /= manual wakeup
+            condition: template
+            value_template: '{{ action_type != ''manual wakeup'' }}
+
+              '
+          then:
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 10
+              milliseconds: 0
+          - action: light.turn_on
+            metadata: {}
+            data:
+              transition: 15
+            target:
+              entity_id: light.bedroom_lamp
+          - delay:
+              hours: 0
+              minutes: 2
+              seconds: 0
+              milliseconds: 0
+          - action: fan.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: fan.bedroom_fan
+          - delay:
+              hours: 0
+              minutes: 2
+              seconds: 0
+              milliseconds: 0
+          - action: light.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.bedroom_ceiling_lights
+          else:
+          - alias: manual wakeup
+            condition: template
+            value_template: '{{ action_type == ''manual wakeup'' }}
+
+              '
+          - action: light.turn_on
+            metadata: {}
+            data:
+              transition: 15
+            target:
+              entity_id: light.bedroom_lamp
+          - action: fan.turn_off
+            metadata: {}
+            data: {}
+            target:
+              entity_id: fan.bedroom_fan
+          - action: light.turn_on
+            metadata: {}
+            data: {}
+            target:
+              entity_id: light.bedroom_ceiling_lights
+    else:
+    - alias: Music Off & Reset Echo’s
+      sequence:
+      - action: input_text.set_value
+        metadata: {}
+        target:
+          entity_id: input_text.script_tracking
+        data:
+          value: Stop media on Every Echo Device
+        alias: 'Script tracking: stop all echo devices'
+      - repeat:
+          until:
+          - condition: template
+            value_template: "{% set alexa_devices = [\n  'media_player.blake_s_echo_dot',\n
+              \ 'media_player.all_echo',\n  'media_player.blake_s_echo_pop',\n  'media_player.blake_s_echo_spot'\n]
+              %}\n{{ not expand(alexa_devices) | map(attribute='state') | select('eq',
+              'playing') | list | count > 0 }}\n"
+          sequence:
+          - action: media_player.media_stop
+            metadata: {}
+            data: {}
+            target:
+              entity_id:
+              - media_player.all_echo_2
+              - media_player.blake_s_echo_dot_2
+              - media_player.blake_s_echo_pop_2
+              - media_player.blake_s_echo_spot_2
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 3
+              milliseconds: 0
+      - action: input_text.set_value
+        metadata: {}
+        target:
+          entity_id: input_text.script_tracking
+        data:
+          value: Reseting Selections
+        alias: 'Script tracking: resetting selections'
+      - action: input_text.set_value
+        metadata: {}
+        target:
+          entity_id: input_text.alexa_music_search
+        data:
+          value: ''
+      - action: input_select.select_option
+        metadata: {}
+        target:
+          entity_id: input_select.speakers
+        data:
+          option: All Echo (All Alexa Devices)
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 3
+          milliseconds: 0
+      - action: input_text.set_value
+        metadata: {}
+        target:
+          entity_id: input_text.script_tracking
+        data:
+          value: Reset All Echo Volume - 0.3
+        alias: 'Script tracking: resetting echo volume'
+      - action: media_player.volume_set
+        metadata: {}
+        data:
+          volume_level: 0.3
+        target:
+          entity_id: media_player.all_echo_2
+      - action: input_text.set_value
+        metadata: {}
+        target:
+          entity_id:
+          - input_text.script_variables
+          - input_text.script_tracking
+        data:
+          value: ''
+  alias: Alexa Music
+  description: ''
+set_my_room:
+  alias: Set My Room
+  description: Optimized room setup with Visual Editor formatting
+  mode: single
+  sequence:
+  - action: scene.turn_on
+    metadata: {}
+    data: {}
+    target:
+      entity_id: scene.lights_off_except_bedroom
+  - action: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.bedroom_ceiling_lights
+  - action: fan.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: fan.bedroom_fan
+  - alias: Lamp Check
+    if:
+    - condition: state
+      entity_id: light.bedroom_lamp
+      state: 'on'
+    then: []
+    else:
+    - action: scene.turn_on
+      metadata: {}
+      data: {}
+      target:
+        entity_id: scene.full_lamp
+  - alias: TV Check
+    if:
+    - condition: state
+      entity_id: media_player.bedroom_tv
+      state: 'on'
+    then: []
+    else:
+    - action: media_player.turn_on
+      metadata: {}
+      target:
+        entity_id: media_player.bedroom_tv
+      data: {}
+    - delay:
+        hours: 0
+        minutes: 0
+        seconds: 5
+        milliseconds: 0
+    - action: media_player.play_media
+      metadata: {}
+      target:
+        entity_id: media_player.bedroom_tv
+      data:
+        media:
+          media_content_id: '837'
+          media_content_type: app
+          metadata:
+            title: YouTube
+            thumbnail: http://192.168.1.68:8060/query/icon/837
+            media_class: app
+            children_media_class:
+            navigateIds:
+            - {}
+            - media_content_type: apps
+              media_content_id: ''
+            browse_entity_id: media_player.bedroom_tv
+'1785047221140':
+  sequence:
+  - parallel:
+    - sequence:
+      - alias: Variables
+        sequence:
+        - variables:
+            is_search: '{{ action_type | default(''none'') == ''search_music'' }}'
+            music_input: '{{ states(''input_text.alexa_music_search'') if is_search
+              else states(''input_text.alarm_music'') }}'
+            music_query: '{{ music_input if music_input not in ['''', ''unknown'',
+              ''unavailable''] else ''My Soundtrack'' }}'
+            speaker_selection: '{{ states(''input_select.speakers'') if is_search
+              else ''All Echo Group'' }}'
+            speaker_voice_name: '{% set clean = speaker_selection.split('' ('')[0]
+              %} {{ ''All Echo Group'' if clean | lower == ''default'' else clean
+              }}'
+            target_media_player: "{% set mapper = {\n  'All Echo Group': 'media_player.all_echo',\n
+              \ 'Echo Dot': 'media_player.blake_s_echo_dot',\n  'Echo Pop': 'media_player.blake_s_echo_pop',\n
+              \ 'Echo Spot': 'media_player.blake_s_echo_spot'\n} %} {{ mapper.get(speaker_voice_name,
+              'media_player.all_echo') }}"
+          alias: Define Variables
+          note: 'Is_search: evaluates if script should act as a “search music” or
+            “alarm music” via action_type
+
+
+            music_input: picks the correct source for what to play, either search
+            selection or alarm selection depending on if is_search is true or false
+
+
+            music_selection: acts as a safety net, it’s the final selection for what
+            to play. It uses music_input unless it is in an invalid state, then it
+            defaults to “My Soundtrack”
+
+
+            speaker_selection: picks ithe correct source for where to play music,
+            either input_selector if is_search is true, otherwise it uses “all echo”.
+
+
+            speaker_voice_name: sanitizes the speaker selection to create a simple
+            friendly name to be used in the Alexa voice command actions.
+
+
+            Target_media_player: maps the friendly name to an actual entity for use
+            with media player actions like volume, skip, and pause. '
+        - alias: Log Variables
+          action: logbook.log
+          metadata: {}
+          data:
+            message: 'action_type={{ action_type | default(''undefined'') }}
+
+              | is_search={{ is_search }}
+
+              | alexa_music_search={{ states(''input_text.alexa_music_search'') }}
+
+              | alarm_music={{ states(''input_text.alarm_music'') }}
+
+              | speakers={{ states(''input_select.speakers'') }}
+
+              | music_input={{ music_input }}
+
+              | music_query={{ music_query }}
+
+              | speaker_selection={{ speaker_selection }}
+
+              | speaker_voice_name={{ speaker_voice_name }}
+
+              | target_media_player={{ target_media_player }}'
+            name: Music Script Variables
+            entity_id: script.alexa_music
+        - alias: Variable Log Dashboard
+          action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_variables
+          data:
+            value: '
+
+              {{ ''Manual Search'' if is_search else ''Automatic'' }}
+
+              {% if music_input not in ['''', ''unknown'', ''unavailable''] %}{{ ''Music
+              Search:'' if is_search else ''Alarm Music:'' }}{% else %}Defaulted To:{%
+              endif %} {{ music_query }} on {{ speaker_selection }}
+
+              '
+      - alias: Play Music
+        sequence:
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: Set Echo Spot & All Echo volume - 0.0
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0
+          target:
+            entity_id:
+            - media_player.all_echo_2
+            - media_player.blake_s_echo_spot_2
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 3
+            milliseconds: 0
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: 'Command alexa: Shuffle {{ music_query }} on {{ speaker_voice_name
+              }}'
+        - action: alexa_devices.send_text_command
+          metadata: {}
+          data:
+            device_id: ba7e4aed08d0947fa03068f398842568
+            text_command: Shuffle {{ music_query }} on {{ speaker_voice_name }}
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 3
+            milliseconds: 0
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: Shuffle - {{ speaker_voice_name }}
+        - action: media_player.shuffle_set
+          metadata: {}
+          data:
+            shuffle: true
+          target:
+            entity_id: '{{ target_media_player }}'
+          continue_on_error: true
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 3
+            milliseconds: 0
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: Skip Track - {{ speaker_voice_name }}
+        - action: media_player.media_next_track
+          metadata: {}
+          data: {}
+          enabled: true
+          target:
+            entity_id: '{{ target_media_player }}'
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 3
+            milliseconds: 0
+        - action: media_player.media_next_track
+          metadata: {}
+          data: {}
+          enabled: true
+          target:
+            entity_id: '{{ target_media_player }}'
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.01
+          target:
+            entity_id: media_player.all_echo_2
+      - alias: Volume Up
+        repeat:
+          count: 7
+          sequence:
+          - action: input_text.set_value
+            metadata: {}
+            target:
+              entity_id: input_text.script_tracking
+            data:
+              value: Raising All Echo Volume - {{(repeat.index * 0.02) }}
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: '{{(repeat.index * 0.02) }}'
+            target:
+              entity_id: media_player.all_echo_2
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+      - action: input_text.set_value
+        metadata: {}
+        target:
+          entity_id: input_text.script_tracking
+        data:
+          value: Playing...
+      - alias: Wakeup Sequence
+        if:
+        - alias: Not triggered by search
+          condition: template
+          value_template: '{{ action_type != ''search_music'' }}
+
+            '
+        then:
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 10
+            milliseconds: 0
+        - action: light.turn_on
+          metadata: {}
+          data:
+            transition: 15
+          target:
+            entity_id: light.bedroom_lamp
+        - delay:
+            hours: 0
+            minutes: 2
+            seconds: 0
+            milliseconds: 0
+        - action: fan.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id: fan.bedroom_fan
+        - delay:
+            hours: 0
+            minutes: 2
+            seconds: 0
+            milliseconds: 0
+        - action: light.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.bedroom_ceiling_lights
+  alias: Test
+  description: ''
+'1785047222016':
+  sequence:
+  - parallel:
+    - sequence:
+      - alias: Variables
+        sequence:
+        - variables:
+            is_search: '{{ action_type | default(''none'') == ''search_music'' }}'
+            music_input: '{{ states(''input_text.alexa_music_search'') if is_search
+              else states(''input_text.alarm_music'') }}'
+            music_query: '{{ music_input if music_input not in ['''', ''unknown'',
+              ''unavailable''] else ''My Soundtrack'' }}'
+            speaker_selection: '{{ states(''input_select.speakers'') if is_search
+              else ''All Echo Group'' }}'
+            speaker_voice_name: '{% set clean = speaker_selection.split('' ('')[0]
+              %} {{ ''All Echo Group'' if clean | lower == ''default'' else clean
+              }}'
+            target_media_player: "{% set mapper = {\n  'All Echo Group': 'media_player.all_echo',\n
+              \ 'Echo Dot': 'media_player.blake_s_echo_dot',\n  'Echo Pop': 'media_player.blake_s_echo_pop',\n
+              \ 'Echo Spot': 'media_player.blake_s_echo_spot'\n} %} {{ mapper.get(speaker_voice_name,
+              'media_player.all_echo') }}"
+          alias: Define Variables
+          note: 'Is_search: evaluates if script should act as a “search music” or
+            “alarm music” via action_type
+
+
+            music_input: picks the correct source for what to play, either search
+            selection or alarm selection depending on if is_search is true or false
+
+
+            music_selection: acts as a safety net, it’s the final selection for what
+            to play. It uses music_input unless it is in an invalid state, then it
+            defaults to “My Soundtrack”
+
+
+            speaker_selection: picks ithe correct source for where to play music,
+            either input_selector if is_search is true, otherwise it uses “all echo”.
+
+
+            speaker_voice_name: sanitizes the speaker selection to create a simple
+            friendly name to be used in the Alexa voice command actions.
+
+
+            Target_media_player: maps the friendly name to an actual entity for use
+            with media player actions like volume, skip, and pause. '
+        - alias: Log Variables
+          action: logbook.log
+          metadata: {}
+          data:
+            message: 'action_type={{ action_type | default(''undefined'') }}
+
+              | is_search={{ is_search }}
+
+              | alexa_music_search={{ states(''input_text.alexa_music_search'') }}
+
+              | alarm_music={{ states(''input_text.alarm_music'') }}
+
+              | speakers={{ states(''input_select.speakers'') }}
+
+              | music_input={{ music_input }}
+
+              | music_query={{ music_query }}
+
+              | speaker_selection={{ speaker_selection }}
+
+              | speaker_voice_name={{ speaker_voice_name }}
+
+              | target_media_player={{ target_media_player }}'
+            name: Music Script Variables
+            entity_id: script.alexa_music
+        - alias: Variable Log Dashboard
+          action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_variables
+          data:
+            value: '
+
+              {{ ''Manual Search'' if is_search else ''Automatic'' }}
+
+              {% if music_input not in ['''', ''unknown'', ''unavailable''] %}{{ ''Music
+              Search:'' if is_search else ''Alarm Music:'' }}{% else %}Defaulted To:{%
+              endif %} {{ music_query }} on {{ speaker_selection }}
+
+              '
+      - alias: Play Music
+        sequence:
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: Set Echo Spot & All Echo volume - 0.0
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0
+          target:
+            entity_id:
+            - media_player.blake_s_echo_spot
+            - media_player.all_echo
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 3
+            milliseconds: 0
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: 'Command alexa: Shuffle {{ music_query }} on {{ speaker_voice_name
+              }}'
+        - action: alexa_devices.send_text_command
+          metadata: {}
+          data:
+            device_id: ba7e4aed08d0947fa03068f398842568
+            text_command: Shuffle {{ music_query }} on {{ speaker_voice_name }}
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 3
+            milliseconds: 0
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: Shuffle - {{ speaker_voice_name }}
+        - action: media_player.shuffle_set
+          metadata: {}
+          data:
+            shuffle: true
+          target:
+            entity_id: '{{ target_media_player }}'
+          continue_on_error: true
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 3
+            milliseconds: 0
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: Skip Track - {{ speaker_voice_name }}
+        - action: media_player.media_next_track
+          metadata: {}
+          data: {}
+          enabled: true
+          target:
+            entity_id: '{{ target_media_player }}'
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 3
+            milliseconds: 0
+        - action: media_player.media_next_track
+          metadata: {}
+          data: {}
+          enabled: true
+          target:
+            entity_id: '{{ target_media_player }}'
+        - action: media_player.volume_set
+          metadata: {}
+          data:
+            volume_level: 0.01
+          target:
+            entity_id: media_player.all_echo
+        - action: media_player.media_play
+          metadata: {}
+          data: {}
+      - alias: Volume Up
+        repeat:
+          count: 7
+          sequence:
+          - action: input_text.set_value
+            metadata: {}
+            target:
+              entity_id: input_text.script_tracking
+            data:
+              value: Raising All Echo Volume - {{(repeat.index * 0.02) }}
+          - action: media_player.volume_set
+            metadata: {}
+            data:
+              volume_level: '{{(repeat.index * 0.02) }}'
+            target:
+              entity_id: media_player.all_echo
+          - delay:
+              hours: 0
+              minutes: 0
+              seconds: 2
+              milliseconds: 0
+      - action: input_text.set_value
+        metadata: {}
+        target:
+          entity_id: input_text.script_tracking
+        data:
+          value: Playing...
+      - alias: Wakeup Sequence
+        if:
+        - alias: Not triggered by search
+          condition: template
+          value_template: '{{ action_type != ''search_music'' }}
+
+            '
+        then:
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 10
+            milliseconds: 0
+        - action: light.turn_on
+          metadata: {}
+          data:
+            transition: 15
+          target:
+            entity_id: light.bedroom_lamp
+        - delay:
+            hours: 0
+            minutes: 2
+            seconds: 0
+            milliseconds: 0
+        - action: fan.turn_off
+          metadata: {}
+          data: {}
+          target:
+            entity_id: fan.bedroom_fan
+        - delay:
+            hours: 0
+            minutes: 2
+            seconds: 0
+            milliseconds: 0
+        - action: light.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.bedroom_ceiling_lights
+  alias: Test
+  description: ''
