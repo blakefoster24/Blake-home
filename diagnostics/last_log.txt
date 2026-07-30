@@ -1,19 +1,4 @@
-===== 2026-07-30T00:46:09.777632 — last_log.txt =====
-[33m2026-07-29 22:55:14.628 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[32m2026-07-29 23:00:00.126 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
-[32m2026-07-29 23:00:00.130 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Reset thermostat pause toggle: Running automation actions[0m
-[32m2026-07-29 23:00:00.130 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Choose at step 1: Reset thermostat pause toggle: Executing step call service[0m
-[32m2026-07-29 23:00:00.241 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2026-07-29 23:00:00.243 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Running automation actions[0m
-[32m2026-07-29 23:00:00.244 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Running automation actions[0m
-[32m2026-07-29 23:00:00.244 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[32m2026-07-29 23:00:00.249 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: 11pm send shortcut email, set workday today toggle: Workday tomorrow toggle -> alarms: Executing step call service[0m
-[33m2026-07-29 23:00:22.437 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-29 23:00:29.542 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-29 23:00:36.648 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-07-29 23:05:44.365 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-29 23:05:51.473 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-29 23:05:58.590 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+===== 2026-07-30T01:01:07.120355 — last_log.txt =====
 [33m2026-07-29 23:09:34.389 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][bh1750.sensor:102]: Reading BH1750 data failed[0m
 [33m2026-07-29 23:09:34.395 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:188]: Component bh1750.sensor set Warning flag: unspecified[0m
 [33m2026-07-29 23:09:36.347 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:203]: Component bh1750.sensor cleared Warning flag[0m
@@ -99,3 +84,18 @@
 [32m2026-07-30 00:46:05.972 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 [33m2026-07-30 00:46:06.027 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 [32m2026-07-30 00:46:09.068 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2026-07-30 00:46:12.837 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Running script sequence[0m
+[32m2026-07-30 00:46:12.837 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Executing step call service[0m
+[33m2026-07-30 00:46:55.348 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-30 00:47:02.445 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-30 00:47:09.542 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-07-30 00:52:17.490 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[31m2026-07-30 00:52:33.513 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:195][update_task]: Component http_request set Error flag: unspecified[0m
+[31m2026-07-30 00:52:33.514 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][http_request.idf:128][update_task]: HTTP Request failed: ESP_ERR_HTTP_CONNECT[0m
+[31m2026-07-30 00:52:34.472 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:209]: Component http_request cleared Error flag[0m
+[33m2026-07-30 00:57:25.453 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-30 00:57:32.565 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-07-30 01:01:03.114 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-07-30 01:01:03.115 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2026-07-30 01:01:03.170 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2026-07-30 01:01:06.400 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
