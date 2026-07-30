@@ -1,35 +1,7 @@
-# Ignore everything by default
+# Ignore everything in the root repository
 *
-# Re-allow directories so file rules below can match inside them
-!*/
 
-# Allow YAML and docs anywhere
-!*.yaml
-!*.yml
-!*.md
-!.gitignore
-!diagnostics/
-!diagnostics/**
-
-
-# Always ignore secrets and runtime files
-secrets.yaml
-*.log
-*.db*
-home-assistant_v2.*
-.storage/
-.cloud/
-.google.token
-.ios.conf
-*.pyc
-__pycache__/
-esphome/
-zigbee2mqtt/log/
-.git-credentials
-
-# Ignore everything in diagnostics by default
-diagnostics/*
-
-# Allow these two rolling snapshots
-!diagnostics/last_log.txt
-!diagnostics/automation_runs.txt
+# Allow the ha_info folder and all of its contents
+!/ha_info/
+/ha_info/*
+!/ha_info/**

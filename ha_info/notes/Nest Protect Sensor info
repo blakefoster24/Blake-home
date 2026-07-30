@@ -1,0 +1,27 @@
+The values of "issue_token" and "cookies" are specific to your Google Account. To get them, follow these steps (only needs to be done once, as long as you stay logged into your Google Account).
+
+Open a Chrome/Edge browser tab in Incognito Mode.
+
+Allow third-party cookies in your browser settings to prevent the Nest website from entering a redirect loop. Follow these steps:
+
+In Chrome: Go to Settings, select Privacy and Security -> Third-party cookies. Enable "Allow third-party cookies."
+In Edge: Go to Settings, select Cookies and site permissions -> Manage and delete cookies and site data. Disable "Block third-party cookies."
+Open Developer Tools (View/Developer/Developer Tools).
+
+Click on Network tab. Make sure 'Preserve Log' is checked.
+
+In the Filter box, enter issueToken
+
+Go to home.nest.com, and click Sign in with Google. Log into your account.
+
+One network call (beginning with iframerpc) will appear in the Dev Tools window. Click on it.
+
+In the Headers tab, under General, copy the entire Request URL (beginning with https://accounts.google.com). This is your 'issue_token' in the configuration form.
+
+In the Filter box, enter oauth2/iframe
+
+Several network calls will appear in the Dev Tools window. Click on the last iframe call.
+
+In the Headers tab, under Request Headers, copy the entire cookie (include the whole string which is several lines long and has many field/value pairs - do not include the cookie: name). This is your 'cookies' in the configuration form.
+
+Do not log out of home.nest.com, as this will invalidate your credentials. Just close the browser tab.
