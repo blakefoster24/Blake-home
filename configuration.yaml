@@ -21,14 +21,14 @@ logger:
     homeassistant.components.scene: info
 
 shell_command:
-  # 1. Generates the Markdown file (Must stay here for Jinja templates)
+  # 1. Generates the Markdown file inside the ha_info folder
   write_ha_overview: >
-    bash -lc 'cat > /config/HA_Overview.md << "EOF"
+    bash -lc 'cat > /config/ha_info/HA_Overview.md << "EOF"
     {{ content }}
     EOF'
 
-  # 2. Runs Logs, Git, and Zip all in one Python script
-  perform_ha_backup_tasks: "python3 /config/ha_backup_manager.py"
+  # 2. Runs the Python script from its new path
+  perform_ha_backup_tasks: "python3 /config/ha_info/ha_backup_manager.py"
 
 
 recorder:
