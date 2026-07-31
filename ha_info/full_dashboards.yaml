@@ -3313,11 +3313,13 @@ views:
                     entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
                 toggle_styles: false
                 styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                  \  --color: var(--custom-bg); \n  border-radius: var(--custom-radius);\n\
-                  \  box-shadow: none;\n  margin-right: auto\n  margin-left: auto\
-                  \  \n  width: auto\n  justify-content: space-around\n  justify-self:\
-                  \ space-around\n  justify-items: space-around\n}\n.label {\n   \
-                  \ {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \  border-radius: var(--custom-radius);\n  box-shadow: none;\n \
+                  \ margin-right: auto\n  margin-left: auto  \n  width: auto\n  justify-content:\
+                  \ space-around\n  justify-self: space-around\n  justify-items: space-around\n\
+                  }\n:host {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      --color: var(--custom-active-bg);\n    {% else\
+                  \ %}\n      --color: var(--custom-bg);\n    {% endif %}\n}\n.label\
+                  \ {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
                   \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n\
                   \      color: var(--custom-contrast);\n    {% endif %} \n}\n.icon\
                   \ {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
