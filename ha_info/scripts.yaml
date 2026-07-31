@@ -588,6 +588,38 @@ set_my_room:
     data: {}
     target:
       entity_id: scene.lights_off_except_bedroom
+  - alias: Lamp Check
+    if:
+    - condition: state
+      entity_id: light.bedroom_lamp
+      state: 'on'
+    then: []
+    else:
+    - if:
+      - condition: template
+        value_template: "{{ \n  is_state('fan.bedroom_fan', 'on') and\n  is_state('light.main_lights',
+          'off') and\n  is_state('light.bedroom_ceiling_lights', 'off') and\n  is_state('light.bathroom_light',
+          'off') and\n  is_state('media_player.bedroom_tv', 'off') and\n  is_state('light.bedroom_lamp',
+          'off') and\n  is_state('light.closet_light', 'off') and\n  is_state('fan.living_room_ceiling_fan',
+          'off') and\n  is_state('light.living_room_ceiling_lights', 'off') and\n
+          \ is_state('light.kitchen_lights', 'off') and\n  is_state('light.bedroom_tv_backlight',
+          'off')\n}}\n"
+      - condition: time
+        after: '23:00:00'
+        before: 07:00:00
+      then:
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.dimmed
+        data: {}
+      else:
+      - action: scene.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: scene.full_lamp
+      alias: 'Dimmed lamp if Goodnight = active & after 11pm '
   - action: light.turn_off
     metadata: {}
     data: {}
@@ -598,18 +630,6 @@ set_my_room:
     data: {}
     target:
       entity_id: fan.bedroom_fan
-  - alias: Lamp Check
-    if:
-    - condition: state
-      entity_id: light.bedroom_lamp
-      state: 'on'
-    then: []
-    else:
-    - action: scene.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id: scene.full_lamp
   - alias: TV Check
     if:
     - condition: state
