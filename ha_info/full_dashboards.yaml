@@ -2759,16 +2759,17 @@ views:
                 data: {}
               icon: '{{ ''local:thermostat_automation'' if is_state(''input_boolean.thermostat_automation_pause'',
                 ''off'') else ''mdi:thermometer-off'' }}'
-              styles: ":host {\n  height: 20px !important;\n  --color: {{ 'var(--custom-active-bg)'\
+              styles: ":host {\n  height: 20px !important;\n  --color: {{ 'var(--custom-bg-active)'\
                 \ if is_state('input_boolean.thermostat_automation_pause', 'on') else\
-                \ 'var(--custom-bg)' }};\n}\n.icon {\n   --icon-color: {{ 'var(--custom-active-2)'\
+                \ 'var(--custom-bg)' }};\n}\n.icon {\n   --icon-color: {{ 'orange'\
                 \ if is_state('input_boolean.thermostat_automation_pause', 'on') else\
                 \ 'var(--custom-contrast)' }};\n}\n\n@media (prefers-color-scheme:\
-                \ dark) {\n  :host {\n    --color: {{ 'var(--custom-active)' if is_state('input_boolean.thermostat_automation_pause',\
-                \ 'on') else 'var(--secondary-color)' }};\n  }\n  \n  .icon {\n  \
-                \  {% if is_state(\"input_boolean.thermostat_automation_pause\", \"\
-                off\") %}\n    --icon-color: var(--custom-bg);\n  {% else %}\n   \
-                \ --icon-color: var(--custom-active-bg);\n  {% endif %}\n  }\n}"
+                \ dark) {\n  :host {\n    --color: {{ 'var(--custom-bg-active)' if\
+                \ is_state('input_boolean.thermostat_automation_pause', 'on') else\
+                \ 'var(--secondary-color)' }};\n  }\n  \n  .icon {\n    {% if is_state(\"\
+                input_boolean.thermostat_automation_pause\", \"off\") %}\n    --icon-color:\
+                \ var(--custom-bg);\n  {% else %}\n    --icon-color: var(--custom-bg-active);\n\
+                \  {% endif %}\n  }\n}"
               unchecked_icon: ''
               checked_icon: ''
           uix:
