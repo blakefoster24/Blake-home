@@ -2759,15 +2759,16 @@ views:
                 data: {}
               icon: '{{ ''local:thermostat_automation'' if is_state(''input_boolean.thermostat_automation_pause'',
                 ''off'') else ''mdi:thermometer-off'' }}'
-              styles: ":host {\n  height: 20px !important;\n  --color: {{ 'var(--custom-active)'\
+              styles: ":host {\n  height: 20px !important;\n  --color: {{ 'var(--custom-active-bg)'\
                 \ if is_state('input_boolean.thermostat_automation_pause', 'on') else\
-                \ 'var(--custom-bg)' }};\n}\n.icon {\n   --icon-color: white;\n}\n\
-                \n@media (prefers-color-scheme: dark) {\n  :host {\n    --color: {{\
-                \ 'var(--custom-active)' if is_state('input_boolean.thermostat_automation_pause',\
+                \ 'var(--custom-bg)' }};\n}\n.icon {\n   --icon-color: {{ 'var(--custom-active-2)'\
+                \ if is_state('input_boolean.thermostat_automation_pause', 'on') else\
+                \ 'var(--custom-contrast)' }};\n}\n\n@media (prefers-color-scheme:\
+                \ dark) {\n  :host {\n    --color: {{ 'var(--custom-active)' if is_state('input_boolean.thermostat_automation_pause',\
                 \ 'on') else 'var(--secondary-color)' }};\n  }\n  \n  .icon {\n  \
                 \  {% if is_state(\"input_boolean.thermostat_automation_pause\", \"\
                 off\") %}\n    --icon-color: var(--custom-bg);\n  {% else %}\n   \
-                \ --icon-color: white;\n  {% endif %}\n  }\n}"
+                \ --icon-color: var(--custom-active-bg);\n  {% endif %}\n  }\n}"
               unchecked_icon: ''
               checked_icon: ''
           uix:
@@ -3317,15 +3318,15 @@ views:
                   \ margin-right: auto\n  margin-left: auto  \n  width: auto\n  justify-content:\
                   \ space-around\n  justify-self: space-around\n  justify-items: space-around\n\
                   }\n:host {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      --color: var(--custom-active-bg);\n    {% else\
+                  \ 'on') %}\n      --color: var(--custom-bg-active);\n    {% else\
                   \ %}\n      --color: var(--custom-bg);\n    {% endif %}\n}\n.label\
                   \ {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n\
-                  \      color: var(--custom-contrast);\n    {% endif %} \n}\n.icon\
-                  \ {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n\
-                  \      color: var(--custom-contrast);\n    {% endif %}\n  padding-bottom:\
-                  \ .25rem\n}"
+                  \ 'on') %}\n      color: var(--custom-contrast-active);\n    {%\
+                  \ else %}\n      color: var(--custom-contrast);\n    {% endif %}\
+                  \ \n}\n.icon {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      color: var(--custom-contrast-active);\n    {%\
+                  \ else %}\n      color: var(--custom-contrast);\n    {% endif %}\n\
+                  \  padding-bottom: .25rem\n}"
                 entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
             transparent: false
             uix:
