@@ -283,126 +283,204 @@ views:
   sections:
   - type: grid
     cards:
-    - type: vertical-stack
+    - type: custom:bubble-card
+      card_type: pop-up
+      hash: '#nav'
+      button_type: switch
+      sub_button:
+        main: []
+        bottom: []
+      slider_fill_orientation: left
+      slider_value_position: right
+      name: Navigate
+      button_action: {}
+      icon: mdi:navigation-variant
+      show_header: true
+      bg_opacity: '50'
+      bg_blur: '30'
       cards:
-      - type: custom:bubble-card
-        card_type: pop-up
-        hash: '#nav'
-        button_type: switch
-        sub_button:
-          main: []
-          bottom: []
-        slider_fill_orientation: left
-        slider_value_position: right
-        name: Navigate
-        button_action: {}
-        icon: mdi:navigation-variant
-        show_header: true
-        bg_opacity: '50'
-        bg_blur: '30'
+      - type: grid
         cards:
-        - type: grid
-          cards:
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Automations
-            tap_action:
-              action: navigate
-              navigation_path: /config/automation
-            icon: mdi:robot
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Scenes
-            tap_action:
-              action: navigate
-              navigation_path: /config/scene
-            icon: mdi:palette
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Scripts
-            tap_action:
-              action: navigate
-              navigation_path: /config/script
-            icon: mdi:script-text
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Integrations
-            tap_action:
-              action: navigate
-              navigation_path: /config/integrations
-            icon: mdi:puzzle
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Entities
-            tap_action:
-              action: navigate
-              navigation_path: /config/entities
-            icon: mdi:shape
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Helpers
-            tap_action:
-              action: navigate
-              navigation_path: /config/helpers
-            icon: mdi:tools
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Devices
-            tap_action:
-              action: navigate
-              navigation_path: /config/devices
-            icon: mdi:devices
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Activity
-            tap_action:
-              action: navigate
-              navigation_path: /logbook
-            icon: mdi:format-list-bulleted
-          - show_name: true
-            show_icon: true
-            type: button
-            name: History
-            tap_action:
-              action: navigate
-              navigation_path: /history
-            icon: mdi:chart-box
-          grid_options:
-            columns: 12
-            rows: auto
-      - type: custom:bubble-card
-        card_type: button
-        button_type: name
-        sub_button:
-          main: []
-          bottom: []
-        slider_fill_orientation: left
-        slider_value_position: right
-        name: Navigate
-        icon: mdi:navigation-variant
-        button_action:
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Automations
           tap_action:
             action: navigate
-            navigation_path: /my-dashboard/home/#nav
-        styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
-          \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
-          \ 16px;\n}\n"
-    - type: custom:auto-entities
-      show_empty: false
-      card:
-        type: entities
-      filter:
-        include:
-        - domain: automation
-          state: 'off'
+            navigation_path: /config/automation
+          icon: mdi:robot
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Scenes
+          tap_action:
+            action: navigate
+            navigation_path: /config/scene
+          icon: mdi:palette
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Scripts
+          tap_action:
+            action: navigate
+            navigation_path: /config/script
+          icon: mdi:script-text
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Integrations
+          tap_action:
+            action: navigate
+            navigation_path: /config/integrations
+          icon: mdi:puzzle
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Entities
+          tap_action:
+            action: navigate
+            navigation_path: /config/entities
+          icon: mdi:shape
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Helpers
+          tap_action:
+            action: navigate
+            navigation_path: /config/helpers
+          icon: mdi:tools
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Devices
+          tap_action:
+            action: navigate
+            navigation_path: /config/devices
+          icon: mdi:devices
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Activity
+          tap_action:
+            action: navigate
+            navigation_path: /logbook
+          icon: mdi:format-list-bulleted
+        - show_name: true
+          show_icon: true
+          type: button
+          name: History
+          tap_action:
+            action: navigate
+            navigation_path: /history
+          icon: mdi:chart-box
+        grid_options:
+          columns: 12
+          rows: auto
+    - type: custom:bubble-card
+      card_type: button
+      button_type: name
+      sub_button:
+        main: []
+        bottom: []
+      slider_fill_orientation: left
+      slider_value_position: right
+      name: Navigate
+      icon: mdi:navigation-variant
+      button_action:
+        tap_action:
+          action: navigate
+          navigation_path: /my-dashboard/home/#nav
+      styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
+        \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
+        \ 16px;\n}\n"
+    - type: custom:vertical-stack-in-card
+      cards:
+      - type: custom:mushroom-template-card
+        primary: "{% set disabled_count = states.automation | selectattr('state',\
+          \ 'eq', 'off') | list | length %}\n{% if disabled_count > 0 %}\n  {{ disabled_count\
+          \ }} Disabled Automation{{ 's' if disabled_count > 1 else '' }}\n{% else\
+          \ %}\n  All Automations Active\n{% endif %}"
+        icon: "{% if states.automation | selectattr('state', 'eq', 'off') | list |\
+          \ length > 0 %}\n  mdi:robot-off\n{% else %}\n  mdi:robot\n{% endif %}"
+        icon_color: "{% if states.automation | selectattr('state', 'eq', 'off') |\
+          \ list | length > 0 %}\n  orange\n{% else %}\n  green\n{% endif %}"
+        tap_action:
+          action: navigate
+          navigation_path: /config/automation
+        visibility:
+        - condition: or
+          conditions:
+          - condition: state
+            entity: automation.door_automation
+            state: 'off'
+          - condition: state
+            entity: automation.helper_automation
+            state: 'off'
+          - condition: state
+            entity: automation.light_triggers_another_light
+            state: 'off'
+          - condition: state
+            entity: automation.battery_low_automation
+            state: 'off'
+          - condition: state
+            entity: automation.work_schedule_automations
+            state: 'off'
+          - condition: state
+            entity: automation.bedroom_ceiling_lights_3_set_my_room
+            state: 'off'
+          - condition: state
+            entity: automation.flic_butttons
+            state: 'off'
+          - condition: state
+            entity: automation.goodnight
+            state: 'off'
+          - condition: state
+            entity: automation.hue_dimmer
+            state: 'off'
+          - condition: state
+            entity: automation.living_room_lamp
+            state: 'off'
+          - condition: state
+            entity: automation.nightly_github_sync
+            state: 'off'
+          - condition: state
+            entity: automation.shelly_button_4
+            state: 'off'
+          - condition: state
+            entity: automation.thermostat
+            state: 'off'
+          - condition: state
+            entity: automation.washing_machine_dryer
+            state: 'off'
+          - condition: state
+            entity: automation.work_attic_temperature_notifications
+            state: 'off'
+          - condition: state
+            entity: automation.workday_wakeup
+            state: 'off'
+        grid_options:
+          columns: full
+          rows: auto
+        uix:
+          style: "ha-card {\n  background: none !important;\n  border: none !important;\n\
+            \  box-shadow: none !important;\n  margin-bottom: -20px !important;\n\
+            }\nha-card::before {\n  content: none !important;\n}\n"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          uix:
+            style: "ha-card {\n  background: none !important;\n  border: none !important;\n\
+              \  box-shadow: none !important;\n}\nha-card::before {\n  content: none\
+              \ !important;\n}\n"
+        filter:
+          include:
+          - domain: automation
+            state: 'off'
+      uix:
+        style: "ha-card {\n  background: none !important;\n  border: none !important;\n\
+          \  box-shadow: none !important;\n}\nha-card::before {\n  content: none !important;\n\
+          }\n"
     - type: heading
       icon: mdi:devices
       heading: Devices
@@ -2046,6 +2124,90 @@ views:
       uix:
         style: "ha-card {\n   border: none;\n   background: none !important;\n }\n\
           \ ha-card::before {\n   content: none !important;\n }\n"
+    - type: custom:vertical-stack-in-card
+      cards:
+      - type: custom:mushroom-template-card
+        primary: "{% set disabled_count = states.automation | selectattr('state',\
+          \ 'eq', 'off') | list | length %}\n{% if disabled_count > 0 %}\n  {{ disabled_count\
+          \ }} Disabled Automation{{ 's' if disabled_count > 1 else '' }}\n{% else\
+          \ %}\n  All Automations Active\n{% endif %}"
+        icon: "{% if states.automation | selectattr('state', 'eq', 'off') | list |\
+          \ length > 0 %}\n  mdi:robot-off\n{% else %}\n  mdi:robot\n{% endif %}"
+        icon_color: "{% if states.automation | selectattr('state', 'eq', 'off') |\
+          \ list | length > 0 %}\n  orange\n{% else %}\n  green\n{% endif %}"
+        tap_action:
+          action: navigate
+          navigation_path: /config/automation
+        visibility:
+        - condition: or
+          conditions:
+          - condition: state
+            entity: automation.door_automation
+            state: 'off'
+          - condition: state
+            entity: automation.helper_automation
+            state: 'off'
+          - condition: state
+            entity: automation.light_triggers_another_light
+            state: 'off'
+          - condition: state
+            entity: automation.battery_low_automation
+            state: 'off'
+          - condition: state
+            entity: automation.work_schedule_automations
+            state: 'off'
+          - condition: state
+            entity: automation.bedroom_ceiling_lights_3_set_my_room
+            state: 'off'
+          - condition: state
+            entity: automation.flic_butttons
+            state: 'off'
+          - condition: state
+            entity: automation.goodnight
+            state: 'off'
+          - condition: state
+            entity: automation.hue_dimmer
+            state: 'off'
+          - condition: state
+            entity: automation.living_room_lamp
+            state: 'off'
+          - condition: state
+            entity: automation.nightly_github_sync
+            state: 'off'
+          - condition: state
+            entity: automation.shelly_button_4
+            state: 'off'
+          - condition: state
+            entity: automation.thermostat
+            state: 'off'
+          - condition: state
+            entity: automation.washing_machine_dryer
+            state: 'off'
+          - condition: state
+            entity: automation.work_attic_temperature_notifications
+            state: 'off'
+          - condition: state
+            entity: automation.workday_wakeup
+            state: 'off'
+        grid_options:
+          columns: full
+          rows: auto
+        uix:
+          style: "ha-card {\n  background: none !important;\n  border: none !important;\n\
+            \  box-shadow: none !important;\n  margin-bottom: -20px !important;\n\
+            }\nha-card::before {\n  content: none !important;\n}\n"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          uix:
+            style: "ha-card {\n  background: none !important;\n  border: none !important;\n\
+              \  box-shadow: none !important;\n}\nha-card::before {\n  content: none\
+              \ !important;\n}\n"
+        filter:
+          include:
+          - domain: automation
+            state: 'off'
   - type: grid
     cards:
     - type: heading
@@ -2132,18 +2294,15 @@ views:
               - color: "[[[\n  return entity.state === 'on' ? 'var(--primary-color)'\
                   \ : 'white';\n]]]\n"
     - type: custom:mushroom-template-card
-      primary: "{% set disabled_count = states.automation | selectattr('state', 'eq',\
-        \ 'off') | list | length %}\n{% if disabled_count > 0 %}\n  {{ disabled_count\
-        \ }} Disabled Automation{{ 's' if disabled_count > 1 else '' }}\n{% else %}\n\
-        \  All Automations Active\n{% endif %}"
+      primary: '{% set disabled_count = states.automation | selectattr(''state'',
+        ''eq'', ''off'') | list | length %}
+
+        {{ disabled_count }} Disabled Automations'
       secondary: "{% set disabled_list = states.automation | selectattr('state', 'eq',\
-        \ 'off') | map(attribute='name') | list %}\n{% if disabled_list | length >\
-        \ 0 %}\n  {{ disabled_list | join(', ') }}\n{% else %}\n  Everything is running\
-        \ smoothly.\n{% endif %}"
-      icon: "{% if states.automation | selectattr('state', 'eq', 'off') | list | length\
-        \ > 0 %}\n  mdi:robot-off\n{% else %}\n  mdi:robot\n{% endif %}"
-      icon_color: "{% if states.automation | selectattr('state', 'eq', 'off') | list\
-        \ | length > 0 %}\n  orange\n{% else %}\n  green\n{% endif %}"
+        \ 'off') | map(attribute='name') | list %rrc\n  \n{{ disabled_list | join(',\
+        \ ') }}"
+      icon: mdi:robot-off
+      icon_color: orange
       multiline_secondary: true
       tap_action:
         action: navigate
@@ -2202,13 +2361,6 @@ views:
       grid_options:
         columns: full
         rows: auto
-    - type: custom:auto-entities
-      card:
-        type: entities
-      filter:
-        include:
-        - domain: light
-          state: 'on'
     - type: custom:auto-entities
       show_empty: false
       card:
@@ -2341,14 +2493,94 @@ views:
       styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
         \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
         \ 20px;\n}\n"
-    - type: custom:auto-entities
-      show_empty: false
-      card:
-        type: entities
-      filter:
-        include:
-        - domain: automation
-          state: 'off'
+    - type: custom:vertical-stack-in-card
+      cards:
+      - type: custom:mushroom-template-card
+        primary: "{% set disabled_count = states.automation | selectattr('state',\
+          \ 'eq', 'off') | list | length %}\n{% if disabled_count > 0 %}\n  {{ disabled_count\
+          \ }} Disabled Automation{{ 's' if disabled_count > 1 else '' }}\n{% else\
+          \ %}\n  All Automations Active\n{% endif %}"
+        icon: "{% if states.automation | selectattr('state', 'eq', 'off') | list |\
+          \ length > 0 %}\n  mdi:robot-off\n{% else %}\n  mdi:robot\n{% endif %}"
+        icon_color: "{% if states.automation | selectattr('state', 'eq', 'off') |\
+          \ list | length > 0 %}\n  orange\n{% else %}\n  green\n{% endif %}"
+        tap_action:
+          action: navigate
+          navigation_path: /config/automation
+        visibility:
+        - condition: or
+          conditions:
+          - condition: state
+            entity: automation.door_automation
+            state: 'off'
+          - condition: state
+            entity: automation.helper_automation
+            state: 'off'
+          - condition: state
+            entity: automation.light_triggers_another_light
+            state: 'off'
+          - condition: state
+            entity: automation.battery_low_automation
+            state: 'off'
+          - condition: state
+            entity: automation.work_schedule_automations
+            state: 'off'
+          - condition: state
+            entity: automation.bedroom_ceiling_lights_3_set_my_room
+            state: 'off'
+          - condition: state
+            entity: automation.flic_butttons
+            state: 'off'
+          - condition: state
+            entity: automation.goodnight
+            state: 'off'
+          - condition: state
+            entity: automation.hue_dimmer
+            state: 'off'
+          - condition: state
+            entity: automation.living_room_lamp
+            state: 'off'
+          - condition: state
+            entity: automation.nightly_github_sync
+            state: 'off'
+          - condition: state
+            entity: automation.shelly_button_4
+            state: 'off'
+          - condition: state
+            entity: automation.thermostat
+            state: 'off'
+          - condition: state
+            entity: automation.washing_machine_dryer
+            state: 'off'
+          - condition: state
+            entity: automation.work_attic_temperature_notifications
+            state: 'off'
+          - condition: state
+            entity: automation.workday_wakeup
+            state: 'off'
+        grid_options:
+          columns: full
+          rows: auto
+        uix:
+          style: "ha-card {\n  background: none !important;\n  border: none !important;\n\
+            \  box-shadow: none !important;\n  margin-bottom: -20px !important;\n\
+            }\nha-card::before {\n  content: none !important;\n}\n"
+      - type: custom:auto-entities
+        show_empty: false
+        card:
+          type: entities
+          uix:
+            style: "ha-card {\n  background: none !important;\n  border: none !important;\n\
+              \  box-shadow: none !important;\n}\nha-card::before {\n  content: none\
+              \ !important;\n}\n"
+        filter:
+          include:
+          - domain: automation
+            state: 'off'
+      uix:
+        style: "ha-card {\n  background: none !important;\n  border: none !important;\n\
+          \  box-shadow: none !important;\n}\nha-card::before {\n  content: none !important;\n\
+          }\n"
     - type: heading
       icon: mdi:devices
       heading: Devices
@@ -2692,29 +2924,6 @@ views:
             style: "ha-card {\n  border-radius: 50px !important;\n  border: .5px solid\
               \ rgba(j255, 255, 255, 0.4) !important;    \n  background: none !important;\n\
               }\nha-card::before {\n  content: none !important;\n}\n"
-    - type: custom:bubble-card
-      card_type: button
-      button_type: name
-      sub_button:
-        main:
-        - name: Generate
-          icon: local:github_zip
-          tap_action:
-            action: perform-action
-            perform_action: script.push_ha_info_to_github_create_ai_zip_file_now
-            target: {}
-          show_name: true
-          width: 120
-          content_layout: icon-left
-          custom_height: 200
-        bottom: []
-      name: Generate HA Info Folder
-      icon: local:github_zip
-      button_action: {}
-      card_layout: large-2-rows
-      styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
-        \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
-        \ 20px;\n}\n"
     column_span: 1
   - type: grid
     cards:

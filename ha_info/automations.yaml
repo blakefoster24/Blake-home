@@ -504,7 +504,7 @@
           active_choice: number
           number: 69
           unit_of_measurement: °F
-    id: Above 70
+    id: Above 71
   - trigger: zone.entered
     target:
       entity_id: person.blake_foster
