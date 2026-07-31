@@ -3,15 +3,7 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-07-31T18:34:52.114584 =====
-[33m2026-07-31 17:54:01.453 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 17:54:08.557 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[32m2026-07-31 17:57:25.727 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
-[32m2026-07-31 17:57:25.729 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
-[32m2026-07-31 17:57:25.730 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
-[32m2026-07-31 17:57:25.731 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Running automation actions[0m
-[32m2026-07-31 17:57:25.732 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Executing step call service[0m
-[32m2026-07-31 18:02:08.917 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
+===== 2026-07-31T18:35:18.755425 =====
 [32m2026-07-31 18:02:08.920 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Running automation actions[0m
 [32m2026-07-31 18:02:08.921 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Executing step call service[0m
 [32m2026-07-31 18:02:08.933 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
@@ -104,18 +96,20 @@ LOG: last_log.txt
 [32m2026-07-31 18:34:48.263 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 [33m2026-07-31 18:34:48.324 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 [32m2026-07-31 18:34:51.435 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2026-07-31 18:34:55.258 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Running script sequence[0m
+[32m2026-07-31 18:34:55.258 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Executing step call service[0m
+[32m2026-07-31 18:35:05.247 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2026-07-31 18:35:05.247 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
+[32m2026-07-31 18:35:14.859 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-07-31 18:35:14.860 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2026-07-31 18:35:14.912 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2026-07-31 18:35:18.072 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-07-31T18:34:52.226431 =====
-[32m2026-07-31 17:57:25.727 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
-[32m2026-07-31 17:57:25.729 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
-[32m2026-07-31 17:57:25.730 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
-[32m2026-07-31 17:57:25.731 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Running automation actions[0m
-[32m2026-07-31 17:57:25.732 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Executing step call service[0m
-[32m2026-07-31 18:02:08.917 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Running automation actions[0m
+===== 2026-07-31T18:35:18.868661 =====
 [32m2026-07-31 18:02:08.920 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Running automation actions[0m
 [32m2026-07-31 18:02:08.921 INFO (MainThread) [homeassistant.components.automation.living_room_lamp] Living Room Lamp: Choose at step 1: Turn On Branch: Executing step call service[0m
 [32m2026-07-31 18:02:08.933 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
@@ -190,14 +184,19 @@ LOG: automation_runs.txt
 [32m2026-07-31 18:34:48.262 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [32m2026-07-31 18:34:48.263 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 [32m2026-07-31 18:34:51.435 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2026-07-31 18:34:55.258 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Running script sequence[0m
+[32m2026-07-31 18:34:55.258 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Executing step call service[0m
+[32m2026-07-31 18:35:05.247 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2026-07-31 18:35:05.247 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
+[32m2026-07-31 18:35:14.859 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-07-31 18:35:14.860 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2026-07-31 18:35:18.072 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-07-31T18:34:52.344120 =====
-[33m2026-07-31 17:54:01.453 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 17:54:08.557 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+===== 2026-07-31T18:35:18.982527 =====
 [33m2026-07-31 18:06:36.309 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:278]: Component uart took a long time for an operation (76 ms).[0m
 [33m2026-07-31 18:06:36.310 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:279]: Components should block for at most 30 ms.[0m
 [33m2026-07-31 18:09:20.558 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
@@ -216,3 +215,4 @@ LOG: error_log.txt
 [33m2026-07-31 18:30:41.477 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
 [33m2026-07-31 18:30:48.583 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [33m2026-07-31 18:34:48.324 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-07-31 18:35:14.912 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
