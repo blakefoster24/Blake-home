@@ -3,16 +3,7 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-07-31T07:36:55.996513 =====
-[32m2026-07-31 04:55:40.175 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step call service[0m
-[32m2026-07-31 04:55:40.228 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step delay 0:00:05[0m
-[32m2026-07-31 04:55:45.232 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step call service[0m
-[33m2026-07-31 04:56:27.478 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-07-31 05:01:35.334 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-31 05:01:42.432 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 05:01:49.529 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-07-31 05:06:57.392 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-31 05:07:04.491 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+===== 2026-07-31T07:41:12.201983 =====
 [33m2026-07-31 05:07:11.589 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [32m2026-07-31 05:10:41.953 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
 [33m2026-07-31 05:12:19.362 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
@@ -104,15 +95,21 @@ LOG: last_log.txt
 [32m2026-07-31 07:36:52.274 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 [33m2026-07-31 07:36:52.334 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 [32m2026-07-31 07:36:55.319 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2026-07-31 07:36:59.189 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Running script sequence[0m
+[32m2026-07-31 07:36:59.190 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Executing step call service[0m
+[33m2026-07-31 07:41:06.206 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][bh1750.sensor:102]: Reading BH1750 data failed[0m
+[33m2026-07-31 07:41:06.206 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:188]: Component bh1750.sensor set Warning flag: unspecified[0m
+[32m2026-07-31 07:41:08.251 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-07-31 07:41:08.252 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2026-07-31 07:41:08.307 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-07-31 07:41:11.379 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:203]: Component bh1750.sensor cleared Warning flag[0m
+[32m2026-07-31 07:41:11.493 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-07-31T07:36:56.109723 =====
-[32m2026-07-31 04:55:40.175 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step call service[0m
-[32m2026-07-31 04:55:40.228 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step delay 0:00:05[0m
-[32m2026-07-31 04:55:45.232 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step call service[0m
+===== 2026-07-31T07:41:12.316048 =====
 [32m2026-07-31 05:10:41.953 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
 [32m2026-07-31 06:26:27.846 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
 [32m2026-07-31 06:26:27.847 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
@@ -141,18 +138,17 @@ LOG: automation_runs.txt
 [32m2026-07-31 07:36:52.273 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [32m2026-07-31 07:36:52.274 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 [32m2026-07-31 07:36:55.319 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2026-07-31 07:36:59.189 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Running script sequence[0m
+[32m2026-07-31 07:36:59.190 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Executing step call service[0m
+[32m2026-07-31 07:41:08.251 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-07-31 07:41:08.252 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2026-07-31 07:41:11.493 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-07-31T07:36:56.224252 =====
-[33m2026-07-31 04:56:27.478 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-07-31 05:01:35.334 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-31 05:01:42.432 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 05:01:49.529 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-07-31 05:06:57.392 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-31 05:07:04.491 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+===== 2026-07-31T07:41:12.429272 =====
 [33m2026-07-31 05:07:11.589 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [33m2026-07-31 05:12:19.362 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
 [33m2026-07-31 05:12:26.467 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
@@ -216,3 +212,7 @@ LOG: error_log.txt
 [33m2026-07-31 07:35:03.498 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
 [33m2026-07-31 07:35:10.595 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [33m2026-07-31 07:36:52.334 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-07-31 07:41:06.206 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][bh1750.sensor:102]: Reading BH1750 data failed[0m
+[33m2026-07-31 07:41:06.206 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:188]: Component bh1750.sensor set Warning flag: unspecified[0m
+[33m2026-07-31 07:41:08.307 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-07-31 07:41:11.379 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:203]: Component bh1750.sensor cleared Warning flag[0m
