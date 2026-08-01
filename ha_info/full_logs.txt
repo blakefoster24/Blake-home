@@ -3,216 +3,217 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-07-31T18:39:47.975460 =====
-[32m2026-07-31 18:03:07.312 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Logic: Executing step call service[0m
-[32m2026-07-31 18:03:07.317 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Logic: Executing step Log Variables[0m
-[32m2026-07-31 18:03:07.324 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving / Arriving: Arriving branch: Running automation actions[0m
-[32m2026-07-31 18:03:07.326 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving / Arriving: Arriving branch: First Opening?: Running automation actions[0m
-[32m2026-07-31 18:03:07.326 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving / Arriving: Arriving branch: First Opening?: Executing step call service[0m
-[32m2026-07-31 18:03:07.425 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:03:07.426 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Running automation actions[0m
-[32m2026-07-31 18:03:07.428 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
-[32m2026-07-31 18:03:07.428 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Running automation actions[0m
-[32m2026-07-31 18:03:07.431 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2026-07-31 18:03:07.433 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Initialized trigger[0m
-[32m2026-07-31 18:03:07.443 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Running automation actions[0m
-[32m2026-07-31 18:03:07.444 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2026-07-31 18:03:07.445 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Initialized trigger[0m
-[32m2026-07-31 18:03:07.446 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Running automation actions[0m
-[32m2026-07-31 18:03:07.447 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2026-07-31 18:03:07.454 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Initialized trigger[0m
-[32m2026-07-31 18:03:07.583 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving / Arriving: Arriving branch: First Opening?: Executing step call service[0m
-[32m2026-07-31 18:03:12.432 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Timeout reached, abort script.[0m
-[32m2026-07-31 18:03:12.444 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Timeout reached, abort script.[0m
-[32m2026-07-31 18:03:12.448 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Timeout reached, abort script.[0m
-[32m2026-07-31 18:06:35.813 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:06:35.815 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Running automation actions[0m
-[32m2026-07-31 18:06:35.817 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Motion detected / motion clears: Running automation actions[0m
-[32m2026-07-31 18:06:35.818 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Motion detected / motion clears: Check bed occupied right -> delay light if occupied: Running automation actions[0m
-[32m2026-07-31 18:06:35.818 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Motion detected / motion clears: Check bed occupied right -> delay light if occupied: Executing step call service[0m
-[33m2026-07-31 18:06:36.309 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:278]: Component uart took a long time for an operation (76 ms).[0m
-[33m2026-07-31 18:06:36.310 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:279]: Components should block for at most 30 ms.[0m
-[32m2026-07-31 18:06:39.469 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:06:39.471 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Running automation actions[0m
-[32m2026-07-31 18:06:39.472 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Executing step call service[0m
-[32m2026-07-31 18:06:39.495 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Executing step Bathroom presence off > 30s (timeout: 0:00:00)[0m
-[32m2026-07-31 18:06:39.496 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Timeout reached, abort script.[0m
-[32m2026-07-31 18:07:11.979 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:07:11.981 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Running automation actions[0m
-[32m2026-07-31 18:07:11.982 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Motion detected / motion clears: Running automation actions[0m
-[32m2026-07-31 18:07:11.982 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Motion detected / motion clears: Executing step call service[0m
-[33m2026-07-31 18:09:20.558 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[32m2026-07-31 18:10:27.471 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:10:27.473 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Running automation actions[0m
-[32m2026-07-31 18:10:27.474 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Executing step call service[0m
-[32m2026-07-31 18:10:27.510 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Executing step Bathroom presence off > 30s (timeout: 0:00:00)[0m
-[32m2026-07-31 18:10:27.511 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Timeout reached, abort script.[0m
-[33m2026-07-31 18:14:28.322 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-31 18:14:35.422 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 18:14:42.524 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-07-31 18:19:50.334 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-31 18:19:57.433 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 18:20:04.538 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-07-31 18:23:04.210 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:278]: Component uart took a long time for an operation (98 ms).[0m
-[33m2026-07-31 18:23:04.213 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:279]: Components should block for at most 30 ms.[0m
-[33m2026-07-31 18:25:12.379 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-31 18:25:19.475 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 18:25:26.574 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[32m2026-07-31 18:26:35.325 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:26:35.326 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Running automation actions[0m
-[32m2026-07-31 18:26:35.331 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Parallel action at step 1: Lights off outside bedroom: Running automation actions[0m
-[32m2026-07-31 18:26:35.332 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Parallel action at step 1: Lights off outside bedroom: Executing step Occupancy not detected outside bedroom for 5min (timeout: 0:20:00)[0m
-[32m2026-07-31 18:26:35.341 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Parallel action at step 1: Bedroom lamp only: Running automation actions[0m
-[32m2026-07-31 18:26:35.342 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Parallel action at step 1: Bedroom lamp only: Executing step Bed Left Occupied > 3min[0m
-[32m2026-07-31 18:28:00.130 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Parallel action at step 1: Lights off outside bedroom: Executing step call service[0m
-[32m2026-07-31 18:29:00.464 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Parallel action at step 1: Bedroom lamp only: Executing step call service[0m
-[32m2026-07-31 18:29:00.589 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:29:00.590 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Running automation actions[0m
-[32m2026-07-31 18:29:00.594 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
-[32m2026-07-31 18:29:00.595 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Running automation actions[0m
-[32m2026-07-31 18:29:00.596 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2026-07-31 18:29:00.597 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Initialized trigger[0m
-[32m2026-07-31 18:29:00.605 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Running automation actions[0m
-[32m2026-07-31 18:29:00.606 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2026-07-31 18:29:00.607 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Initialized trigger[0m
-[32m2026-07-31 18:29:00.612 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Running automation actions[0m
-[32m2026-07-31 18:29:00.613 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2026-07-31 18:29:00.614 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Initialized trigger[0m
-[32m2026-07-31 18:29:05.597 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Timeout reached, abort script.[0m
-[32m2026-07-31 18:29:05.607 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Timeout reached, abort script.[0m
-[32m2026-07-31 18:29:05.614 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Timeout reached, abort script.[0m
-[33m2026-07-31 18:30:34.378 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-31 18:30:41.477 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 18:30:48.583 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[32m2026-07-31 18:34:48.262 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2026-07-31 18:34:48.263 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[33m2026-07-31 18:34:48.324 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
-[32m2026-07-31 18:34:51.435 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2026-07-31 18:34:55.258 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Running script sequence[0m
-[32m2026-07-31 18:34:55.258 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Executing step call service[0m
-[32m2026-07-31 18:35:05.247 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2026-07-31 18:35:05.247 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
-[32m2026-07-31 18:35:14.859 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2026-07-31 18:35:14.860 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[33m2026-07-31 18:35:14.912 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
-[32m2026-07-31 18:35:18.072 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2026-07-31 18:35:21.692 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Running script sequence[0m
-[32m2026-07-31 18:35:21.693 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Executing step call service[0m
-[33m2026-07-31 18:36:03.482 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 18:36:10.579 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[32m2026-07-31 18:39:44.122 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2026-07-31 18:39:44.123 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[33m2026-07-31 18:39:44.177 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
-[32m2026-07-31 18:39:47.272 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+===== 2026-08-01T01:06:44.242189 =====
+[33m2026-07-31 23:21:14.435 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-31 23:21:21.539 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-07-31 23:22:32.705 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-07-31 23:22:32.707 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-07-31 23:22:32.708 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-07-31 23:22:32.709 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Executing step call service[0m
+[33m2026-07-31 23:23:46.482 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][LD2450:867]: Expected 30 bytes but received 12![0m
+[33m2026-07-31 23:28:50.112 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:278]: Component uart took a long time for an operation (54 ms).[0m
+[33m2026-07-31 23:28:50.119 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:279]: Components should block for at most 30 ms.[0m
+[32m2026-07-31 23:30:35.683 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-07-31 23:30:35.685 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-07-31 23:30:35.686 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-07-31 23:30:35.687 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Running automation actions[0m
+[32m2026-07-31 23:30:35.687 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Executing step call service[0m
+[33m2026-07-31 23:31:37.335 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-31 23:31:44.430 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-31 23:31:51.527 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-07-31 23:36:27.024 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-07-31 23:36:27.026 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-07-31 23:36:27.028 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-07-31 23:36:27.028 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Executing step call service[0m
+[33m2026-07-31 23:36:59.377 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-31 23:37:06.474 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-31 23:37:13.577 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-07-31 23:42:21.317 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-31 23:42:28.411 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-31 23:42:35.509 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-07-31 23:44:30.075 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-07-31 23:44:30.076 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-07-31 23:44:30.078 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-07-31 23:44:30.079 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Running automation actions[0m
+[32m2026-07-31 23:44:30.082 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Executing step call service[0m
+[33m2026-07-31 23:47:50.720 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-07-31 23:52:58.330 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-31 23:53:07.132 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-31 23:53:14.304 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-07-31 23:58:22.322 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-31 23:58:29.421 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-31 23:58:36.540 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-08-01 00:01:00.064 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
+[32m2026-08-01 00:01:00.066 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
+[32m2026-08-01 00:03:00.282 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-08-01 00:03:00.284 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-08-01 00:03:00.285 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-08-01 00:03:00.285 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Executing step call service[0m
+[33m2026-08-01 00:03:44.358 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:03:53.602 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[31m2026-08-01 00:08:26.723 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:195][update_task]: Component http_request set Error flag: unspecified[0m
+[31m2026-08-01 00:08:26.725 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][http_request.idf:128][update_task]: HTTP Request failed: ESP_ERR_HTTP_CONNECT[0m
+[31m2026-08-01 00:08:27.673 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:209]: Component http_request cleared Error flag[0m
+[33m2026-08-01 00:09:01.353 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:09:08.455 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:09:15.555 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-08-01 00:11:03.319 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-08-01 00:11:03.321 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-08-01 00:11:03.322 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-08-01 00:11:03.323 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Running automation actions[0m
+[32m2026-08-01 00:11:03.323 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Executing step call service[0m
+[33m2026-08-01 00:14:23.344 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:14:30.441 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:14:37.536 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:19:45.372 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:19:52.465 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:19:59.564 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:25:07.324 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:25:16.545 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:30:31.489 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:30:38.584 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:35:46.479 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:35:53.588 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:36:00.694 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:41:08.468 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:41:15.568 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:41:22.664 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:46:30.308 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:46:37.404 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:46:44.500 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:51:52.396 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:51:59.491 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:52:06.587 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:57:14.314 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:57:23.515 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-08-01 01:02:15.495 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
+[32m2026-08-01 01:02:15.497 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 3: Running automation actions[0m
+[32m2026-08-01 01:02:15.501 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 3: Button 3 Presses: 3 - Hold: Running automation actions[0m
+[32m2026-08-01 01:02:15.765 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
+[32m2026-08-01 01:02:15.768 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 3: Running automation actions[0m
+[32m2026-08-01 01:02:15.770 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 3: Button 3 Presses: 3 - Single: Running automation actions[0m
+[32m2026-08-01 01:02:15.770 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 3: Button 3 Presses: 3 - Single: Executing step call service[0m
+[33m2026-08-01 01:02:33.475 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 01:02:40.573 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-08-01 01:02:50.266 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2026-08-01 01:02:50.267 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
+[33m2026-08-01 01:03:25.663 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:278]: Component uart took a long time for an operation (74 ms).[0m
+[33m2026-08-01 01:03:25.715 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:279]: Components should block for at most 30 ms.[0m
+[32m2026-08-01 01:06:40.315 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-08-01 01:06:40.316 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2026-08-01 01:06:40.374 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-08-01 01:06:43.443 WARNING (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Already running[0m
+[32m2026-08-01 01:06:43.552 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-07-31T18:39:48.100241 =====
-[32m2026-07-31 18:03:07.312 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Logic: Executing step call service[0m
-[32m2026-07-31 18:03:07.317 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Logic: Executing step Log Variables[0m
-[32m2026-07-31 18:03:07.324 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving / Arriving: Arriving branch: Running automation actions[0m
-[32m2026-07-31 18:03:07.326 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving / Arriving: Arriving branch: First Opening?: Running automation actions[0m
-[32m2026-07-31 18:03:07.326 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving / Arriving: Arriving branch: First Opening?: Executing step call service[0m
-[32m2026-07-31 18:03:07.425 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:03:07.426 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Running automation actions[0m
-[32m2026-07-31 18:03:07.428 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
-[32m2026-07-31 18:03:07.428 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Running automation actions[0m
-[32m2026-07-31 18:03:07.431 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2026-07-31 18:03:07.433 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Initialized trigger[0m
-[32m2026-07-31 18:03:07.443 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Running automation actions[0m
-[32m2026-07-31 18:03:07.444 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2026-07-31 18:03:07.445 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Initialized trigger[0m
-[32m2026-07-31 18:03:07.446 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Running automation actions[0m
-[32m2026-07-31 18:03:07.447 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2026-07-31 18:03:07.454 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Initialized trigger[0m
-[32m2026-07-31 18:03:07.583 INFO (MainThread) [homeassistant.components.automation.door_automation] Door Automation: Leaving / Arriving: Arriving branch: First Opening?: Executing step call service[0m
-[32m2026-07-31 18:03:12.432 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Timeout reached, abort script.[0m
-[32m2026-07-31 18:03:12.444 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Timeout reached, abort script.[0m
-[32m2026-07-31 18:03:12.448 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Timeout reached, abort script.[0m
-[32m2026-07-31 18:06:35.813 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:06:35.815 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Running automation actions[0m
-[32m2026-07-31 18:06:35.817 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Motion detected / motion clears: Running automation actions[0m
-[32m2026-07-31 18:06:35.818 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Motion detected / motion clears: Check bed occupied right -> delay light if occupied: Running automation actions[0m
-[32m2026-07-31 18:06:35.818 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Motion detected / motion clears: Check bed occupied right -> delay light if occupied: Executing step call service[0m
-[32m2026-07-31 18:06:39.469 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:06:39.471 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Running automation actions[0m
-[32m2026-07-31 18:06:39.472 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Executing step call service[0m
-[32m2026-07-31 18:06:39.495 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Executing step Bathroom presence off > 30s (timeout: 0:00:00)[0m
-[32m2026-07-31 18:06:39.496 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Timeout reached, abort script.[0m
-[32m2026-07-31 18:07:11.979 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:07:11.981 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Running automation actions[0m
-[32m2026-07-31 18:07:11.982 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Motion detected / motion clears: Running automation actions[0m
-[32m2026-07-31 18:07:11.982 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 3: Motion detected / motion clears: Executing step call service[0m
-[32m2026-07-31 18:10:27.471 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:10:27.473 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Running automation actions[0m
-[32m2026-07-31 18:10:27.474 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Executing step call service[0m
-[32m2026-07-31 18:10:27.510 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Executing step Bathroom presence off > 30s (timeout: 0:00:00)[0m
-[32m2026-07-31 18:10:27.511 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 4: Timeout reached, abort script.[0m
-[32m2026-07-31 18:26:35.325 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:26:35.326 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Running automation actions[0m
-[32m2026-07-31 18:26:35.331 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Parallel action at step 1: Lights off outside bedroom: Running automation actions[0m
-[32m2026-07-31 18:26:35.332 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Parallel action at step 1: Lights off outside bedroom: Executing step Occupancy not detected outside bedroom for 5min (timeout: 0:20:00)[0m
-[32m2026-07-31 18:26:35.341 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Parallel action at step 1: Bedroom lamp only: Running automation actions[0m
-[32m2026-07-31 18:26:35.342 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Parallel action at step 1: Bedroom lamp only: Executing step Bed Left Occupied > 3min[0m
-[32m2026-07-31 18:28:00.130 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Parallel action at step 1: Lights off outside bedroom: Executing step call service[0m
-[32m2026-07-31 18:29:00.464 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: choice 2: Parallel action at step 1: Bedroom lamp only: Executing step call service[0m
-[32m2026-07-31 18:29:00.589 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Running automation actions[0m
-[32m2026-07-31 18:29:00.590 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Running automation actions[0m
-[32m2026-07-31 18:29:00.594 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Running automation actions[0m
-[32m2026-07-31 18:29:00.595 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Running automation actions[0m
-[32m2026-07-31 18:29:00.596 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2026-07-31 18:29:00.597 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Initialized trigger[0m
-[32m2026-07-31 18:29:00.605 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Running automation actions[0m
-[32m2026-07-31 18:29:00.606 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2026-07-31 18:29:00.607 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Initialized trigger[0m
-[32m2026-07-31 18:29:00.612 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Running automation actions[0m
-[32m2026-07-31 18:29:00.613 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Executing step wait for trigger (timeout: 0:00:05)[0m
-[32m2026-07-31 18:29:00.614 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Initialized trigger[0m
-[32m2026-07-31 18:29:05.597 INFO (MainThread) [homeassistant.components.automation.bedroom_ceiling_lights_3_set_my_room] Bedroom Ceiling Lights (3) -> Set My Room: Sequence action at step 1: Timeout reached, abort script.[0m
-[32m2026-07-31 18:29:05.607 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: ceiling lights on -> lamp on: Timeout reached, abort script.[0m
-[32m2026-07-31 18:29:05.614 INFO (MainThread) [homeassistant.components.automation.light_triggers_another_light] Light Automations: Choose at step 1: Ceiling Light = lamp or set room: Lamp on / set room script: Ceiling lights toggle (3) -> set room: Timeout reached, abort script.[0m
-[32m2026-07-31 18:34:48.262 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2026-07-31 18:34:48.263 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2026-07-31 18:34:51.435 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2026-07-31 18:34:55.258 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Running script sequence[0m
-[32m2026-07-31 18:34:55.258 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Executing step call service[0m
-[32m2026-07-31 18:35:05.247 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
-[32m2026-07-31 18:35:05.247 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
-[32m2026-07-31 18:35:14.859 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2026-07-31 18:35:14.860 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2026-07-31 18:35:18.072 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2026-07-31 18:35:21.692 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Running script sequence[0m
-[32m2026-07-31 18:35:21.693 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Executing step call service[0m
-[32m2026-07-31 18:39:44.122 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2026-07-31 18:39:44.123 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2026-07-31 18:39:47.272 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+===== 2026-08-01T01:06:44.355962 =====
+[32m2026-07-31 23:22:32.705 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-07-31 23:22:32.707 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-07-31 23:22:32.708 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-07-31 23:22:32.709 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Executing step call service[0m
+[32m2026-07-31 23:30:35.683 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-07-31 23:30:35.685 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-07-31 23:30:35.686 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-07-31 23:30:35.687 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Running automation actions[0m
+[32m2026-07-31 23:30:35.687 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Executing step call service[0m
+[32m2026-07-31 23:36:27.024 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-07-31 23:36:27.026 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-07-31 23:36:27.028 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-07-31 23:36:27.028 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Executing step call service[0m
+[32m2026-07-31 23:44:30.075 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-07-31 23:44:30.076 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-07-31 23:44:30.078 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-07-31 23:44:30.079 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Running automation actions[0m
+[32m2026-07-31 23:44:30.082 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Executing step call service[0m
+[32m2026-08-01 00:01:00.064 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
+[32m2026-08-01 00:01:00.066 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
+[32m2026-08-01 00:03:00.282 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-08-01 00:03:00.284 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-08-01 00:03:00.285 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-08-01 00:03:00.285 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Executing step call service[0m
+[32m2026-08-01 00:11:03.319 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-08-01 00:11:03.321 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-08-01 00:11:03.322 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-08-01 00:11:03.323 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Running automation actions[0m
+[32m2026-08-01 00:11:03.323 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Executing step call service[0m
+[32m2026-08-01 01:02:15.495 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
+[32m2026-08-01 01:02:15.497 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 3: Running automation actions[0m
+[32m2026-08-01 01:02:15.501 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 3: Button 3 Presses: 3 - Hold: Running automation actions[0m
+[32m2026-08-01 01:02:15.765 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
+[32m2026-08-01 01:02:15.768 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 3: Running automation actions[0m
+[32m2026-08-01 01:02:15.770 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 3: Button 3 Presses: 3 - Single: Running automation actions[0m
+[32m2026-08-01 01:02:15.770 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 3: Button 3 Presses: 3 - Single: Executing step call service[0m
+[32m2026-08-01 01:02:50.266 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2026-08-01 01:02:50.267 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Executing step call service[0m
+[32m2026-08-01 01:06:40.315 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-08-01 01:06:40.316 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2026-08-01 01:06:43.443 WARNING (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Already running[0m
+[32m2026-08-01 01:06:43.552 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-07-31T18:39:48.215553 =====
-[33m2026-07-31 18:06:36.309 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:278]: Component uart took a long time for an operation (76 ms).[0m
-[33m2026-07-31 18:06:36.310 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:279]: Components should block for at most 30 ms.[0m
-[33m2026-07-31 18:09:20.558 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-07-31 18:14:28.322 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-31 18:14:35.422 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 18:14:42.524 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-07-31 18:19:50.334 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-31 18:19:57.433 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 18:20:04.538 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-07-31 18:23:04.210 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:278]: Component uart took a long time for an operation (98 ms).[0m
-[33m2026-07-31 18:23:04.213 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:279]: Components should block for at most 30 ms.[0m
-[33m2026-07-31 18:25:12.379 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-31 18:25:19.475 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 18:25:26.574 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-07-31 18:30:34.378 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-07-31 18:30:41.477 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 18:30:48.583 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-07-31 18:34:48.324 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
-[33m2026-07-31 18:35:14.912 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
-[33m2026-07-31 18:36:03.482 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-07-31 18:36:10.579 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-07-31 18:39:44.177 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+===== 2026-08-01T01:06:44.469130 =====
+[33m2026-07-31 23:21:14.435 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-31 23:21:21.539 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-07-31 23:23:46.482 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][LD2450:867]: Expected 30 bytes but received 12![0m
+[33m2026-07-31 23:28:50.112 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:278]: Component uart took a long time for an operation (54 ms).[0m
+[33m2026-07-31 23:28:50.119 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:279]: Components should block for at most 30 ms.[0m
+[33m2026-07-31 23:31:37.335 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-31 23:31:44.430 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-31 23:31:51.527 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-07-31 23:36:59.377 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-31 23:37:06.474 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-31 23:37:13.577 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-07-31 23:42:21.317 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-31 23:42:28.411 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-31 23:42:35.509 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-07-31 23:47:50.720 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-07-31 23:52:58.330 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-31 23:53:07.132 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-31 23:53:14.304 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-07-31 23:58:22.322 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-07-31 23:58:29.421 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-07-31 23:58:36.540 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:03:44.358 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:03:53.602 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[31m2026-08-01 00:08:26.723 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:195][update_task]: Component http_request set Error flag: unspecified[0m
+[31m2026-08-01 00:08:26.725 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][http_request.idf:128][update_task]: HTTP Request failed: ESP_ERR_HTTP_CONNECT[0m
+[31m2026-08-01 00:08:27.673 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:209]: Component http_request cleared Error flag[0m
+[33m2026-08-01 00:09:01.353 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:09:08.455 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:09:15.555 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:14:23.344 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:14:30.441 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:14:37.536 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:19:45.372 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:19:52.465 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:19:59.564 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:25:07.324 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:25:16.545 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:30:31.489 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:30:38.584 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:35:46.479 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:35:53.588 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:36:00.694 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:41:08.468 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:41:15.568 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:41:22.664 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:46:30.308 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:46:37.404 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:46:44.500 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:51:52.396 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:51:59.491 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 00:52:06.587 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 00:57:14.314 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-01 00:57:23.515 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 01:02:33.475 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-01 01:02:40.573 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-01 01:03:25.663 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:278]: Component uart took a long time for an operation (74 ms).[0m
+[33m2026-08-01 01:03:25.715 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:279]: Components should block for at most 30 ms.[0m
+[33m2026-08-01 01:06:40.374 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-08-01 01:06:43.443 WARNING (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Already running[0m
