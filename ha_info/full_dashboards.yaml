@@ -1997,6 +1997,7 @@ views:
             entity: media_player.all_echo
             volume_stateless: true
             artwork: material
+            group: true
             hide:
               source: true
               mute: true
@@ -2208,6 +2209,28 @@ views:
           include:
           - domain: automation
             state: 'off'
+    - type: conditional
+      conditions:
+      - condition: or
+        conditions:
+        - condition: state
+          entity: media_player.all_echo
+          state: playing
+        - condition: state
+          entity: sensor.recent_alexa
+          state: media_player.all_echo
+      card:
+        type: custom:mini-media-player
+        entity: media_player.all_echo
+        volume_stateless: true
+        artwork: cover-fit
+        adaptive_color: false
+        group: true
+        when_paused: true
+        hide:
+          source: true
+          mute: true
+          power: true
   - type: grid
     cards:
     - type: heading
