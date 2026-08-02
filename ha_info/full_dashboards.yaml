@@ -1156,9 +1156,11 @@ views:
       name: Bed Occupied Left
       hide_state: true
       vertical: false
-      icon_tap_action:
-        action: navigate
-        navigation_path: /logbook
+      tap_action:
+        action: more-info
+      hold_action:
+        action: more-info
+        entity: sensor.bed_presence_bb8594_left_pressure
       uix:
         style:
           ha-tile-icon $: ".container::before {\n  opacity: 0 !important;\n}\n"
@@ -1167,6 +1169,9 @@ views:
       name: Bed Occupied Right
       hide_state: true
       vertical: false
+      hold_action:
+        action: more-info
+        entity: sensor.bed_presence_bb8594_right_pressure
       features_position: bottom
       uix:
         style:
@@ -2790,8 +2795,8 @@ views:
                 \ dark) {\n  :host {\n    --color: {{ 'var(--custom-bg-active)' if\
                 \ is_state('input_boolean.thermostat_automation_pause', 'on') else\
                 \ 'var(--secondary-color)' }};\n  }\n  \n  .icon {\n    {% if is_state(\"\
-                input_boolean.thermostat_automation_pause\", \"off\") %}\n    --icon-color:\
-                \ var(--custom-bg);\n  {% else %}\n    --icon-color: var(--custom-bg-active);\n\
+                input_boolean.thermostat_automation_pause\", \"on\") %}\n    --icon-color:\
+                \ var(--custom-bg);\n  {% else %}\n    --icon-color: var(--custom-bg);\n\
                 \  {% endif %}\n  }\n}"
               unchecked_icon: ''
               checked_icon: ''
@@ -2905,13 +2910,13 @@ views:
             - width: 2rem
             icon:
             - width: 2rem
-            - color: var(--custom-active)
+            - color: var(--custom-contrast-active)
             name:
             - justify-self: start
             - padding-left: .5rem
             - font-weight: 500
             - font-size: 1rem
-            - color: var(--custom-active)
+            - color: var(--custom-contrast-active)
             state:
             - justify-self: start
             - padding-left: .5rem
@@ -2936,9 +2941,9 @@ views:
                       data: {}
                     toggle_styles: false
                     styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                      \  --color: var(--custom-bg); \n  border-radius: var(--custom-radius);\n\
-                      }\n.label {\n  color: var(--custom-active);\n}\n.icon {\n  color:\
-                      \ var(--custom-active);\n}"
+                      \  --color: var(--custom-bg-active); \n  border-radius: var(--custom-radius);\n\
+                      }\n.label {\n  color: var(--custom-contrast-active);\n}\n.icon\
+                      \ {\n  color: var(--custom-contrast-active);\n}"
                     entity_id: timer.timer_helper
                 transparent: false
                 uix:
