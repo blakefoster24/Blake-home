@@ -462,7 +462,24 @@
   alias: Thermostat
   description: ''
   triggers:
-  - trigger: temperature.crossed_threshold
+  - alias: A temperature >. 71
+    trigger: temperature.crossed_threshold
+    target:
+      entity_id: climate.nest_thermostat
+    options:
+      threshold:
+        type: above
+        value:
+          active_choice: number
+          number: 70
+          unit_of_measurement: °F
+      for:
+        hours: 0
+        minutes: 10
+        seconds: 0
+    id: Above > 70 10m
+  - alias: Temperature ~ 67
+    trigger: temperature.crossed_threshold
     target:
       entity_id: climate.nest_thermostat
     options:
@@ -472,18 +489,27 @@
           active_choice: number
           number: 67
           unit_of_measurement: °F
-    id: Below 65
-  - trigger: temperature.crossed_threshold
+      for:
+        hours: 0
+        minutes: 10
+        seconds: 0
+    id: Below< 68 10m
+  - trigger: zone.left
     target:
-      entity_id: climate.nest_thermostat
+      entity_id: person.blake_foster
     options:
-      threshold:
-        type: above
-        value:
-          active_choice: number
-          number: 69
-          unit_of_measurement: °F
-    id: Above 71
+      behavior: each
+      for: 00:00:00
+      zone: zone.home
+    id: Blake away
+  - trigger: zone.entered
+    target:
+      entity_id: person.blake_foster
+    options:
+      behavior: each
+      for: 00:00:00
+      zone: zone.home
+    id: Blake’s home
   - trigger: time
     at: '16:00:00'
     id: Afternoon Time Window
@@ -505,22 +531,6 @@
       hours: 0
       minutes: 20
       seconds: 0
-  - trigger: zone.entered
-    target:
-      entity_id: person.blake_foster
-    options:
-      behavior: each
-      for: 00:00:00
-      zone: zone.home
-    id: Blake’s home
-  - trigger: zone.left
-    target:
-      entity_id: person.blake_foster
-    options:
-      behavior: each
-      for: 00:00:00
-      zone: zone.home
-    id: Blake away
   - trigger: time
     at: 08:00:00
     id: 8am
@@ -530,14 +540,14 @@
   conditions:
   - condition: or
     conditions:
-    - condition: trigger
-      id:
-      - Set-point discrepancy
-      - 64 > Thermostat Temperature > 76
     - condition: state
       entity_id: input_boolean.thermostat_automation_pause
       state:
       - 'off'
+    - condition: trigger
+      id:
+      - Set-point discrepancy
+      - 64 > Thermostat Temperature > 76
   actions:
   - choose:
     - conditions:
@@ -564,13 +574,30 @@
               for: 00:00:00
               zone: zone.home
       sequence:
-      - action: climate.set_temperature
-        metadata: {}
-        target:
-          entity_id: climate.nest_thermostat
-        data:
-          temperature: 68
-          hvac_mode: cool
+      - if:
+        - condition: time
+          after: '22:00:00'
+          before: 00:06:00
+        then:
+        - action: fan.turn_on
+          metadata: {}
+          target:
+            entity_id: fan.bedroom_ceiling_fan
+          data: {}
+        - wait_template: '{{ is_devic}}'
+        - action: fan.turn_off
+          metadata: {}
+          target:
+            entity_id: fan.bedroom_ceiling_fan
+          data: {}
+        else:
+        - action: climate.set_temperature
+          metadata: {}
+          target:
+            entity_id: climate.nest_thermostat
+          data:
+            temperature: 68
+            hvac_mode: cool
     - conditions:
       - condition: trigger
         id:
@@ -2041,8 +2068,12 @@
     - sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature
     - sensor.c_expansion_attic_temperature
     - sensor.nest_temperature_sensor_stairwell_g_temperature
-    below: 44
-    id: all sensors lowest
+    for:
+      hours: 0
+      minutes: 20
+      seconds: 0
+    below: 42
+    id: all sensors highest
   - trigger: numeric_state
     entity_id:
     - sensor.a_expansion_attic_temperature
@@ -2051,12 +2082,8 @@
     - sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature
     - sensor.c_expansion_attic_temperature
     - sensor.nest_temperature_sensor_stairwell_g_temperature
-    for:
-      hours: 0
-      minutes: 20
-      seconds: 0
-    below: 48
-    id: all sensors highest
+    below: 40
+    id: all sensors lowest
   conditions: []
   actions:
   - choose:
@@ -2139,7 +2166,8 @@
             }}°\n  {%- endfor %}\n"
           target: 3143230708@tmomail.net
     continue_on_error: true
-  mode: single
+  mode: parallel
+  max: 10
 - id: '1768967873851'
   alias: Washing Machine / Dryer
   description: ''
