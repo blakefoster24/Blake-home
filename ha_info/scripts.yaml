@@ -1144,3 +1144,17 @@ set_my_room:
             entity_id: light.bedroom_ceiling_lights
   alias: Test
   description: ''
+confirmable_notification:
+  alias: Confirmable Notification
+  use_blueprint:
+    path: homeassistant/confirmable_notification.yaml
+    input:
+      notify_device: 81e1934ca3524c1437728004bd63beac
+      message: Find phone!
+confirmable_notification_2:
+  alias: Confirmable Notification
+  use_blueprint:
+    path: homeassistant/confirmable_notification.yaml
+    input:
+      notify_device: 81e1934ca3524c1437728004bd63beac
+      message: Low battery
