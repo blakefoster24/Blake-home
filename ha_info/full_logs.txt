@@ -3,19 +3,7 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-08-05T01:41:06.238643 =====
-  File "/usr/local/lib/python3.14/site-packages/google/auth/transport/grpc.py", line 80, in _get_authorization_headers
-    self._credentials.before_request(
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
-        self._request, context.method_name, context.service_url, headers
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/local/lib/python3.14/site-packages/google/auth/credentials.py", line 240, in before_request
-    self._blocking_refresh(request)
-    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
-  File "/usr/local/lib/python3.14/site-packages/google/auth/credentials.py", line 203, in _blocking_refresh
-    self.refresh(request)
+===== 2026-08-05T02:00:04.305208 =====
     ~~~~~~~~~~~~^^^^^^^^^
   File "/usr/local/lib/python3.14/site-packages/google/auth/credentials.py", line 517, in refresh
     self._perform_refresh_token(request)
@@ -104,12 +92,24 @@ google.auth.exceptions.TransportError: HTTPSConnectionPool(host='www.googleapis.
 [32m2026-08-05 01:41:02.260 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 [33m2026-08-05 01:41:02.326 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 [32m2026-08-05 01:41:05.444 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2026-08-05 01:41:09.436 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Running script sequence[0m
+[32m2026-08-05 01:41:09.436 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Executing step call service[0m
+[33m2026-08-05 01:50:48.392 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 01:50:55.488 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 01:51:02.585 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 01:56:12.515 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-08-05 02:00:00.438 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
+[32m2026-08-05 02:00:00.438 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
+[32m2026-08-05 02:00:00.441 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-08-05 02:00:00.442 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2026-08-05 02:00:00.503 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2026-08-05 02:00:03.621 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-08-05T01:41:06.360045 =====
+===== 2026-08-05T02:00:04.418715 =====
 [32m2026-08-05 00:57:30.268 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
 [32m2026-08-05 00:57:30.271 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Running automation actions[0m
 [32m2026-08-05 00:57:30.273 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Button 1 Presses: 1 - Hold: Running automation actions[0m
@@ -140,12 +140,19 @@ LOG: automation_runs.txt
 [32m2026-08-05 01:41:02.259 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [32m2026-08-05 01:41:02.260 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 [32m2026-08-05 01:41:05.444 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2026-08-05 01:41:09.436 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Running script sequence[0m
+[32m2026-08-05 01:41:09.436 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Send Notification if triggered by User: Executing step call service[0m
+[32m2026-08-05 02:00:00.438 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
+[32m2026-08-05 02:00:00.438 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
+[32m2026-08-05 02:00:00.441 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-08-05 02:00:00.442 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2026-08-05 02:00:03.621 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-08-05T01:41:06.471250 =====
+===== 2026-08-05T02:00:04.529728 =====
 google.auth.exceptions.TransportError: HTTPSConnectionPool(host='www.googleapis.com', port=443): Read timed out. (read timeout=120)[0m
 [33m2026-08-05 00:21:44.324 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
 [33m2026-08-05 00:21:53.564 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
@@ -177,3 +184,8 @@ google.auth.exceptions.TransportError: HTTPSConnectionPool(host='www.googleapis.
 [33m2026-08-05 01:35:24.528 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [33m2026-08-05 01:40:39.585 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [33m2026-08-05 01:41:02.326 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-08-05 01:50:48.392 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 01:50:55.488 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 01:51:02.585 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 01:56:12.515 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 02:00:00.503 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
