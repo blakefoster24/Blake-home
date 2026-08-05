@@ -3,216 +3,177 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-08-04T02:00:04.279154 =====
-[33m2026-08-03 23:54:02.549 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[32m2026-08-03 23:54:56.336 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
-[32m2026-08-03 23:54:56.338 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
-[32m2026-08-03 23:54:56.339 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
-[32m2026-08-03 23:54:56.340 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Running automation actions[0m
-[32m2026-08-03 23:54:56.341 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Executing step call service[0m
-[33m2026-08-03 23:59:10.316 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-03 23:59:17.417 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-03 23:59:24.527 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[32m2026-08-04 00:01:00.063 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2026-08-04 00:01:00.065 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
-[31m2026-08-04 00:02:59.876 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:195][update_task]: Component http_request set Error flag: unspecified[0m
-[31m2026-08-04 00:02:59.882 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][http_request.idf:128][update_task]: HTTP Request failed: ESP_ERR_HTTP_CONNECT[0m
-[31m2026-08-04 00:03:00.832 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:209]: Component http_request cleared Error flag[0m
-[33m2026-08-04 00:04:32.365 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:04:39.463 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:04:46.555 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:09:54.325 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:10:01.426 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:10:08.524 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:15:18.769 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:15:25.878 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:15:32.977 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:20:40.304 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:20:47.401 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:25:57.361 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:26:11.605 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:31:19.334 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:31:26.443 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:31:33.547 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[32m2026-08-04 00:34:36.282 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
-[32m2026-08-04 00:34:36.286 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Running automation actions[0m
-[32m2026-08-04 00:34:36.289 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Button 1 Presses: 1 - Hold: Running automation actions[0m
-[32m2026-08-04 00:34:36.541 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
-[32m2026-08-04 00:34:36.543 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Running automation actions[0m
-[32m2026-08-04 00:34:36.546 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Button 1 Presses: 1 - Single: Running automation actions[0m
-[32m2026-08-04 00:34:36.546 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Button 1 Presses: 1 - Single: Executing step call service[0m
-[32m2026-08-04 00:34:36.548 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Running script sequence[0m
-[32m2026-08-04 00:34:36.549 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Executing step call service[0m
-[32m2026-08-04 00:34:36.569 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Lamp Check: Running script sequence[0m
-[32m2026-08-04 00:34:36.571 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Lamp Check: Dimmed lamp if Goodnight = active & after 11pm : Running script sequence[0m
-[32m2026-08-04 00:34:36.572 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Lamp Check: Dimmed lamp if Goodnight = active & after 11pm : Executing step call service[0m
-[32m2026-08-04 00:34:37.063 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Executing step call service[0m
-[32m2026-08-04 00:34:37.113 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Executing step call service[0m
-[32m2026-08-04 00:34:37.123 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Running script sequence[0m
-[32m2026-08-04 00:34:37.123 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step call service[0m
-[32m2026-08-04 00:34:37.169 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step delay 0:00:05[0m
-[32m2026-08-04 00:34:42.171 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step call service[0m
-[33m2026-08-04 00:36:41.333 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:36:48.429 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:36:55.525 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:37:58.626 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][esp32_ble_tracker:177]: Dropped 4 BLE scan results due to buffer overflow[0m
-[33m2026-08-04 00:42:03.311 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:42:10.407 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:42:17.502 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:47:25.321 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:47:32.422 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:47:39.514 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:52:47.330 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:52:54.436 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:53:01.533 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:58:09.379 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:58:16.482 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:58:23.591 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:03:38.463 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:03:45.559 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:08:53.378 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:09:00.484 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:09:07.584 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:14:15.354 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:14:22.450 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:14:29.547 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:19:37.500 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:24:45.308 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:24:52.408 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:24:59.504 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:30:07.361 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:35:22.346 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:35:29.447 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:35:36.543 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[32m2026-08-04 01:39:14.865 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
-[32m2026-08-04 01:39:14.865 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
-[33m2026-08-04 01:40:44.318 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:40:58.558 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:46:06.301 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:51:16.357 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:51:23.451 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:51:30.549 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:51:30.569 WARNING (MainThread) [aioamazondevices] Connection error to https://alexa.amazon.com/nexus/v1/graphql: ClientConnectorDNSError(ConnectionKey(host='alexa.amazon.com', port=443, is_ssl=True, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None, server_hostname=None), OSError(None, 'DNS server returned answer with no data'))[0m
-[31m2026-08-04 01:51:30.570 ERROR (MainThread) [homeassistant.components.alexa_devices] Error fetching Blake.foster30@gmail.com data: Error connecting: CannotConnect('Connection error during POST')[0m
-[31m2026-08-04 01:51:30.708 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device[0m
-[33m2026-08-04 01:56:38.325 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:56:45.420 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:56:52.517 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[32m2026-08-04 02:00:00.438 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
-[32m2026-08-04 02:00:00.438 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
-[32m2026-08-04 02:00:00.440 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2026-08-04 02:00:00.441 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[33m2026-08-04 02:00:00.507 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
-[32m2026-08-04 02:00:03.575 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+===== 2026-08-05T01:41:06.238643 =====
+  File "/usr/local/lib/python3.14/site-packages/google/auth/transport/grpc.py", line 80, in _get_authorization_headers
+    self._credentials.before_request(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._request, context.method_name, context.service_url, headers
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.14/site-packages/google/auth/credentials.py", line 240, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/google/auth/credentials.py", line 203, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/google/auth/credentials.py", line 517, in refresh
+    self._perform_refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/google/oauth2/credentials.py", line 435, in _perform_refresh_token
+    ) = reauth.refresh_grant(
+        ~~~~~~~~~~~~~~~~~~~~^
+        request,
+        ^^^^^^^^
+    ...<6 lines>...
+        enable_reauth_refresh=self._enable_reauth_refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.14/site-packages/google/oauth2/reauth.py", line 337, in refresh_grant
+    ) = _client._token_endpoint_request_no_throw(
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        request, token_uri, body, headers=metrics_header
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/usr/local/lib/python3.14/site-packages/google/oauth2/_client.py", line 196, in _token_endpoint_request_no_throw
+    response = request(
+        method="POST", url=token_uri, headers=headers_to_use, body=body, **kwargs
+    )
+  File "/usr/local/lib/python3.14/site-packages/google/auth/transport/requests.py", line 195, in __call__
+    raise new_exc from caught_exc
+google.auth.exceptions.TransportError: HTTPSConnectionPool(host='www.googleapis.com', port=443): Read timed out. (read timeout=120)[0m
+[33m2026-08-05 00:21:44.324 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 00:21:53.564 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 00:27:03.495 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 00:32:11.322 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 00:32:18.433 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 00:32:25.541 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 00:37:35.567 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 00:42:43.420 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 00:42:50.520 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 00:42:57.614 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 00:48:05.334 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 00:48:12.432 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 00:48:19.535 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 00:53:27.321 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 00:53:34.424 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 00:53:41.522 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-08-05 00:57:30.268 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
+[32m2026-08-05 00:57:30.271 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Running automation actions[0m
+[32m2026-08-05 00:57:30.273 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Button 1 Presses: 1 - Hold: Running automation actions[0m
+[32m2026-08-05 00:57:30.552 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
+[32m2026-08-05 00:57:30.553 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Running automation actions[0m
+[32m2026-08-05 00:57:30.558 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Button 1 Presses: 1 - Single: Running automation actions[0m
+[32m2026-08-05 00:57:30.558 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Button 1 Presses: 1 - Single: Executing step call service[0m
+[32m2026-08-05 00:57:30.560 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Running script sequence[0m
+[32m2026-08-05 00:57:30.561 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Executing step call service[0m
+[32m2026-08-05 00:57:30.579 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Lamp Check: Running script sequence[0m
+[32m2026-08-05 00:57:30.581 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Lamp Check: Dimmed lamp if Goodnight = active & after 11pm : Running script sequence[0m
+[32m2026-08-05 00:57:30.581 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Lamp Check: Dimmed lamp if Goodnight = active & after 11pm : Executing step call service[0m
+[32m2026-08-05 00:57:30.964 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Executing step call service[0m
+[32m2026-08-05 00:57:31.075 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Executing step call service[0m
+[32m2026-08-05 00:57:31.084 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Running script sequence[0m
+[32m2026-08-05 00:57:31.085 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step call service[0m
+[32m2026-08-05 00:57:31.132 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step delay 0:00:05[0m
+[32m2026-08-05 00:57:36.134 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step call service[0m
+[33m2026-08-05 01:03:50.326 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 01:03:57.433 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 01:04:04.539 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 01:09:12.349 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 01:09:26.617 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 01:14:34.329 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 01:19:44.324 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 01:19:51.433 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 01:19:58.539 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-08-05 01:27:30.110 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-08-05 01:27:30.111 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-08-05 01:27:30.112 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-08-05 01:27:30.113 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Executing step call service[0m
+[33m2026-08-05 01:35:10.337 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 01:35:17.433 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 01:35:24.528 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-08-05 01:35:33.132 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-08-05 01:35:33.134 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-08-05 01:35:33.135 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-08-05 01:35:33.136 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Running automation actions[0m
+[32m2026-08-05 01:35:33.137 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Executing step call service[0m
+[33m2026-08-05 01:40:39.585 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-08-05 01:41:02.259 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-08-05 01:41:02.260 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[33m2026-08-05 01:41:02.326 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2026-08-05 01:41:05.444 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-08-04T02:00:04.395189 =====
-[32m2026-08-03 23:54:56.336 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
-[32m2026-08-03 23:54:56.338 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
-[32m2026-08-03 23:54:56.339 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
-[32m2026-08-03 23:54:56.340 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Running automation actions[0m
-[32m2026-08-03 23:54:56.341 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Executing step call service[0m
-[32m2026-08-04 00:01:00.063 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
-[32m2026-08-04 00:01:00.065 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Choose at step 1: Clear Work Schedule Helpers: Running automation actions[0m
-[32m2026-08-04 00:34:36.282 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
-[32m2026-08-04 00:34:36.286 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Running automation actions[0m
-[32m2026-08-04 00:34:36.289 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Button 1 Presses: 1 - Hold: Running automation actions[0m
-[32m2026-08-04 00:34:36.541 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
-[32m2026-08-04 00:34:36.543 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Running automation actions[0m
-[32m2026-08-04 00:34:36.546 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Button 1 Presses: 1 - Single: Running automation actions[0m
-[32m2026-08-04 00:34:36.546 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Button 1 Presses: 1 - Single: Executing step call service[0m
-[32m2026-08-04 00:34:36.548 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Running script sequence[0m
-[32m2026-08-04 00:34:36.549 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Executing step call service[0m
-[32m2026-08-04 00:34:36.569 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Lamp Check: Running script sequence[0m
-[32m2026-08-04 00:34:36.571 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Lamp Check: Dimmed lamp if Goodnight = active & after 11pm : Running script sequence[0m
-[32m2026-08-04 00:34:36.572 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Lamp Check: Dimmed lamp if Goodnight = active & after 11pm : Executing step call service[0m
-[32m2026-08-04 00:34:37.063 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Executing step call service[0m
-[32m2026-08-04 00:34:37.113 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Executing step call service[0m
-[32m2026-08-04 00:34:37.123 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Running script sequence[0m
-[32m2026-08-04 00:34:37.123 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step call service[0m
-[32m2026-08-04 00:34:37.169 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step delay 0:00:05[0m
-[32m2026-08-04 00:34:42.171 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step call service[0m
-[32m2026-08-04 01:39:14.865 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Running automation actions[0m
-[32m2026-08-04 01:39:14.865 INFO (MainThread) [homeassistant.components.automation.goodnight] Goodnight: Executing step call service[0m
-[32m2026-08-04 02:00:00.438 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
-[32m2026-08-04 02:00:00.438 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Executing step call service[0m
-[32m2026-08-04 02:00:00.440 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[32m2026-08-04 02:00:00.441 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
-[32m2026-08-04 02:00:03.575 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+===== 2026-08-05T01:41:06.360045 =====
+[32m2026-08-05 00:57:30.268 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
+[32m2026-08-05 00:57:30.271 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Running automation actions[0m
+[32m2026-08-05 00:57:30.273 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Button 1 Presses: 1 - Hold: Running automation actions[0m
+[32m2026-08-05 00:57:30.552 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
+[32m2026-08-05 00:57:30.553 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Running automation actions[0m
+[32m2026-08-05 00:57:30.558 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Button 1 Presses: 1 - Single: Running automation actions[0m
+[32m2026-08-05 00:57:30.558 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Choose at step 1: Button 1: Button 1 Presses: 1 - Single: Executing step call service[0m
+[32m2026-08-05 00:57:30.560 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Running script sequence[0m
+[32m2026-08-05 00:57:30.561 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Executing step call service[0m
+[32m2026-08-05 00:57:30.579 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Lamp Check: Running script sequence[0m
+[32m2026-08-05 00:57:30.581 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Lamp Check: Dimmed lamp if Goodnight = active & after 11pm : Running script sequence[0m
+[32m2026-08-05 00:57:30.581 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Lamp Check: Dimmed lamp if Goodnight = active & after 11pm : Executing step call service[0m
+[32m2026-08-05 00:57:30.964 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Executing step call service[0m
+[32m2026-08-05 00:57:31.075 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Executing step call service[0m
+[32m2026-08-05 00:57:31.084 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Running script sequence[0m
+[32m2026-08-05 00:57:31.085 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step call service[0m
+[32m2026-08-05 00:57:31.132 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step delay 0:00:05[0m
+[32m2026-08-05 00:57:36.134 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: TV Check: Executing step call service[0m
+[32m2026-08-05 01:27:30.110 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-08-05 01:27:30.111 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-08-05 01:27:30.112 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-08-05 01:27:30.113 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Executing step call service[0m
+[32m2026-08-05 01:35:33.132 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-08-05 01:35:33.134 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: Running automation actions[0m
+[32m2026-08-05 01:35:33.135 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: Running automation actions[0m
+[32m2026-08-05 01:35:33.136 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Running automation actions[0m
+[32m2026-08-05 01:35:33.137 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Choose at step 1: choice 2: If at step 1: If at step 1: Executing step call service[0m
+[32m2026-08-05 01:41:02.259 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-08-05 01:41:02.260 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
+[32m2026-08-05 01:41:05.444 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Executing step call service[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-08-04T02:00:04.511791 =====
-[33m2026-08-03 23:54:02.549 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-03 23:59:10.316 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-03 23:59:17.417 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-03 23:59:24.527 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[31m2026-08-04 00:02:59.876 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:195][update_task]: Component http_request set Error flag: unspecified[0m
-[31m2026-08-04 00:02:59.882 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][http_request.idf:128][update_task]: HTTP Request failed: ESP_ERR_HTTP_CONNECT[0m
-[31m2026-08-04 00:03:00.832 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:209]: Component http_request cleared Error flag[0m
-[33m2026-08-04 00:04:32.365 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:04:39.463 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:04:46.555 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:09:54.325 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:10:01.426 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:10:08.524 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:15:18.769 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:15:25.878 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:15:32.977 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:20:40.304 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:20:47.401 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:25:57.361 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:26:11.605 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:31:19.334 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:31:26.443 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:31:33.547 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:36:41.333 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:36:48.429 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:36:55.525 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:37:58.626 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][esp32_ble_tracker:177]: Dropped 4 BLE scan results due to buffer overflow[0m
-[33m2026-08-04 00:42:03.311 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:42:10.407 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:42:17.502 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:47:25.321 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:47:32.422 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:47:39.514 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:52:47.330 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:52:54.436 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:53:01.533 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 00:58:09.379 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 00:58:16.482 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 00:58:23.591 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:03:38.463 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:03:45.559 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:08:53.378 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:09:00.484 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:09:07.584 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:14:15.354 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:14:22.450 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:14:29.547 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:19:37.500 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:24:45.308 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:24:52.408 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:24:59.504 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:30:07.361 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:35:22.346 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:35:29.447 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:35:36.543 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:40:44.318 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:40:58.558 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:46:06.301 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:51:16.357 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:51:23.451 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:51:30.549 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 01:51:30.569 WARNING (MainThread) [aioamazondevices] Connection error to https://alexa.amazon.com/nexus/v1/graphql: ClientConnectorDNSError(ConnectionKey(host='alexa.amazon.com', port=443, is_ssl=True, ssl=True, proxy=None, proxy_auth=None, proxy_headers_hash=None, server_hostname=None), OSError(None, 'DNS server returned answer with no data'))[0m
-[31m2026-08-04 01:51:30.570 ERROR (MainThread) [homeassistant.components.alexa_devices] Error fetching Blake.foster30@gmail.com data: Error connecting: CannotConnect('Connection error during POST')[0m
-[31m2026-08-04 01:51:30.708 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device[0m
-[33m2026-08-04 01:56:38.325 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-08-04 01:56:45.420 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-08-04 01:56:52.517 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-08-04 02:00:00.507 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+===== 2026-08-05T01:41:06.471250 =====
+google.auth.exceptions.TransportError: HTTPSConnectionPool(host='www.googleapis.com', port=443): Read timed out. (read timeout=120)[0m
+[33m2026-08-05 00:21:44.324 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 00:21:53.564 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 00:27:03.495 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 00:32:11.322 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 00:32:18.433 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 00:32:25.541 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 00:37:35.567 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 00:42:43.420 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 00:42:50.520 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 00:42:57.614 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 00:48:05.334 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 00:48:12.432 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 00:48:19.535 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 00:53:27.321 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 00:53:34.424 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 00:53:41.522 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 01:03:50.326 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 01:03:57.433 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 01:04:04.539 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 01:09:12.349 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 01:09:26.617 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 01:14:34.329 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 01:19:44.324 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 01:19:51.433 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 01:19:58.539 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 01:35:10.337 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-08-05 01:35:17.433 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-08-05 01:35:24.528 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 01:40:39.585 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-08-05 01:41:02.326 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
