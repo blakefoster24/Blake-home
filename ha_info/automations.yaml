@@ -1897,11 +1897,11 @@
       - wait_for_trigger:
         - trigger: time
           at: 08:50:00
-      - action: alexa_devices.send_text_command
+      - action: button.press
         metadata: {}
-        data:
-          device_id: ba7e4aed08d0947fa03068f398842568
-          text_command: turn on backlight late
+        target:
+          entity_id: button.blake_foster30_gmail_com_set_backlight_late_for_work
+        data: {}
       - repeat:
           while:
           - condition: state

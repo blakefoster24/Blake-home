@@ -5184,12 +5184,29 @@ views:
     color: white
     uix:
       style: "ha-badge {\n  --ha-card-background: var(--custom-bg)\n}\n"
-- type: panel
-  theme: Frosted Glass
-  path: scheduled-off
-  subview: true
-  title: Scheduled Off
-  cards:
-  - type: entities
-    entities:
-    - entity: input_datetime.scheduled_off
+- type: sections
+  max_columns: 4
+  title: Helpers
+  path: helpers
+  sections:
+  - type: grid
+    cards:
+    - type: tile
+      entity: input_datetime.home_timestamp
+      grid_options:
+        columns: 12
+        rows: 1
+    - type: tile
+      entity: input_datetime.last_door_open
+      grid_options:
+        columns: 12
+        rows: 1
+    - type: tile
+      entity: sensor.recent_alexa
+      grid_options:
+        columns: 12
+        rows: 1
+    - type: tile
+      entity: input_boolean.phone_active
+    - type: tile
+      entity: input_boolean.disable_toggle
