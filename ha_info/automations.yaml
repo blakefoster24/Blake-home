@@ -2005,17 +2005,17 @@
         target:
           entity_id: input_boolean.disable_toggle
         data: {}
+      - delay:
+          hours: 0
+          minutes: 0
+          seconds: 10
+          milliseconds: 0
       - wait_template: "{% set alexa_devices = [\n  'media_player.blake_s_echo_dot',\n
           \ 'media_player.all_echo',\n  'media_player.blake_s_echo_pop',\n  'media_player.blake_s_echo_spot'\n]
           %}\n{{ not expand(alexa_devices) | map(attribute='state') | select('eq',
           'playing') | list | count > 0 }}\n"
         continue_on_timeout: false
         alias: No Echo ‘Playing’
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 10
-          milliseconds: 0
       - action: notify.mobile_app_blakes_iphone
         metadata: {}
         data:

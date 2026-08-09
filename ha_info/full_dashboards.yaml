@@ -285,6 +285,42 @@ views:
     cards:
     - type: custom:bubble-card
       card_type: pop-up
+      hash: '#helper'
+      button_type: switch
+      sub_button:
+        main: []
+        bottom: []
+      slider_fill_orientation: left
+      slider_value_position: right
+      name: Current Helpers
+      button_action: {}
+      icon: mdi:tools
+      show_header: true
+      bg_opacity: '50'
+      bg_blur: '30'
+      cards:
+      - type: tile
+        entity: input_datetime.home_timestamp
+        grid_options:
+          columns: full
+      - type: tile
+        entity: input_datetime.last_door_open
+        grid_options:
+          columns: full
+      - type: tile
+        entity: sensor.recent_alexa
+        grid_options:
+          columns: full
+      - type: tile
+        entity: input_boolean.phone_active
+      - type: tile
+        entity: input_boolean.disable_toggle
+        name: Music Disable
+        vertical: false
+        features_position: bottom
+      hide_backdrop: true
+    - type: custom:bubble-card
+      card_type: pop-up
       hash: '#nav'
       button_type: switch
       sub_button:
@@ -376,6 +412,23 @@ views:
         grid_options:
           columns: 12
           rows: auto
+      - type: custom:bubble-card
+        card_type: button
+        button_type: name
+        sub_button:
+          main: []
+          bottom: []
+        slider_fill_orientation: left
+        slider_value_position: right
+        name: Current Helpers
+        icon: mdi:tools
+        button_action:
+          tap_action:
+            action: navigate
+            navigation_path: /my-dashboard/home/#helper
+        styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
+          \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
+          \ 16px;\n}\n"
     - type: custom:bubble-card
       card_type: button
       button_type: name
@@ -394,6 +447,57 @@ views:
         \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
         \ 16px;\n}\n"
     - type: custom:vertical-stack-in-card
+      visibility:
+      - condition: or
+        conditions:
+        - condition: state
+          entity: automation.door_automation
+          state: 'off'
+        - condition: state
+          entity: automation.helper_automation
+          state: 'off'
+        - condition: state
+          entity: automation.light_triggers_another_light
+          state: 'off'
+        - condition: state
+          entity: automation.battery_low_automation
+          state: 'off'
+        - condition: state
+          entity: automation.work_schedule_automations
+          state: 'off'
+        - condition: state
+          entity: automation.bedroom_ceiling_lights_3_set_my_room
+          state: 'off'
+        - condition: state
+          entity: automation.flic_butttons
+          state: 'off'
+        - condition: state
+          entity: automation.goodnight
+          state: 'off'
+        - condition: state
+          entity: automation.hue_dimmer
+          state: 'off'
+        - condition: state
+          entity: automation.living_room_lamp
+          state: 'off'
+        - condition: state
+          entity: automation.nightly_github_sync
+          state: 'off'
+        - condition: state
+          entity: automation.shelly_button_4
+          state: 'off'
+        - condition: state
+          entity: automation.thermostat
+          state: 'off'
+        - condition: state
+          entity: automation.washing_machine_dryer
+          state: 'off'
+        - condition: state
+          entity: automation.work_attic_temperature_notifications
+          state: 'off'
+        - condition: state
+          entity: automation.workday_wakeup
+          state: 'off'
       cards:
       - type: custom:mushroom-template-card
         primary: "{% set disabled_count = states.automation | selectattr('state',\
@@ -407,57 +511,6 @@ views:
         tap_action:
           action: navigate
           navigation_path: /config/automation
-        visibility:
-        - condition: or
-          conditions:
-          - condition: state
-            entity: automation.door_automation
-            state: 'off'
-          - condition: state
-            entity: automation.helper_automation
-            state: 'off'
-          - condition: state
-            entity: automation.light_triggers_another_light
-            state: 'off'
-          - condition: state
-            entity: automation.battery_low_automation
-            state: 'off'
-          - condition: state
-            entity: automation.work_schedule_automations
-            state: 'off'
-          - condition: state
-            entity: automation.bedroom_ceiling_lights_3_set_my_room
-            state: 'off'
-          - condition: state
-            entity: automation.flic_butttons
-            state: 'off'
-          - condition: state
-            entity: automation.goodnight
-            state: 'off'
-          - condition: state
-            entity: automation.hue_dimmer
-            state: 'off'
-          - condition: state
-            entity: automation.living_room_lamp
-            state: 'off'
-          - condition: state
-            entity: automation.nightly_github_sync
-            state: 'off'
-          - condition: state
-            entity: automation.shelly_button_4
-            state: 'off'
-          - condition: state
-            entity: automation.thermostat
-            state: 'off'
-          - condition: state
-            entity: automation.washing_machine_dryer
-            state: 'off'
-          - condition: state
-            entity: automation.work_attic_temperature_notifications
-            state: 'off'
-          - condition: state
-            entity: automation.workday_wakeup
-            state: 'off'
         grid_options:
           columns: full
           rows: auto
@@ -1034,6 +1087,26 @@ views:
             \  border: 1px solid !important; \n  border-radius: 12px !important;\n\
             }\n.info {\n  flex: 1 1 auto !important;\n  margin-right: 0px !important;\n\
             \  min-width: 0 !important;\n}\n"
+      visibility:
+      - condition: numeric_state
+        below: 92
+        entity: sensor.openweathermap_feels_like_temperature_2
+    - type: custom:mushroom-template-card
+      primary: It's hot! Check the water loop!
+      secondary: Feels like {{ states('sensor.openweathermap_feels_like_temperature_2')
+        | float(0) | round(1) }} °F
+      icon: mdi:weather-sunny-alert
+      color: red
+      grid_options:
+        columns: full
+      visibility:
+      - condition: numeric_state
+        above: 92
+        entity: sensor.openweathermap_feels_like_temperature_2
+      uix:
+        style:
+          ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n"
+          .: "ha-tile-icon {\n  size: 2px !important;\n}\n"
   - type: grid
     cards:
     - type: heading
@@ -1941,385 +2014,6 @@ views:
     cards:
     - type: heading
       heading: New section
-    - type: custom:vertical-stack-in-card
-      cards:
-      - type: conditional
-        conditions:
-        - condition: state
-          entity: script.alexa_music
-          state: 'off'
-        card:
-          type: entities
-          entities:
-          - entity: input_text.alexa_music_search
-          - entity: input_select.speakers
-          uix:
-            style: "ha-card {\n  border: none;\n  background: none !important;\n}\n\
-              ha-card::before {\n  content: none !important;\n}\n"
-      - type: conditional
-        conditions:
-        - condition: state
-          entity: script.alexa_music
-          state: 'off'
-        card:
-          type: custom:custom-features-card
-          features:
-          - type: custom:service-call
-            entries:
-            - type: button
-              entity_id: script.alexa_music
-              tap_action:
-                action: perform-action
-                target:
-                  entity_id: script.alexa_music
-                perform_action: script.alexa_music
-                data:
-                  action_type: search_music
-              icon: mdi:music
-              label: Search Music
-              thumb: md3-elevated
-              toggle_styles: false
-              haptics: true
-              styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
-                \ }};\n}\n.label {\n  color: {{ 'var(--custom-contrast)' }};\n}\n\
-                .icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
-          transparent: false
-          uix:
-            style: "ha-card {\n  border: none;\n  background: none !important;\n \
-              \ padding-top: 0px !important;\n  padding-bottom: 5px !important;\n\
-              }\nha-card::before {\n  content: none !important;\n}\n"
-      - type: custom:vertical-stack-in-card
-        cards:
-        - type: conditional
-          conditions:
-          - condition: or
-            conditions:
-            - condition: state
-              entity: media_player.all_echo
-              state: playing
-            - condition: state
-              entity: sensor.recent_alexa
-              state: media_player.all_echo
-          card:
-            type: custom:mini-media-player
-            entity: media_player.all_echo
-            volume_stateless: true
-            artwork: material
-            group: true
-            hide:
-              source: true
-              mute: true
-              power: true
-          uix:
-            style: "ha-card {\n  border: none;\n  background: none !important;\n}\n\
-              ha-card::before {\n  content: none !important;\n}\n"
-        - type: conditional
-          conditions:
-          - condition: and
-            conditions:
-            - condition: state
-              entity: sensor.recent_alexa
-              state: media_player.blake_s_echo_spot
-            - condition: state
-              entity: media_player.all_echo
-              state_not: playing
-          card:
-            type: custom:mini-media-player
-            entity: media_player.blake_s_echo_spot
-            volume_stateless: true
-            artwork: material
-            hide:
-              source: true
-              mute: true
-              power: true
-        - type: conditional
-          conditions:
-          - condition: and
-            conditions:
-            - condition: state
-              entity: sensor.recent_alexa
-              state: media_player.blake_s_echo_dot
-            - condition: state
-              entity: media_player.all_echo
-              state_not: playing
-          card:
-            type: custom:mini-media-player
-            entity: media_player.blake_s_echo_dot
-            volume_stateless: true
-            artwork: material
-            hide:
-              source: true
-              mute: true
-              power: true
-        - type: conditional
-          conditions:
-          - condition: and
-            conditions:
-            - condition: state
-              entity: sensor.recent_alexa
-              state: media_player.blake_s_echo_pop
-            - condition: state
-              entity: media_player.all_echo
-              state_not: playing
-          card:
-            type: custom:mini-media-player
-            entity: media_player.blake_s_echo_pop
-            volume_stateless: true
-            artwork: material
-            hide:
-              source: true
-              mute: true
-              power: true
-        uix:
-          style: "{% if is_state('binary_sensor.alexa_master_sensor', 'on') %}\n \
-            \   ha-card {\n      background: none !important;\n      border-radius:\
-            \ var(--custom-radius) !important;\n      border: var(--custom-border)\
-            \ !important;\n    }\n{% else %}\n  ha-card {\n    border: none !important;\n\
-            \    background: none !important;\n  }\n  ha-card::before {\n    content:\
-            \ none !important;\n  }\n{% endif %}\n"
-      - type: conditional
-        conditions:
-        - condition: and
-          conditions:
-          - condition: state
-            entity: input_boolean.disable_toggle
-            state: 'on'
-          - condition: state
-            entity: script.alexa_music
-            state_not: 'off'
-        card:
-          type: custom:custom-features-card
-          features:
-          - type: custom:service-call
-            entries:
-            - type: button
-              label: Stop
-              icon: mdi:stop
-              thumb: md3-elevated
-              tap_action:
-                action: perform-action
-                perform_action: input_boolean.turn_off
-                target:
-                  entity_id:
-                  - input_boolean.disable_toggle
-                data: {}
-              toggle_styles: true
-              styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
-                \ }};\n}\n.label {\n  color: {{ 'var(--custom-active)' }};\n}\n.icon\
-                \ {\n  color: {{ 'var(--custom-active)' }};  \n}"
-              entity_id: script.alexa_music
-          transparent: false
-          uix:
-            style: "ha-card {\n  border: none !important;\n  background: none !important;\n\
-              \  padding-top: 10px !important;\n  padding-bottom: 0px !important;\n\
-              }\nha-card::before {\n  content: none !important;\n}\n"
-      uix:
-        style: "ha-card {\n  border-radius: var(--custom-radius) !important;\n  border:\
-          \ 0.5px solid rgba(255, 255, 255, 0.2) !important;\n}\n"
-    - type: custom:mushroom-template-card
-      primary: Actions - {{ states('input_text.script_tracking') }}
-      secondary: '{{ states(''input_text.script_variables'') }}'
-      grid_options:
-        columns: full
-        rows: auto
-      features_position: bottom
-      multiline_secondary: true
-      icon: mdi:music
-      visibility:
-      - condition: state
-        entity: input_text.script_variables
-        state_not: ''
-      uix:
-        style: "ha-card {\n   border: none;\n   background: none !important;\n }\n\
-          \ ha-card::before {\n   content: none !important;\n }\n"
-    - type: custom:vertical-stack-in-card
-      cards:
-      - type: custom:mushroom-template-card
-        primary: "{% set disabled_count = states.automation | selectattr('state',\
-          \ 'eq', 'off') | list | length %}\n{% if disabled_count > 0 %}\n  {{ disabled_count\
-          \ }} Disabled Automation{{ 's' if disabled_count > 1 else '' }}\n{% else\
-          \ %}\n  All Automations Active\n{% endif %}"
-        icon: "{% if states.automation | selectattr('state', 'eq', 'off') | list |\
-          \ length > 0 %}\n  mdi:robot-off\n{% else %}\n  mdi:robot\n{% endif %}"
-        icon_color: "{% if states.automation | selectattr('state', 'eq', 'off') |\
-          \ list | length > 0 %}\n  orange\n{% else %}\n  green\n{% endif %}"
-        tap_action:
-          action: navigate
-          navigation_path: /config/automation
-        visibility:
-        - condition: or
-          conditions:
-          - condition: state
-            entity: automation.door_automation
-            state: 'off'
-          - condition: state
-            entity: automation.helper_automation
-            state: 'off'
-          - condition: state
-            entity: automation.light_triggers_another_light
-            state: 'off'
-          - condition: state
-            entity: automation.battery_low_automation
-            state: 'off'
-          - condition: state
-            entity: automation.work_schedule_automations
-            state: 'off'
-          - condition: state
-            entity: automation.bedroom_ceiling_lights_3_set_my_room
-            state: 'off'
-          - condition: state
-            entity: automation.flic_butttons
-            state: 'off'
-          - condition: state
-            entity: automation.goodnight
-            state: 'off'
-          - condition: state
-            entity: automation.hue_dimmer
-            state: 'off'
-          - condition: state
-            entity: automation.living_room_lamp
-            state: 'off'
-          - condition: state
-            entity: automation.nightly_github_sync
-            state: 'off'
-          - condition: state
-            entity: automation.shelly_button_4
-            state: 'off'
-          - condition: state
-            entity: automation.thermostat
-            state: 'off'
-          - condition: state
-            entity: automation.washing_machine_dryer
-            state: 'off'
-          - condition: state
-            entity: automation.work_attic_temperature_notifications
-            state: 'off'
-          - condition: state
-            entity: automation.workday_wakeup
-            state: 'off'
-        grid_options:
-          columns: full
-          rows: auto
-        uix:
-          style: "ha-card {\n  background: none !important;\n  border: none !important;\n\
-            \  box-shadow: none !important;\n  margin-bottom: -20px !important;\n\
-            }\nha-card::before {\n  content: none !important;\n}\n"
-      - type: custom:auto-entities
-        show_empty: false
-        card:
-          type: entities
-          uix:
-            style: "ha-card {\n  background: none !important;\n  border: none !important;\n\
-              \  box-shadow: none !important;\n}\nha-card::before {\n  content: none\
-              \ !important;\n}\n"
-        filter:
-          include:
-          - domain: automation
-            state: 'off'
-    - type: conditional
-      conditions:
-      - condition: or
-        conditions:
-        - condition: state
-          entity: media_player.all_echo
-          state: playing
-        - condition: state
-          entity: sensor.recent_alexa
-          state: media_player.all_echo
-      card:
-        type: custom:mini-media-player
-        entity: media_player.all_echo
-        volume_stateless: true
-        artwork: cover-fit
-        adaptive_color: false
-        group: true
-        when_paused: true
-        hide:
-          source: true
-          mute: true
-          power: true
-    - type: custom:button-card
-      entity: script.push_ha_info_to_github_create_ai_zip_file_now
-      show_state: true
-      name: Generate HA Info Folder
-      tap_action:
-        action: none
-      state:
-      - valye: 'on'
-        state_display: generating
-      - value: 'off'
-        state_display: 'off'
-      styles:
-        grid:
-        - grid-template-areas: '"i n run_button" "i s run_button"'
-        - grid-template-columns: min-content min-content 1fr
-        - grid-template-rows: 1fr 1fr
-        card:
-        - padding: .7rem
-        - height: 4.5rem
-        img_cell:
-        - background-color: transparent
-        - width: 4rem
-        icon:
-        - width: 3rem
-        - color: "[[[\n  return entity.state === 'on' ? 'var(--custom-active)' : 'var(--custom-contrast)';\n\
-            ]]]\n"
-        - padding-bottom: .25rem
-        - margin-left: -.5rem
-        name:
-        - justify-self: start
-        - font-weight: 500
-        - font-size: 1rem
-        state:
-        - justify-self: start
-        - font-size: 1rem
-      custom_fields:
-        run_button:
-          card:
-            type: custom:custom-features-card
-            features:
-            - type: custom:service-call
-              entries:
-              - type: button
-                label: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      Generating...\n    {% else %}\n      Generate\n\
-                  \    {% endif %} \n"
-                icon: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      null\n    {% else %}\n      local:github_zip_script\n\
-                  \    {% endif %} \n"
-                thumb: md3-elevated
-                tap_action:
-                  action: perform-action
-                  perform_action: script.turn_on
-                  target:
-                    entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
-                toggle_styles: false
-                styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                  \  border-radius: var(--custom-radius);\n  box-shadow: none;\n \
-                  \ margin-right: auto\n  margin-left: auto  \n  width: auto\n  justify-content:\
-                  \ space-around\n  justify-self: space-around\n  justify-items: space-around\n\
-                  }\n:host {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      --color: var(--custom-bg-active);\n    {% else\
-                  \ %}\n      --color: var(--custom-bg);\n    {% endif %}\n}\n.label\
-                  \ {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-contrast-active);\n    {%\
-                  \ else %}\n      color: var(--custom-contrast);\n    {% endif %}\
-                  \ \n}\n.icon {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-contrast-active);\n    {%\
-                  \ else %}\n      color: var(--custom-contrast);\n    {% endif %}\n\
-                  \  padding-bottom: .25rem\n}"
-                entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
-            transparent: false
-            uix:
-              style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
-                \ none;\n  margin-right: auto\n  margin-left: auto\n  width: auto\n\
-                \  justify-content: space-around\n  justify-self: space-around\n \
-                \ justify-items: space-around\n\n}\nha-card::before {\ncontent: none\
-                \ !important;\n}\n"
-    - type: custom:mini-media-player
-      entity: media_player.blake_s_echo_spot_2
   - type: grid
     cards:
     - type: heading
@@ -2405,74 +2099,84 @@ views:
               - width: 1.5rem
               - color: "[[[\n  return entity.state === 'on' ? 'var(--primary-color)'\
                   \ : 'white';\n]]]\n"
-    - type: custom:mushroom-template-card
-      primary: '{% set disabled_count = states.automation | selectattr(''state'',
-        ''eq'', ''off'') | list | length %}
-
-        {{ disabled_count }} Disabled Automations'
-      secondary: "{% set disabled_list = states.automation | selectattr('state', 'eq',\
-        \ 'off') | map(attribute='name') | list %rrc\n  \n{{ disabled_list | join(',\
-        \ ') }}"
-      icon: mdi:robot-off
-      icon_color: orange
-      multiline_secondary: true
+    - type: custom:button-card
+      entity: script.push_ha_info_to_github_create_ai_zip_file_now
+      show_state: true
+      name: Generate HA Info Folder
       tap_action:
-        action: navigate
-        navigation_path: /config/automation
-      visibility:
-      - condition: or
-        conditions:
-        - condition: state
-          entity: automation.door_automation
-          state: 'off'
-        - condition: state
-          entity: automation.helper_automation
-          state: 'off'
-        - condition: state
-          entity: automation.light_triggers_another_light
-          state: 'off'
-        - condition: state
-          entity: automation.battery_low_automation
-          state: 'off'
-        - condition: state
-          entity: automation.work_schedule_automations
-          state: 'off'
-        - condition: state
-          entity: automation.bedroom_ceiling_lights_3_set_my_room
-          state: 'off'
-        - condition: state
-          entity: automation.flic_butttons
-          state: 'off'
-        - condition: state
-          entity: automation.goodnight
-          state: 'off'
-        - condition: state
-          entity: automation.hue_dimmer
-          state: 'off'
-        - condition: state
-          entity: automation.living_room_lamp
-          state: 'off'
-        - condition: state
-          entity: automation.nightly_github_sync
-          state: 'off'
-        - condition: state
-          entity: automation.shelly_button_4
-          state: 'off'
-        - condition: state
-          entity: automation.thermostat
-          state: 'off'
-        - condition: state
-          entity: automation.washing_machine_dryer
-          state: 'off'
-        - condition: state
-          entity: automation.work_attic_temperature_notifications
-          state: 'off'
-        - condition: state
-          entity: automation.workday_wakeup
-          state: 'off'
-      grid_options:
-        columns: full
-        rows: auto
+        action: none
+      state:
+      - valye: 'on'
+        state_display: generating
+      - value: 'off'
+        state_display: 'off'
+      styles:
+        grid:
+        - grid-template-areas: '"i n run_button" "i s run_button"'
+        - grid-template-columns: min-content min-content 1fr
+        - grid-template-rows: 1fr 1fr
+        card:
+        - padding: .7rem
+        - height: 4.5rem
+        img_cell:
+        - background-color: transparent
+        - width: 4rem
+        icon:
+        - width: 3rem
+        - color: "[[[\n  return entity.state === 'on' ? 'var(--custom-active)' : 'var(--custom-contrast)';\n\
+            ]]]\n"
+        - padding-bottom: .25rem
+        - margin-left: -.5rem
+        name:
+        - justify-self: start
+        - font-weight: 500
+        - font-size: 1rem
+        state:
+        - justify-self: start
+        - font-size: 1rem
+      custom_fields:
+        run_button:
+          card:
+            type: custom:custom-features-card
+            features:
+            - type: custom:service-call
+              entries:
+              - type: button
+                label: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      Generating...\n    {% else %}\n      Generate\n\
+                  \    {% endif %} \n"
+                icon: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      null\n    {% else %}\n      local:github_zip_script\n\
+                  \    {% endif %} \n"
+                thumb: md3-elevated
+                tap_action:
+                  action: perform-action
+                  perform_action: script.turn_on
+                  target:
+                    entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
+                toggle_styles: false
+                styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+                  \  border-radius: var(--custom-radius);\n  box-shadow: none;\n \
+                  \ margin-right: auto\n  margin-left: auto  \n  width: auto\n  justify-content:\
+                  \ space-around\n  justify-self: space-around\n  justify-items: space-around\n\
+                  }\n:host {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      --color: var(--custom-bg-active);\n    {% else\
+                  \ %}\n      --color: var(--custom-bg);\n    {% endif %}\n}\n.label\
+                  \ {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      color: var(--custom-contrast-active);\n    {%\
+                  \ else %}\n      color: var(--custom-contrast);\n    {% endif %}\
+                  \ \n}\n.icon {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      color: var(--custom-contrast-active);\n    {%\
+                  \ else %}\n      color: var(--custom-contrast);\n    {% endif %}\n\
+                  \  padding-bottom: .25rem\n}"
+                entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
+            transparent: false
+            uix:
+              style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
+                \ none;\n  margin-right: auto\n  margin-left: auto\n  width: auto\n\
+                \  justify-content: space-around\n  justify-self: space-around\n \
+                \ justify-items: space-around\n\n}\nha-card::before {\ncontent: none\
+                \ !important;\n}\n"
     - type: custom:auto-entities
       show_empty: false
       card:
@@ -2491,6 +2195,42 @@ views:
   sections:
   - type: grid
     cards:
+    - type: custom:bubble-card
+      card_type: pop-up
+      hash: '#helperalt'
+      button_type: switch
+      sub_button:
+        main: []
+        bottom: []
+      slider_fill_orientation: left
+      slider_value_position: right
+      name: Current Helpers
+      button_action: {}
+      icon: mdi:tools
+      show_header: true
+      bg_opacity: '0'
+      bg_blur: '100'
+      cards:
+      - type: tile
+        entity: input_datetime.home_timestamp
+        grid_options:
+          columns: full
+      - type: tile
+        entity: input_datetime.last_door_open
+        grid_options:
+          columns: full
+      - type: tile
+        entity: sensor.recent_alexa
+        grid_options:
+          columns: full
+      - type: tile
+        entity: input_boolean.phone_active
+      - type: tile
+        entity: input_boolean.disable_toggle
+        name: Music Disable
+        vertical: false
+        features_position: bottom
+      hide_backdrop: true
     - type: vertical-stack
       cards:
       - type: custom:bubble-card
@@ -2586,6 +2326,21 @@ views:
           grid_options:
             columns: 12
             rows: auto
+        - type: custom:bubble-card
+          card_type: button
+          button_type: name
+          sub_button:
+            main: []
+            bottom: []
+          slider_fill_orientation: left
+          slider_value_position: right
+          name: Current Helpers
+          icon: mdi:tools
+          button_action:
+            tap_action:
+              action: navigate
+              navigation_path: '#helperalt'
+          styles: ''
         bg_color: transparent
         backdrop_blur: '0'
         shadow_opacity: '0'
@@ -2606,6 +2361,57 @@ views:
         \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
         \ 20px;\n}\n"
     - type: custom:vertical-stack-in-card
+      visibility:
+      - condition: or
+        conditions:
+        - condition: state
+          entity: automation.door_automation
+          state: 'off'
+        - condition: state
+          entity: automation.helper_automation
+          state: 'off'
+        - condition: state
+          entity: automation.light_triggers_another_light
+          state: 'off'
+        - condition: state
+          entity: automation.battery_low_automation
+          state: 'off'
+        - condition: state
+          entity: automation.work_schedule_automations
+          state: 'off'
+        - condition: state
+          entity: automation.bedroom_ceiling_lights_3_set_my_room
+          state: 'off'
+        - condition: state
+          entity: automation.flic_butttons
+          state: 'off'
+        - condition: state
+          entity: automation.goodnight
+          state: 'off'
+        - condition: state
+          entity: automation.hue_dimmer
+          state: 'off'
+        - condition: state
+          entity: automation.living_room_lamp
+          state: 'off'
+        - condition: state
+          entity: automation.nightly_github_sync
+          state: 'off'
+        - condition: state
+          entity: automation.shelly_button_4
+          state: 'off'
+        - condition: state
+          entity: automation.thermostat
+          state: 'off'
+        - condition: state
+          entity: automation.washing_machine_dryer
+          state: 'off'
+        - condition: state
+          entity: automation.work_attic_temperature_notifications
+          state: 'off'
+        - condition: state
+          entity: automation.workday_wakeup
+          state: 'off'
       cards:
       - type: custom:mushroom-template-card
         primary: "{% set disabled_count = states.automation | selectattr('state',\
@@ -2619,57 +2425,6 @@ views:
         tap_action:
           action: navigate
           navigation_path: /config/automation
-        visibility:
-        - condition: or
-          conditions:
-          - condition: state
-            entity: automation.door_automation
-            state: 'off'
-          - condition: state
-            entity: automation.helper_automation
-            state: 'off'
-          - condition: state
-            entity: automation.light_triggers_another_light
-            state: 'off'
-          - condition: state
-            entity: automation.battery_low_automation
-            state: 'off'
-          - condition: state
-            entity: automation.work_schedule_automations
-            state: 'off'
-          - condition: state
-            entity: automation.bedroom_ceiling_lights_3_set_my_room
-            state: 'off'
-          - condition: state
-            entity: automation.flic_butttons
-            state: 'off'
-          - condition: state
-            entity: automation.goodnight
-            state: 'off'
-          - condition: state
-            entity: automation.hue_dimmer
-            state: 'off'
-          - condition: state
-            entity: automation.living_room_lamp
-            state: 'off'
-          - condition: state
-            entity: automation.nightly_github_sync
-            state: 'off'
-          - condition: state
-            entity: automation.shelly_button_4
-            state: 'off'
-          - condition: state
-            entity: automation.thermostat
-            state: 'off'
-          - condition: state
-            entity: automation.washing_machine_dryer
-            state: 'off'
-          - condition: state
-            entity: automation.work_attic_temperature_notifications
-            state: 'off'
-          - condition: state
-            entity: automation.workday_wakeup
-            state: 'off'
         grid_options:
           columns: full
           rows: auto
@@ -3640,6 +3395,26 @@ views:
             \  border: 1px solid !important; \n  border-radius: 12px !important;\n\
             }\n.info {\n  flex: 1 1 auto !important;\n  margin-right: 0px !important;\n\
             \  min-width: 0 !important;\n}\n"
+      visibility:
+      - condition: numeric_state
+        below: 93
+        entity: sensor.openweathermap_feels_like_temperature_2
+    - type: custom:mushroom-template-card
+      primary: It's hot! Check the water loop!
+      secondary: Feels like {{ states('sensor.openweathermap_feels_like_temperature_2')
+        | float(0) | round(1) }} °F
+      icon: mdi:weather-sunny-alert
+      color: red
+      grid_options:
+        columns: full
+      visibility:
+      - condition: numeric_state
+        above: 92
+        entity: sensor.openweathermap_feels_like_temperature_2
+      uix:
+        style:
+          ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n"
+          .: "ha-tile-icon {\n  size: 2px !important;\n}\n"
   - type: grid
     cards:
     - type: heading
@@ -4048,7 +3823,8 @@ views:
   path: masonry
   title: masonry
   cards:
-  - type: entities
+  - color: state
+    type: entities
     entities:
     - entity: light.main_lights
     - entity: light.kitchen_lights
@@ -4058,7 +3834,7 @@ views:
       uix:
         style: ":host {\n  {% if is_state(config.entity, 'on') %}\n    --fan-spin-anim:\
           \ spinY 0.6s linear infinite;\n  {% endif %}\n}\n"
-    - entity: automation.living_room_lamp
+    - entity: light.living_room_lamp
     - entity: light.bathroom_light
     - entity: light.closet_light
     - entity: light.bedroom_ceiling_lights
@@ -4074,7 +3850,6 @@ views:
         style: ":host {\n  {% if is_state(config.entity, 'on') %}\n    --fan-spin-anim:\
           \ spinBoxFan 1s linear infinite;\n  {% endif %}\n}\n"
     title: Devices
-    state_color: true
     show_header_toggle: false
   - type: vertical-stack
     cards:
@@ -4324,97 +4099,124 @@ views:
       grid_options:
         columns: 6
         rows: 2
-    - features:
-      - type: custom:service-call
-        entries:
-        - type: button
-          entity_id: ''
-          tap_action:
-            action: navigate
-            navigation_path: /my-dashboard/work
-          styles: ":host {\n  border: var(--custom-button-border) !important;\n  border-radius:\
-            \ var(--custom-radius);\n  --color: var(--custom-bg);\n  --feature-height:\
-            \ 3rem;\n  --feature-width: auto;\n}\n  .label {\n    color: var(--custom-contrast);\n\
-            \  }\n  .icon {\n    color:  var(--custom-contrast);\n    --mdc-icon-size:\
-            \ 1.5rem;\n    padding-bottom: .25rem;\n  }\n\n}"
-          label: View Temperatures
-          thumb: md3-elevated
-          autofill_entity_id: false
-          toggle_styles: false
-      type: custom:mushroom-template-card
-      primary: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
-        \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-        ] %} {% set low_sensors = expand(sensors) | map(attribute='state') | map('float',\
-        \ 999) | select('lt', set_point) | list %}  {% if low_sensors | count > 0\
-        \ %}\n  {{ low_sensors | count }} Sensors Below {{ set_point }}°\n{% else\
-        \ %}\n  Temperatures Normal\n{% endif %}"
-      secondary: "{% set set_point = 50 %}\n{% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
-        \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-        ] %}\n{% set ns = namespace(found=[]) %}\n{% for s in expand(sensors) %}\n\
-        \  {% if s.state | is_number and s.state | float < set_point %}\n    {% set\
-        \ ns.found = ns.found + [s] %}\n  {% endif %}\n{% endfor %}\n{% if ns.found\
-        \ | count > 0 %}\n  {% for s in ns.found -%}\n    {{ s.name | replace(' Temperature',\
-        \ '') }}: {{ s.state }}°{{ \"\\n\" if not loop.last else \"\" }}\n  {%- endfor\
-        \ %}\n{% else %}\n  All attic sensors are above {{ set_point }}°\n{% endif\
-        \ %}"
-      icon: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
-        \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-        ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
-        \ 999) | select('lt', set_point) | list | count %} {{ 'mdi:thermometer-alert'\
-        \ if count > 0 else 'mdi:check-circle' }}"
-      multiline_secondary: true
-      grid_options:
-        columns: 12
-        rows: auto
-      features_position: inline
-      color: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
-        \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-        ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
-        \ 999) | select('lt', set_point) | list | count %} {{ 'orange' if count >\
-        \ 0 else 'green' }}"
-      uix:
-        style:
-          ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n.secondary\
-            \ {\n  font-size: 1rem !important;\n  white-space: pre-wrap !important;\n\
-            \  -webkit-line-clamp: unset !important;\n  max-height: none !important;\n\
-            }\n"
-          .: "ha-card {\n  height: auto !important;\n  --icon-display: block !important;\n\
-            \  /* Animation Logic */\n  {% set set_point = 50 %}\n  {% set sensors\
-            \ = [\n    'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-            \    'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-            \    'sensor.nest_temperature_sensor_stairwell_g_temperature',\n    'sensor.a_expansion_attic_temperature',\n\
-            \    'sensor.c_expansion_attic_temperature',\n    'sensor.d_expansion_attic_temperature'\n\
-            \  ] %}\n  {% set count = expand(sensors) | map(attribute='state') | map('float',\
-            \ 999) | select('lt', set_point) | list | count %}\n  {% if count > 0\
-            \ %}\n  animation: bounce 2s infinite;\n  {% endif %}\n  border: none;\n\
-            \  background: none !important;\n  padding-bottom: 5px !important;\n}\n\
-            ha-card::before {\ncontent: none !important;\n}\n\n@keyframes bounce {\n\
-            \  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}\n  40% {transform:\
-            \ translateY(-10px);}\n  60% {transform: translateY(-5px);}\n}\n\n.content\
-            \ {\n  display: flex !important;\n  flex-direction: row !important;\n\
-            \  column-gap: .25rem !important;\n}\nha-tile-icon {\n  margin-right:\
-            \ -.5rem !important;\n}\nhui-card-features {\n  flex: 0 0 7rem !important;\n\
-            \  max-width:  auto !important;\n  min-width: auto !important;\n}\nhui-card-features$\
-            \ :host {\n  width: auto !important;\n}\nhui-card-features$ .container\
-            \ {\n  width: auto !important;\n  justify-content: start !important;\n\
-            \  border: 1px solid !important; \n  border-radius: 12px !important;\n\
-            }\n.info {\n  flex: 1 1 auto !important;\n  margin-right: 0px !important;\n\
-            \  min-width: 0 !important;\n}\n"
+    - type: conditional
+      conditions:
+      - condition: numeric_state
+        below: 93
+        entity: sensor.openweathermap_feels_like_temperature_2
+      card:
+        features:
+        - type: custom:service-call
+          entries:
+          - type: button
+            entity_id: ''
+            tap_action:
+              action: navigate
+              navigation_path: /my-dashboard/work
+            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+              \  border-radius: var(--custom-radius);\n  --color: var(--custom-bg);\n\
+              \  --feature-height: 3rem;\n  --feature-width: auto;\n}\n  .label {\n\
+              \    color: var(--custom-contrast);\n  }\n  .icon {\n    color:  var(--custom-contrast);\n\
+              \    --mdc-icon-size: 1.5rem;\n    padding-bottom: .25rem;\n  }\n\n}"
+            label: View Temperatures
+            thumb: md3-elevated
+            autofill_entity_id: false
+            toggle_styles: false
+        type: custom:mushroom-template-card
+        primary: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
+          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
+          ] %} {% set low_sensors = expand(sensors) | map(attribute='state') | map('float',\
+          \ 999) | select('lt', set_point) | list %}  {% if low_sensors | count >\
+          \ 0 %}\n  {{ low_sensors | count }} Sensors Below {{ set_point }}°\n{% else\
+          \ %}\n  Temperatures Normal\n{% endif %}"
+        secondary: "{% set set_point = 50 %}\n{% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
+          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
+          ] %}\n{% set ns = namespace(found=[]) %}\n{% for s in expand(sensors) %}\n\
+          \  {% if s.state | is_number and s.state | float < set_point %}\n    {%\
+          \ set ns.found = ns.found + [s] %}\n  {% endif %}\n{% endfor %}\n{% if ns.found\
+          \ | count > 0 %}\n  {% for s in ns.found -%}\n    {{ s.name | replace('\
+          \ Temperature', '') }}: {{ s.state }}°{{ \"\\n\" if not loop.last else \"\
+          \" }}\n  {%- endfor %}\n{% else %}\n  All attic sensors are above {{ set_point\
+          \ }}°\n{% endif %}"
+        icon: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
+          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
+          ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
+          \ 999) | select('lt', set_point) | list | count %} {{ 'mdi:thermometer-alert'\
+          \ if count > 0 else 'mdi:check-circle' }}"
+        multiline_secondary: true
+        grid_options:
+          columns: 12
+          rows: auto
+        features_position: inline
+        color: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
+          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
+          ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
+          \ 999) | select('lt', set_point) | list | count %} {{ 'orange' if count\
+          \ > 0 else 'green' }}"
+        uix:
+          style:
+            ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n.secondary\
+              \ {\n  font-size: 1rem !important;\n  white-space: pre-wrap !important;\n\
+              \  -webkit-line-clamp: unset !important;\n  max-height: none !important;\n\
+              }\n"
+            .: "ha-card {\n  height: auto !important;\n  --icon-display: block !important;\n\
+              \  /* Animation Logic */\n  {% set set_point = 50 %}\n  {% set sensors\
+              \ = [\n    'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+              \    'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+              \    'sensor.nest_temperature_sensor_stairwell_g_temperature',\n   \
+              \ 'sensor.a_expansion_attic_temperature',\n    'sensor.c_expansion_attic_temperature',\n\
+              \    'sensor.d_expansion_attic_temperature'\n  ] %}\n  {% set count\
+              \ = expand(sensors) | map(attribute='state') | map('float', 999) | select('lt',\
+              \ set_point) | list | count %}\n  {% if count > 0 %}\n  animation: bounce\
+              \ 2s infinite;\n  {% endif %}\n  border: none;\n  background: none !important;\n\
+              \  padding-bottom: 5px !important;\n}\nha-card::before {\ncontent: none\
+              \ !important;\n}\n\n@keyframes bounce {\n  0%, 20%, 50%, 80%, 100% {transform:\
+              \ translateY(0);}\n  40% {transform: translateY(-10px);}\n  60% {transform:\
+              \ translateY(-5px);}\n}\n\n.content {\n  display: flex !important;\n\
+              \  flex-direction: row !important;\n  column-gap: .25rem !important;\n\
+              }\nha-tile-icon {\n  margin-right: -.5rem !important;\n}\nhui-card-features\
+              \ {\n  flex: 0 0 7rem !important;\n  max-width:  auto !important;\n\
+              \  min-width: auto !important;\n}\nhui-card-features$ :host {\n  width:\
+              \ auto !important;\n}\nhui-card-features$ .container {\n  width: auto\
+              \ !important;\n  justify-content: start !important;\n  border: 1px solid\
+              \ !important; \n  border-radius: 12px !important;\n}\n.info {\n  flex:\
+              \ 1 1 auto !important;\n  margin-right: 0px !important;\n  min-width:\
+              \ 0 !important;\n}\n"
+    - type: conditional
+      conditions:
+      - condition: numeric_state
+        above: 92
+        entity: sensor.openweathermap_feels_like_temperature_2
+      card:
+        type: custom:mushroom-template-card
+        primary: It's hot! Check the water loop!
+        secondary: Feels like {{ states('sensor.openweathermap_feels_like_temperature_2')
+          | float(0) | round(1) }} °F
+        icon: mdi:weather-sunny-alert
+        color: red
+        grid_options:
+          columns: full
+        uix:
+          style:
+            ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n"
+            .: "ha-card {\n  border: none;\n  background: none;\n  box-shadow: none;\n\
+              \  padding-bottom: 5px;\n}\n\nha-card::before {\n  content: none !important;\n\
+              }\n"
   - type: custom:vertical-stack-in-card
     cards:
     - type: custom:mushroom-title-card
       title: Music
       uix:
         style: "ha-card {\n  padding-top: 10px !important;\n  padding-bottom: 10px\
-          \ !important;\n  margin-top: 10px !important;\n  margin-bottom: 5px !important;\n\
+          \ !important;\n  margin-top: 10px !important;\n  margin-bottom: 0px !important;\n\
           \  margin-left: 5px !important;\n}\n"
     - type: custom:vertical-stack-in-card
       cards:
@@ -5006,8 +4808,8 @@ views:
       styles:
         grid:
         - grid-template-areas: '"i n run_button" "i s run_button"'
-        - grid-template-columns: min-content min-content stretch
-        - grid-template-rows: 1fr auto
+        - grid-template-columns: min-content min-content 1fr
+        - grid-template-rows: 1fr 1fr
         card:
         - padding: .7rem
         - height: 4.5rem
@@ -5049,14 +4851,19 @@ views:
                     entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
                 toggle_styles: false
                 styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                  \  --color: var(--custom-bg); \n  border-radius: var(--custom-radius);\n\
-                  \  box-shadow: none;\n\n}\n.label {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n\
-                  \      color: var(--custom-contrast);\n    {% endif %} \n}\n.icon\
+                  \  border-radius: var(--custom-radius);\n  box-shadow: none;\n \
+                  \ margin-right: auto\n  margin-left: auto  \n  width: auto\n  justify-content:\
+                  \ space-around\n  justify-self: space-around\n  justify-items: space-around\n\
+                  }\n:host {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      --color: var(--custom-bg-active);\n    {% else\
+                  \ %}\n      --color: var(--custom-bg);\n    {% endif %}\n}\n.label\
                   \ {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n\
-                  \      color: var(--custom-contrast);\n    {% endif %}\n  padding-bottom:\
-                  \ .25rem\n}"
+                  \ 'on') %}\n      color: var(--custom-contrast-active);\n    {%\
+                  \ else %}\n      color: var(--custom-contrast);\n    {% endif %}\
+                  \ \n}\n.icon {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      color: var(--custom-contrast-active);\n    {%\
+                  \ else %}\n      color: var(--custom-contrast);\n    {% endif %}\n\
+                  \  padding-bottom: .25rem\n}"
                 entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
             transparent: false
             uix:
@@ -5066,9 +4873,9 @@ views:
                 \ justify-items: space-around\n\n}\nha-card::before {\ncontent: none\
                 \ !important;\n}\n"
       uix:
-        style: "ha-card {\n  border: none !important;   \n  box-shadow: none !important;\n\
-          \  background: none !important;\n  margin-bottom: 5px !important;\n}\nha-card::before\
-          \ {\n  content: none !important;\n"
+        style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow: none;\n\
+          \  margin-bottom: 5px;\n  margin-left: 5px;\n}\n\nha-card::before {\ncontent:\
+          \ none !important;\n}\n"
   - type: vertical-stack
     cards:
     - type: custom:bubble-card
@@ -5164,9 +4971,60 @@ views:
         grid_options:
           columns: 12
           rows: auto
+      - type: custom:bubble-card
+        card_type: button
+        button_type: name
+        sub_button:
+          main: []
+          bottom: []
+        slider_fill_orientation: left
+        slider_value_position: right
+        name: Current Helpers
+        icon: mdi:tools
+        button_action:
+          tap_action:
+            action: navigate
+            navigation_path: '#helpermasonry'
+        styles: ''
       bg_color: transparent
       backdrop_blur: '0'
       shadow_opacity: '0'
+  - type: custom:bubble-card
+    card_type: pop-up
+    hash: '#helpermasonry'
+    button_type: switch
+    sub_button:
+      main: []
+      bottom: []
+    slider_fill_orientation: left
+    slider_value_position: right
+    name: Current Helpers
+    button_action: {}
+    icon: mdi:tools
+    show_header: true
+    bg_opacity: '0'
+    bg_blur: '100'
+    cards:
+    - type: tile
+      entity: input_datetime.home_timestamp
+      grid_options:
+        columns: full
+    - type: tile
+      entity: input_datetime.last_door_open
+      grid_options:
+        columns: full
+    - type: tile
+      entity: sensor.recent_alexa
+      grid_options:
+        columns: full
+    - type: tile
+      entity: input_boolean.phone_active
+    - type: tile
+      entity: input_boolean.disable_toggle
+      name: Music Disable
+      vertical: false
+      features_position: bottom
+    hide_backdrop: true
   theme: Liquid Glass
   background:
     opacity: 80
@@ -5184,29 +5042,3 @@ views:
     color: white
     uix:
       style: "ha-badge {\n  --ha-card-background: var(--custom-bg)\n}\n"
-- type: sections
-  max_columns: 4
-  title: Helpers
-  path: helpers
-  sections:
-  - type: grid
-    cards:
-    - type: tile
-      entity: input_datetime.home_timestamp
-      grid_options:
-        columns: 12
-        rows: 1
-    - type: tile
-      entity: input_datetime.last_door_open
-      grid_options:
-        columns: 12
-        rows: 1
-    - type: tile
-      entity: sensor.recent_alexa
-      grid_options:
-        columns: 12
-        rows: 1
-    - type: tile
-      entity: input_boolean.phone_active
-    - type: tile
-      entity: input_boolean.disable_toggle
