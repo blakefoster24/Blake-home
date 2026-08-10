@@ -940,11 +940,6 @@
         target:
           entity_id: light.bedroom_tv_backlight
         data: {}
-      - action: script.turn_on
-        metadata: {}
-        target:
-          entity_id: script.set_my_room
-        data: {}
       alias: 'Manually end and reset wakeup automation '
     - conditions:
       - condition: trigger
@@ -1858,6 +1853,8 @@
           action_type: '{{ trigger.id }}
 
             '
+        note: 'Turns on music script, passes action_type: manual wakeup if automation
+          was triggered by button 1'
       - action: light.turn_on
         metadata: {}
         data: {}
@@ -1944,8 +1941,10 @@
               minutes: 2
               seconds: 0
               milliseconds: 0
-      - action: script.roku_backlight
+      - action: button.press
         metadata: {}
+        target:
+          entity_id: button.blake_foster30_gmail_com_video_mode_scene
         data: {}
       - delay:
           hours: 0

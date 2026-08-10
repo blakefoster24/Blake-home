@@ -97,37 +97,6 @@ temporary_thermostat_adjustment:
     target:
       entity_id: scene.temp_thermostat_snapshot
     data: {}
-roku_backlight:
-  sequence:
-  - action: light.turn_on
-    metadata: {}
-    target:
-      entity_id: light.bedroom_tv_backlight
-    data:
-      brightness_pct: 50
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 1
-      milliseconds: 0
-  - action: light.turn_on
-    metadata: {}
-    target:
-      entity_id: light.bedroom_tv_backlight
-    data:
-      brightness_pct: 100
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 1
-      milliseconds: 0
-  - action: alexa_devices.send_text_command
-    metadata: {}
-    data:
-      text_command: Set Roku backlight to video mode
-      device_id: ba7e4aed08d0947fa03068f398842568
-  alias: Roku Backlight
-  description: ''
 push_ha_info_to_github_create_ai_zip_file_now:
   alias: Push Ha Info to GitHub & Create AI Zip File
   description: Generates HA_Overview.md, runs diagnostics, pushes to GitHub, AND creates
@@ -185,6 +154,9 @@ alexa_music:
       value_template: '{{ action_type != ''stop'' }}
 
         '
+      note: 'script turns on music disable toggle, anything that turns it off triggers
+        helper automation which ends the script and then restarts it with action_type:
+        stop to reset for next use. '
     then:
     - parallel:
       - sequence:
@@ -226,7 +198,9 @@ alexa_music:
           target:
             entity_id: input_boolean.disable_toggle
           data: {}
-      - sequence:
+        alias: 'Disable toggle trigger sequence '
+      - alias: Script actions
+        sequence:
         - alias: Variables
           sequence:
           - variables:
@@ -247,7 +221,7 @@ alexa_music:
                 \ 'Echo Spot': 'media_player.blake_s_echo_spot_2'\n} %} {{ mapper.get(speaker_voice_name,
                 'media_player.all_echo_2') }}"
             alias: Define Variables
-            note: 'Is_search: evaluates if script should act as a “search music” or
+            note: 'Is_search: evaluates if script should act as "search music” or
               “alarm music” depending on if "action_type: is_search" was passed to
               the script when run.
 
@@ -435,16 +409,18 @@ alexa_music:
               value: Playing...
         - alias: Wakeup Sequence
           if:
-          - alias: Not triggered by search
+          - alias: Action type not search
             condition: template
             value_template: '{{ action_type != ''search_music'' }}
 
               '
-          - alias: Action type /= manual wakeup
+          - alias: Action type not manual wakeup
             condition: template
             value_template: '{{ action_type != ''manual wakeup'' }}
 
               '
+            note: 'Workday wakeup automation triggered by ‘button 1’ turns on the
+              script with | action_type: manual wakeup | to bypass delays'
           then:
           - delay:
               hours: 0
