@@ -201,6 +201,14 @@ alexa_music:
         alias: 'Disable toggle trigger sequence '
       - alias: Script actions
         sequence:
+        - alias: 'Action type not: disable trigger'
+          condition: template
+          value_template: '{{ action_type != ''disable trigger'' }}
+
+            '
+          note: 'Action_type: Disable trigger is used just to trigger the portion
+            of the script that handles turning on and waiting for a trigger to turn
+            off and reset. '
         - alias: Variables
           sequence:
           - variables:

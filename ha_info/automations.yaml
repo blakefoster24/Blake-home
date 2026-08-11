@@ -314,44 +314,33 @@
         id:
         - Bed left
       sequence:
-      - parallel:
-        - alias: Lights off outside bedroom
-          sequence:
-          - alias: Occupancy not detected outside bedroom for 5min
-            wait_template: "{% set sensors = [\n  'binary_sensor.bathroom_presence',\n
-              \ 'binary_sensor.closet_motion',\n  'binary_sensor.kitchen_presence',\n
-              \ 'binary_sensor.living_room_motion'\n] %}\n{% set threshold = 5 %}\n{#
-              1. Expand the sensor list once to save resources #}\n{% set entities
-              = expand(sensors) %}\n\n{# 2. Check for any 'on' states or changes within
-              the threshold #}\n{% set any_on = entities | selectattr('state', 'eq',
-              'on') | list | count > 0 %}\n{% set any_recent = entities | selectattr('last_changed',
-              'ge', now() - timedelta(minutes=threshold)) | list | count > 0 %}\n\n{#
-              3. Return true only if nothing is 'on' AND nothing changed recently
-              #}\n{{ not any_on and not any_recent }}\n"
-            continue_on_timeout: false
-            timeout:
-              hours: 0
-              minutes: 20
-              seconds: 0
-              milliseconds: 0
-          - action: scene.turn_on
-            metadata: {}
-            target:
-              entity_id: scene.lights_off_except_bedroom
-            data: {}
-        - alias: Bedroom lamp only
-          sequence:
-          - alias: Bed Left Occupied > 3min
-            wait_template: '{{ is_state(''binary_sensor.bed_presence_bb8594_bed_occupied_left'',
-              ''on'') and (now() - states.binary_sensor.bed_presence_bb8594_bed_occupied_left.last_changed).total_seconds()
-              >= 240 }}
-
-              '
-          - action: light.turn_off
-            metadata: {}
-            target:
-              entity_id: light.bedroom_ceiling_lights
-            data: {}
+      - alias: Occupancy not detected outside bedroom for 5min
+        wait_template: "{% set sensors = [\n  'binary_sensor.bathroom_presence',\n
+          \ 'binary_sensor.closet_motion',\n  'binary_sensor.kitchen_presence',\n
+          \ 'binary_sensor.living_room_motion'\n] %}\n{% set threshold = 5 %}\n{#
+          1. Expand the sensor list once to save resources #}\n{% set entities = expand(sensors)
+          %}\n\n{# 2. Check for any 'on' states or changes within the threshold #}\n{%
+          set any_on = entities | selectattr('state', 'eq', 'on') | list | count >
+          0 %}\n{% set any_recent = entities | selectattr('last_changed', 'ge', now()
+          - timedelta(minutes=threshold)) | list | count > 0 %}\n\n{# 3. Return true
+          only if nothing is 'on' AND nothing changed recently #}\n{{ not any_on and
+          not any_recent }}\n"
+        continue_on_timeout: false
+        timeout:
+          hours: 0
+          minutes: 20
+          seconds: 0
+          milliseconds: 0
+      - action: scene.turn_on
+        metadata: {}
+        target:
+          entity_id: scene.lights_off_except_bedroom
+        data: {}
+      - action: light.turn_off
+        metadata: {}
+        target:
+          entity_id: light.bedroom_ceiling_lights
+        data: {}
     - conditions:
       - condition: trigger
         id:
@@ -854,6 +843,20 @@
       behavior: each
       for: 00:00:00
     id: Music disable = Off
+  - trigger: media_player.started_playing
+    target:
+      entity_id:
+      - media_player.all_echo_2
+      - media_player.blake_s_echo_dot_2
+      - media_player.blake_s_echo_pop_2
+      - media_player.blake_s_echo_spot_2
+    options:
+      for:
+        hours: 0
+        minutes: 1
+        seconds: 0
+      behavior: first
+    id: Echos playing > 2min
   conditions: []
   actions:
   - choose:
@@ -927,8 +930,10 @@
         target:
           entity_id: input_boolean.workday_today_toggle
         data: {}
-      - action: script.roku_backlight
+      - action: button.press
         metadata: {}
+        target:
+          entity_id: button.blake_foster30_gmail_com_video_mode_scene
         data: {}
       - delay:
           hours: 0
@@ -956,6 +961,23 @@
           entity_id: script.alexa_music
         data:
           action_type: stop
+        metadata: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - Echos playing > 2min
+      - condition: state
+        entity_id: script.alexa_music
+        state:
+        - 'off'
+      sequence:
+      - action: script.alexa_music
+        target:
+          entity_id: script.alexa_music
+        data:
+          action_type: disable triggger
+        metadata: {}
+      alias: If triggered by Echos playing > 1min and 1 more condition
   mode: parallel
   max: 10
   trace:
@@ -1125,11 +1147,6 @@
     - binary_sensor.front_door
     to:
     - 'on'
-  - trigger: template
-    value_template: "{{ is_state('binary_sensor.front_door', 'on')\n   and is_state('binary_sensor.apartment_presence',
-      'on')\n   and states.counter.door_stuck.last_changed > states.binary_sensor.front_door.last_changed
-      }}"
-    alias: Apt. Presence -> on & door stuck counter time > door sensor time
   conditions: []
   actions:
   - alias: Logic
@@ -1855,6 +1872,7 @@
             '
         note: 'Turns on music script, passes action_type: manual wakeup if automation
           was triggered by button 1'
+        metadata: {}
       - action: light.turn_on
         metadata: {}
         data: {}
@@ -2600,16 +2618,31 @@
             id:
             - button_2_single
           sequence:
-          - action: scene.turn_on
-            metadata: {}
-            target:
-              entity_id: scene.full_lamp
-            data: {}
-          - action: light.turn_off
-            metadata: {}
-            target:
-              entity_id: light.bedroom_ceiling_lights
-            data: {}
+          - alias: If music isn’t playing
+            if:
+            - condition: switch.is_off
+              target:
+                entity_id: input_boolean.disable_toggle
+              options:
+                behavior: any
+                for: 00:00:00
+            then:
+            - action: scene.turn_on
+              metadata: {}
+              target:
+                entity_id: scene.full_lamp
+              data: {}
+            - action: light.turn_off
+              metadata: {}
+              target:
+                entity_id: light.bedroom_ceiling_lights
+              data: {}
+            else:
+            - action: media_player.media_play_pause
+              metadata: {}
+              data: {}
+              target:
+                entity_id: '{{ states(''sensor.recent_alexa'') }}'
           alias: 2 - Single
         - conditions:
           - condition: trigger
@@ -2637,7 +2670,23 @@
           - condition: trigger
             id:
             - button_2_hold
-          sequence: []
+          - condition: switch.is_on
+            target:
+              entity_id: input_boolean.disable_toggle
+            options:
+              behavior: any
+              for: 00:00:00
+          sequence:
+          - action: media_player.volume_set
+            target:
+              entity_id: '{{ states(''sensor.recent_alexa'') }}'
+            data:
+              volume_level: '{% set target = states(''sensor.recent_alexa'') %} {%
+                set current = state_attr(target, ''volume_level'') | float(0) %} {{
+                current + 0.02 }}
+
+                '
+            metadata: {}
           alias: 2 - Hold
     - alias: Button 3
       conditions:
@@ -2655,17 +2704,47 @@
             id:
             - button_3_single
           sequence:
-          - action: fan.toggle
-            metadata: {}
-            target:
-              entity_id: fan.bedroom_ceiling_fan
-            data: {}
+          - if:
+            - condition: switch.is_off
+              target:
+                entity_id: input_boolean.disable_toggle
+              options:
+                behavior: any
+                for: 00:00:00
+            then:
+            - action: fan.toggle
+              metadata: {}
+              target:
+                entity_id: fan.bedroom_ceiling_fan
+              data: {}
+            else:
+            - action: media_player.media_next_track
+              metadata: {}
+              data: {}
+              target:
+                entity_id: '{{ states(''sensor.recent_alexa'') }}'
+            alias: If music is off
           alias: 3 - Single
         - conditions:
           - condition: trigger
             id:
             - button_3_double
-          sequence: []
+          sequence:
+          - alias: If music is off
+            if:
+            - condition: switch.is_off
+              target:
+                entity_id: input_boolean.disable_toggle
+              options:
+                behavior: any
+                for: 00:00:00
+            then: []
+            else:
+            - action: media_player.media_previous_track
+              metadata: {}
+              data: {}
+              target:
+                entity_id: '{{ states(''sensor.recent_alexa'') }}'
           alias: 3 - Double
         - conditions:
           - condition: trigger
@@ -2677,7 +2756,23 @@
           - condition: trigger
             id:
             - button_3_hold
-          sequence: []
+          - condition: switch.is_on
+            target:
+              entity_id: input_boolean.disable_toggle
+            options:
+              behavior: any
+              for: 00:00:00
+          sequence:
+          - action: media_player.volume_set
+            target:
+              entity_id: '{{ states(''sensor.recent_alexa'') }}'
+            data:
+              volume_level: '{% set target = states(''sensor.recent_alexa'') %} {%
+                set current = state_attr(target, ''volume_level'') | float(0) %} {{
+                current - 0.02 }}
+
+                '
+            metadata: {}
           alias: 3 - Hold
     - alias: Button 4
       conditions:

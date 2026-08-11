@@ -1089,7 +1089,7 @@ views:
             \  min-width: 0 !important;\n}\n"
       visibility:
       - condition: numeric_state
-        below: 92
+        below: 50
         entity: sensor.openweathermap_feels_like_temperature_2
     - type: custom:mushroom-template-card
       primary: It's hot! Check the water loop!
@@ -1752,9 +1752,14 @@ views:
               power: true
       - type: conditional
         conditions:
-        - condition: state
-          entity: script.alexa_music
-          state: 'off'
+        - condition: and
+          conditions:
+          - condition: state
+            entity: input_boolean.disable_toggle
+            state: 'off'
+          - condition: state
+            entity: script.alexa_music
+            state: 'off'
         card:
           type: entities
           entities:
@@ -1766,9 +1771,14 @@ views:
               \ !important;\n}\n"
       - type: conditional
         conditions:
-        - condition: state
-          entity: script.alexa_music
-          state: 'off'
+        - condition: and
+          conditions:
+          - condition: state
+            entity: input_boolean.disable_toggle
+            state: 'off'
+          - condition: state
+            entity: script.alexa_music
+            state: 'off'
         card:
           type: custom:custom-features-card
           features:
@@ -1823,9 +1833,6 @@ views:
           - condition: state
             entity: input_boolean.disable_toggle
             state: 'on'
-          - condition: state
-            entity: script.alexa_music
-            state_not: 'off'
         card:
           type: custom:custom-features-card
           features:
@@ -3401,7 +3408,7 @@ views:
             \  min-width: 0 !important;\n}\n"
       visibility:
       - condition: numeric_state
-        below: 93
+        below: 50
         entity: sensor.openweathermap_feels_like_temperature_2
     - type: custom:mushroom-template-card
       primary: It's hot! Check the water loop!
@@ -3706,9 +3713,14 @@ views:
               power: true
       - type: conditional
         conditions:
-        - condition: state
-          entity: script.alexa_music
-          state: 'off'
+        - condition: and
+          conditions:
+          - condition: state
+            entity: input_boolean.disable_toggle
+            state: 'off'
+          - condition: state
+            entity: script.alexa_music
+            state: 'off'
         card:
           type: entities
           entities:
@@ -3719,9 +3731,14 @@ views:
               ha-card::before {\n  content: none !important;\n}\n"
       - type: conditional
         conditions:
-        - condition: state
-          entity: script.alexa_music
-          state: 'off'
+        - condition: and
+          conditions:
+          - condition: state
+            entity: input_boolean.disable_toggle
+            state: 'off'
+          - condition: state
+            entity: script.alexa_music
+            state: 'off'
         card:
           type: custom:custom-features-card
           features:
@@ -3771,14 +3788,9 @@ views:
               \ none !important;\n }\n"
       - type: conditional
         conditions:
-        - condition: and
-          conditions:
-          - condition: state
-            entity: input_boolean.disable_toggle
-            state: 'on'
-          - condition: state
-            entity: script.alexa_music
-            state_not: 'off'
+        - condition: state
+          entity: input_boolean.disable_toggle
+          state: 'on'
         card:
           type: custom:custom-features-card
           features:
@@ -4112,7 +4124,7 @@ views:
     - type: conditional
       conditions:
       - condition: numeric_state
-        below: 93
+        below: 50
         entity: sensor.openweathermap_feels_like_temperature_2
       card:
         features:
@@ -4321,9 +4333,14 @@ views:
             \  }\n{% endif %}\n"
       - type: conditional
         conditions:
-        - condition: state
-          entity: script.alexa_music
-          state: 'off'
+        - condition: and
+          conditions:
+          - condition: state
+            entity: input_boolean.disable_toggle
+            state: 'off'
+          - condition: state
+            entity: script.alexa_music
+            state: 'off'
         card:
           type: entities
           entities:
@@ -4334,9 +4351,14 @@ views:
               ha-card::before {\n  content: none !important;\n}\n"
       - type: conditional
         conditions:
-        - condition: state
-          entity: script.alexa_music
-          state: 'off'
+        - condition: and
+          conditions:
+          - condition: state
+            entity: input_boolean.disable_toggle
+            state: 'off'
+          - condition: state
+            entity: script.alexa_music
+            state: 'off'
         card:
           type: custom:custom-features-card
           features:
@@ -4386,14 +4408,9 @@ views:
               \ none !important;\n }\n"
       - type: conditional
         conditions:
-        - condition: and
-          conditions:
-          - condition: state
-            entity: input_boolean.disable_toggle
-            state: 'on'
-          - condition: state
-            entity: script.alexa_music
-            state_not: 'off'
+        - condition: state
+          entity: input_boolean.disable_toggle
+          state: 'on'
         card:
           type: custom:custom-features-card
           features:
