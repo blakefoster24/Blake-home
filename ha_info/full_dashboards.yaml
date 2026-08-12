@@ -530,10 +530,6 @@ views:
           include:
           - domain: automation
             state: 'off'
-      uix:
-        style: "ha-card {\n  background: none !important;\n  border: none !important;\n\
-          \  box-shadow: none !important;\n}\nha-card::before {\n  content: none !important;\n\
-          }\n"
     - type: heading
       icon: mdi:devices
       heading: Devices
@@ -2026,7 +2022,8 @@ views:
     - type: heading
       heading: New section
     - type: custom:state-switch
-      entity: input_boolean.general_toggle_helper
+      entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
+        | int(0) > 0 else ''off'' }}'
       states:
         'off':
           type: custom:vertical-stack-in-card
@@ -2037,32 +2034,86 @@ views:
             grid_options:
               columns: full
             icon: local:briefcase_alarm_automation
+            icon_color: var(--custom-active)
             uix:
               style: "ha-card {\n  border: none;\n  background: none;\n  margin-bottom:\
                 \ -15px;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
-          - type: custom:custom-features-card
-            features:
-            - type: custom:service-call
-              entries:
-              - type: button
-                entity_id: ''
-                label: Abort and Reset
-                icon: mdi:cancel
-                thumb: md3-elevated
-                styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                  \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
-                  \ }};\n}\n.label {\n  color: {{ 'var(--custom-contrast)' }};\n}\n\
-                  .icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
-                tap_action:
-                  action: perform-action
-                  perform_action: input_boolean.turn_off
-                  target:
-                    entity_id: input_boolean.workday_today_toggle
-                  data: {}
+          - type: custom:button-card
+            show_state: false
+            show_name: false
+            show_icon: false
+            tap_action:
+              action: none
+            styles:
+              grid:
+              - grid-template-areas: '"run_button"'
+              - grid-template-columns: 1fr
+              - grid-template-rows: 1fr
+              card:
+              - padding: 10px
+            custom_fields:
+              run_button:
+                card:
+                  type: custom:button-card
+                  name: Abort and Reset
+                  icon: mdi:cancel
+                  show_state: false
+                  tap_action:
+                    action: multi-actions
+                    actions:
+                    - action: perform-action
+                      perform_action: automation.turn_off
+                      target:
+                        entity_id: automation.workday_wakeup
+                      data:
+                        stop_actions: true
+                    - action: perform-action
+                      perform_action: automation.turn_on
+                      target:
+                        entity_id: automation.workday_wakeup
+                    - action: perform-action
+                      perform_action: automation.trigger
+                      target:
+                        entity_id: automation.workday_wakeup
+                      data:
+                        skip_condition: true
+                        variables:
+                          action_type: abort
+                  styles:
+                    grid:
+                    - grid-template-areas: '"i n"'
+                    - grid-template-columns: 2.5rem min-content
+                    - grid-template-rows: 1fr
+                    - justify-content: center
+                    - align-items: center
+                    - align-content: center
+                    - column-gap: .25rem
+                    card:
+                    - background-color: var(--custom-bg)
+                    - border: 1px solid rgba(255, 255, 255, 0.2)
+                    - border-radius: 20px
+                    - height: 3rem
+                    - padding-right: 3rem
+                    - padding-left: 2.8rem
+                    - box-shadow: none
+                    - justify-self: center
+                    img_cell:
+                    - width: 1.5rem
+                    - height: 1.5rem
+                    - background-color: transparent
+                    - justify-self: center
+                    - align-self: center
+                    icon:
+                    - width: 100%
+                    - height: 100%
+                    - color: red
+                    name:
+                    - font-weight: 500
+                    - font-size: 1rem
+                    - justify-self: center
             uix:
-              style: "ha-card {\n  border: none;\n  background: none;\n}\n\nha-card::before\
-                \ {\n  content: none !important;\n}\n"
-        'on': ''
+              style: "ha-card {\n  border: none;\n  background: none;\n  box-shadow:\
+                \ none;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
   - type: grid
     cards:
     - type: heading
@@ -2226,169 +2277,6 @@ views:
                 \  justify-content: space-around\n  justify-self: space-around\n \
                 \ justify-items: space-around\n\n}\nha-card::before {\ncontent: none\
                 \ !important;\n}\n"
-    - type: custom:vertical-stack-in-card
-      cards:
-      - type: custom:mushroom-template-card
-        primary: Workday Wakeup is Active
-        features_position: bottom
-        grid_options:
-          columns: full
-        icon: local:briefcase_alarm_automation
-        uix:
-          style: "ha-card {\n  border: none;\n  background: none;\n  margin-bottom:\
-            \ -15px;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
-      - type: custom:custom-features-card
-        features:
-        - type: custom:service-call
-          entries:
-          - type: button
-            entity_id: ''
-            label: Abort and Reset
-            icon: mdi:cancel
-            thumb: md3-elevated
-            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-              \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
-              \ }};\n}\n.label {\n  color: {{ 'var(--custom-contrast)' }};\n}\n.icon\
-              \ {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
-            tap_action:
-              action: perform-action
-              perform_action: input_boolean.turn_off
-              target:
-                entity_id: input_boolean.workday_today_toggle
-              data: {}
-        uix:
-          style: "ha-card {\n  border: none;\n  background: none;\n}\n\nha-card::before\
-            \ {\n  content: none !important;\n}\n"
-    - type: custom:button-card
-      show_state: false
-      show_name: false
-      show_icon: false
-      name: Custom button example
-      tap_action:
-        action: none
-      styles:
-        grid:
-        - grid-template-areas: '"run_button"'
-        - grid-template-columns: 1fr
-        - grid-template-rows: 1fr
-        card:
-        - padding: 10px
-      custom_fields:
-        run_button:
-          card:
-            type: custom:button-card
-            entity: script.temporary_thermostat_adjustment
-            name: custom
-            icon: local:thermostat_adjustment_script
-            show_state: false
-            tap_action:
-              action: perform-action
-              perform_action: timer.finish
-              target:
-                entity_id: timer.timer_helper
-            styles:
-              grid:
-              - grid-template-areas: '"i n"'
-              - grid-template-columns: auto min-content
-              - grid-template-rows: 1fr
-              - justify-content: center
-              - align-items: center
-              - column-gap: .25rem
-              card:
-              - background-color: var(--custom-bg)
-              - border: 1px solid rgba(255, 255, 255, 0.2) !important;
-              - border-radius: 20px;
-              - height: 3rem
-              - padding-right: 3rem
-              - padding-left: 2.8rem
-              - box-shadow: none
-              - justify-self: center
-              img_cell:
-              - background-color: transparent
-              - justify-self: center
-              - width: 2rem
-              name:
-              - font-weight: 500
-              - font-size: 1rem
-              - justify-self: center
-              icon:
-              - width: 1.5rem
-    - type: custom:button-card
-      show_state: false
-      show_name: false
-      show_icon: false
-      name: Custom button example
-      tap_action:
-        action: none
-      styles:
-        grid:
-        - grid-template-areas: '"run_button"'
-        - grid-template-columns: 1fr
-        - grid-template-rows: 1fr
-        card:
-        - padding: 10px
-      custom_fields:
-        run_button:
-          card:
-            type: custom:button-card
-            entity: script.temporary_thermostat_adjustment
-            name: Abort and Reset
-            icon: mdi:cancel
-            show_state: false
-            tap_action:
-              action: multi-actions
-              actions:
-              - action: automation.turn_on
-                metadata: {}
-                target:
-                  entity_id: automation.workday_wakeup
-                data:
-                  stop_actions: true
-              - action: automation.turn_off
-                metadata: {}
-                target:
-                  entity_id: automation.workday_wakeup
-                data:
-                  stop_actions: true
-              - action: automation.trigger
-                metadata: {}
-                target:
-                  entity_id: automation.workday_wakeup
-                data:
-                  skip_condition: true
-                  variables:
-                    action_type: abort
-            styles:
-              grid:
-              - grid-template-areas: '"i n"'
-              - grid-template-columns: 2.5rem min-content
-              - grid-template-rows: 1fr
-              - justify-content: center
-              - align-items: center
-              - align-content: center
-              - column-gap: .25rem
-              card:
-              - background-color: var(--custom-bg)
-              - border: 1px solid rgba(255, 255, 255, 0.2)
-              - border-radius: 20px
-              - height: 3rem
-              - padding-right: 3rem
-              - padding-left: 2.8rem
-              - box-shadow: none
-              - justify-self: center
-              img_cell:
-              - width: 1.5rem
-              - height: 1.5rem
-              - background-color: transparent
-              - justify-self: center
-              - align-self: center
-              icon:
-              - width: 100%
-              - height: 100%
-              name:
-              - font-weight: 500
-              - font-size: 1rem
-              - justify-self: center
   subview: false
   cards: []
   dense_section_placement: true
