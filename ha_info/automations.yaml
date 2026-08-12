@@ -915,36 +915,14 @@
         target:
           entity_id: automation.workday_wakeup
         data: {}
-      - action: automation.turn_on
+      - action: automation.trigger
         metadata: {}
         target:
-          entity_id: automation.door_automation
-        data: {}
-      - action: input_boolean.turn_off
-        metadata: {}
-        target:
-          entity_id: input_boolean.disable_toggle
-        data: {}
-      - action: input_boolean.turn_on
-        metadata: {}
-        target:
-          entity_id: input_boolean.workday_today_toggle
-        data: {}
-      - action: button.press
-        metadata: {}
-        target:
-          entity_id: button.blake_foster30_gmail_com_video_mode_scene
-        data: {}
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 5
-          milliseconds: 0
-      - action: light.turn_off
-        metadata: {}
-        target:
-          entity_id: light.bedroom_tv_backlight
-        data: {}
+          entity_id: automation.workday_wakeup
+        data:
+          skip_condition: false
+          variables:
+            action_type: abort
       alias: 'Manually end and reset wakeup automation '
     - conditions:
       - condition: trigger
@@ -1693,36 +1671,15 @@
         choose:
         - conditions:
           - condition: trigger
-            id: on_short
-          - condition: not
-            conditions:
-            - alias: Workday & 8-9:30am
-              condition: and
-              conditions:
-              - condition: state
-                entity_id: input_boolean.workday_today_toggle
-                state:
-                - 'on'
-              - condition: time
-                after: 08:00:00
-                before: 09:30:00
-          sequence:
-          - action: script.turn_on
-            metadata: {}
-            target:
-              entity_id: script.set_my_room
-            data: {}
+            id:
+            - on_short
+          sequence: []
           alias: On Short
         - conditions:
           - condition: trigger
             id:
             - on_long
-          sequence:
-          - action: script.turn_on
-            metadata: {}
-            data: {}
-            target:
-              entity_id: script.set_my_room
+          sequence: []
           alias: On Long
     - alias: Up Button
       conditions:
@@ -1736,28 +1693,13 @@
         - conditions:
           - condition: trigger
             id: up_short
-          sequence:
-          - action: scene.turn_on
-            metadata: {}
-            target:
-              entity_id: scene.full_lamp
-            data: {}
-          - action: light.turn_off
-            metadata: {}
-            target:
-              entity_id: light.bedroom_ceiling_lights
-            data: {}
+          sequence: []
           alias: Up Short
         - conditions:
           - condition: trigger
             id:
             - up_long
-          sequence:
-          - action: scene.turn_on
-            metadata: {}
-            target:
-              entity_id: scene.dimmed
-            data: {}
+          sequence: []
           alias: Up Long
     - alias: Down Button
       conditions:
@@ -1771,23 +1713,13 @@
         - conditions:
           - condition: trigger
             id: down_short
-          sequence:
-          - action: fan.toggle
-            metadata: {}
-            target:
-              entity_id: fan.bedroom_ceiling_fan
-            data: {}
+          sequence: []
           alias: Down Short
         - conditions:
           - condition: trigger
             id:
             - down_long
-          sequence:
-          - action: scene.turn_on
-            metadata: {}
-            target:
-              entity_id: scene.lights_off_except_bedroom
-            data: {}
+          sequence: []
           alias: Down Long
     - alias: Off Button
       conditions:
@@ -1801,27 +1733,13 @@
         - conditions:
           - condition: trigger
             id: off_short
-          - condition: state
-            entity_id: input_boolean.disable_toggle
-            state:
-            - 'off'
-          sequence:
-          - action: scene.turn_on
-            metadata: {}
-            target:
-              entity_id: scene.bedroom_lights_off
-            data: {}
+          sequence: []
           alias: Off Short
         - conditions:
           - condition: trigger
             id:
             - off_long
-          sequence:
-          - action: scene.turn_on
-            metadata: {}
-            target:
-              entity_id: scene.goodnight_scene
-            data: {}
+          sequence: []
           alias: Off Long
   mode: single
 - id: '1768260220196'
@@ -1862,214 +1780,273 @@
       for: 00:00:00
       zone: zone.home
   actions:
-  - parallel:
-    - alias: Wake Up Scene Sequence
-      sequence:
-      - action: script.alexa_music
-        data:
-          action_type: '{{ trigger.id }}
-
-            '
-        note: 'Turns on music script, passes action_type: manual wakeup if automation
-          was triggered by button 1'
-        metadata: {}
-      - action: light.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.bathroom_light
-      - action: light.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: light.closet_light
-      - wait_for_trigger:
-        - trigger: time
-          at: 08:38:00
-      - action: light.turn_on
+  - if:
+    - condition: template
+      value_template: '{{ action_type == ''abort'' }}'
+      alias: 'Action_type: = abort'
+    then:
+    - sequence:
+      - action: notify.blake_foster30_gmail_com
         metadata: {}
         data:
-          rgb_color:
-          - 255
-          - 73
-          - 0
-          brightness: 100
-        target:
-          entity_id: light.bedroom_tv_backlight
-      - wait_for_trigger:
-        - trigger: time
-          at: 08:45:00
-      - action: light.turn_on
-        metadata: {}
-        data:
-          rgb_color:
-          - 255
-          - 0
-          - 0
-          brightness: 255
-        target:
-          entity_id: light.bedroom_tv_backlight
-      - wait_for_trigger:
-        - trigger: time
-          at: 08:50:00
-      - action: button.press
+          message: Work Alarm OFF
+          title: Work Alarm OFF
+          target: blake.foster30@gmail.com
+      - action: input_boolean.turn_on
         metadata: {}
         target:
-          entity_id: button.blake_foster30_gmail_com_set_backlight_late_for_work
+          entity_id: input_boolean.workday_today_toggle
         data: {}
-      - repeat:
-          while:
-          - condition: state
-            entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_left
-            state:
-            - 'on'
-          sequence:
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 1
-              milliseconds: 0
-          - action: light.turn_off
-            metadata: {}
-            target:
-              entity_id:
-              - light.bedroom_lamp
-              - light.bedroom_ceiling_lights
-            data: {}
-          - delay:
-              hours: 0
-              minutes: 0
-              seconds: 1
-              milliseconds: 0
-          - action: light.turn_on
-            metadata: {}
-            target:
-              entity_id:
-              - light.bedroom_ceiling_lights
-              - light.bedroom_lamp
-            data: {}
-          - action: notify.send_message
-            metadata: {}
-            target:
-              entity_id: notify.blake_s_echo_spot_speak
-            data:
-              message: Get Up Blake, Your late!
-          - delay:
-              hours: 0
-              minutes: 2
-              seconds: 0
-              milliseconds: 0
-      - action: button.press
-        metadata: {}
-        target:
-          entity_id: button.blake_foster30_gmail_com_video_mode_scene
-        data: {}
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 5
-          milliseconds: 0
-      - action: light.turn_off
-        metadata: {}
-        target:
-          entity_id: light.bedroom_tv_backlight
-        data: {}
-    - alias: Leaving Sequence
-      sequence:
-      - action: automation.turn_off
-        target:
-          entity_id: automation.door_automation
-        data:
-          stop_actions: true
-      - alias: Wait for -> door open
-        wait_for_trigger:
-        - trigger: state
-          entity_id:
-          - binary_sensor.front_door
-          to:
-          - 'on'
-        timeout:
-          hours: 1
-          minutes: 0
-          seconds: 0
-          milliseconds: 0
-        continue_on_timeout: true
-      - if:
-        - condition: template
-          value_template: '{{ wait.trigger is not none }}
-
-            '
-          alias: Trigger Fired
-        then:
-        - action: input_datetime.set_datetime
-          metadata: {}
-          data:
-            datetime: '{{ now().isoformat() }}'
-          target:
-            entity_id: input_datetime.last_door_open
-        alias: If triggered - Set door timestamp
       - action: automation.turn_on
         target:
           entity_id: automation.door_automation
         data: {}
-      - action: scene.turn_on
-        metadata: {}
-        data: {}
-        target:
-          entity_id: scene.all_off
+      - if:
+        - condition: light.is_on
+          target:
+            entity_id: light.bedroom_tv_backlight
+          options:
+            behavior: any
+            for: 00:00:00
+        then:
+        - action: button.press
+          metadata: {}
+          target:
+            entity_id: button.blake_foster30_gmail_com_video_mode_scene
+          data: {}
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 5
+            milliseconds: 0
+        - action: light.turn_off
+          metadata: {}
+          target:
+            entity_id: light.bedroom_tv_backlight
+          data: {}
+        alias: If backlight is on
       - action: input_boolean.turn_off
         metadata: {}
         target:
           entity_id: input_boolean.disable_toggle
         data: {}
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 10
-          milliseconds: 0
-      - wait_template: "{% set alexa_devices = [\n  'media_player.blake_s_echo_dot',\n
-          \ 'media_player.all_echo',\n  'media_player.blake_s_echo_pop',\n  'media_player.blake_s_echo_spot'\n]
-          %}\n{{ not expand(alexa_devices) | map(attribute='state') | select('eq',
-          'playing') | list | count > 0 }}\n"
-        continue_on_timeout: false
-        alias: No Echo ‘Playing’
-      - action: notify.mobile_app_blakes_iphone
-        metadata: {}
-        data:
-          message: Everything’s off!
-          title: Goodbye
+      alias: Abort sequence
+    else:
+    - parallel:
+      - alias: Wake Up Scene Sequence
+        sequence:
+        - action: script.alexa_music
           data:
-            interruption level: time-sensitive
-      - action: input_boolean.turn_off
-        metadata: {}
-        target:
-          entity_id: input_boolean.workday_today_toggle
-        data: {}
-    - alias: Out of bed = weather
-      sequence:
-      - wait_for_trigger:
-        - trigger: state
-          entity_id:
-          - binary_sensor.bed_presence_bb8594_bed_occupied_left
-          from:
-          - 'on'
-          to:
-          - 'off'
-          for:
+            action_type: '{{ trigger.id }}
+
+              '
+          note: 'Turns on music script, passes action_type: manual wakeup if automation
+            was triggered by button 1'
+          metadata: {}
+        - action: light.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.bathroom_light
+        - action: light.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: light.closet_light
+        - wait_for_trigger:
+          - trigger: time
+            at: 08:38:00
+        - action: light.turn_on
+          metadata: {}
+          data:
+            rgb_color:
+            - 255
+            - 73
+            - 0
+            brightness: 100
+          target:
+            entity_id: light.bedroom_tv_backlight
+        - wait_for_trigger:
+          - trigger: time
+            at: 08:45:00
+        - action: light.turn_on
+          metadata: {}
+          data:
+            rgb_color:
+            - 255
+            - 0
+            - 0
+            brightness: 255
+          target:
+            entity_id: light.bedroom_tv_backlight
+        - wait_for_trigger:
+          - trigger: time
+            at: 08:50:00
+        - action: button.press
+          metadata: {}
+          target:
+            entity_id: button.blake_foster30_gmail_com_set_backlight_late_for_work
+          data: {}
+        - repeat:
+            while:
+            - condition: state
+              entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_left
+              state:
+              - 'on'
+            sequence:
+            - delay:
+                hours: 0
+                minutes: 0
+                seconds: 1
+                milliseconds: 0
+            - action: light.turn_off
+              metadata: {}
+              target:
+                entity_id:
+                - light.bedroom_lamp
+                - light.bedroom_ceiling_lights
+              data: {}
+            - delay:
+                hours: 0
+                minutes: 0
+                seconds: 1
+                milliseconds: 0
+            - action: light.turn_on
+              metadata: {}
+              target:
+                entity_id:
+                - light.bedroom_ceiling_lights
+                - light.bedroom_lamp
+              data: {}
+            - action: notify.send_message
+              metadata: {}
+              target:
+                entity_id: notify.blake_s_echo_spot_speak
+              data:
+                message: Get Up Blake, Your late!
+            - delay:
+                hours: 0
+                minutes: 2
+                seconds: 0
+                milliseconds: 0
+        - action: button.press
+          metadata: {}
+          target:
+            entity_id: button.blake_foster30_gmail_com_video_mode_scene
+          data: {}
+        - delay:
             hours: 0
             minutes: 0
-            seconds: 3
-        continue_on_timeout: false
-        timeout:
-          hours: 1
-          minutes: 0
-          seconds: 0
-          milliseconds: 0
-      - action: alexa_devices.send_text_command
-        metadata: {}
-        data:
-          text_command: What’s the weather today?
-          device_id: ba7e4aed08d0947fa03068f398842568
+            seconds: 5
+            milliseconds: 0
+        - action: light.turn_off
+          metadata: {}
+          target:
+            entity_id: light.bedroom_tv_backlight
+          data: {}
+      - alias: Leaving Sequence
+        sequence:
+        - action: automation.turn_off
+          target:
+            entity_id: automation.door_automation
+          data:
+            stop_actions: true
+        - alias: Wait for -> door open
+          wait_for_trigger:
+          - trigger: state
+            entity_id:
+            - binary_sensor.front_door
+            to:
+            - 'on'
+          timeout:
+            hours: 1
+            minutes: 0
+            seconds: 0
+            milliseconds: 0
+          continue_on_timeout: true
+        - if:
+          - condition: template
+            value_template: '{{ wait.trigger is not none }}
+
+              '
+            alias: Trigger Fired
+          then:
+          - action: input_datetime.set_datetime
+            metadata: {}
+            data:
+              datetime: '{{ now().isoformat() }}'
+            target:
+              entity_id: input_datetime.last_door_open
+          alias: If triggered - Set door timestamp
+        - action: automation.turn_on
+          target:
+            entity_id: automation.door_automation
+          data: {}
+        - action: scene.turn_on
+          metadata: {}
+          data: {}
+          target:
+            entity_id: scene.all_off
+        - action: input_boolean.turn_off
+          metadata: {}
+          target:
+            entity_id: input_boolean.disable_toggle
+          data: {}
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 10
+            milliseconds: 0
+        - wait_template: "{% set alexa_devices = [\n  'media_player.blake_s_echo_dot',\n
+            \ 'media_player.all_echo',\n  'media_player.blake_s_echo_pop',\n  'media_player.blake_s_echo_spot'\n]
+            %}\n{{ not expand(alexa_devices) | map(attribute='state') | select('eq',
+            'playing') | list | count > 0 }}\n"
+          continue_on_timeout: false
+          alias: No Echo ‘Playing’
+        - action: notify.mobile_app_blakes_iphone
+          metadata: {}
+          data:
+            message: Everything’s off!
+            title: Goodbye
+            data:
+              interruption level: time-sensitive
+        - action: input_boolean.turn_off
+          metadata: {}
+          target:
+            entity_id: input_boolean.workday_today_toggle
+          data: {}
+        - action: notify.blake_foster30_gmail_com
+          metadata: {}
+          data:
+            message: Work Alarm OFF
+            title: Work Alarm OFF
+            target: blake.foster30@gmail.com
+      - alias: Out of bed = weather
+        sequence:
+        - wait_for_trigger:
+          - trigger: state
+            entity_id:
+            - binary_sensor.bed_presence_bb8594_bed_occupied_left
+            from:
+            - 'on'
+            to:
+            - 'off'
+            for:
+              hours: 0
+              minutes: 0
+              seconds: 3
+          continue_on_timeout: false
+          timeout:
+            hours: 1
+            minutes: 0
+            seconds: 0
+            milliseconds: 0
+        - action: alexa_devices.send_text_command
+          metadata: {}
+          data:
+            text_command: What’s the weather today?
+            device_id: ba7e4aed08d0947fa03068f398842568
+      alias: Main automation actions
   mode: single
   trace:
     stored_traces: 50
@@ -2683,10 +2660,22 @@
             data:
               volume_level: '{% set target = states(''sensor.recent_alexa'') %} {%
                 set current = state_attr(target, ''volume_level'') | float(0) %} {{
-                current + 0.02 }}
+                current + 0.05 }}
 
                 '
             metadata: {}
+          - action: logbook.log
+            metadata: {}
+            data:
+              name: Music volume up button
+              message: '{% set target = states(''sensor.recent_alexa'') %} {% set
+                current = state_attr(target, ''volume_level'') | float(0) %}
+
+                speaker = {{ target }}
+
+                current volume = {{ current }}
+
+                set volume to = {{ current + 0.05 }}'
           alias: 2 - Hold
     - alias: Button 3
       conditions:
@@ -2773,6 +2762,18 @@
 
                 '
             metadata: {}
+          - action: logbook.log
+            metadata: {}
+            data:
+              name: Music volume up button
+              message: '{% set target = states(''sensor.recent_alexa'') %} {% set
+                current = state_attr(target, ''volume_level'') | float(0) %}
+
+                speaker = {{ target }}
+
+                current volume = {{ current }}
+
+                set volume to = {{ current - 0.05 }}'
           alias: 3 - Hold
     - alias: Button 4
       conditions:

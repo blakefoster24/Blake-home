@@ -149,12 +149,12 @@ push_ha_info_to_github_create_ai_zip_file_now:
 alexa_music:
   sequence:
   - if:
-    - alias: Not triggered by stop
+    - alias: 'Action_type not: stop'
       condition: template
       value_template: '{{ action_type != ''stop'' }}
 
         '
-      note: 'script turns on music disable toggle, anything that turns it off triggers
+      note: 'script turns on music flag toggle, anything that turns it off triggers
         helper automation which ends the script and then restarts it with action_type:
         stop to reset for next use. '
     then:
