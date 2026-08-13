@@ -446,6 +446,101 @@ views:
       styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
         \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
         \ 16px;\n}\n"
+    - type: custom:state-switch
+      entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
+        | int(0) > 0 else ''off'' }}'
+      states:
+        'on':
+          type: custom:vertical-stack-in-card
+          cards:
+          - type: custom:mushroom-template-card
+            primary: Workday Wakeup is Active
+            features_position: bottom
+            grid_options:
+              columns: full
+            icon: local:briefcase_alarm_automation
+            icon_color: '#e1b000'
+            name_color: '#e1b000'
+            uix:
+              style: "ha-card {\n  border: none;\n  background: none;\n  margin-bottom:\
+                \ -15px;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
+          - type: custom:button-card
+            show_state: false
+            show_name: false
+            show_icon: false
+            tap_action:
+              action: none
+            styles:
+              grid:
+              - grid-template-areas: '"run_button"'
+              - grid-template-columns: 1fr
+              - grid-template-rows: 1fr
+              card:
+              - padding: 10px
+            custom_fields:
+              run_button:
+                card:
+                  type: custom:button-card
+                  name: Abort and Reset
+                  icon: mdi:cancel
+                  show_state: false
+                  tap_action:
+                    action: multi-actions
+                    actions:
+                    - action: perform-action
+                      perform_action: automation.turn_off
+                      target:
+                        entity_id: automation.workday_wakeup
+                      data:
+                        stop_actions: true
+                    - action: perform-action
+                      perform_action: automation.turn_on
+                      target:
+                        entity_id: automation.workday_wakeup
+                    - action: perform-action
+                      perform_action: automation.trigger
+                      target:
+                        entity_id: automation.workday_wakeup
+                      data:
+                        skip_condition: true
+                        variables:
+                          action_type: abort
+                  styles:
+                    grid:
+                    - grid-template-areas: '"i n"'
+                    - grid-template-columns: 2.5rem min-content
+                    - grid-template-rows: 1fr
+                    - justify-content: center
+                    - align-items: center
+                    - align-content: center
+                    - column-gap: .25rem
+                    card:
+                    - background-color: var(--custom-bg)
+                    - border: 1px solid rgba(255, 255, 255, 0.2)
+                    - border-radius: 20px
+                    - height: 3rem
+                    - padding-right: 3rem
+                    - padding-left: 2.8rem
+                    - box-shadow: none
+                    - justify-self: center
+                    img_cell:
+                    - width: 1.5rem
+                    - height: 1.5rem
+                    - background-color: transparent
+                    - justify-self: center
+                    - align-self: center
+                    icon:
+                    - width: 100%
+                    - height: 100%
+                    - color: var(--custom-active)
+                    name:
+                    - font-weight: 500
+                    - font-size: 1rem
+                    - justify-self: center
+                    - color: var(--custom-active)
+            uix:
+              style: "ha-card {\n  border: none;\n  background: none;\n  box-shadow:\
+                \ none;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
     - type: custom:vertical-stack-in-card
       visibility:
       - condition: or
@@ -2034,7 +2129,8 @@ views:
             grid_options:
               columns: full
             icon: local:briefcase_alarm_automation
-            icon_color: var(--custom-active)
+            icon_color: '#e1b000'
+            name_color: '#e1b000'
             uix:
               style: "ha-card {\n  border: none;\n  background: none;\n  margin-bottom:\
                 \ -15px;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
@@ -2106,11 +2202,12 @@ views:
                     icon:
                     - width: 100%
                     - height: 100%
-                    - color: red
+                    - color: var(--custom-active)
                     name:
                     - font-weight: 500
                     - font-size: 1rem
                     - justify-self: center
+                    - color: var(--custom-active)
             uix:
               style: "ha-card {\n  border: none;\n  background: none;\n  box-shadow:\
                 \ none;\n}\n\nha-card::before {\n  content: none !important;\n}\n"

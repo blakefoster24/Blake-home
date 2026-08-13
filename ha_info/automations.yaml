@@ -831,13 +831,6 @@
     id: Dashboard toggle on 5min
   - trigger: switch.turned_off
     target:
-      entity_id: input_boolean.workday_today_toggle
-    options:
-      behavior: each
-      for: 00:00:00
-    id: Manual workday off
-  - trigger: switch.turned_off
-    target:
       entity_id: input_boolean.disable_toggle
     options:
       behavior: each
@@ -896,38 +889,8 @@
     - conditions:
       - condition: trigger
         id:
-        - Manual workday off
-      - condition: template
-        value_template: '{{ state_attr(''automation.workday_wakeup'', ''current'')
-          > 0 }}
-
-          '
-        alias: Workday Wakeup Active
-      sequence:
-      - action: automation.turn_off
-        metadata: {}
-        target:
-          entity_id: automation.workday_wakeup
-        data:
-          stop_actions: true
-      - action: automation.turn_on
-        metadata: {}
-        target:
-          entity_id: automation.workday_wakeup
-        data: {}
-      - action: automation.trigger
-        metadata: {}
-        target:
-          entity_id: automation.workday_wakeup
-        data:
-          skip_condition: false
-          variables:
-            action_type: abort
-      alias: 'Manually end and reset wakeup automation '
-    - conditions:
-      - condition: trigger
-        id:
         - Music disable = Off
+        alias: 'Triggered by: music flag - off'
       sequence:
       - action: script.turn_off
         metadata: {}
@@ -944,6 +907,7 @@
       - condition: trigger
         id:
         - Echos playing > 2min
+        alias: If triggered by Echos playing > 1min
       - condition: state
         entity_id: script.alexa_music
         state:
@@ -1785,18 +1749,20 @@
       value_template: '{{ action_type == ''abort'' }}'
       alias: 'Action_type: = abort'
     then:
-    - sequence:
-      - action: notify.blake_foster30_gmail_com
-        metadata: {}
-        data:
-          message: Work Alarm OFF
-          title: Work Alarm OFF
-          target: blake.foster30@gmail.com
-      - action: input_boolean.turn_on
-        metadata: {}
-        target:
-          entity_id: input_boolean.workday_today_toggle
-        data: {}
+    - alias: Abort sequence
+      sequence:
+      - alias: Turns off phone alarms if they haven’t run yet
+        if:
+        - condition: time
+          after: 08:42:00
+          before: 09:00:00
+        then:
+        - action: notify.blake_foster30_gmail_com
+          metadata: {}
+          data:
+            message: Work Alarm OFF
+            title: Work Alarm OFF
+            target: blake.foster30@gmail.com
       - action: automation.turn_on
         target:
           entity_id: automation.door_automation
@@ -1830,7 +1796,6 @@
         target:
           entity_id: input_boolean.disable_toggle
         data: {}
-      alias: Abort sequence
     else:
     - parallel:
       - alias: Wake Up Scene Sequence
@@ -2811,7 +2776,32 @@
           - condition: trigger
             id:
             - button_4_triple
-          sequence: []
+          - condition: template
+            value_template: '{{ state_attr(''automation.workday_wakeup'', ''current'')
+              > 0 }}
+
+              '
+            alias: Workday Wakeup Active
+          sequence:
+          - action: automation.turn_off
+            metadata: {}
+            target:
+              entity_id: automation.workday_wakeup
+            data:
+              stop_actions: true
+          - action: automation.turn_on
+            metadata: {}
+            target:
+              entity_id: automation.workday_wakeup
+            data: {}
+          - action: automation.trigger
+            metadata: {}
+            target:
+              entity_id: automation.workday_wakeup
+            data:
+              skip_condition: false
+              variables:
+                action_type: abort
           alias: 4 - Triple
         - conditions:
           - condition: trigger
