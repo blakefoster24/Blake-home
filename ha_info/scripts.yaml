@@ -137,7 +137,8 @@ push_ha_info_to_github_create_ai_zip_file_now:
     response_variable: backup_result
     data: {}
   - choose:
-    - conditions:
+    - alias: GitHub push failed
+      conditions:
       - condition: template
         value_template: '{{ backup_result.returncode != 0 }}'
       sequence:
@@ -145,17 +146,26 @@ push_ha_info_to_github_create_ai_zip_file_now:
         data:
           title: GitHub Backup Failed
           message: '{{ backup_result.stderr.rsplit(''STDERR:'', 1)[-1] | trim }}'
-    - conditions:
+    - alias: Manual backup succeeded
+      conditions:
       - condition: template
         value_template: '{{ context.user_id is not none }}'
       sequence:
       - action: notify.mobile_app_blakes_iphone
         data:
           title: Backup Complete
-          message: GitHub updated & Zip ready. Tap to download.
+          message: GitHub updated & ZIP ready. Tap to download. The download will
+            be removed in 10 minutes.
           data:
             url: /local/ha_ai_context.zip
             clickAction: /local/ha_ai_context.zip
+      - delay:
+          minutes: 10
+      - action: shell_command.delete_ha_ai_zip
+        data: {}
+    default:
+    - action: shell_command.delete_ha_ai_zip
+      data: {}
 alexa_music:
   sequence:
   - choose:

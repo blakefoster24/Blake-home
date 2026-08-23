@@ -31,6 +31,9 @@ shell_command:
   perform_ha_backup_tasks: >-
     python3 /config/ha_backup_manager.py
 
+  # 3. Deletes the temporary downloadable AI context ZIP
+  delete_ha_ai_zip: >-
+    rm -f /config/www/ha_ai_context.zip
 
 recorder:
   exclude:

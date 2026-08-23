@@ -1,4 +1,4 @@
-_Last Updated: 2026-08-23T04:01:00.922248-05:00_
+_Last Updated: 2026-08-23T04:09:46.175002-05:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -761,7 +761,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `notify.blake_s_echo_spot_speak` | Blake's Echo Spot Speak | unknown |
 
-| `notify.blakes_iphone` | Blakes iPhone | 2026-08-23T08:45:09.157114+00:00 |
+| `notify.blakes_iphone` | Blakes iPhone | 2026-08-23T09:04:30.588915+00:00 |
 
 | `notify.ipad` | iPad | unknown |
 
@@ -1191,19 +1191,19 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.bathroom_light_signal_level` | Bathroom Light Signal level | 3 |
 
-| `sensor.bathroom_temperature` | Bathroom Temperature | 68.306 |
+| `sensor.bathroom_temperature` | Bathroom Temperature | 68.342 |
 
 | `sensor.bed_presence_bb8594_calibrated_left_pressure` | Bed Pressure Sensor Calibrated Left Pressure | 100.0 |
 
 | `sensor.bed_presence_bb8594_calibrated_right_pressure` | Bed Pressure Sensor Calibrated Right Pressure | 0.0 |
 
-| `sensor.bed_presence_bb8594_left_pressure` | Bed Pressure Sensor Left Pressure | 93.8974227905273 |
+| `sensor.bed_presence_bb8594_left_pressure` | Bed Pressure Sensor Left Pressure | 93.9818572998047 |
 
-| `sensor.bed_presence_bb8594_right_pressure` | Bed Pressure Sensor Right Pressure | 86.2548675537109 |
+| `sensor.bed_presence_bb8594_right_pressure` | Bed Pressure Sensor Right Pressure | 86.6551971435547 |
 
-| `sensor.bed_presence_bb8594_uptime` | Bed Pressure Sensor Uptime | 1461395.625 |
+| `sensor.bed_presence_bb8594_uptime` | Bed Pressure Sensor Uptime | 1461935.625 |
 
-| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Pressure Sensor WiFi Signal dB | -47.0 |
+| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Pressure Sensor WiFi Signal dB | -48.0 |
 
 | `sensor.bed_presence_bb8594_wifi_signal_percent` | Bed Pressure Sensor WiFi Signal Percent | 100.0 |
 
@@ -1273,7 +1273,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.blakes_iphone_average_active_pace` | Blakes iPhone Average Active Pace | 1 |
 
-| `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 15 |
+| `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 10 |
 
 | `sensor.blakes_iphone_battery_state` | Blakes iPhone Battery State | Not Charging |
 
@@ -1333,17 +1333,17 @@ United States |
 
 | `sensor.everything_presence_lite_922d28_occupancy_mask_2_target_count` | Everything Presence Lite Occupancy Mask 2 Target Count | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -0.899470925331116 |
+| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -0.695787847042084 |
 
-| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 122.889154389149 |
+| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 123.198059562623 |
 
 | `sensor.everything_presence_lite_922d28_target_1_resolution` | Everything Presence Lite Target 1 Resolution | 14.1732283464567 |
 
 | `sensor.everything_presence_lite_922d28_target_1_speed` | Everything Presence Lite Target 1 Speed | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | -82.3622047244095 |
+| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | -82.9133858267716 |
 
-| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 91.1417322834646 |
+| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 91.1023622047244 |
 
 | `sensor.everything_presence_lite_922d28_target_2_angle` | Everything Presence Lite Target 2 Angle | 0.0 |
 
@@ -1423,13 +1423,13 @@ United States |
 
 | `sensor.main_lights_current_consumption` | Main Lights Current consumption | 0.0 |
 
-| `sensor.main_lights_signal_level` | Main Lights Signal level | 3 |
+| `sensor.main_lights_signal_level` | Main Lights Signal level | 2 |
 
 | `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 0.435 |
 
 | `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.0 |
 
-| `sensor.main_lights_voltage` | Main Lights Voltage | 123.3 |
+| `sensor.main_lights_voltage` | Main Lights Voltage | 122.9 |
 
 | `sensor.motion_2_battery` | Motion 2 - Third Reality Battery | 91.0 |
 
@@ -1457,9 +1457,9 @@ United States |
 
 | `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | clear-night |
 
-| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 62.312 |
+| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 62.006 |
 
-| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 66.092 |
+| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 65.75 |
 
 | `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 89 |
 
@@ -1471,7 +1471,7 @@ United States |
 
 | `sensor.openweathermap_snow_2` | OpenWeatherMap Snow intensity | 0.0 |
 
-| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 65.642 |
+| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 65.336 |
 
 | `sensor.openweathermap_uv_index_2` | OpenWeatherMap UV index | 0 |
 
@@ -1481,9 +1481,9 @@ United States |
 
 | `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 800 |
 
-| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 266 |
+| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 268 |
 
-| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 4.00411596277738 |
+| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 2.9974946313529 |
 
 | `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 1.00662133142448 |
 
@@ -1611,7 +1611,7 @@ United States |
 
 | `sensor.shellyplugusg4_58e6c509a06c_current` | Shelly outlet Current | 0.024 |
 
-| `sensor.shellyplugusg4_58e6c509a06c_energy` | Shelly outlet Energy | 8.043351 |
+| `sensor.shellyplugusg4_58e6c509a06c_energy` | Shelly outlet Energy | 8.04347 |
 
 | `sensor.shellyplugusg4_58e6c509a06c_energy_returned` | Shelly outlet Energy returned | 0.0 |
 
@@ -1623,9 +1623,9 @@ United States |
 
 | `sensor.slzb_mr1_firmware_channel` | SLZB-MR1 Firmware channel | dev |
 
-| `sensor.slzb_mr1_zigbee_chip_temp` | SLZB-MR1 Zigbee chip temp | 109.58 |
+| `sensor.slzb_mr1_zigbee_chip_temp` | SLZB-MR1 Zigbee chip temp | 107.294 |
 
-| `sensor.slzb_mr1_zigbee_chip_temp_2` | SLZB-MR1 Zigbee chip temp | 112.082 |
+| `sensor.slzb_mr1_zigbee_chip_temp_2` | SLZB-MR1 Zigbee chip temp | 107.564 |
 
 | `sensor.slzb_mr1_zigbee_type` | SLZB-MR1 Zigbee type | thread |
 
