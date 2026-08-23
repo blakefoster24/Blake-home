@@ -27,8 +27,9 @@ shell_command:
     {{ content }}
     EOF'
 
-  # 2. Runs the Python script from its new path
-  perform_ha_backup_tasks: "python3 /config/ha_info/ha_backup_manager.py"
+  # 2. Runs the backup/Python script
+  perform_ha_backup_tasks: >-
+    python3 /config/ha_backup_manager.py
 
 
 recorder:

@@ -18,19 +18,19 @@ frosted glass:
 
 
 
-liquid glass:
-
+Liquid Glass:
+modes:
     light:
       custom-bg: rgba(0, 84, 186, 1)
-      custom-active: rgba(37, 21, 99, 1)
-      custom-contrast: white
-      custom-radius: 20px
+      custom-active: rgb(178, 186, 255)
+      custom-constrast: white
+      custom-radius: 30px
       custom-button-border: 1px solid rgba(255, 255, 255, 0.2)
       custom-border: 1.2px solid rgba(255, 255, 255, 0.2)
     dark:
       custom-bg: rgba(0, 8, 73, 1)
-      custom-active: rgba(37, 21, 99, 1)
+      custom-active: rgb(124, 135, 255)
       custom-contrast: white
-      custom-radius: 20px
+      custom-radius: 30px
       custom-button-border: 1px solid rgba(255, 255, 255, 0.2)
       custom-border: .5px solid rgba(255, 255, 255, 0.2)

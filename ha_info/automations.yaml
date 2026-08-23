@@ -314,33 +314,44 @@
         id:
         - Bed left
       sequence:
-      - alias: Occupancy not detected outside bedroom for 5min
-        wait_template: "{% set sensors = [\n  'binary_sensor.bathroom_presence',\n
-          \ 'binary_sensor.closet_motion',\n  'binary_sensor.kitchen_presence',\n
-          \ 'binary_sensor.living_room_motion'\n] %}\n{% set threshold = 5 %}\n{#
-          1. Expand the sensor list once to save resources #}\n{% set entities = expand(sensors)
-          %}\n\n{# 2. Check for any 'on' states or changes within the threshold #}\n{%
-          set any_on = entities | selectattr('state', 'eq', 'on') | list | count >
-          0 %}\n{% set any_recent = entities | selectattr('last_changed', 'ge', now()
-          - timedelta(minutes=threshold)) | list | count > 0 %}\n\n{# 3. Return true
-          only if nothing is 'on' AND nothing changed recently #}\n{{ not any_on and
-          not any_recent }}\n"
-        continue_on_timeout: false
-        timeout:
-          hours: 0
-          minutes: 20
-          seconds: 0
-          milliseconds: 0
-      - action: scene.turn_on
-        metadata: {}
-        target:
-          entity_id: scene.lights_off_except_bedroom
-        data: {}
-      - action: light.turn_off
-        metadata: {}
-        target:
-          entity_id: light.bedroom_ceiling_lights
-        data: {}
+      - sequence:
+        - parallel:
+          - alias: Occupancy not detected outside bedroom for 5min
+            wait_template: "{% set sensors = [\n  'binary_sensor.bathroom_presence',\n
+              \ 'binary_sensor.closet_motion',\n  'binary_sensor.kitchen_presence',\n
+              \ 'binary_sensor.living_room_motion'\n] %}\n{% set threshold = 5 %}\n{#
+              1. Expand the sensor list once to save resources #}\n{% set entities
+              = expand(sensors) %}\n\n{# 2. Check for any 'on' states or changes within
+              the threshold #}\n{% set any_on = entities | selectattr('state', 'eq',
+              'on') | list | count > 0 %}\n{% set any_recent = entities | selectattr('last_changed',
+              'ge', now() - timedelta(minutes=threshold)) | list | count > 0 %}\n\n{#
+              3. Return true only if nothing is 'on' AND nothing changed recently
+              #}\n{{ not any_on and not any_recent }}\n"
+            continue_on_timeout: false
+            timeout:
+              hours: 0
+              minutes: 20
+              seconds: 0
+              milliseconds: 0
+          - action: script.helper_script
+            metadata: {}
+            data:
+              action_type: lights
+        - action: timer.cancel
+          metadata: {}
+          target:
+            entity_id: timer.timer_helper
+          data: {}
+        - action: scene.turn_on
+          metadata: {}
+          target:
+            entity_id: scene.lights_off_except_bedroom
+          data: {}
+        - action: light.turn_off
+          metadata: {}
+          target:
+            entity_id: light.bedroom_ceiling_lights
+          data: {}
     - conditions:
       - condition: trigger
         id:
@@ -563,30 +574,13 @@
               for: 00:00:00
               zone: zone.home
       sequence:
-      - if:
-        - condition: time
-          after: '22:00:00'
-          before: 00:06:00
-        then:
-        - action: fan.turn_on
-          metadata: {}
-          target:
-            entity_id: fan.bedroom_ceiling_fan
-          data: {}
-        - wait_template: '{{ is_devic}}'
-        - action: fan.turn_off
-          metadata: {}
-          target:
-            entity_id: fan.bedroom_ceiling_fan
-          data: {}
-        else:
-        - action: climate.set_temperature
-          metadata: {}
-          target:
-            entity_id: climate.nest_thermostat
-          data:
-            temperature: 68
-            hvac_mode: cool
+      - action: climate.set_temperature
+        metadata: {}
+        target:
+          entity_id: climate.nest_thermostat
+        data:
+          temperature: 68
+          hvac_mode: cool
     - conditions:
       - condition: trigger
         id:
@@ -648,9 +642,17 @@
         before: '15:50:00'
       sequence:
       - if:
-        - condition: numeric_state
-          entity_id: sensor.nest_thermostat_temperature
-          above: 68
+        - condition: temperature.is_value
+          target:
+            entity_id: sensor.openweathermap_feels_like_temperature_2
+          options:
+            for: 00:00:00
+            threshold:
+              type: above
+              value:
+                active_choice: number
+                number: 70
+                unit_of_measurement: °C
         then:
         - action: climate.set_temperature
           metadata: {}
@@ -735,15 +737,14 @@
       - if:
         - condition: temperature.is_value
           target:
-            entity_id: sensor.nest_thermostat_temperature
+            entity_id: weather.openweathermap_2
           options:
-            for: 00:00:00
             threshold:
               type: above
               value:
                 active_choice: number
-                number: 68
                 unit_of_measurement: °F
+                number: 70
         then:
         - action: climate.set_temperature
           metadata: {}
@@ -850,6 +851,13 @@
         seconds: 0
       behavior: first
     id: Echos playing > 2min
+  - trigger: occupancy.detected
+    target:
+      entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_both
+    options:
+      behavior: each
+      for: 00:00:00
+    id: Bed both
   conditions: []
   actions:
   - choose:
@@ -920,6 +928,16 @@
           action_type: disable triggger
         metadata: {}
       alias: If triggered by Echos playing > 1min and 1 more condition
+    - conditions:
+      - condition: trigger
+        id:
+        - Bed both
+      sequence:
+      - action: fan.turn_on
+        metadata: {}
+        target:
+          entity_id: fan.bedroom_ceiling_fan
+        data: {}
   mode: parallel
   max: 10
   trace:
@@ -1321,17 +1339,18 @@
   description: ''
   triggers:
   - trigger: time
-    at: 00:01:00
-    id: '12:01'
-  - trigger: time
-    at: 09:45:00
-    id: 9:45am
-  - trigger: time
     at: '23:00:00'
     id: 11pm
   - trigger: time
     at: '13:00:00'
     id: 1pm
+  - trigger: switch.turned_off
+    target:
+      entity_id: input_boolean.workday_today_toggle
+    options:
+      behavior: each
+      for: 00:00:00
+    id: Workday today off
   conditions: []
   actions:
   - choose:
@@ -1416,16 +1435,31 @@
     - conditions:
       - condition: trigger
         id:
-        - '12:01'
+        - Workday today off
+      - condition: not
+        conditions:
+        - condition: time
+          after: '22:59:00'
+          before: '23:01:00'
       sequence:
-      - choose:
+      - action: notify.blake_foster30_gmail_com
+        metadata: {}
+        data:
+          message: Work Alarm OFF
+          title: Work Alarm OFF
+          target: blake.foster30@gmail.com
+    - conditions:
+      - condition: trigger
+        id:
+        - 11pm
+      sequence:
+      - alias: Clear Work Override / Off Helpers
+        choose:
         - conditions:
-          - condition: template
-            value_template: '{{ states(''input_datetime.scheduled_off'') == (now()
-              - timedelta(days=1)).strftime(''%Y-%m-%d'') }}
-
-              '
-            alias: Scheduled Off = Yesterday
+          - alias: Scheduled Off was today
+            condition: template
+            value_template: '{{ states(''input_datetime.scheduled_off'') == now().strftime(''%Y-%m-%d'')
+              }}'
           sequence:
           - action: input_datetime.set_datetime
             metadata: {}
@@ -1435,12 +1469,12 @@
               entity_id: input_datetime.scheduled_off
             alias: Clear Scheduled Off
         - conditions:
-          - condition: template
-            value_template: '{{ states(''input_datetime.working_override'') == (now()
-              - timedelta(days=1)).strftime(''%Y-%m-%d'') }}
+          - alias: Working Override was today
+            condition: template
+            value_template: '{{ states(''input_datetime.working_override'') == now().strftime(''%Y-%m-%d'')
+              }}
 
               '
-            alias: Working Override = Yesterday
           sequence:
           - action: input_datetime.set_datetime
             metadata: {}
@@ -1449,12 +1483,11 @@
             target:
               entity_id: input_datetime.working_override
             alias: Clear Working Override
-        alias: Clear Work Override / Off Helpers
       alias: Clear Work Schedule Helpers
     - conditions:
       - condition: trigger
         id:
-        - 9:45am
+        - 1pm
       - alias: Holiday in 7 days
         condition: template
         value_template: "{% set worked = [\n  '2026-07-04', '2027-01-01', '2027-09-06',
@@ -1797,7 +1830,8 @@
           entity_id: input_boolean.disable_toggle
         data: {}
     else:
-    - parallel:
+    - alias: Main automation actions
+      parallel:
       - alias: Wake Up Scene Sequence
         sequence:
         - action: script.alexa_music
@@ -1968,6 +2002,12 @@
             'playing') | list | count > 0 }}\n"
           continue_on_timeout: false
           alias: No Echo ‘Playing’
+        - action: notify.blake_foster30_gmail_com
+          metadata: {}
+          data:
+            message: Work Alarm OFF
+            title: Work Alarm OFF
+            target: blake.foster30@gmail.com
         - action: notify.mobile_app_blakes_iphone
           metadata: {}
           data:
@@ -1975,17 +2015,6 @@
             title: Goodbye
             data:
               interruption level: time-sensitive
-        - action: input_boolean.turn_off
-          metadata: {}
-          target:
-            entity_id: input_boolean.workday_today_toggle
-          data: {}
-        - action: notify.blake_foster30_gmail_com
-          metadata: {}
-          data:
-            message: Work Alarm OFF
-            title: Work Alarm OFF
-            target: blake.foster30@gmail.com
       - alias: Out of bed = weather
         sequence:
         - wait_for_trigger:
@@ -2011,7 +2040,6 @@
           data:
             text_command: What’s the weather today?
             device_id: ba7e4aed08d0947fa03068f398842568
-      alias: Main automation actions
   mode: single
   trace:
     stored_traces: 50

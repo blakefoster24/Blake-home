@@ -118,6 +118,7 @@
       supported_color_modes:
       - onoff
       color_mode:
+      icon: mdi:vanity-light
       friendly_name: Bathroom Light
       supported_features: 0
       state: 'off'
@@ -125,6 +126,7 @@
       source_list:
       - Home
       - AMC
+      - AV
       - Apple TV
       - Backdrops
       - CBS
@@ -134,10 +136,11 @@
       - DIRECTV
       - Disney Plus
       - ESPN
-      - FOX Sports
-      - Fandango at Home
+      - Fandango
       - Filmzie
       - HBO Max
+      - HDMI 2
+      - HDMI 3
       - Hulu
       - Lifetime
       - Live TV
@@ -159,16 +162,18 @@
       supported_features: 151481
       state: 'off'
     light.bedroom_lamp:
-      min_color_temp_kelvin: 2202
+      min_color_temp_kelvin: 2000
       max_color_temp_kelvin: 6535
-      min_mireds: 153
-      max_mireds: 454
+      effect_list:
+      - 'off'
+      - colorloop
       supported_color_modes:
       - color_temp
+      - xy
+      effect:
       color_mode:
       brightness:
       color_temp_kelvin:
-      color_temp:
       hs_color:
       rgb_color:
       xy_color:
@@ -176,7 +181,7 @@
       off_brightness: 254
       icon: local:bedroom_lamp
       friendly_name: Bedroom Lamp
-      supported_features: 40
+      supported_features: 44
       state: 'off'
     light.closet_light:
       supported_color_modes:
@@ -187,7 +192,7 @@
       supported_features: 0
       state: 'off'
     fan.bedroom_fan:
-      icon: local:box_fan1
+      icon: local:box_fan
       friendly_name: Fan
       supported_features: 48
       state: 'on'
@@ -205,7 +210,6 @@
       supported_features: 0
       state: 'off'
     media_player.living_room_tv:
-      assumed_state: true
       device_class: tv
       friendly_name: Living Room TV
       supported_features: 19901
@@ -221,8 +225,6 @@
     light.bedroom_tv_backlight:
       min_color_temp_kelvin: 15
       max_color_temp_kelvin: 6535
-      min_mireds: 153
-      max_mireds: 66666
       supported_color_modes:
       - color_temp
       - hs
@@ -230,13 +232,16 @@
       color_mode:
       brightness:
       color_temp_kelvin:
-      color_temp:
       hs_color:
       rgb_color:
       xy_color:
-      icon: mdi:television-ambient-light
+      icon: local:tv_backlight
       friendly_name: Bedroom Tv Backlight
       supported_features: 32
+      state: 'off'
+    input_boolean.disable_toggle:
+      editable: true
+      friendly_name: Music Script Flag
       state: 'off'
   metadata:
     light.main_lights:
@@ -262,6 +267,8 @@
     light.kitchen_lights:
       entity_only: true
     light.bedroom_tv_backlight:
+      entity_only: true
+    input_boolean.disable_toggle:
       entity_only: true
   icon: mdi:sleep
 - id: '1758431729586'
