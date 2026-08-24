@@ -248,6 +248,18 @@
     id: 'Bathroom presence '
     to:
     - 'on'
+  - trigger: motion.detected
+    target:
+      entity_id: binary_sensor.living_room_motion
+    options:
+      for: 00:00:00
+    id: 'Motion '
+  - trigger: occupancy.detected
+    target:
+      entity_id: binary_sensor.kitchen_presence
+    options:
+      for: 00:00:00
+    id: Kitchen presence
   conditions: []
   actions:
   - choose:
@@ -454,6 +466,26 @@
           target:
             entity_id: light.bathroom_light
           data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - Kitchen presence
+        - Motion
+      - condition: illuminance.is_value
+        target:
+          entity_id: sensor.bthome_sensor_3370_illuminance
+        options:
+          threshold:
+            type: below
+            value:
+              active_choice: number
+              number: 15
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        target:
+          entity_id: light.kitchen_lights
+        data: {}
   mode: parallel
   trace:
     stored_traces: 30

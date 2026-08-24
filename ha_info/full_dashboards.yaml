@@ -379,116 +379,126 @@ views:
         vertical: false
         features_position: bottom
       hide_backdrop: true
-    - type: custom:bubble-card
-      card_type: pop-up
-      hash: '#nav'
-      button_type: switch
-      sub_button:
-        main: []
-        bottom: []
-      slider_fill_orientation: left
-      slider_value_position: right
-      name: Navigate
-      button_action: {}
-      icon: mdi:navigation-variant
-      show_header: true
-      bg_opacity: '50'
-      bg_blur: '30'
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+        }"
+    - type: vertical-stack
       cards:
-      - type: grid
-        cards:
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Automations
-          tap_action:
-            action: navigate
-            navigation_path: /config/automation
-          icon: mdi:robot
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Scenes
-          tap_action:
-            action: navigate
-            navigation_path: /config/scene
-          icon: mdi:palette
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Scripts
-          tap_action:
-            action: navigate
-            navigation_path: /config/script
-          icon: mdi:script-text
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Integrations
-          tap_action:
-            action: navigate
-            navigation_path: /config/integrations
-          icon: mdi:puzzle
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Entities
-          tap_action:
-            action: navigate
-            navigation_path: /config/entities
-          icon: mdi:shape
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Helpers
-          tap_action:
-            action: navigate
-            navigation_path: /config/helpers
-          icon: mdi:tools
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Devices
-          tap_action:
-            action: navigate
-            navigation_path: /config/devices
-          icon: mdi:devices
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Activity
-          tap_action:
-            action: navigate
-            navigation_path: /logbook
-          icon: mdi:format-list-bulleted
-        - show_name: true
-          show_icon: true
-          type: button
-          name: History
-          tap_action:
-            action: navigate
-            navigation_path: /history
-          icon: mdi:chart-box
-        grid_options:
-          columns: 12
-          rows: auto
       - type: custom:bubble-card
-        card_type: button
-        button_type: name
+        card_type: pop-up
+        hash: '#nav'
+        button_type: switch
         sub_button:
           main: []
           bottom: []
         slider_fill_orientation: left
         slider_value_position: right
-        name: Current Helpers
-        icon: mdi:tools
-        button_action:
+        name: Navigate
+        button_action: {}
+        icon: mdi:navigation-variant
+        show_header: true
+        bg_opacity: '40'
+        bg_blur: '30'
+        cards:
+        - type: grid
+          cards:
+          - show_name: true
+            show_icon: true
+            type: button
+            name: Automations
+            tap_action:
+              action: navigate
+              navigation_path: /config/automation
+            icon: mdi:robot
+          - show_name: true
+            show_icon: true
+            type: button
+            name: Scenes
+            tap_action:
+              action: navigate
+              navigation_path: /config/scene
+            icon: mdi:palette
+          - show_name: true
+            show_icon: true
+            type: button
+            name: Scripts
+            tap_action:
+              action: navigate
+              navigation_path: /config/script
+            icon: mdi:script-text
+          - show_name: true
+            show_icon: true
+            type: button
+            name: Integrations
+            tap_action:
+              action: navigate
+              navigation_path: /config/integrations
+            icon: mdi:puzzle
+          - show_name: true
+            show_icon: true
+            type: button
+            name: Entities
+            tap_action:
+              action: navigate
+              navigation_path: /config/entities
+            icon: mdi:shape
+          - show_name: true
+            show_icon: true
+            type: button
+            name: Helpers
+            tap_action:
+              action: navigate
+              navigation_path: /config/helpers
+            icon: mdi:tools
+          - show_name: true
+            show_icon: true
+            type: button
+            name: Devices
+            tap_action:
+              action: navigate
+              navigation_path: /config/devices
+            icon: mdi:devices
+          - show_name: true
+            show_icon: true
+            type: button
+            name: Activity
+            tap_action:
+              action: navigate
+              navigation_path: /logbook
+            icon: mdi:format-list-bulleted
+          - show_name: true
+            show_icon: true
+            type: button
+            name: History
+            tap_action:
+              action: navigate
+              navigation_path: /history
+            icon: mdi:chart-box
+          grid_options:
+            columns: 12
+            rows: auto
+        - type: tile
+          grid_options:
+            columns: full
+          entity: light.closet_light
+          name: Current Helpers
+          icon: mdi:tools
+          hide_state: true
+          vertical: false
           tap_action:
             action: navigate
-            navigation_path: /my-dashboard/home/#helper
-        styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
-          \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
-          \ 16px;\n}\n"
+            navigation_path: '#helper'
+          features_position: bottom
+        bg_color: transparent
+        backdrop_blur: '0'
+        shadow_opacity: '0'
+        styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+          \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+          \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+          \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+          }"
     - type: custom:bubble-card
       card_type: button
       button_type: name
@@ -2557,6 +2567,11 @@ views:
         vertical: false
         features_position: bottom
       hide_backdrop: true
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+        }"
     - type: vertical-stack
       cards:
       - type: custom:bubble-card
@@ -2652,26 +2667,25 @@ views:
           grid_options:
             columns: 12
             rows: auto
-        - type: custom:bubble-card
-          card_type: button
-          button_type: name
-          sub_button:
-            main: []
-            bottom: []
-          slider_fill_orientation: left
-          slider_value_position: right
+        - type: tile
+          entity: light.closet_light
           name: Current Helpers
           icon: mdi:tools
-          button_action:
-            tap_action:
-              action: navigate
-              navigation_path: '#helperalt'
-          styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
-            \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
-            \ 20px;\n  --bubble-button-border: none;\n}\n"
+          hide_state: true
+          vertical: false
+          tap_action:
+            action: navigate
+            navigation_path: '#helperalt'
+          features_position: bottom
+          grid_options:
+            columns: full
         bg_color: transparent
         backdrop_blur: '0'
         shadow_opacity: '0'
+        styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+          \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+          \ var(--custom-bg) !important;\n}\n.bubble-icon-container {\n  background-color:\
+          \ var(--custom-bg) !important;\n}"
     - type: custom:bubble-card
       card_type: button
       button_type: name
@@ -2687,7 +2701,8 @@ views:
       card_layout: large-2-rows
       styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
         \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
-        \ 20px;\n}\n"
+        \ 18px !important;\n}\n.bubble-button-container {\n  background-color: var(--custom-bg)\
+        \ !important;\n}\n"
     - type: custom:state-switch
       entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
         | int(0) > 0 else ''off'' }}'
@@ -5647,6 +5662,47 @@ views:
     cards:
     - type: custom:bubble-card
       card_type: pop-up
+      hash: '#helpermasonry'
+      button_type: switch
+      sub_button:
+        main: []
+        bottom: []
+      slider_fill_orientation: left
+      slider_value_position: right
+      name: Current Helpers
+      button_action: {}
+      icon: mdi:tools
+      show_header: true
+      bg_opacity: '50'
+      bg_blur: '30'
+      cards:
+      - type: tile
+        entity: input_datetime.home_timestamp
+        grid_options:
+          columns: full
+      - type: tile
+        entity: input_datetime.last_door_open
+        grid_options:
+          columns: full
+      - type: tile
+        entity: sensor.recent_alexa
+        grid_options:
+          columns: full
+      - type: tile
+        entity: input_boolean.phone_active
+      - type: tile
+        entity: input_boolean.disable_toggle
+        name: Music Disable
+        vertical: false
+        features_position: bottom
+      hide_backdrop: true
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+        }"
+    - type: custom:bubble-card
+      card_type: pop-up
       hash: '#masonrypop'
       button_type: switch
       sub_button:
@@ -5738,62 +5794,25 @@ views:
         grid_options:
           columns: 12
           rows: auto
-      - type: custom:bubble-card
-        card_type: button
-        button_type: name
-        sub_button:
-          main: []
-          bottom: []
-        slider_fill_orientation: left
-        slider_value_position: right
+      - type: tile
+        grid_options:
+          columns: full
+        entity: light.closet_light
         name: Current Helpers
         icon: mdi:tools
-        button_action:
-          tap_action:
-            action: navigate
-            navigation_path: '#helpermasonry'
-        styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
-          \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
-          \ 20px;\n  --bubble-button-border: none;\n}\n"
+        hide_state: true
+        vertical: false
+        tap_action:
+          action: navigate
+          navigation_path: '#helpermasonry'
+        features_position: bottom
       bg_color: transparent
       backdrop_blur: '0'
       shadow_opacity: '0'
-    - type: custom:bubble-card
-      card_type: pop-up
-      hash: '#helpermasonry'
-      button_type: switch
-      sub_button:
-        main: []
-        bottom: []
-      slider_fill_orientation: left
-      slider_value_position: right
-      name: Current Helpers
-      button_action: {}
-      icon: mdi:tools
-      show_header: true
-      bg_opacity: '50'
-      bg_blur: '30'
-      cards:
-      - type: tile
-        entity: input_datetime.home_timestamp
-        grid_options:
-          columns: full
-      - type: tile
-        entity: input_datetime.last_door_open
-        grid_options:
-          columns: full
-      - type: tile
-        entity: sensor.recent_alexa
-        grid_options:
-          columns: full
-      - type: tile
-        entity: input_boolean.phone_active
-      - type: tile
-        entity: input_boolean.disable_toggle
-        name: Music Disable
-        vertical: false
-        features_position: bottom
-      hide_backdrop: true
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n}\n.bubble-icon-container {\n  background-color:\
+        \ var(--custom-bg) !important;\n}"
   theme: Liquid Glass
   background:
     opacity: 80
