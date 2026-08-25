@@ -418,17 +418,15 @@
           entity_id: light.bathroom_light
         data: {}
       - alias: Bathroom presence off > 30s
-        wait_template: '{{ is_state(''binary_sensor.bathroom_presence'', ''off'')
-          and (now() - states.light.bathroom_light.last_changed).total_seconds() >=
-          30 }}
-
-          '
+        wait_template: "{{ is_state('binary_sensor.bathroom_presence', 'off')\n   and
+          (now() - states.binary_sensor.bathroom_presence.last_changed).total_seconds()
+          >= 30 }}"
+        continue_on_timeout: true
         timeout:
           hours: 0
-          minutes: 0
+          minutes: 30
           seconds: 0
           milliseconds: 0
-        continue_on_timeout: false
       - alias: Humidity if/then
         if:
         - condition: numeric_state
@@ -445,16 +443,16 @@
               seconds: 0
             below: -0.5
           continue_on_timeout: false
-        - wait_template: '{{ is_state(''binary_sensor.bathroom_presence'', ''off'')
-            }}
-
-            '
+        - alias: Bathroom presence off > 30s
+          wait_template: "{{ is_state('binary_sensor.bathroom_presence', 'off')\n
+            \  and (now() - states.binary_sensor.bathroom_presence.last_changed).total_seconds()
+            >= 30 }}"
+          continue_on_timeout: true
           timeout:
             hours: 0
-            minutes: 0
-            seconds: 30
+            minutes: 30
+            seconds: 0
             milliseconds: 0
-          alias: Bathroom presence off > 30s
         - action: light.turn_off
           metadata: {}
           target:
@@ -466,26 +464,21 @@
           target:
             entity_id: light.bathroom_light
           data: {}
-    - conditions:
-      - condition: trigger
-        id:
-        - Kitchen presence
-        - Motion
-      - condition: illuminance.is_value
-        target:
-          entity_id: sensor.bthome_sensor_3370_illuminance
-        options:
-          threshold:
-            type: below
-            value:
-              active_choice: number
-              number: 15
-      sequence:
-      - action: light.turn_on
-        metadata: {}
-        target:
-          entity_id: light.kitchen_lights
-        data: {}
+    default:
+    - action: timer.start
+      metadata: {}
+      target:
+        entity_id: timer.timer_helper
+      data:
+        duration:
+          hours: 0
+          minutes: 5
+          seconds: 0
+    - delay:
+        hours: 0
+        minutes: 5
+        seconds: 0
+        milliseconds: 0
   mode: parallel
   trace:
     stored_traces: 30
@@ -1819,8 +1812,7 @@
       - alias: Turns off phone alarms if they haven’t run yet
         if:
         - condition: time
-          after: 08:42:00
-          before: 09:00:00
+          before: 08:55:00
         then:
         - action: notify.blake_foster30_gmail_com
           metadata: {}

@@ -280,49 +280,49 @@ views:
     visibility:
     - condition: state
       entity: light.kitchen_lights
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.bathroom_light
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.main_lights
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.closet_light
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.bedroom_lamp
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.living_room_lamp
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.living_room_ceiling_lights
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.bedroom_tv_backlight
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.bedroom_ceiling_lights
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: fan.bedroom_fan
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: fan.bedroom_ceiling_fan
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: fan.living_room_ceiling_fan
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: media_player.bedroom_tv
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: sensor.recent_alexa
       state: none
     - condition: state
       entity: binary_sensor.apartment_presence
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: person.blake_foster
       state_not: home
@@ -384,121 +384,148 @@ views:
         \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
         \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
         }"
-    - type: vertical-stack
+    - type: custom:bubble-card
+      card_type: pop-up
+      hash: '#nav'
+      button_type: switch
+      sub_button:
+        main: []
+        bottom: []
+      slider_fill_orientation: left
+      slider_value_position: right
+      name: Navigate
+      button_action: {}
+      icon: mdi:navigation-variant
+      show_header: true
+      bg_opacity: '50'
+      bg_blur: '30'
       cards:
-      - type: custom:bubble-card
-        card_type: pop-up
-        hash: '#nav'
-        button_type: switch
-        sub_button:
-          main: []
-          bottom: []
-        slider_fill_orientation: left
-        slider_value_position: right
-        name: Navigate
-        button_action: {}
-        icon: mdi:navigation-variant
-        show_header: true
-        bg_opacity: '40'
-        bg_blur: '30'
+      - type: grid
         cards:
-        - type: grid
-          cards:
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Automations
-            tap_action:
-              action: navigate
-              navigation_path: /config/automation
-            icon: mdi:robot
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Scenes
-            tap_action:
-              action: navigate
-              navigation_path: /config/scene
-            icon: mdi:palette
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Scripts
-            tap_action:
-              action: navigate
-              navigation_path: /config/script
-            icon: mdi:script-text
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Integrations
-            tap_action:
-              action: navigate
-              navigation_path: /config/integrations
-            icon: mdi:puzzle
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Entities
-            tap_action:
-              action: navigate
-              navigation_path: /config/entities
-            icon: mdi:shape
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Helpers
-            tap_action:
-              action: navigate
-              navigation_path: /config/helpers
-            icon: mdi:tools
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Devices
-            tap_action:
-              action: navigate
-              navigation_path: /config/devices
-            icon: mdi:devices
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Activity
-            tap_action:
-              action: navigate
-              navigation_path: /logbook
-            icon: mdi:format-list-bulleted
-          - show_name: true
-            show_icon: true
-            type: button
-            name: History
-            tap_action:
-              action: navigate
-              navigation_path: /history
-            icon: mdi:chart-box
-          grid_options:
-            columns: 12
-            rows: auto
-        - type: tile
-          grid_options:
-            columns: full
-          entity: light.closet_light
-          name: Current Helpers
-          icon: mdi:tools
-          hide_state: true
-          vertical: false
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Automations
           tap_action:
             action: navigate
-            navigation_path: '#helper'
-          features_position: bottom
-        bg_color: transparent
-        backdrop_blur: '0'
-        shadow_opacity: '0'
-        styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
-          \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
-          \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
-          \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
-          }"
+            navigation_path: /config/automation
+          icon: mdi:robot
+          card_mod:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Scenes
+          tap_action:
+            action: navigate
+            navigation_path: /config/scene
+          icon: mdi:palette
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Scripts
+          tap_action:
+            action: navigate
+            navigation_path: /config/script
+          icon: mdi:script-text
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Integrations
+          tap_action:
+            action: navigate
+            navigation_path: /config/integrations
+          icon: mdi:puzzle
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Entities
+          tap_action:
+            action: navigate
+            navigation_path: /config/entities
+          icon: mdi:shape
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Helpers
+          tap_action:
+            action: navigate
+            navigation_path: /config/helpers
+          icon: mdi:tools
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Devices
+          tap_action:
+            action: navigate
+            navigation_path: /config/devices
+          icon: mdi:devices
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Activity
+          tap_action:
+            action: navigate
+            navigation_path: /logbook
+          icon: mdi:format-list-bulleted
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: History
+          tap_action:
+            action: navigate
+            navigation_path: /history
+          icon: mdi:chart-box
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        grid_options:
+          columns: 12
+          rows: auto
+      - type: tile
+        grid_options:
+          columns: full
+        entity: light.closet_light
+        name: Current Helpers
+        icon: mdi:tools
+        hide_state: true
+        vertical: false
+        tap_action:
+          action: navigate
+          navigation_path: '#helper'
+        features_position: bottom
+        card_mod:
+          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
+            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
+            }\n"
+      hide_backdrop: true
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+        }"
     - type: custom:bubble-card
       card_type: button
       button_type: name
@@ -534,66 +561,20 @@ views:
             uix:
               style: "ha-card {\n  border: none;\n  background: none;\n  margin-bottom:\
                 \ -15px;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
-          - type: custom:button-card
-            show_state: false
-            show_name: false
-            show_icon: false
-            tap_action:
-              action: none
-            styles:
-              grid:
-              - grid-template-areas: '"run_button"'
-              - grid-template-columns: 1fr
-              - grid-template-rows: 1fr
-              card:
-              - padding: 10px
-            custom_fields:
-              run_button:
-                card:
-                  type: custom:button-card
-                  name: Abort and Reset
-                  icon: mdi:cancel
-                  show_state: false
-                  tap_action:
-                    action: perform-action
-                    perform_action: script.helper_script
-                    target:
-                      entity_id: script.helper_script
-                    data:
-                      action_type: abort
-                  styles:
-                    grid:
-                    - grid-template-areas: '"i n"'
-                    - grid-template-columns: 2.5rem min-content
-                    - grid-template-rows: 1fr
-                    - justify-content: center
-                    - align-items: center
-                    - align-content: center
-                    - column-gap: .25rem
-                    card:
-                    - background-color: var(--custom-bg)
-                    - border: 1px solid rgba(255, 255, 255, 0.2)
-                    - border-radius: 20px
-                    - height: 3rem
-                    - padding-right: 3rem
-                    - padding-left: 2.8rem
-                    - box-shadow: none
-                    - justify-self: center
-                    img_cell:
-                    - width: 1.5rem
-                    - height: 1.5rem
-                    - background-color: transparent
-                    - justify-self: center
-                    - align-self: center
-                    icon:
-                    - width: 100%
-                    - height: 100%
-                    - color: var(--custom-active)
-                    name:
-                    - font-weight: 500
-                    - font-size: 1rem
-                    - justify-self: center
-                    - color: var(--custom-active)
+          - type: custom:custom-features-card
+            features:
+            - type: custom:service-call
+              entries:
+              - type: button
+                entity_id: ''
+                label: Abort and Reset
+                icon: mdi:cancel
+                thumb: md3-elevated
+                tap_action:
+                  action: perform-action
+                  perform_action: script.helper_script
+                  data:
+                    action_type: abort
             uix:
               style: "ha-card {\n  border: none;\n  background: none;\n  box-shadow:\
                 \ none;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
@@ -661,18 +642,21 @@ views:
                 \ | list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
                 \ | int(0) > 0 %}\n  {{ disabled | reject('eq', door) | list | tojson\
                 \ }}\n{% else %}\n  {{ disabled | tojson }}\n{% endif %}"
-    - type: tile
-      grid_options:
-        columns: full
-      entity: timer.timer_helper
-      name: Light Template Active
-      vertical: false
-      tap_action:
-        action: none
-      features_position: bottom
-      visibility:
-      - condition: state
-        state_not: idle
+    - type: custom:state-switch
+      entity: "{{ 'on'\n   if state_attr('automation.light_automations', 'current')\
+        \ | int(0) > 0\n   and not is_state('timer.timer_helper', 'idle')\n   else\
+        \ 'off'\n}}"
+      states:
+        'on':
+          type: tile
+          grid_options:
+            columns: full
+          entity: timer.timer_helper
+          name: Light Template Active
+          vertical: false
+          tap_action:
+            action: none
+          features_position: bottom
     - type: heading
       icon: mdi:devices
       heading: Devices
@@ -2450,84 +2434,10 @@ views:
   subview: false
   cards: []
   dense_section_placement: true
-  badges:
-  - type: custom:mod-card
-    visibility:
-    - condition: state
-      entity: light.kitchen_lights
-      state: 'off'
-    card:
-      type: custom:mushroom-template-badge
-      icon: mdi:home-off
-      content: Away Mode
-    card_mod:
-      style:
-        .: "ha-card {\n  --ha-card-box-shadow: none !important;\n}\n"
-        mushroom-template-badge$: ".badge {\n  background: var(--custom-bg) !important;\n\
-          }\n"
+  badges: []
   theme: Frosted Glass
 - title: homealt
-  badges:
-  - type: custom:mod-card
-    visibility:
-    - condition: state
-      entity: light.kitchen_lights
-      state: 'off'
-    - condition: state
-      entity: light.bathroom_light
-      state: 'off'
-    - condition: state
-      entity: light.main_lights
-      state: 'off'
-    - condition: state
-      entity: light.closet_light
-      state: 'off'
-    - condition: state
-      entity: light.bedroom_lamp
-      state: 'off'
-    - condition: state
-      entity: light.living_room_lamp
-      state: 'off'
-    - condition: state
-      entity: light.living_room_ceiling_lights
-      state: 'off'
-    - condition: state
-      entity: light.bedroom_tv_backlight
-      state: 'off'
-    - condition: state
-      entity: light.bedroom_ceiling_lights
-      state: 'off'
-    - condition: state
-      entity: fan.bedroom_fan
-      state: 'off'
-    - condition: state
-      entity: fan.bedroom_ceiling_fan
-      state: 'off'
-    - condition: state
-      entity: fan.living_room_ceiling_fan
-      state: 'off'
-    - condition: state
-      entity: media_player.bedroom_tv
-      state: 'off'
-    - condition: state
-      entity: sensor.recent_alexa
-      state: none
-    - condition: state
-      entity: binary_sensor.apartment_presence
-      state: 'off'
-    - condition: state
-      entity: person.blake_foster
-      state_not: home
-    card:
-      type: custom:mushroom-template-badge
-      icon: mdi:home-off
-      content: Away Mode
-      color: var(--custom-active)
-    card_mod:
-      style:
-        .: "ha-card {\n  --ha-card-box-shadow: none !important;\n}\n"
-        mushroom-template-badge$: ".badge {\n  background: var(--custom-bg) !important;\n\
-          }\n"
+  badges: []
   sections:
   - type: grid
     cards:
@@ -2551,141 +2461,189 @@ views:
         entity: input_datetime.home_timestamp
         grid_options:
           columns: full
+        card_mod:
+          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
+            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
+            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
       - type: tile
         entity: input_datetime.last_door_open
         grid_options:
           columns: full
+        card_mod:
+          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
+            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
+            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
       - type: tile
         entity: sensor.recent_alexa
         grid_options:
           columns: full
+        card_mod:
+          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
+            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
+            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
       - type: tile
         entity: input_boolean.phone_active
+        card_mod:
+          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
+            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
+            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
       - type: tile
         entity: input_boolean.disable_toggle
         name: Music Disable
         vertical: false
         features_position: bottom
+        card_mod:
+          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
+            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
+            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
       hide_backdrop: true
       styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
         \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
         \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
         \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
         }"
-    - type: vertical-stack
+    - type: custom:bubble-card
+      card_type: pop-up
+      hash: '#Alternate'
+      button_type: switch
+      sub_button:
+        main: []
+        bottom: []
+      slider_fill_orientation: left
+      slider_value_position: right
+      name: Navigate
+      button_action: {}
+      icon: mdi:navigation-variant
+      show_header: true
+      bg_opacity: '50'
+      bg_blur: '30'
       cards:
-      - type: custom:bubble-card
-        card_type: pop-up
-        hash: '#Alternate'
-        button_type: switch
-        sub_button:
-          main: []
-          bottom: []
-        slider_fill_orientation: left
-        slider_value_position: right
-        name: Navigate
-        button_action: {}
-        icon: mdi:navigation-variant
-        show_header: true
-        bg_opacity: '40'
-        bg_blur: '30'
+      - type: grid
         cards:
-        - type: grid
-          cards:
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Automations
-            tap_action:
-              action: navigate
-              navigation_path: /config/automation
-            icon: mdi:robot
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Scenes
-            tap_action:
-              action: navigate
-              navigation_path: /config/scene
-            icon: mdi:palette
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Scripts
-            tap_action:
-              action: navigate
-              navigation_path: /config/script
-            icon: mdi:script-text
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Integrations
-            tap_action:
-              action: navigate
-              navigation_path: /config/integrations
-            icon: mdi:puzzle
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Entities
-            tap_action:
-              action: navigate
-              navigation_path: /config/entities
-            icon: mdi:shape
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Helpers
-            tap_action:
-              action: navigate
-              navigation_path: /config/helpers
-            icon: mdi:tools
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Devices
-            tap_action:
-              action: navigate
-              navigation_path: /config/devices
-            icon: mdi:devices
-          - show_name: true
-            show_icon: true
-            type: button
-            name: Activity
-            tap_action:
-              action: navigate
-              navigation_path: /logbook
-            icon: mdi:format-list-bulleted
-          - show_name: true
-            show_icon: true
-            type: button
-            name: History
-            tap_action:
-              action: navigate
-              navigation_path: /history
-            icon: mdi:chart-box
-          grid_options:
-            columns: 12
-            rows: auto
-        - type: tile
-          entity: light.closet_light
-          name: Current Helpers
-          icon: mdi:tools
-          hide_state: true
-          vertical: false
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Automations
           tap_action:
             action: navigate
-            navigation_path: '#helperalt'
-          features_position: bottom
-          grid_options:
-            columns: full
-        bg_color: transparent
-        backdrop_blur: '0'
-        shadow_opacity: '0'
-        styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
-          \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
-          \ var(--custom-bg) !important;\n}\n.bubble-icon-container {\n  background-color:\
-          \ var(--custom-bg) !important;\n}"
+            navigation_path: /config/automation
+          icon: mdi:robot
+          card_mod:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Scenes
+          tap_action:
+            action: navigate
+            navigation_path: /config/scene
+          icon: mdi:palette
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Scripts
+          tap_action:
+            action: navigate
+            navigation_path: /config/script
+          icon: mdi:script-text
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Integrations
+          tap_action:
+            action: navigate
+            navigation_path: /config/integrations
+          icon: mdi:puzzle
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Entities
+          tap_action:
+            action: navigate
+            navigation_path: /config/entities
+          icon: mdi:shape
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Helpers
+          tap_action:
+            action: navigate
+            navigation_path: /config/helpers
+          icon: mdi:tools
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Devices
+          tap_action:
+            action: navigate
+            navigation_path: /config/devices
+          icon: mdi:devices
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Activity
+          tap_action:
+            action: navigate
+            navigation_path: /logbook
+          icon: mdi:format-list-bulleted
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: History
+          tap_action:
+            action: navigate
+            navigation_path: /history
+          icon: mdi:chart-box
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        grid_options:
+          columns: 12
+          rows: auto
+      - type: tile
+        grid_options:
+          columns: full
+        entity: light.closet_light
+        name: Current Helpers
+        icon: mdi:tools
+        hide_state: true
+        vertical: false
+        tap_action:
+          action: navigate
+          navigation_path: '#helperalt'
+        features_position: bottom
+        card_mod:
+          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
+            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
+            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
+      hide_backdrop: true
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+        }"
     - type: custom:bubble-card
       card_type: button
       button_type: name
@@ -2721,66 +2679,20 @@ views:
             uix:
               style: "ha-card {\n  border: none;\n  background: none;\n  margin-bottom:\
                 \ -15px;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
-          - type: custom:button-card
-            show_state: false
-            show_name: false
-            show_icon: false
-            tap_action:
-              action: none
-            styles:
-              grid:
-              - grid-template-areas: '"run_button"'
-              - grid-template-columns: 1fr
-              - grid-template-rows: 1fr
-              card:
-              - padding: 10px
-            custom_fields:
-              run_button:
-                card:
-                  type: custom:button-card
-                  name: Abort and Reset
-                  icon: mdi:cancel
-                  show_state: false
-                  tap_action:
-                    action: perform-action
-                    perform_action: script.helper_script
-                    target:
-                      entity_id: script.helper_script
-                    data:
-                      action_type: abort
-                  styles:
-                    grid:
-                    - grid-template-areas: '"i n"'
-                    - grid-template-columns: 2.5rem min-content
-                    - grid-template-rows: 1fr
-                    - justify-content: center
-                    - align-items: center
-                    - align-content: center
-                    - column-gap: .25rem
-                    card:
-                    - background-color: var(--custom-bg)
-                    - border: 1px solid rgba(255, 255, 255, 0.2)
-                    - border-radius: 20px
-                    - height: 3rem
-                    - padding-right: 3rem
-                    - padding-left: 2.8rem
-                    - box-shadow: none
-                    - justify-self: center
-                    img_cell:
-                    - width: 1.5rem
-                    - height: 1.5rem
-                    - background-color: transparent
-                    - justify-self: center
-                    - align-self: center
-                    icon:
-                    - width: 100%
-                    - height: 100%
-                    - color: var(--custom-active)
-                    name:
-                    - font-weight: 500
-                    - font-size: 1rem
-                    - justify-self: center
-                    - color: var(--custom-active)
+          - type: custom:custom-features-card
+            features:
+            - type: custom:service-call
+              entries:
+              - type: button
+                entity_id: ''
+                label: Abort and Reset
+                icon: mdi:cancel
+                thumb: md3-elevated
+                tap_action:
+                  action: perform-action
+                  perform_action: script.helper_script
+                  data:
+                    action_type: abort
             uix:
               style: "ha-card {\n  border: none;\n  background: none;\n  box-shadow:\
                 \ none;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
@@ -2848,18 +2760,21 @@ views:
                 \ | list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
                 \ | int(0) > 0 %}\n  {{ disabled | reject('eq', door) | list | tojson\
                 \ }}\n{% else %}\n  {{ disabled | tojson }}\n{% endif %}"
-    - type: tile
-      grid_options:
-        columns: full
-      entity: timer.timer_helper
-      name: Light Template Active
-      vertical: false
-      tap_action:
-        action: none
-      features_position: bottom
-      visibility:
-      - condition: state
-        state_not: idle
+    - type: custom:state-switch
+      entity: "{{ 'on'\n   if state_attr('automation.light_automations', 'current')\
+        \ | int(0) > 0\n   and not is_state('timer.timer_helper', 'idle')\n   else\
+        \ 'off'\n}}"
+      states:
+        'on':
+          type: tile
+          grid_options:
+            columns: full
+          entity: timer.timer_helper
+          name: Light Template Active
+          vertical: false
+          tap_action:
+            action: none
+          features_position: bottom
     - type: heading
       icon: mdi:devices
       heading: Devices
@@ -3597,89 +3512,6 @@ views:
   - type: grid
     cards:
     - type: heading
-      icon: mdi:cloud-upload-outline
-      heading_style: title
-      heading: Backup & AI
-      uix:
-        style: ".title {\n  font-size: 20px !important;\n}\n.title ha-icon {\n  --mdc-icon-size:\
-          \ 20px !important;\n}\n"
-    - type: custom:button-card
-      entity: script.push_ha_info_to_github_create_ai_zip_file_now
-      show_state: true
-      name: Generate HA Info Folder
-      tap_action:
-        action: none
-      state:
-      - valye: 'on'
-        state_display: generating
-      - value: 'off'
-        state_display: 'off'
-      styles:
-        grid:
-        - grid-template-areas: '"i n run_button" "i s run_button"'
-        - grid-template-columns: min-content min-content 1fr
-        - grid-template-rows: 1fr 1fr
-        card:
-        - padding: .7rem
-        - height: 4.5rem
-        img_cell:
-        - background-color: transparent
-        - width: 4rem
-        icon:
-        - width: 3rem
-        - color: "[[[\n  return entity.state === 'on' ? 'var(--custom-active)' : 'var(--custom-contrast)';\n\
-            ]]]\n"
-        - padding-bottom: .25rem
-        - margin-left: -.5rem
-        name:
-        - justify-self: start
-        - font-weight: 500
-        - font-size: 1rem
-        state:
-        - justify-self: start
-        - font-size: 1rem
-      custom_fields:
-        run_button:
-          card:
-            type: custom:custom-features-card
-            features:
-            - type: custom:service-call
-              entries:
-              - type: button
-                label: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      Generating...\n    {% else %}\n      Generate\n\
-                  \    {% endif %} \n"
-                icon: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      null\n    {% else %}\n      local:github_zip_script\n\
-                  \    {% endif %} \n"
-                thumb: md3-elevated
-                tap_action:
-                  action: perform-action
-                  perform_action: script.turn_on
-                  target:
-                    entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
-                toggle_styles: false
-                styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                  \  --color: var(--custom-bg); \n  border-radius: var(--custom-radius);\n\
-                  \  box-shadow: none;\n  margin-right: auto\n  margin-left: auto\
-                  \  \n  width: auto\n  justify-content: space-around\n  justify-self:\
-                  \ space-around\n  justify-items: space-around\n}\n.label {\n   \
-                  \ {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n\
-                  \      color: var(--custom-contrast);\n    {% endif %} \n}\n.icon\
-                  \ {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n\
-                  \      color: var(--custom-contrast);\n    {% endif %}\n  padding-bottom:\
-                  \ .25rem\n}"
-                entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
-            transparent: false
-            uix:
-              style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
-                \ none;\n  margin-right: auto\n  margin-left: auto\n  width: auto\n\
-                \  justify-content: space-around\n  justify-self: space-around\n \
-                \ justify-items: space-around\n\n}\nha-card::before {\ncontent: none\
-                \ !important;\n}\n"
-    - type: heading
       heading_style: title
       icon: mdi:hammer-screwdriver
       badges:
@@ -4363,6 +4195,93 @@ views:
     - type: entities
       entities:
       - entity: input_text.alarm_music
+  - type: grid
+    cards:
+    - type: heading
+      heading: New section
+    - type: heading
+      icon: mdi:cloud-upload-outline
+      heading_style: title
+      heading: Backup & AI
+      uix:
+        style: ".title {\n  font-size: 20px !important;\n}\n.title ha-icon {\n  --mdc-icon-size:\
+          \ 20px !important;\n}\n"
+    - type: custom:button-card
+      entity: script.push_ha_info_to_github_create_ai_zip_file_now
+      show_state: true
+      name: Generate HA Info Folder
+      tap_action:
+        action: none
+      state:
+      - valye: 'on'
+        state_display: generating
+      - value: 'off'
+        state_display: 'off'
+      styles:
+        grid:
+        - grid-template-areas: '"i n run_button" "i s run_button"'
+        - grid-template-columns: min-content min-content 1fr
+        - grid-template-rows: 1fr 1fr
+        card:
+        - padding: .7rem
+        - height: 4.5rem
+        img_cell:
+        - background-color: transparent
+        - width: 4rem
+        icon:
+        - width: 3rem
+        - color: "[[[\n  return entity.state === 'on' ? 'var(--custom-active)' : 'var(--custom-contrast)';\n\
+            ]]]\n"
+        - padding-bottom: .25rem
+        - margin-left: -.5rem
+        name:
+        - justify-self: start
+        - font-weight: 500
+        - font-size: 1rem
+        state:
+        - justify-self: start
+        - font-size: 1rem
+      custom_fields:
+        run_button:
+          card:
+            type: custom:custom-features-card
+            features:
+            - type: custom:service-call
+              entries:
+              - type: button
+                label: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      Generating...\n    {% else %}\n      Generate\n\
+                  \    {% endif %} \n"
+                icon: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      null\n    {% else %}\n      local:github_zip_script\n\
+                  \    {% endif %} \n"
+                thumb: md3-elevated
+                tap_action:
+                  action: perform-action
+                  perform_action: script.turn_on
+                  target:
+                    entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
+                toggle_styles: false
+                styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+                  \  --color: var(--custom-bg); \n  border-radius: var(--custom-radius);\n\
+                  \  box-shadow: none;\n  margin-right: auto\n  margin-left: auto\
+                  \  \n  width: auto\n  justify-content: space-around\n  justify-self:\
+                  \ space-around\n  justify-items: space-around\n}\n.label {\n   \
+                  \ {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n\
+                  \      color: var(--custom-contrast);\n    {% endif %} \n}\n.icon\
+                  \ {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n\
+                  \      color: var(--custom-contrast);\n    {% endif %}\n  padding-bottom:\
+                  \ .25rem\n}"
+                entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
+            transparent: false
+            uix:
+              style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
+                \ none;\n  margin-right: auto\n  margin-left: auto\n  width: auto\n\
+                \  justify-content: space-around\n  justify-self: space-around\n \
+                \ justify-items: space-around\n\n}\nha-card::before {\ncontent: none\
+                \ !important;\n}\n"
   header:
     layout: center
     badges_position: bottom
@@ -4385,21 +4304,21 @@ views:
   cards:
   - type: custom:vertical-stack-in-card
     cards:
-    - type: conditional
-      conditions:
-      - condition: state
-        entity: timer.timer_helper
-        state_not: idle
-      card:
-        type: tile
-        grid_options:
-          columns: full
-        entity: timer.timer_helper
-        name: Light Template Active
-        vertical: false
-        tap_action:
-          action: none
-        features_position: bottom
+    - type: custom:state-switch
+      entity: "{{ 'on'\n   if state_attr('automation.light_automations', 'current')\
+        \ | int(0) > 0\n   and not is_state('timer.timer_helper', 'idle')\n   else\
+        \ 'off'\n}}"
+      states:
+        'on':
+          type: tile
+          grid_options:
+            columns: full
+          entity: timer.timer_helper
+          name: Light Template Active
+          vertical: false
+          tap_action:
+            action: none
+          features_position: bottom
     - type: custom:state-switch
       entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
         | int(0) > 0 else ''off'' }}'
@@ -4418,66 +4337,20 @@ views:
             uix:
               style: "ha-card {\n  border: none;\n  background: none;\n  margin-bottom:\
                 \ -15px;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
-          - type: custom:button-card
-            show_state: false
-            show_name: false
-            show_icon: false
-            tap_action:
-              action: none
-            styles:
-              grid:
-              - grid-template-areas: '"run_button"'
-              - grid-template-columns: 1fr
-              - grid-template-rows: 1fr
-              card:
-              - padding: 10px
-            custom_fields:
-              run_button:
-                card:
-                  type: custom:button-card
-                  name: Abort and Reset
-                  icon: mdi:cancel
-                  show_state: false
-                  tap_action:
-                    action: perform-action
-                    perform_action: script.helper_script
-                    target:
-                      entity_id: script.helper_script
-                    data:
-                      action_type: abort
-                  styles:
-                    grid:
-                    - grid-template-areas: '"i n"'
-                    - grid-template-columns: 2.5rem min-content
-                    - grid-template-rows: 1fr
-                    - justify-content: center
-                    - align-items: center
-                    - align-content: center
-                    - column-gap: .25rem
-                    card:
-                    - background-color: var(--custom-bg)
-                    - border: 1px solid rgba(255, 255, 255, 0.2)
-                    - border-radius: 20px
-                    - height: 3rem
-                    - padding-right: 3rem
-                    - padding-left: 2.8rem
-                    - box-shadow: none
-                    - justify-self: center
-                    img_cell:
-                    - width: 1.5rem
-                    - height: 1.5rem
-                    - background-color: transparent
-                    - justify-self: center
-                    - align-self: center
-                    icon:
-                    - width: 100%
-                    - height: 100%
-                    - color: var(--custom-active)
-                    name:
-                    - font-weight: 500
-                    - font-size: 1rem
-                    - justify-self: center
-                    - color: var(--custom-active)
+          - type: custom:custom-features-card
+            features:
+            - type: custom:service-call
+              entries:
+              - type: button
+                entity_id: ''
+                label: Abort and Reset
+                icon: mdi:cancel
+                thumb: md3-elevated
+                tap_action:
+                  action: perform-action
+                  perform_action: script.helper_script
+                  data:
+                    action_type: abort
             uix:
               style: "ha-card {\n  border: none;\n  background: none;\n  box-shadow:\
                 \ none;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
@@ -5662,6 +5535,148 @@ views:
     cards:
     - type: custom:bubble-card
       card_type: pop-up
+      hash: '#masonrypop'
+      button_type: switch
+      sub_button:
+        main: []
+        bottom: []
+      slider_fill_orientation: left
+      slider_value_position: right
+      name: Navigate
+      button_action: {}
+      icon: mdi:navigation-variant
+      show_header: true
+      bg_opacity: '50'
+      bg_blur: '30'
+      cards:
+      - type: grid
+        cards:
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Automations
+          tap_action:
+            action: navigate
+            navigation_path: /config/automation
+          icon: mdi:robot
+          card_mod:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Scenes
+          tap_action:
+            action: navigate
+            navigation_path: /config/scene
+          icon: mdi:palette
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Scripts
+          tap_action:
+            action: navigate
+            navigation_path: /config/script
+          icon: mdi:script-text
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Integrations
+          tap_action:
+            action: navigate
+            navigation_path: /config/integrations
+          icon: mdi:puzzle
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Entities
+          tap_action:
+            action: navigate
+            navigation_path: /config/entities
+          icon: mdi:shape
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Helpers
+          tap_action:
+            action: navigate
+            navigation_path: /config/helpers
+          icon: mdi:tools
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Devices
+          tap_action:
+            action: navigate
+            navigation_path: /config/devices
+          icon: mdi:devices
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: Activity
+          tap_action:
+            action: navigate
+            navigation_path: /logbook
+          icon: mdi:format-list-bulleted
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        - show_name: true
+          show_icon: true
+          type: button
+          name: History
+          tap_action:
+            action: navigate
+            navigation_path: /history
+          icon: mdi:chart-box
+          uix:
+            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
+              \ !important;\n}\n"
+        grid_options:
+          columns: 12
+          rows: auto
+      - type: tile
+        grid_options:
+          columns: full
+        entity: light.closet_light
+        name: Current Helpers
+        icon: mdi:tools
+        hide_state: true
+        vertical: false
+        tap_action:
+          action: navigate
+          navigation_path: '#helpermasonry'
+        features_position: bottom
+        card_mod:
+          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
+            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
+            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
+      hide_backdrop: true
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+        }"
+    - type: custom:bubble-card
+      card_type: pop-up
       hash: '#helpermasonry'
       button_type: switch
       sub_button:
@@ -5680,139 +5695,47 @@ views:
         entity: input_datetime.home_timestamp
         grid_options:
           columns: full
+        card_mod:
+          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
+            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
+            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
       - type: tile
         entity: input_datetime.last_door_open
         grid_options:
           columns: full
+        card_mod:
+          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
+            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
+            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
       - type: tile
         entity: sensor.recent_alexa
         grid_options:
           columns: full
+        card_mod:
+          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
+            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
+            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
       - type: tile
         entity: input_boolean.phone_active
+        card_mod:
+          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
+            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
+            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
       - type: tile
         entity: input_boolean.disable_toggle
         name: Music Disable
         vertical: false
         features_position: bottom
+        card_mod:
+          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
+            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
+            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
       hide_backdrop: true
       styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
         \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
         \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
         \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
         }"
-    - type: custom:bubble-card
-      card_type: pop-up
-      hash: '#masonrypop'
-      button_type: switch
-      sub_button:
-        main: []
-        bottom: []
-      slider_fill_orientation: left
-      slider_value_position: right
-      name: Navigate
-      button_action: {}
-      icon: mdi:navigation-variant
-      show_header: true
-      bg_opacity: '40'
-      bg_blur: '30'
-      cards:
-      - type: grid
-        cards:
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Automations
-          tap_action:
-            action: navigate
-            navigation_path: /config/automation
-          icon: mdi:robot
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Scenes
-          tap_action:
-            action: navigate
-            navigation_path: /config/scene
-          icon: mdi:palette
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Scripts
-          tap_action:
-            action: navigate
-            navigation_path: /config/script
-          icon: mdi:script-text
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Integrations
-          tap_action:
-            action: navigate
-            navigation_path: /config/integrations
-          icon: mdi:puzzle
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Entities
-          tap_action:
-            action: navigate
-            navigation_path: /config/entities
-          icon: mdi:shape
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Helpers
-          tap_action:
-            action: navigate
-            navigation_path: /config/helpers
-          icon: mdi:tools
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Devices
-          tap_action:
-            action: navigate
-            navigation_path: /config/devices
-          icon: mdi:devices
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Activity
-          tap_action:
-            action: navigate
-            navigation_path: /logbook
-          icon: mdi:format-list-bulleted
-        - show_name: true
-          show_icon: true
-          type: button
-          name: History
-          tap_action:
-            action: navigate
-            navigation_path: /history
-          icon: mdi:chart-box
-        grid_options:
-          columns: 12
-          rows: auto
-      - type: tile
-        grid_options:
-          columns: full
-        entity: light.closet_light
-        name: Current Helpers
-        icon: mdi:tools
-        hide_state: true
-        vertical: false
-        tap_action:
-          action: navigate
-          navigation_path: '#helpermasonry'
-        features_position: bottom
-      bg_color: transparent
-      backdrop_blur: '0'
-      shadow_opacity: '0'
-      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
-        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
-        \ var(--custom-bg) !important;\n}\n.bubble-icon-container {\n  background-color:\
-        \ var(--custom-bg) !important;\n}"
   theme: Liquid Glass
   background:
     opacity: 80
@@ -5834,49 +5757,49 @@ views:
     visibility:
     - condition: state
       entity: light.kitchen_lights
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.bathroom_light
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.main_lights
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.closet_light
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.bedroom_lamp
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.living_room_lamp
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.living_room_ceiling_lights
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.bedroom_tv_backlight
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: light.bedroom_ceiling_lights
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: fan.bedroom_fan
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: fan.bedroom_ceiling_fan
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: fan.living_room_ceiling_fan
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: media_player.bedroom_tv
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: sensor.recent_alexa
       state: none
     - condition: state
       entity: binary_sensor.apartment_presence
-      state: 'off'
+      state_not: 'on'
     - condition: state
       entity: person.blake_foster
       state_not: home

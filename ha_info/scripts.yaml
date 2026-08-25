@@ -102,6 +102,8 @@ push_ha_info_to_github_create_ai_zip_file_now:
   description: Generates HA_Overview.md, runs diagnostics, pushes to GitHub, AND creates
     a zip for download.
   mode: single
+  trace:
+    stored_traces: 10
   sequence:
   - action: shell_command.write_ha_overview
     data:
@@ -582,6 +584,8 @@ alexa_music:
                 data: {}
   alias: Alexa Music
   description: ''
+  trace:
+    stored_traces: 10
 set_my_room:
   alias: Set My Room
   description: Optimized room setup with Visual Editor formatting
@@ -776,6 +780,9 @@ helper_script:
                     for: 00:00:00
                 alias: Sensors outside -> detected OR timer finishes
               alias: Any sensor outside bedroom is on IF BLOCK
-      alias: In bed lights off dashboard timer sequence
+      alias: In bed & lights off dashboard timer sequence
   alias: Helper script
   description: ''
+  mode: restart
+  trace:
+    stored_traces: 10
