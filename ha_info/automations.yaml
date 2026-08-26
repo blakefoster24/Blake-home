@@ -464,21 +464,6 @@
           target:
             entity_id: light.bathroom_light
           data: {}
-    default:
-    - action: timer.start
-      metadata: {}
-      target:
-        entity_id: timer.timer_helper
-      data:
-        duration:
-          hours: 0
-          minutes: 5
-          seconds: 0
-    - delay:
-        hours: 0
-        minutes: 5
-        seconds: 0
-        milliseconds: 0
   mode: parallel
   trace:
     stored_traces: 30

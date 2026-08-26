@@ -1093,8 +1093,10 @@ views:
         entity: binary_sensor.workday_tomorrow_template_sensor
       heading: Work
       uix:
-        style: ".title {\n  font-size: 20px !important;\n}\n.title ha-icon {\n  --mdc-icon-size:\
-          \ 20px !important;\n}\n"
+        style: ".title {\n  font-size: 20px !important;\n}\n\n.title ha-icon {\n \
+          \ --mdc-icon-size: 25px !important;\n}\n\n.badges hui-entity-heading-badge\
+          \ {\n  --uix-icon-color: {{ '#E1B000' if is_state('binary_sensor.workday_tomorrow_template_sensor',\
+          \ 'on') else 'var(--state-inactive-color)' }};\n}\n"
     - type: custom:button-card
       entity: input_boolean.workday_today_toggle
       section_mode: true
@@ -1304,11 +1306,17 @@ views:
     - type: heading
       heading_style: title
       icon: mdi:leak
-      badges: []
       heading: Sensors
+      badges:
+      - type: entity
+        show_state: true
+        show_icon: true
+        entity: binary_sensor.apartment_presence
       uix:
-        style: ".title {\n  font-size: 20px !important;\n}\n.title ha-icon {\n  --mdc-icon-size:\
-          \ 25px !important;\n}\n"
+        style: ".title {\n  font-size: 20px !important;\n}\n\n.title ha-icon {\n \
+          \ --mdc-icon-size: 25px !important;\n}\n\n.badges hui-entity-heading-badge\
+          \ {\n  --uix-icon-color: {{ '#E1B000' if is_state('binary_sensor.apartment_presence',\
+          \ 'on') else 'var(--state-inactive-color)' }};\n}\n"
     - type: custom:button-card
       entity: binary_sensor.front_door
       section_mode: true
@@ -2268,6 +2276,207 @@ views:
     cards:
     - type: heading
       heading: New section
+    - type: custom:vertical-stack-in-card
+      cards:
+      - type: custom:mini-media-player
+        entity: media_player.bedroom_tv
+        volume_stateless: true
+        source: full
+        artwork: material
+        uix:
+          style: "ha-card {\n  border-radius: var(--custom-radius) !important;\n \
+            \ box-shadow: none !important;\n  margin-bottom: 5px\n}\n{% if is_state('media_player.bedroom_tv',\
+            \ 'off') %}\n  ha-card {\n    box-shadow: 50px;\n    border: 1px solid\
+            \ rgba(255, 255, 255, 0.2) !important;\n  }\n  ha-card::before,\n  .mmp__bg,\n\
+            \  .mmp__bg::before {\n    display: none !important;\n  }\n{% endif %}\n"
+      - type: custom:uix-forge
+        forge:
+          mold: card
+          sparks:
+          - type: event
+            forge_id: bedroom_tv_controls
+        element:
+          type: conditional
+          conditions:
+          - condition: state
+            entity: media_player.bedroom_tv
+            state: "{{ states('media_player.bedroom_tv')\n   if (uixForge.event.expanded\
+              \ | default(false))\n   else '__uix_collapsed__' }}"
+          card:
+            type: vertical-stack
+            cards:
+            - type: tile
+              entity: light.bedroom_tv_backlight
+              name: Tv Backlight
+              hide_state: true
+              vertical: false
+              tap_action:
+                action: none
+              icon_tap_action:
+                action: none
+              features:
+              - type: light-brightness
+              features_position: inline
+              uix:
+                style: "ha-card {\n  border: none !important;\n  background: none\
+                  \ !important;\n  box-shadow: none !important;\n  margin-top: 1rem\
+                  \ !important;\n  margin-bottom: 0px !important;\n}\nha-card::before\
+                  \ {\n  content: none !important;\n}\n"
+            - type: custom:custom-features-card
+              features:
+              - type: custom:service-call
+                entries:
+                - type: button
+                  entity_id: ''
+                  label: Video Mode
+                  tap_action:
+                    action: perform-action
+                    perform_action: button.press
+                    target:
+                      entity_id: button.blake_foster30_gmail_com_video_mode_scene
+                    data: {}
+                  thumb: md3-elevated
+                  styles: ":host {\n  border: var(--custom-button-border);\n  border-radius:\
+                    \ var(--custom-radius);\n  --color: var(--custom-bg);\n}\n.label\
+                    \ {\n  color: var(--custom-contrast);\n}"
+                - type: button
+                  entity_id: light.bedroom_tv_backlight
+                  tap_action:
+                    action: perform-action
+                    perform_action: light.toggle
+                    target:
+                      entity_id: light.bedroom_tv_backlight
+                    data: {}
+                  thumb: md3-elevated
+                  label: Toggle
+                  styles: ":host {\n  border: var(--custom-button-border);\n  border-radius:\
+                    \ var(--custom-radius);\n  --color: {{ 'var(--custom-active)'\
+                    \ if is_state('light.bedroom_tv_backlight', 'on') else 'var(--custom-bg)'\
+                    \ }};\n}\n.label {\n  color: var(--custom-contrast);\n}"
+                  icon: local:tv_backlight
+                - type: button
+                  entity_id: ''
+                  tap_action:
+                    action: more-info
+                    target:
+                      entity_id: light.bedroom_tv_backlight
+                    data: {}
+                  thumb: md3-elevated
+                  label: Customize
+                  styles: ":host {\n  border: var(--custom-button-border);\n  border-radius:\
+                    \ var(--custom-radius);\n  --color: var(--custom-bg);\n}\n.label\
+                    \ {\n  color: var(--custom-contrast);\n}"
+                styles: ''
+              transparent: false
+              uix:
+                style: "ha-card {\n  border: none !important;\n  background: none\
+                  \ !important;\n  box-shadow: none !important;\n  margin-bottom:\
+                  \ 0px !important;\n}\nha-card::before {\n  content: none !important;\n\
+                  }\n"
+            - type: vertical-stack
+              cards:
+              - type: custom:bubble-card
+                card_type: pop-up
+                hash: '#remote'
+                button_type: switch
+                slider_fill_orientation: left
+                slider_value_position: right
+                name: Remote
+                button_action: {}
+                icon: mdi:remote
+                show_header: true
+                bg_opacity: '50'
+                bg_blur: '30'
+                cards:
+                - type: custom:universal-remote-card
+                  rows:
+                  - - back
+                    - power
+                    - home
+                    - menu
+                    - youtube
+                  - - touchpad
+                    - - volume_buttons
+                  - - rewind
+                    - previous
+                    - play_pause
+                    - next
+                    - fast_forward
+                  platform: Roku
+                  remote_id: remote.bedroom_tv
+                  media_player_id: media_player.bedroom_tv
+                  grid_options:
+                    rows: auto
+                    columns: 12
+                  hold_time: 50
+                sub_button:
+                  main: []
+                  bottom: []
+                close_action:
+                  action: fire-dom-event
+                  uix_forge:
+                  - forge_id: bedroom_tv_controls
+                    data:
+                      expanded: false
+                  - forge_id: bedroom_tv_arrow
+                    data:
+                      expanded: false
+              - type: custom:bubble-card
+                card_type: button
+                button_type: name
+                name: Remote
+                icon: mdi:remote
+                button_action:
+                  tap_action:
+                    action: navigate
+                    navigation_path: '#remote'
+                styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
+                  \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
+                  \ 30px;\n  --bubble-button-border: var(--custom-button-border);\n\
+                  }\n"
+                sub_button:
+                  main: []
+                  bottom: []
+                uix:
+                  style:
+                    .: "ha-card {\n  background: none !important;\n  border: none\
+                      \ !important;\n  box-shadow: none !important;\n  padding: .5rem\
+                      \ .5rem .25rem .5rem !important;\n  margin-top: -2.5rem;\n}\n\
+                      ha-card::before {\n  content: none !important;\n}\n"
+              uix:
+                style: "ha-card {\n  border: none !important;\n  background: none\
+                  \ !important;\n  box-shadow: none !important;\n  margin-bottom:\
+                  \ 0px !important;\n}\nha-card::before {\n  content: none !important;\n\
+                  }\n"
+      - type: custom:uix-forge
+        forge:
+          mold: card
+          sparks:
+          - type: event
+            forge_id: bedroom_tv_arrow
+        element:
+          type: custom:mushroom-template-card
+          layout: vertical
+          icon: "{{ 'mdi:chevron-up'\n   if (uixForge.event.expanded | default(false))\n\
+            \   else 'mdi:chevron-down' }}"
+          tap_action:
+            action: fire-dom-event
+            uix_forge:
+            - forge_id: bedroom_tv_controls
+              data:
+                expanded: '{{ not (uixForge.event.expanded | default(false)) }}'
+            - forge_id: bedroom_tv_arrow
+              data:
+                expanded: '{{ not (uixForge.event.expanded | default(false)) }}'
+          uix:
+            style: "ha-card {\n  background: transparent !important;\n  height: 35px\
+              \ !important;\n  margin-top: -20px;\n  border: none !important;\n  box-shadow:\
+              \ none !important;\n}\n\nmushroom-shape-icon$: |\n  .shape {\n    --shape-color:\
+              \ transparent !important;\n    --shape-color-disabled: transparent !important;\n\
+              \    --shape-color: orange !important;\n    --icon-symbol-size: 2px\
+              \ !important;\n    --icon-size: 20px !important;\n    box-shadow: none\
+              \ !important;\n    border: none !important;\n  }\n\nha-card::before\
+              \ {\n  content: none !important;\n}\n"
   - type: grid
     cards:
     - type: heading
@@ -3385,11 +3594,17 @@ views:
     - type: heading
       heading_style: title
       icon: mdi:leak
-      badges: []
       heading: Sensors
+      badges:
+      - type: entity
+        show_state: true
+        show_icon: true
+        entity: binary_sensor.apartment_presence
       uix:
-        style: ".title {\n  font-size: 20px !important;\n}\n.title ha-icon {\n  --mdc-icon-size:\
-          \ 25px !important;\n}\n"
+        style: ".title {\n  font-size: 20px !important;\n}\n\n.title ha-icon {\n \
+          \ --mdc-icon-size: 25px !important;\n}\n\n.badges hui-entity-heading-badge\
+          \ {\n  --uix-icon-color: {{ '#E1B000' if is_state('binary_sensor.apartment_presence',\
+          \ 'on') else 'var(--state-inactive-color)' }};\n}\n"
     - type: custom:button-card
       entity: binary_sensor.front_door
       section_mode: true
@@ -3522,7 +3737,9 @@ views:
       heading: Work
       uix:
         style: ".title {\n  font-size: 20px !important;\n}\n.title ha-icon {\n  --mdc-icon-size:\
-          \ 20px !important;\n}\n"
+          \ 20px !important;\n}\n.badges hui-entity-heading-badge {\n  --uix-icon-color:\
+          \ {{ '#E1B000' if is_state('binary_sensor.workday_tomorrow_template_sensor',\
+          \ 'on') else 'var(--state-inactive-color)' }};\n}\n"
     - type: custom:button-card
       entity: input_boolean.workday_today_toggle
       section_mode: true
