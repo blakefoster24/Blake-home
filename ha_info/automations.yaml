@@ -1870,7 +1870,7 @@
             - 255
             - 73
             - 0
-            brightness: 100
+            brightness: 255
           target:
             entity_id: light.bedroom_tv_backlight
         - wait_for_trigger:
@@ -2023,7 +2023,7 @@
             title: Goodbye
             data:
               interruption level: time-sensitive
-      - alias: Out of bed = weather
+      - alias: Out of bed actions
         sequence:
         - wait_for_trigger:
           - trigger: state
@@ -2048,6 +2048,17 @@
           data:
             text_command: What’s the weather today?
             device_id: ba7e4aed08d0947fa03068f398842568
+        - alias: Turns off phone alarms if they haven’t run yet
+          if:
+          - condition: time
+            before: 08:55:00
+          then:
+          - action: notify.blake_foster30_gmail_com
+            metadata: {}
+            data:
+              message: Work Alarm OFF
+              title: Work Alarm OFF
+              target: blake.foster30@gmail.com
   mode: single
   trace:
     stored_traces: 50

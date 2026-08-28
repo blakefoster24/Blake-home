@@ -526,23 +526,24 @@ views:
         \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
         \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
         }"
-    - type: custom:bubble-card
-      card_type: button
-      button_type: name
-      sub_button:
-        main: []
-        bottom: []
-      slider_fill_orientation: left
-      slider_value_position: right
+    - type: tile
+      grid_options:
+        columns: full
+      entity: light.bathroom_light
       name: Navigate
       icon: mdi:navigation-variant
-      button_action:
-        tap_action:
-          action: navigate
-          navigation_path: /my-dashboard/home/#nav
-      styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
-        \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
-        \ 16px;\n}\n"
+      color: primary
+      hide_state: true
+      vertical: false
+      tap_action:
+        action: navigate
+        navigation_path: '#nav'
+      icon_tap_action:
+        action: none
+      features_position: bottom
+      card_mod:
+        style: "ha-card {\n  background: var(--custom-bg) !important;\n}\nha-tile-icon\
+          \ {\n  --tile-color: var(--custom-contrast) !important;\n}\n"
     - type: custom:state-switch
       entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
         | int(0) > 0 else ''off'' }}'
@@ -2477,6 +2478,21 @@ views:
               \ !important;\n    --icon-size: 20px !important;\n    box-shadow: none\
               \ !important;\n    border: none !important;\n  }\n\nha-card::before\
               \ {\n  content: none !important;\n}\n"
+    - type: tile
+      grid_options:
+        columns: full
+      entity: light.bathroom_light
+      name: Navigate
+      icon: mdi:navigation-variant
+      color: primary
+      hide_state: true
+      vertical: false
+      tap_action:
+        action: navigate
+        navigation_path: '#Alternate'
+      icon_tap_action:
+        action: none
+      features_position: bottom
   - type: grid
     cards:
     - type: heading
@@ -2853,23 +2869,24 @@ views:
         \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
         \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
         }"
-    - type: custom:bubble-card
-      card_type: button
-      button_type: name
-      sub_button:
-        main: []
-        bottom: []
+    - type: tile
+      grid_options:
+        columns: full
+      entity: light.bathroom_light
       name: Navigate
-      icon: mdi:navigation-variant-outline
-      button_action:
-        tap_action:
-          action: navigate
-          navigation_path: '#Alternate'
-      card_layout: large-2-rows
-      styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
-        \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
-        \ 18px !important;\n}\n.bubble-button-container {\n  background-color: var(--custom-bg)\
-        \ !important;\n}\n"
+      icon: mdi:navigation-variant
+      color: primary
+      hide_state: true
+      vertical: false
+      tap_action:
+        action: navigate
+        navigation_path: '#Alternate'
+      icon_tap_action:
+        action: none
+      features_position: bottom
+      card_mod:
+        style: "ha-card {\n  background: var(--custom-bg) !important;\n}\nha-tile-icon\
+          \ {\n  --tile-color: var(--custom-contrast) !important;\n}\n"
     - type: custom:state-switch
       entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
         | int(0) > 0 else ''off'' }}'
