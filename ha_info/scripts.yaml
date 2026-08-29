@@ -679,7 +679,7 @@ helper_script:
     - conditions:
       - condition: template
         value_template: '{{ action_type == ''abort'' }}'
-        alias: 'Action_tyoe: abort'
+        alias: 'Action_type: abort'
       sequence:
       - action: automation.turn_off
         metadata: {}
@@ -702,10 +702,36 @@ helper_script:
             action_type: abort
       alias: Workday wakeup abort
     - conditions:
-      - alias: 'Action_tyoe: lights'
+      - alias: 'Action_type: lights'
         condition: template
         value_template: '{{ action_type == ''lights'' }}'
       sequence:
+      - variables:
+          caller_config:
+            automation.light_automations:
+              sensors:
+              - binary_sensor.bathroom_presence
+              - binary_sensor.closet_motion
+              - binary_sensor.kitchen_presence
+              - binary_sensor.living_room_motion
+              threshold: 5
+              timer_duration: 00:05:00
+            automation.door_automation:
+              sensors:
+              - binary_sensor.kitchen_presence
+              - binary_sensor.living_room_motion
+              threshold: 2
+              timer_duration: 00:02:00
+      - variables:
+          sensors: '{{ caller_config[called_by][''sensors''] }}'
+          threshold: '{{ caller_config[called_by][''threshold''] }}'
+          timer_duration: '{{ caller_config[called_by][''timer_duration''] }}'
+      - action: input_text.set_value
+        target:
+          entity_id: input_text.script_tracking
+        metadata: {}
+        data:
+          value: '{{ state_attr(called_by, ''friendly_name'') }}'
       - if:
         - condition: light.is_on
           target:
@@ -720,67 +746,56 @@ helper_script:
         then:
         - repeat:
             until:
-            - condition: template
-              value_template: "{% set sensors = [\n  'binary_sensor.bathroom_presence',\n
-                \ 'binary_sensor.closet_motion',\n  'binary_sensor.kitchen_presence',\n
-                \ 'binary_sensor.living_room_motion'\n] %}\n{% set threshold = 5 %}\n{#
-                1. Expand the sensor list once to save resources #}\n{% set entities
-                = expand(sensors) %}\n\n{# 2. Check for any 'on' states or changes
-                within the threshold #}\n{% set any_on = entities | selectattr('state',
-                'eq', 'on') | list | count > 0 %}\n{% set any_recent = entities |
-                selectattr('last_changed', 'ge', now() - timedelta(minutes=threshold))
-                | list | count > 0 %}\n\n{# 3. Return true only if nothing is 'on'
-                AND nothing changed recently #}\n{{ not any_on and not any_recent
-                }}\n"
-              alias: No occupancy outside bedroom for 5 min
+            - alias: Dynamic sensor list off for set time
+              condition: template
+              value_template: "{% set entities = expand(sensors) %}\n{% set any_on
+                =\n  entities\n  | selectattr('state', 'eq', 'on')\n  | list\n  |
+                count > 0\n%}\n{% set any_recent =\n  entities\n  | selectattr(\n
+                \     'last_changed',\n      'ge',\n      now() - timedelta(minutes=threshold
+                | int)\n    )\n  | list\n  | count > 0\n%}\n{{ not any_on and not
+                any_recent }}\n"
             sequence:
-            - if:
-              - condition: template
-                value_template: '{{ expand(''binary_sensor.bathroom_presence'', ''binary_sensor.closet_motion'',
-                  ''binary_sensor.kitchen_presence'', ''binary_sensor.living_room_motion'')
-                  | selectattr(''state'', ''eq'', ''on'') | list | count > 0 }}
-
-                  '
-                alias: Any sensor outside bedroom is on
+            - alias: Any relevant sensor is on IF BLOCK
+              if:
+              - alias: Dynamic sensor list = on
+                condition: template
+                value_template: "{{ expand(sensors)\n  | selectattr('state', 'eq',
+                  'on')\n  | list\n  | count > 0 }}\n"
               then:
               - action: timer.pause
                 metadata: {}
                 target:
                   entity_id: timer.timer_helper
                 data: {}
-              - wait_template: '{{ expand(''binary_sensor.bathroom_presence'', ''binary_sensor.closet_motion'',
-                  ''binary_sensor.kitchen_presence'', ''binary_sensor.living_room_motion'')
-                  | selectattr(''state'', ''eq'', ''on'') | list | count == 0 }}
-
-                  '
-                alias: 'All sensors outside bedroom clear '
+              - alias: Dynamic sensor list = clear
+                wait_template: "{{ expand(sensors)\n  | selectattr('state', 'eq',
+                  'on')\n  | list\n  | count == 0 }}\n"
+                continue_on_timeout: false
               else:
               - action: timer.start
                 metadata: {}
                 target:
                   entity_id: timer.timer_helper
                 data:
-                  duration:
-                    hours: 0
-                    minutes: 5
-                    seconds: 0
-              - wait_for_trigger:
-                - trigger: state
-                  entity_id:
-                  - binary_sensor.living_room_motion
-                  - binary_sensor.closet_motion
-                  - binary_sensor.bathroom_presence
-                  - binary_sensor.kitchen_presence
-                  to:
-                  - 'on'
+                  duration: '{{ timer_duration }}'
+              - alias: Relevant sensors -> detected OR timer finishes
+                wait_for_trigger:
+                - trigger: template
+                  value_template: "{{ expand(sensors)\n  | selectattr('state', 'eq',
+                    'on')\n  | list\n  | count > 0 }}\n"
+                  alias: Dynamic sensor list -> detected
                 - trigger: timer.finished
                   target:
                     entity_id: timer.timer_helper
                   options:
                     for: 00:00:00
-                alias: Sensors outside -> detected OR timer finishes
-              alias: Any sensor outside bedroom is on IF BLOCK
-      alias: In bed & lights off dashboard timer sequence
+        - action: input_text.set_value
+          metadata: {}
+          target:
+            entity_id: input_text.script_tracking
+          data:
+            value: ''
+      alias: Lights -> dashboard timer sequence
   alias: Helper script
   description: ''
   mode: restart

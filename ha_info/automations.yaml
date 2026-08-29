@@ -349,11 +349,7 @@
             metadata: {}
             data:
               action_type: lights
-        - action: timer.cancel
-          metadata: {}
-          target:
-            entity_id: timer.timer_helper
-          data: {}
+              called_by: '{{ this.entity_id }}'
         - action: scene.turn_on
           metadata: {}
           target:
@@ -914,11 +910,12 @@
         target:
           entity_id: script.alexa_music
         data: {}
-      - action: script.alexa_music
+      - action: script.turn_on
         target:
           entity_id: script.alexa_music
         data:
-          action_type: stop
+          variables:
+            action_type: stop
         metadata: {}
     - conditions:
       - condition: trigger
@@ -930,11 +927,12 @@
         state:
         - 'off'
       sequence:
-      - action: script.alexa_music
+      - action: script.turn_on
         target:
           entity_id: script.alexa_music
         data:
-          action_type: disable triggger
+          variables:
+            action_type: disable trigger
         metadata: {}
       alias: If triggered by Echos playing > 1min and 1 more condition
     - conditions:
@@ -1288,13 +1286,19 @@
           data: {}
           target:
             entity_id: light.main_lights
-        - wait_template: "{{ (is_state('binary_sensor.kitchen_presence', 'off') and
-            \n   (now() - states.binary_sensor.kitchen_presence.last_changed).total_seconds()
-            > 120) and \n(is_state('binary_sensor.living_room_motion', 'off') and
-            \n   (now() - states.binary_sensor.living_room_motion.last_changed).total_seconds()
-            > 120)\n}}\n\n"
-          continue_on_timeout: true
-          alias: Living Space Occupancy Clear for 2 min
+        - parallel:
+          - wait_template: "{{ (is_state('binary_sensor.kitchen_presence', 'off')
+              and \n   (now() - states.binary_sensor.kitchen_presence.last_changed).total_seconds()
+              > 120) and \n(is_state('binary_sensor.living_room_motion', 'off') and
+              \n   (now() - states.binary_sensor.living_room_motion.last_changed).total_seconds()
+              > 120)\n}}\n\n"
+            continue_on_timeout: true
+            alias: Living Space Occupancy Clear for 2 min
+          - action: script.helper_script
+            metadata: {}
+            data:
+              action_type: lights
+              called_by: '{{ this.entity_id }}'
         - action: light.turn_off
           metadata: {}
           data: {}
@@ -2949,3 +2953,76 @@
           temperature: 68
           hvac_mode: heat
   mode: restart
+- id: '1787939305481'
+  alias: Security
+  description: ''
+  triggers:
+  - trigger: occupancy.detected
+    target:
+      entity_id: binary_sensor.apartment_presence
+    options:
+      behavior: each
+      for:
+        hours: 0
+        minutes: 1
+        seconds: 0
+    id: Apartment presence detected
+  - trigger: door.opened
+    target:
+      entity_id: binary_sensor.front_door
+    options:
+      behavior: each
+      for: 00:00:00
+    id: Door opened
+  - trigger: event
+    event_type: mobile_app_notification_action
+    event_data:
+      action: DISREGARD_SECURITY_ALERT
+    id: Disregard
+  conditions:
+  - condition: zone.not_in_zone
+    target:
+      entity_id: person.blake_foster
+    options:
+      behavior: any
+      for: 00:00:00
+      zone: zone.home
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Disregard
+      sequence:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id: input_boolean.general_toggle_helper
+        data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - Apartment presence detected
+        - Door opened
+      sequence:
+      - action: input_boolean.turn_on
+        metadata: {}
+        target:
+          entity_id: input_boolean.general_toggle_helper
+        data: {}
+      - action: notify.mobile_app_blakes_iphone
+        metadata: {}
+        data:
+          title: Security Alert!
+          message: '{{ trigger.id }} while not home'
+          data:
+            interruption-level: time-sensitive
+            actions:
+            - action: URI
+              title: Security Dashboard
+              uri: /my-dashboard/security
+            - action: DISREGARD_SECURITY_ALERT
+              title: Disregard
+              destructive: true
+  mode: queued
+  max: 10
