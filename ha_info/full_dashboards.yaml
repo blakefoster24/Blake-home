@@ -397,7 +397,7 @@ views:
       button_action: {}
       icon: mdi:navigation-variant
       show_header: true
-      bg_opacity: '50'
+      bg_opacity: '20'
       bg_blur: '30'
       cards:
       - type: grid
@@ -410,9 +410,6 @@ views:
             action: navigate
             navigation_path: /config/automation
           icon: mdi:robot
-          card_mod:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
         - show_name: true
           show_icon: true
           type: button
@@ -421,9 +418,6 @@ views:
             action: navigate
             navigation_path: /config/scene
           icon: mdi:palette
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
         - show_name: true
           show_icon: true
           type: button
@@ -432,9 +426,6 @@ views:
             action: navigate
             navigation_path: /config/script
           icon: mdi:script-text
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
         - show_name: true
           show_icon: true
           type: button
@@ -443,9 +434,6 @@ views:
             action: navigate
             navigation_path: /config/integrations
           icon: mdi:puzzle
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
         - show_name: true
           show_icon: true
           type: button
@@ -454,9 +442,6 @@ views:
             action: navigate
             navigation_path: /config/entities
           icon: mdi:shape
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
         - show_name: true
           show_icon: true
           type: button
@@ -465,9 +450,6 @@ views:
             action: navigate
             navigation_path: /config/helpers
           icon: mdi:tools
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
         - show_name: true
           show_icon: true
           type: button
@@ -476,9 +458,6 @@ views:
             action: navigate
             navigation_path: /config/devices
           icon: mdi:devices
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
         - show_name: true
           show_icon: true
           type: button
@@ -487,9 +466,6 @@ views:
             action: navigate
             navigation_path: /logbook
           icon: mdi:format-list-bulleted
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
         - show_name: true
           show_icon: true
           type: button
@@ -498,9 +474,6 @@ views:
             action: navigate
             navigation_path: /history
           icon: mdi:chart-box
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
         grid_options:
           columns: 12
           rows: auto
@@ -508,7 +481,7 @@ views:
         grid_options:
           columns: full
         entity: light.closet_light
-        name: Current Helpers
+        name: Helper States
         icon: mdi:tools
         hide_state: true
         vertical: false
@@ -516,17 +489,14 @@ views:
           action: navigate
           navigation_path: '#helper'
         features_position: bottom
-        card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\n"
       - type: tile
         grid_options:
           columns: 12
           rows: 1
         entity: binary_sensor.apartment_presence
-        name: Security View
+        name: Security Dashboard
         icon: mdi:shield-home
+        color: white
         hide_state: true
         vertical: false
         tap_action:
@@ -539,20 +509,17 @@ views:
           - type: button
             icon: mdi:shield-home
             thumb: md3-elevated
-            label: Security Dashboard
+            label: View
             tap_action:
               action: navigate
               navigation_path: /my-dashboard/security
-            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+            styles: ":host {\n  min-width: 50px !important;\n  min-height: 40px !important;\n\
+              \  margin-right: 0px;\n  border: var(--custom-button-border) !important;\n\
               \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
               \ }};\n  box-shadow: none;\n}\n.label {\n  color: {{ 'var(--custom-contrast)'\
               \ }};\n}\n.icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
             entity_id: binary_sensor.apartment_presence
         features_position: inline
-        card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\n"
       hide_backdrop: true
       styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
         \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
@@ -612,6 +579,28 @@ views:
             uix:
               style: "ha-card {\n  border: none;\n  background: none;\n  box-shadow:\
                 \ none;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
+    - type: custom:state-switch
+      entity: "{{ 'on'\n   if state_attr('script.helper_script', 'current') | int(0)\
+        \ > 0\n   and not is_state('timer.timer_helper', 'idle')\n   else 'off'\n\
+        }}"
+      states:
+        'on':
+          type: custom:uix-forge
+          forge:
+            mold: card
+            grid_options:
+              columns: full
+          element:
+            type: tile
+            entity: timer.timer_helper
+            name: 'Light Template Active - {{ states(''input_text.script_tracking'')
+              }}
+
+              '
+            vertical: false
+            tap_action:
+              action: none
+            features_position: bottom
     - type: custom:state-switch
       entity: template
       template: '{% set door_entity = ''automation.door_automation'' %} {% set wakeup_entity
@@ -676,21 +665,6 @@ views:
                 \ | list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
                 \ | int(0) > 0 %}\n  {{ disabled | reject('eq', door) | list | tojson\
                 \ }}\n{% else %}\n  {{ disabled | tojson }}\n{% endif %}"
-    - type: custom:state-switch
-      entity: "{{ 'on'\n   if state_attr('automation.light_automations', 'current')\
-        \ | int(0) > 0\n   and not is_state('timer.timer_helper', 'idle')\n   else\
-        \ 'off'\n}}"
-      states:
-        'on':
-          type: tile
-          grid_options:
-            columns: full
-          entity: timer.timer_helper
-          name: Light Template Active
-          vertical: false
-          tap_action:
-            action: none
-          features_position: bottom
     - type: heading
       icon: mdi:devices
       heading: Devices
@@ -1114,28 +1088,6 @@ views:
               \  border: .5px solid rgba(255, 255, 255, 0.4) !important;    \n  background:\
               \ none !important;\n}\nha-card::before {\n  content: none !important;\n\
               }\n"
-    - type: custom:state-switch
-      entity: "{{ 'on'\n   if state_attr('script.helper_script', 'current') | int(0)\
-        \ > 0\n   and not is_state('timer.timer_helper', 'idle')\n   else 'off'\n\
-        }}"
-      states:
-        'on':
-          type: custom:uix-forge
-          forge:
-            mold: card
-            grid_options:
-              columns: full
-          element:
-            type: tile
-            entity: timer.timer_helper
-            name: 'Light Template Active - {{ states(''input_text.script_tracking'')
-              }}
-
-              '
-            vertical: false
-            tap_action:
-              action: none
-            features_position: bottom
     column_span: 1
   - type: grid
     cards:
@@ -2072,7 +2024,18 @@ views:
           type: entities
           entities:
           - entity: input_text.alexa_music_search
+            card_mod:
+              style:
+                ha-input $: "wa-input::part(base) {\n  background: transparent !important;\n\
+                  }\n\nwa-input::part(base)::after {\n  display: block !important;\n\
+                  \  background: var(--custom-active) !important;\n}\n"
           - entity: input_select.speakers
+            card_mod:
+              style:
+                ha-select $:
+                  ha-picker-field $: "ha-combo-box-item {\n  background: transparent\
+                    \ !important;\n}\n\nha-combo-box-item::after {\n  display: none\
+                    \ !important;\n}\n"
           uix:
             style: "ha-card {\n  border: none;\n  background: none !important;\n \
               \ box-shadow: none !important;\n}\nha-card::before {\n  content: none\
@@ -2174,10 +2137,11 @@ views:
     - type: entities
       entities:
       - entity: input_text.alarm_music
-      card_mod:
-        style:
-          ha-textfield $: ":host {\n   --mdc-text-field-fill-color: red !important;\n\
-            \ }\n"
+        card_mod:
+          style:
+            ha-input $: "wa-input::part(base) {\n  background: transparent !important;\n\
+              }\n\nwa-input::part(base)::after {\n  display: block !important;\n \
+              \ background: var(--custom-active) !important;\n}\n"
   - type: grid
     cards:
     - type: heading
@@ -2271,7 +2235,7 @@ views:
   max_columns: 4
   dense_section_placement: true
   cards: []
-  theme: Frosted Glass
+  theme: Frosted Glass Dark
   top_margin: false
   background:
     opacity: 33
@@ -2569,14 +2533,13 @@ views:
           target:
             entity_id: input_boolean.general_toggle_helper
           data: {}
-      uix:
-        style: "hui-heading-badge {\n  --ha-card-background: red !important;\n}\n"
+        color: black
       visibility:
       - condition: state
         entity: input_boolean.general_toggle_helper
         state: 'on'
-    - type: tile
-      entity: person.blake_foster
+      uix:
+        style: "hui-heading-badge {\n  --ha-card-background: red !important;\n}\n"
   - type: grid
     cards:
     - type: heading
@@ -4444,7 +4407,18 @@ views:
           type: entities
           entities:
           - entity: input_text.alexa_music_search
+            card_mod:
+              style:
+                ha-input $: "wa-input::part(base) {\n  background: transparent !important;\n\
+                  }\n\nwa-input::part(base)::after {\n  display: block !important;\n\
+                  \  background: var(--custom-active) !important;\n}\n"
           - entity: input_select.speakers
+            card_mod:
+              style:
+                ha-select $:
+                  ha-picker-field $: "ha-combo-box-item {\n  background: transparent\
+                    \ !important;\n}\n\nha-combo-box-item::after {\n  display: none\
+                    \ !important;\n}\n"
           uix:
             style: "ha-card {\n  border: none;\n  background: none !important;\n \
               \ box-shadow: none !important;\n}\nha-card::before {\n  content: none\
@@ -4546,6 +4520,11 @@ views:
     - type: entities
       entities:
       - entity: input_text.alarm_music
+        card_mod:
+          style:
+            ha-input $: "wa-input::part(base) {\n  background: transparent !important;\n\
+              }\n\nwa-input::part(base)::after {\n  display: block !important;\n \
+              \ background: var(--custom-active) !important;\n}\n"
   - type: grid
     cards:
     - type: heading
@@ -5318,7 +5297,18 @@ views:
           type: entities
           entities:
           - entity: input_text.alexa_music_search
+            card_mod:
+              style:
+                ha-input $: "wa-input::part(base) {\n  background: transparent !important;\n\
+                  }\n\nwa-input::part(base)::after {\n  display: block !important;\n\
+                  \  background: var(--custom-active) !important;\n}\n"
           - entity: input_select.speakers
+            card_mod:
+              style:
+                ha-select $:
+                  ha-picker-field $: "ha-combo-box-item {\n  background: transparent\
+                    \ !important;\n}\n\nha-combo-box-item::after {\n  display: none\
+                    \ !important;\n}\n"
           uix:
             style: "ha-card {\n  border: none;\n  background: none !important;\n \
               \ box-shadow: none !important;\n}\nha-card::before {\n  content: none\
@@ -5421,6 +5411,11 @@ views:
     - type: entities
       entities:
       - entity: input_text.alarm_music
+        card_mod:
+          style:
+            ha-input $: "wa-input::part(base) {\n  background: transparent !important;\n\
+              }\n\nwa-input::part(base)::after {\n  display: block !important;\n \
+              \ background: var(--custom-active) !important;\n}\n"
       uix:
         style: "ha-card {\n  border: none;\n  background: none !important;\n  box-shadow:\
           \ none !important;\n  margin-top: -15px !important;\n}\nha-card::before\
@@ -6228,7 +6223,8 @@ views:
             entity_id: input_boolean.general_toggle_helper
           data: {}
       uix:
-        style: "hui-heading-badge {\n  --ha-card-background: red !important;\n}\n"
+        style: ".title {\n  font-size: 20px !important;\n}\n\n.title ha-icon {\n \
+          \ --mdc-icon-size: 25px !important;\n}\n"
       visibility:
       - condition: state
         entity: input_boolean.general_toggle_helper
@@ -6250,6 +6246,7 @@ views:
         columns: full
         rows: auto
       entity: person.blake_foster
+      show_entity_picture: true
       vertical: false
       features_position: bottom
   - type: grid
@@ -6336,45 +6333,6 @@ views:
       styles:
         card:
         - font-size: 15px
-    - type: custom:button-card
-      entity: binary_sensor.washing_machine
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Washing<br/>Machine
-      size: 40px
-      state:
-      - value: 'on'
-        icon: mdi:washing-machine
-      - value: 'off'
-        icon: mdi:washing-machine-off
-      styles:
-        name:
-        - font-size: 15px
-    - type: custom:button-card
-      entity: binary_sensor.dryer
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Dryer
-      size: 40px
-      state:
-      - operator: template
-        value: '[[[ return states[''counter.dryer_vibration_counter''].state > 4 ]]]
-
-          '
-        icon: local:dryer_vibration
-        styles:
-          icon:
-          - color: rgb(255, 193, 7)
-      - value: 'off'
-        icon: mdi:tumble-dryer-off
-      styles:
-        name:
-        - font-size: 15px
-      hold_action:
-        action: more-info
-        entity: counter.dryer_vibration_counter
     - type: tile
       entity: binary_sensor.bed_presence_bb8594_bed_occupied_left
       name: Bed Occupied Left
@@ -6400,6 +6358,47 @@ views:
       uix:
         style:
           ha-tile-icon $: ".container::before {\n  opacity: 0 !important;\n}\n"
+    - type: custom:button-card
+      entity: scene.all_off
+      section_mode: true
+      grid_options:
+        rows: 2
+        columns: 6
+      size: 75px
+      triggers_update:
+      - light.bedroom_ceiling_lights
+      - light.bathroom_light
+      - light.main_lights
+      - light.closet_light
+      - fan.bedroom_ceiling_fan
+      - media_player.bedroom_tv
+      - light.bedroom_lamp
+      - fan.bedroom_fan
+      - fan.living_room_ceiling_fan
+      - light.living_room_ceiling_lights
+      - light.kitchen_lights
+      - light.bedroom_tv_backlight
+      tap_action:
+        action: call-service
+        service: scene.turn_on
+        target:
+          entity_id: scene.all_off
+      styles:
+        icon:
+        - color: "[[[\n  const isActive = (\n    states['light.bedroom_ceiling_lights'].state\
+            \ === 'off' &&\n    states['light.bathroom_light'].state === 'off' &&\n\
+            \    states['light.main_lights'].state === 'off' &&\n    states['light.closet_light'].state\
+            \ === 'off' &&\n    states['fan.bedroom_ceiling_fan'].state === 'off'\
+            \ &&\n    states['media_player.bedroom_tv'].state === 'off' &&\n    states['light.bedroom_lamp'].state\
+            \ === 'off' &&\n    states['fan.bedroom_fan'].state === 'off' &&\n   \
+            \ states['fan.living_room_ceiling_fan'].state === 'off' &&\n    states['light.living_room_ceiling_lights'].state\
+            \ === 'off' &&\n    states['light.kitchen_lights'].state === 'off' &&\n\
+            \    states['light.bedroom_tv_backlight'].state === 'off'\n  );\n  return\
+            \ isActive ? '#E1B000' : 'var(--state-icon-color)';\n]]]\n"
+    - show_name: true
+      show_icon: true
+      type: button
+      entity: binary_sensor.apartment_presence
     features_position: bottom
   - type: grid
     cards:
