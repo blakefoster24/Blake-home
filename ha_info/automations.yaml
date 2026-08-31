@@ -345,11 +345,14 @@
               minutes: 20
               seconds: 0
               milliseconds: 0
-          - action: script.helper_script
+          - action: script.turn_on
+            target:
+              entity_id: script.helper_script
             metadata: {}
             data:
-              action_type: lights
-              called_by: '{{ this.entity_id }}'
+              variables:
+                action_type: lights
+                called_by: '{{ this.entity_id }}'
         - action: scene.turn_on
           metadata: {}
           target:
@@ -1182,12 +1185,22 @@
         value_template: '{{ presence_ts is number and presence_ts > 0 and presence_ts
           < door_open_trigger }}'
       sequence:
-      - alias: Apt Presence off for 5 minutes
-        wait_template: "{{ is_state('binary_sensor.apartment_presence', 'off') and
-          \n   (now() - states.binary_sensor.apartment_presence.last_changed).total_seconds()
-          > 350 }}"
-        continue_on_timeout: true
-        timeout: 00:10
+      - parallel:
+        - alias: Apt Presence off for 5 minutes
+          wait_template: "{{ is_state('binary_sensor.apartment_presence', 'off') and
+            \n   (now() - states.binary_sensor.apartment_presence.last_changed).total_seconds()
+            > 300 }}"
+          continue_on_timeout: true
+          timeout: 00:10
+        - action: script.turn_on
+          metadata: {}
+          target:
+            entity_id: script.helper_script
+          data:
+            variables:
+              action_type: lights
+              called_by: '{{ this.entity_id }}'
+              caller_branch: leaving
       - alias: Apt presence wait results
         choose:
         - conditions:
@@ -1212,32 +1225,56 @@
           - alias: Apt Presence wait failed
             condition: template
             value_template: '{{ not wait.completed }}'
+          - condition: zone.not_in_zone
+            target:
+              entity_id: person.blake_foster
+            options:
+              behavior: any
+              for: 00:00:00
+              zone: zone.home
           sequence:
-          - wait_for_trigger:
-            - trigger: state
-              entity_id:
-              - binary_sensor.bed_presence_bb8594_bed_occupied_either
-              for:
-                hours: 0
-                minutes: 4
-                seconds: 0
-              to:
-              - 'on'
-            timeout:
-              hours: 0
-              minutes: 10
-              seconds: 0
-              milliseconds: 0
-            continue_on_timeout: false
-          - action: light.turn_off
+          - action: script.turn_off
             metadata: {}
             target:
-              entity_id:
-              - light.main_lights
-              - light.kitchen_lights
-              - light.living_room_ceiling_lights
-              - light.bathroom_light
-              - light.closet_light
+              entity_id: script.helper_script
+            data: {}
+          - action: timer.cancel
+            metadata: {}
+            target:
+              entity_id: timer.timer_helper
+            data: {}
+          - action: input_text.set_value
+            metadata: {}
+            target:
+              entity_id: input_text.script_tracking
+            data: {}
+          - action: notify.mobile_app_blakes_iphone
+            metadata: {}
+            data:
+              message: Apartment presence wait timed out
+              data:
+                interruption-level: time-sensitive
+                actions:
+                - action: all_off
+                  title: All Off Scene
+                  icon: sfsymbols:house.fill
+              title: Door automation failed
+          - wait_for_trigger:
+            - trigger: event
+              event_type: mobile_app_notification_action
+              event_data:
+                action: all_off
+              id: Disregard
+            continue_on_timeout: false
+            timeout:
+              hours: 0
+              minutes: 5
+              seconds: 0
+              milliseconds: 0
+          - action: scene.turn_on
+            metadata: {}
+            target:
+              entity_id: scene.all_off
             data: {}
           alias: Apt presence wait timed out
       alias: Leaving Branch
@@ -1294,11 +1331,15 @@
               > 120)\n}}\n\n"
             continue_on_timeout: true
             alias: Living Space Occupancy Clear for 2 min
-          - action: script.helper_script
+          - action: script.turn_on
+            target:
+              entity_id: script.helper_script
             metadata: {}
             data:
-              action_type: lights
-              called_by: '{{ this.entity_id }}'
+              variables:
+                action_type: lights
+                called_by: '{{ this.entity_id }}'
+                caller_branch: arriving
         - action: light.turn_off
           metadata: {}
           data: {}
@@ -2979,31 +3020,21 @@
     event_data:
       action: DISREGARD_SECURITY_ALERT
     id: Disregard
-  conditions:
-  - condition: zone.not_in_zone
-    target:
-      entity_id: person.blake_foster
-    options:
-      behavior: any
-      for: 00:00:00
-      zone: zone.home
+  conditions: []
   actions:
   - choose:
     - conditions:
       - condition: trigger
         id:
-        - Disregard
-      sequence:
-      - action: input_boolean.turn_off
-        metadata: {}
-        target:
-          entity_id: input_boolean.general_toggle_helper
-        data: {}
-    - conditions:
-      - condition: trigger
-        id:
         - Apartment presence detected
         - Door opened
+      - condition: zone.not_in_zone
+        target:
+          entity_id: person.blake_foster
+        options:
+          behavior: any
+          for: 00:00:00
+          zone: zone.home
       sequence:
       - action: input_boolean.turn_on
         metadata: {}
@@ -3024,5 +3055,20 @@
             - action: DISREGARD_SECURITY_ALERT
               title: Disregard
               destructive: true
+    - conditions:
+      - condition: or
+        conditions:
+        - condition: trigger
+          id:
+          - Disregard
+        - condition: template
+          value_template: '{{ action_type == ''disregard'' }}'
+          alias: 'Action_type: disregard'
+      sequence:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id: input_boolean.general_toggle_helper
+        data: {}
   mode: queued
   max: 10

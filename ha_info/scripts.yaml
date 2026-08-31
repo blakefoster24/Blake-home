@@ -709,29 +709,39 @@ helper_script:
       - variables:
           caller_config:
             automation.light_automations:
-              sensors:
-              - binary_sensor.bathroom_presence
-              - binary_sensor.closet_motion
-              - binary_sensor.kitchen_presence
-              - binary_sensor.living_room_motion
-              threshold: 5
-              timer_duration: 00:05:00
+              default:
+                sensors:
+                - binary_sensor.bathroom_presence
+                - binary_sensor.closet_motion
+                - binary_sensor.kitchen_presence
+                - binary_sensor.living_room_motion
+                threshold: 5
+                timer_duration: 00:05:00
             automation.door_automation:
-              sensors:
-              - binary_sensor.kitchen_presence
-              - binary_sensor.living_room_motion
-              threshold: 2
-              timer_duration: 00:02:00
+              arriving:
+                sensors:
+                - binary_sensor.kitchen_presence
+                - binary_sensor.living_room_motion
+                threshold: 2
+                timer_duration: 00:02:00
+              leaving:
+                sensors:
+                - binary_sensor.apartment_presence
+                threshold: 5
+                timer_duration: 00:05:00
       - variables:
-          sensors: '{{ caller_config[called_by][''sensors''] }}'
-          threshold: '{{ caller_config[called_by][''threshold''] }}'
-          timer_duration: '{{ caller_config[called_by][''timer_duration''] }}'
+          profile: '{{ caller_branch | default(''default'') }}'
+          sensors: '{{ caller_config[called_by][profile][''sensors''] }}'
+          threshold: '{{ caller_config[called_by][profile][''threshold''] }}'
+          timer_duration: '{{ caller_config[called_by][profile][''timer_duration'']
+            }}'
       - action: input_text.set_value
         target:
           entity_id: input_text.script_tracking
         metadata: {}
         data:
-          value: '{{ state_attr(called_by, ''friendly_name'') }}'
+          value: '{{ state_attr(called_by, ''friendly_name'') }} {{ ''- '' ~ profile
+            if profile != ''default'' else '''' }}'
       - if:
         - condition: light.is_on
           target:

@@ -926,11 +926,9 @@ views:
                 ''off'') else ''mdi:thermometer-off'' }}'
               styles: ":host {\n  height: 20px !important;\n  --color: {{ 'var(--custom-active)'\
                 \ if is_state('input_boolean.thermostat_automation_pause', 'on') else\
-                \ 'var(--secondary-color)' }};\n}\n.icon {\n  --icon-color: white;\n\
-                }\n@media (prefers-color-scheme: dark) {\n  .icon {\n    {% if is_state(\"\
-                input_boolean.thermostat_automation_pause\", \"off\") %}\n    --icon-color:\
-                \ var(--custom-bg);\n  {% else %}\n    --icon-color: white;\n  {%\
-                \ endif %}\n  }\n}"
+                \ 'var(--secondary-color)' }};\n}\n.icon {\n  --icon-color: {{ 'white'\
+                \ if is_state('input_boolean.thermostat_automation_pause', 'on') else\
+                \ 'var(--custom-bg)' }};\n}    \n\n"
               unchecked_icon: ''
               checked_icon: ''
           uix:
@@ -4766,6 +4764,8 @@ views:
     - entity: light.bathroom_light
     - entity: light.closet_light
     - entity: light.bedroom_ceiling_lights
+      card_mod:
+        style: ":host {\n  --wa-form-control-border-width: 0px;\n}\n"
     - entity: fan.bedroom_ceiling_fan
       icon: local:bedroom_ceiling_fan
       uix:
@@ -6115,7 +6115,7 @@ views:
         \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
         \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
         }"
-  theme: Liquid Glass
+  theme: Frosted Glass Dark
   background:
     opacity: 80
     alignment: center
@@ -6201,30 +6201,65 @@ views:
   sections:
   - type: grid
     cards:
-    - type: heading
-      icon: mdi:security
-      heading_style: title
-      heading: Security Alert!
-      badges:
-      - type: button
-        icon: mdi:gesture-tap-button
-        text: Check Traces
-        tap_action:
-          action: navigate
-          navigation_path: /config/automation/trace/1787939305481
-        color: primary
-      - type: button
-        icon: mdi:cancel
-        text: Reset
-        tap_action:
-          action: perform-action
-          perform_action: input_boolean.turn_off
-          target:
-            entity_id: input_boolean.general_toggle_helper
-          data: {}
+    - type: custom:vertical-stack-in-card
+      horizontal: true
+      cards:
+      - type: heading
+        icon: mdi:security
+        heading_style: title
+        badges: []
+        heading: Security Alert
+        uix:
+          style: ".title {\n font-size: 20px !important;\n padding-bottom: 10px;\n\
+            \ padding-left: 5px;\n}\n\n.title ha-icon {\n  --mdc-icon-size: 25px !important;\n\
+            }\n"
+      - type: custom:custom-features-card
+        features:
+        - type: custom:service-call
+          entries:
+          - type: button
+            entity_id: ''
+            thumb: md3-elevated
+            styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+              \ !important;\n  border-radius: var(--custom-radius);\n  --color: {{\
+              \ 'var(--custom-bg)' }};\n  box-shadow: none;\n  margin-right: 0px;\n\
+              \  margin-left: -12px;\n}\n.label {\n  color: {{ 'var(--custom-contrast)'\
+              \ }};\n}\n.icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}\n"
+            label: Traces
+            tap_action:
+              action: navigate
+              navigation_path: /config/automation/trace/1787939305481
+            icon: mdi:directions-fork
+          - type: button
+            entity_id: ''
+            label: Reset
+            thumb: md3-elevated
+            styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+              \ !important;\n  border-radius: var(--custom-radius);\n  --color: {{\
+              \ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n  color:\
+              \ {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color: {{ 'var(--custom-contrast)'\
+              \ }};  \n}\n\n"
+            icon: mdi:cancel
+            tap_action:
+              action: perform-action
+              perform_action: automation.trigger
+              target:
+                entity_id: automation.security
+              data:
+                skip_condition: true
+                variables:
+                  action_type: disregard
+        uix:
+          style: "ha-card {\n  margin-right: 25px !important;\n  \n  border: none;\n\
+            \  border-shadow: none !important;\n  box-shadow: none !important;\n \
+            \ background: none !important;\n}\nha-card::before {\n      content: none\
+            \ !important;\n}\n"
       uix:
-        style: ".title {\n  font-size: 20px !important;\n}\n\n.title ha-icon {\n \
-          \ --mdc-icon-size: 25px !important;\n}\n"
+        style: "ha-card {\n  border: var(--custom-button-border);\n  border-radius:\
+          \ var(--custom-radius);\n  animation: bounce 2s infinite;\n}\n\n  @keyframes\
+          \ bounce {\n    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}\n  \
+          \  40% {transform: translateY(-5px);}\n    60% {transform: translateY(-5px);}\n\
+          \  }\n"
       visibility:
       - condition: state
         entity: input_boolean.general_toggle_helper
