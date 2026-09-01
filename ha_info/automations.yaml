@@ -859,13 +859,6 @@
         seconds: 0
       behavior: first
     id: Echos playing > 2min
-  - trigger: occupancy.detected
-    target:
-      entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_both
-    options:
-      behavior: each
-      for: 00:00:00
-    id: Bed both
   conditions: []
   actions:
   - choose:
@@ -938,16 +931,6 @@
             action_type: disable trigger
         metadata: {}
       alias: If triggered by Echos playing > 1min and 1 more condition
-    - conditions:
-      - condition: trigger
-        id:
-        - Bed both
-      sequence:
-      - action: fan.turn_on
-        metadata: {}
-        target:
-          entity_id: fan.bedroom_ceiling_fan
-        data: {}
   mode: parallel
   max: 10
   trace:
@@ -3036,11 +3019,6 @@
           for: 00:00:00
           zone: zone.home
       sequence:
-      - action: input_boolean.turn_on
-        metadata: {}
-        target:
-          entity_id: input_boolean.general_toggle_helper
-        data: {}
       - action: notify.mobile_app_blakes_iphone
         metadata: {}
         data:
@@ -3055,6 +3033,13 @@
             - action: DISREGARD_SECURITY_ALERT
               title: Disregard
               destructive: true
+      - action: input_text.set_value
+        target:
+          entity_id: input_text.script_tracking
+        metadata: {}
+        data:
+          value: '{{ this.entity_id }} - {{ trigger.id }} - {{ as_local(state_attr(this.entity_id,
+            ''last_triggered'')).strftime(''%-I:%M %p'') }}'
     - conditions:
       - condition: or
         conditions:
@@ -3065,10 +3050,11 @@
           value_template: '{{ action_type == ''disregard'' }}'
           alias: 'Action_type: disregard'
       sequence:
-      - action: input_boolean.turn_off
-        metadata: {}
+      - action: input_text.set_value
         target:
-          entity_id: input_boolean.general_toggle_helper
-        data: {}
+          entity_id: input_text.script_tracking
+        data:
+          value: ''
+        metadata: {}
   mode: queued
   max: 10

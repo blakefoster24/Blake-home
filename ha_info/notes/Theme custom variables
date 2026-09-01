@@ -15,6 +15,12 @@ frosted glass:
       custom-radius: 20px
       custom-button-border: 1px solid rgba(255, 255, 255, 0.2)
       custom-border: .5px solid rgba(255, 255, 255, 0.2)
+     
+      ha-dialog-surface-backdrop-filter: 'blur(8px)'                  # 1.2 Glass – same blur as cards
+      ha-dialog-surface-background: 'rgba(0, 0, 0, 0.3)'
+      dialog-box-shadow: '3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.30) inset, -2px -2px 0.5px -2px rgba(255, 255, 255, 0.30) inset, 0 0 8px 1px rgba(255, 255, 255, 0.10) inset, 0 0 2px 0 rgba(0, 0, 0, 0.10)'
+      ha-dialog-scrim-backdrop-filter: 'none'
+      paper-dialog-background-color: 'rgba(55, 55, 55, 0.8)'
 
 
 

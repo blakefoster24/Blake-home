@@ -1,0 +1,16 @@
+Home Assistant Input Text Entity ID Tracking
+Store the source entity ID with the helper text, hide it on the dashboard, and use it for visibility checks.
+1. Write the entity ID + dash + your text
+- action: input_text.set_value
+  target:
+    entity_id: input_text.script_tracking
+  data:
+    value: "{{ this.entity_id }} - Your text here"
+Example stored value: automation.workday_wakeup - Security Alert!
+2. Display only the text after the entity ID and dash
+{{ states('input_text.script_tracking').split(' - ', 1)[1] }}
+Displays: Security Alert!
+3. Check whether a specific entity ID is stored
+{{ states('input_text.script_tracking').startswith('automation.workday_wakeup - ') }}
+Result: true when the helper was written with that entity ID; false otherwise.
+Dashboard use: Use the third template as a template visibility condition. Change only the entity ID you want to match.

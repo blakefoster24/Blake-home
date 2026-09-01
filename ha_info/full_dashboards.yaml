@@ -665,6 +665,85 @@ views:
                 \ | list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
                 \ | int(0) > 0 %}\n  {{ disabled | reject('eq', door) | list | tojson\
                 \ }}\n{% else %}\n  {{ disabled | tojson }}\n{% endif %}"
+    - type: custom:state-switch
+      entity: template
+      template: '{{ ''on'' if states(''input_text.script_tracking'').startswith(''automation.security
+        - '') else ''off'' }}'
+      states:
+        'on':
+          type: custom:vertical-stack-in-card
+          cards:
+          - type: custom:mushroom-template-card
+            primary: Security Alert!
+            secondary: '{{ states(''input_text.script_tracking'').split('' - '', 1)[1]
+              }}'
+            icon: mdi:security
+            grid_options:
+              columns: full
+            features_position: bottom
+            color: red
+            uix:
+              style:
+                ha-tile-info$: ":host {\n  --ha-tile-info-primary-font-size: 20px;\n\
+                  \  --ha-tile-info-primary-color: red;\n  --ha-tile-info-secondary-font-size:\
+                  \ 16px;\n  --ha-tile-info-secondary-line-height: 20px;\n}\n"
+                .: "ha-tile-icon {\n  size: 20px !important;\n}\nha-card {\n  height:\
+                  \ auto !important;\n  margin-top: 10px;\n  --icon-display: block\
+                  \ !important;\n  background: none;\n  padding-top: 1px;\n}\n\nha-card::before\
+                  \ {\n  content: none;\n}\n"
+          - type: custom:custom-features-card
+            features:
+            - type: custom:service-call
+              entries:
+              - type: button
+                entity_id: ''
+                thumb: md3-elevated
+                styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                  \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                  \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n\
+                  \  color: {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color:\
+                  \ {{ 'var(--custom-contrast)' }};\n}\n"
+                label: Traces
+                tap_action:
+                  action: navigate
+                  navigation_path: /config/automation/trace/1787939305481
+                icon: mdi:directions-fork
+              - type: button
+                entity_id: ''
+                label: Reset
+                thumb: md3-elevated
+                styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                  \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                  \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n\
+                  \  color: {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color:\
+                  \ {{ 'var(--custom-contrast)' }};\n}\n"
+                icon: mdi:cancel
+                tap_action:
+                  action: perform-action
+                  perform_action: automation.trigger
+                  target:
+                    entity_id: automation.security
+                  data:
+                    skip_condition: true
+                    variables:
+                      action_type: disregard
+              - type: button
+                entity_id: ''
+                label: Dashboard
+                tap_action:
+                  action: navigate
+                  navigation_path: /my-dashboard/security
+                styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                  \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                  \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n\
+                  \  color: {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color:\
+                  \ {{ 'var(--custom-contrast)' }};\n}\n"
+                thumb: md3-elevated
+                icon: mdi:security
+            uix:
+              style: "ha-card {\n  border: none;\n  border-shadow: none !important;\n\
+                \  box-shadow: none !important;\n  background: none !important;\n\
+                }\nha-card::before {\n  content: none !important;\n}\n"
     - type: heading
       icon: mdi:devices
       heading: Devices
@@ -2294,250 +2373,85 @@ views:
     cards:
     - type: heading
       heading: New section
-    - type: custom:vertical-stack-in-card
-      cards:
-      - type: custom:mini-media-player
-        entity: media_player.bedroom_tv
-        volume_stateless: true
-        source: full
-        artwork: material
-        uix:
-          style: "ha-card {\n  border-radius: var(--custom-radius) !important;\n \
-            \ box-shadow: none !important;\n  margin-bottom: 5px\n}\n{% if is_state('media_player.bedroom_tv',\
-            \ 'off') %}\n  ha-card {\n    box-shadow: 50px;\n    border: 1px solid\
-            \ rgba(255, 255, 255, 0.2) !important;\n  }\n  ha-card::before,\n  .mmp__bg,\n\
-            \  .mmp__bg::before {\n    display: none !important;\n  }\n{% endif %}\n"
-      - type: custom:uix-forge
-        forge:
-          mold: card
-          sparks:
-          - type: event
-            forge_id: bedroom_tv_controls
-        element:
-          type: conditional
-          conditions:
-          - condition: state
-            entity: media_player.bedroom_tv
-            state: "{{ states('media_player.bedroom_tv')\n   if (uixForge.event.expanded\
-              \ | default(false))\n   else '__uix_collapsed__' }}"
-          card:
-            type: vertical-stack
-            cards:
-            - type: tile
-              entity: light.bedroom_tv_backlight
-              name: Tv Backlight
-              hide_state: true
-              vertical: false
-              tap_action:
-                action: none
-              icon_tap_action:
-                action: none
-              features:
-              - type: light-brightness
-              features_position: inline
-              uix:
-                style: "ha-card {\n  border: none !important;\n  background: none\
-                  \ !important;\n  box-shadow: none !important;\n  margin-top: 1rem\
-                  \ !important;\n  margin-bottom: 0px !important;\n}\nha-card::before\
-                  \ {\n  content: none !important;\n}\n"
-            - type: custom:custom-features-card
-              features:
-              - type: custom:service-call
-                entries:
-                - type: button
-                  entity_id: ''
-                  label: Video Mode
-                  tap_action:
-                    action: perform-action
-                    perform_action: button.press
-                    target:
-                      entity_id: button.blake_foster30_gmail_com_video_mode_scene
-                    data: {}
-                  thumb: md3-elevated
-                  styles: ":host {\n  border: var(--custom-button-border);\n  border-radius:\
-                    \ var(--custom-radius);\n  --color: var(--custom-bg);\n}\n.label\
-                    \ {\n  color: var(--custom-contrast);\n}"
-                - type: button
-                  entity_id: light.bedroom_tv_backlight
-                  tap_action:
-                    action: perform-action
-                    perform_action: light.toggle
-                    target:
-                      entity_id: light.bedroom_tv_backlight
-                    data: {}
-                  thumb: md3-elevated
-                  label: Toggle
-                  styles: ":host {\n  border: var(--custom-button-border);\n  border-radius:\
-                    \ var(--custom-radius);\n  --color: {{ 'var(--custom-active)'\
-                    \ if is_state('light.bedroom_tv_backlight', 'on') else 'var(--custom-bg)'\
-                    \ }};\n}\n.label {\n  color: var(--custom-contrast);\n}"
-                  icon: local:tv_backlight
-                - type: button
-                  entity_id: ''
-                  tap_action:
-                    action: more-info
-                    target:
-                      entity_id: light.bedroom_tv_backlight
-                    data: {}
-                  thumb: md3-elevated
-                  label: Customize
-                  styles: ":host {\n  border: var(--custom-button-border);\n  border-radius:\
-                    \ var(--custom-radius);\n  --color: var(--custom-bg);\n}\n.label\
-                    \ {\n  color: var(--custom-contrast);\n}"
-                styles: ''
-              transparent: false
-              uix:
-                style: "ha-card {\n  border: none !important;\n  background: none\
-                  \ !important;\n  box-shadow: none !important;\n  margin-bottom:\
-                  \ 0px !important;\n}\nha-card::before {\n  content: none !important;\n\
-                  }\n"
-            - type: vertical-stack
-              cards:
-              - type: custom:bubble-card
-                card_type: pop-up
-                hash: '#remote'
-                button_type: switch
-                slider_fill_orientation: left
-                slider_value_position: right
-                name: Remote
-                button_action: {}
-                icon: mdi:remote
-                show_header: true
-                bg_opacity: '50'
-                bg_blur: '30'
-                cards:
-                - type: custom:universal-remote-card
-                  rows:
-                  - - back
-                    - power
-                    - home
-                    - menu
-                    - youtube
-                  - - touchpad
-                    - - volume_buttons
-                  - - rewind
-                    - previous
-                    - play_pause
-                    - next
-                    - fast_forward
-                  platform: Roku
-                  remote_id: remote.bedroom_tv
-                  media_player_id: media_player.bedroom_tv
-                  grid_options:
-                    rows: auto
-                    columns: 12
-                  hold_time: 50
-                sub_button:
-                  main: []
-                  bottom: []
-                close_action:
-                  action: fire-dom-event
-                  uix_forge:
-                  - forge_id: bedroom_tv_controls
-                    data:
-                      expanded: false
-                  - forge_id: bedroom_tv_arrow
-                    data:
-                      expanded: false
-              - type: custom:bubble-card
-                card_type: button
-                button_type: name
-                name: Remote
-                icon: mdi:remote
-                button_action:
-                  tap_action:
-                    action: navigate
-                    navigation_path: '#remote'
-                styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
-                  \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
-                  \ 30px;\n  --bubble-button-border: var(--custom-button-border);\n\
-                  }\n"
-                sub_button:
-                  main: []
-                  bottom: []
-                uix:
-                  style:
-                    .: "ha-card {\n  background: none !important;\n  border: none\
-                      \ !important;\n  box-shadow: none !important;\n  padding: .5rem\
-                      \ .5rem .25rem .5rem !important;\n  margin-top: -2.5rem;\n}\n\
-                      ha-card::before {\n  content: none !important;\n}\n"
-              uix:
-                style: "ha-card {\n  border: none !important;\n  background: none\
-                  \ !important;\n  box-shadow: none !important;\n  margin-bottom:\
-                  \ 0px !important;\n}\nha-card::before {\n  content: none !important;\n\
-                  }\n"
-      - type: custom:uix-forge
-        forge:
-          mold: card
-          sparks:
-          - type: event
-            forge_id: bedroom_tv_arrow
-        element:
-          type: custom:mushroom-template-card
-          layout: vertical
-          icon: "{{ 'mdi:chevron-up'\n   if (uixForge.event.expanded | default(false))\n\
-            \   else 'mdi:chevron-down' }}"
-          tap_action:
-            action: fire-dom-event
-            uix_forge:
-            - forge_id: bedroom_tv_controls
-              data:
-                expanded: '{{ not (uixForge.event.expanded | default(false)) }}'
-            - forge_id: bedroom_tv_arrow
-              data:
-                expanded: '{{ not (uixForge.event.expanded | default(false)) }}'
-          uix:
-            style: "ha-card {\n  background: transparent !important;\n  height: 35px\
-              \ !important;\n  margin-top: -20px;\n  border: none !important;\n  box-shadow:\
-              \ none !important;\n}\n\nmushroom-shape-icon$: |\n  .shape {\n    --shape-color:\
-              \ transparent !important;\n    --shape-color-disabled: transparent !important;\n\
-              \    --shape-color: orange !important;\n    --icon-symbol-size: 2px\
-              \ !important;\n    --icon-size: 20px !important;\n    box-shadow: none\
-              \ !important;\n    border: none !important;\n  }\n\nha-card::before\
-              \ {\n  content: none !important;\n}\n"
-    - type: tile
-      grid_options:
-        columns: full
-      entity: light.bathroom_light
-      name: Navigate
-      icon: mdi:navigation-variant
-      color: primary
-      hide_state: true
-      vertical: false
-      tap_action:
-        action: navigate
-        navigation_path: '#Alternate'
-      icon_tap_action:
-        action: none
-      features_position: bottom
-    - type: heading
-      icon: mdi:security
-      heading_style: title
-      heading: Security Alert!
-      badges:
-      - type: button
-        icon: mdi:gesture-tap-button
-        text: Check Traces
-        tap_action:
-          action: navigate
-          navigation_path: /config/automation/trace/1787939305481
-        color: primary
-      - type: button
-        icon: mdi:cancel
-        text: Reset
-        tap_action:
-          action: perform-action
-          perform_action: input_boolean.turn_off
-          target:
-            entity_id: input_boolean.general_toggle_helper
-          data: {}
-        color: black
-      visibility:
-      - condition: state
-        entity: input_boolean.general_toggle_helper
-        state: 'on'
-      uix:
-        style: "hui-heading-badge {\n  --ha-card-background: red !important;\n}\n"
+    - type: custom:state-switch
+      entity: template
+      template: '{{ ''on'' if states(''input_text.script_tracking'').startswith(''automation.security
+        - '') else ''off'' }}'
+      states:
+        'on':
+          type: custom:vertical-stack-in-card
+          cards:
+          - type: custom:mushroom-template-card
+            primary: Security Alert!
+            secondary: '{{ states(''input_text.script_tracking'').split('' - '', 1)[1]
+              }}'
+            icon: mdi:security
+            grid_options:
+              columns: full
+            features_position: bottom
+            color: red
+            uix:
+              style:
+                ha-tile-info$: ":host {\n  --ha-tile-info-primary-font-size: 20px;\n\
+                  \  --ha-tile-info-primary-color: red;\n  --ha-tile-info-secondary-font-size:\
+                  \ 16px;\n  --ha-tile-info-secondary-line-height: 20px;\n}\n"
+                .: "ha-tile-icon {\n  size: 20px !important;\n}\nha-card {\n  height:\
+                  \ auto !important;\n  margin-top: 10px;\n  --icon-display: block\
+                  \ !important;\n  background: none;\n  padding-top: 1px;\n}\n\nha-card::before\
+                  \ {\n  content: none;\n}\n"
+          - type: custom:custom-features-card
+            features:
+            - type: custom:service-call
+              entries:
+              - type: button
+                entity_id: ''
+                thumb: md3-elevated
+                styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                  \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                  \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n\
+                  \  color: {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color:\
+                  \ {{ 'var(--custom-contrast)' }};\n}\n"
+                label: Traces
+                tap_action:
+                  action: navigate
+                  navigation_path: /config/automation/trace/1787939305481
+                icon: mdi:directions-fork
+              - type: button
+                entity_id: ''
+                label: Reset
+                thumb: md3-elevated
+                styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                  \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                  \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n\
+                  \  color: {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color:\
+                  \ {{ 'var(--custom-contrast)' }};\n}\n"
+                icon: mdi:cancel
+                tap_action:
+                  action: perform-action
+                  perform_action: automation.trigger
+                  target:
+                    entity_id: automation.security
+                  data:
+                    skip_condition: true
+                    variables:
+                      action_type: disregard
+              - type: button
+                entity_id: ''
+                label: Dashboard
+                tap_action:
+                  action: navigate
+                  navigation_path: /my-dashboard/security
+                styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                  \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                  \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n\
+                  \  color: {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color:\
+                  \ {{ 'var(--custom-contrast)' }};\n}\n"
+                thumb: md3-elevated
+                icon: mdi:security
+            uix:
+              style: "ha-card {\n  border: none;\n  border-shadow: none !important;\n\
+                \  box-shadow: none !important;\n  background: none !important;\n\
+                }\nha-card::before {\n  content: none !important;\n}\n"
   - type: grid
     cards:
     - type: heading
@@ -2706,1926 +2620,6 @@ views:
   dense_section_placement: true
   badges: []
   theme: Frosted Glass
-- title: homealt
-  badges: []
-  sections:
-  - type: grid
-    cards:
-    - type: custom:bubble-card
-      card_type: pop-up
-      hash: '#helperalt'
-      button_type: switch
-      sub_button:
-        main: []
-        bottom: []
-      slider_fill_orientation: left
-      slider_value_position: right
-      name: Current Helpers
-      button_action: {}
-      icon: mdi:tools
-      show_header: true
-      bg_opacity: '50'
-      bg_blur: '30'
-      cards:
-      - type: tile
-        entity: input_datetime.home_timestamp
-        grid_options:
-          columns: full
-        card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
-      - type: tile
-        entity: input_datetime.last_door_open
-        grid_options:
-          columns: full
-        card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
-      - type: tile
-        entity: sensor.recent_alexa
-        grid_options:
-          columns: full
-        card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
-      - type: tile
-        entity: input_boolean.phone_active
-        card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
-      - type: tile
-        entity: input_boolean.disable_toggle
-        name: Music Disable
-        vertical: false
-        features_position: bottom
-        card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
-      hide_backdrop: true
-      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
-        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
-        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
-        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
-        }"
-    - type: custom:bubble-card
-      card_type: pop-up
-      hash: '#Alternate'
-      button_type: switch
-      sub_button:
-        main: []
-        bottom: []
-      slider_fill_orientation: left
-      slider_value_position: right
-      name: Shortcuts
-      button_action: {}
-      icon: mdi:navigation-variant
-      show_header: true
-      bg_opacity: '50'
-      bg_blur: '30'
-      cards:
-      - type: grid
-        cards:
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Automations
-          tap_action:
-            action: navigate
-            navigation_path: /config/automation
-          icon: mdi:robot
-          card_mod:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Scenes
-          tap_action:
-            action: navigate
-            navigation_path: /config/scene
-          icon: mdi:palette
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Scripts
-          tap_action:
-            action: navigate
-            navigation_path: /config/script
-          icon: mdi:script-text
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Integrations
-          tap_action:
-            action: navigate
-            navigation_path: /config/integrations
-          icon: mdi:puzzle
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Entities
-          tap_action:
-            action: navigate
-            navigation_path: /config/entities
-          icon: mdi:shape
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Helpers
-          tap_action:
-            action: navigate
-            navigation_path: /config/helpers
-          icon: mdi:tools
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Devices
-          tap_action:
-            action: navigate
-            navigation_path: /config/devices
-          icon: mdi:devices
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - show_name: true
-          show_icon: true
-          type: button
-          name: Activity
-          tap_action:
-            action: navigate
-            navigation_path: /logbook
-          icon: mdi:format-list-bulleted
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - show_name: true
-          show_icon: true
-          type: button
-          name: History
-          tap_action:
-            action: navigate
-            navigation_path: /history
-          icon: mdi:chart-box
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        grid_options:
-          columns: 12
-          rows: auto
-      - type: tile
-        grid_options:
-          columns: full
-        entity: light.closet_light
-        name: Current Helpers
-        icon: mdi:tools
-        hide_state: true
-        vertical: false
-        tap_action:
-          action: navigate
-          navigation_path: '#helperalt'
-        features_position: bottom
-        card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
-      - type: tile
-        grid_options:
-          columns: 12
-          rows: 1
-        entity: binary_sensor.apartment_presence
-        name: Security View
-        icon: mdi:shield-home
-        hide_state: true
-        vertical: false
-        tap_action:
-          action: none
-        icon_tap_action:
-          action: none
-        features:
-        - type: custom:service-call
-          entries:
-          - type: button
-            icon: mdi:shield-home
-            thumb: md3-elevated
-            label: Security Dashboard
-            tap_action:
-              action: navigate
-              navigation_path: /my-dashboard/security
-            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-              \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
-              \ }};\n  box-shadow: none;\n}\n.label {\n  color: {{ 'var(--custom-contrast)'\
-              \ }};\n}\n.icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
-            entity_id: binary_sensor.apartment_presence
-        features_position: inline
-        card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\n"
-      hide_backdrop: true
-      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
-        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
-        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
-        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
-        }"
-    - type: tile
-      grid_options:
-        columns: full
-      entity: light.bathroom_light
-      name: Shortcuts
-      icon: mdi:navigation-variant
-      color: primary
-      hide_state: true
-      vertical: false
-      tap_action:
-        action: navigate
-        navigation_path: '#Alternate'
-      icon_tap_action:
-        action: none
-      features_position: bottom
-      card_mod:
-        style: "ha-card {\n  background: var(--custom-bg) !important;\n}\nha-tile-icon\
-          \ {\n  --tile-color: var(--custom-contrast) !important;\n}\n"
-    - type: custom:state-switch
-      entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
-        | int(0) > 0 else ''off'' }}'
-      states:
-        'on':
-          type: custom:vertical-stack-in-card
-          cards:
-          - type: custom:mushroom-template-card
-            primary: Workday Wakeup is Active
-            features_position: bottom
-            grid_options:
-              columns: full
-            icon: local:briefcase_alarm_automation
-            icon_color: '#e1b000'
-            name_color: '#e1b000'
-            uix:
-              style: "ha-card {\n  border: none;\n  background: none;\n  margin-bottom:\
-                \ -15px;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
-          - type: custom:custom-features-card
-            features:
-            - type: custom:service-call
-              entries:
-              - type: button
-                entity_id: ''
-                label: Abort and Reset
-                icon: mdi:cancel
-                thumb: md3-elevated
-                tap_action:
-                  action: perform-action
-                  perform_action: script.helper_script
-                  data:
-                    action_type: abort
-            uix:
-              style: "ha-card {\n  border: none;\n  background: none;\n  box-shadow:\
-                \ none;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
-    - type: custom:state-switch
-      entity: template
-      template: '{% set door_entity = ''automation.door_automation'' %} {% set wakeup_entity
-        = ''automation.workday_wakeup'' %} {% set other_disabled = states.automation
-        | selectattr(''state'', ''eq'', ''off'') | rejectattr(''entity_id'', ''eq'',
-        door_entity) | list | count > 0 %} {% set door_condition = is_state(door_entity,
-        ''off'') and state_attr(wakeup_entity, ''current'') | int(0) == 0 %} {{ ''on''
-        if other_disabled or door_condition else ''off'' }}
-
-        '
-      states:
-        'on':
-          type: custom:vertical-stack-in-card
-          cards:
-          - type: custom:mushroom-template-card
-            primary: "{% set door = 'automation.door_automation' %} {% set wake =\
-              \ 'automation.workday_wakeup' %} {% set disabled = states.automation\
-              \ | selectattr('state', 'eq', 'off') | map(attribute='entity_id') |\
-              \ list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
-              \ | int(0) > 0 %}\n  {% set disabled_count = disabled | reject('eq',\
-              \ door) | list | length %}\n{% else %}\n  {% set disabled_count = disabled\
-              \ | length %}\n{% endif %}\n{% if disabled_count > 0 %}\n  {{ disabled_count\
-              \ }} Disabled Automation{{ 's' if disabled_count > 1 else '' }}\n{%\
-              \ else %}\n  All Automations Active\n{% endif %}"
-            icon: "{% set door = 'automation.door_automation' %} {% set wake = 'automation.workday_wakeup'\
-              \ %} {% set disabled = states.automation | selectattr('state', 'eq',\
-              \ 'off') | map(attribute='entity_id') | list %} {% if is_state(door,\
-              \ 'off') and state_attr(wake, 'current') | int(0) > 0 %}\n  {% set disabled_count\
-              \ = disabled | reject('eq', door) | list | length %}\n{% else %}\n \
-              \ {% set disabled_count = disabled | length %}\n{% endif %}\n{% if disabled_count\
-              \ > 0 %}\n  mdi:robot-off\n{% else %}\n  mdi:robot\n{% endif %}"
-            icon_color: "{% set door = 'automation.door_automation' %} {% set wake\
-              \ = 'automation.workday_wakeup' %} {% set disabled = states.automation\
-              \ | selectattr('state', 'eq', 'off') | map(attribute='entity_id') |\
-              \ list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
-              \ | int(0) > 0 %}\n  {% set disabled_count = disabled | reject('eq',\
-              \ door) | list | length %}\n{% else %}\n  {% set disabled_count = disabled\
-              \ | length %}\n{% endif %}\n{% if disabled_count > 0 %}\n  orange\n\
-              {% else %}\n  green\n{% endif %}"
-            tap_action:
-              action: navigate
-              navigation_path: /config/automation
-            grid_options:
-              columns: full
-              rows: auto
-            uix:
-              style: "ha-card {\n  background: none !important;\n  border: none !important;\n\
-                \  box-shadow: none !important;\n  margin-bottom: -20px !important;\n\
-                }\nha-card::before {\n  content: none !important;\n}\n"
-          - type: custom:auto-entities
-            show_empty: false
-            card:
-              type: entities
-              uix:
-                style: "ha-card {\n  background: none !important;\n  border: none\
-                  \ !important;\n  box-shadow: none !important;\n}\nha-card::before\
-                  \ {\n  content: none !important;\n}\n"
-            filter:
-              template: "{% set door = 'automation.door_automation' %} {% set wake\
-                \ = 'automation.workday_wakeup' %} {% set disabled = states.automation\
-                \ | selectattr('state', 'eq', 'off') | map(attribute='entity_id')\
-                \ | list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
-                \ | int(0) > 0 %}\n  {{ disabled | reject('eq', door) | list | tojson\
-                \ }}\n{% else %}\n  {{ disabled | tojson }}\n{% endif %}"
-    - type: custom:state-switch
-      entity: "{{ 'on'\n   if state_attr('automation.light_automations', 'current')\
-        \ | int(0) > 0\n   and not is_state('timer.timer_helper', 'idle')\n   else\
-        \ 'off'\n}}"
-      states:
-        'on':
-          type: tile
-          grid_options:
-            columns: full
-          entity: timer.timer_helper
-          name: Light Template Active
-          vertical: false
-          tap_action:
-            action: none
-          features_position: bottom
-    - type: heading
-      icon: mdi:devices
-      heading: Devices
-      heading_style: title
-      badges:
-      - type: entity
-        show_state: true
-        show_icon: true
-        entity: sensor.openweathermap_cloud_coverage_2
-        icon: ''
-      - type: entity
-        show_state: true
-        show_icon: true
-        entity: sun.sun
-      uix:
-        style: ".title {\n  font-size: 20px !important;\n}\n.title ha-icon {\n  --mdc-icon-size:\
-          \ 20px !important;\n}\n"
-    - type: custom:button-card
-      entity: light.main_lights
-      section_mode: true
-      grid_options:
-        rows: 2
-        columns: 3
-      size: 40px
-      name: Main<br/>Lights
-      styles:
-        card:
-        - font-size: 15px
-    - type: custom:button-card
-      entity: light.kitchen_lights
-      section_mode: true
-      grid_options:
-        rows: 2
-        columns: 3
-      size: 40px
-      name: Kitchen<br/>Lights
-      styles:
-        card:
-        - font-size: 15px
-    - type: custom:button-card
-      entity: light.living_room_ceiling_lights
-      section_mode: true
-      grid_options:
-        rows: 2
-        columns: 3
-      size: 50px
-      name: Living Room<br/>Lights
-      styles:
-        card:
-        - font-size: 15px
-    - type: custom:button-card
-      entity: light.living_room_lamp
-      name: Living Room Lamp
-      icon: mdi:floor-lamp
-      section_mode: true
-      grid_options:
-        columns: 3
-        rows: 2
-      show_name: true
-      show_icon: true
-      show_state: false
-      tap_action:
-        action: toggle
-      hold_action:
-        action: more-info
-      custom_fields:
-        lamp_status: "[[[\n  const home =\n    states['person.blake_foster']?.state\
-          \ === 'home';\n\n  const clouds =\n    Number(states['sensor.openweathermap_cloud_coverage_2']?.state);\n\
-          \n  const sun = states['sun.sun'];\n  const now = new Date();\n\n  const\
-          \ nextRising = new Date(sun.attributes.next_rising);\n  const nextSetting\
-          \ = new Date(sun.attributes.next_setting);\n\n  let sundown = false;\n\n\
-          \  if (sun.state === 'below_horizon') {\n    sundown = true;\n  } else {\n\
-          \    const minutesUntilSunset =\n      (nextSetting - now) / 60000;\n\n\
-          \    const previousSunrise =\n      new Date(nextRising.getTime() - (24\
-          \ * 60 * 60 * 1000));\n\n    const minutesSinceSunrise =\n      (now - previousSunrise)\
-          \ / 60000;\n\n    sundown =\n      minutesUntilSunset <= 60 ||\n      minutesSinceSunrise\
-          \ <= 30;\n  }\n\n  const shouldBeOn =\n    sundown ||\n    (home && clouds\
-          \ > 40);\n\n  return `\n    <ha-icon\n      icon=\"${shouldBeOn ? 'mdi:check-circle'\
-          \ : 'mdi:close-circle'}\"\n      style=\"\n        width: 20px;\n      \
-          \  height: 20px;\n        color: ${\n          shouldBeOn\n            ?\
-          \ 'var(--success-color)'\n            : 'var(--error-color)'\n        };\n\
-          \      \">\n    </ha-icon>\n  `;\n]]]\n"
-      styles:
-        card:
-        - position: relative
-        - padding: 8px
-        - height: 100%
-        - box-sizing: border-box
-        grid:
-        - grid-template-areas: '"i" "n"'
-        - grid-template-columns: 1fr
-        - grid-template-rows: 1fr min-content
-        img_cell:
-        - width: 100%
-        - height: 100%
-        - justify-self: center
-        - align-self: center
-        - display: flex
-        - align-items: center
-        - justify-content: center
-        icon:
-        - width: 58px
-        - height: 58px
-        name:
-        - justify-self: center
-        - align-self: end
-        - text-align: center
-        - font-size: 14px
-        - font-weight: 500
-        - line-height: 16px
-        - white-space: normal
-        - overflow: visible
-        - text-overflow: unset
-        - width: 100%
-        custom_fields:
-          lamp_status:
-          - position: absolute
-          - top: 7px
-          - right: 7px
-          - width: 20px
-          - height: 20px
-          - z-index: 2
-          - pointer-events: none
-    - show_name: true
-      show_icon: true
-      type: button
-      entity: climate.nest_thermostat
-      show_state: true
-      grid_options:
-        columns: 3
-        rows: 2
-      name:
-        type: device
-    - type: custom:button-card
-      entity: fan.living_room_ceiling_fan
-      section_mode: true
-      name: Living Room<br>Ceiling Fan
-      grid_options:
-        rows: 2
-        columns: 3
-      size: 60px
-      styles:
-        card:
-        - font-size: 15px
-      uix:
-        style: ":host {\n  {% if is_state(config.entity, 'on') %}\n    --fan-spin-anim:\
-          \ spinY 0.6s linear infinite;\n  {% endif %}\n}\n"
-    - type: custom:button-card
-      entity: light.closet_light
-      section_mode: true
-      grid_options:
-        rows: 2
-        columns: 3
-      name: Closet<br/>Light
-      size: 50px
-    - show_name: true
-      show_icon: true
-      type: button
-      entity: light.bathroom_light
-      grid_options:
-        columns: 3
-        rows: 2
-      icon: ''
-    - show_name: true
-      show_icon: true
-      type: button
-      show_state: false
-      grid_options:
-        columns: 3
-        rows: 2
-      entity: light.bedroom_lamp
-    - type: custom:button-card
-      entity: light.bedroom_ceiling_lights
-      section_mode: true
-      grid_options:
-        rows: 2
-        columns: 3
-      size: 60px
-      name: Bedroom<br/>Ceiling Light
-      styles:
-        card:
-        - font-size: 15px
-    - type: custom:button-card
-      entity: fan.bedroom_ceiling_fan
-      section_mode: true
-      name: Bedroom<br>Ceiling Fan
-      grid_options:
-        rows: 2
-        columns: 3
-      size: 60px
-      styles:
-        card:
-        - font-size: 15px
-      uix:
-        style: ":host {\n  {% if is_state(config.entity, 'on') %}\n    --fan-spin-anim:\
-          \ spinY 0.6s linear infinite;\n  {% endif %}\n}\n"
-    - type: custom:button-card
-      entity: fan.bedroom_fan
-      section_mode: true
-      grid_options:
-        rows: 2
-        columns: 3
-      size: 50px
-      styles:
-        card:
-        - font-size: 15px
-      uix:
-        style: ":host {\n  {% if is_state('fan.bedroom_fan', 'on') %}\n    --fan-spin-anim:\
-          \ spinBoxFan 1s linear infinite;\n  {% endif %}\n }\n"
-    - type: custom:vertical-stack-in-card
-      cards:
-      - type: horizontal-stack
-        cards:
-        - type: heading
-          icon: mdi:home-thermometer-outline
-          heading_style: title
-          heading: Climate
-          badges:
-          - type: entity
-            show_state: true
-            show_icon: true
-            entity: sensor.openweathermap_feels_like_temperature_2
-            name: Feels Like
-            state_content:
-            - name
-            - state
-          uix:
-            style: "ha-card {\n  padding-top: 10px !important;\n  padding-bottom:\
-              \ 10px !important;\n  padding-left: 20px !important;\n  padding-right:\
-              \ 20px !important;\n  margin-right: -100px !important;\n}\n"
-        - type: custom:custom-features-card
-          features:
-          - type: custom:service-call
-            entries:
-            - type: toggle
-              entity_id: input_boolean.thermostat_automation_pause
-              tap_action:
-                action: toggle
-                target:
-                  entity_id: input_boolean.thermostat_automation_pause
-                data: {}
-              icon: '{{ ''local:thermostat_automation'' if is_state(''input_boolean.thermostat_automation_pause'',
-                ''off'') else ''mdi:thermometer-off'' }}'
-              styles: ":host {\n  height: 20px !important;\n  --color: {{ 'var(--custom-bg-active)'\
-                \ if is_state('input_boolean.thermostat_automation_pause', 'on') else\
-                \ 'var(--custom-bg)' }};\n}\n.icon {\n   --icon-color: {{ 'orange'\
-                \ if is_state('input_boolean.thermostat_automation_pause', 'on') else\
-                \ 'var(--custom-contrast)' }};\n}\n\n@media (prefers-color-scheme:\
-                \ dark) {\n  :host {\n    --color: {{ 'var(--custom-bg-active)' if\
-                \ is_state('input_boolean.thermostat_automation_pause', 'on') else\
-                \ 'var(--secondary-color)' }};\n  }\n  \n  .icon {\n    {% if is_state(\"\
-                input_boolean.thermostat_automation_pause\", \"on\") %}\n    --icon-color:\
-                \ var(--custom-bg);\n  {% else %}\n    --icon-color: var(--custom-bg);\n\
-                \  {% endif %}\n  }\n}"
-              unchecked_icon: ''
-              checked_icon: ''
-          uix:
-            style: "ha-card {\n  margin-left: 80px !important;\n  border: none;\n\
-              \  border-shadow: none !important;\n  box-shadow: none !important;\n\
-              \  background: none !important;\n}\nha-card::before {\n      content:\
-              \ none !important;\n}\n"
-        uix:
-          style: "ha-card {\n  height: 200px !important;\n}\n"
-      - type: tile
-        entity: climate.nest_thermostat
-        show_entity_picture: false
-        show_icon: true
-        vertical: false
-        features:
-        - type: target-temperature
-        - type: climate-hvac-modes
-        features_position: bottom
-        uix:
-          style: "ha-card {\n  border: none;\n  background: none !important;\n}\n\
-            ha-card::before {\n  content: none !important;\n}\n"
-      - type: conditional
-        conditions:
-        - condition: state
-          entity: script.temporary_thermostat_adjustment
-          state: 'off'
-        card:
-          type: custom:button-card
-          entity: script.temporary_thermostat_adjustment
-          show_state: true
-          name: Temporary Thermostat Adjustment
-          icon: local:thermostat_adjustment_script
-          tap_action:
-            action: none
-          styles:
-            grid:
-            - grid-template-areas: '"i n run_button" "i s run_button"'
-            - grid-template-columns: auto min-content 1fr
-            - grid-template-rows: 1fr 1fr
-            card:
-            - padding: .7rem
-            - height: 4.5rem
-            img_cell:
-            - background-color: transparent
-            - width: 2rem
-            icon:
-            - width: 2rem
-            - color: var(--custom-contrast)
-            name:
-            - justify-self: start
-            - padding-left: .5rem
-            - font-weight: 500
-            - font-size: 1rem
-            state:
-            - justify-self: start
-            - padding-left: .5rem
-            - font-size: 1rem
-          custom_fields:
-            run_button:
-              card:
-                type: custom:custom-features-card
-                features:
-                - type: custom:service-call
-                  entries:
-                  - type: button
-                    label: Start
-                    icon: local:thermostat_adjustment_script
-                    thumb: md3-elevated
-                    tap_action:
-                      action: more-info
-                      data: {}
-                    toggle_styles: false
-                    styles: ":host {\n  border: var(--custom-button-border);\n  --color:\
-                      \ var(--custom-bg); \n  border-radius: var(--custom-radius);\n\
-                      \  justify-self: center;\n}\n.label {\n  color: var(--custom-contrast);\n\
-                      }\n.icon {\n  color: var(--custom-contrast);\n}"
-                    entity_id: script.temporary_thermostat_adjustment
-                transparent: false
-                uix:
-                  style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
-                    \ none;\n  margin-right: -1rem\n}\nha-card::before {\ncontent:\
-                    \ none !important;\n}\n"
-          uix:
-            style: "ha-card {\n  border-radius: var(--custom-radius) !important;\n\
-              \  border: var(--custom-border) !important;\n  background: none !important;\n\
-              }\nha-card::before {\n  content: none !important;\n}\n"
-      - type: conditional
-        conditions:
-        - condition: state
-          entity: script.temporary_thermostat_adjustment
-          state: 'on'
-        card:
-          type: custom:button-card
-          entity: timer.timer_helper
-          show_state: true
-          name: Temporary Thermostat Adjustment
-          icon: local:thermostat_adjustment_script
-          tap_action:
-            action: none
-          styles:
-            grid:
-            - grid-template-areas: '"i n run_button" "i s run_button"'
-            - grid-template-columns: auto min-content 1fr
-            - grid-template-rows: 1fr 1fr
-            card:
-            - padding: .7rem
-            - height: 4.5rem
-            img_cell:
-            - background-color: transparent
-            - width: 2rem
-            icon:
-            - width: 2rem
-            - color: var(--custom-active)
-            name:
-            - justify-self: start
-            - padding-left: .5rem
-            - font-weight: 500
-            - font-size: 1rem
-            - color: var(--custom-active)
-            state:
-            - justify-self: start
-            - padding-left: .5rem
-            - font-size: 1rem
-            - color: rgb(255, 193, 7)
-          custom_fields:
-            run_button:
-              card:
-                type: custom:custom-features-card
-                features:
-                - type: custom:service-call
-                  entries:
-                  - type: button
-                    label: Stop
-                    icon: mdi:stop
-                    thumb: md3-elevated
-                    tap_action:
-                      action: perform-action
-                      perform_action: timer.finish
-                      target:
-                        entity_id: timer.timer_helper
-                      data: {}
-                    toggle_styles: false
-                    styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                      \  --color: var(--custom-bg); \n  border-radius: var(--custom-radius);\n\
-                      }\n.label {\n  color: var(--custom-active);\n}\n.icon {\n  color:\
-                      \ var(--custom-active);\n}"
-                    entity_id: timer.timer_helper
-                transparent: false
-                uix:
-                  style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
-                    \ none;\n  margin-right: -1rem\n}\nha-card::before {\ncontent:\
-                    \ none !important;\n}\n"
-          uix:
-            style: "ha-card {\n  border-radius: var(--custom-radius) !important;\n\
-              \  border: .5px solid rgba(255, 255, 255, 0.4) !important;    \n  background:\
-              \ none !important;\n}\nha-card::before {\n  content: none !important;\n\
-              }\n"
-    column_span: 1
-  - type: grid
-    cards:
-    - type: heading
-      heading_style: title
-      heading: Scenes
-      icon: mdi:palette
-      uix:
-        style: ".title {\n  font-size: 20px !important;\n}\n.title ha-icon {\n  --mdc-icon-size:\
-          \ 25px !important;\n}\n"
-    - type: custom:button-card
-      entity: scene.all_off
-      section_mode: true
-      grid_options:
-        rows: 2
-        columns: 6
-      size: 75px
-      triggers_update:
-      - light.bedroom_ceiling_lights
-      - light.bathroom_light
-      - light.main_lights
-      - light.closet_light
-      - fan.bedroom_ceiling_fan
-      - media_player.bedroom_tv
-      - light.bedroom_lamp
-      - fan.bedroom_fan
-      - fan.living_room_ceiling_fan
-      - light.living_room_ceiling_lights
-      - light.kitchen_lights
-      - light.bedroom_tv_backlight
-      tap_action:
-        action: call-service
-        service: scene.turn_on
-        target:
-          entity_id: scene.all_off
-      styles:
-        icon:
-        - color: "[[[\n  const isActive = (\n    states['light.bedroom_ceiling_lights'].state\
-            \ === 'off' &&\n    states['light.bathroom_light'].state === 'off' &&\n\
-            \    states['light.main_lights'].state === 'off' &&\n    states['light.closet_light'].state\
-            \ === 'off' &&\n    states['fan.bedroom_ceiling_fan'].state === 'off'\
-            \ &&\n    states['media_player.bedroom_tv'].state === 'off' &&\n    states['light.bedroom_lamp'].state\
-            \ === 'off' &&\n    states['fan.bedroom_fan'].state === 'off' &&\n   \
-            \ states['fan.living_room_ceiling_fan'].state === 'off' &&\n    states['light.living_room_ceiling_lights'].state\
-            \ === 'off' &&\n    states['light.kitchen_lights'].state === 'off' &&\n\
-            \    states['light.bedroom_tv_backlight'].state === 'off'\n  );\n  return\
-            \ isActive ? '#E1B000' : 'var(--state-icon-color)';\n]]]\n"
-    - type: custom:button-card
-      entity: script.set_my_room
-      section_mode: true
-      grid_options:
-        rows: 2
-        columns: 3
-      size: 50px
-      name: Set My<br>Room
-      triggers_update:
-      - light.main_lights
-      - light.bedroom_ceiling_lights
-      - light.closet_light
-      - light.bathroom_light
-      - media_player.bedroom_tv
-      - light.bedroom_lamp
-      - fan.bedroom_fan
-      - fan.living_room_ceiling_fan
-      - light.living_room_ceiling_lights
-      - media_player.living_room_tv
-      - light.kitchen_lights
-      tap_action:
-        action: perform-action
-        perform_action: script.set_my_room
-      styles:
-        icon:
-        - color: "[[[\n  const isActive = (\n    states['light.bedroom_lamp'].state\
-            \ === 'on' &&\n    states['media_player.bedroom_tv'].state != 'off' &&\n\
-            \    states['light.bedroom_ceiling_lights'].state === 'off' &&\n    states['light.closet_light'].state\
-            \ === 'off' &&\n    states['light.bathroom_light'].state === 'off' &&\n\
-            \    states['fan.bedroom_fan'].state === 'off' &&\n    states['fan.living_room_ceiling_fan'].state\
-            \ === 'off' &&\n    states['light.living_room_ceiling_lights'].state ===\
-            \ 'off' &&\n    (states['media_player.living_room_tv'].state === 'off'\
-            \ || states['media_player.living_room_tv'].state === 'unavailable') &&\n\
-            \    states['light.kitchen_lights'].state === 'off'\n  );\n  return isActive\
-            \ ? '#E1B000' : 'var(--state-icon-color)';\n]]]\n"
-    - type: custom:button-card
-      entity: scene.bedroom_lights_off
-      section_mode: true
-      grid_options:
-        rows: 2
-        columns: 3
-      size: 50px
-      name: Bedroom<br>Lights Off
-      icon: local:bedroom_lights_off
-      triggers_update:
-      - light.bedroom_ceiling_lights
-      - light.bedroom_lamp
-      tap_action:
-        action: call-service
-        service: scene.turn_on
-        target:
-          entity_id: scene.bedroom_lights_off
-      styles:
-        icon:
-        - color: "[[[\n  const isActive = (\n    states['light.bedroom_ceiling_lights'].state\
-            \ === 'off' &&\n    states['light.bedroom_lamp'].state === 'off' &&\n\
-            \    states['fan.bedroom_fan'].state === 'off'\n  );\n  return isActive\
-            \ ? '#E1B000' : 'var(--state-icon-color)';\n]]]\n"
-    - type: custom:button-card
-      entity: scene.lights_off_except_bedroom
-      section_mode: true
-      grid_options:
-        rows: 2
-        columns: 6
-      size: 50px
-      name: Lights Off<br>Except Bedroom
-      triggers_update:
-      - light.bathroom_light
-      - light.main_lights
-      - light.kitchen_lights
-      - light.living_room_ceiling_lights
-      - light.closet_light
-      tap_action:
-        action: call-service
-        service: scene.turn_on
-        target:
-          entity_id: scene.lights_off_except_bedroom
-      styles:
-        icon:
-        - color: "[[[\n  const isActive = (\n    states['light.bathroom_light'].state\
-            \ === 'off' &&\n    states['light.main_lights'].state === 'off' &&\n \
-            \   states['light.kitchen_lights'].state === 'off' &&\n    states['light.living_room_ceiling_lights'].state\
-            \ === 'off' &&\n    states['light.closet_light'].state === 'off' &&\n\
-            \    (states['light.bedroom_ceiling_lights'].state === 'on' || states['light.bedroom_lamp'].state\
-            \ === 'on')\n  );\n  return isActive ? '#E1B000' : 'var(--state-icon-color)';\n\
-            ]]]\n"
-    - type: custom:button-card
-      entity: scene.goodnight_scene
-      section_mode: true
-      grid_options:
-        rows: 2
-        columns: 3
-      size: 50px
-      name: Goodnight
-      triggers_update:
-      - light.main_lights
-      - light.bedroom_ceiling_lights
-      - light.bathroom_light
-      - media_player.bedroom_tv
-      - light.bedroom_lamp
-      - light.closet_light
-      - fan.bedroom_fan
-      - fan.living_room_ceiling_fan
-      - light.living_room_ceiling_lights
-      - light.kitchen_lights
-      - light.bedroom_tv_backlight
-      tap_action:
-        action: call-service
-        service: scene.turn_on
-        target:
-          entity_id: scene.goodnight_scene
-      styles:
-        icon:
-        - color: "[[[\n  const isActive = (\n    states['light.main_lights'].state\
-            \ === 'off' &&\n    states['light.bedroom_ceiling_lights'].state === 'off'\
-            \ &&\n    states['light.bathroom_light'].state === 'off' &&\n    states['media_player.bedroom_tv'].state\
-            \ === 'off' &&\n    states['light.bedroom_lamp'].state === 'off' &&\n\
-            \    states['light.closet_light'].state === 'off' &&\n    states['fan.bedroom_fan'].state\
-            \ === 'on' &&\n    states['fan.living_room_ceiling_fan'].state === 'off'\
-            \ &&\n    states['light.living_room_ceiling_lights'].state === 'off' &&\n\
-            \    states['light.kitchen_lights'].state === 'off' &&\n    states['light.bedroom_tv_backlight'].state\
-            \ === 'off'\n  );\n  return isActive ? '#E1B000' : 'var(--state-icon-color)';\n\
-            ]]]\n"
-    - type: custom:button-card
-      entity: scene.im_awake
-      section_mode: true
-      grid_options:
-        rows: 2
-        columns: 3
-      size: 50px
-      name: Wakeup
-      icon: mdi:weather-sunset-up
-      triggers_update:
-      - light.bedroom_lamp
-      - fan.bedroom_fan
-      tap_action:
-        action: call-service
-        service: scene.turn_on
-        target:
-          entity_id: scene.im_awake
-      styles:
-        icon:
-        - color: "[[[\n  const isActive = (\n    states['light.bedroom_lamp'].state\
-            \ === 'on' &&\n    states['fan.bedroom_fan'].state === 'off' &&\n    states['media_player.bedroom_tv'].state\
-            \ === 'off'\n  );\n  return isActive ? '#E1B000' : 'var(--state-icon-color)';\n\
-            ]]]\n"
-    column_span: 1
-  - type: grid
-    cards:
-    - type: heading
-      heading_style: title
-      icon: mdi:leak
-      heading: Sensors
-      badges:
-      - type: entity
-        show_state: true
-        show_icon: true
-        entity: binary_sensor.apartment_presence
-      uix:
-        style: ".title {\n  font-size: 20px !important;\n}\n\n.title ha-icon {\n \
-          \ --mdc-icon-size: 25px !important;\n}\n\n.badges hui-entity-heading-badge\
-          \ {\n  --uix-icon-color: {{ '#E1B000' if is_state('binary_sensor.apartment_presence',\
-          \ 'on') else 'var(--state-inactive-color)' }};\n}\n"
-    - type: custom:button-card
-      entity: binary_sensor.front_door
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Front Door
-      size: 50px
-      state:
-      - value: 'on'
-        icon: mdi:door-open
-      - value: 'off'
-        icon: mdi:door
-      show_state: true
-      styles:
-        name:
-        - font-size: 15px
-        state:
-        - font-size: 12px
-    - type: custom:button-card
-      entity: binary_sensor.kitchen_presence
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Kitchen<br/>Presence
-      size: 50px
-      styles:
-        card:
-        - font-size: 15px
-    - type: custom:button-card
-      entity: binary_sensor.living_room_motion
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Living Room<br/>Motion
-      size: 50px
-      styles:
-        card:
-        - font-size: 15px
-    - type: custom:button-card
-      entity: binary_sensor.bathroom_presence
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Bathroom<br/>Presence
-      size: 45px
-      styles:
-        card:
-        - font-size: 15px
-    - type: custom:button-card
-      entity: binary_sensor.bedroom_presence
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Bedroom<br/>Presence
-      size: 60px
-      styles:
-        card:
-        - font-size: 15px
-    - type: custom:button-card
-      entity: binary_sensor.closet_motion
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Closet<br/>Motion
-      size: 50px
-      styles:
-        card:
-        - font-size: 15px
-    - type: custom:button-card
-      entity: binary_sensor.washing_machine
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Washing<br/>Machine
-      size: 40px
-      state:
-      - value: 'on'
-        icon: mdi:washing-machine
-      - value: 'off'
-        icon: mdi:washing-machine-off
-      styles:
-        name:
-        - font-size: 15px
-    - type: custom:button-card
-      entity: binary_sensor.dryer
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Dryer
-      size: 40px
-      state:
-      - value: 'on'
-        icon: local:dryer_vibration
-      - value: 'off'
-        icon: mdi:tumble-dryer-off
-      styles:
-        name:
-        - font-size: 15px
-    - type: tile
-      entity: binary_sensor.bed_presence_bb8594_bed_occupied_left
-      name: Bed Occupied Left
-      hide_state: true
-      vertical: false
-      icon_tap_action:
-        action: navigate
-        navigation_path: /logbook
-      uix:
-        style:
-          ha-tile-icon $: ".container::before {\n  opacity: 0 !important;\n}\n"
-    - type: tile
-      entity: binary_sensor.bed_presence_bb8594_bed_occupied_right
-      name: Bed Occupied Right
-      hide_state: true
-      vertical: false
-      features_position: bottom
-      uix:
-        style:
-          ha-tile-icon $: ".container::before {\n  opacity: 0 !important;\n}\n"
-    features_position: bottom
-  - type: grid
-    cards:
-    - type: heading
-      heading_style: title
-      icon: mdi:hammer-screwdriver
-      badges:
-      - type: entity
-        show_state: true
-        show_icon: true
-        entity: binary_sensor.workday_tomorrow_template_sensor
-      heading: Work
-      uix:
-        style: ".title {\n  font-size: 20px !important;\n}\n.title ha-icon {\n  --mdc-icon-size:\
-          \ 20px !important;\n}\n.badges hui-entity-heading-badge {\n  --uix-icon-color:\
-          \ {{ '#E1B000' if is_state('binary_sensor.workday_tomorrow_template_sensor',\
-          \ 'on') else 'var(--state-inactive-color)' }};\n}\n"
-    - type: custom:button-card
-      entity: input_boolean.workday_today_toggle
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Workday<br>Today<br>Toggle
-      styles:
-        card:
-        - font-size: 15px
-      tap_action:
-        action: more-info
-    - type: custom:button-card
-      entity: input_boolean.workday_tomorrow_toggle
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Workday<br>Tomorrow<br>Toggle
-      styles:
-        card:
-        - font-size: 15px
-      tap_action:
-        action: more-info
-    - type: custom:button-card
-      entity: input_datetime.working_override
-      show_name: true
-      show_icon: true
-      show_state: true
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Working<br>Override
-      icon: mdi:briefcase-plus
-      styles:
-        card:
-        - font-size: 15px
-        - padding-top: "[[[\n  return entity.state === '1969-12-31' ? '2px' : '0px';\n\
-            ]]]\n"
-        state:
-        - font-size: 0.8em
-        - opacity: 0.8
-        - display: "[[[\n  return entity.state === '1969-12-31' ? 'none' : 'block';\n\
-            ]]]\n"
-        icon:
-        - color: "[[[\n  return entity.state === '1969-12-31' ? 'var(--paper-item-icon-color)'\
-            \ : 'rgb(255, 193, 7)';\n]]]\n"
-      tap_action:
-        action: "[[[\n  return entity.state === '1969-12-31' ? 'perform-action' :\
-          \ 'more-info';\n]]]\n"
-        perform_action: input_datetime.set_datetime
-        data:
-          entity_id: input_datetime.working_override
-          date: "[[[ \n  const d = new Date();\n  d.setDate(d.getDate() - 1);\n  return\
-            \ d.toISOString().split('T')[0];\n]]]\n"
-      hold_action:
-        action: perform-action
-        perform_action: input_datetime.set_datetime
-        target:
-          entity_id: input_datetime.working_override
-        data:
-          date: '1969-12-31'
-    - type: custom:button-card
-      entity: input_datetime.scheduled_off
-      show_name: true
-      show_icon: true
-      show_state: true
-      section_mode: true
-      grid_options:
-        columns: 3
-      name: Scheduled<br>Off
-      icon: mdi:briefcase-off
-      styles:
-        card:
-        - font-size: 15px
-        - padding-top: "[[[\n  return entity.state === '1969-12-31' ? '2px' : '0px';\n\
-            ]]]\n"
-        state:
-        - font-size: 0.8em
-        - opacity: 0.8
-        - display: "[[[\n  return entity.state === '1969-12-31' ? 'none' : 'block';\n\
-            ]]]\n"
-        icon:
-        - color: "[[[\n  return entity.state === '1969-12-31' ? 'var(--paper-item-icon-color)'\
-            \ : 'rgb(255, 193, 7)';\n]]]\n"
-      tap_action:
-        action: "[[[\n  return entity.state === '1969-12-31' ? 'perform-action' :\
-          \ 'more-info';\n]]]\n"
-        perform_action: input_datetime.set_datetime
-        data:
-          entity_id: input_datetime.scheduled_off
-          date: "[[[ \n  const d = new Date();\n  d.setDate(d.getDate() - 1);\n  return\
-            \ d.toISOString().split('T')[0];\n]]]\n"
-      hold_action:
-        action: perform-action
-        perform_action: input_datetime.set_datetime
-        target:
-          entity_id: input_datetime.scheduled_off
-        data:
-          date: '1969-12-31'
-    - features:
-      - type: custom:service-call
-        entries:
-        - type: button
-          entity_id: ''
-          tap_action:
-            action: navigate
-            navigation_path: /my-dashboard/work
-          styles: ":host {\n  border: var(--custom-button-border) !important;\n  border-radius:\
-            \ var(--custom-radius);\n  --color: var(--custom-bg);\n  --feature-height:\
-            \ 3rem;\n  --feature-width: auto;\n}\n  .label {\n    color: var(--custom-contrast);\n\
-            \  }\n  .icon {\n    color:  var(--custom-contrast);\n    --mdc-icon-size:\
-            \ 1.5rem;\n    padding-bottom: .25rem;\n  }\n\n}"
-          label: View Temperatures
-          thumb: md3-elevated
-          autofill_entity_id: false
-          toggle_styles: false
-      type: custom:mushroom-template-card
-      primary: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
-        \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-        ] %} {% set low_sensors = expand(sensors) | map(attribute='state') | map('float',\
-        \ 999) | select('lt', set_point) | list %}  {% if low_sensors | count > 0\
-        \ %}\n  {{ low_sensors | count }} Sensors Below {{ set_point }}°\n{% else\
-        \ %}\n  Temperatures Normal\n{% endif %}"
-      secondary: "{% set set_point = 50 %}\n{% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
-        \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-        ] %}\n{% set ns = namespace(found=[]) %}\n{% for s in expand(sensors) %}\n\
-        \  {% if s.state | is_number and s.state | float < set_point %}\n    {% set\
-        \ ns.found = ns.found + [s] %}\n  {% endif %}\n{% endfor %}\n{% if ns.found\
-        \ | count > 0 %}\n  {% for s in ns.found -%}\n    {{ s.name | replace(' Temperature',\
-        \ '') }}: {{ s.state }}°{{ \"\\n\" if not loop.last else \"\" }}\n  {%- endfor\
-        \ %}\n{% else %}\n  All attic sensors are above {{ set_point }}°\n{% endif\
-        \ %}"
-      icon: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
-        \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-        ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
-        \ 999) | select('lt', set_point) | list | count %} {{ 'mdi:thermometer-alert'\
-        \ if count > 0 else 'mdi:check-circle' }}"
-      multiline_secondary: true
-      grid_options:
-        columns: 12
-        rows: auto
-      features_position: inline
-      color: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
-        \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-        ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
-        \ 999) | select('lt', set_point) | list | count %} {{ 'orange' if count >\
-        \ 0 else 'green' }}"
-      uix:
-        style:
-          ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n.secondary\
-            \ {\n  font-size: 1rem !important;\n  white-space: pre-wrap !important;\n\
-            \  -webkit-line-clamp: unset !important;\n  max-height: none !important;\n\
-            }\n"
-          .: "ha-card {\n  height: auto !important;\n  --icon-display: block !important;\n\
-            \  /* Animation Logic */\n  {% set set_point = 50 %}\n  {% set sensors\
-            \ = [\n    'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-            \    'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-            \    'sensor.nest_temperature_sensor_stairwell_g_temperature',\n    'sensor.a_expansion_attic_temperature',\n\
-            \    'sensor.c_expansion_attic_temperature',\n    'sensor.d_expansion_attic_temperature'\n\
-            \  ] %}\n  {% set count = expand(sensors) | map(attribute='state') | map('float',\
-            \ 999) | select('lt', set_point) | list | count %}\n  {% if count > 0\
-            \ %}\n  animation: bounce 2s infinite;\n  {% endif %}\n}\n\n@keyframes\
-            \ bounce {\n  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}\n  40%\
-            \ {transform: translateY(-10px);}\n  60% {transform: translateY(-5px);}\n\
-            }\n\n.content {\n  display: flex !important;\n  flex-direction: row !important;\n\
-            \  column-gap: .25rem !important;\n}\nha-tile-icon {\n  margin-right:\
-            \ -.5rem !important;\n}\nhui-card-features {\n  flex: 0 0 7rem !important;\n\
-            \  max-width:  auto !important;\n  min-width: auto !important;\n}\nhui-card-features$\
-            \ :host {\n  width: auto !important;\n}\nhui-card-features$ .container\
-            \ {\n  width: auto !important;\n  justify-content: start !important;\n\
-            \  border: 1px solid !important; \n  border-radius: 12px !important;\n\
-            }\n.info {\n  flex: 1 1 auto !important;\n  margin-right: 0px !important;\n\
-            \  min-width: 0 !important;\n}\n"
-      visibility:
-      - condition: numeric_state
-        below: 50
-        entity: sensor.openweathermap_feels_like_temperature_2
-    - type: custom:mushroom-template-card
-      primary: It's hot! Check the water loop!
-      secondary: Feels like {{ states('sensor.openweathermap_feels_like_temperature_2')
-        | float(0) | round(1) }} °F
-      icon: mdi:weather-sunny-alert
-      color: red
-      grid_options:
-        columns: full
-      visibility:
-      - condition: numeric_state
-        above: 92
-        entity: sensor.openweathermap_feels_like_temperature_2
-      uix:
-        style:
-          ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n"
-          .: "ha-tile-icon {\n  size: 2px !important;\n}\n"
-  - type: grid
-    cards:
-    - type: heading
-      icon: mdi:multimedia
-      heading_style: title
-      heading: Media
-      uix:
-        style: ".title {\n  font-size: 20px !important;\n}\n.title ha-icon {\n  --mdc-icon-size:\
-          \ 20px !important;\n}\n"
-    - type: heading
-      heading_style: subtitle
-      heading: Television
-      icon: mdi:television
-      uix:
-        style: "ha-card {\n  padding-top: 5px !important;\n}\n.subtitle {\n  font-size:\
-          \ 15px !important;\n}\n.title ha-icon {\n  --mdc-icon-size: 15px !important;\n\
-          }\n"
-    - type: custom:mushroom-media-player-card
-      layout: horizontal
-      use_media_info: true
-      volume_controls:
-      - volume_buttons
-      show_volume_level: true
-      media_controls:
-      - on_off
-      fill_container: true
-      grid_options:
-        columns: 12
-        rows: 1
-      collapsible_controls: true
-      secondary_info: state
-      entity: media_player.living_room_tv
-      visibility:
-      - condition: state
-        entity: media_player.living_room_tv
-        state_not: unavailable
-    - type: custom:vertical-stack-in-card
-      cards:
-      - type: custom:mini-media-player
-        entity: media_player.bedroom_tv
-        volume_stateless: true
-        source: full
-        artwork: material
-        uix:
-          style: "ha-card {\n  border-radius: var(--custom-radius) !important;\n \
-            \ box-shadow: none !important;\n  margin-bottom: 5px\n}\n{% if is_state('media_player.bedroom_tv',\
-            \ 'off') %}\n  ha-card {\n    box-shadow: 50px;\n    border: 1px solid\
-            \ rgba(255, 255, 255, 0.2) !important;\n  }\n  ha-card::before,\n  .mmp__bg,\n\
-            \  .mmp__bg::before {\n    display: none !important;\n  }\n{% endif %}\n\
-            \n}\n"
-      - type: conditional
-        conditions:
-        - condition: state
-          entity: input_boolean.dashboard_toggle
-          state: 'on'
-        card:
-          type: vertical-stack
-          cards:
-          - type: tile
-            entity: light.bedroom_tv_backlight
-            name: Tv Backlight
-            hide_state: true
-            vertical: false
-            tap_action:
-              action: none
-            icon_tap_action:
-              action: none
-            features:
-            - type: light-brightness
-            features_position: inline
-            uix:
-              style: "ha-card {\n  border: none !important;\n  background: none !important;\n\
-                \  box-shadow: none !important;\n  margin-top: 1rem !important;\n\
-                \  margin-bottom: 0px !important;\n}\nha-card::before { content: none\
-                \ !important; }\n"
-          - type: custom:custom-features-card
-            features:
-            - type: custom:service-call
-              entries:
-              - type: button
-                entity_id: ''
-                label: Video Mode
-                tap_action:
-                  action: perform-action
-                  perform_action: button.press
-                  target:
-                    entity_id: button.blake_foster30_gmail_com_video_mode_scene
-                  data: {}
-                thumb: md3-elevated
-                styles: ":host {\n  border: var(--custom-button-border);\n  border-radius:\
-                  \ var(--custom-radius);\n  --color: var(--custom-bg);\n}\n.label\
-                  \ { \n  color: var(--custom-contrast);\n}"
-              - type: button
-                entity_id: light.bedroom_tv_backlight
-                tap_action:
-                  action: perform-action
-                  perform_action: light.toggle
-                  target:
-                    entity_id: light.bedroom_tv_backlight
-                  data: {}
-                thumb: md3-elevated
-                label: Toggle
-                styles: ":host {\n  border: var(--custom-button-border);\n  border-radius:\
-                  \ var(--custom-radius);\n  --color: {{ 'var(--custom-active)' if\
-                  \ value == 'on' else 'var(--custom-bg)' }};\n}\n.label { \n  color:\
-                  \ var(--custom-contrast);\n}"
-                icon: local:tv_backlight
-              - type: button
-                entity_id: ''
-                tap_action:
-                  action: more-info
-                  target:
-                    entity_id: light.bedroom_tv_backlight
-                  data: {}
-                thumb: md3-elevated
-                label: Customize
-                styles: ":host {\n  border: var(--custom-button-border);\n  border-radius:\
-                  \ var(--custom-radius);\n  --color: var(--custom-bg);\n}\n.label\
-                  \ { \n  color: var(--custom-contrast); \n}"
-              styles: ''
-            transparent: false
-            uix:
-              style: "ha-card {\n  border: none !important;\n  background: none !important;\n\
-                \  box-shadow: none !important;\n  margin-bottom: 0px !important;\n\
-                }\nha-card::before { content: none !important; }\n"
-          - type: vertical-stack
-            cards:
-            - type: custom:bubble-card
-              card_type: pop-up
-              hash: '#remote'
-              button_type: switch
-              slider_fill_orientation: left
-              slider_value_position: right
-              name: Remote
-              button_action: {}
-              icon: mdi:remote
-              show_header: true
-              bg_opacity: '50'
-              bg_blur: '30'
-              cards:
-              - type: custom:universal-remote-card
-                rows:
-                - - back
-                  - power
-                  - home
-                  - menu
-                  - youtube
-                - - touchpad
-                  - - volume_buttons
-                - - rewind
-                  - previous
-                  - play_pause
-                  - next
-                  - fast_forward
-                platform: Roku
-                remote_id: remote.bedroom_tv
-                media_player_id: media_player.bedroom_tv
-                grid_options:
-                  rows: auto
-                  columns: 12
-                hold_time: 50
-              sub_button:
-                main: []
-                bottom: []
-              close_action:
-                action: perform-action
-                perform_action: input_boolean.turn_off
-                target:
-                  entity_id: input_boolean.dashboard_toggle
-            - type: custom:bubble-card
-              card_type: button
-              button_type: name
-              name: Remote
-              icon: mdi:remote
-              button_action:
-                tap_action:
-                  action: navigate
-                  navigation_path: '#remote'
-              styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
-                \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
-                \ 30px;\n  --bubble-button-border:  var(--custom-button-border);\n\
-                }\n"
-              sub_button:
-                main: []
-                bottom: []
-              uix:
-                style:
-                  .: "ha-card {\n  background: none !important;\n  border: none !important;\n\
-                    \  box-shadow: none !important;\n  padding: .5rem .5rem .25rem\
-                    \ .5rem !important;\n  margin-top: -2.5rem\n}\nha-card::before\
-                    \ { content: none !important; }\n"
-            uix:
-              style: "ha-card {\n  border: none !important;\n  background: none !important;\n\
-                \  box-shadow: none !important;\n  margin-bottom: 0px !important;\n\
-                }\nha-card::before { content: none !important; }\n"
-      - type: custom:mushroom-template-card
-        entity: input_boolean.dashboard_toggle
-        layout: vertical
-        icon: '{{ ''mdi:chevron-up'' if is_state(''input_boolean.dashboard_toggle'',
-          ''on'') else ''mdi:chevron-down'' }}'
-        tap_action:
-          action: toggle
-        uix:
-          style: "ha-card {\n  background: transparent !important;\n  height: 35px\
-            \ !important;\n  margin-top: -20px;\n  border: none !important;\n  box-shadow:\
-            \ none !important;\n}\nmushroom-shape-icon$: |\n  .shape {\n    --shape-color:\
-            \ transparent !important;\n    --shape-color-disabled: transparent !important;\n\
-            \    --shape-color: orange !important;\n    --icon-symbol-size: 2px !important;\n\
-            \    --icon-size: 20px !important;\n    box-shadow: none !important;\n\
-            \    border: none !important;\n  }\nha-card::before { content: none !important;\
-            \ }\n"
-    - type: heading
-      heading_style: subtitle
-      heading: Music
-      icon: mdi:music
-      uix:
-        style: "ha-card {\n  padding-top: 10px !important;\n}\n.subtitle {\n  font-size:\
-          \ 15px !important;\n}\n.title ha-icon {\n  --mdc-icon-size: 15px !important;\n\
-          }\n"
-    - type: custom:vertical-stack-in-card
-      cards:
-      - type: custom:vertical-stack-in-card
-        cards:
-        - type: conditional
-          conditions:
-          - condition: or
-            conditions:
-            - condition: state
-              entity: media_player.all_echo_2
-              state: playing
-            - condition: state
-              entity: sensor.recent_alexa
-              state: media_player.all_echo_2
-          card:
-            type: custom:simple-swipe-card
-            auto_hide_pagination: 0
-            auto_height: false
-            cards:
-            - type: custom:mini-media-player
-              entity: media_player.all_echo
-              volume_stateless: true
-              artwork: material
-              hide:
-                source: true
-                mute: true
-                power: true
-              uix:
-                style:
-                  .: "ha-card {\n  padding-bottom: 20px;\n}\n"
-                  mmp-progress $: ".mmp-progress {\n  pointer-events: none !important;\n\
-                    \  cursor: default !important;\n}\n"
-            - type: custom:mini-media-player
-              entity: media_player.blake_s_echo_spot
-              volume_stateless: true
-              artwork: material
-              hide:
-                source: true
-                mute: true
-                power: true
-              uix:
-                style:
-                  mmp-progress $: ".mmp-progress {\n  pointer-events: none !important;\n\
-                    \  cursor: default !important;\n}\n"
-            - type: custom:mini-media-player
-              entity: media_player.blake_s_echo_pop
-              volume_stateless: true
-              artwork: material
-              hide:
-                source: true
-                mute: true
-                power: true
-              uix:
-                style:
-                  mmp-progress $: ".mmp-progress {\n  pointer-events: none !important;\n\
-                    \  cursor: default !important;\n}\n"
-            - type: custom:mini-media-player
-              entity: media_player.blake_s_echo_dot
-              volume_stateless: true
-              artwork: material
-              hide:
-                source: true
-                mute: true
-                power: true
-              uix:
-                style:
-                  mmp-progress $: ".mmp-progress {\n  pointer-events: none !important;\n\
-                    \  cursor: default !important;\n}\n"
-        - type: conditional
-          conditions:
-          - condition: and
-            conditions:
-            - condition: state
-              entity: sensor.recent_alexa
-              state: media_player.blake_s_echo_spot
-            - condition: state
-              entity: media_player.all_echo_2
-              state_not: playing
-          card:
-            type: custom:mini-media-player
-            entity: media_player.blake_s_echo_spot
-            volume_stateless: true
-            artwork: material
-            hide:
-              source: true
-              mute: true
-              power: true
-            uix:
-              style:
-                mmp-progress $: ".mmp-progress {\n  pointer-events: none !important;\n\
-                  \  cursor: default !important;\n}\n"
-        - type: conditional
-          conditions:
-          - condition: and
-            conditions:
-            - condition: state
-              entity: sensor.recent_alexa
-              state: media_player.blake_s_echo_dot
-            - condition: state
-              entity: media_player.all_echo
-              state_not: playing
-          card:
-            type: custom:mini-media-player
-            entity: media_player.blake_s_echo_dot
-            volume_stateless: true
-            artwork: material
-            hide:
-              source: true
-              mute: true
-              power: true
-            uix:
-              style:
-                mmp-progress $: ".mmp-progress {\n  pointer-events: none !important;\n\
-                  \  cursor: default !important;\n}\n"
-        - type: conditional
-          conditions:
-          - condition: and
-            conditions:
-            - condition: state
-              entity: sensor.recent_alexa
-              state: media_player.blake_s_echo_pop
-            - condition: state
-              entity: media_player.all_echo
-              state_not: playing
-          card:
-            type: custom:mini-media-player
-            entity: media_player.blake_s_echo_pop
-            volume_stateless: true
-            artwork: material
-            hide:
-              source: true
-              mute: true
-              power: true
-            uix:
-              style:
-                mmp-progress $: ".mmp-progress {\n  pointer-events: none !important;\n\
-                  \  cursor: default !important;\n}\n"
-      - type: conditional
-        conditions:
-        - condition: and
-          conditions:
-          - condition: state
-            entity: input_boolean.disable_toggle
-            state: 'off'
-          - condition: state
-            entity: script.alexa_music
-            state: 'off'
-        card:
-          type: entities
-          entities:
-          - entity: input_text.alexa_music_search
-            card_mod:
-              style:
-                ha-input $: "wa-input::part(base) {\n  background: transparent !important;\n\
-                  }\n\nwa-input::part(base)::after {\n  display: block !important;\n\
-                  \  background: var(--custom-active) !important;\n}\n"
-          - entity: input_select.speakers
-            card_mod:
-              style:
-                ha-select $:
-                  ha-picker-field $: "ha-combo-box-item {\n  background: transparent\
-                    \ !important;\n}\n\nha-combo-box-item::after {\n  display: none\
-                    \ !important;\n}\n"
-          uix:
-            style: "ha-card {\n  border: none;\n  background: none !important;\n \
-              \ box-shadow: none !important;\n}\nha-card::before {\n  content: none\
-              \ !important;\n}\n"
-      - type: conditional
-        conditions:
-        - condition: and
-          conditions:
-          - condition: state
-            entity: input_boolean.disable_toggle
-            state: 'off'
-          - condition: state
-            entity: script.alexa_music
-            state: 'off'
-        card:
-          type: custom:custom-features-card
-          features:
-          - type: custom:service-call
-            entries:
-            - type: button
-              entity_id: script.alexa_music
-              tap_action:
-                action: perform-action
-                target:
-                  entity_id: script.alexa_music
-                perform_action: script.alexa_music
-                data:
-                  action_type: search_music
-              icon: mdi:music
-              label: Search Music
-              thumb: md3-elevated
-              toggle_styles: false
-              haptics: true
-              styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
-                \ }};\n  box-shadow: none;\n}\n.label {\n  color: {{ 'var(--custom-contrast)'\
-                \ }};\n}\n.icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
-          transparent: false
-          uix:
-            style: "ha-card {\n  border: none;\n  box-shadow: none;\n  background:\
-              \ none !important;\n  padding-top: 0px !important;\n  padding-bottom:\
-              \ 5px !important;\n}\nha-card::before {\n  content: none !important;\n\
-              }\n"
-      - type: conditional
-        conditions:
-        - condition: state
-          entity: input_text.script_variables
-          state_not: ''
-        card:
-          type: custom:mushroom-template-card
-          primary: Actions - {{ states('input_text.script_tracking') }}
-          secondary: '{{ states(''input_text.script_variables'') }}'
-          grid_options:
-            columns: full
-            rows: auto
-          features_position: bottom
-          multiline_secondary: true
-          icon: mdi:music
-          uix:
-            style: "ha-card {\n   border: none;\n   background: none !important;\n\
-              \   box-shadow: none !important;\n }\n ha-card::before {\n   content:\
-              \ none !important;\n }\n"
-      - type: conditional
-        conditions:
-        - condition: state
-          entity: input_boolean.disable_toggle
-          state: 'on'
-        card:
-          type: custom:custom-features-card
-          features:
-          - type: custom:service-call
-            entries:
-            - type: button
-              entity_id: script.alexa_music
-              tap_action:
-                action: perform-action
-                target:
-                  entity_id: input_boolean.disable_toggle
-                perform_action: input_boolean.turn_off
-                data: {}
-              icon: mdi:stop
-              label: Stop
-              thumb: md3-elevated
-              toggle_styles: false
-              haptics: true
-              styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
-                \ }};\n  box-shadow: none;\n}\n.label {\n  color: {{ 'var(--custom-active)'\
-                \ }};\n}\n.icon {\n  color: {{ 'var(--custom-active)' }};  \n}"
-          transparent: false
-          uix:
-            style: "ha-card {\n  border: none;\n  box-shadow: none;\n  background:\
-              \ none !important;\n  padding-top: 0px !important;\n  padding-bottom:\
-              \ 5px !important;\n}\nha-card::before {\n  content: none !important;\n\
-              }\n"
-      uix:
-        style: "ha-card {\n  border-radius: var(--custom-radius) !important;\n  border:\
-          \ 0.5px solid rgba(255, 255, 255, 0.2) !important;\n}\n"
-    - type: entities
-      entities:
-      - entity: input_text.alarm_music
-        card_mod:
-          style:
-            ha-input $: "wa-input::part(base) {\n  background: transparent !important;\n\
-              }\n\nwa-input::part(base)::after {\n  display: block !important;\n \
-              \ background: var(--custom-active) !important;\n}\n"
-  - type: grid
-    cards:
-    - type: heading
-      heading: New section
-    - type: heading
-      icon: mdi:cloud-upload-outline
-      heading_style: title
-      heading: Backup & AI
-      uix:
-        style: ".title {\n  font-size: 20px !important;\n}\n.title ha-icon {\n  --mdc-icon-size:\
-          \ 20px !important;\n}\n"
-    - type: custom:button-card
-      entity: script.push_ha_info_to_github_create_ai_zip_file_now
-      show_state: true
-      name: Generate HA Info Folder
-      tap_action:
-        action: none
-      state:
-      - valye: 'on'
-        state_display: generating
-      - value: 'off'
-        state_display: 'off'
-      styles:
-        grid:
-        - grid-template-areas: '"i n run_button" "i s run_button"'
-        - grid-template-columns: min-content min-content 1fr
-        - grid-template-rows: 1fr 1fr
-        card:
-        - padding: .7rem
-        - height: 4.5rem
-        img_cell:
-        - background-color: transparent
-        - width: 4rem
-        icon:
-        - width: 3rem
-        - color: "[[[\n  return entity.state === 'on' ? 'var(--custom-active)' : 'var(--custom-contrast)';\n\
-            ]]]\n"
-        - padding-bottom: .25rem
-        - margin-left: -.5rem
-        name:
-        - justify-self: start
-        - font-weight: 500
-        - font-size: 1rem
-        state:
-        - justify-self: start
-        - font-size: 1rem
-      custom_fields:
-        run_button:
-          card:
-            type: custom:custom-features-card
-            features:
-            - type: custom:service-call
-              entries:
-              - type: button
-                label: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      Generating...\n    {% else %}\n      Generate\n\
-                  \    {% endif %} \n"
-                icon: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      null\n    {% else %}\n      local:github_zip_script\n\
-                  \    {% endif %} \n"
-                thumb: md3-elevated
-                tap_action:
-                  action: perform-action
-                  perform_action: script.turn_on
-                  target:
-                    entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
-                toggle_styles: false
-                styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                  \  --color: var(--custom-bg); \n  border-radius: var(--custom-radius);\n\
-                  \  box-shadow: none;\n  margin-right: auto\n  margin-left: auto\
-                  \  \n  width: auto\n  justify-content: space-around\n  justify-self:\
-                  \ space-around\n  justify-items: space-around\n}\n.label {\n   \
-                  \ {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n\
-                  \      color: var(--custom-contrast);\n    {% endif %} \n}\n.icon\
-                  \ {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n\
-                  \      color: var(--custom-contrast);\n    {% endif %}\n  padding-bottom:\
-                  \ .25rem\n}"
-                entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
-            transparent: false
-            uix:
-              style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
-                \ none;\n  margin-right: auto\n  margin-left: auto\n  width: auto\n\
-                \  justify-content: space-around\n  justify-self: space-around\n \
-                \ justify-items: space-around\n\n}\nha-card::before {\ncontent: none\
-                \ !important;\n}\n"
-  header:
-    layout: center
-    badges_position: bottom
-    badges_wrap: wrap
-  type: sections
-  max_columns: 4
-  dense_section_placement: true
-  cards: []
-  theme: Liquid Glass
-  top_margin: false
-  background:
-    opacity: 33
-    alignment: center
-    size: cover
-    repeat: repeat
-    attachment: fixed
 - type: masonry
   path: masonry
   title: masonry
@@ -4746,6 +2740,85 @@ views:
                 \ | list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
                 \ | int(0) > 0 %}\n  {{ disabled | reject('eq', door) | list | tojson\
                 \ }}\n{% else %}\n  {{ disabled | tojson }}\n{% endif %}"
+    - type: custom:state-switch
+      entity: template
+      template: '{{ ''on'' if states(''input_text.script_tracking'').startswith(''automation.security
+        - '') else ''off'' }}'
+      states:
+        'on':
+          type: custom:vertical-stack-in-card
+          cards:
+          - type: custom:mushroom-template-card
+            primary: Security Alert!
+            secondary: '{{ states(''input_text.script_tracking'').split('' - '', 1)[1]
+              }}'
+            icon: mdi:security
+            grid_options:
+              columns: full
+            features_position: bottom
+            color: red
+            uix:
+              style:
+                ha-tile-info$: ":host {\n  --ha-tile-info-primary-font-size: 20px;\n\
+                  \  --ha-tile-info-primary-color: red;\n  --ha-tile-info-secondary-font-size:\
+                  \ 16px;\n  --ha-tile-info-secondary-line-height: 20px;\n}\n"
+                .: "ha-tile-icon {\n  size: 20px !important;\n}\nha-card {\n  height:\
+                  \ auto !important;\n  margin-top: 10px;\n  --icon-display: block\
+                  \ !important;\n  background: none;\n  padding-top: 1px;\n}\n\nha-card::before\
+                  \ {\n  content: none;\n}\n"
+          - type: custom:custom-features-card
+            features:
+            - type: custom:service-call
+              entries:
+              - type: button
+                entity_id: ''
+                thumb: md3-elevated
+                styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                  \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                  \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n\
+                  \  color: {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color:\
+                  \ {{ 'var(--custom-contrast)' }};\n}\n"
+                label: Traces
+                tap_action:
+                  action: navigate
+                  navigation_path: /config/automation/trace/1787939305481
+                icon: mdi:directions-fork
+              - type: button
+                entity_id: ''
+                label: Reset
+                thumb: md3-elevated
+                styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                  \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                  \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n\
+                  \  color: {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color:\
+                  \ {{ 'var(--custom-contrast)' }};\n}\n"
+                icon: mdi:cancel
+                tap_action:
+                  action: perform-action
+                  perform_action: automation.trigger
+                  target:
+                    entity_id: automation.security
+                  data:
+                    skip_condition: true
+                    variables:
+                      action_type: disregard
+              - type: button
+                entity_id: ''
+                label: Dashboard
+                tap_action:
+                  action: navigate
+                  navigation_path: /my-dashboard/security
+                styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                  \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                  \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n\
+                  \  color: {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color:\
+                  \ {{ 'var(--custom-contrast)' }};\n}\n"
+                thumb: md3-elevated
+                icon: mdi:security
+            uix:
+              style: "ha-card {\n  border: none;\n  border-shadow: none !important;\n\
+                \  box-shadow: none !important;\n  background: none !important;\n\
+                }\nha-card::before {\n  content: none !important;\n}\n"
     uix:
       style: "ha-card {\n  border: none;\n  background: none;\n}\n\nha-card::before\
         \ {\n  content: none !important;\n}\n"
@@ -6193,7 +4266,7 @@ views:
         mushroom-template-badge$: ".badge {\n  background: var(--custom-bg) !important;\n\
           }\n"
 - type: sections
-  theme: Frosted Glass
+  theme: Frosted Glass Dark
   max_columns: 4
   title: Security
   path: security
@@ -6201,69 +4274,85 @@ views:
   sections:
   - type: grid
     cards:
-    - type: custom:vertical-stack-in-card
-      horizontal: true
-      cards:
-      - type: heading
-        icon: mdi:security
-        heading_style: title
-        badges: []
-        heading: Security Alert
-        uix:
-          style: ".title {\n font-size: 20px !important;\n padding-bottom: 10px;\n\
-            \ padding-left: 5px;\n}\n\n.title ha-icon {\n  --mdc-icon-size: 25px !important;\n\
-            }\n"
-      - type: custom:custom-features-card
-        features:
-        - type: custom:service-call
-          entries:
-          - type: button
-            entity_id: ''
-            thumb: md3-elevated
-            styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
-              \ !important;\n  border-radius: var(--custom-radius);\n  --color: {{\
-              \ 'var(--custom-bg)' }};\n  box-shadow: none;\n  margin-right: 0px;\n\
-              \  margin-left: -12px;\n}\n.label {\n  color: {{ 'var(--custom-contrast)'\
-              \ }};\n}\n.icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}\n"
-            label: Traces
-            tap_action:
-              action: navigate
-              navigation_path: /config/automation/trace/1787939305481
-            icon: mdi:directions-fork
-          - type: button
-            entity_id: ''
-            label: Reset
-            thumb: md3-elevated
-            styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
-              \ !important;\n  border-radius: var(--custom-radius);\n  --color: {{\
-              \ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n  color:\
-              \ {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color: {{ 'var(--custom-contrast)'\
-              \ }};  \n}\n\n"
-            icon: mdi:cancel
-            tap_action:
-              action: perform-action
-              perform_action: automation.trigger
-              target:
-                entity_id: automation.security
-              data:
-                skip_condition: true
-                variables:
-                  action_type: disregard
-        uix:
-          style: "ha-card {\n  margin-right: 25px !important;\n  \n  border: none;\n\
-            \  border-shadow: none !important;\n  box-shadow: none !important;\n \
-            \ background: none !important;\n}\nha-card::before {\n      content: none\
-            \ !important;\n}\n"
-      uix:
-        style: "ha-card {\n  border: var(--custom-button-border);\n  border-radius:\
-          \ var(--custom-radius);\n  animation: bounce 2s infinite;\n}\n\n  @keyframes\
-          \ bounce {\n    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}\n  \
-          \  40% {transform: translateY(-5px);}\n    60% {transform: translateY(-5px);}\n\
-          \  }\n"
-      visibility:
-      - condition: state
-        entity: input_boolean.general_toggle_helper
-        state: 'on'
+    - type: custom:state-switch
+      entity: template
+      template: '{{ ''on'' if states(''input_text.script_tracking'').startswith(''automation.security
+        - '') else ''off'' }}'
+      states:
+        'on':
+          type: custom:vertical-stack-in-card
+          cards:
+          - type: custom:mushroom-template-card
+            primary: Security Alert!
+            secondary: '{{ states(''input_text.script_tracking'').split('' - '', 1)[1]
+              }}'
+            icon: mdi:security
+            grid_options:
+              columns: full
+            features_position: bottom
+            color: red
+            uix:
+              style:
+                ha-tile-info$: ":host {\n  --ha-tile-info-primary-font-size: 20px;\n\
+                  \  --ha-tile-info-primary-color: red;\n  --ha-tile-info-secondary-font-size:\
+                  \ 16px;\n  --ha-tile-info-secondary-line-height: 20px;\n}\n"
+                .: "ha-tile-icon {\n  size: 20px !important;\n}\nha-card {\n  height:\
+                  \ auto !important;\n  margin-top: 10px;\n  --icon-display: block\
+                  \ !important;\n  background: none;\n  padding-top: 1px;\n}\n\nha-card::before\
+                  \ {\n  content: none;\n}\n"
+          - type: custom:custom-features-card
+            features:
+            - type: custom:service-call
+              entries:
+              - type: button
+                entity_id: ''
+                thumb: md3-elevated
+                styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                  \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                  \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n\
+                  \  color: {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color:\
+                  \ {{ 'var(--custom-contrast)' }};\n}\n"
+                label: Traces
+                tap_action:
+                  action: navigate
+                  navigation_path: /config/automation/trace/1787939305481
+                icon: mdi:directions-fork
+              - type: button
+                entity_id: ''
+                label: Reset
+                thumb: md3-elevated
+                styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                  \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                  \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n\
+                  \  color: {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color:\
+                  \ {{ 'var(--custom-contrast)' }};\n}\n"
+                icon: mdi:cancel
+                tap_action:
+                  action: perform-action
+                  perform_action: automation.trigger
+                  target:
+                    entity_id: automation.security
+                  data:
+                    skip_condition: true
+                    variables:
+                      action_type: disregard
+              - type: button
+                entity_id: ''
+                label: Dashboard
+                tap_action:
+                  action: navigate
+                  navigation_path: /my-dashboard/security
+                styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                  \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                  \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n.label {\n\
+                  \  color: {{ 'var(--custom-contrast)' }};\n}\n.icon {\n  color:\
+                  \ {{ 'var(--custom-contrast)' }};\n}\n"
+                thumb: md3-elevated
+                icon: mdi:security
+            uix:
+              style: "ha-card {\n  border: none;\n  border-shadow: none !important;\n\
+                \  box-shadow: none !important;\n  background: none !important;\n\
+                }\nha-card::before {\n  content: none !important;\n}\n"
   - type: grid
     cards:
     - type: heading
@@ -6530,6 +4619,8 @@ views:
     tap_action:
       action: navigate
       navigation_path: /my-dashboard/0
+    uix:
+      style: "ha-badge {\n  --ha-card-background: var(--custom-bg);\n}\n"
   show_icon_and_title: true
   subview: true
   cards: []
