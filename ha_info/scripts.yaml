@@ -735,13 +735,6 @@ helper_script:
           threshold: '{{ caller_config[called_by][profile][''threshold''] }}'
           timer_duration: '{{ caller_config[called_by][profile][''timer_duration'']
             }}'
-      - action: input_text.set_value
-        target:
-          entity_id: input_text.script_tracking
-        metadata: {}
-        data:
-          value: '{{ state_attr(called_by, ''friendly_name'') }} {{ ''- '' ~ profile
-            if profile != ''default'' else '''' }}'
       - if:
         - condition: light.is_on
           target:
@@ -754,6 +747,13 @@ helper_script:
             for: 00:00:00
             behavior: any
         then:
+        - action: input_text.set_value
+          target:
+            entity_id: input_text.script_tracking
+          metadata: {}
+          data:
+            value: '{{ state_attr(called_by, ''friendly_name'') }} {{ ''- '' ~ profile
+              if profile != ''default'' else '''' }}'
         - repeat:
             until:
             - alias: Dynamic sensor list off for set time

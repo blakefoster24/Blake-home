@@ -1160,6 +1160,7 @@
           | Home_ts: {{ fmt(home_ts) }} | Prev_door_ts: {{ fmt(prev_door_ts) }} |
           Home_ts - Prev_door_ts = {{ home_delta }}s | First opening: {{ true if first_open_bool
           == true else false if first_open_bool == false else 'n/a' }}\n"
+        entity_id: sensor.door_log
   - alias: Leaving / Arriving
     choose:
     - conditions:
@@ -3049,6 +3050,10 @@
         - condition: template
           value_template: '{{ action_type == ''disregard'' }}'
           alias: 'Action_type: disregard'
+      - condition: template
+        value_template: '{{ states(''input_text.script_tracking'').startswith(''automation.security
+          - '') }}'
+        alias: 'Input text starts with automation.security '
       sequence:
       - action: input_text.set_value
         target:
