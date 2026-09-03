@@ -562,7 +562,7 @@
     - conditions:
       - condition: trigger
         id:
-        - Above 70
+        - Above > 70 10m
       - condition: not
         conditions:
         - alias: Home + workday + 9-4
@@ -593,7 +593,7 @@
     - conditions:
       - condition: trigger
         id:
-        - Below 65
+        - Below< 68 10m
       - condition: not
         conditions:
         - alias: Home + workday + 9-4
@@ -873,6 +873,7 @@
         data:
           datetime: '{{ now().isoformat() }}'
         alias: Set Home Timestamp
+        metadata: {}
     - conditions:
       - condition: trigger
         id:
@@ -1230,7 +1231,7 @@
           - action: input_text.set_value
             metadata: {}
             target:
-              entity_id: input_text.script_tracking
+              entity_id: input_text.template_tracking
             data: {}
           - action: notify.mobile_app_blakes_iphone
             metadata: {}
@@ -1336,42 +1337,6 @@
   trace:
     stored_traces: 50
   mode: restart
-- id: '1763883487543'
-  alias: Bedroom Ceiling Lights (3) -> Set My Room
-  description: ''
-  triggers:
-  - trigger: state
-    entity_id:
-    - light.bedroom_ceiling_lights
-  conditions: []
-  actions:
-  - sequence:
-    - wait_for_trigger:
-      - trigger: state
-        entity_id:
-        - light.bedroom_ceiling_lights
-      timeout:
-        hours: 0
-        minutes: 0
-        seconds: 5
-        milliseconds: 0
-      continue_on_timeout: false
-    - wait_for_trigger:
-      - trigger: state
-        entity_id:
-        - light.bedroom_ceiling_lights
-      timeout:
-        hours: 0
-        minutes: 0
-        seconds: 5
-        milliseconds: 0
-      continue_on_timeout: false
-    - action: script.turn_on
-      metadata: {}
-      data: {}
-      target:
-        entity_id: script.set_my_room
-  mode: single
 - id: '1764120623172'
   alias: Work Schedule Automations
   description: ''
@@ -1837,6 +1802,7 @@
         target:
           entity_id: automation.door_automation
         data: {}
+        metadata: {}
       - if:
         - condition: light.is_on
           target:
@@ -1871,11 +1837,14 @@
       parallel:
       - alias: Wake Up Scene Sequence
         sequence:
-        - action: script.alexa_music
+        - action: script.turn_on
+          target:
+            entity_id: script.alexa_music
           data:
-            action_type: '{{ trigger.id }}
+            variables:
+              action_type: '{{ trigger.id }}
 
-              '
+                '
           note: 'Turns on music script, passes action_type: manual wakeup if automation
             was triggered by button 1'
           metadata: {}
@@ -1987,6 +1956,7 @@
             entity_id: automation.door_automation
           data:
             stop_actions: true
+          metadata: {}
         - alias: Wait for -> door open
           wait_for_trigger:
           - trigger: state
@@ -2018,6 +1988,7 @@
           target:
             entity_id: automation.door_automation
           data: {}
+          metadata: {}
         - action: scene.turn_on
           metadata: {}
           data: {}
@@ -2935,6 +2906,7 @@
           behavior: any
           for: 00:00:00
           zone: zone.home
+        enabled: false
       sequence:
       - action: notify.mobile_app_blakes_iphone
         metadata: {}
@@ -2952,11 +2924,12 @@
               destructive: true
       - action: input_text.set_value
         target:
-          entity_id: input_text.script_tracking
+          entity_id:
+          - input_text.security_info
         metadata: {}
         data:
-          value: '{{ this.entity_id }} - {{ trigger.id }} - {{ as_local(state_attr(this.entity_id,
-            ''last_triggered'')).strftime(''%-I:%M %p'') }}'
+          value: '{{ trigger.id }} - {{ as_local(state_attr(this.entity_id, ''last_triggered'')).strftime(''%-I:%M
+            %p'') }}'
     - conditions:
       - condition: or
         conditions:
@@ -2966,14 +2939,11 @@
         - condition: template
           value_template: '{{ action_type == ''disregard'' }}'
           alias: 'Action_type: disregard'
-      - condition: template
-        value_template: '{{ states(''input_text.script_tracking'').startswith(''automation.security
-          - '') }}'
-        alias: 'Input text starts with automation.security '
       sequence:
       - action: input_text.set_value
         target:
-          entity_id: input_text.script_tracking
+          entity_id:
+          - input_text.security_info
         data:
           value: ''
         metadata: {}
