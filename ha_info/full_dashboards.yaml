@@ -1580,6 +1580,9 @@ views:
         service: scene.turn_on
         target:
           entity_id: scene.all_off
+      hold_action:
+        action: more-info
+        entity: scene.all_off
       styles:
         icon:
         - color: "[[[\n  const isActive = (\n    states['light.bedroom_ceiling_lights'].state\
@@ -1611,6 +1614,9 @@ views:
         service: scene.turn_on
         target:
           entity_id: scene.lights_off_except_bedroom
+      hold_action:
+        action: more-info
+        entity: scene.lights_off_except_bedroom
       styles:
         icon:
         - color: "[[[\n  const isActive = (\n    states['light.bathroom_light'].state\
@@ -1643,6 +1649,9 @@ views:
       tap_action:
         action: perform-action
         perform_action: script.set_my_room
+      hold_action:
+        action: more-info
+        entity: scene.set_my_room
       styles:
         icon:
         - color: "[[[\n  const isActive = (\n    states['light.bedroom_lamp'].state\
@@ -1667,17 +1676,29 @@ views:
       triggers_update:
       - light.bedroom_ceiling_lights
       - light.bedroom_lamp
+      - light.bathroom_light
+      - light.main_lights
+      - light.closet_light
+      - fan.living_room_ceiling_fan
+      - light.living_room_ceiling_lights
+      - light.kitchen_lights
       tap_action:
         action: call-service
         service: scene.turn_on
         target:
           entity_id: scene.bedroom_lights_off
+      hold_action:
+        action: more-info
+        entity: scene.bedroom_lights_off
       styles:
         icon:
-        - color: "[[[\n  const isActive = (\n    states['light.bedroom_ceiling_lights'].state\
-            \ === 'off' &&\n    states['light.bedroom_lamp'].state === 'off' &&\n\
-            \    states['fan.bedroom_fan'].state === 'off'\n  );\n  return isActive\
-            \ ? '#E1B000' : 'var(--state-icon-color)';\n]]]\n"
+        - color: "[[[\n  const bedroomOff =\n    states['light.bedroom_ceiling_lights'].state\
+            \ === 'off' &&\n    states['light.bedroom_lamp'].state === 'off';\n\n\
+            \  const outsideOn = [\n    'light.bathroom_light',\n    'light.main_lights',\n\
+            \    'light.closet_light',\n    'fan.living_room_ceiling_fan',\n    'light.living_room_ceiling_lights',\n\
+            \    'light.kitchen_lights'\n  ].some(entity => states[entity]?.state\
+            \ === 'on');\n\n  const isActive = bedroomOff && outsideOn;\n\n  return\
+            \ isActive ? '#E1B000' : 'var(--state-icon-color)';\n]]]\n"
     - type: custom:button-card
       entity: scene.goodnight_scene
       section_mode: true
@@ -1703,9 +1724,8 @@ views:
         service: scene.turn_on
         target:
           entity_id: scene.goodnight_scene
-      hold-action:
-        actiom: performam-action
-        perform_action: more-info
+      hold_action:
+        action: more-info
         entity: scene.goodnight_scene
       styles:
         icon:
@@ -1736,6 +1756,9 @@ views:
         service: scene.turn_on
         target:
           entity_id: scene.im_awake
+      hold_action:
+        action: more-info
+        entity: scene.im_awake
       styles:
         icon:
         - color: "[[[\n  const isActive = (\n    states['light.bedroom_lamp'].state\
@@ -2919,10 +2942,14 @@ views:
           \    {% else %}\n      var(--state-icon-color)\n    {% endif %};\n}\n"
     - entity: scene.bedroom_lights_off
       card_mod:
-        style: ":host {\n  --card-mod-icon-color: \n    {% if \n      is_state('light.bedroom_ceiling_lights',\
-          \ 'off') and\n      is_state('light.bedroom_lamp', 'off') and\n      is_state('fan.bedroom_fan',\
-          \ 'off')\n    %}\n      #E1B000\n    {% else %}\n      var(--state-icon-color)\n\
-          \    {% endif %};\n}\n"
+        style: ":host {\n  --card-mod-icon-color:\n    {% set bedroom_off =\n    \
+          \  is_state('light.bedroom_ceiling_lights', 'off') and\n      is_state('light.bedroom_lamp',\
+          \ 'off')\n    %}\n\n    {% set outside_on =\n      is_state('light.bathroom_light',\
+          \ 'on') or\n      is_state('light.main_lights', 'on') or\n      is_state('light.closet_light',\
+          \ 'on') or\n      is_state('fan.living_room_ceiling_fan', 'on') or\n   \
+          \   is_state('light.living_room_ceiling_lights', 'on') or\n      is_state('light.kitchen_lights',\
+          \ 'on')\n    %}\n\n    {% if bedroom_off and outside_on %}\n      #E1B000\n\
+          \    {% else %}\n      var(--state-icon-color)\n    {% endif %};\n}\n"
     - entity: scene.im_awake
       card_mod:
         style: ":host {\n  --card-mod-icon-color: \n    {% if \n      is_state('light.bedroom_lamp',\

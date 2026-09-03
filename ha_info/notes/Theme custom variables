@@ -22,7 +22,11 @@ frosted glass:
       ha-dialog-scrim-backdrop-filter: 'none'
       paper-dialog-background-color: 'rgba(55, 55, 55, 0.8)'
 
-
+      card-mod-more-info-yaml: |
+        ha-more-info-info$: |
+          :host {
+            color: rgba(234, 235, 238, 0.98) !important;
+          }
 
 Liquid Glass:
 modes:

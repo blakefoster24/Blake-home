@@ -2893,91 +2893,6 @@
   mode: single
   trace:
     stored_traces: 50
-- id: '1787782662738'
-  alias: Thermostat - Maintain 68
-  description: Keeps apartment near 68°F using a 67–69°F deadband.
-  triggers:
-  - trigger: numeric_state
-    entity_id: sensor.nest_thermostat_temperature
-    above: 69
-    for: 00:05:00
-    id: too_warm
-  - trigger: numeric_state
-    entity_id: sensor.nest_thermostat_temperature
-    below: 67
-    for: 00:05:00
-    id: too_cold
-  - trigger: homeassistant
-    event: start
-    id: ha_start
-  conditions: []
-  actions:
-  - if:
-    - condition: trigger
-      id: ha_start
-    then:
-    - delay: 00:05:00
-  - variables:
-      indoor_temp: '{{ states(''sensor.nest_thermostat_temperature'') | float }}
-
-        '
-      current_mode: '{{ states(''climate.nest_thermostat'') }}
-
-        '
-      mode_age: "{{ (as_timestamp(now()) -\n    as_timestamp(states.climate.nest_thermostat.last_changed))\n
-        \   | int(0) }}\n"
-  - choose:
-    - conditions:
-      - condition: template
-        value_template: '{{ indoor_temp >= 69 }}
-
-          '
-      sequence:
-      - if:
-        - condition: template
-          value_template: '{{ current_mode != ''cool'' and mode_age < 1200 }}
-
-            '
-        then:
-        - delay:
-            seconds: '{{ 1200 - mode_age }}
-
-              '
-      - condition: numeric_state
-        entity_id: sensor.nest_thermostat_temperature
-        above: 69
-      - action: climate.set_temperature
-        target:
-          entity_id: climate.nest_thermostat
-        data:
-          temperature: 68
-          hvac_mode: cool
-    - conditions:
-      - condition: template
-        value_template: '{{ indoor_temp <= 67 }}
-
-          '
-      sequence:
-      - if:
-        - condition: template
-          value_template: '{{ current_mode != ''heat'' and mode_age < 1200 }}
-
-            '
-        then:
-        - delay:
-            seconds: '{{ 1200 - mode_age }}
-
-              '
-      - condition: numeric_state
-        entity_id: sensor.nest_thermostat_temperature
-        below: 67
-      - action: climate.set_temperature
-        target:
-          entity_id: climate.nest_thermostat
-        data:
-          temperature: 68
-          hvac_mode: heat
-  mode: restart
 - id: '1787939305481'
   alias: Security
   description: ''
@@ -2999,6 +2914,7 @@
       behavior: each
       for: 00:00:00
     id: Door opened
+    enabled: true
   - trigger: event
     event_type: mobile_app_notification_action
     event_data:
