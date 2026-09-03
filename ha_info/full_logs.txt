@@ -3,10 +3,7 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-09-02T23:20:07.195649 =====
-
-The above exception was the direct cause of the following exception:
-
+===== 2026-09-02T23:25:20.398068 =====
 Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 540, in async_render_to_info
     render_info._result = self.async_render(  # noqa: SLF001
@@ -18,7 +15,10 @@ Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 432, in async_render
     raise TemplateError(err) from err
 homeassistant.exceptions.TemplateError: UndefinedError: list object has no element 1[0m
-[31m2026-09-02 23:17:51.347 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=520>
+[32m2026-09-02 23:23:39.893 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[33m2026-09-02 23:23:42.308 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][esp32_ble_tracker:177]: Dropped 1 BLE scan results due to buffer overflow[0m
+[33m2026-09-02 23:24:15.127 WARNING (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Already running[0m
+[31m2026-09-02 23:24:46.521 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=536>
 Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 430, in async_render
     render_result = render_with_context(self.template, compiled, **kwargs)
@@ -46,7 +46,7 @@ Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 432, in async_render
     raise TemplateError(err) from err
 homeassistant.exceptions.TemplateError: UndefinedError: list object has no element 1[0m
-[31m2026-09-02 23:17:51.928 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=524>
+[31m2026-09-02 23:25:12.529 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=540>
 Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 430, in async_render
     render_result = render_with_context(self.template, compiled, **kwargs)
@@ -74,7 +74,7 @@ Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 432, in async_render
     raise TemplateError(err) from err
 homeassistant.exceptions.TemplateError: UndefinedError: list object has no element 1[0m
-[31m2026-09-02 23:19:31.700 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=528>
+[31m2026-09-02 23:25:12.855 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=544>
 Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 430, in async_render
     render_result = render_with_context(self.template, compiled, **kwargs)
@@ -102,36 +102,40 @@ Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 432, in async_render
     raise TemplateError(err) from err
 homeassistant.exceptions.TemplateError: UndefinedError: list object has no element 1[0m
-[32m2026-09-02 23:20:03.521 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[33m2026-09-02 23:20:03.597 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2026-09-02 23:25:16.861 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[33m2026-09-02 23:25:16.914 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-09-02T23:20:07.302445 =====
-[31m2026-09-02 23:17:51.347 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=520>
-[31m2026-09-02 23:17:51.928 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=524>
-[31m2026-09-02 23:19:31.700 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=528>
-[32m2026-09-02 23:20:03.521 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+===== 2026-09-02T23:25:20.505941 =====
+[32m2026-09-02 23:23:39.893 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[33m2026-09-02 23:24:15.127 WARNING (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Already running[0m
+[31m2026-09-02 23:24:46.521 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=536>
+[31m2026-09-02 23:25:12.529 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=540>
+[31m2026-09-02 23:25:12.855 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=544>
+[32m2026-09-02 23:25:16.861 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-09-02T23:20:07.409804 =====
+===== 2026-09-02T23:25:20.612725 =====
     raise TemplateError(err) from err
 homeassistant.exceptions.TemplateError: UndefinedError: list object has no element 1[0m
-[31m2026-09-02 23:17:51.347 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=520>
+[33m2026-09-02 23:23:42.308 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][esp32_ble_tracker:177]: Dropped 1 BLE scan results due to buffer overflow[0m
+[33m2026-09-02 23:24:15.127 WARNING (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Already running[0m
+[31m2026-09-02 23:24:46.521 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=536>
 jinja2.exceptions.UndefinedError: list object has no element 1
     raise TemplateError(err) from err
 homeassistant.exceptions.TemplateError: UndefinedError: list object has no element 1[0m
-[31m2026-09-02 23:17:51.928 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=524>
+[31m2026-09-02 23:25:12.529 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=540>
 jinja2.exceptions.UndefinedError: list object has no element 1
     raise TemplateError(err) from err
 homeassistant.exceptions.TemplateError: UndefinedError: list object has no element 1[0m
-[31m2026-09-02 23:19:31.700 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=528>
+[31m2026-09-02 23:25:12.855 ERROR (MainThread) [homeassistant.helpers.event] Error while processing template: Template<template=({{ states('input_text.script_tracking').split(' - ', 1)[1] }}) renders=544>
 jinja2.exceptions.UndefinedError: list object has no element 1
     raise TemplateError(err) from err
 homeassistant.exceptions.TemplateError: UndefinedError: list object has no element 1[0m
-[33m2026-09-02 23:20:03.597 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-09-02 23:25:16.914 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
