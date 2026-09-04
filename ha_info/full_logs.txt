@@ -3,36 +3,7 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-09-04T00:47:45.310195 =====
-  File "/usr/local/lib/python3.14/site-packages/jinja2/sandbox.py", line 401, in call
-    return __context.call(__obj, *args, **kwargs)
-           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/helpers/template/extensions/base.py", line 55, in wrapper
-    return func(*args, **kwargs)
-  File "/usr/src/homeassistant/homeassistant/helpers/template/extensions/state.py", line 163, in expand
-    search += entity
-jinja2.exceptions.UndefinedError: 'sensors' is undefined
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 540, in async_render_to_info
-    render_info._result = self.async_render(  # noqa: SLF001
-                          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
-        variables, strict=strict, log_fn=log_fn, **kwargs
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    )
-    ^
-  File "/usr/src/homeassistant/homeassistant/helpers/template/__init__.py", line 432, in async_render
-    raise TemplateError(err) from err
-homeassistant.exceptions.TemplateError: UndefinedError: 'sensors' is undefined[0m
-[32m2026-09-04 00:28:14.131 INFO (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Running script sequence[0m
-[33m2026-09-04 00:28:14.141 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'hvac_mode' is undefined when rendering '{{ hvac_mode }}'[0m
-[31m2026-09-04 00:28:14.143 ERROR (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Error executing script. Invalid data for call_service at pos 3: expected HVACMode or one of 'off', 'heat', 'cool', 'heat_cool', 'auto', 'dry', 'fan_only' at 'hvac_mode'[0m
-[32m2026-09-04 00:28:28.651 INFO (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Running script sequence[0m
-[32m2026-09-04 00:28:28.944 INFO (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Initialized trigger[0m
-[32m2026-09-04 00:28:36.661 INFO (MainThread) [homeassistant.components.script.helper_script] Helper script: Running script sequence[0m
-[31m2026-09-04 00:30:36.672 ERROR (MainThread) [homeassistant.helpers.template] Template variable error: 'called_by' is undefined when rendering '{{ state_attr(called_by, 'current') | int(0) == 0 }}'[0m
+===== 2026-09-04T01:27:46.866113 =====
 [31m2026-09-04 00:30:36.673 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: If at step 3: If at step 1: Error executing script. Error for wait_template at pos 3: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
 [31m2026-09-04 00:30:36.674 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: If at step 3: Error executing script. Error for if at pos 1: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
 [31m2026-09-04 00:30:36.675 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: Error executing script. Error for if at pos 3: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
@@ -104,17 +75,41 @@ homeassistant.exceptions.TemplateError: UndefinedError: 'sensors' is undefined[
 [33m2026-09-04 00:42:48.657 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [32m2026-09-04 00:47:41.698 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [33m2026-09-04 00:47:41.761 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-09-04 00:47:56.316 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 00:48:03.416 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 00:48:10.511 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 00:53:18.373 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 00:53:25.469 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 00:53:32.564 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 00:58:40.452 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 00:58:47.555 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 00:58:54.652 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 01:04:02.468 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 01:04:09.577 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 01:04:16.679 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-09-04 01:09:00.362 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2026-09-04 01:09:11.941 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[33m2026-09-04 01:09:24.318 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 01:09:31.425 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 01:09:38.529 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 01:12:18.256 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][bh1750.sensor:063]: Setting measurement time for BH1750 failed[0m
+[33m2026-09-04 01:12:18.261 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:188]: Component bh1750.sensor set Warning flag: unspecified[0m
+[33m2026-09-04 01:12:20.888 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:203]: Component bh1750.sensor cleared Warning flag[0m
+[33m2026-09-04 01:14:46.304 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 01:15:00.578 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 01:20:08.502 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 01:20:15.597 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 01:20:22.698 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 01:25:30.296 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 01:25:37.394 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[32m2026-09-04 01:27:43.301 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[33m2026-09-04 01:27:43.362 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-09-04T00:47:45.422571 =====
-[32m2026-09-04 00:28:14.131 INFO (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Running script sequence[0m
-[31m2026-09-04 00:28:14.143 ERROR (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Error executing script. Invalid data for call_service at pos 3: expected HVACMode or one of 'off', 'heat', 'cool', 'heat_cool', 'auto', 'dry', 'fan_only' at 'hvac_mode'[0m
-[32m2026-09-04 00:28:28.651 INFO (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Running script sequence[0m
-[32m2026-09-04 00:28:28.944 INFO (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Initialized trigger[0m
-[32m2026-09-04 00:28:36.661 INFO (MainThread) [homeassistant.components.script.helper_script] Helper script: Running script sequence[0m
+===== 2026-09-04T01:27:46.996837 =====
 [31m2026-09-04 00:30:36.673 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: If at step 3: If at step 1: Error executing script. Error for wait_template at pos 3: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
 [31m2026-09-04 00:30:36.674 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: If at step 3: Error executing script. Error for if at pos 1: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
 [31m2026-09-04 00:30:36.675 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: Error executing script. Error for if at pos 3: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
@@ -132,18 +127,15 @@ LOG: automation_runs.txt
 [32m2026-09-04 00:40:13.007 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [32m2026-09-04 00:40:19.821 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Choose at step 3: Manual backup succeeded: Initialized trigger[0m
 [32m2026-09-04 00:47:41.698 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-04 01:09:00.362 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
+[32m2026-09-04 01:09:11.941 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-04 01:27:43.301 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-09-04T00:47:45.533883 =====
-jinja2.exceptions.UndefinedError: 'sensors' is undefined
-    raise TemplateError(err) from err
-homeassistant.exceptions.TemplateError: UndefinedError: 'sensors' is undefined[0m
-[33m2026-09-04 00:28:14.141 WARNING (MainThread) [homeassistant.helpers.template] Template variable warning: 'hvac_mode' is undefined when rendering '{{ hvac_mode }}'[0m
-[31m2026-09-04 00:28:14.143 ERROR (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Error executing script. Invalid data for call_service at pos 3: expected HVACMode or one of 'off', 'heat', 'cool', 'heat_cool', 'auto', 'dry', 'fan_only' at 'hvac_mode'[0m
-[31m2026-09-04 00:30:36.672 ERROR (MainThread) [homeassistant.helpers.template] Template variable error: 'called_by' is undefined when rendering '{{ state_attr(called_by, 'current') | int(0) == 0 }}'[0m
+===== 2026-09-04T01:27:47.129741 =====
 [31m2026-09-04 00:30:36.673 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: If at step 3: If at step 1: Error executing script. Error for wait_template at pos 3: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
 [31m2026-09-04 00:30:36.674 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: If at step 3: Error executing script. Error for if at pos 1: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
 [31m2026-09-04 00:30:36.675 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: Error executing script. Error for if at pos 3: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
@@ -172,3 +164,29 @@ homeassistant.exceptions.TemplateError: UndefinedError: 'sensors' is undefined[
 [33m2026-09-04 00:42:41.561 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
 [33m2026-09-04 00:42:48.657 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [33m2026-09-04 00:47:41.761 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-09-04 00:47:56.316 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 00:48:03.416 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 00:48:10.511 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 00:53:18.373 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 00:53:25.469 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 00:53:32.564 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 00:58:40.452 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 00:58:47.555 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 00:58:54.652 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 01:04:02.468 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 01:04:09.577 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 01:04:16.679 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 01:09:24.318 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 01:09:31.425 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 01:09:38.529 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 01:12:18.256 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][bh1750.sensor:063]: Setting measurement time for BH1750 failed[0m
+[33m2026-09-04 01:12:18.261 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:188]: Component bh1750.sensor set Warning flag: unspecified[0m
+[33m2026-09-04 01:12:20.888 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:203]: Component bh1750.sensor cleared Warning flag[0m
+[33m2026-09-04 01:14:46.304 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 01:15:00.578 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 01:20:08.502 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 01:20:15.597 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 01:20:22.698 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 01:25:30.296 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 01:25:37.394 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 01:27:43.362 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m

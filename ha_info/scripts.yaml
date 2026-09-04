@@ -115,97 +115,110 @@ push_ha_info_to_github_create_ai_zip_file_now:
   trace:
     stored_traces: 10
   sequence:
-  - action: shell_command.delete_ha_ai_zip
-    data: {}
-    metadata: {}
-  - action: shell_command.write_ha_overview
-    data:
-      content: "# Home Assistant Configuration\n_Last Updated: {{ now().isoformat()
-        }}_\n\n## \U0001F6E0 UI Helpers\nBelow are the input helpers configured in
-        Home Assistant.\n\n{% set helpers = ['input_boolean', 'input_button', 'input_datetime',
-        'input_number', 'input_select', 'input_text', 'counter', 'timer', 'schedule']
-        %}\n{% for domain in helpers %}\n{% set assets = states[domain] | list %}\n{%
-        if assets | count > 0 %}\n### {{ domain | replace('input_', '') | capitalize
-        }}\n| Entity ID | Name | State | Attributes |\n|---|---|---|---|\n{% for s
-        in assets | sort(attribute='entity_id') %}\n{% set details = [] %}\n{% if
-        domain == 'input_number' %}\n  {% set details = details + ['min=' ~ s.attributes.get('min',
-        'none'), 'max=' ~ s.attributes.get('max', 'none'), 'step=' ~ s.attributes.get('step',
-        'none')] %}\n{% elif domain == 'input_select' %}\n  {% set details = details
-        + ['options=' ~ s.attributes.get('options', []) | join(', ')] %}\n{% elif
-        domain == 'input_datetime' %}\n  {% set details = details + ['has_date=' ~
-        s.attributes.get('has_date', 'false'), 'has_time=' ~ s.attributes.get('has_time',
-        'false')] %}\n{% elif domain == 'timer' %}\n  {% set details = details + ['duration='
-        ~ s.attributes.get('duration', 'none')] %}\n{% elif domain == 'counter' %}\n
-        \ {% set details = details + ['min=' ~ s.attributes.get('min', 'none'), 'max='
-        ~ s.attributes.get('max', 'none')] %}\n{% endif %}\n| `{{ s.entity_id }}`
-        | **{{ s.name | replace(\"'\", \"'\\\\''\") }}** | {{ s.state | replace(\"'\",
-        \"'\\\\''\") }} | {{ details | join(', ') | replace(\"'\", \"'\\\\''\") }}
-        |\n{% endfor %}\n\n{% endif %}\n{% endfor %}\n\n---\n\n## \U0001F3E0 All Entities
-        (By Domain)\n{% for domain, items in states | groupby('domain') %}\n{% if
-        domain not in helpers and domain != 'group' %}\n<details><summary><b>{{ domain
-        | title }} ({{ items | length }})</b></summary>\n\n| Entity ID | Name | State
-        |\n|---|---|---|\n{% for s in items | sort(attribute='entity_id') %}\n| `{{
-        s.entity_id }}` | {{ s.name | replace(\"'\", \"'\\\\''\") }} | {{ s.state
-        | replace(\"'\", \"'\\\\''\") }} |\n{% endfor %}\n</details>\n\n{% endif %}\n{%
-        endfor %}\n"
-  - action: shell_command.perform_ha_backup_tasks
-    response_variable: backup_result
-    data: {}
-  - choose:
-    - alias: GitHub push failed
-      conditions:
-      - condition: template
-        value_template: '{{ backup_result.returncode != 0 }}'
-        alias: GitHub push failed
-      sequence:
-      - action: system_log.write
-        data:
-          level: error
-          logger: github_backup
-          message: 'GitHub backup failed.
-
-
-            Return code: {{ backup_result.returncode | default(''unknown'') }}
-
-
-            STDOUT:
-
-            {{ backup_result.stdout | default(''No stdout returned'') }}
-
-
-            STDERR:
-
-            {{ backup_result.stderr | default(''No stderr returned'') }}'
-        metadata: {}
-      - action: logbook.log
-        data:
-          name: GitHub Backup
-          message: GitHub backup failed. See System Logs for details.
-          entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
-        metadata: {}
-      - action: notify.mobile_app_blakes_iphone
-        data:
-          title: GitHub Backup Failed
-          message: GitHub backup failed. Check the Home Assistant system logs for
-            more information.
-        metadata: {}
-    - alias: Manual backup succeeded
-      conditions:
-      - condition: template
-        value_template: '{{ context.user_id is not none }}'
-        alias: If triggered manually
-      sequence:
-      - action: notify.mobile_app_blakes_iphone
-        metadata: {}
-        data:
-          title: Backup Complete
-          message: GitHub updated & ZIP ready. Tap to download.
-          data:
-            url: /local/ha_ai_context.zip
-    default:
+  - if:
+    - condition: template
+      value_template: '{{ action_type | default('''') == ''delete_zip'' }}'
+      alias: 'Action_type: delete_zip'
+    then:
     - action: shell_command.delete_ha_ai_zip
       data: {}
       metadata: {}
+    else:
+    - action: shell_command.delete_ha_ai_zip
+      data: {}
+      metadata: {}
+    - action: shell_command.write_ha_overview
+      data:
+        content: "# Home Assistant Configuration\n_Last Updated: {{ now().isoformat()
+          }}_\n\n## \U0001F6E0 UI Helpers\nBelow are the input helpers configured
+          in Home Assistant.\n\n{% set helpers = ['input_boolean', 'input_button',
+          'input_datetime', 'input_number', 'input_select', 'input_text', 'counter',
+          'timer', 'schedule'] %}\n{% for domain in helpers %}\n{% set assets = states[domain]
+          | list %}\n{% if assets | count > 0 %}\n### {{ domain | replace('input_',
+          '') | capitalize }}\n| Entity ID | Name | State | Attributes |\n|---|---|---|---|\n{%
+          for s in assets | sort(attribute='entity_id') %}\n{% set details = [] %}\n{%
+          if domain == 'input_number' %}\n  {% set details = details + ['min=' ~ s.attributes.get('min',
+          'none'), 'max=' ~ s.attributes.get('max', 'none'), 'step=' ~ s.attributes.get('step',
+          'none')] %}\n{% elif domain == 'input_select' %}\n  {% set details = details
+          + ['options=' ~ s.attributes.get('options', []) | join(', ')] %}\n{% elif
+          domain == 'input_datetime' %}\n  {% set details = details + ['has_date='
+          ~ s.attributes.get('has_date', 'false'), 'has_time=' ~ s.attributes.get('has_time',
+          'false')] %}\n{% elif domain == 'timer' %}\n  {% set details = details +
+          ['duration=' ~ s.attributes.get('duration', 'none')] %}\n{% elif domain
+          == 'counter' %}\n  {% set details = details + ['min=' ~ s.attributes.get('min',
+          'none'), 'max=' ~ s.attributes.get('max', 'none')] %}\n{% endif %}\n| `{{
+          s.entity_id }}` | **{{ s.name | replace(\"'\", \"'\\\\''\") }}** | {{ s.state
+          | replace(\"'\", \"'\\\\''\") }} | {{ details | join(', ') | replace(\"'\",
+          \"'\\\\''\") }} |\n{% endfor %}\n\n{% endif %}\n{% endfor %}\n\n---\n\n##
+          \U0001F3E0 All Entities (By Domain)\n{% for domain, items in states | groupby('domain')
+          %}\n{% if domain not in helpers and domain != 'group' %}\n<details><summary><b>{{
+          domain | title }} ({{ items | length }})</b></summary>\n\n| Entity ID |
+          Name | State |\n|---|---|---|\n{% for s in items | sort(attribute='entity_id')
+          %}\n| `{{ s.entity_id }}` | {{ s.name | replace(\"'\", \"'\\\\''\") }} |
+          {{ s.state | replace(\"'\", \"'\\\\''\") }} |\n{% endfor %}\n</details>\n\n{%
+          endif %}\n{% endfor %}\n"
+    - action: shell_command.perform_ha_backup_tasks
+      response_variable: backup_result
+      data: {}
+    - choose:
+      - alias: GitHub push failed
+        conditions:
+        - condition: template
+          value_template: '{{ backup_result.returncode != 0 }}'
+          alias: GitHub push failed
+        sequence:
+        - action: system_log.write
+          data:
+            level: error
+            logger: github_backup
+            message: 'GitHub backup failed.
+
+
+              Return code: {{ backup_result.returncode | default(''unknown'') }}
+
+
+              STDOUT:
+
+              {{ backup_result.stdout | default(''No stdout returned'') }}
+
+
+              STDERR:
+
+              {{ backup_result.stderr | default(''No stderr returned'') }}'
+          metadata: {}
+        - action: logbook.log
+          data:
+            name: GitHub Backup
+            message: GitHub backup failed. See System Logs for details.
+            entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
+          metadata: {}
+        - action: notify.mobile_app_blakes_iphone
+          data:
+            title: GitHub Backup Failed
+            message: GitHub backup failed. Check the Home Assistant system logs for
+              more information.
+          metadata: {}
+      - alias: Manual backup succeeded
+        conditions:
+        - condition: template
+          value_template: '{{ context.user_id is not none }}'
+          alias: If triggered manually
+        sequence:
+        - action: notify.mobile_app_blakes_iphone
+          data:
+            title: Backup Complete
+            message: GitHub updated & ZIP ready. Tap to download.
+            data:
+              shortcut:
+                name: Download HA Backup
+                download_url: https://YOUR_NABU_CASA_URL/local/ha_ai_context.zip?v={{
+                  now().timestamp() | int }}
+                ignore_result: ignore
+          metadata: {}
+      default:
+      - action: shell_command.delete_ha_ai_zip
+        data: {}
+        metadata: {}
 alexa_music:
   alias: Alexa Music
   description: ''
