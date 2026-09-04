@@ -3,10 +3,7 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-09-04T00:39:18.645897 =====
-  File "/usr/src/homeassistant/homeassistant/helpers/template/context.py", line 44, in render_with_context
-    return template.render(**kwargs)
-           ~~~~~~~~~~~~~~~^^^^^^^^^^
+===== 2026-09-04T00:40:16.593209 =====
   File "/usr/local/lib/python3.14/site-packages/jinja2/environment.py", line 1295, in render
     self.environment.handle_exception()
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
@@ -104,12 +101,15 @@ homeassistant.exceptions.TemplateError: UndefinedError: 'sensors' is undefined[
 [33m2026-09-04 00:37:26.627 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [32m2026-09-04 00:39:14.946 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [33m2026-09-04 00:39:15.022 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2026-09-04 00:39:22.267 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Choose at step 3: Manual backup succeeded: Initialized trigger[0m
+[32m2026-09-04 00:40:13.007 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[33m2026-09-04 00:40:13.059 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-09-04T00:39:18.758207 =====
+===== 2026-09-04T00:40:16.704721 =====
 [32m2026-09-04 00:28:14.131 INFO (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Running script sequence[0m
 [31m2026-09-04 00:28:14.143 ERROR (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Error executing script. Invalid data for call_service at pos 3: expected HVACMode or one of 'off', 'heat', 'cool', 'heat_cool', 'auto', 'dry', 'fan_only' at 'hvac_mode'[0m
 [32m2026-09-04 00:28:28.651 INFO (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Running script sequence[0m
@@ -128,12 +128,14 @@ LOG: automation_runs.txt
 [33m2026-09-04 00:34:33.428 WARNING (MainThread) [homeassistant.components.script.helper_script] Helper script: Error in 'choose' evaluation:
 [32m2026-09-04 00:35:05.378 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
 [32m2026-09-04 00:39:14.946 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-04 00:39:22.267 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Choose at step 3: Manual backup succeeded: Initialized trigger[0m
+[32m2026-09-04 00:40:13.007 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-09-04T00:39:18.875992 =====
+===== 2026-09-04T00:40:16.816541 =====
 jinja2.exceptions.UndefinedError: 'sensors' is undefined
     raise TemplateError(err) from err
 homeassistant.exceptions.TemplateError: UndefinedError: 'sensors' is undefined[0m
@@ -163,3 +165,4 @@ homeassistant.exceptions.TemplateError: UndefinedError: 'sensors' is undefined[
 [33m2026-09-04 00:37:19.526 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
 [33m2026-09-04 00:37:26.627 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [33m2026-09-04 00:39:15.022 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-09-04 00:40:13.059 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
