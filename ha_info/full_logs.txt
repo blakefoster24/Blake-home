@@ -3,13 +3,7 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-09-04T00:40:16.593209 =====
-  File "/usr/local/lib/python3.14/site-packages/jinja2/environment.py", line 1295, in render
-    self.environment.handle_exception()
-    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
-  File "/usr/local/lib/python3.14/site-packages/jinja2/environment.py", line 942, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "<template>", line 4, in top-level template code
+===== 2026-09-04T00:47:45.310195 =====
   File "/usr/local/lib/python3.14/site-packages/jinja2/sandbox.py", line 401, in call
     return __context.call(__obj, *args, **kwargs)
            ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
@@ -104,12 +98,18 @@ homeassistant.exceptions.TemplateError: UndefinedError: 'sensors' is undefined[
 [32m2026-09-04 00:39:22.267 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Choose at step 3: Manual backup succeeded: Initialized trigger[0m
 [32m2026-09-04 00:40:13.007 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [33m2026-09-04 00:40:13.059 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2026-09-04 00:40:19.821 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Choose at step 3: Manual backup succeeded: Initialized trigger[0m
+[33m2026-09-04 00:42:34.453 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 00:42:41.561 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 00:42:48.657 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-09-04 00:47:41.698 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[33m2026-09-04 00:47:41.761 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-09-04T00:40:16.704721 =====
+===== 2026-09-04T00:47:45.422571 =====
 [32m2026-09-04 00:28:14.131 INFO (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Running script sequence[0m
 [31m2026-09-04 00:28:14.143 ERROR (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Error executing script. Invalid data for call_service at pos 3: expected HVACMode or one of 'off', 'heat', 'cool', 'heat_cool', 'auto', 'dry', 'fan_only' at 'hvac_mode'[0m
 [32m2026-09-04 00:28:28.651 INFO (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Running script sequence[0m
@@ -130,12 +130,14 @@ LOG: automation_runs.txt
 [32m2026-09-04 00:39:14.946 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [32m2026-09-04 00:39:22.267 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Choose at step 3: Manual backup succeeded: Initialized trigger[0m
 [32m2026-09-04 00:40:13.007 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-04 00:40:19.821 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Choose at step 3: Manual backup succeeded: Initialized trigger[0m
+[32m2026-09-04 00:47:41.698 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-09-04T00:40:16.816541 =====
+===== 2026-09-04T00:47:45.533883 =====
 jinja2.exceptions.UndefinedError: 'sensors' is undefined
     raise TemplateError(err) from err
 homeassistant.exceptions.TemplateError: UndefinedError: 'sensors' is undefined[0m
@@ -166,3 +168,7 @@ homeassistant.exceptions.TemplateError: UndefinedError: 'sensors' is undefined[
 [33m2026-09-04 00:37:26.627 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [33m2026-09-04 00:39:15.022 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 [33m2026-09-04 00:40:13.059 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-09-04 00:42:34.453 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 00:42:41.561 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 00:42:48.657 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 00:47:41.761 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m

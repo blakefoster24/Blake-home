@@ -115,6 +115,9 @@ push_ha_info_to_github_create_ai_zip_file_now:
   trace:
     stored_traces: 10
   sequence:
+  - action: shell_command.delete_ha_ai_zip
+    data: {}
+    metadata: {}
   - action: shell_command.write_ha_overview
     data:
       content: "# Home Assistant Configuration\n_Last Updated: {{ now().isoformat()
@@ -196,28 +199,9 @@ push_ha_info_to_github_create_ai_zip_file_now:
         metadata: {}
         data:
           title: Backup Complete
-          message: GitHub updated & ZIP ready. Tap Download ZIP to download it.
+          message: GitHub updated & ZIP ready. Tap to download.
           data:
-            actions:
-            - action: DOWNLOAD_HA_ZIP
-              title: Download ZIP
-              uri: /local/ha_ai_context.zip
-      - wait_for_trigger:
-        - trigger: event
-          event_type: mobile_app_notification_action
-          event_data:
-            action: DOWNLOAD_HA_ZIP
-        timeout:
-          minutes: 10
-        continue_on_timeout: true
-      - delay:
-          hours: 0
-          minutes: 0
-          seconds: 10
-          milliseconds: 0
-      - action: shell_command.delete_ha_ai_zip
-        data: {}
-        metadata: {}
+            url: /local/ha_ai_context.zip
     default:
     - action: shell_command.delete_ha_ai_zip
       data: {}
