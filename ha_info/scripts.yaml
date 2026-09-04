@@ -211,7 +211,8 @@ push_ha_info_to_github_create_ai_zip_file_now:
             data:
               shortcut:
                 name: Download HA Backup
-                download_url: https://esvmza4k2wcpqrmd4otjzifxw6rwdzji.ui.nabu.casa/local/ha_ai_context.zip?v={{
+                input: text
+                text: https://esvmza4k2wcpqrmd4otjzifxw6rwdzji.ui.nabu.casa/local/ha_ai_context.zip?v={{
                   now().timestamp() | int }}
                 ignore_result: ignore
           metadata: {}
