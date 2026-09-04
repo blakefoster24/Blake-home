@@ -3,10 +3,7 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-09-04T01:27:46.866113 =====
-[31m2026-09-04 00:30:36.673 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: If at step 3: If at step 1: Error executing script. Error for wait_template at pos 3: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
-[31m2026-09-04 00:30:36.674 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: If at step 3: Error executing script. Error for if at pos 1: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
-[31m2026-09-04 00:30:36.675 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: Error executing script. Error for if at pos 3: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
+===== 2026-09-04T01:30:01.121296 =====
 [33m2026-09-04 00:30:36.676 WARNING (MainThread) [homeassistant.components.script.helper_script] Helper script: Error in 'choose' evaluation:
 In 'template' condition: UndefinedError: 'called_by' is undefined[0m
 [33m2026-09-04 00:31:50.409 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
@@ -104,15 +101,15 @@ homeassistant.exceptions.TemplateError: UndefinedError: 'sensors' is undefined[
 [33m2026-09-04 01:25:37.394 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
 [32m2026-09-04 01:27:43.301 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [33m2026-09-04 01:27:43.362 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2026-09-04 01:28:04.278 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-09-04 01:29:57.299 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[33m2026-09-04 01:29:57.358 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-09-04T01:27:46.996837 =====
-[31m2026-09-04 00:30:36.673 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: If at step 3: If at step 1: Error executing script. Error for wait_template at pos 3: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
-[31m2026-09-04 00:30:36.674 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: If at step 3: Error executing script. Error for if at pos 1: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
-[31m2026-09-04 00:30:36.675 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: Error executing script. Error for if at pos 3: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
+===== 2026-09-04T01:30:01.234926 =====
 [33m2026-09-04 00:30:36.676 WARNING (MainThread) [homeassistant.components.script.helper_script] Helper script: Error in 'choose' evaluation:
 [32m2026-09-04 00:32:28.418 INFO (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Running script sequence[0m
 [32m2026-09-04 00:32:28.555 INFO (MainThread) [homeassistant.components.script.temporary_thermostat_adjustment] Temporary Thermostat Adjustment: Initialized trigger[0m
@@ -130,15 +127,14 @@ LOG: automation_runs.txt
 [32m2026-09-04 01:09:00.362 INFO (MainThread) [homeassistant.helpers.script.websocket_api_script] websocket_api script: Running websocket_api script[0m
 [32m2026-09-04 01:09:11.941 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [32m2026-09-04 01:27:43.301 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-04 01:28:04.278 INFO (MainThread) [homeassistant.components.automation.washing_machine_dryer] Washing Machine / Dryer: Running automation actions[0m
+[32m2026-09-04 01:29:57.299 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-09-04T01:27:47.129741 =====
-[31m2026-09-04 00:30:36.673 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: If at step 3: If at step 1: Error executing script. Error for wait_template at pos 3: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
-[31m2026-09-04 00:30:36.674 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: If at step 3: Error executing script. Error for if at pos 1: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
-[31m2026-09-04 00:30:36.675 ERROR (MainThread) [homeassistant.components.script.helper_script] Helper script: Choose at step 1: Lights -> dashboard timer sequence: Error executing script. Error for if at pos 3: In 'template' condition: UndefinedError: 'called_by' is undefined[0m
+===== 2026-09-04T01:30:01.346681 =====
 [33m2026-09-04 00:30:36.676 WARNING (MainThread) [homeassistant.components.script.helper_script] Helper script: Error in 'choose' evaluation:
 In 'template' condition: UndefinedError: 'called_by' is undefined[0m
 [33m2026-09-04 00:31:50.409 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
@@ -190,3 +186,4 @@ homeassistant.exceptions.TemplateError: UndefinedError: 'sensors' is undefined[
 [33m2026-09-04 01:25:30.296 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
 [33m2026-09-04 01:25:37.394 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
 [33m2026-09-04 01:27:43.362 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-09-04 01:29:57.358 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m

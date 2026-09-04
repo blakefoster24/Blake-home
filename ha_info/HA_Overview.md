@@ -1,4 +1,4 @@
-_Last Updated: 2026-09-04T01:27:43.313297-05:00_
+_Last Updated: 2026-09-04T01:29:57.311218-05:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -25,7 +25,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-| `input_boolean.phone_active` | **Phone active** | on |  |
+| `input_boolean.phone_active` | **Phone active** | off |  |
 
 
 
@@ -141,7 +141,7 @@ Below are the input helpers configured in Home Assistant.
 
   
 
-| `counter.dryer_vibration_counter` | **Dryer Vibration Counter** | 0 | min=none, max=none |
+| `counter.dryer_vibration_counter` | **Dryer Vibration Counter** | 1 | min=none, max=none |
 
 
 
@@ -725,7 +725,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `media_player.all_echo_2` | All Echo | idle |
 
-| `media_player.bedroom_tv` | Bedroom Tv | idle |
+| `media_player.bedroom_tv` | Bedroom Tv | on |
 
 | `media_player.blake_s_echo_dot` | Blake's Echo Dot | paused |
 
@@ -767,7 +767,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `notify.blake_s_echo_spot_speak` | Blake's Echo Spot Speak | 2026-09-03T13:56:15.892880+00:00 |
 
-| `notify.blakes_iphone` | Blakes iPhone | 2026-09-04T05:47:48.626658+00:00 |
+| `notify.blakes_iphone` | Blakes iPhone | 2026-09-04T06:27:50.192932+00:00 |
 
 | `notify.ipad` | iPad | unknown |
 
@@ -1191,15 +1191,15 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.backup_next_scheduled_automatic_backup` | Backup Next scheduled automatic backup | 2026-09-04T10:29:38+00:00 |
 
-| `sensor.bathroom_humidity` | Bathroom Humidity | 60.18 |
+| `sensor.bathroom_humidity` | Bathroom Humidity | 60.64 |
 
-| `sensor.bathroom_humidity_derivative` | Temp & Humidity Bathroom Humidity Derivative | -0.1 |
+| `sensor.bathroom_humidity_derivative` | Temp & Humidity Bathroom Humidity Derivative | 0.1 |
 
 | `sensor.bathroom_light_auto_off_at` | Bathroom Light Auto-off at | unknown |
 
 | `sensor.bathroom_light_signal_level` | Bathroom Light Signal level | 3 |
 
-| `sensor.bathroom_temperature` | Bathroom Temperature | 69.89 |
+| `sensor.bathroom_temperature` | Bathroom Temperature | 69.746 |
 
 | `sensor.bed_presence_bb8594_calibrated_left_pressure` | Bed Pressure Sensor Calibrated Left Pressure | 100.0 |
 
@@ -1207,11 +1207,11 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.bed_presence_bb8594_left_pressure` | Bed Pressure Sensor Left Pressure | 93.9041137695312 |
 
-| `sensor.bed_presence_bb8594_right_pressure` | Bed Pressure Sensor Right Pressure | 80.3437881469727 |
+| `sensor.bed_presence_bb8594_right_pressure` | Bed Pressure Sensor Right Pressure | 80.7138061523438 |
 
-| `sensor.bed_presence_bb8594_uptime` | Bed Pressure Sensor Uptime | 2488979.5 |
+| `sensor.bed_presence_bb8594_uptime` | Bed Pressure Sensor Uptime | 2489159.5 |
 
-| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Pressure Sensor WiFi Signal dB | -43.0 |
+| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Pressure Sensor WiFi Signal dB | -42.0 |
 
 | `sensor.bed_presence_bb8594_wifi_signal_percent` | Bed Pressure Sensor WiFi Signal Percent | 100.0 |
 
@@ -1281,7 +1281,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.blakes_iphone_average_active_pace` | Blakes iPhone Average Active Pace | 1 |
 
-| `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 55 |
+| `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 50 |
 
 | `sensor.blakes_iphone_battery_state` | Blakes iPhone Battery State | Not Charging |
 
@@ -1297,7 +1297,7 @@ Below are the input helpers configured in Home Assistant.
 O'Fallon MO 63368
 United States |
 
-| `sensor.blakes_iphone_pressure` | Blakes iPhone Pressure | 14.4079044410122 |
+| `sensor.blakes_iphone_pressure` | Blakes iPhone Pressure | 14.4080494787561 |
 
 | `sensor.blakes_iphone_ssid` | Blakes iPhone SSID | ATTEPISyDS |
 
@@ -1339,17 +1339,17 @@ United States |
 
 | `sensor.everything_presence_lite_922d28_occupancy_mask_2_target_count` | Everything Presence Lite Occupancy Mask 2 Target Count | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -2.18356013298035 |
+| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -3.72980570793152 |
 
-| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 122.963300089198 |
+| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 122.858646422859 |
 
 | `sensor.everything_presence_lite_922d28_target_1_resolution` | Everything Presence Lite Target 1 Resolution | 14.1732283464567 |
 
 | `sensor.everything_presence_lite_922d28_target_1_speed` | Everything Presence Lite Target 1 Speed | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | -80.3543307086614 |
+| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | -77.755905511811 |
 
-| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 93.0314960629921 |
+| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 95.0787401574803 |
 
 | `sensor.everything_presence_lite_922d28_target_2_angle` | Everything Presence Lite Target 2 Angle | 0.0 |
 
@@ -1427,13 +1427,13 @@ United States |
 
 | `sensor.main_lights_current` | Main Lights Current | 0.29 |
 
-| `sensor.main_lights_current_consumption` | Main Lights Current consumption | 33.0 |
+| `sensor.main_lights_current_consumption` | Main Lights Current consumption | 32.9 |
 
 | `sensor.main_lights_signal_level` | Main Lights Signal level | 3 |
 
-| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 0.169 |
+| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 0.171 |
 
-| `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.048 |
+| `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.05 |
 
 | `sensor.main_lights_voltage` | Main Lights Voltage | 122.2 |
 
