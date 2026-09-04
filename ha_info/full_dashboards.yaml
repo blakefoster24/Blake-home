@@ -580,9 +580,8 @@ views:
               style: "ha-card {\n  border: none;\n  background: none;\n  box-shadow:\
                 \ none;\n}\n\nha-card::before {\n  content: none !important;\n}\n"
     - type: custom:state-switch
-      entity: "{{ 'on'\n   if state_attr('script.helper_script', 'current') | int(0)\
-        \ > 0\n   and not is_state('timer.timer_helper', 'idle')\n   else 'off'\n\
-        }}"
+      entity: "{{ 'on'\n   if is_state('script.helper_script', 'on')\n   and states('input_text.template_tracking')\
+        \ != ''\n   else 'off'\n}}"
       states:
         'on':
           type: custom:uix-forge
@@ -593,14 +592,20 @@ views:
           element:
             type: tile
             entity: timer.timer_helper
-            name: 'Light Template Active - {{ states(''input_text.template_tracking'')
-              }}
-
-              '
+            name: "{% if states('input_text.template_tracking').startswith('Timer\
+              \ was') %}\n  Timer was already in use when triggered\n{% else %}\n\
+              \  Light Template Active - {{ states('input_text.template_tracking')\
+              \ }}\n{% endif %}"
+            hide_state: '{{ states(''input_text.template_tracking'').startswith(''Timer
+              was'') }}'
             vertical: false
             tap_action:
               action: none
             features_position: bottom
+            card_mod:
+              style: "ha-tile-info .primary {\n  white-space: normal !important;\n\
+                \  overflow: visible !important;\n  text-overflow: unset !important;\n\
+                \  line-height: 1.2 !important;\n}\n"
     - type: custom:state-switch
       entity: template
       template: '{% set door_entity = ''automation.door_automation'' %} {% set wakeup_entity
@@ -1287,6 +1292,26 @@ views:
           entity_id: input_datetime.scheduled_off
         data:
           date: '1969-12-31'
+    - type: custom:mushroom-template-card
+      primary: It's hot! Check the water loop!
+      secondary: Feels like {{ states('sensor.openweathermap_feels_like_temperature_2')
+        | float(0) | round(1) }} °F
+      icon: mdi:weather-sunny-alert
+      color: red
+      grid_options:
+        columns: full
+      visibility:
+      - condition: numeric_state
+        above: 92
+        entity: sensor.openweathermap_feels_like_temperature_2
+      uix:
+        style:
+          ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n"
+          .: "ha-tile-icon {\n  size: 2px !important;\n}\nha-card {\n  height: auto\
+            \ !important;\n  --icon-display: block !important;\n  animation: bounce\
+            \ 2s infinite;\n}\n\n@keyframes bounce {\n  0%, 20%, 50%, 80%, 100% {transform:\
+            \ translateY(0);}\n  40% {transform: translateY(-5px);}\n  60% {transform:\
+            \ translateY(-5px);}\n}\n"
     - features:
       - type: custom:service-call
         entries:
@@ -1294,10 +1319,10 @@ views:
           entity_id: ''
           tap_action:
             action: navigate
-            navigation_path: /my-dashboard/work
+            navigation_path: '#Work'
           styles: ":host {\n  border: var(--custom-button-border) !important;\n  border-radius:\
             \ var(--custom-radius);\n  --color: var(--custom-bg);\n  --feature-height:\
-            \ 3rem;\n  --feature-width: auto;\n}\n  .label {\n    color: var(--custom-contrast);\n\
+            \ 3rem;\n  flex-basis: 140px;\n}\n  .label {\n    color: var(--custom-contrast);\n\
             \  }\n  .icon {\n    color:  var(--custom-contrast);\n    --mdc-icon-size:\
             \ 1.5rem;\n    padding-bottom: .25rem;\n  }\n\n}"
           label: View Temperatures
@@ -1362,10 +1387,10 @@ views:
             \ {transform: translateY(-10px);}\n  60% {transform: translateY(-5px);}\n\
             }\n\n.content {\n  display: flex !important;\n  flex-direction: row !important;\n\
             \  column-gap: .25rem !important;\n}\nha-tile-icon {\n  margin-right:\
-            \ -.5rem !important;\n}\nhui-card-features {\n  flex: 0 0 7rem !important;\n\
-            \  max-width:  auto !important;\n  min-width: auto !important;\n}\nhui-card-features$\
-            \ :host {\n  width: auto !important;\n}\nhui-card-features$ .container\
-            \ {\n  width: auto !important;\n  justify-content: start !important;\n\
+            \ -.5rem !important;\n}\nhui-card-features {\n  flex: 0 0 140px !important;\n\
+            \  max-width: none !important;\n  min-width: 170px !important;\n}\n}\n\
+            hui-card-features$ :host {\n  width: auto !important;\n}\nhui-card-features$\
+            \ .container {\n  width: auto !important;\n  justify-content: start !important;\n\
             \  border: 1px solid !important; \n  border-radius: 12px !important;\n\
             }\n.info {\n  flex: 1 1 auto !important;\n  margin-right: 0px !important;\n\
             \  min-width: 0 !important;\n}\n"
@@ -1373,26 +1398,6 @@ views:
       - condition: numeric_state
         below: 50
         entity: sensor.openweathermap_feels_like_temperature_2
-    - type: custom:mushroom-template-card
-      primary: It's hot! Check the water loop!
-      secondary: Feels like {{ states('sensor.openweathermap_feels_like_temperature_2')
-        | float(0) | round(1) }} °F
-      icon: mdi:weather-sunny-alert
-      color: red
-      grid_options:
-        columns: full
-      visibility:
-      - condition: numeric_state
-        above: 92
-        entity: sensor.openweathermap_feels_like_temperature_2
-      uix:
-        style:
-          ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n"
-          .: "ha-tile-icon {\n  size: 2px !important;\n}\nha-card {\n  height: auto\
-            \ !important;\n  --icon-display: block !important;\n  animation: bounce\
-            \ 2s infinite;\n}\n\n@keyframes bounce {\n  0%, 20%, 50%, 80%, 100% {transform:\
-            \ translateY(0);}\n  40% {transform: translateY(-5px);}\n  60% {transform:\
-            \ translateY(-5px);}\n}\n"
   - type: grid
     cards:
     - type: heading
@@ -2336,6 +2341,149 @@ views:
                 \  justify-content: space-around\n  justify-self: space-around\n \
                 \ justify-items: space-around\n\n}\nha-card::before {\ncontent: none\
                 \ !important;\n}\n"
+  - type: grid
+    cards:
+    - type: custom:bubble-card
+      card_type: pop-up
+      hash: '#Work'
+      cards:
+      - show_current: false
+        show_forecast: true
+        type: weather-forecast
+        entity: weather.openweathermap_2
+        forecast_type: daily
+        forecast_slots: 7
+      - type: heading
+        heading_style: title
+        heading: Work Temperatures
+      - type: horizontal-stack
+        cards:
+        - type: tile
+          entity: sensor.a_expansion_attic_temperature
+        - type: tile
+          entity: sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature
+          name: A Sensor
+          vertical: false
+          features_position: bottom
+      - type: horizontal-stack
+        cards:
+        - type: tile
+          entity: sensor.c_expansion_attic_temperature
+        - type: tile
+          entity: sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature
+          name: D Sensor
+          vertical: false
+          features_position: bottom
+      - type: horizontal-stack
+        cards:
+        - type: tile
+          entity: sensor.d_expansion_attic_temperature
+        - type: tile
+          entity: sensor.nest_temperature_sensor_stairwell_g_temperature
+          name: C Sensor - Stairwell G
+          vertical: false
+          features_position: bottom
+      - type: custom:mushroom-template-card
+        primary: It's hot! Check the water loop!
+        secondary: Feels like {{ states('sensor.openweathermap_feels_like_temperature_2')
+          | float(0) | round(1) }} °F
+        icon: mdi:weather-sunny-alert
+        color: red
+        grid_options:
+          columns: full
+        visibility:
+        - condition: numeric_state
+          above: 92
+          entity: sensor.openweathermap_feels_like_temperature_2
+        uix:
+          style:
+            ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n"
+            .: "ha-tile-icon {\n  size: 2px !important;\n}\nha-card {\n  height: auto\
+              \ !important;\n  --icon-display: block !important;\n  animation: bounce\
+              \ 2s infinite;\n}\n\n@keyframes bounce {\n  0%, 20%, 50%, 80%, 100%\
+              \ {transform: translateY(0);}\n  40% {transform: translateY(-5px);}\n\
+              \  60% {transform: translateY(-5px);}\n}\n"
+      - type: custom:mushroom-template-card
+        primary: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
+          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
+          ] %} {% set low_sensors = expand(sensors) | map(attribute='state') | map('float',\
+          \ 999) | select('lt', set_point) | list %}  {% if low_sensors | count >\
+          \ 0 %}\n  {{ low_sensors | count }} Attic Sensors Below {{ set_point }}°\n\
+          {% else %}\n  Attic Temperatures Normal\n{% endif %}"
+        secondary: "{% set set_point = 50 %}\n{% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
+          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
+          ] %}\n{% set ns = namespace(found=[]) %}\n{% for s in expand(sensors) %}\n\
+          \  {% if s.state | is_number and s.state | float < set_point %}\n    {%\
+          \ set ns.found = ns.found + [s] %}\n  {% endif %}\n{% endfor %}\n{% if ns.found\
+          \ | count > 0 %}\n  {% for s in ns.found -%}\n    {{ s.name | replace('\
+          \ Temperature', '') }}: {{ s.state }}°{{ \"\\n\" if not loop.last else \"\
+          \" }}\n  {%- endfor %}\n{% else %}\n  All attic sensors are above {{ set_point\
+          \ }}°\n{% endif %}"
+        icon: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
+          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
+          ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
+          \ 999) | select('lt', set_point) | list | count %} {{ 'mdi:thermometer-alert'\
+          \ if count > 0 else 'mdi:check-circle' }}"
+        multiline_secondary: true
+        grid_options:
+          columns: 12
+          rows: auto
+        features_position: inline
+        color: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
+          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
+          ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
+          \ 999) | select('lt', set_point) | list | count %} {{ 'orange' if count\
+          \ > 0 else 'green' }}"
+        uix:
+          style:
+            ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n.secondary\
+              \ {\n  font-size: 1rem !important;\n  white-space: pre-wrap !important;\n\
+              \  -webkit-line-clamp: unset !important;\n  max-height: none !important;\n\
+              }\n"
+            .: "ha-card {\n  height: auto !important;\n  --icon-display: block !important;\n\
+              \  /* Animation Logic */\n  {% set set_point = 50 %}\n  {% set sensors\
+              \ = [\n    'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+              \    'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+              \    'sensor.nest_temperature_sensor_stairwell_g_temperature',\n   \
+              \ 'sensor.a_expansion_attic_temperature',\n    'sensor.c_expansion_attic_temperature',\n\
+              \    'sensor.d_expansion_attic_temperature'\n  ] %}\n  {% set count\
+              \ = expand(sensors) | map(attribute='state') | map('float', 999) | select('lt',\
+              \ set_point) | list | count %}\n  {% if count > 0 %}\n  animation: bounce\
+              \ 2s infinite;\n  {% endif %}\n}\n\n@keyframes bounce {\n  0%, 20%,\
+              \ 50%, 80%, 100% {transform: translateY(0);}\n  40% {transform: translateY(-10px);}\n\
+              \  60% {transform: translateY(-5px);}\n}\n\n.content {\n  display: flex\
+              \ !important;\n  flex-direction: row !important;\n  column-gap: .25rem\
+              \ !important;\n}\nha-tile-icon {\n  margin-right: -.5rem !important;\n\
+              }\nhui-card-features {\n  flex: 0 0 7rem !important;\n  max-width: \
+              \ auto !important;\n  min-width: auto !important;\n}\nhui-card-features$\
+              \ :host {\n  width: auto !important;\n}\nhui-card-features$ .container\
+              \ {\n  width: auto !important;\n  justify-content: start !important;\n\
+              \  border: 1px solid !important; \n  border-radius: 12px !important;\n\
+              }\n.info {\n  flex: 1 1 auto !important;\n  margin-right: 0px !important;\n\
+              \  min-width: 0 !important;\n}\n"
+        visibility:
+        - condition: numeric_state
+          below: 50
+          entity: sensor.openweathermap_feels_like_temperature_2
+      button_type: name
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+        }"
+      name: Work Temperatures
+      icon: local:work_temp
+      bg_opacity: '20'
+      bg_blur: '30'
+      hide_backdrop: true
   header:
     layout: center
     badges_position: bottom
@@ -2352,313 +2500,6 @@ views:
     size: cover
     repeat: repeat
     attachment: fixed
-- type: sections
-  max_columns: 4
-  title: Work
-  path: work
-  sections:
-  - type: grid
-    cards:
-    - show_current: false
-      show_forecast: true
-      type: weather-forecast
-      entity: weather.openweathermap_2
-      forecast_type: daily
-      forecast_slots: 7
-    - type: heading
-      heading_style: title
-      heading: Work Temperatures
-    - type: tile
-      entity: sensor.a_expansion_attic_temperature
-    - type: tile
-      entity: sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature
-      name: A Sensor
-      vertical: false
-      features_position: bottom
-    - type: tile
-      entity: sensor.c_expansion_attic_temperature
-    - type: tile
-      entity: sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature
-      name: D Sensor
-      vertical: false
-      features_position: bottom
-    - type: tile
-      entity: sensor.nest_temperature_sensor_stairwell_g_temperature
-      name: C Sensor - Stairwell G
-      vertical: false
-      features_position: bottom
-    - type: tile
-      entity: sensor.d_expansion_attic_temperature
-  header:
-    layout: responsive
-    badges_position: bottom
-    badges_wrap: wrap
-  subview: true
-  cards: []
-  theme: Frosted Glass
-- type: sections
-  max_columns: 4
-  title: Test Bay
-  path: test-bay
-  sections:
-  - type: grid
-    cards:
-    - type: heading
-      heading: New section
-    - type: custom:vertical-stack-in-card
-      cards:
-      - type: custom:mushroom-template-card
-        primary: Security Alert!
-        secondary: '{{ states(''input_text.security_info'') }}'
-        icon: mdi:security
-        grid_options:
-          columns: full
-        features_position: bottom
-        color: red
-        uix:
-          style:
-            ha-tile-info$: ":host {\n  --ha-tile-info-primary-font-size: 20px;\n \
-              \ --ha-tile-info-primary-color: red;\n  --ha-tile-info-secondary-font-size:\
-              \ 16px;\n  --ha-tile-info-secondary-line-height: 20px;\n}\n"
-            .: "ha-tile-icon {\n  size: 20px !important;\n}\n\nha-card {\n  height:\
-              \ auto !important;\n  margin-top: 10px;\n  --icon-display: block !important;\n\
-              \  background: none;\n  padding-top: 1px;\n}\n\nha-card::before {\n\
-              \  content: none;\n}\n"
-      - type: custom:custom-features-card
-        features:
-        - type: custom:service-call
-          entries:
-          - type: button
-            entity_id: ''
-            label: Reset
-            thumb: md3-elevated
-            icon: mdi:cancel
-            styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
-              \ !important;\n  border-radius: var(--custom-radius);\n  --color: {{\
-              \ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n\n.label {\n  color:\
-              \ {{ 'var(--custom-contrast)' }};\n}\n\n.icon {\n  color: {{ 'var(--custom-contrast)'\
-              \ }};\n}\n"
-            tap_action:
-              action: perform-action
-              perform_action: automation.trigger
-              target:
-                entity_id: automation.security
-              data:
-                skip_condition: true
-                variables:
-                  action_type: disregard
-          - type: button
-            entity_id: ''
-            label: Dashboard
-            thumb: md3-elevated
-            icon: mdi:security
-            tap_action:
-              action: navigate
-              navigation_path: /my-dashboard/security
-            styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
-              \ !important;\n  border-radius: var(--custom-radius);\n  --color: {{\
-              \ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n\n.label {\n  color:\
-              \ {{ 'var(--custom-contrast)' }};\n}\n\n.icon {\n  color: {{ 'var(--custom-contrast)'\
-              \ }};\n}\n"
-        - type: custom:service-call
-          entries:
-          - type: dropdown
-            entity_id: ''
-            label: Investigative Options
-            icon: mdi:magnify
-            unit_of_measurement: s
-            options:
-            - entity_id: automation.security
-              option: Security Automation Traces
-              tap_action:
-                action: navigate
-                navigation_path: /config/automation/trace/1787939305481
-            - entity_id: ''
-              option: Activity Surrounding Security Event
-              tap_action:
-                action: eval
-                eval: "const t = new Date(\n  this.hass.states['input_text.script_tracking'].last_changed\n\
-                  );\n\nconst minutes = 4;\n\nconst start = new Date(\n  t.getTime()\
-                  \ - minutes * 60000\n).toISOString();\n\nconst end = new Date(\n\
-                  \  t.getTime() + minutes * 60000\n).toISOString();\n\nconst path\
-                  \ =\n  `/logbook?start_date=${encodeURIComponent(start)}&end_date=${encodeURIComponent(end)}`;\n\
-                  \nhistory.pushState(null, '', path);\nwindow.dispatchEvent(new Event('location-changed'));\n"
-        uix:
-          style: "ha-card {\n  border: none;\n  border-shadow: none !important;\n\
-            \  box-shadow: none !important;\n  background: none !important;\n}\n\n\
-            ha-card::before {\n  content: none !important;\n}\n"
-      visibility:
-      - condition: state
-        entity: input_text.security_info
-        state_not: ''
-  - type: grid
-    cards:
-    - type: heading
-      heading: New section
-    - type: custom:button-card
-      entity: timer.timer_helper
-      show_state: true
-      name: Custom button example
-      icon: local:thermostat_adjustment_script
-      tap_action:
-        action: none
-      styles:
-        grid:
-        - grid-template-areas: '"i n run_button" "i s run_button"'
-        - grid-template-columns: min-content 1fr 1fr
-        - grid-template-rows: 1fr 1fr
-        card:
-        - padding: .5rem
-        - height: 4.5rem
-        img_cell:
-        - background-color: transparent
-        - width: 3rem
-        - height: 3rem
-        icon:
-        - width: 2.5rem
-        - color: var(--text-primary-color)
-        name:
-        - justify-self: start
-        - padding-left: .25rem
-        - font-weight: 500
-        - font-size: 14px
-        - padding-top: .25rem
-        - color: var(--primary-text-color)
-        state:
-        - justify-self: start
-        - padding-left: .25rem
-        - font-size: .95rem
-        - color: var(--secondary-text-color)
-      custom_fields:
-        run_button:
-          card:
-            type: custom:button-card
-            entity: script.temporary_thermostat_adjustment
-            name: custom
-            icon: local:thermostat_adjustment_script
-            show_state: false
-            tap_action:
-              action: perform-action
-              perform_action: timer.finish
-              target:
-                entity_id: timer.timer_helper
-            styles:
-              grid:
-              - grid-template-areas: '"i n"'
-              - grid-template-columns: auto min-content
-              - grid-template-rows: 1fr
-              - justify-content: center
-              - align-items: center
-              - column-gap: .25rem
-              card:
-              - background-color: "[[[\n  return entity.state === 'on' ? 'color-mix(in\
-                  \ srgb, var(--primary-color) 20%, transparent)' : 'var(--secondary-background-color,\
-                  \ rgba(0, 0, 0, 0.2))';\n]]]\n"
-              - border: 1px solid rgba(255, 255, 255, 0.2) !important;
-              - border-radius: 20px;
-              - height: 3rem
-              - padding-right: 3rem
-              - padding-left: 2.8rem
-              - box-shadow: none
-              - justify-self: center
-              - width: auto
-              img_cell:
-              - background-color: transparent
-              - justify-self: center
-              - width: 2rem
-              name:
-              - color: "[[[\n  return entity.state === 'on' ? 'var(--primary-color)'\
-                  \ : 'white';\n]]]\n"
-              - font-weight: 500
-              - font-size: 1rem
-              - justify-self: center
-              icon:
-              - width: 1.5rem
-              - color: "[[[\n  return entity.state === 'on' ? 'var(--primary-color)'\
-                  \ : 'white';\n]]]\n"
-    - type: custom:button-card
-      entity: script.push_ha_info_to_github_create_ai_zip_file_now
-      show_state: true
-      name: Generate HA Info Folder
-      tap_action:
-        action: none
-      state:
-      - valye: 'on'
-        state_display: generating
-      - value: 'off'
-        state_display: 'off'
-      styles:
-        grid:
-        - grid-template-areas: '"i n run_button" "i s run_button"'
-        - grid-template-columns: min-content min-content 1fr
-        - grid-template-rows: 1fr 1fr
-        card:
-        - padding: .7rem
-        - height: 4.5rem
-        img_cell:
-        - background-color: transparent
-        - width: 4rem
-        icon:
-        - width: 3rem
-        - color: "[[[\n  return entity.state === 'on' ? 'var(--custom-active)' : 'var(--custom-contrast)';\n\
-            ]]]\n"
-        - padding-bottom: .25rem
-        - margin-left: -.5rem
-        name:
-        - justify-self: start
-        - font-weight: 500
-        - font-size: 1rem
-        state:
-        - justify-self: start
-        - font-size: 1rem
-      custom_fields:
-        run_button:
-          card:
-            type: custom:custom-features-card
-            features:
-            - type: custom:service-call
-              entries:
-              - type: button
-                label: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      Generating...\n    {% else %}\n      Generate\n\
-                  \    {% endif %} \n"
-                icon: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      null\n    {% else %}\n      local:github_zip_script\n\
-                  \    {% endif %} \n"
-                thumb: md3-elevated
-                tap_action:
-                  action: perform-action
-                  perform_action: script.turn_on
-                  target:
-                    entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
-                toggle_styles: false
-                styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                  \  border-radius: var(--custom-radius);\n  box-shadow: none;\n \
-                  \ margin-right: auto\n  margin-left: auto  \n  width: auto\n  justify-content:\
-                  \ space-around\n  justify-self: space-around\n  justify-items: space-around\n\
-                  }\n:host {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      --color: var(--custom-bg-active);\n    {% else\
-                  \ %}\n      --color: var(--custom-bg);\n    {% endif %}\n}\n.label\
-                  \ {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-contrast-active);\n    {%\
-                  \ else %}\n      color: var(--custom-contrast);\n    {% endif %}\
-                  \ \n}\n.icon {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-contrast-active);\n    {%\
-                  \ else %}\n      color: var(--custom-contrast);\n    {% endif %}\n\
-                  \  padding-bottom: .25rem\n}"
-                entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
-            transparent: false
-            uix:
-              style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
-                \ none;\n  margin-right: auto\n  margin-left: auto\n  width: auto\n\
-                \  justify-content: space-around\n  justify-self: space-around\n \
-                \ justify-items: space-around\n\n}\nha-card::before {\ncontent: none\
-                \ !important;\n}\n"
-  subview: false
-  cards: []
-  dense_section_placement: true
-  badges: []
-  theme: Frosted Glass
 - type: masonry
   path: masonry
   title: masonry
@@ -2666,20 +2507,32 @@ views:
   - type: custom:vertical-stack-in-card
     cards:
     - type: custom:state-switch
-      entity: "{{ 'on'\n   if state_attr('automation.light_automations', 'current')\
-        \ | int(0) > 0\n   and not is_state('timer.timer_helper', 'idle')\n   else\
-        \ 'off'\n}}"
+      entity: "{{ 'on'\n   if is_state('script.helper_script', 'on')\n   and states('input_text.template_tracking')\
+        \ != ''\n   else 'off'\n}}"
       states:
         'on':
-          type: tile
-          grid_options:
-            columns: full
-          entity: timer.timer_helper
-          name: Light Template Active
-          vertical: false
-          tap_action:
-            action: none
-          features_position: bottom
+          type: custom:uix-forge
+          forge:
+            mold: card
+            grid_options:
+              columns: full
+          element:
+            type: tile
+            entity: timer.timer_helper
+            name: "{% if states('input_text.template_tracking').startswith('Timer\
+              \ was') %}\n  Timer was already in use when triggered\n{% else %}\n\
+              \  Light Template Active - {{ states('input_text.template_tracking')\
+              \ }}\n{% endif %}"
+            hide_state: '{{ states(''input_text.template_tracking'').startswith(''Timer
+              was'') }}'
+            vertical: false
+            tap_action:
+              action: none
+            features_position: bottom
+            card_mod:
+              style: "ha-tile-info .primary {\n  white-space: normal !important;\n\
+                \  overflow: visible !important;\n  text-overflow: unset !important;\n\
+                \  line-height: 1.2 !important;\n}\n"
     - type: custom:state-switch
       entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
         | int(0) > 0 else ''off'' }}'
@@ -2779,92 +2632,99 @@ views:
                 \ | list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
                 \ | int(0) > 0 %}\n  {{ disabled | reject('eq', door) | list | tojson\
                 \ }}\n{% else %}\n  {{ disabled | tojson }}\n{% endif %}"
-    - type: custom:vertical-stack-in-card
-      cards:
-      - type: custom:mushroom-template-card
-        primary: Security Alert!
-        secondary: '{{ states(''input_text.security_info'') }}'
-        icon: mdi:security
-        grid_options:
-          columns: full
-        features_position: bottom
-        color: red
-        uix:
-          style:
-            ha-tile-info$: ":host {\n  --ha-tile-info-primary-font-size: 20px;\n \
-              \ --ha-tile-info-primary-color: red;\n  --ha-tile-info-secondary-font-size:\
-              \ 16px;\n  --ha-tile-info-secondary-line-height: 20px;\n}\n"
-            .: "ha-tile-icon {\n  size: 20px !important;\n}\n\nha-card {\n  height:\
-              \ auto !important;\n  margin-top: 10px;\n  --icon-display: block !important;\n\
-              \  background: none;\n  padding-top: 1px;\n}\n\nha-card::before {\n\
-              \  content: none;\n}\n"
-      - type: custom:custom-features-card
-        features:
-        - type: custom:service-call
-          entries:
-          - type: button
-            entity_id: ''
-            label: Reset
-            thumb: md3-elevated
-            icon: mdi:cancel
-            styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
-              \ !important;\n  border-radius: var(--custom-radius);\n  --color: {{\
-              \ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n\n.label {\n  color:\
-              \ {{ 'var(--custom-contrast)' }};\n}\n\n.icon {\n  color: {{ 'var(--custom-contrast)'\
-              \ }};\n}\n"
-            tap_action:
-              action: perform-action
-              perform_action: automation.trigger
-              target:
-                entity_id: automation.security
-              data:
-                skip_condition: true
-                variables:
-                  action_type: disregard
-          - type: button
-            entity_id: ''
-            label: Dashboard
-            thumb: md3-elevated
-            icon: mdi:security
-            tap_action:
-              action: navigate
-              navigation_path: /my-dashboard/security
-            styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
-              \ !important;\n  border-radius: var(--custom-radius);\n  --color: {{\
-              \ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n\n.label {\n  color:\
-              \ {{ 'var(--custom-contrast)' }};\n}\n\n.icon {\n  color: {{ 'var(--custom-contrast)'\
-              \ }};\n}\n"
-        - type: custom:service-call
-          entries:
-          - type: dropdown
-            entity_id: ''
-            label: Investigative Options
-            icon: mdi:magnify
-            unit_of_measurement: s
-            options:
-            - entity_id: automation.security
-              option: Security Automation Traces
-              tap_action:
-                action: navigate
-                navigation_path: /config/automation/trace/1787939305481
-            - entity_id: ''
-              option: Activity Surrounding Security Event
-              tap_action:
-                action: eval
-                eval: "const t = new Date(\n  this.hass.states['input_text.script_tracking'].last_changed\n\
-                  );\n\nconst minutes = 4;\n\nconst start = new Date(\n  t.getTime()\
-                  \ - minutes * 60000\n).toISOString();\n\nconst end = new Date(\n\
-                  \  t.getTime() + minutes * 60000\n).toISOString();\n\nconst path\
-                  \ =\n  `/logbook?start_date=${encodeURIComponent(start)}&end_date=${encodeURIComponent(end)}`;\n\
-                  \nhistory.pushState(null, '', path);\nwindow.dispatchEvent(new Event('location-changed'));\n"
-        uix:
-          style: "ha-card {\n  border: none;\n  border-shadow: none !important;\n\
-            \  box-shadow: none !important;\n  background: none !important;\n}\n\n\
-            ha-card::before {\n  content: none !important;\n}\n"
-      visibility:
+    - type: conditional
+      conditions:
       - condition: state
         entity: input_text.security_info
         state_not: ''
+      card:
+        type: custom:vertical-stack-in-card
+        cards:
+        - type: custom:mushroom-template-card
+          primary: Security Alert!
+          secondary: '{{ states(''input_text.security_info'') }}'
+          icon: mdi:security
+          grid_options:
+            columns: full
+          features_position: bottom
+          color: red
+          uix:
+            style:
+              ha-tile-info$: ":host {\n  --ha-tile-info-primary-font-size: 20px;\n\
+                \  --ha-tile-info-primary-color: red;\n  --ha-tile-info-secondary-font-size:\
+                \ 16px;\n  --ha-tile-info-secondary-line-height: 20px;\n}\n"
+              .: "ha-tile-icon {\n  size: 20px !important;\n}\n\nha-card {\n  height:\
+                \ auto !important;\n  margin-top: 10px;\n  --icon-display: block !important;\n\
+                \  background: none;\n  padding-top: 1px;\n}\n\nha-card::before {\n\
+                \  content: none;\n}\n"
+        - type: custom:custom-features-card
+          features:
+          - type: custom:service-call
+            entries:
+            - type: button
+              entity_id: ''
+              label: Reset
+              thumb: md3-elevated
+              icon: mdi:cancel
+              styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n\n.label {\n\
+                \  color: {{ 'var(--custom-contrast)' }};\n}\n\n.icon {\n  color:\
+                \ {{ 'var(--custom-contrast)' }};\n}\n"
+              tap_action:
+                action: perform-action
+                perform_action: automation.trigger
+                target:
+                  entity_id: automation.security
+                data:
+                  skip_condition: true
+                  variables:
+                    action_type: disregard
+            - type: button
+              entity_id: ''
+              label: Dashboard
+              thumb: md3-elevated
+              icon: mdi:security
+              tap_action:
+                action: navigate
+                navigation_path: /my-dashboard/security
+              styles: ":host {\n  height: 30px !important;\n  border: var(--custom-button-border)\
+                \ !important;\n  border-radius: var(--custom-radius);\n  --color:\
+                \ {{ 'var(--custom-bg)' }};\n  box-shadow: none;\n}\n\n.label {\n\
+                \  color: {{ 'var(--custom-contrast)' }};\n}\n\n.icon {\n  color:\
+                \ {{ 'var(--custom-contrast)' }};\n}\n"
+          - type: custom:service-call
+            entries:
+            - type: dropdown
+              entity_id: ''
+              label: Investigative Options
+              icon: mdi:magnify
+              unit_of_measurement: s
+              options:
+              - entity_id: automation.security
+                option: Security Automation Traces
+                tap_action:
+                  action: navigate
+                  navigation_path: /config/automation/trace/1787939305481
+              - entity_id: ''
+                option: Activity Surrounding Security Event
+                tap_action:
+                  action: eval
+                  eval: "const t = new Date(\n  this.hass.states['input_text.script_tracking'].last_changed\n\
+                    );\n\nconst minutes = 4;\n\nconst start = new Date(\n  t.getTime()\
+                    \ - minutes * 60000\n).toISOString();\n\nconst end = new Date(\n\
+                    \  t.getTime() + minutes * 60000\n).toISOString();\n\nconst path\
+                    \ =\n  `/logbook?start_date=${encodeURIComponent(start)}&end_date=${encodeURIComponent(end)}`;\n\
+                    \nhistory.pushState(null, '', path);\nwindow.dispatchEvent(new\
+                    \ Event('location-changed'));\n"
+          uix:
+            style: "ha-card {\n  border: none;\n  border-shadow: none !important;\n\
+              \  box-shadow: none !important;\n  background: none !important;\n}\n\
+              \nha-card::before {\n  content: none !important;\n}\n"
+        visibility:
+        - condition: state
+          entity: input_text.security_info
+          state_not: ''
     uix:
       style: "ha-card {\n  border: none;\n  background: none;\n}\n\nha-card::before\
         \ {\n  content: none !important;\n}\n"
@@ -3153,7 +3013,7 @@ views:
     - type: conditional
       conditions:
       - condition: numeric_state
-        below: 50
+        below: 200
         entity: sensor.openweathermap_feels_like_temperature_2
       card:
         features:
@@ -4316,6 +4176,183 @@ views:
         mushroom-template-badge$: ".badge {\n  background: var(--custom-bg) !important;\n\
           }\n"
 - type: sections
+  max_columns: 4
+  title: Test Bay
+  path: test-bay
+  sections:
+  - type: grid
+    cards:
+    - type: heading
+      heading: New section
+  - type: grid
+    cards:
+    - type: heading
+      heading: New section
+    - type: custom:button-card
+      entity: timer.timer_helper
+      show_state: true
+      name: Custom button example
+      icon: local:thermostat_adjustment_script
+      tap_action:
+        action: none
+      styles:
+        grid:
+        - grid-template-areas: '"i n run_button" "i s run_button"'
+        - grid-template-columns: min-content 1fr 1fr
+        - grid-template-rows: 1fr 1fr
+        card:
+        - padding: .5rem
+        - height: 4.5rem
+        img_cell:
+        - background-color: transparent
+        - width: 3rem
+        - height: 3rem
+        icon:
+        - width: 2.5rem
+        - color: var(--text-primary-color)
+        name:
+        - justify-self: start
+        - padding-left: .25rem
+        - font-weight: 500
+        - font-size: 14px
+        - padding-top: .25rem
+        - color: var(--primary-text-color)
+        state:
+        - justify-self: start
+        - padding-left: .25rem
+        - font-size: .95rem
+        - color: var(--secondary-text-color)
+      custom_fields:
+        run_button:
+          card:
+            type: custom:button-card
+            entity: script.temporary_thermostat_adjustment
+            name: custom
+            icon: local:thermostat_adjustment_script
+            show_state: false
+            tap_action:
+              action: perform-action
+              perform_action: timer.finish
+              target:
+                entity_id: timer.timer_helper
+            styles:
+              grid:
+              - grid-template-areas: '"i n"'
+              - grid-template-columns: auto min-content
+              - grid-template-rows: 1fr
+              - justify-content: center
+              - align-items: center
+              - column-gap: .25rem
+              card:
+              - background-color: "[[[\n  return entity.state === 'on' ? 'color-mix(in\
+                  \ srgb, var(--primary-color) 20%, transparent)' : 'var(--secondary-background-color,\
+                  \ rgba(0, 0, 0, 0.2))';\n]]]\n"
+              - border: 1px solid rgba(255, 255, 255, 0.2) !important;
+              - border-radius: 20px;
+              - height: 3rem
+              - padding-right: 3rem
+              - padding-left: 2.8rem
+              - box-shadow: none
+              - justify-self: center
+              - width: auto
+              img_cell:
+              - background-color: transparent
+              - justify-self: center
+              - width: 2rem
+              name:
+              - color: "[[[\n  return entity.state === 'on' ? 'var(--primary-color)'\
+                  \ : 'white';\n]]]\n"
+              - font-weight: 500
+              - font-size: 1rem
+              - justify-self: center
+              icon:
+              - width: 1.5rem
+              - color: "[[[\n  return entity.state === 'on' ? 'var(--primary-color)'\
+                  \ : 'white';\n]]]\n"
+    - type: custom:button-card
+      entity: script.push_ha_info_to_github_create_ai_zip_file_now
+      show_state: true
+      name: Generate HA Info Folder
+      tap_action:
+        action: none
+      state:
+      - valye: 'on'
+        state_display: generating
+      - value: 'off'
+        state_display: 'off'
+      styles:
+        grid:
+        - grid-template-areas: '"i n run_button" "i s run_button"'
+        - grid-template-columns: min-content min-content 1fr
+        - grid-template-rows: 1fr 1fr
+        card:
+        - padding: .7rem
+        - height: 4.5rem
+        img_cell:
+        - background-color: transparent
+        - width: 4rem
+        icon:
+        - width: 3rem
+        - color: "[[[\n  return entity.state === 'on' ? 'var(--custom-active)' : 'var(--custom-contrast)';\n\
+            ]]]\n"
+        - padding-bottom: .25rem
+        - margin-left: -.5rem
+        name:
+        - justify-self: start
+        - font-weight: 500
+        - font-size: 1rem
+        state:
+        - justify-self: start
+        - font-size: 1rem
+      custom_fields:
+        run_button:
+          card:
+            type: custom:custom-features-card
+            features:
+            - type: custom:service-call
+              entries:
+              - type: button
+                label: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      Generating...\n    {% else %}\n      Generate\n\
+                  \    {% endif %} \n"
+                icon: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      null\n    {% else %}\n      local:github_zip_script\n\
+                  \    {% endif %} \n"
+                thumb: md3-elevated
+                tap_action:
+                  action: perform-action
+                  perform_action: script.turn_on
+                  target:
+                    entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
+                toggle_styles: false
+                styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+                  \  border-radius: var(--custom-radius);\n  box-shadow: none;\n \
+                  \ margin-right: auto\n  margin-left: auto  \n  width: auto\n  justify-content:\
+                  \ space-around\n  justify-self: space-around\n  justify-items: space-around\n\
+                  }\n:host {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      --color: var(--custom-bg-active);\n    {% else\
+                  \ %}\n      --color: var(--custom-bg);\n    {% endif %}\n}\n.label\
+                  \ {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      color: var(--custom-contrast-active);\n    {%\
+                  \ else %}\n      color: var(--custom-contrast);\n    {% endif %}\
+                  \ \n}\n.icon {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+                  \ 'on') %}\n      color: var(--custom-contrast-active);\n    {%\
+                  \ else %}\n      color: var(--custom-contrast);\n    {% endif %}\n\
+                  \  padding-bottom: .25rem\n}"
+                entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
+            transparent: false
+            uix:
+              style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
+                \ none;\n  margin-right: auto\n  margin-left: auto\n  width: auto\n\
+                \  justify-content: space-around\n  justify-self: space-around\n \
+                \ justify-items: space-around\n\n}\nha-card::before {\ncontent: none\
+                \ !important;\n}\n"
+  subview: false
+  cards: []
+  dense_section_placement: true
+  badges: []
+  theme: Frosted Glass
+- type: sections
   theme: Frosted Glass Dark
   max_columns: 4
   title: Security
@@ -4681,3 +4718,53 @@ views:
   show_icon_and_title: true
   subview: true
   cards: []
+- type: sections
+  max_columns: 4
+  title: Work
+  path: work
+  sections:
+  - type: grid
+    cards:
+    - show_current: false
+      show_forecast: true
+      type: weather-forecast
+      entity: weather.openweathermap_2
+      forecast_type: daily
+      forecast_slots: 7
+    - type: heading
+      heading_style: title
+      heading: Work Temperatures
+    - type: horizontal-stack
+      cards:
+      - type: tile
+        entity: sensor.a_expansion_attic_temperature
+      - type: tile
+        entity: sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature
+        name: A Sensor
+        vertical: false
+        features_position: bottom
+    - type: horizontal-stack
+      cards:
+      - type: tile
+        entity: sensor.c_expansion_attic_temperature
+      - type: tile
+        entity: sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature
+        name: D Sensor
+        vertical: false
+        features_position: bottom
+    - type: horizontal-stack
+      cards:
+      - type: tile
+        entity: sensor.nest_temperature_sensor_stairwell_g_temperature
+        name: C Sensor - Stairwell G
+        vertical: false
+        features_position: bottom
+      - type: tile
+        entity: sensor.d_expansion_attic_temperature
+  header:
+    layout: responsive
+    badges_position: bottom
+    badges_wrap: wrap
+  subview: true
+  cards: []
+  theme: Frosted Glass

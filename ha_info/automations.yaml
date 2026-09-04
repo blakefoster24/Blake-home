@@ -377,7 +377,7 @@
         then:
         - if:
           - condition: state
-            entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_right
+            entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_either
             state:
             - 'on'
           then:
@@ -2906,7 +2906,7 @@
           behavior: any
           for: 00:00:00
           zone: zone.home
-        enabled: false
+        enabled: true
       sequence:
       - action: notify.mobile_app_blakes_iphone
         metadata: {}

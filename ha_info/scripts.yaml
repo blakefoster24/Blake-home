@@ -57,6 +57,11 @@ temporary_thermostat_adjustment:
           mode: box
       default: 30
   sequence:
+  - action: input_boolean.turn_on
+    metadata: {}
+    target:
+      entity_id: input_boolean.thermostat_automation_pause
+    data: {}
   - action: scene.create
     metadata: {}
     data:
@@ -96,6 +101,11 @@ temporary_thermostat_adjustment:
     metadata: {}
     target:
       entity_id: scene.temp_thermostat_snapshot
+    data: {}
+  - action: input_boolean.turn_off
+    metadata: {}
+    target:
+      entity_id: input_boolean.thermostat_automation_pause
     data: {}
 push_ha_info_to_github_create_ai_zip_file_now:
   alias: Push Ha Info to GitHub & Create AI Zip File
@@ -718,6 +728,7 @@ helper_script:
       - alias: 'Action_type: lights'
         condition: template
         value_template: '{{ action_type == ''lights'' }}'
+        enabled: true
       sequence:
       - variables:
           caller_config:
@@ -742,12 +753,14 @@ helper_script:
                 - binary_sensor.apartment_presence
                 threshold: 5
                 timer_duration: 00:05:00
+        enabled: true
       - variables:
           profile: '{{ caller_branch | default(''default'') }}'
           sensors: '{{ caller_config[called_by][profile][''sensors''] }}'
           threshold: '{{ caller_config[called_by][profile][''threshold''] }}'
           timer_duration: '{{ caller_config[called_by][profile][''timer_duration'']
             }}'
+        enabled: true
       - if:
         - condition: light.is_on
           target:
@@ -760,64 +773,90 @@ helper_script:
             for: 00:00:00
             behavior: any
         then:
-        - action: input_text.set_value
-          target:
-            entity_id: input_text.template_tracking
-          metadata: {}
-          data:
-            value: '{{ state_attr(called_by, ''friendly_name'') }} {{ ''- '' ~ profile
-              if profile != ''default'' else '''' }}'
-        - repeat:
-            until:
-            - alias: Dynamic sensor list off for set time
-              condition: template
-              value_template: "{% set entities = expand(sensors) %}\n{% set any_on
-                =\n  entities\n  | selectattr('state', 'eq', 'on')\n  | list\n  |
-                count > 0\n%}\n{% set any_recent =\n  entities\n  | selectattr(\n
-                \     'last_changed',\n      'ge',\n      now() - timedelta(minutes=threshold
-                | int)\n    )\n  | list\n  | count > 0\n%}\n{{ not any_on and not
-                any_recent }}\n"
-            sequence:
-            - alias: Any relevant sensor is on IF BLOCK
-              if:
-              - alias: Dynamic sensor list = on
+        - if:
+          - condition: template
+            value_template: '{{ is_state(''script.temporary_thermostat_adjustment'',
+              ''on'') }}
+
+              '
+            alias: Temporary Thermostat Adjustment is active
+          then:
+          - action: input_text.set_value
+            target:
+              entity_id: input_text.template_tracking
+            metadata: {}
+            data:
+              value: Timer was already active when triggered
+          - wait_template: '{{ state_attr(called_by, ''current'') | int(0) == 0 }}
+
+              '
+            continue_on_timeout: false
+            alias: Waits for triggering automation to complete
+          - action: input_text.set_value
+            target:
+              entity_id: input_text.template_tracking
+            metadata: {}
+            data:
+              value: ''
+          else:
+          - action: input_text.set_value
+            target:
+              entity_id: input_text.template_tracking
+            metadata: {}
+            data:
+              value: '{{ state_attr(called_by, ''friendly_name'') }} {{ ''- '' ~ profile
+                if profile != ''default'' else '''' }}'
+          - repeat:
+              until:
+              - alias: Dynamic sensor list off for set time
                 condition: template
-                value_template: "{{ expand(sensors)\n  | selectattr('state', 'eq',
-                  'on')\n  | list\n  | count > 0 }}\n"
-              then:
-              - action: timer.pause
-                metadata: {}
-                target:
-                  entity_id: timer.timer_helper
-                data: {}
-              - alias: Dynamic sensor list = clear
-                wait_template: "{{ expand(sensors)\n  | selectattr('state', 'eq',
-                  'on')\n  | list\n  | count == 0 }}\n"
-                continue_on_timeout: false
-              else:
-              - action: timer.start
-                metadata: {}
-                target:
-                  entity_id: timer.timer_helper
-                data:
-                  duration: '{{ timer_duration }}'
-              - alias: Relevant sensors -> detected OR timer finishes
-                wait_for_trigger:
-                - trigger: template
+                value_template: "{% set entities = expand(sensors) %}\n{% set any_on
+                  =\n  entities\n  | selectattr('state', 'eq', 'on')\n  | list\n  |
+                  count > 0\n%}\n{% set any_recent =\n  entities\n  | selectattr(\n
+                  \     'last_changed',\n      'ge',\n      now() - timedelta(minutes=threshold
+                  | int)\n    )\n  | list\n  | count > 0\n%}\n{{ not any_on and not
+                  any_recent }}\n"
+              sequence:
+              - alias: Any relevant sensor is on IF BLOCK
+                if:
+                - alias: Dynamic sensor list = on
+                  condition: template
                   value_template: "{{ expand(sensors)\n  | selectattr('state', 'eq',
                     'on')\n  | list\n  | count > 0 }}\n"
-                  alias: Dynamic sensor list -> detected
-                - trigger: timer.finished
+                then:
+                - action: timer.pause
+                  metadata: {}
                   target:
                     entity_id: timer.timer_helper
-                  options:
-                    for: 00:00:00
-        - action: input_text.set_value
-          metadata: {}
-          target:
-            entity_id: input_text.template_tracking
-          data:
-            value: ''
+                  data: {}
+                - alias: Dynamic sensor list = clear
+                  wait_template: "{{ expand(sensors)\n  | selectattr('state', 'eq',
+                    'on')\n  | list\n  | count == 0 }}\n"
+                  continue_on_timeout: false
+                else:
+                - action: timer.start
+                  metadata: {}
+                  target:
+                    entity_id: timer.timer_helper
+                  data:
+                    duration: '{{ timer_duration }}'
+                - alias: Relevant sensors -> detected OR timer finishes
+                  wait_for_trigger:
+                  - trigger: template
+                    value_template: "{{ expand(sensors)\n  | selectattr('state', 'eq',
+                      'on')\n  | list\n  | count > 0 }}\n"
+                    alias: Dynamic sensor list -> detected
+                  - trigger: timer.finished
+                    target:
+                      entity_id: timer.timer_helper
+                    options:
+                      for: 00:00:00
+          - action: input_text.set_value
+            metadata: {}
+            target:
+              entity_id: input_text.template_tracking
+            data:
+              value: ''
       alias: Lights -> dashboard timer sequence
   alias: Helper script
   description: ''
