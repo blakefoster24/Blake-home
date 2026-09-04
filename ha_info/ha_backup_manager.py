@@ -641,6 +641,12 @@ def create_zip(
                                     BACKUP_DIR
                                 )
                             )
+                                
+                            if (
+                                arcname.startswith("notes" + os.sep)
+                                and not os.path.splitext(file)[1]
+                            ):
+                                arcname += ".txt"
 
                             z.write(
                                 full_path,

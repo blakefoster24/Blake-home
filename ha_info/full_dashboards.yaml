@@ -4351,7 +4351,7 @@ views:
   cards: []
   dense_section_placement: true
   badges: []
-  theme: Frosted Glass
+  theme: Frosted Glass Dark
 - type: sections
   theme: Frosted Glass Dark
   max_columns: 4
@@ -4718,53 +4718,3 @@ views:
   show_icon_and_title: true
   subview: true
   cards: []
-- type: sections
-  max_columns: 4
-  title: Work
-  path: work
-  sections:
-  - type: grid
-    cards:
-    - show_current: false
-      show_forecast: true
-      type: weather-forecast
-      entity: weather.openweathermap_2
-      forecast_type: daily
-      forecast_slots: 7
-    - type: heading
-      heading_style: title
-      heading: Work Temperatures
-    - type: horizontal-stack
-      cards:
-      - type: tile
-        entity: sensor.a_expansion_attic_temperature
-      - type: tile
-        entity: sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature
-        name: A Sensor
-        vertical: false
-        features_position: bottom
-    - type: horizontal-stack
-      cards:
-      - type: tile
-        entity: sensor.c_expansion_attic_temperature
-      - type: tile
-        entity: sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature
-        name: D Sensor
-        vertical: false
-        features_position: bottom
-    - type: horizontal-stack
-      cards:
-      - type: tile
-        entity: sensor.nest_temperature_sensor_stairwell_g_temperature
-        name: C Sensor - Stairwell G
-        vertical: false
-        features_position: bottom
-      - type: tile
-        entity: sensor.d_expansion_attic_temperature
-  header:
-    layout: responsive
-    badges_position: bottom
-    badges_wrap: wrap
-  subview: true
-  cards: []
-  theme: Frosted Glass
