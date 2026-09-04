@@ -1,4 +1,4 @@
-_Last Updated: 2026-09-04T14:17:17.404336-05:00_
+_Last Updated: 2026-09-04T14:19:30.238228-05:00_
 
 ## 🛠 UI Helpers
 Below are the input helpers configured in Home Assistant.
@@ -17,7 +17,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-| `input_boolean.disable_toggle` | **Music Script Flag** | off |  |
+| `input_boolean.disable_toggle` | **Music Script Flag** | on |  |
 
 
 
@@ -112,7 +112,7 @@ Below are the input helpers configured in Home Assistant.
 
 
 
-| `input_text.music_script_info` | **Music Script Info** |  |  |
+| `input_text.music_script_info` | **Music Script Info** | Manual Search • Music Search: Default: My Soundtrack on All Echo || Playing... |  |
 
 
 
@@ -641,7 +641,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `event.bedroom_blake_s_echo_pop_voice_event` | Blake's Echo Pop Voice event | 2026-09-04T02:50:26.714+00:00 |
 
-| `event.blake_s_echo_spot_voice_event` | Blake's Echo Spot Voice event | 2026-09-04T05:29:48.965+00:00 |
+| `event.blake_s_echo_spot_voice_event` | Blake's Echo Spot Voice event | 2026-09-04T19:18:39.323+00:00 |
 
 | `event.bthome_sensor_3370_button` | Motion 1 - Shelly Button | 2025-10-19T05:15:17.292+00:00 |
 
@@ -721,23 +721,23 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `media_player.all_echo` | All Echo | paused |
+| `media_player.all_echo` | All Echo | playing |
 
-| `media_player.all_echo_2` | All Echo | idle |
+| `media_player.all_echo_2` | All Echo | playing |
 
 | `media_player.bedroom_tv` | Bedroom Tv | idle |
 
-| `media_player.blake_s_echo_dot` | Blake's Echo Dot | paused |
+| `media_player.blake_s_echo_dot` | Blake's Echo Dot | playing |
 
-| `media_player.blake_s_echo_dot_2` | Blake's Echo Dot | idle |
+| `media_player.blake_s_echo_dot_2` | Blake's Echo Dot | playing |
 
-| `media_player.blake_s_echo_pop` | Blake's Echo Pop | paused |
+| `media_player.blake_s_echo_pop` | Blake's Echo Pop | playing |
 
-| `media_player.blake_s_echo_pop_2` | Blake's Echo Pop | paused |
+| `media_player.blake_s_echo_pop_2` | Blake's Echo Pop | playing |
 
-| `media_player.blake_s_echo_spot` | Blake's Echo Spot | paused |
+| `media_player.blake_s_echo_spot` | Blake's Echo Spot | playing |
 
-| `media_player.blake_s_echo_spot_2` | Blake's Echo Spot | idle |
+| `media_player.blake_s_echo_spot_2` | Blake's Echo Spot | playing |
 
 | `media_player.living_room_tv` | Living Room TV | unavailable |
 
@@ -767,7 +767,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `notify.blake_s_echo_spot_speak` | Blake's Echo Spot Speak | 2026-09-03T13:56:15.892880+00:00 |
 
-| `notify.blakes_iphone` | Blakes iPhone | 2026-09-04T19:16:08.925444+00:00 |
+| `notify.blakes_iphone` | Blakes iPhone | 2026-09-04T19:17:24.354624+00:00 |
 
 | `notify.ipad` | iPad | unknown |
 
@@ -1021,7 +1021,7 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `script.alexa_music` | Alexa Music | off |
+| `script.alexa_music` | Alexa Music | on |
 
 | `script.find_my_phone` | Find My Phone | off |
 
@@ -1191,7 +1191,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.backup_next_scheduled_automatic_backup` | Backup Next scheduled automatic backup | 2026-09-05T10:33:46+00:00 |
 
-| `sensor.bathroom_humidity` | Bathroom Humidity | 61.55 |
+| `sensor.bathroom_humidity` | Bathroom Humidity | 61.72 |
 
 | `sensor.bathroom_humidity_derivative` | Temp & Humidity Bathroom Humidity Derivative | 0.0 |
 
@@ -1199,17 +1199,17 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.bathroom_light_signal_level` | Bathroom Light Signal level | 3 |
 
-| `sensor.bathroom_temperature` | Bathroom Temperature | 70.898 |
+| `sensor.bathroom_temperature` | Bathroom Temperature | 70.916 |
 
 | `sensor.bed_presence_bb8594_calibrated_left_pressure` | Bed Pressure Sensor Calibrated Left Pressure | 100.0 |
 
 | `sensor.bed_presence_bb8594_calibrated_right_pressure` | Bed Pressure Sensor Calibrated Right Pressure | 0.0 |
 
-| `sensor.bed_presence_bb8594_left_pressure` | Bed Pressure Sensor Left Pressure | 93.097297668457 |
+| `sensor.bed_presence_bb8594_left_pressure` | Bed Pressure Sensor Left Pressure | 93.2582550048828 |
 
-| `sensor.bed_presence_bb8594_right_pressure` | Bed Pressure Sensor Right Pressure | 86.0637283325195 |
+| `sensor.bed_presence_bb8594_right_pressure` | Bed Pressure Sensor Right Pressure | 86.2460479736328 |
 
-| `sensor.bed_presence_bb8594_uptime` | Bed Pressure Sensor Uptime | 2535180.5 |
+| `sensor.bed_presence_bb8594_uptime` | Bed Pressure Sensor Uptime | 2535300.5 |
 
 | `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Pressure Sensor WiFi Signal dB | -42.0 |
 
@@ -1339,29 +1339,29 @@ United States |
 
 | `sensor.everything_presence_lite_922d28_occupancy_mask_2_target_count` | Everything Presence Lite Occupancy Mask 2 Target Count | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -47.181640625 |
+| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -49.7764205932617 |
 
-| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 11.7007974940022 |
+| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 10.3642056682917 |
 
 | `sensor.everything_presence_lite_922d28_target_1_resolution` | Everything Presence Lite Target 1 Resolution | 14.1732283464567 |
 
 | `sensor.everything_presence_lite_922d28_target_1_speed` | Everything Presence Lite Target 1 Speed | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | 0.826771653543307 |
+| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | 1.22047244094488 |
 
-| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 11.6535433070866 |
+| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 10.2755905511811 |
 
-| `sensor.everything_presence_lite_922d28_target_2_angle` | Everything Presence Lite Target 2 Angle | 11.2436151504517 |
+| `sensor.everything_presence_lite_922d28_target_2_angle` | Everything Presence Lite Target 2 Angle | 10.5249767303467 |
 
-| `sensor.everything_presence_lite_922d28_target_2_distance` | Everything Presence Lite Target 2 Distance | 180.110401544045 |
+| `sensor.everything_presence_lite_922d28_target_2_distance` | Everything Presence Lite Target 2 Distance | 181.478511780266 |
 
 | `sensor.everything_presence_lite_922d28_target_2_resolution` | Everything Presence Lite Target 2 Resolution | 14.1732283464567 |
 
-| `sensor.everything_presence_lite_922d28_target_2_speed` | Everything Presence Lite Target 2 Speed | -0.178954899364398 |
+| `sensor.everything_presence_lite_922d28_target_2_speed` | Everything Presence Lite Target 2 Speed | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_2_x` | Everything Presence Lite Target 2 X | -146.141732283465 |
+| `sensor.everything_presence_lite_922d28_target_2_x` | Everything Presence Lite Target 2 X | -145.905511811024 |
 
-| `sensor.everything_presence_lite_922d28_target_2_y` | Everything Presence Lite Target 2 Y | 105.236220472441 |
+| `sensor.everything_presence_lite_922d28_target_2_y` | Everything Presence Lite Target 2 Y | 107.874015748032 |
 
 | `sensor.everything_presence_lite_922d28_target_3_angle` | Everything Presence Lite Target 3 Angle | 0.0 |
 
@@ -1435,7 +1435,7 @@ United States |
 
 | `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.064 |
 
-| `sensor.main_lights_voltage` | Main Lights Voltage | 121.3 |
+| `sensor.main_lights_voltage` | Main Lights Voltage | 121.5 |
 
 | `sensor.motion_2_battery` | Motion 2 - Third Reality Battery | 92.0 |
 
@@ -1495,7 +1495,7 @@ United States |
 
 | `sensor.philips_rwl020_battery` | Hue Dimmer Battery | 100.0 |
 
-| `sensor.recent_alexa` | Recent Alexa | none |
+| `sensor.recent_alexa` | Recent Alexa | media_player.all_echo_2 |
 
 | `sensor.rivian_phone_key_2060_estimated_distance` | Rivian Phone Key 2060 Estimated distance | unavailable |
 
@@ -1717,7 +1717,7 @@ United States |
 
 | `switch.all_echo_do_not_disturb_switch` | All Echo Do not disturb | off |
 
-| `switch.all_echo_repeat_switch` | All Echo Repeat | unavailable |
+| `switch.all_echo_repeat_switch` | All Echo Repeat | off |
 
 | `switch.all_echo_shuffle_switch` | All Echo Shuffle | unavailable |
 

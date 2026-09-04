@@ -3,13 +3,7 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-09-04T14:17:20.889681 =====
-[33m2026-09-04 11:32:15.451 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 11:32:22.555 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 11:32:29.656 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-04 11:37:37.485 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 11:37:44.593 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 11:37:51.704 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+===== 2026-09-04T14:19:34.039883 =====
 [33m2026-09-04 11:42:59.334 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
 [33m2026-09-04 11:43:08.551 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [33m2026-09-04 11:48:16.414 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
@@ -104,12 +98,18 @@ LOG: last_log.txt
 [33m2026-09-04 14:17:02.625 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [32m2026-09-04 14:17:17.393 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [33m2026-09-04 14:17:17.451 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2026-09-04 14:17:49.923 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-04 14:18:27.540 INFO (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Running script sequence[0m
+[32m2026-09-04 14:18:27.557 INFO (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Choose at step 2: default: Normal Sequence: Parallel action at step 1: Disable toggle trigger sequence: Initialized trigger[0m
+[31m2026-09-04 14:18:37.118 ERROR (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Choose at step 2: default: Normal Sequence: Parallel action at step 1: Script actions: Play Music: Error executing script. Error for call_service at pos 10: Entity media_player.all_echo_2 does not support action media_player.shuffle_set[0m
+[32m2026-09-04 14:19:30.227 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[33m2026-09-04 14:19:30.287 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-09-04T14:17:21.007781 =====
+===== 2026-09-04T14:19:34.153514 =====
 [32m2026-09-04 11:54:40.840 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
 [32m2026-09-04 13:00:00.232 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
 [32m2026-09-04 13:23:12.217 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
@@ -119,18 +119,17 @@ LOG: automation_runs.txt
 [32m2026-09-04 14:16:01.807 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [32m2026-09-04 14:16:36.385 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [32m2026-09-04 14:17:17.393 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-04 14:17:49.923 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-04 14:18:27.540 INFO (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Running script sequence[0m
+[32m2026-09-04 14:18:27.557 INFO (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Choose at step 2: default: Normal Sequence: Parallel action at step 1: Disable toggle trigger sequence: Initialized trigger[0m
+[31m2026-09-04 14:18:37.118 ERROR (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Choose at step 2: default: Normal Sequence: Parallel action at step 1: Script actions: Play Music: Error executing script. Error for call_service at pos 10: Entity media_player.all_echo_2 does not support action media_player.shuffle_set[0m
+[32m2026-09-04 14:19:30.227 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-09-04T14:17:21.122707 =====
-[33m2026-09-04 11:32:15.451 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 11:32:22.555 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 11:32:29.656 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-04 11:37:37.485 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 11:37:44.593 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 11:37:51.704 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+===== 2026-09-04T14:19:34.265173 =====
 [33m2026-09-04 11:42:59.334 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
 [33m2026-09-04 11:43:08.551 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [33m2026-09-04 11:48:16.414 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
@@ -216,3 +215,5 @@ LOG: error_log.txt
 [33m2026-09-04 14:16:55.525 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
 [33m2026-09-04 14:17:02.625 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [33m2026-09-04 14:17:17.451 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[31m2026-09-04 14:18:37.118 ERROR (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Choose at step 2: default: Normal Sequence: Parallel action at step 1: Script actions: Play Music: Error executing script. Error for call_service at pos 10: Entity media_player.all_echo_2 does not support action media_player.shuffle_set[0m
+[33m2026-09-04 14:19:30.287 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
