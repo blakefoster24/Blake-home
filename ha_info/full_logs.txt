@@ -3,29 +3,7 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-09-04T14:19:34.039883 =====
-[33m2026-09-04 11:42:59.334 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 11:43:08.551 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-04 11:48:16.414 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 11:48:23.509 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 11:48:32.683 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[31m2026-09-04 11:51:21.106 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:195][update_task]: Component http_request set Error flag: unspecified[0m
-[31m2026-09-04 11:51:21.106 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][http_request.idf:128][update_task]: HTTP Request failed: ESP_ERR_HTTP_CONNECT[0m
-[31m2026-09-04 11:51:22.050 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:209]: Component http_request cleared Error flag[0m
-[33m2026-09-04 11:53:40.406 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 11:53:47.498 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 11:53:54.593 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[32m2026-09-04 11:54:40.840 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
-[33m2026-09-04 11:59:02.420 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 11:59:09.530 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 11:59:16.633 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-04 12:04:24.613 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-04 12:09:32.351 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 12:09:39.447 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 12:14:56.558 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 12:15:03.654 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-04 12:17:16.225 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][bh1750.sensor:053]: Turning on BH1750 failed[0m
-[33m2026-09-04 12:17:16.231 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:188]: Component bh1750.sensor set Warning flag: unspecified[0m
+===== 2026-09-04T14:47:26.588891 =====
 [33m2026-09-04 12:17:18.884 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:203]: Component bh1750.sensor cleared Warning flag[0m
 [33m2026-09-04 12:20:11.339 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
 [33m2026-09-04 12:20:18.435 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
@@ -104,13 +82,34 @@ LOG: last_log.txt
 [31m2026-09-04 14:18:37.118 ERROR (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Choose at step 2: default: Normal Sequence: Parallel action at step 1: Script actions: Play Music: Error executing script. Error for call_service at pos 10: Entity media_player.all_echo_2 does not support action media_player.shuffle_set[0m
 [32m2026-09-04 14:19:30.227 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [33m2026-09-04 14:19:30.287 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2026-09-04 14:19:42.057 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2026-09-04 14:19:43.115 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[33m2026-09-04 14:22:17.559 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 14:22:24.655 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-09-04 14:22:26.639 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2026-09-04 14:25:13.454 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[33m2026-09-04 14:27:32.336 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[32m2026-09-04 14:28:31.086 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2026-09-04 14:30:19.270 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2026-09-04 14:30:19.308 INFO (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Running script sequence[0m
+[33m2026-09-04 14:32:47.302 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 14:32:54.398 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 14:33:01.498 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 14:38:09.520 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 14:38:16.618 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 14:38:23.719 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-09-04 14:42:48.103 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Running script sequence[0m
+[33m2026-09-04 14:43:31.458 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 14:43:38.556 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 14:43:45.659 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-09-04 14:47:22.997 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[33m2026-09-04 14:47:23.060 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-09-04T14:19:34.153514 =====
-[32m2026-09-04 11:54:40.840 INFO (MainThread) [homeassistant.components.automation.thermostat] Thermostat: Running automation actions[0m
+===== 2026-09-04T14:47:26.702390 =====
 [32m2026-09-04 13:00:00.232 INFO (MainThread) [homeassistant.components.automation.work_schedule_automations] Work Schedule Automations: Running automation actions[0m
 [32m2026-09-04 13:23:12.217 INFO (MainThread) [homeassistant.components.automation.shelly_button_4] Shelly Button 4: Running automation actions[0m
 [32m2026-09-04 13:23:12.221 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Running script sequence[0m
@@ -124,33 +123,21 @@ LOG: automation_runs.txt
 [32m2026-09-04 14:18:27.557 INFO (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Choose at step 2: default: Normal Sequence: Parallel action at step 1: Disable toggle trigger sequence: Initialized trigger[0m
 [31m2026-09-04 14:18:37.118 ERROR (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Choose at step 2: default: Normal Sequence: Parallel action at step 1: Script actions: Play Music: Error executing script. Error for call_service at pos 10: Entity media_player.all_echo_2 does not support action media_player.shuffle_set[0m
 [32m2026-09-04 14:19:30.227 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-04 14:19:42.057 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2026-09-04 14:19:43.115 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-04 14:22:26.639 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2026-09-04 14:25:13.454 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2026-09-04 14:28:31.086 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2026-09-04 14:30:19.270 INFO (MainThread) [homeassistant.components.automation.helper_automation] Helper Automation: Running automation actions[0m
+[32m2026-09-04 14:30:19.308 INFO (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Running script sequence[0m
+[32m2026-09-04 14:42:48.103 INFO (MainThread) [homeassistant.components.script.set_my_room] Set My Room: Running script sequence[0m
+[32m2026-09-04 14:47:22.997 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-09-04T14:19:34.265173 =====
-[33m2026-09-04 11:42:59.334 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 11:43:08.551 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-04 11:48:16.414 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 11:48:23.509 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 11:48:32.683 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[31m2026-09-04 11:51:21.106 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:195][update_task]: Component http_request set Error flag: unspecified[0m
-[31m2026-09-04 11:51:21.106 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][http_request.idf:128][update_task]: HTTP Request failed: ESP_ERR_HTTP_CONNECT[0m
-[31m2026-09-04 11:51:22.050 ERROR (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [E][component:209]: Component http_request cleared Error flag[0m
-[33m2026-09-04 11:53:40.406 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 11:53:47.498 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 11:53:54.593 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-04 11:59:02.420 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 11:59:09.530 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 11:59:16.633 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-04 12:04:24.613 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-04 12:09:32.351 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-04 12:09:39.447 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 12:14:56.558 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-04 12:15:03.654 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-04 12:17:16.225 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][bh1750.sensor:053]: Turning on BH1750 failed[0m
-[33m2026-09-04 12:17:16.231 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:188]: Component bh1750.sensor set Warning flag: unspecified[0m
+===== 2026-09-04T14:47:26.815213 =====
 [33m2026-09-04 12:17:18.884 WARNING (MainThread) [homeassistant.components.esphome.manager] Everything Presence Lite: [W][component:203]: Component bh1750.sensor cleared Warning flag[0m
 [33m2026-09-04 12:20:11.339 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
 [33m2026-09-04 12:20:18.435 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
@@ -217,3 +204,16 @@ LOG: error_log.txt
 [33m2026-09-04 14:17:17.451 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 [31m2026-09-04 14:18:37.118 ERROR (MainThread) [homeassistant.components.script.alexa_music] Alexa Music: Choose at step 2: default: Normal Sequence: Parallel action at step 1: Script actions: Play Music: Error executing script. Error for call_service at pos 10: Entity media_player.all_echo_2 does not support action media_player.shuffle_set[0m
 [33m2026-09-04 14:19:30.287 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-09-04 14:22:17.559 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 14:22:24.655 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 14:27:32.336 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 14:32:47.302 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 14:32:54.398 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 14:33:01.498 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 14:38:09.520 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 14:38:16.618 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 14:38:23.719 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 14:43:31.458 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-04 14:43:38.556 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-04 14:43:45.659 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-04 14:47:23.060 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m

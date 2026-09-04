@@ -216,6 +216,13 @@ push_ha_info_to_github_create_ai_zip_file_now:
                   now().timestamp() | int }}
                 ignore_result: ignore
           metadata: {}
+          enabled: false
+        - action: notify.blake_foster30_gmail_com
+          metadata: {}
+          data:
+            title: HA ZIP READY
+            message: HA ZIP READY
+            target: blake.foster30@gmail.com
       default:
       - action: shell_command.delete_ha_ai_zip
         data: {}
