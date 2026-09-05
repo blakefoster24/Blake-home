@@ -2492,7 +2492,7 @@ views:
   max_columns: 4
   dense_section_placement: true
   cards: []
-  theme: Frosted Glass Custom
+  theme: Frosted Glass Dark
   top_margin: false
   background:
     opacity: 33
@@ -4351,7 +4351,7 @@ views:
   cards: []
   dense_section_placement: true
   badges: []
-  theme: Frosted Glass Custom
+  theme: Frosted Glass Dark
 - type: sections
   theme: Frosted Glass Dark
   max_columns: 4
