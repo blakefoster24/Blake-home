@@ -635,12 +635,17 @@ def create_zip(
                                 )
                             )
 
-                            arcname = (
-                                os.path.relpath(
+                
+                            if f.startswith(BACKUP_DIR):
+                                arcname = os.path.relpath(
                                     full_path,
                                     BACKUP_DIR
                                 )
-                            )
+                            else:
+                                arcname = os.path.relpath(
+                                    full_path,
+                                    CONFIG_DIR
+                                )
                                 
                             if (
                                 arcname.startswith("notes" + os.sep)
@@ -828,6 +833,20 @@ if __name__ == "__main__":
     if notes_dir:
         final_zip_list.append(
             notes_dir
+        )
+
+    themes_dir = os.path.join(
+        CONFIG_DIR,
+        "themes"
+    )
+
+    if os.path.isdir(themes_dir):
+        final_zip_list.append(
+            themes_dir
+        )
+    else:
+        print(
+            "Themes folder not found at /config/themes."
         )
 
     # -------------------------------------------------
