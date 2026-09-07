@@ -1,0 +1,392 @@
+Frosted Glass Global Build Guide
+================================
+
+Purpose
+-------
+This guide describes how to build Frosted Glass Global starting from the
+original Frosted Glass theme.
+
+Source theme:
+  /homeassistant/themes/Frosted Glass/Frosted Glass.yaml
+
+Resulting theme:
+  /homeassistant/themes/Frosted Glass Global.yaml
+
+Line numbers are approximate. They will move when comments or blocks are
+added. Use the named sections as the reliable reference.
+
+Prerequisite
+------------
+Around /homeassistant/configuration.yaml line 6, make sure themes are loaded
+from the themes directory:
+
+  frontend:
+    themes: !include_dir_merge_named themes
+
+The original theme is a mode-based theme named Frosted Glass. Global is also
+mode-based, but its shell-specific card-mod rules are shared at the top level.
+
+1. Rename the theme and establish the common section
+-----------------------------------------------------
+
+Original Frosted Glass.yaml, around lines 4-7:
+
+  Frosted Glass:
+    modes:
+      light:
+        card-mod-theme: "Frosted Glass Light"
+
+Change the structure to the following near the top of the new file, around
+lines 10-99:
+
+  Frosted Glass Global:
+    card-mod-theme: "Frosted Glass Global"
+
+    # common variables go here
+    modes:
+      light:
+      dark:
+
+Remove the light-mode and dark-mode card-mod-theme entries. There should be
+one top-level card-mod-theme whose value exactly matches the theme name.
+
+2. Move selected common variables out of the modes
+---------------------------------------------------
+
+The original file repeats many values in both modes. Move the values that are
+intended to be shared into the new top-level COMMON section, around lines
+17-99:
+
+Typography, original around lines 342-380 and 848-890:
+  ha-font-family-body
+  ha-font-family-heading
+  ha-font-family-code
+  ha-font-family-longform
+  ha-card-header-font-family
+  mdc-typography-* font-family variables
+  md-list-item-label-text-font
+  paper-font-* variables
+  ha-font-weight-*
+  mdc-typography-button-font-weight
+  title-font-weight
+  ha-font-size-*
+  title-font-size
+  ha-heading-card-title-*
+  ha-font-smoothing
+
+Primary color scales, original around lines 386-410 and 891-915:
+  ha-color-primary-05 through ha-color-primary-95
+  color-primary-05 through color-primary-95
+
+Shared primary and status colors, original around lines 429-439 and 934-944:
+  primary-color
+  dark-primary-color
+  light-primary-color
+  accent-color
+  disabled-color
+  info-color
+  success-color
+  warning-color
+  error-color
+
+Shared sizing, original near the end of each mode around lines 447-453 and
+952-959:
+  ha-card-border-radius
+  ha-card-border-width
+  ha-card-border-style
+  ha-view-sections-column-gap
+  ha-view-sections-column-min-width
+  paper-slider-height
+  border-radius
+
+Do not move mode-dependent text colors, backgrounds, dialog colors, input
+colors, or header colors into the common section.
+
+3. Add the fixed shell rules
+-----------------------------
+
+Add these new top-level sections after the common variables. They occupy about
+lines 101-203 in the current Global file.
+
+Actual sidebar, around line 112:
+  card-mod-sidebar: |
+
+This rule keeps the actual ha-sidebar dark in both modes. Set the local
+sidebar variables here so the sidebar does not inherit the light values used by
+settings and other Home Assistant panels.
+
+Use bright text and icon values so desktop labels and icons match the mobile
+sidebar appearance:
+
+  --sidebar-icon-color: rgba(234, 235, 238, 0.95) !important;
+  --sidebar-text-color: rgba(234, 235, 238, 0.98) !important;
+  --sidebar-selected-icon-color: rgba(234, 235, 238, 0.95) !important;
+  --sidebar-selected-text-color: rgba(234, 235, 238, 0.98) !important;
+  --sidebar-menu-button-text-color: rgba(234, 235, 238, 0.98) !important;
+
+Custom panel shortcuts, after the normal sidebar rules:
+
+The shortcuts defined with panel_custom use config subpage paths such as
+config/entities and config/helpers. Home Assistant selects the main config
+panel for those routes, so the custom shortcut does not receive the normal
+selected class automatically.
+
+Use card-mod's panel.fullUrlPath context to identify the active subpage and
+apply the same selected box, text, and icon styling to the matching shortcut.
+The current shortcut IDs and route matches are:
+
+  config/entities -> sidebar-panel-config/entities
+  config/helpers -> sidebar-panel-config/helpers
+  config/automation -> sidebar-panel-config/automation
+  config/zha -> sidebar-panel-config/zha
+  config/developer-tools/yaml -> sidebar-panel-config/developer-tools/yaml
+
+Use startswith matching so child routes, such as an automation trace, keep the
+parent shortcut highlighted. The selected box should use the same values as the
+normal sidebar item:
+
+  background-color: var(--sidebar-selected-icon-color)
+  opacity: var(--dark-divider-opacity)
+
+Do not change the panel_custom URL paths when adding this styling; those paths
+are what make the shortcuts open the intended Home Assistant configuration
+pages.
+
+The current version also uses card-mod's panel template context:
+
+  panel.panelComponentName == 'lovelace'
+
+For Lovelace dashboards, keep the translucent sidebar background:
+
+  rgba(25, 28, 45, 0.8)
+
+For non-dashboard pages, use the opaque sidebar background:
+
+  rgb(25, 28, 45)
+
+On non-dashboard pages, explicitly style .menu with the same opaque RGB color.
+This makes the Home Assistant sidebar header and sidebar body match.
+
+Drawer surface, around line 143:
+  card-mod-drawer: |
+
+Use the current Web Awesome drawer selectors:
+
+  wa-drawer::part(dialog) {
+    background: transparent !important;
+  }
+
+  wa-drawer {
+    --backdrop-filter: blur(8px) saturate(1.1);
+  }
+
+Dashboard header, around line 159:
+  card-mod-root: |
+
+Target only the Lovelace .header. Keep it dark and transparent/frosted so the
+dashboard header does not follow the light page colors.
+
+Dashboard card edit controls, around line 206:
+  card-mod-view-yaml: |
+    hui-sections-view$:
+      hui-section:
+        hui-grid-section$:
+          hui-card-edit-mode$:
+            .more ha-icon-button: |
+              :host {
+                color: var(--app-header-edit-text-color) !important;
+              }
+
+The three-dot menu in each grid-section card edit overlay does not set its own
+foreground color. Traverse the sections-view shadow roots and set it to the
+edit-mode text color so it remains visible in light mode. Keep this scoped to
+the `.more ha-icon-button` selector; do not change the global primary text or
+icon colors.
+
+More-info styling, around line 172:
+  card-mod-more-info-yaml: |
+
+Keep the primary, secondary, and border colors tied to the adaptive
+shell-more-info-* variables defined inside the light and dark modes.
+
+4. Build the light mode
+-----------------------
+
+The light mode starts around line 211 in Global. Retain the original light
+mode's mode-specific header, sidebar, dialog, text, input, and status values,
+then apply these Global changes.
+
+Header, around lines 213-220:
+  app-header-backdrop-filter: "blur(6px) saturate(1.2)"
+  app-header-background-color: "rgb(255, 255, 255)"
+  app-header-text-color: "rgba(19, 21, 54, 0.95)"
+  app-header-edit-background-color: "rgba(255, 255, 255, 0.8)"
+  app-header-edit-text-color: "rgba(240, 243, 255, 0.95)"
+  app-header-selection-bar-color: "rgb(106, 116, 211)"
+
+The desktop page header uses the white app-header-background-color. Around line
+228, also set the light-mode sidebar background to white:
+
+  sidebar-background-color: "rgb(255, 255, 255)"
+
+This makes headers and mobile bottom tab bars on pages such as Automations,
+Entities, and Activity white. The actual sidebar remains dark because the
+top-level card-mod-sidebar rule overrides it locally on ha-sidebar.
+
+The edit text color is intentionally white. It prevents dashboard edit-mode
+labels and card edit-menu icons from changing to the hard-to-see primary color
+in light mode.
+
+Backgrounds, around lines 268-279:
+  primary-background-color: "rgb(255, 255, 255)"
+  secondary-background-color: "rgb(255, 255, 255)"
+  clear-background-color: "rgb(255, 255, 255)"
+  card-background-color: "rgb(255, 255, 255)"
+  ha-card-background: "rgb(255, 255, 255)"
+
+The light background image and lovelace-background variable remain available,
+but the regular Home Assistant page and card surfaces are pure white.
+
+Automation card borders, around lines 276-279:
+  ha-card-border-width: "1px"
+  ha-card-border-color: "rgba(106, 116, 211, 0.4)"
+  ha-card-border: "1px solid rgba(106, 116, 211, 0.4)"
+
+The border uses the same primary color as the Add Trigger, Add Condition, and
+Add Action buttons. Use a visible 1px border with reduced opacity instead of a
+subpixel border. Browsers commonly render 0.2px and 0.5px borders almost the
+same way.
+
+Keep the light-mode sidebar variables in the light mode. They are deliberately
+light because Home Assistant reuses them for settings and other panel headers.
+The top-level card-mod-sidebar rule overrides the actual sidebar locally.
+
+5. Build the dark mode
+----------------------
+
+The dark mode starts around line 335 in Global. Retain the original dark
+mode header, sidebar, dialog, text, input, and status values.
+
+The current dark background values, around lines 387-397, are:
+
+  primary-background-color: "rgba(30, 30, 30, 1)"
+  secondary-background-color: "rgba(30, 33, 54, 0.6)"
+  clear-background-color: "rgba(30, 33, 54, 0.7)"
+  card-background-color: "rgba(30, 30, 30, 0.85)"
+  ha-card-background: "rgba(30, 30, 30, 0.9)"
+  ha-card-border-color: "rgba(234, 235, 238, 0.22)"
+  ha-card-border: "0.5px solid rgba(234, 235, 238, 0.1)"
+  ha-card-box-shadow: "0 12px 20px rgba(0, 0, 0, 0.28)"
+
+These preserve the original dark Frosted Glass appearance. Do not replace all
+dark surfaces with the sidebar RGB color unless that is specifically desired;
+doing so removes much of the original dark glass contrast.
+
+6. Remove the old mode-local card CSS
+--------------------------------------
+
+Delete the original light-mode card-mod-card block around lines 42-146.
+Delete the original dark-mode card-mod-card block around lines 549-654.
+
+These blocks contain the old per-mode card overlay and exclusions. Global
+uses a simplified shell-focused structure instead of carrying those large
+mode-local blocks forward.
+
+When deleting those blocks, also delete the CSS sections contained inside
+them, including:
+
+  Base reset for ha-card
+  Glass layer ha-card::before
+  Heading and glance exclusions
+  Data table styling
+  Text-only Markdown exclusions
+  Mushroom title exclusions
+  Bubble card exclusions
+  Mushroom chips exclusions
+
+Delete the original light-mode card-mod-root block around lines 151-337 and
+the original dark-mode card-mod-root block around lines 659-843.
+
+Those blocks contain the large per-mode token maps and legacy root overrides.
+Do not delete the replacement top-level card-mod-root, card-mod-sidebar,
+card-mod-drawer, or card-mod-more-info-yaml blocks added for Global.
+
+The deleted root blocks also contain these old selectors and overrides:
+
+  .mdc-drawer .mdc-drawer__content
+  ha-card radius and border enforcement
+  ha-card ha-card nested border width
+  ha-drawer scrim
+  ha-label-badge
+  input, ha-textfield, ha-select
+  custom-text-divider-row
+
+Only carry any of those forward if the new theme specifically needs that
+behavior. They are not part of the current Global file.
+
+7. Keep the mode-specific values that still matter
+---------------------------------------------------
+
+Do not delete these original mode-local groups when removing the old CSS:
+
+  Header / app chrome
+  Normal sidebar variables
+  Dialogs
+  Text / icons
+   Backgrounds
+   Sliders / toggles
+   Inputs
+   Code / misc
+
+The Sliders / toggles group also overrides the Web Awesome `ha-switch` border
+tokens in both modes so entity-card toggles have no visible track or thumb
+border:
+
+   ha-switch-border-color: "transparent"
+   ha-switch-checked-border-color: "transparent"
+   ha-switch-checked-border-color-hover: "transparent"
+   ha-switch-thumb-border-color: "transparent"
+   ha-switch-thumb-border-color-hover: "transparent"
+   ha-switch-checked-thumb-border-color: "transparent"
+   ha-switch-checked-thumb-border-color-hover: "transparent"
+
+ These groups are the mode-dependent part of the theme and remain around
+ lines 211-329 for light mode and 335-447 for dark mode.
+
+8. Dashboard theme assignments
+-----------------------------
+
+Do not change dashboard YAML or stored dashboard view assignments as part of
+building Global. Existing dashboards may continue to use Frosted Glass Dark.
+The Global file controls the selected user theme and shared shell behavior;
+dashboard theme assignments are a separate concern.
+
+9. Validate and apply
+---------------------
+
+After editing the theme:
+
+  1. Validate the Home Assistant configuration.
+  2. Reload themes with the frontend.reload_themes action.
+   3. Check a Lovelace dashboard in light mode.
+   4. Check a non-dashboard page such as Automations or Activity.
+   5. Check the dashboard in edit mode and confirm the header labels remain white.
+   6. Hover or focus a dashboard card and confirm its three-dot menu icon is visible.
+
+Changing an existing theme does not require a Home Assistant restart when
+frontend.reload_themes succeeds.
+
+Current Global result
+------------------------
+
+The current target file has this overall layout:
+
+  Lines 10-99: theme identity and common variables
+  Lines 101-214: fixed sidebar, drawer, dashboard header, card edit controls,
+  and more-info rules
+  Lines 205-329: light-mode variables
+  Lines 331-447: dark-mode variables
+
+The most important design rule is to keep shell behavior in the shared
+top-level card-mod sections, while keeping colors and surfaces that genuinely
+change with system mode inside modes.light and modes.dark.

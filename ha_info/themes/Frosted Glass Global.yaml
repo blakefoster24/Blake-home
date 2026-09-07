@@ -1,0 +1,510 @@
+# Frosted Glass Global
+# Adaptive shell based on Frosted Glass v1.3 (2025-11-24)
+#
+# Behavior:
+# - Home Assistant pages follow system light/dark mode.
+# - The actual sidebar stays dark/frosted in both modes.
+# - The Lovelace dashboard header stays transparent/frosted in both modes.
+# - Your dashboard can remain explicitly assigned Frosted Glass Dark.
+
+Frosted Glass Global:
+  card-mod-theme: 'Frosted Glass Global'
+
+  # ============================================================
+  # COMMON
+  # ============================================================
+
+  # Typography
+  ha-font-family-body: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  ha-font-family-heading: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  ha-font-family-code: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  ha-font-family-longform: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  ha-card-header-font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  mdc-typography-font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  mdc-typography-button-font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  mdc-typography-body1-font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  md-list-item-label-text-font: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  paper-font-common-base_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  paper-font-common-code_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  paper-font-body1_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  paper-font-subhead_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  paper-font-headline_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  paper-font-caption_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+  paper-font-title_-_font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"'
+
+  ha-font-weight-normal: '400'
+  ha-font-weight-medium: '500'
+  ha-font-weight-bold: '700'
+  ha-font-weight-body: '400'
+  ha-font-weight-heading: '500'
+  ha-font-weight-action: '500'
+  mdc-typography-button-font-weight: '500'
+  title-font-weight: '500'
+
+  ha-font-size-xs: '10px'
+  ha-font-size-s: '12px'
+  ha-font-size-m: '14px'
+  ha-font-size-l: '15px'
+  ha-font-size-xl: '20px'
+  ha-font-size-2xl: '25px'
+  ha-font-size-3xl: '29px'
+  ha-font-size-4xl: '33px'
+  ha-font-size-5xl: '42px'
+  title-font-size: '20px'
+  ha-heading-card-title-font-size: '15px'
+  ha-heading-card-title-font-weight: '500'
+  ha-font-smoothing: 'antialiased'
+
+  # Shared primary color scale
+  ha-color-primary-05: '#0D0E19'
+  ha-color-primary-10: '#131526'
+  ha-color-primary-20: '#20233F'
+  ha-color-primary-30: '#30345F'
+  ha-color-primary-40: '#40467F'
+  ha-color-primary-50: '#6A74D3'
+  ha-color-primary-60: '#8F97DE'
+  ha-color-primary-70: '#ADB3E7'
+  ha-color-primary-80: '#D2D5F2'
+  ha-color-primary-90: '#EAECF9'
+  ha-color-primary-95: '#F6F7FC'
+
+  color-primary-05: '#0D0E19'
+  color-primary-10: '#131526'
+  color-primary-20: '#20233F'
+  color-primary-30: '#30345F'
+  color-primary-40: '#40467F'
+  color-primary-50: '#6A74D3'
+  color-primary-60: '#8F97DE'
+  color-primary-70: '#ADB3E7'
+  color-primary-80: '#D2D5F2'
+  color-primary-90: '#EAECF9'
+  color-primary-95: '#F6F7FC'
+
+  primary-color: 'rgb(106, 116, 211)'
+  dark-primary-color: 'rgb(106, 116, 211)'
+  light-primary-color: 'rgb(167, 182, 199)'
+  accent-color: 'rgb(106, 116, 211)'
+  disabled-color: 'rgb(173, 176, 184)'
+  info-color: 'rgb(106, 116, 211)'
+  success-color: 'rgb(118, 214, 152)'
+  warning-color: 'rgb(255, 219, 117)'
+  error-color: 'rgb(234, 114, 135)'
+
+  ha-card-border-radius: '18px'
+  ha-card-border-width: '0.5px'
+  ha-card-border-style: 'solid'
+  ha-view-sections-column-gap: '17px'
+  ha-view-sections-column-min-width: 320px
+  paper-slider-height: '5px'
+  border-radius: '18px'
+
+  # ============================================================
+  # FIXED ACTUAL SIDEBAR
+  #
+  # The normal sidebar-* variables are allowed to change with
+  # light/dark mode below because Home Assistant also reuses them
+  # for headers on Settings/Profile/etc.
+  #
+  # These local values override ONLY the real ha-sidebar element,
+  # keeping the visible sidebar dark in both modes.
+  # ============================================================
+
+  card-mod-sidebar: |
+    :host {
+      --sidebar-background-color: rgba(30, 30, 30, 0.8) !important;
+      --sidebar-icon-color: rgba(234, 235, 238, 0.95) !important;
+      --sidebar-text-color: rgba(234, 235, 238, 0.98) !important;
+      --sidebar-selected-icon-color: rgba(234, 235, 238, 0.95) !important;
+      --sidebar-selected-text-color: rgba(234, 235, 238, 0.98) !important;
+      --sidebar-menu-button-text-color: rgba(234, 235, 238, 0.98) !important;
+
+      {% if panel.panelComponentName == 'lovelace' %}
+      background: rgba(25, 28, 45, 0.8) !important;
+      {% else %}
+      background: rgb(25, 28, 45) !important;
+      {% endif %}
+
+      backdrop-filter: blur(8px) saturate(1.1) !important;
+      -webkit-backdrop-filter: blur(8px) saturate(1.1) !important;
+
+      box-shadow:
+        3px 3px 0.5px -3.5px rgba(255, 255, 255, 0.15) inset,
+        -2px -2px 0.5px -2px rgba(255, 255, 255, 0.10) inset,
+        0 0 8px 1px rgba(255, 255, 255, 0.06) inset,
+        0 0 2px 0 rgba(0, 0, 0, 0.18) !important;
+    }
+    {% if panel.panelComponentName != 'lovelace' %}
+    .menu {
+      background-color: rgb(25, 28, 45) !important;
+    }
+    {% endif %}
+
+    {% set custom_sidebar_panel = namespace(id='') %}
+    {% if panel.fullUrlPath.startswith('config/entities') %}
+      {% set custom_sidebar_panel.id = 'sidebar-panel-config/entities' %}
+    {% elif panel.fullUrlPath.startswith('config/helpers') %}
+      {% set custom_sidebar_panel.id = 'sidebar-panel-config/helpers' %}
+    {% elif panel.fullUrlPath.startswith('config/automation') %}
+      {% set custom_sidebar_panel.id = 'sidebar-panel-config/automation' %}
+    {% elif panel.fullUrlPath.startswith('config/zha') %}
+      {% set custom_sidebar_panel.id = 'sidebar-panel-config/zha' %}
+    {% elif panel.fullUrlPath.startswith('config/developer-tools/yaml') %}
+      {% set custom_sidebar_panel.id = 'sidebar-panel-config/developer-tools/yaml' %}
+    {% endif %}
+    {% if custom_sidebar_panel.id %}
+    ha-list-item-button[id="{{ custom_sidebar_panel.id }}"]::before {
+      border-radius: var(--ha-border-radius-sm);
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      pointer-events: none;
+      content: "";
+      transition: opacity 15ms linear;
+      will-change: opacity;
+      background-color: var(--sidebar-selected-icon-color);
+      opacity: var(--dark-divider-opacity);
+    }
+
+    ha-list-item-button[id="{{ custom_sidebar_panel.id }}"]::part(headline) {
+      color: var(--sidebar-selected-icon-color) !important;
+    }
+
+    ha-list-item-button[id="{{ custom_sidebar_panel.id }}"] ha-icon[slot="start"],
+    ha-list-item-button[id="{{ custom_sidebar_panel.id }}"] ha-svg-icon[slot="start"] {
+      color: var(--sidebar-selected-icon-color) !important;
+    }
+    {% endif %}
+
+  # Current Home Assistant Web Awesome drawer surface
+  card-mod-drawer: |
+    wa-drawer::part(dialog) {
+      background: transparent !important;
+    }
+
+    wa-drawer {
+      --backdrop-filter: blur(8px) saturate(1.1);
+    }
+
+  # ============================================================
+  # FIXED LOVELACE DASHBOARD HEADER
+  #
+  # Top-level intentionally.
+  # This targets the Lovelace hui-root header only.
+  # ============================================================
+
+  card-mod-root: |
+    .header {
+      --app-header-text-color: rgba(240, 243, 255, 0.95) !important;
+      background-color: rgba(30, 30, 30, 0.01) !important;
+      color: var(--app-header-text-color) !important;
+      backdrop-filter: blur(8px) saturate(1.1) !important;
+      -webkit-backdrop-filter: blur(8px) saturate(1.1) !important;
+    }
+
+  card-mod-view-yaml: |
+    hui-sections-view$:
+      hui-section:
+        hui-grid-section$:
+          hui-card-edit-mode$:
+            .more ha-icon-button: |
+              :host {
+                color: var(--app-header-edit-text-color) !important;
+              }
+
+  # ============================================================
+  # MORE INFO
+  # Uses adaptive variables defined in light/dark modes.
+  # ============================================================
+
+  card-mod-more-info-yaml: |
+    ha-more-info-info$: |
+      :host {
+        color: var(--shell-more-info-primary) !important;
+      }
+
+    ha-more-info-history-and-logbook$: |
+      :host {
+        color: var(--shell-more-info-primary) !important;
+        --primary-text-color: var(--shell-more-info-primary) !important;
+        --secondary-text-color: var(--shell-more-info-secondary) !important;
+      }
+
+    ha-more-info-settings$:
+      .: |
+        :host {
+          --ha-color-form-background: transparent !important;
+          --ha-color-border-neutral-loud: var(--shell-more-info-border) !important;
+          --ha-color-text-secondary: var(--shell-more-info-secondary) !important;
+        }
+
+      entity-registry-settings$:
+        entity-registry-settings-editor$:
+          ha-input.name$: |
+            :host(:focus-within) wa-input::part(input) {
+              color: var(--primary-color) !important;
+            }
+
+          ha-input.entityId$: |
+            :host(:focus-within) wa-input::part(input) {
+              color: var(--primary-color) !important;
+            }
+
+  modes:
+
+    # ==========================================================
+    # LIGHT MODE — REGULAR FROSTED GLASS LIGHT VALUES
+    # ==========================================================
+
+    light:
+
+      # Header / app chrome
+      app-header-backdrop-filter: 'blur(6px) saturate(1.2)'
+      app-header-background-color: 'rgb(255, 255, 255)'
+      app-header-text-color: 'rgba(19, 21, 54, 0.95)'
+      app-header-edit-background-color: 'rgba(255, 255, 255, 0.8)'
+      app-header-edit-text-color: 'rgba(240, 243, 255, 0.95)'
+      app-header-selection-bar-color: 'rgb(106, 116, 211)'
+      app-theme-color: 'rgb(91, 138, 168)'
+
+      # Normal Frosted Glass Light sidebar variables
+      #
+      # These are deliberately light. Home Assistant reuses them
+      # for headers on Automations, Settings, Profile, etc.
+      # The REAL sidebar remains dark because card-mod-sidebar above
+      # overrides these variables locally on ha-sidebar.
+      sidebar-background-color: 'rgb(255, 255, 255)'
+      sidebar-icon-color: 'rgba(19, 21, 54, 0.6)'
+      sidebar-text-color: 'rgba(19, 21, 54, 0.8)'
+      sidebar-selected-icon-color: 'rgba(19, 21, 54, 0.95)'
+      sidebar-selected-text-color: 'rgba(19, 21, 54, 0.98)'
+      sidebar-menu-button-text-color: 'rgba(19, 21, 54, 0.98)'
+
+      # Adaptive more-info values
+      shell-more-info-primary: 'rgba(19, 21, 54, 0.98)'
+      shell-more-info-secondary: 'rgba(19, 21, 54, 0.8)'
+      shell-more-info-border: 'rgba(19, 21, 54, 0.35)'
+
+      # Dialogs
+      ha-dialog-surface-backdrop-filter: 'blur(8px)'
+      ha-dialog-surface-background: 'rgba(234, 235, 238, 0.7)'
+      dialog-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.15)'
+      paper-dialog-background-color: 'rgba(234, 235, 238, 0.7)'
+      mdc-dialog-scrim-color: 'rgba(0, 0, 0, 0.6)'
+
+      # Text / icons
+      primary-text-color: 'rgba(19, 21, 54, 0.98)'
+      secondary-text-color: 'rgba(19, 21, 54, 0.8)'
+      text-primary-color: 'rgba(19, 21, 54, 0.98)'
+      disabled-text-color: 'rgba(19, 21, 54, 0.45)'
+      text-light-primary-color: 'rgb(28, 29, 33)'
+      paper-item-icon-color: 'rgba(19, 21, 54, 0.95)'
+      state-inactive-color: 'rgba(19, 21, 54, 0.8)'
+      state-icon-color: 'rgba(19, 21, 54, 0.95)'
+      state-on-color: 'rgb(118, 214, 152)'
+      state-off-color: 'rgb(234, 114, 135)'
+      label-badge-text-color: 'rgba(19, 21, 54, 0.85)'
+      label-badge-red: 'rgb(234, 114, 135)'
+      label-badge-blue: 'rgb(106, 116, 211)'
+      label-badge-green: 'rgb(78, 183, 128)'
+      label-badge-yellow: 'rgb(255, 219, 117)'
+      label-badge-grey: 'rgb(83, 90, 103)'
+      ha-chip-text-color: 'rgb(0, 0, 0)'
+      divider-color: 'transparent'
+      scrollbar-thumb-color: 'rgb(180, 180, 180)'
+
+      # Backgrounds
+      background-image: "center / cover no-repeat fixed url('https://cdn.jsdelivr.net/gh/wessamlauf/homeassistant-frosted-glass-themes@refs/heads/main/themes/frosted-glass-light-background.jpg')"
+      lovelace-background: 'var(--background-image)'
+      primary-background-color: 'rgb(255, 255, 255)'
+      secondary-background-color: 'rgb(255, 255, 255)'
+      clear-background-color: 'rgb(255, 255, 255)'
+      card-background-color: 'rgb(255, 255, 255)'
+      ha-card-background: 'rgb(255, 255, 255)'
+      ha-card-border-width: '1px'
+      ha-card-border-color: 'rgba(106, 116, 211, 0.4)'
+      ha-card-border: '1px solid rgba(106, 116, 211, 0.4)'
+      ha-card-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.15)'
+
+      # Sliders / toggles
+      ha-switch-border-color: 'transparent'
+      ha-switch-checked-border-color: 'transparent'
+      ha-switch-checked-border-color-hover: 'transparent'
+      ha-switch-thumb-border-color: 'transparent'
+      ha-switch-thumb-border-color-hover: 'transparent'
+      ha-switch-checked-thumb-border-color: 'transparent'
+      ha-switch-checked-thumb-border-color-hover: 'transparent'
+      paper-slider-knob-color: 'rgb(106, 116, 211)'
+      paper-slider-knob-start-color: 'rgb(106, 116, 211)'
+      paper-slider-pin-color: 'rgb(106, 116, 211)'
+      paper-slider-active-color: 'rgb(106, 116, 211)'
+      paper-slider-secondary-color: 'rgb(167, 182, 199)'
+
+      switch-checked-button-color: 'rgb(106, 116, 211)'
+      switch-checked-track-color: 'rgb(106, 116, 211)'
+      switch-unchecked-button-color: 'rgba(0, 0, 0, 0.6)'
+      switch-unchecked-track-color: 'rgba(0, 0, 0, 0.3)'
+
+      paper-toggle-button-checked-button-color: 'rgb(106, 116, 211)'
+      paper-toggle-button-checked-bar-color: 'rgb(106, 116, 211)'
+      paper-toggle-button-unchecked-button-color: 'rgba(0, 0, 0, 0.6)'
+      paper-toggle-button-unchecked-bar-color: 'rgba(0, 0, 0, 0.3)'
+
+      mdc-checkbox-unchecked-color: 'rgba(19, 21, 54, 0.75)'
+      mdc-radio-unchecked-color: 'rgba(19, 21, 54, 0.75)'
+      mdc-ripple-hover-opacity: '0.1'
+
+      # Inputs
+      input-background-color: 'rgba(254, 255, 252, 0.8)'
+      input-background-token-color-disabled: 'rgba(254, 255, 252, 0.8)'
+      input-fill-color: 'rgba(255, 255, 252, 0.8)'
+      input-ink-color: 'rgba(19, 21, 54, 0.98)'
+      input-label-ink-color: 'rgba(19, 21, 54, 0.98)'
+      input-disabled-fill-color: 'rgba(245, 245, 245, 0.6)'
+      input-disabled-ink-color: 'rgba(19, 21, 54, 0.45)'
+      input-disabled-label-ink-color: 'rgba(19, 21, 54, 0.45)'
+      input-idle-line-color: 'transparent'
+      input-dropdown-icon-color: 'rgba(19, 21, 54, 0.8)'
+      input-hover-line-color: 'rgb(106, 116, 211)'
+      mdc-select-idle-line-color: 'transparent'
+      mdc-text-field-idle-line-color: 'transparent'
+
+      # Code / misc
+      code-editor-background-color: 'rgba(234, 235, 238, 1)'
+      codemirror-meta: 'rgba(19, 21, 54, 0.98)'
+      codemirror-property: 'rgb(106, 116, 211)'
+      codemirror-atom: 'rgb(106, 116, 211)'
+      codemirror-string: 'rgb(0, 77, 153)'
+      codemirror-keyword: 'rgb(70, 112, 216)'
+      codemirror-number: 'rgb(204, 85, 0)'
+      mcg-title-font-weight: '400'
+      mush-title-font-weight: '500'
+      mush-title-font-size: '25px'
+      light-grey-color: 'rgb(103, 104, 119)'
+      mush-rgb-grey: '103, 104, 119)'
+
+    # ==========================================================
+    # DARK MODE — REGULAR FROSTED GLASS DARK VALUES
+    # ==========================================================
+
+    dark:
+
+      # Header / app chrome
+      app-header-backdrop-filter: 'blur(8px) saturate(1.1)'
+      app-header-background-color: 'rgba(30, 30, 30, 0.01)'
+      app-header-text-color: 'rgba(240, 243, 255, 0.95)'
+      app-header-edit-background-color: 'rgba(30, 33, 54, 0.8)'
+      app-header-edit-text-color: 'rgba(234, 235, 238, 0.98)'
+      app-header-selection-bar-color: 'rgb(106, 116, 211)'
+      app-theme-color: 'rgb(0, 0, 0)'
+
+      # Normal Frosted Glass Dark sidebar variables
+      sidebar-background-color: 'rgba(30, 30, 30, 0.8)'
+      sidebar-icon-color: 'rgba(234, 235, 238, 0.6)'
+      sidebar-text-color: 'rgba(234, 235, 238, 0.8)'
+      sidebar-selected-icon-color: 'rgba(234, 235, 238, 0.95)'
+      sidebar-selected-text-color: 'rgba(234, 235, 238, 0.98)'
+      sidebar-menu-button-text-color: 'rgba(234, 235, 238, 0.98)'
+
+      # Adaptive more-info values
+      shell-more-info-primary: 'rgba(234, 235, 238, 0.98)'
+      shell-more-info-secondary: 'rgba(234, 235, 238, 0.8)'
+      shell-more-info-border: 'rgba(234, 235, 238, 0.45)'
+
+      # Dialogs
+      ha-dialog-surface-backdrop-filter: 'blur(8px)'
+      ha-dialog-surface-background: 'rgba(30, 30, 30, 0.7)'
+      dialog-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.25)'
+      paper-dialog-background-color: 'rgba(30, 30, 30, 0.7)'
+      mdc-dialog-scrim-color: 'rgba(0, 0, 0, 0.8)'
+
+      # Text / icons
+      primary-text-color: 'rgba(234, 235, 238, 0.98)'
+      secondary-text-color: 'rgba(234, 235, 238, 0.8)'
+      text-primary-color: 'rgba(234, 235, 238, 0.98)'
+      disabled-text-color: 'rgba(234, 235, 238, 0.45)'
+      text-light-primary-color: 'rgb(234, 235, 238)'
+      paper-item-icon-color: 'rgba(234, 235, 238, 0.95)'
+      state-inactive-color: 'rgba(234, 235, 238, 0.8)'
+      state-icon-color: 'rgba(234, 235, 238, 0.95)'
+      state-on-color: 'rgb(118, 214, 152)'
+      state-off-color: 'rgb(234, 114, 135)'
+      label-badge-text-color: 'rgba(234, 235, 238, 0.85)'
+      label-badge-red: 'rgb(234, 114, 135)'
+      label-badge-blue: 'rgb(106, 116, 211)'
+      label-badge-green: 'rgb(78, 183, 128)'
+      label-badge-yellow: 'rgb(255, 219, 117)'
+      label-badge-grey: 'rgb(83, 90, 103)'
+      ha-chip-text-color: 'rgb(234, 235, 238)'
+      divider-color: 'transparent'
+      scrollbar-thumb-color: 'rgb(68, 68, 88)'
+
+      # Backgrounds
+      background-image: "center / cover no-repeat fixed url('https://cdn.jsdelivr.net/gh/wessamlauf/homeassistant-frosted-glass-themes@refs/heads/main/themes/frosted-glass-dark-background.jpg')"
+      lovelace-background: 'var(--background-image)'
+      primary-background-color: 'rgba(30, 30, 30, 1)'
+      secondary-background-color: 'rgba(30, 33, 54, 0.6)'
+      clear-background-color: 'rgba(30, 33, 54, 0.7)'
+      card-background-color: 'rgba(30, 30, 30, 0.85)'
+      ha-card-background: 'rgba(30, 30, 30, 0.9)'
+      ha-card-border-color: 'rgba(234, 235, 238, 0.22)'
+      ha-card-border: '0.5px solid rgba(234, 235, 238, 0.1)'
+      ha-card-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.28)'
+
+      # Sliders / toggles
+      ha-switch-border-color: 'transparent'
+      ha-switch-checked-border-color: 'transparent'
+      ha-switch-checked-border-color-hover: 'transparent'
+      ha-switch-thumb-border-color: 'transparent'
+      ha-switch-thumb-border-color-hover: 'transparent'
+      ha-switch-checked-thumb-border-color: 'transparent'
+      ha-switch-checked-thumb-border-color-hover: 'transparent'
+      paper-slider-knob-color: 'rgb(106, 116, 211)'
+      paper-slider-knob-start-color: 'rgb(106, 116, 211)'
+      paper-slider-pin-color: 'rgb(106, 116, 211)'
+      paper-slider-active-color: 'rgb(106, 116, 211)'
+      paper-slider-secondary-color: 'rgb(167, 182, 199)'
+
+      switch-checked-button-color: 'rgb(106, 116, 211)'
+      switch-checked-track-color: 'rgb(106, 116, 211)'
+      switch-unchecked-button-color: 'rgba(234, 235, 238, 0.3)'
+      switch-unchecked-track-color: 'rgba(234, 235, 238, 0.18)'
+
+      paper-toggle-button-checked-button-color: 'rgb(106, 116, 211)'
+      paper-toggle-button-checked-bar-color: 'rgb(106, 116, 211)'
+      paper-toggle-button-unchecked-button-color: 'rgba(234, 235, 238, 0.3)'
+      paper-toggle-button-unchecked-bar-color: 'rgba(234, 235, 238, 0.18)'
+
+      mdc-checkbox-unchecked-color: 'rgba(234, 235, 238, 0.75)'
+      mdc-radio-unchecked-color: 'rgba(234, 235, 238, 0.75)'
+      mdc-ripple-hover-opacity: '0.1'
+
+      # Inputs
+      input-background-color: 'rgba(50, 50, 50, 0.1)'
+      input-background-token-color-disabled: 'rgba(50, 50, 50, 0.1)'
+      input-fill-color: 'rgba(50, 50, 50, 0.1)'
+      input-ink-color: 'rgba(234, 235, 238, 0.98)'
+      input-label-ink-color: 'rgba(234, 235, 238, 0.98)'
+      input-disabled-fill-color: 'rgba(30, 33, 54, 0.5)'
+      input-disabled-ink-color: 'rgba(234, 235, 238, 0.45)'
+      input-disabled-label-ink-color: 'rgba(234, 235, 238, 0.45)'
+      input-idle-line-color: 'transparent'
+      input-dropdown-icon-color: 'rgba(234, 235, 238, 0.8)'
+      input-hover-line-color: 'rgb(106, 116, 211)'
+      mdc-select-idle-line-color: 'transparent'
+      mdc-text-field-idle-line-color: 'transparent'
+
+      # Code / misc
+      code-editor-background-color: 'rgba(25, 28, 45, 1)'
+      codemirror-meta: 'rgba(234, 235, 238, 0.98)'
+      codemirror-property: 'rgb(106, 116, 211)'
+      codemirror-atom: 'rgb(106, 116, 211)'
+      codemirror-string: 'rgb(164, 209, 255)'
+      codemirror-keyword: 'rgb(148, 182, 255)'
+      codemirror-number: 'rgb(255, 171, 64)'
+      mcg-title-font-weight: '400'
+      mush-title-font-weight: '500'
+      mush-title-font-size: '25px'
+      light-grey-color: 'rgb(103, 104, 119)'
+      mush-rgb-grey: '103, 104, 119)'

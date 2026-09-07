@@ -149,6 +149,55 @@ def backup_notes_folder():
         return None
 
 
+def backup_themes_folder():
+    """
+    Copies the themes folder into the ha_info directory.
+
+    This keeps GitHub and the downloadable AI context ZIP
+    using the same backed-up copy of the themes folder.
+    """
+
+    print("Backing up themes folder...")
+
+    src = os.path.join(
+        CONFIG_DIR,
+        "themes"
+    )
+
+    dest = os.path.join(
+        BACKUP_DIR,
+        "themes"
+    )
+
+    if not os.path.isdir(src):
+        print(
+            "Themes folder not found at /config/themes."
+        )
+        return None
+
+    try:
+        if os.path.exists(dest):
+            shutil.rmtree(dest)
+
+        shutil.copytree(
+            src,
+            dest
+        )
+
+        print(
+            f"Successfully backed up themes "
+            f"from {src} to {dest}"
+        )
+
+        return dest
+
+    except Exception as e:
+        print(
+            f"Error copying themes folder: {e}"
+        )
+        return None
+
+
 def get_log_data(
     log_name,
     line_count=1000,
@@ -635,7 +684,6 @@ def create_zip(
                                 )
                             )
 
-                
                             if f.startswith(BACKUP_DIR):
                                 arcname = os.path.relpath(
                                     full_path,
@@ -646,7 +694,7 @@ def create_zip(
                                     full_path,
                                     CONFIG_DIR
                                 )
-                                
+
                             if (
                                 arcname.startswith("notes" + os.sep)
                                 and not os.path.splitext(file)[1]
@@ -800,6 +848,10 @@ if __name__ == "__main__":
         backup_notes_folder()
     )
 
+    themes_dir = (
+        backup_themes_folder()
+    )
+
     backup_manager = (
         backup_manager_script()
     )
@@ -835,18 +887,9 @@ if __name__ == "__main__":
             notes_dir
         )
 
-    themes_dir = os.path.join(
-        CONFIG_DIR,
-        "themes"
-    )
-
-    if os.path.isdir(themes_dir):
+    if themes_dir:
         final_zip_list.append(
             themes_dir
-        )
-    else:
-        print(
-            "Themes folder not found at /config/themes."
         )
 
     # -------------------------------------------------
