@@ -353,6 +353,13 @@
               variables:
                 action_type: lights
                 called_by: '{{ this.entity_id }}'
+                threshold: 5
+                scene: lights off except br lamp
+                sensors:
+                - binary_sensor.bathroom_presence
+                - binary_sensor.kitchen_presence
+                - binary_sensor.living_room_motion
+                - binary_sensor.closet_motion
         - action: scene.turn_on
           metadata: {}
           target:
@@ -1261,6 +1268,10 @@
               action_type: lights
               called_by: '{{ this.entity_id }}'
               caller_branch: leaving
+              thershold: 5
+              scene: All Off
+              sensors:
+              - binary_sensor.apartment_presence
       alias: Leaving Branch
     - conditions:
       - condition: not
@@ -1324,6 +1335,11 @@
                 action_type: lights
                 called_by: '{{ this.entity_id }}'
                 caller_branch: arriving
+                threshold: 2
+                scene: living space lights off
+                sensors:
+                - binary_sensor.kitchen_presence
+                - binary_sensor.living_room_motion
         - action: light.turn_off
           metadata: {}
           data: {}
