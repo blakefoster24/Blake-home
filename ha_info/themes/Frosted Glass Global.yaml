@@ -266,7 +266,7 @@ Frosted Glass Global:
       app-header-edit-background-color: 'rgba(255, 255, 255, 0.8)'
       app-header-edit-text-color: 'rgba(240, 243, 255, 0.95)'
       app-header-selection-bar-color: 'rgb(106, 116, 211)'
-      app-theme-color: 'rgb(91, 138, 168)'
+      app-theme-color: 'rgb(255, 255, 255)'
 
       # Normal Frosted Glass Light sidebar variables
       #

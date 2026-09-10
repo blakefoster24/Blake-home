@@ -360,14 +360,22 @@ views:
       button_type: switch
       card_type: pop-up
       cards:
-      - entity: input_datetime.home_timestamp
+      - type: tile
         grid_options:
           columns: full
-        type: tile
-      - entity: input_datetime.last_door_open
+        entity: input_datetime.home_timestamp
+        vertical: false
+        tap_action:
+          action: none
+        features_position: bottom
+      - type: tile
         grid_options:
           columns: full
-        type: tile
+        entity: input_datetime.last_door_open
+        vertical: false
+        tap_action:
+          action: none
+        features_position: bottom
       - entity: sensor.recent_alexa
         grid_options:
           columns: full
@@ -4371,6 +4379,19 @@ views:
       tap_action:
         action: none
       type: custom:button-card
+    - type: tile
+      grid_options:
+        columns: 12
+        rows: 1
+      entity: script.push_ha_info_to_github_create_ai_zip_file_now
+      name: Generate Ha Info folder
+      vertical: false
+      features:
+      - type: button
+        action_name: Generate
+        action:
+          tap_action: script.push_ha_info_to_github_create_ai_zip_file_now
+      features_position: inline
     type: grid
   subview: false
   theme: Frosted Glass Dark

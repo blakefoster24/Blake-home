@@ -805,10 +805,11 @@ helper_script:
               sequence:
               - variables:
                   remaining_seconds: "{% set latest_changed =\n  expand(sensors)\n
-                    \ | map(attribute='last_changed')\n  | max\n%}\n{% set elapsed
-                    =\n  (now() - latest_changed).total_seconds()\n%}\n{{ [\n  ((threshold
-                    | int * 60) - elapsed)\n  | round(0, 'ceil')\n  | int,\n  0\n]
-                    | max }}"
+                    \ | map(attribute='last_changed')\n  | max\n%}\n\n{% set threshold_end
+                    =\n  as_timestamp(latest_changed)\n  + (threshold | int * 60)\n%}\n\n{%
+                    set next_evaluation =\n  ((threshold_end // 60) + 1) * 60\n%}\n\n{{
+                    [\n  (next_evaluation - as_timestamp(now()))\n  | round(0, 'ceil')\n
+                    \ | int,\n  0\n] | max }}"
               - choose:
                 - alias: Relevant sensor is on
                   conditions:

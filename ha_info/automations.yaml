@@ -2996,3 +2996,43 @@
         metadata: {}
   mode: queued
   max: 10
+- id: '1789006666121'
+  alias: Browser Mod
+  description: ''
+  triggers:
+  - trigger: template
+    value_template: '{{ (states(''sensor.blakes_phone_browser_path'') | lower).startswith(''/my-dashboard'')
+      }}'
+    alias: Switches to dashboard
+    id: Dashboard
+  - trigger: template
+    value_template: '{{ not (states(''sensor.blakes_phone_browser_path'') | lower).startswith(''/my-dashboard'')
+      }}'
+    alias: Default
+    id: Default
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - Dashboard
+      sequence:
+      - action: browser_mod.set_theme
+        metadata: {}
+        data:
+          browser_id:
+          - 97ccdd5d88b9d2a59ffaceee2b3f50c3
+          theme: Frosted Glass Global
+          dark: dark
+        alias: 'Set Theme: Frosted Glass Global (Dark)'
+    default:
+    - action: browser_mod.set_theme
+      metadata: {}
+      data:
+        browser_id:
+        - 97ccdd5d88b9d2a59ffaceee2b3f50c3
+        theme: Frosted Glass Global
+        dark: auto
+      alias: 'Set Theme: Frosted Glass Global (Auto)'
+  mode: single
