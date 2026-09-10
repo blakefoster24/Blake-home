@@ -268,6 +268,12 @@ views:
         - {}
         - media_content_type: app
           media_content_id: media-source://image_upload
+  background:
+    opacity: 40
+    alignment: center
+    size: cover
+    repeat: repeat
+    attachment: fixed
 
 
 ########################################
@@ -1455,7 +1461,7 @@ views:
             on\") else \"var(--state-inactive-color)\" }};\n  --ha-heading-badge-font-size:\
             \ 18px !important;\n}\n"
           hui-entity-heading-badge$:
-            ha-heading-badge$: ".heading-badge {\n  --mdc-icon-size: 20px !important;\n\
+            ha-heading-badge$: ".heading-badge {\n  --mdc-icon-size: 25px !important;\n\
               }\n"
     - entity: binary_sensor.front_door
       grid_options:
@@ -1589,6 +1595,14 @@ views:
         style:
           ha-tile-icon $: ".container::before {\n  opacity: 0 !important;\n}\n"
       vertical: false
+    - type: custom:mushroom-template-card
+      icon: mdi:mushroom
+      features_position: bottom
+      entity: binary_sensor.bed_presence_bb8594_bed_occupied_left
+      primary: Bed Occupied Left
+      secondary: '{{ state_translated("sensor.bed_presence_bb8594_calibrated_left_pressure")}}%'
+      color: '{% if is_state(sensor.bed_presence_bb8594_calibrated_left_pressure,
+        ''on'') green {% else %} blue {% endif %}'
     features_position: bottom
     type: grid
   - cards:
@@ -2533,11 +2547,11 @@ views:
   top_margin: false
   type: sections
 - background:
+    opacity: 70
     alignment: center
-    attachment: fixed
-    opacity: 80
-    repeat: repeat
     size: cover
+    repeat: repeat
+    attachment: fixed
   badges:
   - color: white
     icon: mdi:navigation-variant
