@@ -1,4 +1,4 @@
-_Last Updated: 2026-09-10T07:07:04.608363-05:00_
+_Last Updated: 2026-09-11T02:00:00.238693-05:00_
 
 <details><summary><b>Helpers</b></summary>
 
@@ -56,13 +56,13 @@ Below are the input helpers configured in Home Assistant.
 
   
 
-| `input_datetime.home_timestamp` | **Home Timestamp** | 2026-09-09 20:11:39 | has_date=True, has_time=True |
+| `input_datetime.home_timestamp` | **Home Timestamp** | 2026-09-10 21:20:55 | has_date=True, has_time=True |
 
 
 
   
 
-| `input_datetime.last_door_open` | **Last Door Open** | 2026-09-09 20:13:09 | has_date=True, has_time=True |
+| `input_datetime.last_door_open` | **Last Door Open** | 2026-09-10 23:12:23 | has_date=True, has_time=True |
 
 
 
@@ -236,7 +236,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `binary_sensor.akamatis_presence_sensor_b24c50_still_target` | Akamatis Presence Sensor b24c50 Still Target | off |
 
-| `binary_sensor.all_echo_connectivity` | All Echo Connectivity | unavailable |
+| `binary_sensor.all_echo_connectivity` | All Echo Connectivity | on |
 
 | `binary_sensor.apartment_presence` | Apartment Presence | on |
 
@@ -258,11 +258,11 @@ Below are the input helpers configured in Home Assistant.
 
 | `binary_sensor.bedroom_presence` | Everything Presence Lite Occupancy | off |
 
-| `binary_sensor.blake_s_echo_dot_connectivity` | Blake's Echo Dot Connectivity | unavailable |
+| `binary_sensor.blake_s_echo_dot_connectivity` | Blake's Echo Dot Connectivity | on |
 
-| `binary_sensor.blake_s_echo_pop_connectivity` | Blake's Echo Pop Connectivity | unavailable |
+| `binary_sensor.blake_s_echo_pop_connectivity` | Blake's Echo Pop Connectivity | on |
 
-| `binary_sensor.blake_s_echo_spot_connectivity` | Blake's Echo Spot Connectivity | unavailable |
+| `binary_sensor.blake_s_echo_spot_connectivity` | Blake's Echo Spot Connectivity | on |
 
 | `binary_sensor.blake_s_echo_spot_motion` | Blake's Echo Spot Motion | unavailable |
 
@@ -270,11 +270,11 @@ Below are the input helpers configured in Home Assistant.
 
 | `binary_sensor.blakes_iphone_kiosk_mode` | Blakes iPhone Kiosk Mode | off |
 
-| `binary_sensor.blakes_phone` | Blake’s Phone | on |
+| `binary_sensor.blakes_phone` | Blake’s Phone | unavailable |
 
-| `binary_sensor.blakes_phone_browser_dark_mode` | Blake’s Phone Browser dark mode | on |
+| `binary_sensor.blakes_phone_browser_dark_mode` | Blake’s Phone Browser dark mode | unavailable |
 
-| `binary_sensor.blakes_phone_browser_fullykiosk` | Blake’s Phone Browser FullyKiosk | off |
+| `binary_sensor.blakes_phone_browser_fullykiosk` | Blake’s Phone Browser FullyKiosk | unavailable |
 
 | `binary_sensor.closet_light_cloud_connection` | Closet Light Cloud connection | on |
 
@@ -362,7 +362,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `binary_sensor.washing_machine_vibration` | Washing Machine vibration | unavailable |
 
-| `binary_sensor.workday_tomorrow_template_sensor` | Workday Tomorrow Template Sensor | on |
+| `binary_sensor.workday_tomorrow_template_sensor` | Workday Tomorrow Template Sensor | off |
 
 </details>
 
@@ -392,31 +392,31 @@ Below are the input helpers configured in Home Assistant.
 
 | `button.bed_presence_bb8594_restart` | Bed Pressure Sensor Restart | unknown |
 
-| `button.bedroom_blake_s_echo_pop_restart` | Blake's Echo Pop Restart | unavailable |
+| `button.bedroom_blake_s_echo_pop_restart` | Blake's Echo Pop Restart | unknown |
 
-| `button.blake_foster30_gmail_com_find_my_phone` | Blake.foster30@gmail.com find my phone | unavailable |
+| `button.blake_foster30_gmail_com_find_my_phone` | Blake.foster30@gmail.com find my phone | 2026-08-06T11:52:19.392603+00:00 |
 
-| `button.blake_foster30_gmail_com_good_morning_by_alexa` | Blake.foster30@gmail.com Good Morning by Alexa | unavailable |
+| `button.blake_foster30_gmail_com_good_morning_by_alexa` | Blake.foster30@gmail.com Good Morning by Alexa | unknown |
 
-| `button.blake_foster30_gmail_com_goodnight` | Blake.foster30@gmail.com Goodnight | unavailable |
+| `button.blake_foster30_gmail_com_goodnight` | Blake.foster30@gmail.com Goodnight | unknown |
 
-| `button.blake_foster30_gmail_com_i_m_awake` | Blake.foster30@gmail.com I'm awake | unavailable |
+| `button.blake_foster30_gmail_com_i_m_awake` | Blake.foster30@gmail.com I'm awake | unknown |
 
-| `button.blake_foster30_gmail_com_i_m_leaving` | Blake.foster30@gmail.com I'm Leaving | unavailable |
+| `button.blake_foster30_gmail_com_i_m_leaving` | Blake.foster30@gmail.com I'm Leaving | unknown |
 
-| `button.blake_foster30_gmail_com_set_backlight_late_for_work` | Blake.foster30@gmail.com set backlight late for work | unavailable |
+| `button.blake_foster30_gmail_com_set_backlight_late_for_work` | Blake.foster30@gmail.com set backlight late for work | 2026-09-10T13:50:00.138421+00:00 |
 
-| `button.blake_foster30_gmail_com_set_my_room` | Blake.foster30@gmail.com Set My Room | unavailable |
+| `button.blake_foster30_gmail_com_set_my_room` | Blake.foster30@gmail.com Set My Room | unknown |
 
-| `button.blake_foster30_gmail_com_turn_the_ceiling_fan_off` | Blake.foster30@gmail.com turn the ceiling fan off | unavailable |
+| `button.blake_foster30_gmail_com_turn_the_ceiling_fan_off` | Blake.foster30@gmail.com turn the ceiling fan off | 2026-09-10T13:44:43.348704+00:00 |
 
-| `button.blake_foster30_gmail_com_turn_the_ceiling_fan_on` | Blake.foster30@gmail.com turn the ceiling fan on | unavailable |
+| `button.blake_foster30_gmail_com_turn_the_ceiling_fan_on` | Blake.foster30@gmail.com turn the ceiling fan on | 2026-09-10T13:44:40.593619+00:00 |
 
-| `button.blake_foster30_gmail_com_video_mode_scene` | Blake.foster30@gmail.com video mode scene | unavailable |
+| `button.blake_foster30_gmail_com_video_mode_scene` | Blake.foster30@gmail.com video mode scene | 2026-09-10T13:56:08.155121+00:00 |
 
-| `button.blake_foster30_gmail_com_where_s_the_remote` | Blake.foster30@gmail.com where's the remote | unavailable |
+| `button.blake_foster30_gmail_com_where_s_the_remote` | Blake.foster30@gmail.com where's the remote | unknown |
 
-| `button.blake_s_echo_spot_restart` | Blake's Echo Spot Restart | unavailable |
+| `button.blake_s_echo_spot_restart` | Blake's Echo Spot Restart | unknown |
 
 | `button.everything_presence_lite_922d28_esp_reboot` | Everything Presence Lite ESP Reboot | unknown |
 
@@ -432,7 +432,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `button.living_room_lamp_identify` | Living Room Lamp Identify | 2025-12-12T05:16:53.886398+00:00 |
 
-| `button.main_living_space_blake_s_echo_dot_restart` | Blake's Echo Dot Restart | unavailable |
+| `button.main_living_space_blake_s_echo_dot_restart` | Blake's Echo Dot Restart | unknown |
 
 | `button.nest_thermostat_identify` | Nest Thermostat Identify | unknown |
 
@@ -650,19 +650,19 @@ Below are the input helpers configured in Home Assistant.
 
 | `event.backup_automatic_backup` | Backup Automatic backup | 2026-09-10T10:11:46.428+00:00 |
 
-| `event.bedroom_blake_s_echo_pop_voice_event` | Blake's Echo Pop Voice event | 2026-09-09T10:08:51.984+00:00 |
+| `event.bedroom_blake_s_echo_pop_voice_event` | Blake's Echo Pop Voice event | 2026-09-11T00:24:54.535+00:00 |
 
-| `event.blake_s_echo_spot_voice_event` | Blake's Echo Spot Voice event | 2026-09-09T13:41:19.689+00:00 |
+| `event.blake_s_echo_spot_voice_event` | Blake's Echo Spot Voice event | 2026-09-11T03:06:20.868+00:00 |
 
 | `event.bthome_sensor_3370_button` | Motion 1 - Shelly Button | 2025-10-19T05:15:17.292+00:00 |
 
-| `event.bthome_sensor_e125_button_1` | BTHome sensor E125 Button 1 | 2026-09-09T12:55:45.888+00:00 |
+| `event.bthome_sensor_e125_button_1` | BTHome sensor E125 Button 1 | 2026-09-11T03:06:08.770+00:00 |
 
-| `event.bthome_sensor_e125_button_2` | BTHome sensor E125 Button 2 | 2026-09-09T08:48:25.124+00:00 |
+| `event.bthome_sensor_e125_button_2` | BTHome sensor E125 Button 2 | 2026-09-10T13:35:31.046+00:00 |
 
-| `event.bthome_sensor_e125_button_3` | BTHome sensor E125 Button 3 | 2026-09-09T10:43:37.388+00:00 |
+| `event.bthome_sensor_e125_button_3` | BTHome sensor E125 Button 3 | 2026-09-10T13:07:55.916+00:00 |
 
-| `event.bthome_sensor_e125_button_4` | BTHome sensor E125 Button 4 | 2026-09-09T10:43:10.859+00:00 |
+| `event.bthome_sensor_e125_button_4` | BTHome sensor E125 Button 4 | 2026-09-10T13:07:35.233+00:00 |
 
 | `event.front_door_sensor_button` | Front Door Sensor Button | 2025-12-14T04:27:51.375+00:00 |
 
@@ -710,7 +710,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `light.bedroom_tv_backlight` | Bedroom Tv Backlight | off |
 
-| `light.blakes_phone_screen` | Blake’s Phone Screen | on |
+| `light.blakes_phone_screen` | Blake’s Phone Screen | unavailable |
 
 | `light.closet_light` | Closet Light | off |
 
@@ -736,23 +736,23 @@ Below are the input helpers configured in Home Assistant.
 
 | `media_player.all_echo` | All Echo | paused |
 
-| `media_player.all_echo_2` | All Echo | unavailable |
+| `media_player.all_echo_2` | All Echo | idle |
 
 | `media_player.bedroom_tv` | Bedroom Tv | off |
 
 | `media_player.blake_s_echo_dot` | Blake's Echo Dot | paused |
 
-| `media_player.blake_s_echo_dot_2` | Blake's Echo Dot | unavailable |
+| `media_player.blake_s_echo_dot_2` | Blake's Echo Dot | idle |
 
 | `media_player.blake_s_echo_pop` | Blake's Echo Pop | paused |
 
-| `media_player.blake_s_echo_pop_2` | Blake's Echo Pop | unavailable |
+| `media_player.blake_s_echo_pop_2` | Blake's Echo Pop | paused |
 
 | `media_player.blake_s_echo_spot` | Blake's Echo Spot | paused |
 
-| `media_player.blake_s_echo_spot_2` | Blake's Echo Spot | unavailable |
+| `media_player.blake_s_echo_spot_2` | Blake's Echo Spot | idle |
 
-| `media_player.blakes_phone` | Blake’s Phone | off |
+| `media_player.blakes_phone` | Blake’s Phone | unavailable |
 
 | `media_player.living_room_tv` | Living Room TV | unavailable |
 
@@ -768,21 +768,21 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `notify.all_echo_announce` | All Echo Announce | unavailable |
+| `notify.all_echo_announce` | All Echo Announce | unknown |
 
-| `notify.blake_s_echo_dot_announce` | Blake's Echo Dot Announce | unavailable |
+| `notify.blake_s_echo_dot_announce` | Blake's Echo Dot Announce | unknown |
 
-| `notify.blake_s_echo_dot_speak` | Blake's Echo Dot Speak | unavailable |
+| `notify.blake_s_echo_dot_speak` | Blake's Echo Dot Speak | unknown |
 
 | `notify.blake_s_echo_pop_announce` | Blake's Echo Pop Announce | unavailable |
 
-| `notify.blake_s_echo_pop_speak` | Blake's Echo Pop Speak | unavailable |
+| `notify.blake_s_echo_pop_speak` | Blake's Echo Pop Speak | unknown |
 
-| `notify.blake_s_echo_spot_announce` | Blake's Echo Spot Announce | unavailable |
+| `notify.blake_s_echo_spot_announce` | Blake's Echo Spot Announce | unknown |
 
-| `notify.blake_s_echo_spot_speak` | Blake's Echo Spot Speak | unavailable |
+| `notify.blake_s_echo_spot_speak` | Blake's Echo Spot Speak | 2026-09-10T13:54:08.151044+00:00 |
 
-| `notify.blakes_iphone` | Blakes iPhone | 2026-09-10T00:55:01.151339+00:00 |
+| `notify.blakes_iphone` | Blakes iPhone | 2026-09-11T03:44:59.499780+00:00 |
 
 | `notify.ipad` | iPad | unknown |
 
@@ -1000,27 +1000,27 @@ Below are the input helpers configured in Home Assistant.
 | Entity ID | Name | State |
 |---|---|---|
 
-| `scene.all_lights` | All Lights | 2026-09-10T01:13:09.942039+00:00 |
+| `scene.all_lights` | All Lights | 2026-09-11T02:27:59.251512+00:00 |
 
-| `scene.all_off` | All Off | 2026-09-10T00:55:00.234456+00:00 |
+| `scene.all_off` | All Off | 2026-09-11T02:41:00.368683+00:00 |
 
 | `scene.bedroom_lights_off` | Bedroom Lights Off | 2026-09-09T10:43:07.615589+00:00 |
 
 | `scene.dimmed` | Dimmed | 2026-09-09T08:18:07.119178+00:00 |
 
-| `scene.full_lamp` | Full Lamp | 2026-09-09T12:55:45.929365+00:00 |
+| `scene.full_lamp` | Full Lamp | 2026-09-11T03:06:08.884345+00:00 |
 
-| `scene.goodnight_scene` | Goodnight | 2026-09-10T08:12:24.082005+00:00 |
+| `scene.goodnight_scene` | Goodnight | 2026-09-11T06:36:27.103384+00:00 |
 
 | `scene.im_awake` | I’m Awake | 2026-09-02T18:02:35.234719+00:00 |
 
-| `scene.lights_off_except_bedroom` | Lights off except bedroom | 2026-09-10T01:21:00.223991+00:00 |
+| `scene.lights_off_except_bedroom` | Lights off except bedroom | 2026-09-11T05:09:00.237071+00:00 |
 
 | `scene.night_light` | Night Light | 2025-09-26T00:17:04.739409+00:00 |
 
 | `scene.set_my_room` | Set My Room | 2026-07-14T23:52:17.173031+00:00 |
 
-| `scene.thermostat_away` | Thermostat Away | 2026-09-09T13:51:41.968475+00:00 |
+| `scene.thermostat_away` | Thermostat Away | 2026-09-10T14:09:20.668951+00:00 |
 
 | `scene.thermostat_ideal_evening` | Thermostat 68/70 | 2025-11-28T11:14:37.942932+00:00 |
 
@@ -1088,7 +1088,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `select.bedroom_blake_s_echo_pop_drop_in` | Blake's Echo Pop Drop In | unavailable |
 
-| `select.blake_foster30_gmail_com_default_device` | Blake.foster30@gmail.com Default device | unavailable |
+| `select.blake_foster30_gmail_com_default_device` | Blake.foster30@gmail.com Default device | All Echo |
 
 | `select.blake_s_echo_spot_drop_in` | Blake's Echo Spot Drop In | unavailable |
 
@@ -1128,9 +1128,9 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.a_expansion_attic_humidity` | A expansion attic Humidity | 64 |
 
-| `sensor.a_expansion_attic_temperature` | A expansion attic Temperature | 76.28 |
+| `sensor.a_expansion_attic_temperature` | A expansion attic Temperature | 74.12 |
 
-| `sensor.akamatis_presence_sensor_b24c50_detection_distance` | Akamatis Presence Sensor b24c50 Detection Distance | 48.8188976377953 |
+| `sensor.akamatis_presence_sensor_b24c50_detection_distance` | Akamatis Presence Sensor b24c50 Detection Distance | 61.0236220472441 |
 
 | `sensor.akamatis_presence_sensor_b24c50_g0_move_energy` | Akamatis Presence Sensor b24c50 g0 move energy | unknown |
 
@@ -1172,13 +1172,13 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.akamatis_presence_sensor_b24c50_move_energy` | Akamatis Presence Sensor b24c50 Move Energy | 0.0 |
 
-| `sensor.akamatis_presence_sensor_b24c50_moving_distance` | Akamatis Presence Sensor b24c50 Moving Distance | 62.992125984252 |
+| `sensor.akamatis_presence_sensor_b24c50_moving_distance` | Akamatis Presence Sensor b24c50 Moving Distance | 61.8110236220473 |
 
 | `sensor.akamatis_presence_sensor_b24c50_presence_sensor_mac_address` | Akamatis Presence Sensor b24c50 presence sensor mac address | BC:AC:90:8F:FF:00 |
 
 | `sensor.akamatis_presence_sensor_b24c50_presence_sensor_version` | Akamatis Presence Sensor b24c50 presence sensor version | 2.44.25070917 |
 
-| `sensor.akamatis_presence_sensor_b24c50_still_distance` | Akamatis Presence Sensor b24c50 Still Distance | 62.992125984252 |
+| `sensor.akamatis_presence_sensor_b24c50_still_distance` | Akamatis Presence Sensor b24c50 Still Distance | 61.8110236220473 |
 
 | `sensor.akamatis_presence_sensor_b24c50_still_energy` | Akamatis Presence Sensor b24c50 Still Energy | 100.0 |
 
@@ -1186,7 +1186,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.apartment_humidity` | Apartment Humidity | 64 |
 
-| `sensor.apartment_temperature` | Apartment Temperature | 68.54 |
+| `sensor.apartment_temperature` | Apartment Temperature | 68.36 |
 
 | `sensor.aqara_fp300_battery` | Aqara FP300 Battery | 100.0 |
 
@@ -1206,27 +1206,27 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.backup_next_scheduled_automatic_backup` | Backup Next scheduled automatic backup | 2026-09-11T10:16:50+00:00 |
 
-| `sensor.bathroom_humidity` | Bathroom Humidity | 61.39 |
+| `sensor.bathroom_humidity` | Bathroom Humidity | 61.21 |
 
-| `sensor.bathroom_humidity_derivative` | Temp & Humidity Bathroom Humidity Derivative | 0.0 |
+| `sensor.bathroom_humidity_derivative` | Temp & Humidity Bathroom Humidity Derivative | -0.0 |
 
 | `sensor.bathroom_light_auto_off_at` | Bathroom Light Auto-off at | unknown |
 
 | `sensor.bathroom_light_signal_level` | Bathroom Light Signal level | 3 |
 
-| `sensor.bathroom_temperature` | Bathroom Temperature | 69.422 |
+| `sensor.bathroom_temperature` | Bathroom Temperature | 69.674 |
 
 | `sensor.bed_presence_bb8594_calibrated_left_pressure` | Bed Pressure Sensor Calibrated Left Pressure | 100.0 |
 
-| `sensor.bed_presence_bb8594_calibrated_right_pressure` | Bed Pressure Sensor Calibrated Right Pressure | 45.9980010986328 |
+| `sensor.bed_presence_bb8594_calibrated_right_pressure` | Bed Pressure Sensor Calibrated Right Pressure | 0.0 |
 
-| `sensor.bed_presence_bb8594_left_pressure` | Bed Pressure Sensor Left Pressure | 94.4357757568359 |
+| `sensor.bed_presence_bb8594_left_pressure` | Bed Pressure Sensor Left Pressure | 94.6165161132812 |
 
-| `sensor.bed_presence_bb8594_right_pressure` | Bed Pressure Sensor Right Pressure | 90.9199600219727 |
+| `sensor.bed_presence_bb8594_right_pressure` | Bed Pressure Sensor Right Pressure | 87.0348434448242 |
 
-| `sensor.bed_presence_bb8594_uptime` | Bed Pressure Sensor Uptime | 3027732.25 |
+| `sensor.bed_presence_bb8594_uptime` | Bed Pressure Sensor Uptime | 3095713.75 |
 
-| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Pressure Sensor WiFi Signal dB | -45.0 |
+| `sensor.bed_presence_bb8594_wifi_signal_db` | Bed Pressure Sensor WiFi Signal dB | -43.0 |
 
 | `sensor.bed_presence_bb8594_wifi_signal_percent` | Bed Pressure Sensor WiFi Signal Percent | 100.0 |
 
@@ -1234,11 +1234,11 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.blake_foster30_gmail_com_total_available_storage` | blake.foster30@gmail.com Total available storage | 5120.0 |
 
-| `sensor.blake_foster30_gmail_com_used_storage` | blake.foster30@gmail.com Used storage | 279.4280017009 |
+| `sensor.blake_foster30_gmail_com_used_storage` | blake.foster30@gmail.com Used storage | 279.394185318612 |
 
 | `sensor.blake_foster30_gmail_com_vacation_end_date` | blake.foster30@gmail.com Vacation end date | unknown |
 
-| `sensor.blake_s_echo_dot_illuminance` | Blake's Echo Dot Illuminance | unavailable |
+| `sensor.blake_s_echo_dot_illuminance` | Blake's Echo Dot Illuminance | 0.0 |
 
 | `sensor.blake_s_echo_dot_next_alarm` | Blake's Echo Dot Next alarm | unknown |
 
@@ -1270,7 +1270,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.blake_s_echo_pop_next_timer_3` | Blake's Echo Pop Next timer | unavailable |
 
-| `sensor.blake_s_echo_spot_illuminance` | Blake's Echo Spot Illuminance | unavailable |
+| `sensor.blake_s_echo_spot_illuminance` | Blake's Echo Spot Illuminance | 1.0 |
 
 | `sensor.blake_s_echo_spot_next_alarm` | Blake's Echo Spot Next alarm | unavailable |
 
@@ -1290,11 +1290,11 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.blake_s_echo_spot_next_timer_3` | Blake's Echo Spot Next timer | unavailable |
 
-| `sensor.blakes_iphone_activity` | Blakes iPhone Activity | Unknown |
+| `sensor.blakes_iphone_activity` | Blakes iPhone Activity | Stationary |
 
 | `sensor.blakes_iphone_app_version` | Blakes iPhone App Version | 2026.9.0 |
 
-| `sensor.blakes_iphone_average_active_pace` | Blakes iPhone Average Active Pace | 0 |
+| `sensor.blakes_iphone_average_active_pace` | Blakes iPhone Average Active Pace | 1 |
 
 | `sensor.blakes_iphone_battery_level` | Blakes iPhone Battery Level | 80 |
 
@@ -1302,47 +1302,47 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.blakes_iphone_camera_stream` | Blakes iPhone Camera Stream | unavailable |
 
-| `sensor.blakes_iphone_distance` | Blakes iPhone Distance | 13 |
+| `sensor.blakes_iphone_distance` | Blakes iPhone Distance | 9 |
 
 | `sensor.blakes_iphone_floors_ascended` | Blakes iPhone Floors Ascended | 0 |
 
 | `sensor.blakes_iphone_floors_descended` | Blakes iPhone Floors Descended | 0 |
 
-| `sensor.blakes_iphone_geocoded_location` | Blakes iPhone Geocoded Location | 1104 Watermark Dr
+| `sensor.blakes_iphone_geocoded_location` | Blakes iPhone Geocoded Location | 1109 Watermark Dr
 O'Fallon MO 63368
 United States |
 
-| `sensor.blakes_iphone_pressure` | Blakes iPhone Pressure | 14.4621485572298 |
+| `sensor.blakes_iphone_pressure` | Blakes iPhone Pressure | 14.429370027109 |
 
 | `sensor.blakes_iphone_ssid` | Blakes iPhone SSID | ATTEPISyDS |
 
-| `sensor.blakes_iphone_steps` | Blakes iPhone Steps | 18 |
+| `sensor.blakes_iphone_steps` | Blakes iPhone Steps | 13 |
 
-| `sensor.blakes_phone_browser_height` | Blake’s Phone Browser height | 932 |
+| `sensor.blakes_phone_browser_height` | Blake’s Phone Browser height | unavailable |
 
-| `sensor.blakes_phone_browser_id` | Blake’s Phone Browser ID | Blake’s Phone |
+| `sensor.blakes_phone_browser_id` | Blake’s Phone Browser ID | unavailable |
 
-| `sensor.blakes_phone_browser_path` | Blake’s Phone Browser path | /my-dashboard/test-bay |
+| `sensor.blakes_phone_browser_path` | Blake’s Phone Browser path | unavailable |
 
-| `sensor.blakes_phone_browser_user` | Blake’s Phone Browser user | Blake Foster |
+| `sensor.blakes_phone_browser_user` | Blake’s Phone Browser user | unavailable |
 
-| `sensor.blakes_phone_browser_useragent` | Blake’s Phone Browser userAgent | Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Home Assistant/2026.9.0 (io.robbie.HomeAssistant; build:2026.2874; iOS 26.6.1) Mobile/HomeAssistant, like Safari |
+| `sensor.blakes_phone_browser_useragent` | Blake’s Phone Browser userAgent | unavailable |
 
-| `sensor.blakes_phone_browser_visibility` | Blake’s Phone Browser visibility | visible |
+| `sensor.blakes_phone_browser_visibility` | Blake’s Phone Browser visibility | unavailable |
 
-| `sensor.blakes_phone_browser_width` | Blake’s Phone Browser width | 430 |
+| `sensor.blakes_phone_browser_width` | Blake’s Phone Browser width | unavailable |
 
-| `sensor.blakes_phone_panel` | Blake’s Phone Panel | Phone - Test Bay |
+| `sensor.blakes_phone_panel` | Blake’s Phone Panel | unavailable |
 
 | `sensor.bleperipheralapp_4840_estimated_distance` | BLEPeripheralApp 4840 Estimated distance | unavailable |
 
 | `sensor.bthome_sensor_3370_battery` | Motion 1 - Shelly Battery | 100 |
 
-| `sensor.bthome_sensor_3370_illuminance` | Motion 1 - Shelly Illuminance | 39.0 |
+| `sensor.bthome_sensor_3370_illuminance` | Motion 1 - Shelly Illuminance | 10.0 |
 
-| `sensor.bthome_sensor_3370_packet_id` | Motion 1 - Shelly Packet Id | 178 |
+| `sensor.bthome_sensor_3370_packet_id` | Motion 1 - Shelly Packet Id | 213 |
 
-| `sensor.bthome_sensor_3370_signal_strength` | Motion 1 - Shelly Signal Strength | -64 |
+| `sensor.bthome_sensor_3370_signal_strength` | Motion 1 - Shelly Signal Strength | -65 |
 
 | `sensor.bthome_sensor_e125_battery` | BTHome sensor E125 Battery | 100 |
 
@@ -1350,7 +1350,7 @@ United States |
 
 | `sensor.c_expansion_attic_humidity` | C Expansion attic Humidity | 60 |
 
-| `sensor.c_expansion_attic_temperature` | C Expansion attic Temperature | 79.34 |
+| `sensor.c_expansion_attic_temperature` | C Expansion attic Temperature | 76.82 |
 
 | `sensor.closet_light_auto_off_at` | Closet Light Auto-off at | unknown |
 
@@ -1370,17 +1370,17 @@ United States |
 
 | `sensor.everything_presence_lite_922d28_occupancy_mask_2_target_count` | Everything Presence Lite Occupancy Mask 2 Target Count | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -46.0838432312012 |
+| `sensor.everything_presence_lite_922d28_target_1_angle` | Everything Presence Lite Target 1 Angle | -44.6059494018555 |
 
-| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 20.6044354776698 |
+| `sensor.everything_presence_lite_922d28_target_1_distance` | Everything Presence Lite Target 1 Distance | 20.2393226923905 |
 
 | `sensor.everything_presence_lite_922d28_target_1_resolution` | Everything Presence Lite Target 1 Resolution | 14.1732283464567 |
 
 | `sensor.everything_presence_lite_922d28_target_1_speed` | Everything Presence Lite Target 1 Speed | 0.0 |
 
-| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | 1.10236220472441 |
+| `sensor.everything_presence_lite_922d28_target_1_x` | Everything Presence Lite Target 1 X | 0.551181102362205 |
 
-| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 20.5511811023622 |
+| `sensor.everything_presence_lite_922d28_target_1_y` | Everything Presence Lite Target 1 Y | 20.1968503937008 |
 
 | `sensor.everything_presence_lite_922d28_target_2_angle` | Everything Presence Lite Target 2 Angle | 0.0 |
 
@@ -1416,7 +1416,7 @@ United States |
 
 | `sensor.front_door_sensor_battery` | Front Door Sensor Battery | 92 |
 
-| `sensor.front_door_sensor_illuminance` | Front Door Sensor Illuminance | 17.0 |
+| `sensor.front_door_sensor_illuminance` | Front Door Sensor Illuminance | 0.0 |
 
 | `sensor.front_door_sensor_rotation` | Front Door Sensor Rotation | 0.0 |
 
@@ -1456,17 +1456,17 @@ United States |
 
 | `sensor.main_lights_auto_off_at` | Main Lights Auto-off at | unknown |
 
-| `sensor.main_lights_current` | Main Lights Current | 0.0 |
+| `sensor.main_lights_current` | Main Lights Current | 0.01 |
 
 | `sensor.main_lights_current_consumption` | Main Lights Current consumption | 0.0 |
 
 | `sensor.main_lights_signal_level` | Main Lights Signal level | 3 |
 
-| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 0.961 |
+| `sensor.main_lights_this_month_s_consumption` | Main Lights This month's consumption | 0.999 |
 
 | `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.0 |
 
-| `sensor.main_lights_voltage` | Main Lights Voltage | 122.4 |
+| `sensor.main_lights_voltage` | Main Lights Voltage | 123.0 |
 
 | `sensor.motion_2_battery` | Motion 2 - Third Reality Battery | 92.5 |
 
@@ -1482,7 +1482,7 @@ United States |
 
 | `sensor.nest_temperature_sensor_stairwell_g_temperature` | Nest Temperature Sensor (Stairwell G) Temperature | unavailable |
 
-| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 68.45 |
+| `sensor.nest_thermostat_temperature` | Nest Thermostat Temperature | 68.414 |
 
 | `sensor.niu_kqi_cf5e_estimated_distance` | NIU KQi CF5E Estimated distance | unavailable |
 
@@ -1490,39 +1490,39 @@ United States |
 
 | `sensor.niukqi_1f3e_estimated_distance` | NIUKQi 1F3E Estimated distance | unavailable |
 
-| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 71 |
+| `sensor.openweathermap_cloud_coverage_2` | OpenWeatherMap Cloud coverage | 100 |
 
-| `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | rainy |
+| `sensor.openweathermap_condition_2` | OpenWeatherMap Condition | cloudy |
 
-| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 68.504 |
+| `sensor.openweathermap_dew_point_2` | OpenWeatherMap Dew point temperature | 67.73 |
 
-| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 71.456 |
+| `sensor.openweathermap_feels_like_temperature_2` | OpenWeatherMap Apparent temperature | 70.61 |
 
 | `sensor.openweathermap_humidity_2` | OpenWeatherMap Humidity | 94 |
 
-| `sensor.openweathermap_precipitation_kind_2` | OpenWeatherMap Precipitation kind | Rain |
+| `sensor.openweathermap_precipitation_kind_2` | OpenWeatherMap Precipitation kind | None |
 
-| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.735834779964 |
+| `sensor.openweathermap_pressure_2` | OpenWeatherMap Pressure | 14.7213310055742 |
 
-| `sensor.openweathermap_rain_2` | OpenWeatherMap Rain intensity | 0.0551181102362205 |
+| `sensor.openweathermap_rain_2` | OpenWeatherMap Rain intensity | 0.0 |
 
 | `sensor.openweathermap_snow_2` | OpenWeatherMap Snow intensity | 0.0 |
 
-| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 70.304 |
+| `sensor.openweathermap_temperature_2` | OpenWeatherMap Temperature | 69.53 |
 
 | `sensor.openweathermap_uv_index_2` | OpenWeatherMap UV index | 0 |
 
-| `sensor.openweathermap_visibility_2` | OpenWeatherMap Visibility | 25370.7349081365 |
+| `sensor.openweathermap_visibility_2` | OpenWeatherMap Visibility | 32808.3989501312 |
 
-| `sensor.openweathermap_weather_2` | OpenWeatherMap Weather | moderate rain |
+| `sensor.openweathermap_weather_2` | OpenWeatherMap Weather | overcast clouds |
 
-| `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 501 |
+| `sensor.openweathermap_weather_code_2` | OpenWeatherMap Weather code | 804 |
 
-| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 200 |
+| `sensor.openweathermap_wind_bearing_2` | OpenWeatherMap Wind direction | 62 |
 
-| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | unknown |
+| `sensor.openweathermap_wind_gust_2` | OpenWeatherMap Wind gust speed | 1.99087329992842 |
 
-| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 4.60808876163207 |
+| `sensor.openweathermap_wind_speed_2` | OpenWeatherMap Wind speed | 1.99087329992842 |
 
 | `sensor.philips_rwl020_battery` | Hue Dimmer Battery | 100.0 |
 
@@ -1648,7 +1648,7 @@ United States |
 
 | `sensor.shellyplugusg4_58e6c509a06c_current` | Shelly outlet Current | 0.0 |
 
-| `sensor.shellyplugusg4_58e6c509a06c_energy` | Shelly outlet Energy | 8.244 |
+| `sensor.shellyplugusg4_58e6c509a06c_energy` | Shelly outlet Energy | 8.424308 |
 
 | `sensor.shellyplugusg4_58e6c509a06c_energy_returned` | Shelly outlet Energy returned | 0.0 |
 
@@ -1660,9 +1660,9 @@ United States |
 
 | `sensor.slzb_mr1_firmware_channel` | SLZB-MR1 Firmware channel | dev |
 
-| `sensor.slzb_mr1_zigbee_chip_temp` | SLZB-MR1 Zigbee chip temp | 109.094 |
+| `sensor.slzb_mr1_zigbee_chip_temp` | SLZB-MR1 Zigbee chip temp | 109.382 |
 
-| `sensor.slzb_mr1_zigbee_chip_temp_2` | SLZB-MR1 Zigbee chip temp | 107.654 |
+| `sensor.slzb_mr1_zigbee_chip_temp_2` | SLZB-MR1 Zigbee chip temp | 110.894 |
 
 | `sensor.slzb_mr1_zigbee_type` | SLZB-MR1 Zigbee type | thread |
 
@@ -1670,15 +1670,15 @@ United States |
 
 | `sensor.sun_next_dawn` | Sun Next dawn | 2026-09-11T11:13:47+00:00 |
 
-| `sensor.sun_next_dusk` | Sun Next dusk | 2026-09-11T00:45:52+00:00 |
+| `sensor.sun_next_dusk` | Sun Next dusk | 2026-09-12T00:44:15+00:00 |
 
-| `sensor.sun_next_midnight` | Sun Next midnight | 2026-09-11T05:59:23+00:00 |
+| `sensor.sun_next_midnight` | Sun Next midnight | 2026-09-12T05:59:01+00:00 |
 
-| `sensor.sun_next_noon` | Sun Next noon | 2026-09-10T17:59:59+00:00 |
+| `sensor.sun_next_noon` | Sun Next noon | 2026-09-11T17:59:38+00:00 |
 
 | `sensor.sun_next_rising` | Sun Next rising | 2026-09-11T11:41:07+00:00 |
 
-| `sensor.sun_next_setting` | Sun Next setting | 2026-09-11T00:18:35+00:00 |
+| `sensor.sun_next_setting` | Sun Next setting | 2026-09-12T00:17:00+00:00 |
 
 | `sensor.t8d02_e3bb_estimated_distance` | T8D02_E3BB Estimated distance | unavailable |
 
@@ -1728,7 +1728,7 @@ United States |
 | Entity ID | Name | State |
 |---|---|---|
 
-| `sun.sun` | Sun | above_horizon |
+| `sun.sun` | Sun | below_horizon |
 
 </details>
 
@@ -1788,7 +1788,7 @@ United States |
 
 | `switch.bedroom_fan` | Fan | on |
 
-| `switch.blake_s_echo_dot_do_not_disturb` | Blake's Echo Dot Do not disturb | unavailable |
+| `switch.blake_s_echo_dot_do_not_disturb` | Blake's Echo Dot Do not disturb | on |
 
 | `switch.blake_s_echo_dot_do_not_disturb_switch` | Blake's Echo Dot Do not disturb | on |
 
@@ -1796,11 +1796,11 @@ United States |
 
 | `switch.blake_s_echo_dot_shuffle_switch` | Blake's Echo Dot Shuffle | unavailable |
 
-| `switch.blake_s_echo_pop_do_not_disturb` | Blake's Echo Pop Do not disturb | unavailable |
+| `switch.blake_s_echo_pop_do_not_disturb` | Blake's Echo Pop Do not disturb | on |
 
 | `switch.blake_s_echo_pop_do_not_disturb_switch` | Blake's Echo Pop Do not disturb | on |
 
-| `switch.blake_s_echo_pop_repeat_switch` | Blake's Echo Pop Repeat | off |
+| `switch.blake_s_echo_pop_repeat_switch` | Blake's Echo Pop Repeat | unavailable |
 
 | `switch.blake_s_echo_pop_shuffle_switch` | Blake's Echo Pop Shuffle | unavailable |
 
@@ -1808,7 +1808,7 @@ United States |
 
 | `switch.blake_s_echo_spot_communications` | Blake's Echo Spot Communications | unavailable |
 
-| `switch.blake_s_echo_spot_do_not_disturb` | Blake's Echo Spot Do not disturb | unavailable |
+| `switch.blake_s_echo_spot_do_not_disturb` | Blake's Echo Spot Do not disturb | off |
 
 | `switch.blake_s_echo_spot_do_not_disturb_switch` | Blake's Echo Spot Do not disturb | off |
 
@@ -1880,13 +1880,13 @@ United States |
 
 | `switch.shelly_device_aioshelly_ble_integration` | Shelly Device aioshelly_ble_integration | on |
 
-| `switch.shelly_outlet` | Shelly outlet | off |
+| `switch.shelly_outlet` | Shelly outlet | on |
 
 | `switch.slzb_mr1_disable_leds` | SLZB-MR1 Disable LEDs | on |
 
 | `switch.slzb_mr1_led_night_mode` | SLZB-MR1 LED night mode | off |
 
-| `switch.this_device_do_not_disturb_2` | This Device Do not disturb | off |
+| `switch.this_device_do_not_disturb_2` | This Device Do not disturb | unavailable |
 
 </details>
 
@@ -1900,9 +1900,9 @@ United States |
 | Entity ID | Name | State |
 |---|---|---|
 
-| `todo.blake_foster30_gmail_com_shopping_list` | Blake.foster30@gmail.com Shopping list | unavailable |
+| `todo.blake_foster30_gmail_com_shopping_list` | Blake.foster30@gmail.com Shopping list | 0 |
 
-| `todo.blake_foster30_gmail_com_to_do_list` | Blake.foster30@gmail.com To-do list | unavailable |
+| `todo.blake_foster30_gmail_com_to_do_list` | Blake.foster30@gmail.com To-do list | 0 |
 
 </details>
 
@@ -1950,7 +1950,7 @@ United States |
 
 | `update.clock_weather_card_update` | Clock Weather Card Update | off |
 
-| `update.custom_features_for_home_assistant_cards_update` | Custom Features for Home Assistant Cards Update | on |
+| `update.custom_features_for_home_assistant_cards_update` | Custom Features for Home Assistant Cards Update | off |
 
 | `update.custom_icons_update` | Custom Icons Update | off |
 
@@ -1992,7 +1992,7 @@ United States |
 
 | `update.motion_2_firmware` | Motion 2 - Third Reality Firmware | off |
 
-| `update.mushroom_update` | Mushroom Update | on |
+| `update.mushroom_update` | Mushroom Update | off |
 
 | `update.navbar_card_update` | Navbar card Update | off |
 
@@ -2034,7 +2034,7 @@ United States |
 
 | `update.third_reality_inc_3rvs01031z_firmware` | Vibration Sensor 1 Firmware | off |
 
-| `update.uix_update` | uix Update | on |
+| `update.uix_update` | uix Update | off |
 
 | `update.universal_remote_card_update` | Universal Remote Card Update | off |
 
@@ -2054,7 +2054,7 @@ United States |
 | Entity ID | Name | State |
 |---|---|---|
 
-| `weather.openweathermap_2` | OpenWeatherMap | rainy |
+| `weather.openweathermap_2` | OpenWeatherMap | cloudy |
 
 </details>
 

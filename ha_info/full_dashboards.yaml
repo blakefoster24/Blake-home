@@ -597,6 +597,10 @@ views:
                   perform_action: script.helper_script
                 thumb: md3-elevated
                 type: button
+                styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+                  \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
+                  \ }};\n}\n.label {\n  color: {{ 'var(--custom-active)' }};\n}\n\
+                  .icon {\n  color: {{ 'var(--custom-active)' }};  \n}"
               type: custom:service-call
             type: custom:custom-features-card
             uix:
@@ -4405,6 +4409,44 @@ views:
         action_name: Generate
         action:
           tap_action: script.push_ha_info_to_github_create_ai_zip_file_now
+      features_position: inline
+    - type: tile
+      grid_options:
+        columns: 12
+        rows: 1
+      entity: script.push_ha_info_to_github_create_ai_zip_file_now
+      name: Generate Ha Info folder
+      vertical: false
+      features:
+      - type: custom:service-call
+        entries:
+        - entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
+          icon: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+            \ 'on') %}\n      null\n    {% else %}\n      local:github_zip_script\n\
+            \    {% endif %} \n"
+          label: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+            \ 'on') %}\n      Generating...\n    {% else %}\n      Generate\n    {%\
+            \ endif %} \n"
+          styles: ":host {\n  border: var(--custom-button-border) !important;\n  border-radius:\
+            \ var(--custom-radius);\n}\n:host {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+            \ 'on') %}\n      --color: var(--custom-bg-active);\n    {% else %}\n\
+            \      --color: var(--custom-bg);\n    {% endif %}\n}\n.label {\n    {%\
+            \ if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+            \ 'on') %}\n      color: var(--custom-contrast-active);\n    {% else %}\n\
+            \      color: var(--custom-contrast);\n    {% endif %} \n}\n.icon {\n\
+            \    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+            \ 'on') %}\n      color: var(--custom-contrast-active);\n    {% else %}\n\
+            \      color: var(--custom-contrast);\n    {% endif %}\n  padding-bottom:\
+            \ .25rem\n}"
+          tap_action:
+            action: perform-action
+            perform_action: script.turn_on
+            target:
+              entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
+            data: {}
+          thumb: md3-elevated
+          toggle_styles: false
+          type: button
       features_position: inline
     type: grid
   subview: false
