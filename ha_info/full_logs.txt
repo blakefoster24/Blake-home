@@ -3,7 +3,17 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-09-11T02:00:03.980393 =====
+===== 2026-09-12T02:00:04.025480 =====
+  File "/usr/src/homeassistant/homeassistant/components/media_player/__init__.py", line 484, in async_setup_entry
+    return await hass.data[DATA_COMPONENT].async_setup_entry(entry)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/entity_component.py", line 183, in async_setup_entry
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
+[33m2026-09-12 01:48:42.627 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[31m2026-09-12 01:48:44.430 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
 Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/config_entries.py", line 803, in __async_setup_with_context
     result = await component.async_setup_entry(hass, self)
@@ -16,8 +26,9 @@ Traceback (most recent call last):
     ...<2 lines>...
     )
 ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[31m2026-09-11 01:48:42.940 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device[0m
-[31m2026-09-11 01:48:45.418 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
+[33m2026-09-12 01:48:49.724 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-12 01:48:56.823 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[31m2026-09-12 01:50:44.421 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
 Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/config_entries.py", line 803, in __async_setup_with_context
     result = await component.async_setup_entry(hass, self)
@@ -30,7 +41,7 @@ Traceback (most recent call last):
     ...<2 lines>...
     )
 ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[31m2026-09-11 01:50:45.421 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
+[31m2026-09-12 01:52:44.432 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
 Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/config_entries.py", line 803, in __async_setup_with_context
     result = await component.async_setup_entry(hass, self)
@@ -43,10 +54,10 @@ Traceback (most recent call last):
     ...<2 lines>...
     )
 ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[33m2026-09-11 01:51:00.593 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-11 01:51:07.690 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-11 01:51:14.786 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[31m2026-09-11 01:52:45.434 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
+[33m2026-09-12 01:54:04.588 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-12 01:54:11.684 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-12 01:54:18.789 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[31m2026-09-12 01:54:44.426 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
 Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/config_entries.py", line 803, in __async_setup_with_context
     result = await component.async_setup_entry(hass, self)
@@ -59,7 +70,7 @@ Traceback (most recent call last):
     ...<2 lines>...
     )
 ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[31m2026-09-11 01:54:45.439 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
+[31m2026-09-12 01:56:44.454 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
 Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/config_entries.py", line 803, in __async_setup_with_context
     result = await component.async_setup_entry(hass, self)
@@ -72,10 +83,7 @@ Traceback (most recent call last):
     ...<2 lines>...
     )
 ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[33m2026-09-11 01:56:22.606 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-11 01:56:29.706 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-11 01:56:36.802 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[31m2026-09-11 01:56:45.442 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
+[31m2026-09-12 01:58:44.424 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
 Traceback (most recent call last):
   File "/usr/src/homeassistant/homeassistant/config_entries.py", line 803, in __async_setup_with_context
     result = await component.async_setup_entry(hass, self)
@@ -88,61 +96,56 @@ Traceback (most recent call last):
     ...<2 lines>...
     )
 ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[31m2026-09-11 01:58:45.422 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
-Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/config_entries.py", line 803, in __async_setup_with_context
-    result = await component.async_setup_entry(hass, self)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/components/media_player/__init__.py", line 484, in async_setup_entry
-    return await hass.data[DATA_COMPONENT].async_setup_entry(entry)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/helpers/entity_component.py", line 183, in async_setup_entry
-    raise ValueError(
-    ...<2 lines>...
-    )
-ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[32m2026-09-11 02:00:00.215 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
-[32m2026-09-11 02:00:00.218 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
-[33m2026-09-11 02:00:00.297 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-09-12 01:58:48.442 WARNING (MainThread) [alexapy.helpers] alexaapi.get_notifications((<alexapy.alexalogin.AlexaLogin object at 0x34e2f0c6020>,), {}): An error occurred accessing AlexaAPI: An exception of type AlexapyConnectionError occurred. Arguments:
+('Cannot connect to host na-api-alexa.amazon.com:443 ssl:<ssl.SSLContext object at 0x34e3c7bf1a0> [DNS server returned answer with no data]',)[0m
+[33m2026-09-12 01:59:26.613 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-12 01:59:33.714 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-12 01:59:40.813 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-09-12 02:00:00.217 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
+[32m2026-09-12 02:00:00.219 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[33m2026-09-12 02:00:00.297 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-09-11T02:00:04.090209 =====
-[32m2026-09-11 02:00:00.215 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
-[32m2026-09-11 02:00:00.218 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+===== 2026-09-12T02:00:04.134108 =====
+[32m2026-09-12 02:00:00.217 INFO (MainThread) [homeassistant.components.automation.nightly_github_sync] Nightly GitHub sync: Running automation actions[0m
+[32m2026-09-12 02:00:00.219 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-09-11T02:00:04.196514 =====
+===== 2026-09-12T02:00:04.241579 =====
     raise ValueError(
 ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[31m2026-09-11 01:48:42.940 ERROR (MainThread) [homeassistant.components.roku.coordinator] Error fetching roku data: Invalid response from API: Timeout occurred while connecting to device[0m
-[31m2026-09-11 01:48:45.418 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
+[33m2026-09-12 01:48:42.627 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[31m2026-09-12 01:48:44.430 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
     raise ValueError(
 ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[31m2026-09-11 01:50:45.421 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
+[33m2026-09-12 01:48:49.724 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-12 01:48:56.823 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[31m2026-09-12 01:50:44.421 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
     raise ValueError(
 ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[33m2026-09-11 01:51:00.593 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-11 01:51:07.690 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-11 01:51:14.786 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[31m2026-09-11 01:52:45.434 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
+[31m2026-09-12 01:52:44.432 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
     raise ValueError(
 ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[31m2026-09-11 01:54:45.439 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
+[33m2026-09-12 01:54:04.588 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-12 01:54:11.684 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-12 01:54:18.789 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[31m2026-09-12 01:54:44.426 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
     raise ValueError(
 ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[33m2026-09-11 01:56:22.606 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-11 01:56:29.706 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-11 01:56:36.802 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[31m2026-09-11 01:56:45.442 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
+[31m2026-09-12 01:56:44.454 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
     raise ValueError(
 ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[31m2026-09-11 01:58:45.422 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
+[31m2026-09-12 01:58:44.424 ERROR (MainThread) [homeassistant.config_entries] Error setting up entry Blake.foster30@gmail.com - amazon.com for media_player
     raise ValueError(
 ValueError: Config entry Blake.foster30@gmail.com - amazon.com (01K7R1RJ79CRMAMVV5N40S5VYJ) for alexa_media.media_player has already been setup![0m
-[33m2026-09-11 02:00:00.297 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-09-12 01:58:48.442 WARNING (MainThread) [alexapy.helpers] alexaapi.get_notifications((<alexapy.alexalogin.AlexaLogin object at 0x34e2f0c6020>,), {}): An error occurred accessing AlexaAPI: An exception of type AlexapyConnectionError occurred. Arguments:
+[33m2026-09-12 01:59:26.613 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-12 01:59:33.714 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-12 01:59:40.813 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-12 02:00:00.297 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
