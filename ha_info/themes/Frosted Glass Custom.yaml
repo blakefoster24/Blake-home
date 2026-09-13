@@ -889,7 +889,7 @@ Frosted Glass Custom:
       color-primary-80: '#99E4FF'
       color-primary-90: '#CCF1FE'
       color-primary-95: '#EAF9FF'
-      primary-text-color: &contrast 'rgba(234, 235, 238, 0.98)'
+      primary-text-color: 'rgba(234, 235, 238, 0.98)'
       secondary-text-color: 'rgba(234, 235, 238, 0.8)'
       text-primary-color: 'rgba(234, 235, 238, 0.98)'
       disabled-text-color: 'rgba(234, 235, 238, 0.45)'
@@ -907,7 +907,7 @@ Frosted Glass Custom:
       label-badge-grey: 'rgb(83, 90, 103)'
       ha-chip-text-color: 'rgb(234, 235, 238)'
 
-      primary-color: &active 'rgb(0, 55, 74)'
+      primary-color: 'rgb(0, 55, 74)'
       dark-primary-color: 'rgb(0, 55, 74)'
       light-primary-color: 'rgb(167, 182, 199)'
       accent-color: 'rgb(0, 55, 74)'
@@ -921,7 +921,7 @@ Frosted Glass Custom:
       background-image: "center / cover no-repeat fixed url('https://cdn.jsdelivr.net/gh/wessamlauf/homeassistant-frosted-glass-themes@refs/heads/main/themes/frosted-glass-dark-background.jpg')"
       lovelace-background: 'var(--background-image)'
       primary-background-color: 'rgba(30, 30, 30, 1)'                                                        # 1.2 change - improved background color for a darker feel 
-      secondary-background-color: &bg 'rgba(30, 33, 54, 0.6)'
+      secondary-background-color: 'rgba(30, 33, 54, 0.6)'
       clear-background-color: 'rgba(30, 33, 54, 0.7)'
       card-background-color: 'rgba(30, 30, 30, 0.85)'
       ha-card-background: 'rgba(30, 30, 30, 0.9)'
@@ -933,14 +933,6 @@ Frosted Glass Custom:
       ha-card-box-shadow: '0 12px 20px rgba(0, 0, 0, 0.28)'
       ha-view-sections-column-gap: '17px'
       ha-view-sections-column-min-width: 320px
-
-      custom-bg: *bg #secondary-background-color
-      custom-active: *active #primary-color
-      custom-contrast: *contrast #primary-text-color
-      custom-radius: 20px
-      custom-button-border: 1px solid rgba(255, 255, 255, 0.2)
-      custom-border: 1px solid rgba(255, 255, 255, 0.2)
-
 
       # Sliders, toggles, switches
       paper-slider-knob-color: 'rgb(0, 55, 74)'

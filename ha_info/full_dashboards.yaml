@@ -393,6 +393,10 @@ views:
         name: Music Disable
         type: tile
         vertical: false
+      - type: tile
+        entity: sensor.bathroom_humidity_derivative
+      - type: tile
+        entity: sensor.bathroom_humidity
       hash: '#helper'
       hide_backdrop: true
       icon: mdi:tools
@@ -1360,14 +1364,7 @@ views:
       - above: 92
         condition: numeric_state
         entity: sensor.openweathermap_feels_like_temperature_2
-    - color: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-        \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
-        \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-        ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
-        \ 999) | select('lt', set_point) | list | count %} {{ 'orange' if count >\
-        \ 0 else 'green' }}"
-      features:
+    - features:
       - entries:
         - autofill_entity_id: false
           entity_id: ''
@@ -1384,38 +1381,61 @@ views:
           toggle_styles: false
           type: button
         type: custom:service-call
+      color: "{% set set_point = 50 %}\n{% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+        \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+        \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
+        \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
+        ] %}\n\n{% set ns = namespace(low=0, offline=0) %}\n\n{% for s in expand(sensors)\
+        \ %}\n  {% if is_number(s.state) %}\n    {% if s.state | float < set_point\
+        \ %}\n      {% set ns.low = ns.low + 1 %}\n    {% endif %}\n  {% else %}\n\
+        \    {% set ns.offline = ns.offline + 1 %}\n  {% endif %}\n{% endfor %}\n\n\
+        {% if ns.low > 0 %}\n  orange\n{% elif ns.offline > 0 %}\n  orange\n{% else\
+        \ %}\n  green\n{% endif %}"
       features_position: inline
       grid_options:
         columns: 12
         rows: auto
-      icon: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+      icon: "{% set set_point = 50 %}\n{% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
         \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
         \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
         \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-        ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
-        \ 999) | select('lt', set_point) | list | count %} {{ 'mdi:thermometer-alert'\
-        \ if count > 0 else 'mdi:check-circle' }}"
+        ] %}\n\n{% set ns = namespace(low=0, offline=0) %}\n\n{% for s in expand(sensors)\
+        \ %}\n  {% if is_number(s.state) %}\n    {% if s.state | float < set_point\
+        \ %}\n      {% set ns.low = ns.low + 1 %}\n    {% endif %}\n  {% else %}\n\
+        \    {% set ns.offline = ns.offline + 1 %}\n  {% endif %}\n{% endfor %}\n\n\
+        {% if ns.low > 0 %}\n  mdi:thermometer-alert\n{% elif ns.offline > 0 %}\n\
+        \  mdi:wifi-off\n{% else %}\n  mdi:check-circle\n{% endif %}"
       multiline_secondary: true
-      primary: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+      primary: "{% set set_point = 50 %}\n{% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
         \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
         \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
         \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-        ] %} {% set low_sensors = expand(sensors) | map(attribute='state') | map('float',\
-        \ 999) | select('lt', set_point) | list %}  {% if low_sensors | count > 0\
-        \ %}\n  {{ low_sensors | count }} Sensors Below {{ set_point }}°\n{% else\
-        \ %}\n  Temperatures Normal\n{% endif %}"
+        ] %}\n\n{% set ns = namespace(low=0, offline=0) %}\n\n{% for s in expand(sensors)\
+        \ %}\n  {% if not is_number(s.state) %}\n    {% set ns.offline = ns.offline\
+        \ + 1 %}\n  {% elif s.state | float < set_point %}\n    {% set ns.low = ns.low\
+        \ + 1 %}\n  {% endif %}\n{% endfor %}\n\n{% if ns.low > 0 and ns.offline >\
+        \ 0 %}\n  {{ ns.low }} Below {{ set_point }}° • {{ ns.offline }} Offline\n\
+        {% elif ns.low > 0 %}\n  {{ ns.low }} Attic Sensor{{ 's' if ns.low != 1 else\
+        \ '' }} Below {{ set_point }}°\n{% elif ns.offline > 0 %}\n  {{ ns.offline\
+        \ }} Attic Sensor{{ 's' if ns.offline != 1 else '' }} Offline\n{% else %}\n\
+        \  Attic Temperatures Normal\n{% endif %}"
       secondary: "{% set set_point = 50 %}\n{% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
         \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
         \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
         \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-        ] %}\n{% set ns = namespace(found=[]) %}\n{% for s in expand(sensors) %}\n\
-        \  {% if s.state | is_number and s.state | float < set_point %}\n    {% set\
-        \ ns.found = ns.found + [s] %}\n  {% endif %}\n{% endfor %}\n{% if ns.found\
-        \ | count > 0 %}\n  {% for s in ns.found -%}\n    {{ s.name | replace(' Temperature',\
-        \ '') }}: {{ s.state }}°{{ \"\\n\" if not loop.last else \"\" }}\n  {%- endfor\
-        \ %}\n{% else %}\n  All attic sensors are above {{ set_point }}°\n{% endif\
-        \ %}"
+        ] %}\n\n{% set ns = namespace(low=[], offline=0) %}\n\n{% for s in expand(sensors)\
+        \ %}\n  {% if is_number(s.state) %}\n    {% if s.state | float < set_point\
+        \ %}\n      {% set ns.low = ns.low + [\n        (s.name | replace(' Temperature',\
+        \ '')) ~ ': ' ~ s.state ~ '°'\n      ] %}\n    {% endif %}\n  {% else %}\n\
+        \    {% set ns.offline = ns.offline + 1 %}\n  {% endif %}\n{% endfor %}\n\n\
+        {% if ns.low | count > 0 %}\n{{ ns.low | join('\\n') }}\n{% elif ns.offline\
+        \ > 0 %}\nCheck nest protect\n{% else %}\nAll attic sensors are above {{ set_point\
+        \ }}°\n{% endif %}"
       type: custom:mushroom-template-card
+      visibility:
+      - condition: numeric_state
+        below: 50
+        entity: sensor.openweathermap_feels_like_temperature_2
       uix:
         style:
           .: "ha-card {\n  height: auto !important;\n  --icon-display: block !important;\n\
@@ -1442,10 +1462,6 @@ views:
             \ {\n  font-size: 1rem !important;\n  white-space: pre-wrap !important;\n\
             \  -webkit-line-clamp: unset !important;\n  max-height: none !important;\n\
             }\n"
-      visibility:
-      - below: 50
-        condition: numeric_state
-        entity: sensor.openweathermap_feels_like_temperature_2
     type: grid
   - cards:
     - badges:
@@ -1574,39 +1590,22 @@ views:
         name:
         - font-size: 15px
       type: custom:button-card
-    - entity: binary_sensor.bed_presence_bb8594_bed_occupied_left
-      hide_state: true
-      hold_action:
-        action: more-info
-        entity: sensor.bed_presence_bb8594_left_pressure
-      name: Bed Occupied Left
-      tap_action:
-        action: more-info
-      type: tile
-      uix:
-        style:
-          ha-tile-icon $: ".container::before {\n  opacity: 0 !important;\n}\n"
-      vertical: false
-    - entity: binary_sensor.bed_presence_bb8594_bed_occupied_right
-      features_position: bottom
-      hide_state: true
-      hold_action:
-        action: more-info
-        entity: sensor.bed_presence_bb8594_right_pressure
-      name: Bed Occupied Right
-      type: tile
-      uix:
-        style:
-          ha-tile-icon $: ".container::before {\n  opacity: 0 !important;\n}\n"
-      vertical: false
     - type: custom:mushroom-template-card
-      icon: mdi:mushroom
       features_position: bottom
       entity: binary_sensor.bed_presence_bb8594_bed_occupied_left
       primary: Bed Occupied Left
       secondary: '{{ state_translated("sensor.bed_presence_bb8594_calibrated_left_pressure")}}%'
-      color: '{% if is_state(sensor.bed_presence_bb8594_calibrated_left_pressure,
-        ''on'') green {% else %} blue {% endif %}'
+      icon: local:bed_sensor
+      color: '{{ iif(is_state("binary_sensor.bed_presence_bb8594_bed_occupied_left",
+        "on"), ''rgb(255, 193, 7)'', ''var(--state-icon-color)'') }}'
+    - type: custom:mushroom-template-card
+      features_position: bottom
+      entity: binary_sensor.bed_presence_bb8594_bed_occupied_right
+      primary: Bed Occupied Right
+      secondary: '{{ state_translated("sensor.bed_presence_bb8594_calibrated_right_pressure")}}%'
+      icon: local:bed_sensor
+      color: '{{ iif(is_state("binary_sensor.bed_presence_bb8594_bed_occupied_right",
+        "on"), ''rgb(255, 193, 7)'', ''var(--state-icon-color)'') }}'
     features_position: bottom
     type: grid
   - cards:
@@ -1869,13 +1868,15 @@ views:
         entity: media_player.bedroom_tv
         source: full
         type: custom:mini-media-player
+        volume_stateless: true
+        group: false
+        info: scroll
         uix:
           style: "ha-card {\n  border-radius: var(--custom-radius) !important;\n \
             \ box-shadow: none !important;\n  margin-bottom: 5px\n}\n{% if is_state('media_player.bedroom_tv',\
             \ 'off') %}\n  ha-card {\n    box-shadow: 50px;\n    border: 1px solid\
             \ rgba(255, 255, 255, 0.2) !important;\n  }\n  ha-card::before,\n  .mmp__bg,\n\
             \  .mmp__bg::before {\n    display: none !important;\n  }\n{% endif %}\n"
-        volume_stateless: true
       - card:
           cards:
           - entity: light.bedroom_tv_backlight
@@ -2049,59 +2050,58 @@ views:
     - cards:
       - cards:
         - card:
-            auto_height: false
+            type: custom:simple-swipe-card
             auto_hide_pagination: 0
+            auto_height: false
             cards:
             - artwork: material
-              entity: media_player.all_echo
+              entity: media_player.all_echo_2
               hide:
                 mute: true
                 power: true
                 source: true
               type: custom:mini-media-player
+              volume_stateless: true
               uix:
                 style:
-                  .: "ha-card {\n  padding-bottom: 20px;\n}\n"
                   mmp-progress $: ".mmp-progress {\n  pointer-events: none !important;\n\
                     \  cursor: default !important;\n}\n"
-              volume_stateless: true
             - artwork: material
-              entity: media_player.blake_s_echo_spot
+              entity: media_player.blake_s_echo_spot_2
               hide:
                 mute: true
                 power: true
                 source: true
               type: custom:mini-media-player
+              volume_stateless: true
               uix:
                 style:
                   mmp-progress $: ".mmp-progress {\n  pointer-events: none !important;\n\
                     \  cursor: default !important;\n}\n"
-              volume_stateless: true
             - artwork: material
-              entity: media_player.blake_s_echo_pop
+              entity: media_player.blake_s_echo_pop_2
               hide:
                 mute: true
                 power: true
                 source: true
               type: custom:mini-media-player
+              volume_stateless: true
               uix:
                 style:
                   mmp-progress $: ".mmp-progress {\n  pointer-events: none !important;\n\
                     \  cursor: default !important;\n}\n"
-              volume_stateless: true
             - artwork: material
-              entity: media_player.blake_s_echo_dot
+              entity: media_player.blake_s_echo_dot_2
               hide:
                 mute: true
                 power: true
                 source: true
               type: custom:mini-media-player
+              volume_stateless: true
               uix:
                 style:
                   mmp-progress $: ".mmp-progress {\n  pointer-events: none !important;\n\
                     \  cursor: default !important;\n}\n"
-              volume_stateless: true
-            type: custom:simple-swipe-card
           conditions:
           - condition: or
             conditions:
@@ -2130,7 +2130,7 @@ views:
             conditions:
             - condition: state
               entity: sensor.recent_alexa
-              state: media_player.blake_s_echo_spot
+              state: media_player.blake_s_echo_spot_2
             - condition: state
               entity: media_player.all_echo_2
               state_not: playing
@@ -2153,7 +2153,7 @@ views:
             conditions:
             - condition: state
               entity: sensor.recent_alexa
-              state: media_player.blake_s_echo_dot
+              state: media_player.blake_s_echo_dot_2
             - condition: state
               entity: media_player.all_echo
               state_not: playing
@@ -2176,7 +2176,7 @@ views:
             conditions:
             - condition: state
               entity: sensor.recent_alexa
-              state: media_player.blake_s_echo_pop
+              state: media_player.blake_s_echo_pop_2
             - condition: state
               entity: media_player.all_echo
               state_not: playing
@@ -2943,8 +2943,10 @@ views:
             ha-card::before {\n  content: none !important;\n}\n"
       type: custom:vertical-stack-in-card
     type: vertical-stack
-  - entities:
-    - card_mod:
+  - color: state
+    entities:
+    - entity: script.set_my_room
+      card_mod:
         style: ":host {\n  --card-mod-icon-color: \n    {% if \n      is_state('light.bedroom_lamp',\
           \ 'on') and\n      not is_state('media_player.bedroom_tv', 'off') and\n\
           \      is_state('light.bedroom_ceiling_lights', 'off') and\n      is_state('light.closet_light',\
@@ -2954,8 +2956,8 @@ views:
           \ 'off') or is_state('media_player.living_room_tv', 'unavailable')) and\n\
           \      is_state('light.kitchen_lights', 'off')\n    %}\n      #E1B000\n\
           \    {% else %}\n      var(--state-icon-color)\n    {% endif %};\n}\n"
-      entity: script.set_my_room
-    - card_mod:
+    - entity: scene.all_off
+      card_mod:
         style: ":host {\n  --card-mod-icon-color: \n    {% if \n      is_state('light.bedroom_ceiling_lights',\
           \ 'off') and\n      is_state('light.bathroom_light', 'off') and\n      is_state('light.main_lights',\
           \ 'off') and\n      is_state('light.closet_light', 'off') and\n      is_state('fan.bedroom_ceiling_fan',\
@@ -2966,8 +2968,8 @@ views:
           \ 'off') and\n      is_state('light.bedroom_tv_backlight', 'off')\n    %}\n\
           \      #E1B000\n    {% else %}\n      var(--state-icon-color)\n    {% endif\
           \ %};\n}\n"
-      entity: scene.all_off
-    - card_mod:
+    - entity: scene.all_lights
+      card_mod:
         style: ":host {\n  --card-mod-icon-color: \n    {% if \n      is_state('light.closet_light',\
           \ 'on') and\n      is_state('light.bedroom_ceiling_lights', 'on') and\n\
           \      is_state('light.bathroom_light', 'on') and\n      is_state('light.main_lights',\
@@ -2975,15 +2977,16 @@ views:
           \      is_state('light.kitchen_lights', 'on') and\n      is_state('light.bedroom_lamp',\
           \ 'on')\n    %}\n      #E1B000\n    {% else %}\n      var(--state-icon-color)\n\
           \    {% endif %};\n}\n"
-      entity: scene.all_lights
-    - card_mod:
+    - entity: scene.full_lamp
+      card_mod:
         style: ":host {\n  --card-mod-icon-color: \n    {% if \n      is_state('light.bedroom_lamp',\
           \ 'on') and\n      is_state_attr('light.bedroom_lamp', 'color_temp_kelvin',\
           \ 3058) and\n      is_state_attr('light.bedroom_lamp', 'brightness', 254)\n\
           \    %}\n      #E1B000\n    {% else %}\n      var(--state-icon-color)\n\
           \    {% endif %};\n}\n"
-      entity: scene.full_lamp
-    - card_mod:
+    - entity: scene.dimmed
+    - entity: scene.goodnight_scene
+      card_mod:
         style: ":host {\n  --card-mod-icon-color: \n    {% if \n      is_state('light.main_lights',\
           \ 'off') and\n      is_state('light.bedroom_ceiling_lights', 'off') and\n\
           \      is_state('light.bathroom_light', 'off') and\n      is_state('media_player.bedroom_tv',\
@@ -2993,16 +2996,16 @@ views:
           \ and\n      is_state('light.kitchen_lights', 'off') and\n      is_state('light.bedroom_tv_backlight',\
           \ 'off')\n    %}\n      #E1B000\n    {% else %}\n      var(--state-icon-color)\n\
           \    {% endif %};\n}\n"
-      entity: scene.goodnight_scene
-    - card_mod:
+    - entity: scene.lights_off_except_bedroom
+      card_mod:
         style: ":host {\n  --card-mod-icon-color: \n    {% if \n      is_state('light.bathroom_light',\
           \ 'off') and\n      is_state('light.main_lights', 'off') and\n      is_state('light.kitchen_lights',\
           \ 'off') and\n      is_state('light.living_room_ceiling_lights', 'off')\
           \ and\n      is_state('light.closet_light', 'off') and\n      (is_state('light.bedroom_ceiling_lights',\
           \ 'on') or is_state('light.bedroom_lamp', 'on'))\n    %}\n      #E1B000\n\
           \    {% else %}\n      var(--state-icon-color)\n    {% endif %};\n}\n"
-      entity: scene.lights_off_except_bedroom
-    - card_mod:
+    - entity: scene.bedroom_lights_off
+      card_mod:
         style: ":host {\n  --card-mod-icon-color:\n    {% set bedroom_off =\n    \
           \  is_state('light.bedroom_ceiling_lights', 'off') and\n      is_state('light.bedroom_lamp',\
           \ 'off')\n    %}\n\n    {% set outside_on =\n      is_state('light.bathroom_light',\
@@ -3011,15 +3014,13 @@ views:
           \   is_state('light.living_room_ceiling_lights', 'on') or\n      is_state('light.kitchen_lights',\
           \ 'on')\n    %}\n\n    {% if bedroom_off and outside_on %}\n      #E1B000\n\
           \    {% else %}\n      var(--state-icon-color)\n    {% endif %};\n}\n"
-      entity: scene.bedroom_lights_off
-    - card_mod:
+    - entity: scene.im_awake
+      card_mod:
         style: ":host {\n  --card-mod-icon-color: \n    {% if \n      is_state('light.bedroom_lamp',\
           \ 'on') and\n      is_state('fan.bedroom_fan', 'off') and\n      is_state('media_player.bedroom_tv',\
           \ 'off')\n    %}\n      #E1B000\n    {% else %}\n      var(--state-icon-color)\n\
           \    {% endif %};\n}\n"
-      entity: scene.im_awake
     show_header_toggle: false
-    state_color: true
     title: Scenes
     type: entities
   - cards:
@@ -3335,7 +3336,7 @@ views:
             conditions:
             - condition: state
               entity: sensor.recent_alexa
-              state: media_player.blake_s_echo_spot
+              state: media_player.blake_s_echo_spot_2
             - condition: state
               entity: media_player.all_echo_2
               state_not: playing
@@ -3358,7 +3359,7 @@ views:
             conditions:
             - condition: state
               entity: sensor.recent_alexa
-              state: media_player.blake_s_echo_dot
+              state: media_player.blake_s_echo_dot_2
             - condition: state
               entity: media_player.all_echo
               state_not: playing
@@ -3381,7 +3382,7 @@ views:
             conditions:
             - condition: state
               entity: sensor.recent_alexa
-              state: media_player.blake_s_echo_pop
+              state: media_player.blake_s_echo_pop_2
             - condition: state
               entity: media_player.all_echo
               state_not: playing
@@ -3463,8 +3464,10 @@ views:
             rows: auto
           icon: mdi:music
           multiline_secondary: true
-          primary: Actions - {{ states('input_text.script_tracking') }}
-          secondary: '{{ states(''input_text.script_variables'') }}'
+          primary: '{% set info = states(''input_text.music_script_info'') %} Action
+            - {{ info.split('' || '', 1)[1] if '' || '' in info else '''' }}'
+          secondary: '{{ states(''input_text.music_script_info'').split('' || '',
+            1)[0] }}'
           type: custom:mushroom-template-card
           uix:
             style: "ha-card {\n   border: none;\n   background: none !important;\n\
@@ -4222,9 +4225,9 @@ views:
       type: custom:bubble-card
     type: custom:vertical-stack-in-card
   path: masonry
-  theme: Frosted Glass Dark
   title: masonry
   type: masonry
+  theme: Frosted Glass Dark
 - badges: []
   cards: []
   dense_section_placement: true

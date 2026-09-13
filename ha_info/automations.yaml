@@ -1318,6 +1318,11 @@
           data: {}
           target:
             entity_id: light.main_lights
+        - delay:
+            hours: 0
+            minutes: 0
+            seconds: 10
+            milliseconds: 0
         - parallel:
           - wait_template: "{{ (is_state('binary_sensor.kitchen_presence', 'off')
               and \n   (now() - states.binary_sensor.kitchen_presence.last_changed).total_seconds()
@@ -3035,4 +3040,20 @@
         theme: Frosted Glass Global
         dark: auto
       alias: 'Set Theme: Frosted Glass Global (Auto)'
+  mode: single
+- id: '1789246217977'
+  alias: washing machine outlet
+  description: ''
+  triggers:
+  - trigger: switch.turned_off
+    target:
+      entity_id: switch.shelly_outlet
+    options:
+      for: 00:00:00
+  conditions: []
+  actions:
+  - action: notify.mobile_app_blakes_iphone
+    metadata: {}
+    data:
+      message: Washing machine outlet turned off
   mode: single
