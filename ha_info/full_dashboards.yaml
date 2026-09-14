@@ -386,6 +386,118 @@ views:
         grid_options:
           columns: full
         type: tile
+        hold_action:
+          action: call-service
+          service: browser_mod.popup
+          data:
+            title: Title
+            target:
+              device_id: blakes phone
+            content:
+              type: markdown
+              title: Recent Alexa — Sensor Trace
+              content: "type: markdown\ntitle: Recent Alexa — Sensor Trace\ncontent:\
+                \ |-\n  {% set alexas = [\n    states.media_player.blake_s_echo_dot_2,\n\
+                \    states.media_player.blake_s_echo_pop_2,\n    states.media_player.blake_s_echo_spot_2\n\
+                \  ] %}\n\n  {% set all_echo = states.media_player.all_echo_2 %}\n\
+                \n  {% set playing = alexas\n    | selectattr('state', 'eq', 'playing')\n\
+                \    | sort(attribute='last_changed', reverse=true)\n    | list\n\
+                \  %}\n\n  {% set paused = (alexas + [all_echo])\n    | selectattr('state',\
+                \ 'eq', 'paused')\n    | sort(attribute='last_changed', reverse=true)\n\
+                \    | list\n  %}\n\n  ## All Alexa entity states\n\n  | Device |\
+                \ Original | `_2` |\n  |---|---|---|\n  | Dot | **{{ states('media_player.blake_s_echo_dot')\
+                \ }}** | **{{ states('media_player.blake_s_echo_dot_2') }}** |\n \
+                \ | Pop | **{{ states('media_player.blake_s_echo_pop') }}** | **{{\
+                \ states('media_player.blake_s_echo_pop_2') }}** |\n  | Spot | **{{\
+                \ states('media_player.blake_s_echo_spot') }}** | **{{ states('media_player.blake_s_echo_spot_2')\
+                \ }}** |\n  | All Echo | **{{ states('media_player.all_echo') }}**\
+                \ | **{{ states('media_player.all_echo_2') }}** |\n\n  ### State-change\
+                \ times\n\n  | Entity | Last changed | Age |\n  |---|---|---:|\n \
+                \ | Dot | {{ as_local(states.media_player.blake_s_echo_dot.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }} | {{ (now() - states.media_player.blake_s_echo_dot.last_changed).total_seconds()\
+                \ | round(1) }}s |\n  | Dot `_2` | {{ as_local(states.media_player.blake_s_echo_dot_2.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }} | {{ (now() - states.media_player.blake_s_echo_dot_2.last_changed).total_seconds()\
+                \ | round(1) }}s |\n  | Pop | {{ as_local(states.media_player.blake_s_echo_pop.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }} | {{ (now() - states.media_player.blake_s_echo_pop.last_changed).total_seconds()\
+                \ | round(1) }}s |\n  | Pop `_2` | {{ as_local(states.media_player.blake_s_echo_pop_2.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }} | {{ (now() - states.media_player.blake_s_echo_pop_2.last_changed).total_seconds()\
+                \ | round(1) }}s |\n  | Spot | {{ as_local(states.media_player.blake_s_echo_spot.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }} | {{ (now() - states.media_player.blake_s_echo_spot.last_changed).total_seconds()\
+                \ | round(1) }}s |\n  | Spot `_2` | {{ as_local(states.media_player.blake_s_echo_spot_2.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }} | {{ (now() - states.media_player.blake_s_echo_spot_2.last_changed).total_seconds()\
+                \ | round(1) }}s |\n  | All Echo | {{ as_local(states.media_player.all_echo.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }} | {{ (now() - states.media_player.all_echo.last_changed).total_seconds()\
+                \ | round(1) }}s |\n  | All Echo `_2` | {{ as_local(states.media_player.all_echo_2.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }} | {{ (now() - states.media_player.all_echo_2.last_changed).total_seconds()\
+                \ | round(1) }}s |\n\n  ---\n\n  ## Step 1 — Is All Echo playing?\n\
+                \n  State:\n\n  `{{ all_echo.state }}`\n\n  Test:\n\n  `{{ all_echo.state\
+                \ == 'playing' }}`\n\n  {% if all_echo.state == 'playing' %}\n\n \
+                \ ✅ **TRUE**\n\n  All Echo wins immediately.\n\n  **Result: `media_player.all_echo_2`**\n\
+                \n  {% else %}\n\n  ❌ **FALSE**\n\n  Continue to Step 2.\n\n  {% endif\
+                \ %}\n\n  ---\n\n  ## Step 2 — Individual Echos currently playing\n\
+                \n  Dot playing:\n\n  `{{ states('media_player.blake_s_echo_dot_2')\
+                \ == 'playing' }}`\n\n  Pop playing:\n\n  `{{ states('media_player.blake_s_echo_pop_2')\
+                \ == 'playing' }}`\n\n  Spot playing:\n\n  `{{ states('media_player.blake_s_echo_spot_2')\
+                \ == 'playing' }}`\n\n  Number playing:\n\n  **{{ playing | count\
+                \ }}**\n\n  {% if playing | count > 0 %}\n\n  Sorted by `last_changed`,\
+                \ newest first:\n\n  {% for p in playing %}\n  {{ loop.index }}. **{{\
+                \ p.entity_id }}**\n     `{{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }}`\n  {% endfor %}\n\n  Playing winner:\n\n  **`{{ playing[0].entity_id\
+                \ }}`**\n\n  {% else %}\n\n  No individual Echo is currently playing.\n\
+                \n  Continue to Step 3.\n\n  {% endif %}\n\n  ---\n\n  ## Step 3 —\
+                \ Paused Echos\n\n  Number paused:\n\n  **{{ paused | count }}**\n\
+                \n  {% if paused | count > 0 %}\n\n  Sorted by `last_changed`, newest\
+                \ first:\n\n  {% for p in paused %}\n  {{ loop.index }}. **{{ p.entity_id\
+                \ }}**\n     `{{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }}`\n     — {{ (now() - p.last_changed).total_seconds() | round(1)\
+                \ }}s ago\n  {% endfor %}\n\n  {% set paused_winner = paused[0] %}\n\
+                \  {% set paused_age = (now() - paused_winner.last_changed).total_seconds()\
+                \ %}\n\n  Most recently paused:\n\n  **`{{ paused_winner.entity_id\
+                \ }}`**\n\n  Age math:\n\n  `{{ now().timestamp() | round(3) }} -\
+                \ {{ paused_winner.last_changed.timestamp() | round(3) }}`\n\n  `=\
+                \ {{ paused_age | round(3) }} seconds`\n\n  Within 10 minutes:\n\n\
+                \  `{{ paused_age | round(3) }} < 600`\n\n  **{{ paused_age < 600\
+                \ }}**\n\n  {% else %}\n\n  No Echo is currently paused.\n\n  {% endif\
+                \ %}\n\n  ---\n\n  ## Step 4 — All Echo 2-second override\n\n  {%\
+                \ if paused | count > 0 %}\n\n  {% set paused_winner = paused[0] %}\n\
+                \  {% set diff =\n    ((all_echo.last_changed - paused_winner.last_changed).total_seconds()\
+                \ | abs)\n  %}\n\n  Provisional paused winner:\n\n  **`{{ paused_winner.entity_id\
+                \ }}`**\n\n  Is provisional winner already All Echo:\n\n  **{{ paused_winner.entity_id\
+                \ == 'media_player.all_echo_2' }}**\n\n  Is All Echo currently paused:\n\
+                \n  **{{ all_echo.state == 'paused' }}**\n\n  {% if paused_winner.entity_id\
+                \ != 'media_player.all_echo_2' %}\n\n  Winner timestamp:\n\n  `{{\
+                \ as_local(paused_winner.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }}`\n\n  All Echo timestamp:\n\n  `{{ as_local(all_echo.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }}`\n\n  Difference:\n\n  `| {{ all_echo.last_changed.timestamp()\
+                \ | round(3) }} - {{ paused_winner.last_changed.timestamp() | round(3)\
+                \ }} |`\n\n  `= {{ diff | round(3) }} seconds`\n\n  Within 2 seconds:\n\
+                \n  `{{ diff | round(3) }} <= 2`\n\n  **{{ diff <= 2 }}**\n\n  Full\
+                \ override test:\n\n  `winner != All Echo`\n\n  AND\n\n  `All Echo\
+                \ state == paused`\n\n  AND\n\n  `difference <= 2 seconds`\n\n  **{{\
+                \ paused_winner.entity_id != 'media_player.all_echo_2'\n      and\
+                \ all_echo.state == 'paused'\n      and diff <= 2 }}**\n\n  {% else\
+                \ %}\n\n  All Echo is already the newest paused device, so no override\
+                \ calculation is needed.\n\n  {% endif %}\n\n  {% else %}\n\n  No\
+                \ paused candidate exists, so there is no override test.\n\n  {% endif\
+                \ %}\n\n  ---\n\n  ## Final calculation\n\n  {% if all_echo.state\
+                \ == 'playing' %}\n\n    {% set calculated = 'media_player.all_echo_2'\
+                \ %}\n\n    **Branch:** All Echo currently playing\n\n  {% elif playing\
+                \ | count > 0 %}\n\n    {% set calculated = playing[0].entity_id %}\n\
+                \n    **Branch:** Individual Echo currently playing\n\n  {% elif paused\
+                \ | count > 0\n        and (now() - paused[0].last_changed).total_seconds()\
+                \ < 600 %}\n\n    {% set winner = paused[0] %}\n\n    {% if winner.entity_id\
+                \ != 'media_player.all_echo_2'\n          and all_echo.state == 'paused'\n\
+                \          and ((all_echo.last_changed - winner.last_changed).total_seconds()\
+                \ | abs) <= 2 %}\n\n      {% set calculated = 'media_player.all_echo_2'\
+                \ %}\n\n      **Branch:** Paused winner + All Echo 2-second override\n\
+                \n    {% else %}\n\n      {% set calculated = winner.entity_id %}\n\
+                \n      **Branch:** Most recently paused\n\n    {% endif %}\n\n  {%\
+                \ else %}\n\n    {% set calculated = 'none' %}\n\n    **Branch:**\
+                \ Nothing qualifying within 10 minutes\n\n  {% endif %}\n\n  ### Calculated\
+                \ result\n\n  **`{{ calculated }}`**\n\n  ### Actual sensor\n\n  **`{{\
+                \ states('sensor.recent_alexa') }}`**\n\n  ### Match\n\n  {% if calculated\
+                \ == states('sensor.recent_alexa') %}\n  ✅ **YES**\n  {% else %}\n\
+                \  ❌ **NO**\n  {% endif %}"
       - type: custom:mushroom-template-card
         primary: 'Alexa media player integration result:'
         secondary: "{% set alexas = [\n  states.media_player.blake_s_echo_dot,\n \
@@ -4584,8 +4696,160 @@ views:
         style:
           ha-tile-icon$: ".shape {\n  width: 60px !important;\n  height: 60px !important;\n\
             }\n"
-          .: "ha-tile-icon {\n  --mdc-icon-size: 35px;\n}\nha-card {\n  height: 50px;\n\
+          .: "ha-tile-icon {\n  --mdc-icon-size: 45px;\n}\nha-card {\n  height: 50px;\n\
             }\n"
+    - type: tile
+      grid_options:
+        columns: 12
+        rows: 1
+      entity: sensor.recent_alexa
+      vertical: false
+      features:
+      - type: custom:service-call
+        entries:
+        - icon: mdi:list-status
+          thumb: md3-elevated
+          toggle_styles: false
+          type: button
+          label: Diagnostics
+          styles: ":host {\n  border: var(--custom-button-border) !important;\n  border-radius:\
+            \ var(--custom-radius);\n  height: 40px;\n  --color: var(--custom-bg);\n\
+            }\n.label {\n  color: var(--custom-contrast);\n}\n.icon {\n  color: var(--custom-contrast);\n\
+            }"
+          tap_action:
+            action: fire-dom-event
+            browser_mod:
+              service: browser_mod.popup
+              data:
+                title: Alexa Entity Information
+                content: "{% set alexas = [\n  states.media_player.blake_s_echo_dot_2,\n\
+                  \  states.media_player.blake_s_echo_pop_2,\n  states.media_player.blake_s_echo_spot_2\n\
+                  ] %}\n{% set all_echo = states.media_player.all_echo_2 %}\n{% set\
+                  \ playing = alexas\n  | selectattr('state', 'eq', 'playing')\n \
+                  \ | sort(attribute='last_changed', reverse=true)\n  | list\n%}\n\
+                  {% set paused = (alexas + [all_echo])\n  | selectattr('state', 'eq',\
+                  \ 'paused')\n  | sort(attribute='last_changed', reverse=true)\n\
+                  \  | list\n%}\nPlaying count: {{ playing | count }}\nPaused count:\
+                  \ {{ paused | count }}"
+      features_position: inline
+      card_mod:
+        style:
+          ha-tile-icon$: ".shape {\n  width: 60px !important;\n  height: 60px !important;\n\
+            }\n"
+          .: "ha-tile-icon {\n  --mdc-icon-size: 30px;\n}\nha-card {\n  height: 50px;\n\
+            }\n"
+    - entity: sensor.recent_alexa
+      grid_options:
+        columns: full
+      type: tile
+      hold_action:
+        action: call-service
+        service: browser_mod.popup
+        data:
+          title: Title
+          target:
+            device_id: blakes phone
+          content:
+            type: markdown
+            title: Recent Alexa — Sensor Trace
+            content: "type: markdown\ntitle: Recent Alexa — Sensor Trace\ncontent:\
+              \ |-\n  {% set alexas = [\n    states.media_player.blake_s_echo_dot_2,\n\
+              \    states.media_player.blake_s_echo_pop_2,\n    states.media_player.blake_s_echo_spot_2\n\
+              \  ] %}\n\n  {% set all_echo = states.media_player.all_echo_2 %}\n\n\
+              \  {% set playing = alexas\n    | selectattr('state', 'eq', 'playing')\n\
+              \    | sort(attribute='last_changed', reverse=true)\n    | list\n  %}\n\
+              \n  {% set paused = (alexas + [all_echo])\n    | selectattr('state',\
+              \ 'eq', 'paused')\n    | sort(attribute='last_changed', reverse=true)\n\
+              \    | list\n  %}\n\n  ## All Alexa entity states\n\n  | Device | Original\
+              \ | `_2` |\n  |---|---|---|\n  | Dot | **{{ states('media_player.blake_s_echo_dot')\
+              \ }}** | **{{ states('media_player.blake_s_echo_dot_2') }}** |\n  |\
+              \ Pop | **{{ states('media_player.blake_s_echo_pop') }}** | **{{ states('media_player.blake_s_echo_pop_2')\
+              \ }}** |\n  | Spot | **{{ states('media_player.blake_s_echo_spot') }}**\
+              \ | **{{ states('media_player.blake_s_echo_spot_2') }}** |\n  | All\
+              \ Echo | **{{ states('media_player.all_echo') }}** | **{{ states('media_player.all_echo_2')\
+              \ }}** |\n\n  ### State-change times\n\n  | Entity | Last changed |\
+              \ Age |\n  |---|---|---:|\n  | Dot | {{ as_local(states.media_player.blake_s_echo_dot.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+              \ }} | {{ (now() - states.media_player.blake_s_echo_dot.last_changed).total_seconds()\
+              \ | round(1) }}s |\n  | Dot `_2` | {{ as_local(states.media_player.blake_s_echo_dot_2.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+              \ }} | {{ (now() - states.media_player.blake_s_echo_dot_2.last_changed).total_seconds()\
+              \ | round(1) }}s |\n  | Pop | {{ as_local(states.media_player.blake_s_echo_pop.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+              \ }} | {{ (now() - states.media_player.blake_s_echo_pop.last_changed).total_seconds()\
+              \ | round(1) }}s |\n  | Pop `_2` | {{ as_local(states.media_player.blake_s_echo_pop_2.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+              \ }} | {{ (now() - states.media_player.blake_s_echo_pop_2.last_changed).total_seconds()\
+              \ | round(1) }}s |\n  | Spot | {{ as_local(states.media_player.blake_s_echo_spot.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+              \ }} | {{ (now() - states.media_player.blake_s_echo_spot.last_changed).total_seconds()\
+              \ | round(1) }}s |\n  | Spot `_2` | {{ as_local(states.media_player.blake_s_echo_spot_2.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+              \ }} | {{ (now() - states.media_player.blake_s_echo_spot_2.last_changed).total_seconds()\
+              \ | round(1) }}s |\n  | All Echo | {{ as_local(states.media_player.all_echo.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+              \ }} | {{ (now() - states.media_player.all_echo.last_changed).total_seconds()\
+              \ | round(1) }}s |\n  | All Echo `_2` | {{ as_local(states.media_player.all_echo_2.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+              \ }} | {{ (now() - states.media_player.all_echo_2.last_changed).total_seconds()\
+              \ | round(1) }}s |\n\n  ---\n\n  ## Step 1 — Is All Echo playing?\n\n\
+              \  State:\n\n  `{{ all_echo.state }}`\n\n  Test:\n\n  `{{ all_echo.state\
+              \ == 'playing' }}`\n\n  {% if all_echo.state == 'playing' %}\n\n  ✅\
+              \ **TRUE**\n\n  All Echo wins immediately.\n\n  **Result: `media_player.all_echo_2`**\n\
+              \n  {% else %}\n\n  ❌ **FALSE**\n\n  Continue to Step 2.\n\n  {% endif\
+              \ %}\n\n  ---\n\n  ## Step 2 — Individual Echos currently playing\n\n\
+              \  Dot playing:\n\n  `{{ states('media_player.blake_s_echo_dot_2') ==\
+              \ 'playing' }}`\n\n  Pop playing:\n\n  `{{ states('media_player.blake_s_echo_pop_2')\
+              \ == 'playing' }}`\n\n  Spot playing:\n\n  `{{ states('media_player.blake_s_echo_spot_2')\
+              \ == 'playing' }}`\n\n  Number playing:\n\n  **{{ playing | count }}**\n\
+              \n  {% if playing | count > 0 %}\n\n  Sorted by `last_changed`, newest\
+              \ first:\n\n  {% for p in playing %}\n  {{ loop.index }}. **{{ p.entity_id\
+              \ }}**\n     `{{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+              \ }}`\n  {% endfor %}\n\n  Playing winner:\n\n  **`{{ playing[0].entity_id\
+              \ }}`**\n\n  {% else %}\n\n  No individual Echo is currently playing.\n\
+              \n  Continue to Step 3.\n\n  {% endif %}\n\n  ---\n\n  ## Step 3 — Paused\
+              \ Echos\n\n  Number paused:\n\n  **{{ paused | count }}**\n\n  {% if\
+              \ paused | count > 0 %}\n\n  Sorted by `last_changed`, newest first:\n\
+              \n  {% for p in paused %}\n  {{ loop.index }}. **{{ p.entity_id }}**\n\
+              \     `{{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3] }}`\n\
+              \     — {{ (now() - p.last_changed).total_seconds() | round(1) }}s ago\n\
+              \  {% endfor %}\n\n  {% set paused_winner = paused[0] %}\n  {% set paused_age\
+              \ = (now() - paused_winner.last_changed).total_seconds() %}\n\n  Most\
+              \ recently paused:\n\n  **`{{ paused_winner.entity_id }}`**\n\n  Age\
+              \ math:\n\n  `{{ now().timestamp() | round(3) }} - {{ paused_winner.last_changed.timestamp()\
+              \ | round(3) }}`\n\n  `= {{ paused_age | round(3) }} seconds`\n\n  Within\
+              \ 10 minutes:\n\n  `{{ paused_age | round(3) }} < 600`\n\n  **{{ paused_age\
+              \ < 600 }}**\n\n  {% else %}\n\n  No Echo is currently paused.\n\n \
+              \ {% endif %}\n\n  ---\n\n  ## Step 4 — All Echo 2-second override\n\
+              \n  {% if paused | count > 0 %}\n\n  {% set paused_winner = paused[0]\
+              \ %}\n  {% set diff =\n    ((all_echo.last_changed - paused_winner.last_changed).total_seconds()\
+              \ | abs)\n  %}\n\n  Provisional paused winner:\n\n  **`{{ paused_winner.entity_id\
+              \ }}`**\n\n  Is provisional winner already All Echo:\n\n  **{{ paused_winner.entity_id\
+              \ == 'media_player.all_echo_2' }}**\n\n  Is All Echo currently paused:\n\
+              \n  **{{ all_echo.state == 'paused' }}**\n\n  {% if paused_winner.entity_id\
+              \ != 'media_player.all_echo_2' %}\n\n  Winner timestamp:\n\n  `{{ as_local(paused_winner.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+              \ }}`\n\n  All Echo timestamp:\n\n  `{{ as_local(all_echo.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+              \ }}`\n\n  Difference:\n\n  `| {{ all_echo.last_changed.timestamp()\
+              \ | round(3) }} - {{ paused_winner.last_changed.timestamp() | round(3)\
+              \ }} |`\n\n  `= {{ diff | round(3) }} seconds`\n\n  Within 2 seconds:\n\
+              \n  `{{ diff | round(3) }} <= 2`\n\n  **{{ diff <= 2 }}**\n\n  Full\
+              \ override test:\n\n  `winner != All Echo`\n\n  AND\n\n  `All Echo state\
+              \ == paused`\n\n  AND\n\n  `difference <= 2 seconds`\n\n  **{{ paused_winner.entity_id\
+              \ != 'media_player.all_echo_2'\n      and all_echo.state == 'paused'\n\
+              \      and diff <= 2 }}**\n\n  {% else %}\n\n  All Echo is already the\
+              \ newest paused device, so no override calculation is needed.\n\n  {%\
+              \ endif %}\n\n  {% else %}\n\n  No paused candidate exists, so there\
+              \ is no override test.\n\n  {% endif %}\n\n  ---\n\n  ## Final calculation\n\
+              \n  {% if all_echo.state == 'playing' %}\n\n    {% set calculated =\
+              \ 'media_player.all_echo_2' %}\n\n    **Branch:** All Echo currently\
+              \ playing\n\n  {% elif playing | count > 0 %}\n\n    {% set calculated\
+              \ = playing[0].entity_id %}\n\n    **Branch:** Individual Echo currently\
+              \ playing\n\n  {% elif paused | count > 0\n        and (now() - paused[0].last_changed).total_seconds()\
+              \ < 600 %}\n\n    {% set winner = paused[0] %}\n\n    {% if winner.entity_id\
+              \ != 'media_player.all_echo_2'\n          and all_echo.state == 'paused'\n\
+              \          and ((all_echo.last_changed - winner.last_changed).total_seconds()\
+              \ | abs) <= 2 %}\n\n      {% set calculated = 'media_player.all_echo_2'\
+              \ %}\n\n      **Branch:** Paused winner + All Echo 2-second override\n\
+              \n    {% else %}\n\n      {% set calculated = winner.entity_id %}\n\n\
+              \      **Branch:** Most recently paused\n\n    {% endif %}\n\n  {% else\
+              \ %}\n\n    {% set calculated = 'none' %}\n\n    **Branch:** Nothing\
+              \ qualifying within 10 minutes\n\n  {% endif %}\n\n  ### Calculated\
+              \ result\n\n  **`{{ calculated }}`**\n\n  ### Actual sensor\n\n  **`{{\
+              \ states('sensor.recent_alexa') }}`**\n\n  ### Match\n\n  {% if calculated\
+              \ == states('sensor.recent_alexa') %}\n  ✅ **YES**\n  {% else %}\n \
+              \ ❌ **NO**\n  {% endif %}"
     type: grid
   - type: grid
     cards:
