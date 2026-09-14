@@ -241,15 +241,17 @@ alexa_music:
         \  else states('input_text.alarm_music') }}"
       music_query: "{{ music_input\n   if music_input not in ['', 'unknown', 'unavailable']\n
         \  else 'My Soundtrack' }}"
-      speaker_selection: "{{ states('input_select.speakers')\n   if is_search\n   else
-        'All Echo Group' }}"
+      speaker_selection: "{% set override = speaker_override | default('') %}\n{%
+        if override not in ['', 'unknown', 'unavailable', none] %}\n  {{ override
+        }}\n{% elif is_search %}\n  {{ states('input_select.speakers') }}\n{% else
+        %}\n  All Echo (All Alexa Devices)\n{% endif %}"
       speaker_choice: "{{ speaker_selection\n   if speaker_selection not in ['', 'unknown',
-        'unavailable']\n   else 'All Echo Group' }}"
-      speaker_voice_name: '{% set clean = speaker_choice.split('' ('')[0] %} {{ (''All
-        Echo Group'' if clean | lower == ''default'' else clean) | trim }}'
+        'unavailable']\n   else 'All Echo (All Alexa Devices)' }}"
+      speaker_voice_name: '{% set clean = speaker_choice.split('' ('')[0] | trim %}
+        {{ ''All Echo Group'' if clean == ''All Echo'' else clean }}'
       target_media_player: "{% set mapper = {\n  'All Echo Group': 'media_player.all_echo_2',\n
         \ 'Echo Dot': 'media_player.blake_s_echo_dot_2',\n  'Echo Pop': 'media_player.blake_s_echo_pop_2',\n
-        \ 'Echo Spot': 'media_player.blake_s_echo_spot_2'\n} %} {{ mapper.get(speaker_voice_name,
+        \ 'Echo Spot': 'media_player.blake_s_echo_spot_2'\n} %}\n{{ mapper.get(speaker_voice_name,
         'media_player.all_echo_2') }}"
       music_script_variables: "{% if action_type | default('none') == 'stop' %}\n
         \ Stop / Reset\n{% else %}\n  {{ ('Manual Search' if is_search else 'Automatic')\n
@@ -263,6 +265,12 @@ alexa_music:
       is the friendly Alexa command name, target_media_player is the mapped Home Assistant
       media player, and music_script_variables is the primary information written
       before " || " in input_text.music_script_info.
+  - action: input_select.select_option
+    metadata: {}
+    target:
+      entity_id: input_select.speakers
+    data:
+      option: '{{ speaker_choice }}'
   - choose:
     - alias: Stop Music & Reset
       conditions:

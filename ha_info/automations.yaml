@@ -260,6 +260,12 @@
     options:
       for: 00:00:00
     id: Kitchen presence
+  - trigger: occupancy.detected
+    target:
+      entity_id: binary_sensor.bedroom_presence
+    options:
+      for: 00:00:00
+    id: Bedroom presence
   conditions: []
   actions:
   - choose:
@@ -470,6 +476,29 @@
           target:
             entity_id: light.bathroom_light
           data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - Bedroom presence
+      - condition: light.is_off
+        target:
+          entity_id:
+          - light.bedroom_ceiling_lights
+          - light.bedroom_lamp
+        options:
+          for: 00:00:00
+          behavior: any
+      - condition: occupancy.is_not_detected
+        target:
+          entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_either
+        options:
+          for: 00:00:00
+      sequence:
+      - action: light.turn_on
+        metadata: {}
+        target:
+          entity_id: light.bedroom_ceiling_lights
+        data: {}
   mode: parallel
   trace:
     stored_traces: 30
@@ -859,6 +888,10 @@
       - media_player.blake_s_echo_dot_2
       - media_player.blake_s_echo_pop_2
       - media_player.blake_s_echo_spot_2
+      - media_player.all_echo
+      - media_player.blake_s_echo_pop
+      - media_player.blake_s_echo_dot
+      - media_player.blake_s_echo_spot
     options:
       for:
         hours: 0
@@ -931,6 +964,19 @@
         state:
         - 'off'
       sequence:
+      - action: input_select.select_option
+        metadata: {}
+        target:
+          entity_id: input_select.speakers
+        data:
+          option: "{% set mapper = {\n  'media_player.all_echo': 'All Echo (All Alexa
+            Devices)',\n  'media_player.all_echo_2': 'All Echo (All Alexa Devices)',\n
+            \ 'media_player.blake_s_echo_dot': 'Echo Dot (Kitchen)',\n  'media_player.blake_s_echo_dot_2':
+            'Echo Dot (Kitchen)',\n  'media_player.blake_s_echo_pop': 'Echo Pop (Bathroom)',\n
+            \ 'media_player.blake_s_echo_pop_2': 'Echo Pop (Bathroom)',\n  'media_player.blake_s_echo_spot':
+            'Echo Spot (Bedroom)',\n  'media_player.blake_s_echo_spot_2': 'Echo Spot
+            (Bedroom)'\n} %} {{ mapper.get(trigger.entity_id, states('input_select.speakers'))
+            }}"
       - action: script.turn_on
         target:
           entity_id: script.alexa_music
@@ -1865,6 +1911,7 @@
               action_type: '{{ trigger.id }}
 
                 '
+              speaker_override: All Echo (All Alexa Devices)
           note: 'Turns on music script, passes action_type: manual wakeup if automation
             was triggered by button 1'
           metadata: {}
@@ -2683,7 +2730,11 @@
               metadata: {}
               data: {}
               target:
-                entity_id: '{{ states(''sensor.recent_alexa'') }}'
+                entity_id: "{% set mapper = {\n  'All Echo Group': 'media_player.all_echo_2',\n
+                  \ 'Echo Dot': 'media_player.blake_s_echo_dot_2',\n  'Echo Pop':
+                  'media_player.blake_s_echo_pop_2',\n  'Echo Spot': 'media_player.blake_s_echo_spot_2'\n}
+                  %} {{ mapper.get(states('input_select.speakers'), 'media_player.all_echo_2')
+                  }}"
           alias: 2 - Single
         - conditions:
           - condition: trigger
@@ -2775,7 +2826,11 @@
               metadata: {}
               data: {}
               target:
-                entity_id: '{{ states(''sensor.recent_alexa'') }}'
+                entity_id: "{% set mapper = {\n  'All Echo Group': 'media_player.all_echo_2',\n
+                  \ 'Echo Dot': 'media_player.blake_s_echo_dot_2',\n  'Echo Pop':
+                  'media_player.blake_s_echo_pop_2',\n  'Echo Spot': 'media_player.blake_s_echo_spot_2'\n}
+                  %} {{ mapper.get(states('input_select.speakers'), 'media_player.all_echo_2')
+                  }}"
             alias: If music is off
           alias: 3 - Single
         - conditions:
@@ -2797,7 +2852,11 @@
               metadata: {}
               data: {}
               target:
-                entity_id: '{{ states(''sensor.recent_alexa'') }}'
+                entity_id: "{% set mapper = {\n  'All Echo Group': 'media_player.all_echo_2',\n
+                  \ 'Echo Dot': 'media_player.blake_s_echo_dot_2',\n  'Echo Pop':
+                  'media_player.blake_s_echo_pop_2',\n  'Echo Spot': 'media_player.blake_s_echo_spot_2'\n}
+                  %} {{ mapper.get(states('input_select.speakers'), 'media_player.all_echo_2')
+                  }}"
           alias: 3 - Double
         - conditions:
           - condition: trigger
