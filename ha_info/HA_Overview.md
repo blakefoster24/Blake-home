@@ -1,4 +1,4 @@
-_Last Updated: 2026-09-14T15:36:21.592255-05:00_
+_Last Updated: 2026-09-14T15:37:13.562240-05:00_
 
 <details><summary><b>Helpers</b></summary>
 
@@ -1132,7 +1132,7 @@ Below are the input helpers configured in Home Assistant.
 
 | `sensor.a_expansion_attic_humidity` | A expansion attic Humidity | 59 |
 
-| `sensor.a_expansion_attic_temperature` | A expansion attic Temperature | 78.44 |
+| `sensor.a_expansion_attic_temperature` | A expansion attic Temperature | 79.52 |
 
 | `sensor.akamatis_presence_sensor_b24c50_detection_distance` | Akamatis Presence Sensor b24c50 Detection Distance | 44.8818897637795 |
 
@@ -1366,7 +1366,7 @@ United States |
 
 | `sensor.d_expansion_attic_temperature` | D expansion attic Temperature | unavailable |
 
-| `sensor.everything_presence_lite_922d28_illuminance` | Everything Presence Lite Illuminance | 0.226377934217453 |
+| `sensor.everything_presence_lite_922d28_illuminance` | Everything Presence Lite Illuminance | 0.113188967108727 |
 
 | `sensor.everything_presence_lite_922d28_mmwave_firmware` | Everything Presence Lite mmWave Firmware | V2.04 |
 
@@ -1470,7 +1470,7 @@ United States |
 
 | `sensor.main_lights_today_s_consumption` | Main Lights Today's consumption | 0.005 |
 
-| `sensor.main_lights_voltage` | Main Lights Voltage | 121.2 |
+| `sensor.main_lights_voltage` | Main Lights Voltage | 121.3 |
 
 | `sensor.motion_2_battery` | Motion 2 - Third Reality Battery | 92.5 |
 

@@ -3,10 +3,7 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-09-14T15:36:25.242568 =====
-  File "/usr/src/homeassistant/homeassistant/helpers/update_coordinator.py", line 315, in _async_update_data
-    return await self.update_method()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+===== 2026-09-14T15:37:17.258935 =====
   File "/config/custom_components/alexa_media/__init__.py", line 977, in async_update_data
     entities_to_monitor.add(binary_sensor.alexa_entity_id)
                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -104,22 +101,27 @@ AttributeError: 'AmazonKidsSensor' object has no attribute 'alexa_entity_id'[0m
 [33m2026-09-14 15:32:40.832 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [32m2026-09-14 15:36:21.577 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [33m2026-09-14 15:36:21.642 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[32m2026-09-14 15:36:48.635 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-14 15:37:13.550 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[33m2026-09-14 15:37:13.611 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-09-14T15:36:25.352441 =====
+===== 2026-09-14T15:37:17.369265 =====
 [32m2026-09-14 14:54:50.723 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Running automation actions[0m
 [32m2026-09-14 15:16:03.060 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [32m2026-09-14 15:16:19.808 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [32m2026-09-14 15:36:21.577 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-14 15:36:48.635 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-14 15:37:13.550 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-09-14T15:36:25.463049 =====
+===== 2026-09-14T15:37:17.477454 =====
 AttributeError: 'AmazonKidsSensor' object has no attribute 'alexa_entity_id'[0m
 [33m2026-09-14 14:28:01.607 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
 [33m2026-09-14 14:28:08.733 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
@@ -172,3 +174,4 @@ AttributeError: 'AmazonKidsSensor' object has no attribute 'alexa_entity_id'[0m
 [33m2026-09-14 15:32:33.733 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
 [33m2026-09-14 15:32:40.832 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [33m2026-09-14 15:36:21.642 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-09-14 15:37:13.611 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
