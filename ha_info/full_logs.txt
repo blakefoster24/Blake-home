@@ -3,46 +3,7 @@
 ========================================
 LOG: last_log.txt
 ========================================
-===== 2026-09-14T15:16:06.776034 =====
-AttributeError: 'AmazonKidsSensor' object has no attribute 'alexa_entity_id'[0m
-[33m2026-09-14 13:50:27.620 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 13:50:34.721 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 13:50:41.820 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-14 13:55:49.572 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 13:55:56.671 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 13:56:03.771 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-14 14:01:11.604 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 14:01:18.703 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 14:01:25.803 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[31m2026-09-14 14:05:32.679 ERROR (MainThread) [custom_components.alexa_media.coordinator] Unexpected error fetching alexa_media data
-Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/helpers/update_coordinator.py", line 441, in _async_refresh
-    self.data = await self._async_update_data()
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/src/homeassistant/homeassistant/helpers/update_coordinator.py", line 315, in _async_update_data
-    return await self.update_method()
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/config/custom_components/alexa_media/__init__.py", line 977, in async_update_data
-    entities_to_monitor.add(binary_sensor.alexa_entity_id)
-                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'AmazonKidsSensor' object has no attribute 'alexa_entity_id'[0m
-[33m2026-09-14 14:06:33.587 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 14:06:40.694 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 14:06:47.809 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-14 14:11:55.628 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 14:12:02.730 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 14:12:09.827 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-14 14:17:17.593 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 14:17:24.691 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 14:17:31.791 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-14 14:22:39.607 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 14:22:46.712 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 14:22:53.826 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[31m2026-09-14 14:25:32.680 ERROR (MainThread) [custom_components.alexa_media.coordinator] Unexpected error fetching alexa_media data
-Traceback (most recent call last):
-  File "/usr/src/homeassistant/homeassistant/helpers/update_coordinator.py", line 441, in _async_refresh
-    self.data = await self._async_update_data()
-                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+===== 2026-09-14T15:36:25.242568 =====
   File "/usr/src/homeassistant/homeassistant/helpers/update_coordinator.py", line 315, in _async_update_data
     return await self.update_method()
            ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -104,45 +65,61 @@ AttributeError: 'AmazonKidsSensor' object has no attribute 'alexa_entity_id'[0m
 [33m2026-09-14 15:11:11.827 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [32m2026-09-14 15:16:03.060 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 [33m2026-09-14 15:16:03.128 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-09-14 15:16:19.685 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[32m2026-09-14 15:16:19.808 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[33m2026-09-14 15:16:26.785 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-14 15:16:33.890 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-14 15:21:42.440 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-14 15:21:49.551 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-14 15:21:56.679 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-14 15:25:32.679 WARNING (MainThread) [py.warnings] /usr/src/homeassistant/homeassistant/helpers/update_coordinator.py:568: RuntimeWarning: coroutine 'AlexaAPI.get_dnd_state' was never awaited
+  self.last_exception = err
+[0m
+[33m2026-09-14 15:25:32.680 WARNING (MainThread) [py.warnings] /usr/src/homeassistant/homeassistant/helpers/update_coordinator.py:568: RuntimeWarning: coroutine 'AlexaAPI.get_device_preferences' was never awaited
+  self.last_exception = err
+[0m
+[33m2026-09-14 15:25:32.681 WARNING (MainThread) [py.warnings] /usr/src/homeassistant/homeassistant/helpers/update_coordinator.py:568: RuntimeWarning: coroutine 'AlexaAPI.get_bluetooth' was never awaited
+  self.last_exception = err
+[0m
+[33m2026-09-14 15:25:32.681 WARNING (MainThread) [py.warnings] /usr/src/homeassistant/homeassistant/helpers/update_coordinator.py:568: RuntimeWarning: coroutine 'AlexaAPI.get_devices' was never awaited
+  self.last_exception = err
+[0m
+[31m2026-09-14 15:25:32.681 ERROR (MainThread) [custom_components.alexa_media.coordinator] Unexpected error fetching alexa_media data
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/helpers/update_coordinator.py", line 441, in _async_refresh
+    self.data = await self._async_update_data()
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/src/homeassistant/homeassistant/helpers/update_coordinator.py", line 315, in _async_update_data
+    return await self.update_method()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/config/custom_components/alexa_media/__init__.py", line 977, in async_update_data
+    entities_to_monitor.add(binary_sensor.alexa_entity_id)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'AmazonKidsSensor' object has no attribute 'alexa_entity_id'[0m
+[33m2026-09-14 15:27:04.599 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-14 15:27:11.698 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-14 15:27:18.795 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-14 15:32:26.631 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-14 15:32:33.733 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-14 15:32:40.832 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[32m2026-09-14 15:36:21.577 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[33m2026-09-14 15:36:21.642 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
 
 
 ========================================
 LOG: automation_runs.txt
 ========================================
-===== 2026-09-14T15:16:06.886232 =====
+===== 2026-09-14T15:36:25.352441 =====
 [32m2026-09-14 14:54:50.723 INFO (MainThread) [homeassistant.components.automation.battery_low_automation] Battery Low Automation : Running automation actions[0m
 [32m2026-09-14 15:16:03.060 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-14 15:16:19.808 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
+[32m2026-09-14 15:36:21.577 INFO (MainThread) [homeassistant.components.script.push_ha_info_to_github_create_ai_zip_file_now] Push Ha Info to GitHub & Create AI Zip File: Running script sequence[0m
 
 
 ========================================
 LOG: error_log.txt
 ========================================
-===== 2026-09-14T15:16:06.996176 =====
-AttributeError: 'AmazonKidsSensor' object has no attribute 'alexa_entity_id'[0m
-[33m2026-09-14 13:50:27.620 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 13:50:34.721 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 13:50:41.820 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-14 13:55:49.572 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 13:55:56.671 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 13:56:03.771 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-14 14:01:11.604 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 14:01:18.703 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 14:01:25.803 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[31m2026-09-14 14:05:32.679 ERROR (MainThread) [custom_components.alexa_media.coordinator] Unexpected error fetching alexa_media data
-AttributeError: 'AmazonKidsSensor' object has no attribute 'alexa_entity_id'[0m
-[33m2026-09-14 14:06:33.587 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 14:06:40.694 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 14:06:47.809 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-14 14:11:55.628 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 14:12:02.730 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 14:12:09.827 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-14 14:17:17.593 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 14:17:24.691 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 14:17:31.791 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[33m2026-09-14 14:22:39.607 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
-[33m2026-09-14 14:22:46.712 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
-[33m2026-09-14 14:22:53.826 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
-[31m2026-09-14 14:25:32.680 ERROR (MainThread) [custom_components.alexa_media.coordinator] Unexpected error fetching alexa_media data
+===== 2026-09-14T15:36:25.463049 =====
 AttributeError: 'AmazonKidsSensor' object has no attribute 'alexa_entity_id'[0m
 [33m2026-09-14 14:28:01.607 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
 [33m2026-09-14 14:28:08.733 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
@@ -176,3 +153,22 @@ AttributeError: 'AmazonKidsSensor' object has no attribute 'alexa_entity_id'[0m
 [33m2026-09-14 15:11:04.731 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
 [33m2026-09-14 15:11:11.827 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
 [33m2026-09-14 15:16:03.128 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
+[33m2026-09-14 15:16:19.685 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-14 15:16:26.785 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-14 15:16:33.890 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-14 15:21:42.440 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-14 15:21:49.551 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-14 15:21:56.679 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-14 15:25:32.679 WARNING (MainThread) [py.warnings] /usr/src/homeassistant/homeassistant/helpers/update_coordinator.py:568: RuntimeWarning: coroutine 'AlexaAPI.get_dnd_state' was never awaited
+[33m2026-09-14 15:25:32.680 WARNING (MainThread) [py.warnings] /usr/src/homeassistant/homeassistant/helpers/update_coordinator.py:568: RuntimeWarning: coroutine 'AlexaAPI.get_device_preferences' was never awaited
+[33m2026-09-14 15:25:32.681 WARNING (MainThread) [py.warnings] /usr/src/homeassistant/homeassistant/helpers/update_coordinator.py:568: RuntimeWarning: coroutine 'AlexaAPI.get_bluetooth' was never awaited
+[33m2026-09-14 15:25:32.681 WARNING (MainThread) [py.warnings] /usr/src/homeassistant/homeassistant/helpers/update_coordinator.py:568: RuntimeWarning: coroutine 'AlexaAPI.get_devices' was never awaited
+[31m2026-09-14 15:25:32.681 ERROR (MainThread) [custom_components.alexa_media.coordinator] Unexpected error fetching alexa_media data
+AttributeError: 'AmazonKidsSensor' object has no attribute 'alexa_entity_id'[0m
+[33m2026-09-14 15:27:04.599 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-14 15:27:11.698 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-14 15:27:18.795 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-14 15:32:26.631 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Pop, used cached values.[0m
+[33m2026-09-14 15:32:33.733 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Spot, used cached values.[0m
+[33m2026-09-14 15:32:40.832 WARNING (MainThread) [aioamazondevices] Failed to refresh communications settings for device Blake's Echo Dot, used cached values.[0m
+[33m2026-09-14 15:36:21.642 WARNING (Recorder) [homeassistant.components.recorder.db_schema] Event data for call_service exceed maximum size of 32768 bytes. This can cause database performance issues; Event data will not be stored[0m
