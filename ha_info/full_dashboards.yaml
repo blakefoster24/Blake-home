@@ -1279,142 +1279,64 @@ views:
           style: "ha-card {\n  border: none;\n  background: none !important;\n}\n\
             ha-card::before {\n  content: none !important;\n}\n"
         vertical: false
-      - card:
-          custom_fields:
-            run_button:
-              card:
-                features:
-                - entries:
-                  - entity_id: script.temporary_thermostat_adjustment
-                    icon: local:thermostat_adjustment_script
-                    label: Start
-                    styles: ":host {\n  border: var(--custom-button-border);\n  --color:\
-                      \ var(--custom-bg); \n  border-radius: var(--custom-radius);\n\
-                      \  justify-self: center;\n}\n.label {\n  color: var(--custom-contrast);\n\
-                      }\n.icon {\n  color: var(--custom-contrast);\n}"
-                    tap_action:
-                      action: more-info
-                      data: {}
-                    thumb: md3-elevated
-                    toggle_styles: false
-                    type: button
-                  type: custom:service-call
-                transparent: false
-                type: custom:custom-features-card
-                uix:
-                  style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
-                    \ none;\n  margin-right: -1rem\n}\nha-card::before {\ncontent:\
-                    \ none !important;\n}\n"
-          entity: script.temporary_thermostat_adjustment
-          icon: local:thermostat_adjustment_script
-          name: Temporary Thermostat Adjustment
-          show_state: true
-          styles:
-            card:
-            - padding: .7rem
-            - height: 4.5rem
-            grid:
-            - grid-template-areas: '"i n run_button" "i s run_button"'
-            - grid-template-columns: auto min-content 1fr
-            - grid-template-rows: 1fr 1fr
-            icon:
-            - width: 2rem
-            - color: var(--custom-contrast)
-            img_cell:
-            - background-color: transparent
-            - width: 2rem
-            name:
-            - justify-self: start
-            - padding-left: .5rem
-            - font-weight: 500
-            - font-size: 1rem
-            state:
-            - justify-self: start
-            - padding-left: .5rem
-            - font-size: 1rem
-          tap_action:
-            action: none
-          type: custom:button-card
-          uix:
-            style: "ha-card {\n  border-radius: var(--custom-radius) !important;\n\
-              \  border: var(--custom-border) !important;\n  background: none !important;\n\
-              }\nha-card::before {\n  content: none !important;\n}\n"
-        conditions:
-        - condition: state
-          entity: script.temporary_thermostat_adjustment
-          state: 'off'
-        type: conditional
-      - card:
-          custom_fields:
-            run_button:
-              card:
-                features:
-                - entries:
-                  - entity_id: timer.timer_helper
-                    icon: mdi:stop
-                    label: Stop
-                    styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                      \  --color: var(--custom-bg); \n  border-radius: var(--custom-radius);\n\
-                      }\n.label {\n  color: var(--custom-active);\n}\n.icon {\n  color:\
-                      \ var(--custom-active);\n}"
-                    tap_action:
-                      action: perform-action
-                      data: {}
-                      perform_action: timer.finish
-                      target:
-                        entity_id: timer.timer_helper
-                    thumb: md3-elevated
-                    toggle_styles: false
-                    type: button
-                  type: custom:service-call
-                transparent: false
-                type: custom:custom-features-card
-                uix:
-                  style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
-                    \ none;\n  margin-right: -1rem\n}\nha-card::before {\ncontent:\
-                    \ none !important;\n}\n"
-          entity: timer.timer_helper
-          icon: local:thermostat_adjustment_script
-          name: Temporary Thermostat Adjustment
-          show_state: true
-          styles:
-            card:
-            - padding: .7rem
-            - height: 4.5rem
-            grid:
-            - grid-template-areas: '"i n run_button" "i s run_button"'
-            - grid-template-columns: auto min-content 1fr
-            - grid-template-rows: 1fr 1fr
-            icon:
-            - width: 2rem
-            - color: var(--custom-active)
-            img_cell:
-            - background-color: transparent
-            - width: 2rem
-            name:
-            - justify-self: start
-            - padding-left: .5rem
-            - font-weight: 500
-            - font-size: 1rem
-            - color: var(--custom-active)
-            state:
-            - justify-self: start
-            - padding-left: .5rem
-            - font-size: 1rem
-            - color: rgb(255, 193, 7)
-          tap_action:
-            action: none
-          type: custom:button-card
-          uix:
-            style: "ha-card {\n  border-radius: var(--custom-radius) !important;\n\
-              \  border: .5px solid rgba(255, 255, 255, 0.4) !important;    \n  background:\
-              \ none !important;\n}\nha-card::before {\n  content: none !important;\n\
-              }\n"
-        conditions:
-        - condition: state
-          entity: timer.timer_helper
-          state: 'on'
-        type: conditional
+      - type: custom:mushroom-template-card
+        grid_options:
+          columns: 12
+          rows: 1
+        entity: script.temporary_thermostat_adjustment
+        primary: Temporary Thermostat Adjustment
+        secondary: "{% if is_state('script.temporary_thermostat_adjustment', 'on')\
+          \ %}\n  {{ states('timer.timer_helper') }}\n{% else %}\n  {{ states('script.temporary_thermostat_adjustment')\
+          \ }}\n{% endif %}"
+        icon: local:thermostat_adjustment_script
+        icon_color: "{% if is_state('script.temporary_thermostat_adjustment', 'on')\
+          \ %}\n  var(--custom-active)\n{% else %}\n  var(--state-icon-color)\n{%\
+          \ endif %}"
+        features:
+        - type: custom:service-call
+          entries:
+          - type: button
+            entity_id: script.temporary_thermostat_adjustment
+            icon: "{% if is_state('script.temporary_thermostat_adjustment', 'on')\
+              \ %}\n  mdi:stop\n{% else %}\n  local:thermostat_adjustment_script\n\
+              {% endif %}"
+            label: "{% if is_state('script.temporary_thermostat_adjustment', 'on')\
+              \ %}\n  Stop\n{% else %}\n  Start\n{% endif %}"
+            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+              \  border-radius: var(--custom-radius);\n  height: 40px;\n  width: 110px\
+              \ !important;\n  flex: 0 0 110px !important;\n  --color: var(--custom-bg);\n\
+              }\n\n.label {\n  {% if is_state('script.temporary_thermostat_adjustment',\
+              \ 'on') %}\n    color: var(--custom-active);\n  {% else %}\n    color:\
+              \ var(--custom-contrast);\n  {% endif %}\n}\n\n.icon {\n  {% if is_state('script.temporary_thermostat_adjustment',\
+              \ 'on') %}\n    color: var(--custom-active);\n  {% else %}\n    color:\
+              \ var(--custom-contrast);\n  {% endif %}\n  padding-bottom: .25rem;\n\
+              }"
+            tap_action:
+              action: "{% if is_state('script.temporary_thermostat_adjustment', 'on')\
+                \ %}\n  perform-action\n{% else %}\n  more-info\n{% endif %}"
+              perform_action: timer.finish
+              target:
+                entity_id: "{% if is_state('script.temporary_thermostat_adjustment',\
+                  \ 'on') %}\n  timer.timer_helper\n{% else %}\n  script.temporary_thermostat_adjustment\n\
+                  {% endif %}"
+              data: {}
+            thumb: md3-elevated
+            toggle_styles: false
+        features_position: inline
+        uix:
+          style:
+            .: "ha-card {\n  border-radius: var(--custom-radius) !important;\n  border:\
+              \ var(--custom-border) !important;\n  background: none !important;\n\
+              }\n\nha-card::before {\n  content: none !important;\n}\n\n.content {\n\
+              \  padding-inline-start: 7px !important;\n  gap: 4px !important;\n}\n\
+              \nha-tile-icon {\n  --tile-icon-size: 35px !important;\n  --mdc-icon-size:\
+              \ 32px !important;\n}\n\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \n  {% if is_state('script.temporary_thermostat_adjustment', 'on') %}\n\
+              \    --ha-tile-info-primary-color: var(--custom-active) !important;\n\
+              \    --ha-tile-info-secondary-color: rgb(255, 193, 7) !important;\n\
+              \  {% endif %}\n}\n\n.container.horizontal .features-inline {\n  width:\
+              \ auto !important;\n  flex: 0 0 auto !important;\n  padding: 0 !important;\n\
+              \  margin-inline-end: 12px !important;\n}\n"
       index: 20
       type: custom:vertical-stack-in-card
     column_span: 1
@@ -4661,122 +4583,66 @@ views:
   - cards:
     - heading: New section
       type: heading
-    - entity: sensor.recent_alexa
-      grid_options:
-        columns: full
-      type: tile
-      hold_action:
-        action: fire-dom-event
-        browser_mod:
-          service: browser_mod.popup
-          data:
-            title: Sensor Trace
-            style: "ha-dialog {\n  --ha-dialog-surface-background: transparent !important;\n\
-              }\n\nha-dialog::part(surface) {\n  background-image: url('/local/themes/Frosted\
-              \ Glass/frosted-glass-dark-background.jpg') !important;\n  background-size:\
-              \ cover !important;\n  background-position: center !important;\n  background-repeat:\
-              \ no-repeat !important;\n}\n"
-            target:
-              device_id: dd902a1fafdfbdb69d60722ba32aa964
-            content:
-              type: markdown
-              title: Recent Alexa — Sensor Trace
-              content: "{% set alexas = [\n  states.media_player.blake_s_echo_dot_2,\n\
-                \  states.media_player.blake_s_echo_pop_2,\n  states.media_player.blake_s_echo_spot_2\n\
-                ] %}\n\n{% set all_echo = states.media_player.all_echo_2 %}\n\n##\
-                \ All Alexa entity states\n\n| Device | Original | `_2` |\n|---|---|---|\n\
-                | Dot | **{{ states('media_player.blake_s_echo_dot') }}** | **{{ states('media_player.blake_s_echo_dot_2')\
-                \ }}** |\n| Pop | **{{ states('media_player.blake_s_echo_pop') }}**\
-                \ | **{{ states('media_player.blake_s_echo_pop_2') }}** |\n| Spot\
-                \ | **{{ states('media_player.blake_s_echo_spot') }}** | **{{ states('media_player.blake_s_echo_spot_2')\
-                \ }}** |\n| All Echo | **{{ states('media_player.all_echo') }}** |\
-                \ **{{ states('media_player.all_echo_2') }}** |\n\n---\n\n# Recent\
-                \ Alexa calculation\n\n## Step 1 — Is All Echo playing?\n\nState:\n\
-                \n**`{{ all_echo.state }}`**\n\nTest:\n\n`{{ all_echo.state == 'playing'\
-                \ }}`\n\n{% if all_echo.state == 'playing' %}\n\n✅ **TRUE**\n\nAll\
-                \ Echo always wins while actively playing.\n\n### Result\n\n**`media_player.all_echo_2`**\n\
-                \n{% else %}\n\n❌ **FALSE**\n\nContinue to Step 2.\n\n---\n\n## Step\
-                \ 2 — Individual Echos currently playing\n\n{% set playing = alexas\n\
-                \  | selectattr('state', 'eq', 'playing')\n  | sort(attribute='last_changed',\
-                \ reverse=true)\n  | list\n%}\n\nDot playing:\n\n`{{ states('media_player.blake_s_echo_dot_2')\
-                \ == 'playing' }}`\n\nPop playing:\n\n`{{ states('media_player.blake_s_echo_pop_2')\
-                \ == 'playing' }}`\n\nSpot playing:\n\n`{{ states('media_player.blake_s_echo_spot_2')\
-                \ == 'playing' }}`\n\nNumber playing:\n\n**{{ playing | count }}**\n\
-                \n{% if playing | count > 0 %}\n\n### Playing entity state-change\
-                \ times\n\n| Entity | Last changed | Age |\n|---|---|---:|\n{% for\
-                \ p in playing %}\n| {{ p.name }} | {{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }} | {{ (now() - p.last_changed).total_seconds() | round(1) }}s\
-                \ |\n{% endfor %}\n\nThe list is sorted by `last_changed`, newest\
-                \ first.\n\n{% if playing | count > 1 %}\n\nMultiple individual Echos\
-                \ are playing, so the one with the newest `last_changed` wins.\n\n\
-                {% else %}\n\nOnly one individual Echo is playing, so it wins automatically.\n\
-                \n{% endif %}\n\n### Result\n\n**`{{ playing[0].entity_id }}`**\n\n\
-                {% else %}\n\n❌ No individual Echo is currently playing.\n\nContinue\
-                \ to Step 3.\n\n---\n\n## Step 3 — Paused Echos\n\n{% set paused =\
-                \ (alexas + [all_echo])\n  | selectattr('state', 'eq', 'paused')\n\
-                \  | sort(attribute='last_changed', reverse=true)\n  | list\n%}\n\n\
-                Only entities that are currently paused participate in this step.\n\
-                \nNumber paused:\n\n**{{ paused | count }}**\n\n{% if paused | count\
-                \ > 0 %}\n\n### Paused entity state-change times\n\n| Entity | Last\
-                \ changed | Age |\n|---|---|---:|\n{% for p in paused %}\n| {{ p.name\
-                \ }} | {{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3] }}\
-                \ | {{ (now() - p.last_changed).total_seconds() | round(1) }}s |\n\
-                {% endfor %}\n\n{% set provisional_winner = paused[0] %}\n\nThe list\
-                \ is sorted by `last_changed`, newest first.\n\nProvisional winner:\n\
-                \n**`{{ provisional_winner.entity_id }}`**\n\n---\n\n## Step 4 — All\
-                \ Echo 2-second override\n\nProvisional winner:\n\n**`{{ provisional_winner.entity_id\
-                \ }}`**\n\nIs provisional winner already All Echo:\n\n**{{ provisional_winner.entity_id\
-                \ == 'media_player.all_echo_2' }}**\n\nIs All Echo currently paused:\n\
-                \n**{{ all_echo.state == 'paused' }}**\n\n{% if provisional_winner.entity_id\
-                \ != 'media_player.all_echo_2'\n      and all_echo.state == 'paused'\
-                \ %}\n\n{% set diff =\n  ((all_echo.last_changed - provisional_winner.last_changed).total_seconds()\
-                \ | abs)\n%}\n\nProvisional winner timestamp:\n\n`{{ as_local(provisional_winner.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }}`\n\nAll Echo timestamp:\n\n`{{ as_local(all_echo.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }}`\n\nDifference:\n\n`| {{ all_echo.last_changed.timestamp() |\
-                \ round(3) }} - {{ provisional_winner.last_changed.timestamp() | round(3)\
-                \ }} |`\n\n`= {{ diff | round(3) }} seconds`\n\nWithin 2 seconds:\n\
-                \n`{{ diff | round(3) }} <= 2`\n\n**{{ diff <= 2 }}**\n\nFull override\
-                \ test:\n\n`provisional winner != All Echo`\n\nAND\n\n`All Echo state\
-                \ == paused`\n\nAND\n\n`difference <= 2 seconds`\n\n**{{ provisional_winner.entity_id\
-                \ != 'media_player.all_echo_2'\n    and all_echo.state == 'paused'\n\
-                \    and diff <= 2 }}**\n\n{% if diff <= 2 %}\n\n{% set diagnostic_winner\
-                \ = all_echo %}\n\n✅ All Echo wins the paused comparison.\n\n### Paused\
-                \ winner after override\n\n**`{{ diagnostic_winner.entity_id }}`**\n\
-                \n{% else %}\n\n{% set diagnostic_winner = provisional_winner %}\n\
-                \n❌ All Echo is not within 2 seconds.\n\n### Paused winner after override\n\
-                \n**`{{ diagnostic_winner.entity_id }}`**\n\n{% endif %}\n\n{% else\
-                \ %}\n\n{% set diagnostic_winner = provisional_winner %}\n\nThe All\
-                \ Echo override does not apply.\n\n### Paused winner after override\n\
-                \n**`{{ diagnostic_winner.entity_id }}`**\n\n{% endif %}\n\n---\n\n\
-                ## Step 5 — 10-minute sensor check\n\n{% set provisional_age =\n \
-                \ (now() - provisional_winner.last_changed).total_seconds()\n%}\n\n\
-                The real sensor performs its 10-minute check against the provisional\
-                \ winner before applying the override.\n\nAge of provisional winner:\n\
-                \n**{{ provisional_age | round(3) }} seconds**\n\nTest:\n\n`{{ provisional_age\
-                \ | round(3) }} < 600`\n\n**{{ provisional_age < 600 }}**\n\n{% if\
-                \ provisional_age < 600 %}\n\n✅ The provisional winner is within 10\
-                \ minutes.\n\nThe real sensor continues to its All Echo override logic.\n\
-                \n{% if provisional_winner.entity_id != 'media_player.all_echo_2'\n\
-                \      and all_echo.state == 'paused'\n      and ((all_echo.last_changed\
-                \ - provisional_winner.last_changed).total_seconds() | abs) <= 2 %}\n\
-                \n### Final calculated result\n\n**`media_player.all_echo_2`**\n\n\
-                {% else %}\n\n### Final calculated result\n\n**`{{ provisional_winner.entity_id\
-                \ }}`**\n\n{% endif %}\n\n{% else %}\n\n❌ The provisional winner is\
-                \ more than 10 minutes old.\n\nThe real sensor stops here and does\
-                \ not use the override result shown above.\n\n### Final calculated\
-                \ result\n\n**`none`**\n\n{% endif %}\n\n{% else %}\n\nNo Echo is\
-                \ currently paused.\n\n### Final calculated result\n\n**`none`**\n\
-                \n{% endif %}\n\n{% endif %}\n\n{% endif %}\n\n---\n\n# Actual sensor\
-                \ result\n\n**`{{ states('sensor.recent_alexa') }}`**"
-              card_mod:
-                style:
-                  ha-markdown$: "code {\n  background-color: var(--custom-bg) !important;\n\
-                    }\n"
     type: grid
   - cards:
     - heading: Template Cards
       type: heading
       heading_style: title
+    - features:
+      - type: custom:service-call
+        entries:
+        - type: button
+          entity_id: script.temporary_thermostat_adjustment
+          icon: "{% if is_state('script.temporary_thermostat_adjustment', 'on') %}\n\
+            \  mdi:stop\n{% else %}\n  local:thermostat_adjustment_script\n{% endif\
+            \ %}"
+          label: "{% if is_state('script.temporary_thermostat_adjustment', 'on') %}\n\
+            \  Stop\n{% else %}\n  Start\n{% endif %}"
+          styles: ":host {\n  border: var(--custom-button-border) !important;\n  border-radius:\
+            \ var(--custom-radius);\n  height: 40px;\n  width: 110px !important;\n\
+            \  flex: 0 0 110px !important;\n  --color: var(--custom-bg);\n}\n\n.label\
+            \ {\n  {% if is_state('script.temporary_thermostat_adjustment', 'on')\
+            \ %}\n    color: var(--custom-active);\n  {% else %}\n    color: var(--custom-contrast);\n\
+            \  {% endif %}\n}\n\n.icon {\n  {% if is_state('script.temporary_thermostat_adjustment',\
+            \ 'on') %}\n    color: var(--custom-active);\n  {% else %}\n    color:\
+            \ var(--custom-contrast);\n  {% endif %}\n  padding-bottom: .25rem;\n}"
+          tap_action:
+            action: "{% if is_state('script.temporary_thermostat_adjustment', 'on')\
+              \ %}\n  perform-action\n{% else %}\n  more-info\n{% endif %}"
+            perform_action: timer.finish
+            target:
+              entity_id: "{% if is_state('script.temporary_thermostat_adjustment',\
+                \ 'on') %}\n  timer.timer_helper\n{% else %}\n  script.temporary_thermostat_adjustment\n\
+                {% endif %}"
+            data: {}
+          thumb: md3-elevated
+          toggle_styles: false
+      type: custom:mushroom-template-card
+      grid_options:
+        columns: 12
+        rows: 1
+      entity: script.temporary_thermostat_adjustment
+      primary: dynamic template card
+      secondary: "{% if is_state('script.temporary_thermostat_adjustment', 'on') %}\n\
+        \  {{ states('timer.timer_helper') }}\n{% else %}\n  {{ states('script.temporary_thermostat_adjustment')\
+        \ }}\n{% endif %}"
+      icon: local:thermostat_adjustment_script
+      features_position: inline
+      color: "{% if is_state('script.temporary_thermostat_adjustment', 'on') %}\n\
+        \  var(--custom-active)\n{% else %}\n  var(--state-icon-color)\n{% endif %}"
+      uix:
+        style:
+          .: "ha-card {\n  border-radius: var(--custom-radius) !important;\n  border:\
+            \ var(--custom-border) !important;\n  background: none !important;\n}\n\
+            \nha-card::before {\n  content: none !important;\n}\n\n.content {\n  padding-inline-start:\
+            \ 7px !important;\n  gap: 4px !important;\n}\n\nha-tile-icon {\n  --tile-icon-size:\
+            \ 35px !important;\n  --mdc-icon-size: 32px !important;\n}\n\nha-tile-info\
+            \ {\n  --ha-tile-info-gap: 2px !important;\n\n  {% if is_state('script.temporary_thermostat_adjustment',\
+            \ 'on') %}\n    --ha-tile-info-primary-color: var(--custom-active) !important;\n\
+            \    --ha-tile-info-secondary-color: rgb(255, 193, 7) !important;\n  {%\
+            \ endif %}\n}\n\n.container.horizontal .features-inline {\n  width: auto\
+            \ !important;\n  flex: 0 0 auto !important;\n  padding: 0 !important;\n\
+            \  margin-inline-end: 12px !important;\n}\n"
     - custom_fields:
         run_button:
           card:
@@ -4944,7 +4810,7 @@ views:
       - type: custom:service-call
         entries:
         - icon: mdi:arrow-all
-          label: button
+          label: button feature
           styles: ":host {\n  border: var(--custom-button-border) !important;\n  border-radius:\
             \ var(--custom-radius);\n  height: 40px;\n  width: 140px !important;\n\
             \  flex: 0 0 140px !important;\n}\n:host {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
