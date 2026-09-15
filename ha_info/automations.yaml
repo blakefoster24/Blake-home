@@ -487,7 +487,7 @@
           - light.bedroom_lamp
         options:
           for: 00:00:00
-          behavior: any
+          behavior: all
       - condition: occupancy.is_not_detected
         target:
           entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_either

@@ -374,6 +374,13 @@ views:
         tap_action:
           action: none
         features_position: bottom
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+              \ 35px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start: -5px !important;\n}\n"
       - type: tile
         grid_options:
           columns: full
@@ -382,6 +389,13 @@ views:
         tap_action:
           action: none
         features_position: bottom
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+              \ 35px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start: -5px !important;\n}\n"
       - entity: sensor.recent_alexa
         grid_options:
           columns: full
@@ -491,17 +505,55 @@ views:
                   style:
                     ha-markdown$: "code {\n  background-color: var(--custom-bg) !important;\n\
                       }\n"
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+              \ 35px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start: -5px !important;\n}\n"
       - entity: input_boolean.phone_active
         type: tile
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 35px !important;\n  --mdc-icon-size:\
+              \ 30px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start: -2px !important;\n}\n"
       - entity: input_boolean.disable_toggle
         features_position: bottom
         name: Music Disable
         type: tile
         vertical: false
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 35px !important;\n  --mdc-icon-size:\
+              \ 30px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start: -2px !important;\n}\n"
       - type: tile
         entity: sensor.bathroom_humidity_derivative
+        name: Humidity Change
+        vertical: false
+        features_position: bottom
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 35px !important;\n  --mdc-icon-size:\
+              \ 30px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start:  !important;\n}\n"
       - type: tile
         entity: sensor.bathroom_humidity
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  margin-inline-start: -5px  !important;\n\
+              }\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+              \ 40px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start: -7px !important;\n}\n"
       hash: '#helper'
       hide_backdrop: true
       icon: mdi:tools
@@ -601,10 +653,28 @@ views:
           columns: 12
           rows: auto
         type: grid
-      - entity: sensor.blakes_iphone_pressure
-        features_position: bottom
+      - color: white
+        entity: binary_sensor.apartment_presence
+        features:
+        - entries:
+          - entity_id: binary_sensor.apartment_presence
+            icon: mdi:tools
+            label: View
+            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+              \  border-radius: var(--custom-radius);\n  height: 40px;\n  width: 140px\
+              \ !important;\n  flex: 0 0 140px !important;\n  --color: var(--custom-bg)\
+              \ !important;\n}\n.label {\n  color: {{ 'var(--custom-contrast)' }};\n\
+              }\n.icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
+            tap_action:
+              action: navigate
+              navigation_path: '#helper'
+            thumb: md3-elevated
+            type: button
+          type: custom:service-call
+        features_position: inline
         grid_options:
-          columns: full
+          columns: 12
+          rows: 1
         hide_state: true
         icon: mdi:tools
         name: Helper States
@@ -613,6 +683,15 @@ views:
           navigation_path: '#helper'
         type: tile
         vertical: false
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start: !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+              \ 35px !important;\n}\nhui-card-features[slot=\"features-inline\"] {\n\
+              \  width: auto !important;\n  flex: 0 0 auto !important;\n  padding:\
+              \ 0 !important;\n  margin-inline-end: 20px !important;\n}\nha-tile-info\
+              \ {\n  --ha-tile-info-primary-font-size: 15px !important;\n"
       - color: white
         entity: binary_sensor.apartment_presence
         features:
@@ -620,11 +699,11 @@ views:
           - entity_id: binary_sensor.apartment_presence
             icon: mdi:shield-home
             label: View
-            styles: ":host {\n  min-width: 50px !important;\n  min-height: 40px !important;\n\
-              \  margin-right: 0px;\n  border: var(--custom-button-border) !important;\n\
-              \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
-              \ }};\n  box-shadow: none;\n}\n.label {\n  color: {{ 'var(--custom-contrast)'\
-              \ }};\n}\n.icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
+            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+              \  border-radius: var(--custom-radius);\n  height: 40px;\n  width: 140px\
+              \ !important;\n  flex: 0 0 140px !important;\n  --color: var(--custom-bg)\
+              \ !important;\n}\n.label {\n  color: {{ 'var(--custom-contrast)' }};\n\
+              }\n.icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
             tap_action:
               action: navigate
               navigation_path: /my-dashboard/security
@@ -644,6 +723,15 @@ views:
           action: none
         type: tile
         vertical: false
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start: !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+              \ 35px !important;\n}\nhui-card-features[slot=\"features-inline\"] {\n\
+              \  width: auto !important;\n  flex: 0 0 auto !important;\n  padding:\
+              \ 0 !important;\n  margin-inline-end: 20px !important;\n}\nha-tile-info\
+              \ {\n  --ha-tile-info-primary-font-size: 15px !important;\n"
       hash: '#nav'
       hide_backdrop: true
       icon: mdi:navigation-variant
@@ -1703,14 +1791,28 @@ views:
       icon: local:bed_sensor
       color: '{{ iif(is_state("binary_sensor.bed_presence_bb8594_bed_occupied_left",
         "on"), ''rgb(255, 193, 7)'', ''var(--state-icon-color)'') }}'
+      card_mod:
+        style:
+          ha-tile-container$: ".content {\n  padding-inline-start: 0px !important;\n\
+            \  gap: -10px !important;\n}\n"
+          .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+            \ 35px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+            \  margin-inline-start: -7px !important;\n}\n"
     - type: custom:mushroom-template-card
       features_position: bottom
-      entity: binary_sensor.bed_presence_bb8594_bed_occupied_right
+      entity: binary_sensor.bed_presence_bb8594_bed_occupied_left
       primary: Bed Occupied Right
       secondary: '{{ state_translated("sensor.bed_presence_bb8594_calibrated_right_pressure")}}%'
       icon: local:bed_sensor
       color: '{{ iif(is_state("binary_sensor.bed_presence_bb8594_bed_occupied_right",
         "on"), ''rgb(255, 193, 7)'', ''var(--state-icon-color)'') }}'
+      card_mod:
+        style:
+          ha-tile-container$: ".content {\n  padding-inline-start: 0px !important;\n\
+            \  gap: -10px !important;\n\n}\n"
+          .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+            \ 35px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+            \  margin-inline-start: -7px !important;\n}\n"
     features_position: bottom
     type: grid
   - cards:
@@ -2676,6 +2778,54 @@ views:
       tap_action:
         action: none
       type: custom:button-card
+    - type: tile
+      grid_options:
+        columns: 12
+        rows: 1
+      entity: script.push_ha_info_to_github_create_ai_zip_file_now
+      name: Generate Ha Info folder
+      vertical: false
+      features:
+      - type: custom:service-call
+        entries:
+        - entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
+          icon: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+            \ 'on') %}\n      null\n    {% else %}\n      local:github_zip_script\n\
+            \    {% endif %} \n"
+          label: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+            \ 'on') %}\n      Generating...\n    {% else %}\n      Generate\n    {%\
+            \ endif %} \n"
+          styles: ":host {\n  border: var(--custom-button-border) !important;\n  border-radius:\
+            \ var(--custom-radius);\n  height: 40px;\n  width: 140px !important;\n\
+            \  flex: 0 0 140px !important;\n}\n:host {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+            \ 'on') %}\n      --color: var(--custom-bg-active);\n    {% else %}\n\
+            \      --color: var(--custom-bg);\n    {% endif %}\n}\n.label {\n    {%\
+            \ if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+            \ 'on') %}\n      color: var(--custom-contrast-active);\n    {% else %}\n\
+            \      color: var(--custom-contrast);\n    {% endif %} \n}\n.icon {\n\
+            \    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+            \ 'on') %}\n      color: var(--custom-contrast-active);\n    {% else %}\n\
+            \      color: var(--custom-contrast);\n    {% endif %}\n  padding-bottom:\
+            \ .25rem\n}"
+          tap_action:
+            action: perform-action
+            perform_action: script.turn_on
+            target:
+              entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
+            data: {}
+          thumb: md3-elevated
+          toggle_styles: false
+          type: button
+      features_position: inline
+      card_mod:
+        style:
+          ha-tile-container$: ".content {\n  padding-inline-start: 4px !important;\n\
+            \  gap: 4px !important;\n}\n"
+          .: "ha-tile-icon {\n  --tile-icon-size: 4rem !important;\n  --mdc-icon-size:\
+            \ 3rem !important;\n}\nhui-card-features[slot=\"features-inline\"] {\n\
+            \  width: 130px !important;\n  flex: 0 0 130px !important;\n  padding:\
+            \ 0 !important;\n  margin-inline-end: 20px !important;\n}\nha-tile-info\
+            \ {\n  --ha-tile-info-gap: 4px !important;\n}\nha-card {\n\n}\n"
     type: grid
   - cards:
     - bg_blur: '30'
@@ -4511,29 +4661,141 @@ views:
   - cards:
     - heading: New section
       type: heading
+    - entity: sensor.recent_alexa
+      grid_options:
+        columns: full
+      type: tile
+      hold_action:
+        action: fire-dom-event
+        browser_mod:
+          service: browser_mod.popup
+          data:
+            title: Sensor Trace
+            style: "ha-dialog {\n  --ha-dialog-surface-background: transparent !important;\n\
+              }\n\nha-dialog::part(surface) {\n  background-image: url('/local/themes/Frosted\
+              \ Glass/frosted-glass-dark-background.jpg') !important;\n  background-size:\
+              \ cover !important;\n  background-position: center !important;\n  background-repeat:\
+              \ no-repeat !important;\n}\n"
+            target:
+              device_id: dd902a1fafdfbdb69d60722ba32aa964
+            content:
+              type: markdown
+              title: Recent Alexa — Sensor Trace
+              content: "{% set alexas = [\n  states.media_player.blake_s_echo_dot_2,\n\
+                \  states.media_player.blake_s_echo_pop_2,\n  states.media_player.blake_s_echo_spot_2\n\
+                ] %}\n\n{% set all_echo = states.media_player.all_echo_2 %}\n\n##\
+                \ All Alexa entity states\n\n| Device | Original | `_2` |\n|---|---|---|\n\
+                | Dot | **{{ states('media_player.blake_s_echo_dot') }}** | **{{ states('media_player.blake_s_echo_dot_2')\
+                \ }}** |\n| Pop | **{{ states('media_player.blake_s_echo_pop') }}**\
+                \ | **{{ states('media_player.blake_s_echo_pop_2') }}** |\n| Spot\
+                \ | **{{ states('media_player.blake_s_echo_spot') }}** | **{{ states('media_player.blake_s_echo_spot_2')\
+                \ }}** |\n| All Echo | **{{ states('media_player.all_echo') }}** |\
+                \ **{{ states('media_player.all_echo_2') }}** |\n\n---\n\n# Recent\
+                \ Alexa calculation\n\n## Step 1 — Is All Echo playing?\n\nState:\n\
+                \n**`{{ all_echo.state }}`**\n\nTest:\n\n`{{ all_echo.state == 'playing'\
+                \ }}`\n\n{% if all_echo.state == 'playing' %}\n\n✅ **TRUE**\n\nAll\
+                \ Echo always wins while actively playing.\n\n### Result\n\n**`media_player.all_echo_2`**\n\
+                \n{% else %}\n\n❌ **FALSE**\n\nContinue to Step 2.\n\n---\n\n## Step\
+                \ 2 — Individual Echos currently playing\n\n{% set playing = alexas\n\
+                \  | selectattr('state', 'eq', 'playing')\n  | sort(attribute='last_changed',\
+                \ reverse=true)\n  | list\n%}\n\nDot playing:\n\n`{{ states('media_player.blake_s_echo_dot_2')\
+                \ == 'playing' }}`\n\nPop playing:\n\n`{{ states('media_player.blake_s_echo_pop_2')\
+                \ == 'playing' }}`\n\nSpot playing:\n\n`{{ states('media_player.blake_s_echo_spot_2')\
+                \ == 'playing' }}`\n\nNumber playing:\n\n**{{ playing | count }}**\n\
+                \n{% if playing | count > 0 %}\n\n### Playing entity state-change\
+                \ times\n\n| Entity | Last changed | Age |\n|---|---|---:|\n{% for\
+                \ p in playing %}\n| {{ p.name }} | {{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }} | {{ (now() - p.last_changed).total_seconds() | round(1) }}s\
+                \ |\n{% endfor %}\n\nThe list is sorted by `last_changed`, newest\
+                \ first.\n\n{% if playing | count > 1 %}\n\nMultiple individual Echos\
+                \ are playing, so the one with the newest `last_changed` wins.\n\n\
+                {% else %}\n\nOnly one individual Echo is playing, so it wins automatically.\n\
+                \n{% endif %}\n\n### Result\n\n**`{{ playing[0].entity_id }}`**\n\n\
+                {% else %}\n\n❌ No individual Echo is currently playing.\n\nContinue\
+                \ to Step 3.\n\n---\n\n## Step 3 — Paused Echos\n\n{% set paused =\
+                \ (alexas + [all_echo])\n  | selectattr('state', 'eq', 'paused')\n\
+                \  | sort(attribute='last_changed', reverse=true)\n  | list\n%}\n\n\
+                Only entities that are currently paused participate in this step.\n\
+                \nNumber paused:\n\n**{{ paused | count }}**\n\n{% if paused | count\
+                \ > 0 %}\n\n### Paused entity state-change times\n\n| Entity | Last\
+                \ changed | Age |\n|---|---|---:|\n{% for p in paused %}\n| {{ p.name\
+                \ }} | {{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3] }}\
+                \ | {{ (now() - p.last_changed).total_seconds() | round(1) }}s |\n\
+                {% endfor %}\n\n{% set provisional_winner = paused[0] %}\n\nThe list\
+                \ is sorted by `last_changed`, newest first.\n\nProvisional winner:\n\
+                \n**`{{ provisional_winner.entity_id }}`**\n\n---\n\n## Step 4 — All\
+                \ Echo 2-second override\n\nProvisional winner:\n\n**`{{ provisional_winner.entity_id\
+                \ }}`**\n\nIs provisional winner already All Echo:\n\n**{{ provisional_winner.entity_id\
+                \ == 'media_player.all_echo_2' }}**\n\nIs All Echo currently paused:\n\
+                \n**{{ all_echo.state == 'paused' }}**\n\n{% if provisional_winner.entity_id\
+                \ != 'media_player.all_echo_2'\n      and all_echo.state == 'paused'\
+                \ %}\n\n{% set diff =\n  ((all_echo.last_changed - provisional_winner.last_changed).total_seconds()\
+                \ | abs)\n%}\n\nProvisional winner timestamp:\n\n`{{ as_local(provisional_winner.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }}`\n\nAll Echo timestamp:\n\n`{{ as_local(all_echo.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+                \ }}`\n\nDifference:\n\n`| {{ all_echo.last_changed.timestamp() |\
+                \ round(3) }} - {{ provisional_winner.last_changed.timestamp() | round(3)\
+                \ }} |`\n\n`= {{ diff | round(3) }} seconds`\n\nWithin 2 seconds:\n\
+                \n`{{ diff | round(3) }} <= 2`\n\n**{{ diff <= 2 }}**\n\nFull override\
+                \ test:\n\n`provisional winner != All Echo`\n\nAND\n\n`All Echo state\
+                \ == paused`\n\nAND\n\n`difference <= 2 seconds`\n\n**{{ provisional_winner.entity_id\
+                \ != 'media_player.all_echo_2'\n    and all_echo.state == 'paused'\n\
+                \    and diff <= 2 }}**\n\n{% if diff <= 2 %}\n\n{% set diagnostic_winner\
+                \ = all_echo %}\n\n✅ All Echo wins the paused comparison.\n\n### Paused\
+                \ winner after override\n\n**`{{ diagnostic_winner.entity_id }}`**\n\
+                \n{% else %}\n\n{% set diagnostic_winner = provisional_winner %}\n\
+                \n❌ All Echo is not within 2 seconds.\n\n### Paused winner after override\n\
+                \n**`{{ diagnostic_winner.entity_id }}`**\n\n{% endif %}\n\n{% else\
+                \ %}\n\n{% set diagnostic_winner = provisional_winner %}\n\nThe All\
+                \ Echo override does not apply.\n\n### Paused winner after override\n\
+                \n**`{{ diagnostic_winner.entity_id }}`**\n\n{% endif %}\n\n---\n\n\
+                ## Step 5 — 10-minute sensor check\n\n{% set provisional_age =\n \
+                \ (now() - provisional_winner.last_changed).total_seconds()\n%}\n\n\
+                The real sensor performs its 10-minute check against the provisional\
+                \ winner before applying the override.\n\nAge of provisional winner:\n\
+                \n**{{ provisional_age | round(3) }} seconds**\n\nTest:\n\n`{{ provisional_age\
+                \ | round(3) }} < 600`\n\n**{{ provisional_age < 600 }}**\n\n{% if\
+                \ provisional_age < 600 %}\n\n✅ The provisional winner is within 10\
+                \ minutes.\n\nThe real sensor continues to its All Echo override logic.\n\
+                \n{% if provisional_winner.entity_id != 'media_player.all_echo_2'\n\
+                \      and all_echo.state == 'paused'\n      and ((all_echo.last_changed\
+                \ - provisional_winner.last_changed).total_seconds() | abs) <= 2 %}\n\
+                \n### Final calculated result\n\n**`media_player.all_echo_2`**\n\n\
+                {% else %}\n\n### Final calculated result\n\n**`{{ provisional_winner.entity_id\
+                \ }}`**\n\n{% endif %}\n\n{% else %}\n\n❌ The provisional winner is\
+                \ more than 10 minutes old.\n\nThe real sensor stops here and does\
+                \ not use the override result shown above.\n\n### Final calculated\
+                \ result\n\n**`none`**\n\n{% endif %}\n\n{% else %}\n\nNo Echo is\
+                \ currently paused.\n\n### Final calculated result\n\n**`none`**\n\
+                \n{% endif %}\n\n{% endif %}\n\n{% endif %}\n\n---\n\n# Actual sensor\
+                \ result\n\n**`{{ states('sensor.recent_alexa') }}`**"
+              card_mod:
+                style:
+                  ha-markdown$: "code {\n  background-color: var(--custom-bg) !important;\n\
+                    }\n"
     type: grid
   - cards:
-    - heading: New section
+    - heading: Template Cards
       type: heading
+      heading_style: title
     - custom_fields:
         run_button:
           card:
             entity: script.temporary_thermostat_adjustment
             icon: local:thermostat_adjustment_script
-            name: custom
+            name: custom button
             show_state: false
             styles:
               card:
               - background-color: "[[[\n  return entity.state === 'on' ? 'color-mix(in\
                   \ srgb, var(--primary-color) 20%, transparent)' : 'var(--secondary-background-color,\
                   \ rgba(0, 0, 0, 0.2))';\n]]]\n"
-              - border: 1px solid rgba(255, 255, 255, 0.2) !important;
+              - border: var(--custom-button-border)
               - border-radius: 20px;
               - height: 3rem
-              - padding-right: 3rem
-              - padding-left: 2.8rem
               - box-shadow: none
-              - justify-self: center
+              - justify-self: end
+              - padding-left: 10px
+              - padding-right: 18px
               - width: auto
               grid:
               - grid-template-areas: '"i n"'
@@ -4605,13 +4867,10 @@ views:
                 icon: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
                   \ 'on') %}\n      null\n    {% else %}\n      local:github_zip_script\n\
                   \    {% endif %} \n"
-                label: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      Generating...\n    {% else %}\n      Generate\n\
-                  \    {% endif %} \n"
+                label: button feature
                 styles: ":host {\n  border: var(--custom-button-border) !important;\n\
                   \  border-radius: var(--custom-radius);\n  box-shadow: none;\n \
-                  \ margin-right: auto\n  margin-left: auto  \n  width: auto\n  justify-content:\
-                  \ space-around\n  justify-self: space-around\n  justify-items: space-around\n\
+                  \ margin-right: auto;\n  margin-left: auto;\n  width: auto;\n\n\
                   }\n:host {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
                   \ 'on') %}\n      --color: var(--custom-bg-active);\n    {% else\
                   \ %}\n      --color: var(--custom-bg);\n    {% endif %}\n}\n.label\
@@ -4635,12 +4894,12 @@ views:
             type: custom:custom-features-card
             uix:
               style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
-                \ none;\n  margin-right: auto\n  margin-left: auto\n  width: auto\n\
-                \  justify-content: space-around\n  justify-self: space-around\n \
-                \ justify-items: space-around\n\n}\nha-card::before {\ncontent: none\
-                \ !important;\n}\n"
+                \ none;\n  margin-right: auto;\n  margin-left: auto;\n  width: auto;\n\
+                \  justify-content: space-around;\n  justify-self: space-around;\n\
+                \  justify-items: space-around;\n\n}\nha-card::before {\ncontent:\
+                \ none !important;\n}\n"
       entity: script.push_ha_info_to_github_create_ai_zip_file_now
-      name: Generate HA Info Folder
+      name: Custom button card
       show_state: true
       state:
       - state_display: generating
@@ -4679,137 +4938,16 @@ views:
         columns: 12
         rows: 1
       entity: script.push_ha_info_to_github_create_ai_zip_file_now
-      name: Generate Ha Info folder
-      vertical: false
-      features:
-      - type: button
-        action_name: Generate
-        action: fire-dom-event
-        browser_mod:
-          service: browser_mod.popup
-          data:
-            title: SmartHomeScene.com
-            target:
-              device_id: dd902a1fafdfbdb69d60722ba32aa964
-            content:
-              type: markdown
-              title: Recent Alexa — Sensor Trace
-              content: "{% set alexas = [\n  states.media_player.blake_s_echo_dot_2,\n\
-                \  states.media_player.blake_s_echo_pop_2,\n  states.media_player.blake_s_echo_spot_2\n\
-                ] %}\n\n{% set all_echo = states.media_player.all_echo_2 %}\n\n{%\
-                \ set playing = alexas\n  | selectattr('state', 'eq', 'playing')\n\
-                \  | sort(attribute='last_changed', reverse=true)\n  | list\n%}\n\n\
-                {% set paused = (alexas + [all_echo])\n  | selectattr('state', 'eq',\
-                \ 'paused')\n  | sort(attribute='last_changed', reverse=true)\n  |\
-                \ list\n%}\n\n## All Alexa entity states\n\n| Device | Original |\
-                \ `_2` |\n|---|---|---|\n| Dot | **{{ states('media_player.blake_s_echo_dot')\
-                \ }}** | **{{ states('media_player.blake_s_echo_dot_2') }}** |\n|\
-                \ Pop | **{{ states('media_player.blake_s_echo_pop') }}** | **{{ states('media_player.blake_s_echo_pop_2')\
-                \ }}** |\n| Spot | **{{ states('media_player.blake_s_echo_spot') }}**\
-                \ | **{{ states('media_player.blake_s_echo_spot_2') }}** |\n| All\
-                \ Echo | **{{ states('media_player.all_echo') }}** | **{{ states('media_player.all_echo_2')\
-                \ }}** |\n\n### State-change times\n\n| Entity | Last changed | Age\
-                \ |\n|---|---|---:|\n| Dot | {{ as_local(states.media_player.blake_s_echo_dot.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }} | {{ (now() - states.media_player.blake_s_echo_dot.last_changed).total_seconds()\
-                \ | round(1) }}s |\n| Dot `_2` | {{ as_local(states.media_player.blake_s_echo_dot_2.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }} | {{ (now() - states.media_player.blake_s_echo_dot_2.last_changed).total_seconds()\
-                \ | round(1) }}s |\n| Pop | {{ as_local(states.media_player.blake_s_echo_pop.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }} | {{ (now() - states.media_player.blake_s_echo_pop.last_changed).total_seconds()\
-                \ | round(1) }}s |\n| Pop `_2` | {{ as_local(states.media_player.blake_s_echo_pop_2.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }} | {{ (now() - states.media_player.blake_s_echo_pop_2.last_changed).total_seconds()\
-                \ | round(1) }}s |\n| Spot | {{ as_local(states.media_player.blake_s_echo_spot.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }} | {{ (now() - states.media_player.blake_s_echo_spot.last_changed).total_seconds()\
-                \ | round(1) }}s |\n| Spot `_2` | {{ as_local(states.media_player.blake_s_echo_spot_2.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }} | {{ (now() - states.media_player.blake_s_echo_spot_2.last_changed).total_seconds()\
-                \ | round(1) }}s |\n| All Echo | {{ as_local(states.media_player.all_echo.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }} | {{ (now() - states.media_player.all_echo.last_changed).total_seconds()\
-                \ | round(1) }}s |\n| All Echo `_2` | {{ as_local(states.media_player.all_echo_2.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }} | {{ (now() - states.media_player.all_echo_2.last_changed).total_seconds()\
-                \ | round(1) }}s |\n\n---\n\n## Step 1 — Is All Echo playing?\n\n\
-                State:\n\n`{{ all_echo.state }}`\n\nTest:\n\n`{{ all_echo.state ==\
-                \ 'playing' }}`\n\n{% if all_echo.state == 'playing' %}\n\n✅ **TRUE**\n\
-                \nAll Echo wins immediately.\n\n**Result: `media_player.all_echo_2`**\n\
-                \n{% else %}\n\n❌ **FALSE**\n\nContinue to Step 2.\n\n{% endif %}\n\
-                \n---\n\n## Step 2 — Individual Echos currently playing\n\nDot playing:\n\
-                \n`{{ states('media_player.blake_s_echo_dot_2') == 'playing' }}`\n\
-                \nPop playing:\n\n`{{ states('media_player.blake_s_echo_pop_2') ==\
-                \ 'playing' }}`\n\nSpot playing:\n\n`{{ states('media_player.blake_s_echo_spot_2')\
-                \ == 'playing' }}`\n\nNumber playing:\n\n**{{ playing | count }}**\n\
-                \n{% if playing | count > 0 %}\n\nSorted by `last_changed`, newest\
-                \ first:\n\n{% for p in playing %}\n{{ loop.index }}. **{{ p.entity_id\
-                \ }}**\n   `{{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }}`\n{% endfor %}\n\nPlaying winner:\n\n**`{{ playing[0].entity_id\
-                \ }}`**\n\n{% else %}\n\nNo individual Echo is currently playing.\n\
-                \nContinue to Step 3.\n\n{% endif %}\n\n---\n\n## Step 3 — Paused\
-                \ Echos\n\nNumber paused:\n\n**{{ paused | count }}**\n\n{% if paused\
-                \ | count > 0 %}\n\nSorted by `last_changed`, newest first:\n\n{%\
-                \ for p in paused %}\n{{ loop.index }}. **{{ p.entity_id }}**\n  \
-                \ `{{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3] }}`\n\
-                \   — {{ (now() - p.last_changed).total_seconds() | round(1) }}s ago\n\
-                {% endfor %}\n\n{% set paused_winner = paused[0] %}\n{% set paused_age\
-                \ = (now() - paused_winner.last_changed).total_seconds() %}\n\nMost\
-                \ recently paused:\n\n**`{{ paused_winner.entity_id }}`**\n\nAge math:\n\
-                \n`{{ now().timestamp() | round(3) }} - {{ paused_winner.last_changed.timestamp()\
-                \ | round(3) }}`\n\n`= {{ paused_age | round(3) }} seconds`\n\nWithin\
-                \ 10 minutes:\n\n`{{ paused_age | round(3) }} < 600`\n\n**{{ paused_age\
-                \ < 600 }}**\n\n{% else %}\n\nNo Echo is currently paused.\n\n{% endif\
-                \ %}\n\n---\n\n## Step 4 — All Echo 2-second override\n\n{% if paused\
-                \ | count > 0 %}\n\n{% set paused_winner = paused[0] %}\n{% set diff\
-                \ =\n  ((all_echo.last_changed - paused_winner.last_changed).total_seconds()\
-                \ | abs)\n%}\n\nProvisional paused winner:\n\n**`{{ paused_winner.entity_id\
-                \ }}`**\n\nIs provisional winner already All Echo:\n\n**{{ paused_winner.entity_id\
-                \ == 'media_player.all_echo_2' }}**\n\nIs All Echo currently paused:\n\
-                \n**{{ all_echo.state == 'paused' }}**\n\n{% if paused_winner.entity_id\
-                \ != 'media_player.all_echo_2' %}\n\nWinner timestamp:\n\n`{{ as_local(paused_winner.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }}`\n\nAll Echo timestamp:\n\n`{{ as_local(all_echo.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                \ }}`\n\nDifference:\n\n`| {{ all_echo.last_changed.timestamp() |\
-                \ round(3) }} - {{ paused_winner.last_changed.timestamp() | round(3)\
-                \ }} |`\n\n`= {{ diff | round(3) }} seconds`\n\nWithin 2 seconds:\n\
-                \n`{{ diff | round(3) }} <= 2`\n\n**{{ diff <= 2 }}**\n\nFull override\
-                \ test:\n\n`winner != All Echo`\n\nAND\n\n`All Echo state == paused`\n\
-                \nAND\n\n`difference <= 2 seconds`\n\n**{{ paused_winner.entity_id\
-                \ != 'media_player.all_echo_2'\n    and all_echo.state == 'paused'\n\
-                \    and diff <= 2 }}**\n\n{% else %}\n\nAll Echo is already the newest\
-                \ paused device, so no override calculation is needed.\n\n{% endif\
-                \ %}\n\n{% else %}\n\nNo paused candidate exists, so there is no override\
-                \ test.\n\n{% endif %}\n\n---\n\n## Final calculation\n\n{% if all_echo.state\
-                \ == 'playing' %}\n\n  {% set calculated = 'media_player.all_echo_2'\
-                \ %}\n\n  **Branch:** All Echo currently playing\n\n{% elif playing\
-                \ | count > 0 %}\n\n  {% set calculated = playing[0].entity_id %}\n\
-                \n  **Branch:** Individual Echo currently playing\n\n{% elif paused\
-                \ | count > 0\n      and (now() - paused[0].last_changed).total_seconds()\
-                \ < 600 %}\n\n  {% set winner = paused[0] %}\n\n  {% if winner.entity_id\
-                \ != 'media_player.all_echo_2'\n        and all_echo.state == 'paused'\n\
-                \        and ((all_echo.last_changed - winner.last_changed).total_seconds()\
-                \ | abs) <= 2 %}\n\n    {% set calculated = 'media_player.all_echo_2'\
-                \ %}\n\n    **Branch:** Paused winner + All Echo 2-second override\n\
-                \n  {% else %}\n\n    {% set calculated = winner.entity_id %}\n\n\
-                \    **Branch:** Most recently paused\n\n  {% endif %}\n\n{% else\
-                \ %}\n\n  {% set calculated = 'none' %}\n\n  **Branch:** Nothing qualifying\
-                \ within 10 minutes\n\n{% endif %}\n\n### Calculated result\n\n**`{{\
-                \ calculated }}`**\n\n### Actual sensor\n\n**`{{ states('sensor.recent_alexa')\
-                \ }}`**\n\n### Match\n\n{% if calculated == states('sensor.recent_alexa')\
-                \ %}\n✅ **YES**\n{% else %}\n❌ **NO**\n{% endif %}"
-      features_position: inline
-    - type: tile
-      grid_options:
-        columns: 12
-        rows: 1
-      entity: script.push_ha_info_to_github_create_ai_zip_file_now
-      name: Generate Ha Info folder
+      name: Tile card custom testing this name overflow
       vertical: false
       features:
       - type: custom:service-call
         entries:
-        - entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
-          icon: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-            \ 'on') %}\n      null\n    {% else %}\n      local:github_zip_script\n\
-            \    {% endif %} \n"
-          label: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-            \ 'on') %}\n      Generating...\n    {% else %}\n      Generate\n    {%\
-            \ endif %} \n"
+        - icon: mdi:arrow-all
+          label: button
           styles: ":host {\n  border: var(--custom-button-border) !important;\n  border-radius:\
-            \ var(--custom-radius);\n  height: 40px;\n}\n:host {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
+            \ var(--custom-radius);\n  height: 40px;\n  width: 140px !important;\n\
+            \  flex: 0 0 140px !important;\n}\n:host {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
             \ 'on') %}\n      --color: var(--custom-bg-active);\n    {% else %}\n\
             \      --color: var(--custom-bg);\n    {% endif %}\n}\n.label {\n    {%\
             \ if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
@@ -4831,19 +4969,14 @@ views:
       features_position: inline
       card_mod:
         style:
-          ha-tile-icon$: ".shape {\n  width: 60px !important;\n  height: 60px !important;\n\
-            }\n"
-          .: "ha-tile-icon {\n  --mdc-icon-size: 45px;\n}\nha-card {\n  height: 50px;\n\
-            }\n"
+          ha-tile-container$: ".content {\n  padding-inline-start: 4px !important;\n\
+            \  gap: 4px !important;\n}\n"
+          .: "ha-tile-icon {\n  --tile-icon-size: 4rem !important;\n  --mdc-icon-size:\
+            \ 3rem !important;\n}\nhui-card-features[slot=\"features-inline\"] {\n\
+            \  width: auto !important;\n  flex: 0 0 auto !important;\n  padding: 0\
+            \ !important;\n  margin-inline-end: 20px !important;\n}\nha-tile-info\
+            \ {\n  --ha-tile-info-gap: 4px !important;\n}\nha-card {\n\n}\n"
     type: grid
-  - type: grid
-    cards:
-    - type: heading
-      heading: New section
-  - type: grid
-    cards:
-    - type: heading
-      heading: New section
   subview: false
   theme: Frosted Glass Dark
   title: Test Bay
