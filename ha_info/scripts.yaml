@@ -558,6 +558,21 @@ alexa_music:
                 entity_id: input_text.music_script_info
               data:
                 value: '{{ music_script_variables }} || Playing...'
+            - if:
+              - condition: select.is_option_selected
+                target:
+                  entity_id: input_select.speakers
+                options:
+                  for: 00:00:00
+                  option:
+                  - Echo Pop (Bathroom)
+              then:
+              - action: media_player.volume_set
+                metadata: {}
+                data:
+                  volume_level: 0.34
+                target:
+                  entity_id: media_player.blake_s_echo_pop_2
           - alias: Wakeup Sequence
             choose:
             - alias: 'Manual Wakeup: no delays'

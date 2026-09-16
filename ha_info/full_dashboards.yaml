@@ -360,394 +360,6 @@ views:
   max_columns: 4
   sections:
   - cards:
-    - bg_blur: '30'
-      bg_opacity: '50'
-      button_action: {}
-      button_type: switch
-      card_type: pop-up
-      cards:
-      - type: tile
-        grid_options:
-          columns: full
-        entity: input_datetime.home_timestamp
-        vertical: false
-        tap_action:
-          action: none
-        features_position: bottom
-        card_mod:
-          style:
-            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
-              \  gap: -10px !important;\n}\n"
-            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
-              \ 35px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
-              \  margin-inline-start: -5px !important;\n}\n"
-      - type: tile
-        grid_options:
-          columns: full
-        entity: input_datetime.last_door_open
-        vertical: false
-        tap_action:
-          action: none
-        features_position: bottom
-        card_mod:
-          style:
-            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
-              \  gap: -10px !important;\n}\n"
-            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
-              \ 35px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
-              \  margin-inline-start: -5px !important;\n}\n"
-      - entity: sensor.recent_alexa
-        grid_options:
-          columns: full
-        type: tile
-        hold_action:
-          action: fire-dom-event
-          browser_mod:
-            service: browser_mod.popup
-            data:
-              title: Sensor Trace
-              target:
-                device_id: dd902a1fafdfbdb69d60722ba32aa964
-              content:
-                type: markdown
-                title: Recent Alexa — Sensor Trace
-                content: "{% set alexas = [\n  states.media_player.blake_s_echo_dot_2,\n\
-                  \  states.media_player.blake_s_echo_pop_2,\n  states.media_player.blake_s_echo_spot_2\n\
-                  ] %}\n\n{% set all_echo = states.media_player.all_echo_2 %}\n\n\
-                  ## All Alexa entity states\n\n| Device | Original | `_2` |\n|---|---|---|\n\
-                  | Dot | **{{ states('media_player.blake_s_echo_dot') }}** | **{{\
-                  \ states('media_player.blake_s_echo_dot_2') }}** |\n| Pop | **{{\
-                  \ states('media_player.blake_s_echo_pop') }}** | **{{ states('media_player.blake_s_echo_pop_2')\
-                  \ }}** |\n| Spot | **{{ states('media_player.blake_s_echo_spot')\
-                  \ }}** | **{{ states('media_player.blake_s_echo_spot_2') }}** |\n\
-                  | All Echo | **{{ states('media_player.all_echo') }}** | **{{ states('media_player.all_echo_2')\
-                  \ }}** |\n\n---\n\n# Recent Alexa calculation\n\n## Step 1 — Is\
-                  \ All Echo playing?\n\nState:\n\n**`{{ all_echo.state }}`**\n\n\
-                  Test:\n\n`{{ all_echo.state == 'playing' }}`\n\n{% if all_echo.state\
-                  \ == 'playing' %}\n\n✅ **TRUE**\n\nAll Echo always wins while actively\
-                  \ playing.\n\n### Result\n\n**`media_player.all_echo_2`**\n\n{%\
-                  \ else %}\n\n❌ **FALSE**\n\nContinue to Step 2.\n\n---\n\n## Step\
-                  \ 2 — Individual Echos currently playing\n\n{% set playing = alexas\n\
-                  \  | selectattr('state', 'eq', 'playing')\n  | sort(attribute='last_changed',\
-                  \ reverse=true)\n  | list\n%}\n\nDot playing:\n\n`{{ states('media_player.blake_s_echo_dot_2')\
-                  \ == 'playing' }}`\n\nPop playing:\n\n`{{ states('media_player.blake_s_echo_pop_2')\
-                  \ == 'playing' }}`\n\nSpot playing:\n\n`{{ states('media_player.blake_s_echo_spot_2')\
-                  \ == 'playing' }}`\n\nNumber playing:\n\n**{{ playing | count }}**\n\
-                  \n{% if playing | count > 0 %}\n\n### Playing entity state-change\
-                  \ times\n\n| Entity | Last changed | Age |\n|---|---|---:|\n{% for\
-                  \ p in playing %}\n| {{ p.name }} | {{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                  \ }} | {{ (now() - p.last_changed).total_seconds() | round(1) }}s\
-                  \ |\n{% endfor %}\n\nThe list is sorted by `last_changed`, newest\
-                  \ first.\n\n{% if playing | count > 1 %}\n\nMultiple individual\
-                  \ Echos are playing, so the one with the newest `last_changed` wins.\n\
-                  \n{% else %}\n\nOnly one individual Echo is playing, so it wins\
-                  \ automatically.\n\n{% endif %}\n\n### Result\n\n**`{{ playing[0].entity_id\
-                  \ }}`**\n\n{% else %}\n\n❌ No individual Echo is currently playing.\n\
-                  \nContinue to Step 3.\n\n---\n\n## Step 3 — Paused Echos\n\n{% set\
-                  \ paused = (alexas + [all_echo])\n  | selectattr('state', 'eq',\
-                  \ 'paused')\n  | sort(attribute='last_changed', reverse=true)\n\
-                  \  | list\n%}\n\nOnly entities that are currently paused participate\
-                  \ in this step.\n\nNumber paused:\n\n**{{ paused | count }}**\n\n\
-                  {% if paused | count > 0 %}\n\n### Paused entity state-change times\n\
-                  \n| Entity | Last changed | Age |\n|---|---|---:|\n{% for p in paused\
-                  \ %}\n| {{ p.name }} | {{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                  \ }} | {{ (now() - p.last_changed).total_seconds() | round(1) }}s\
-                  \ |\n{% endfor %}\n\n{% set provisional_winner = paused[0] %}\n\n\
-                  The list is sorted by `last_changed`, newest first.\n\nProvisional\
-                  \ winner:\n\n**`{{ provisional_winner.entity_id }}`**\n\n---\n\n\
-                  ## Step 4 — All Echo 2-second override\n\nProvisional winner:\n\n\
-                  **`{{ provisional_winner.entity_id }}`**\n\nIs provisional winner\
-                  \ already All Echo:\n\n**{{ provisional_winner.entity_id == 'media_player.all_echo_2'\
-                  \ }}**\n\nIs All Echo currently paused:\n\n**{{ all_echo.state ==\
-                  \ 'paused' }}**\n\n{% if provisional_winner.entity_id != 'media_player.all_echo_2'\n\
-                  \      and all_echo.state == 'paused' %}\n\n{% set diff =\n  ((all_echo.last_changed\
-                  \ - provisional_winner.last_changed).total_seconds() | abs)\n%}\n\
-                  \nProvisional winner timestamp:\n\n`{{ as_local(provisional_winner.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                  \ }}`\n\nAll Echo timestamp:\n\n`{{ as_local(all_echo.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                  \ }}`\n\nDifference:\n\n`| {{ all_echo.last_changed.timestamp()\
-                  \ | round(3) }} - {{ provisional_winner.last_changed.timestamp()\
-                  \ | round(3) }} |`\n\n`= {{ diff | round(3) }} seconds`\n\nWithin\
-                  \ 2 seconds:\n\n`{{ diff | round(3) }} <= 2`\n\n**{{ diff <= 2 }}**\n\
-                  \nFull override test:\n\n`provisional winner != All Echo`\n\nAND\n\
-                  \n`All Echo state == paused`\n\nAND\n\n`difference <= 2 seconds`\n\
-                  \n**{{ provisional_winner.entity_id != 'media_player.all_echo_2'\n\
-                  \    and all_echo.state == 'paused'\n    and diff <= 2 }}**\n\n\
-                  {% if diff <= 2 %}\n\n{% set diagnostic_winner = all_echo %}\n\n\
-                  ✅ All Echo wins the paused comparison.\n\n### Paused winner after\
-                  \ override\n\n**`{{ diagnostic_winner.entity_id }}`**\n\n{% else\
-                  \ %}\n\n{% set diagnostic_winner = provisional_winner %}\n\n❌ All\
-                  \ Echo is not within 2 seconds.\n\n### Paused winner after override\n\
-                  \n**`{{ diagnostic_winner.entity_id }}`**\n\n{% endif %}\n\n{% else\
-                  \ %}\n\n{% set diagnostic_winner = provisional_winner %}\n\nThe\
-                  \ All Echo override does not apply.\n\n### Paused winner after override\n\
-                  \n**`{{ diagnostic_winner.entity_id }}`**\n\n{% endif %}\n\n---\n\
-                  \n## Step 5 — 10-minute sensor check\n\n{% set provisional_age =\n\
-                  \  (now() - provisional_winner.last_changed).total_seconds()\n%}\n\
-                  \nThe real sensor performs its 10-minute check against the provisional\
-                  \ winner before applying the override.\n\nAge of provisional winner:\n\
-                  \n**{{ provisional_age | round(3) }} seconds**\n\nTest:\n\n`{{ provisional_age\
-                  \ | round(3) }} < 600`\n\n**{{ provisional_age < 600 }}**\n\n{%\
-                  \ if provisional_age < 600 %}\n\n✅ The provisional winner is within\
-                  \ 10 minutes.\n\nThe real sensor continues to its All Echo override\
-                  \ logic.\n\n{% if provisional_winner.entity_id != 'media_player.all_echo_2'\n\
-                  \      and all_echo.state == 'paused'\n      and ((all_echo.last_changed\
-                  \ - provisional_winner.last_changed).total_seconds() | abs) <= 2\
-                  \ %}\n\n### Final calculated result\n\n**`media_player.all_echo_2`**\n\
-                  \n{% else %}\n\n### Final calculated result\n\n**`{{ provisional_winner.entity_id\
-                  \ }}`**\n\n{% endif %}\n\n{% else %}\n\n❌ The provisional winner\
-                  \ is more than 10 minutes old.\n\nThe real sensor stops here and\
-                  \ does not use the override result shown above.\n\n### Final calculated\
-                  \ result\n\n**`none`**\n\n{% endif %}\n\n{% else %}\n\nNo Echo is\
-                  \ currently paused.\n\n### Final calculated result\n\n**`none`**\n\
-                  \n{% endif %}\n\n{% endif %}\n\n{% endif %}\n\n---\n\n# Actual sensor\
-                  \ result\n\n**`{{ states('sensor.recent_alexa') }}`**"
-                card_mod:
-                  style:
-                    ha-markdown$: "code {\n  background-color: var(--custom-bg) !important;\n\
-                      }\n"
-        card_mod:
-          style:
-            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
-              \  gap: -10px !important;\n}\n"
-            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
-              \ 35px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
-              \  margin-inline-start: -5px !important;\n}\n"
-      - entity: input_boolean.phone_active
-        type: tile
-        card_mod:
-          style:
-            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
-              \  gap: -10px !important;\n}\n"
-            .: "ha-tile-icon {\n  --tile-icon-size: 35px !important;\n  --mdc-icon-size:\
-              \ 30px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
-              \  margin-inline-start: -2px !important;\n}\n"
-      - entity: input_boolean.disable_toggle
-        features_position: bottom
-        name: Music Disable
-        type: tile
-        vertical: false
-        card_mod:
-          style:
-            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
-              \  gap: -10px !important;\n}\n"
-            .: "ha-tile-icon {\n  --tile-icon-size: 35px !important;\n  --mdc-icon-size:\
-              \ 30px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
-              \  margin-inline-start: -2px !important;\n}\n"
-      - type: tile
-        entity: sensor.bathroom_humidity_derivative
-        name: Humidity Change
-        vertical: false
-        features_position: bottom
-        card_mod:
-          style:
-            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
-              \  gap: -10px !important;\n}\n"
-            .: "ha-tile-icon {\n  --tile-icon-size: 35px !important;\n  --mdc-icon-size:\
-              \ 30px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
-              \  margin-inline-start:  !important;\n}\n"
-      - type: tile
-        entity: sensor.bathroom_humidity
-        card_mod:
-          style:
-            ha-tile-container$: ".content {\n  margin-inline-start: -5px  !important;\n\
-              }\n"
-            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
-              \ 40px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
-              \  margin-inline-start: -7px !important;\n}\n"
-      hash: '#helper'
-      hide_backdrop: true
-      icon: mdi:tools
-      name: Current Helpers
-      show_header: true
-      slider_fill_orientation: left
-      slider_value_position: right
-      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
-        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
-        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
-        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
-        }"
-      sub_button:
-        bottom: []
-        main: []
-      type: custom:bubble-card
-    - bg_blur: '30'
-      bg_opacity: '20'
-      button_action: {}
-      button_type: switch
-      card_type: pop-up
-      cards:
-      - cards:
-        - icon: mdi:robot
-          name: Automations
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/automation
-          type: button
-        - icon: mdi:palette
-          name: Scenes
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/scene
-          type: button
-        - icon: mdi:script-text
-          name: Scripts
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/script
-          type: button
-        - icon: mdi:puzzle
-          name: Integrations
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/integrations
-          type: button
-        - icon: mdi:shape
-          name: Entities
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/entities
-          type: button
-        - icon: mdi:tools
-          name: Helpers
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/helpers
-          type: button
-        - icon: mdi:devices
-          name: Devices
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/devices
-          type: button
-        - icon: mdi:format-list-bulleted
-          name: Activity
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /logbook
-          type: button
-        - icon: mdi:chart-box
-          name: History
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /history
-          type: button
-        grid_options:
-          columns: 12
-          rows: auto
-        type: grid
-      - color: white
-        entity: binary_sensor.apartment_presence
-        features:
-        - entries:
-          - entity_id: binary_sensor.apartment_presence
-            icon: mdi:tools
-            label: View
-            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-              \  border-radius: var(--custom-radius);\n  height: 40px;\n  width: 140px\
-              \ !important;\n  flex: 0 0 140px !important;\n  --color: var(--custom-bg)\
-              \ !important;\n}\n.label {\n  color: {{ 'var(--custom-contrast)' }};\n\
-              }\n.icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
-            tap_action:
-              action: navigate
-              navigation_path: '#helper'
-            thumb: md3-elevated
-            type: button
-          type: custom:service-call
-        features_position: inline
-        grid_options:
-          columns: 12
-          rows: 1
-        hide_state: true
-        icon: mdi:tools
-        name: Helper States
-        tap_action:
-          action: navigate
-          navigation_path: '#helper'
-        type: tile
-        vertical: false
-        card_mod:
-          style:
-            ha-tile-container$: ".content {\n  padding-inline-start: !important;\n\
-              \  gap: -10px !important;\n}\n"
-            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
-              \ 35px !important;\n}\nhui-card-features[slot=\"features-inline\"] {\n\
-              \  width: auto !important;\n  flex: 0 0 auto !important;\n  padding:\
-              \ 0 !important;\n  margin-inline-end: 20px !important;\n}\nha-tile-info\
-              \ {\n  --ha-tile-info-primary-font-size: 15px !important;\n"
-      - color: white
-        entity: binary_sensor.apartment_presence
-        features:
-        - entries:
-          - entity_id: binary_sensor.apartment_presence
-            icon: mdi:shield-home
-            label: View
-            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-              \  border-radius: var(--custom-radius);\n  height: 40px;\n  width: 140px\
-              \ !important;\n  flex: 0 0 140px !important;\n  --color: var(--custom-bg)\
-              \ !important;\n}\n.label {\n  color: {{ 'var(--custom-contrast)' }};\n\
-              }\n.icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
-            tap_action:
-              action: navigate
-              navigation_path: /my-dashboard/security
-            thumb: md3-elevated
-            type: button
-          type: custom:service-call
-        features_position: inline
-        grid_options:
-          columns: 12
-          rows: 1
-        hide_state: true
-        icon: mdi:shield-home
-        icon_tap_action:
-          action: none
-        name: Security Dashboard
-        tap_action:
-          action: none
-        type: tile
-        vertical: false
-        card_mod:
-          style:
-            ha-tile-container$: ".content {\n  padding-inline-start: !important;\n\
-              \  gap: -10px !important;\n}\n"
-            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
-              \ 35px !important;\n}\nhui-card-features[slot=\"features-inline\"] {\n\
-              \  width: auto !important;\n  flex: 0 0 auto !important;\n  padding:\
-              \ 0 !important;\n  margin-inline-end: 20px !important;\n}\nha-tile-info\
-              \ {\n  --ha-tile-info-primary-font-size: 15px !important;\n"
-      hash: '#nav'
-      hide_backdrop: true
-      icon: mdi:navigation-variant
-      name: Shortcuts
-      show_header: true
-      slider_fill_orientation: left
-      slider_value_position: right
-      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
-        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
-        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
-        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
-        }"
-      sub_button:
-        bottom: []
-        main: []
-      type: custom:bubble-card
     - card_mod:
         style: "ha-card {\n  background: var(--custom-bg) !important;\n}\nha-tile-icon\
           \ {\n  --tile-color: var(--custom-contrast) !important;\n}\n"
@@ -763,7 +375,7 @@ views:
       name: Shortcuts
       tap_action:
         action: navigate
-        navigation_path: '#nav'
+        navigation_path: /my-dashboard/popup#nav
       type: tile
       vertical: false
     - entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
@@ -1351,6 +963,9 @@ views:
       heading_style: title
       icon: mdi:hammer-screwdriver
       type: heading
+      tap_action:
+        action: navigate
+        navigation_path: '#Work'
       uix:
         style:
           .: ".title {\n  font-size: 20px !important;\n}\n\n.title ha-icon {\n  --mdc-icon-size:\
@@ -2173,169 +1788,8 @@ views:
       icon: mdi:music
       type: heading
       tap_action:
-        action: fire-dom-event
-        browser_mod:
-          service: browser_mod.popup
-          data:
-            title: Music Info
-            target:
-              device_id: dd902a1fafdfbdb69d60722ba32aa964
-            content:
-              type: vertical-stack
-              cards:
-              - entity: sensor.recent_alexa
-                grid_options:
-                  columns: full
-                type: tile
-                hold_action:
-                  action: fire-dom-event
-                  browser_mod:
-                    service: browser_mod.popup
-                    data:
-                      title: Sensor Trace
-                      target:
-                        device_id: dd902a1fafdfbdb69d60722ba32aa964
-                      content:
-                        type: markdown
-                        title: Recent Alexa — Sensor Trace
-                        content: "{% set alexas = [\n  states.media_player.blake_s_echo_dot_2,\n\
-                          \  states.media_player.blake_s_echo_pop_2,\n  states.media_player.blake_s_echo_spot_2\n\
-                          ] %}\n\n{% set all_echo = states.media_player.all_echo_2\
-                          \ %}\n\n## All Alexa entity states\n\n| Device | Original\
-                          \ | `_2` |\n|---|---|---|\n| Dot | **{{ states('media_player.blake_s_echo_dot')\
-                          \ }}** | **{{ states('media_player.blake_s_echo_dot_2')\
-                          \ }}** |\n| Pop | **{{ states('media_player.blake_s_echo_pop')\
-                          \ }}** | **{{ states('media_player.blake_s_echo_pop_2')\
-                          \ }}** |\n| Spot | **{{ states('media_player.blake_s_echo_spot')\
-                          \ }}** | **{{ states('media_player.blake_s_echo_spot_2')\
-                          \ }}** |\n| All Echo | **{{ states('media_player.all_echo')\
-                          \ }}** | **{{ states('media_player.all_echo_2') }}** |\n\
-                          \n---\n\n# Recent Alexa calculation\n\n## Step 1 — Is All\
-                          \ Echo playing?\n\nState:\n\n**`{{ all_echo.state }}`**\n\
-                          \nTest:\n\n`{{ all_echo.state == 'playing' }}`\n\n{% if\
-                          \ all_echo.state == 'playing' %}\n\n✅ **TRUE**\n\nAll Echo\
-                          \ always wins while actively playing.\n\n### Result\n\n\
-                          **`media_player.all_echo_2`**\n\n{% else %}\n\n❌ **FALSE**\n\
-                          \nContinue to Step 2.\n\n---\n\n## Step 2 — Individual Echos\
-                          \ currently playing\n\n{% set playing = alexas\n  | selectattr('state',\
-                          \ 'eq', 'playing')\n  | sort(attribute='last_changed', reverse=true)\n\
-                          \  | list\n%}\n\nDot playing:\n\n`{{ states('media_player.blake_s_echo_dot_2')\
-                          \ == 'playing' }}`\n\nPop playing:\n\n`{{ states('media_player.blake_s_echo_pop_2')\
-                          \ == 'playing' }}`\n\nSpot playing:\n\n`{{ states('media_player.blake_s_echo_spot_2')\
-                          \ == 'playing' }}`\n\nNumber playing:\n\n**{{ playing |\
-                          \ count }}**\n\n{% if playing | count > 0 %}\n\n### Playing\
-                          \ entity state-change times\n\n| Entity | Last changed |\
-                          \ Age |\n|---|---|---:|\n{% for p in playing %}\n| {{ p.name\
-                          \ }} | {{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                          \ }} | {{ (now() - p.last_changed).total_seconds() | round(1)\
-                          \ }}s |\n{% endfor %}\n\nThe list is sorted by `last_changed`,\
-                          \ newest first.\n\n{% if playing | count > 1 %}\n\nMultiple\
-                          \ individual Echos are playing, so the one with the newest\
-                          \ `last_changed` wins.\n\n{% else %}\n\nOnly one individual\
-                          \ Echo is playing, so it wins automatically.\n\n{% endif\
-                          \ %}\n\n### Result\n\n**`{{ playing[0].entity_id }}`**\n\
-                          \n{% else %}\n\n❌ No individual Echo is currently playing.\n\
-                          \nContinue to Step 3.\n\n---\n\n## Step 3 — Paused Echos\n\
-                          \n{% set paused = (alexas + [all_echo])\n  | selectattr('state',\
-                          \ 'eq', 'paused')\n  | sort(attribute='last_changed', reverse=true)\n\
-                          \  | list\n%}\n\nOnly entities that are currently paused\
-                          \ participate in this step.\n\nNumber paused:\n\n**{{ paused\
-                          \ | count }}**\n\n{% if paused | count > 0 %}\n\n### Paused\
-                          \ entity state-change times\n\n| Entity | Last changed |\
-                          \ Age |\n|---|---|---:|\n{% for p in paused %}\n| {{ p.name\
-                          \ }} | {{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                          \ }} | {{ (now() - p.last_changed).total_seconds() | round(1)\
-                          \ }}s |\n{% endfor %}\n\n{% set provisional_winner = paused[0]\
-                          \ %}\n\nThe list is sorted by `last_changed`, newest first.\n\
-                          \nProvisional winner:\n\n**`{{ provisional_winner.entity_id\
-                          \ }}`**\n\n---\n\n## Step 4 — All Echo 2-second override\n\
-                          \nProvisional winner:\n\n**`{{ provisional_winner.entity_id\
-                          \ }}`**\n\nIs provisional winner already All Echo:\n\n**{{\
-                          \ provisional_winner.entity_id == 'media_player.all_echo_2'\
-                          \ }}**\n\nIs All Echo currently paused:\n\n**{{ all_echo.state\
-                          \ == 'paused' }}**\n\n{% if provisional_winner.entity_id\
-                          \ != 'media_player.all_echo_2'\n      and all_echo.state\
-                          \ == 'paused' %}\n\n{% set diff =\n  ((all_echo.last_changed\
-                          \ - provisional_winner.last_changed).total_seconds() | abs)\n\
-                          %}\n\nProvisional winner timestamp:\n\n`{{ as_local(provisional_winner.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                          \ }}`\n\nAll Echo timestamp:\n\n`{{ as_local(all_echo.last_changed).strftime('%H:%M:%S.%f')[:-3]\
-                          \ }}`\n\nDifference:\n\n`| {{ all_echo.last_changed.timestamp()\
-                          \ | round(3) }} - {{ provisional_winner.last_changed.timestamp()\
-                          \ | round(3) }} |`\n\n`= {{ diff | round(3) }} seconds`\n\
-                          \nWithin 2 seconds:\n\n`{{ diff | round(3) }} <= 2`\n\n\
-                          **{{ diff <= 2 }}**\n\nFull override test:\n\n`provisional\
-                          \ winner != All Echo`\n\nAND\n\n`All Echo state == paused`\n\
-                          \nAND\n\n`difference <= 2 seconds`\n\n**{{ provisional_winner.entity_id\
-                          \ != 'media_player.all_echo_2'\n    and all_echo.state ==\
-                          \ 'paused'\n    and diff <= 2 }}**\n\n{% if diff <= 2 %}\n\
-                          \n{% set diagnostic_winner = all_echo %}\n\n✅ All Echo wins\
-                          \ the paused comparison.\n\n### Paused winner after override\n\
-                          \n**`{{ diagnostic_winner.entity_id }}`**\n\n{% else %}\n\
-                          \n{% set diagnostic_winner = provisional_winner %}\n\n❌\
-                          \ All Echo is not within 2 seconds.\n\n### Paused winner\
-                          \ after override\n\n**`{{ diagnostic_winner.entity_id }}`**\n\
-                          \n{% endif %}\n\n{% else %}\n\n{% set diagnostic_winner\
-                          \ = provisional_winner %}\n\nThe All Echo override does\
-                          \ not apply.\n\n### Paused winner after override\n\n**`{{\
-                          \ diagnostic_winner.entity_id }}`**\n\n{% endif %}\n\n---\n\
-                          \n## Step 5 — 10-minute sensor check\n\n{% set provisional_age\
-                          \ =\n  (now() - provisional_winner.last_changed).total_seconds()\n\
-                          %}\n\nThe real sensor performs its 10-minute check against\
-                          \ the provisional winner before applying the override.\n\
-                          \nAge of provisional winner:\n\n**{{ provisional_age | round(3)\
-                          \ }} seconds**\n\nTest:\n\n`{{ provisional_age | round(3)\
-                          \ }} < 600`\n\n**{{ provisional_age < 600 }}**\n\n{% if\
-                          \ provisional_age < 600 %}\n\n✅ The provisional winner is\
-                          \ within 10 minutes.\n\nThe real sensor continues to its\
-                          \ All Echo override logic.\n\n{% if provisional_winner.entity_id\
-                          \ != 'media_player.all_echo_2'\n      and all_echo.state\
-                          \ == 'paused'\n      and ((all_echo.last_changed - provisional_winner.last_changed).total_seconds()\
-                          \ | abs) <= 2 %}\n\n### Final calculated result\n\n**`media_player.all_echo_2`**\n\
-                          \n{% else %}\n\n### Final calculated result\n\n**`{{ provisional_winner.entity_id\
-                          \ }}`**\n\n{% endif %}\n\n{% else %}\n\n❌ The provisional\
-                          \ winner is more than 10 minutes old.\n\nThe real sensor\
-                          \ stops here and does not use the override result shown\
-                          \ above.\n\n### Final calculated result\n\n**`none`**\n\n\
-                          {% endif %}\n\n{% else %}\n\nNo Echo is currently paused.\n\
-                          \n### Final calculated result\n\n**`none`**\n\n{% endif\
-                          \ %}\n\n{% endif %}\n\n{% endif %}\n\n---\n\n# Actual sensor\
-                          \ result\n\n**`{{ states('sensor.recent_alexa') }}`**"
-                        card_mod:
-                          style:
-                            ha-markdown$: "code {\n  background-color: var(--custom-bg)\
-                              \ !important;\n}\n"
-              - type: custom:mini-media-player
-                entity: media_player.all_echo_2
-                volume_stateless: true
-                hide:
-                  power: true
-                  source: true
-                artwork: material
-                replace_mute: stop
-              - type: custom:mini-media-player
-                entity: media_player.blake_s_echo_spot_2
-                volume_stateless: true
-                hide:
-                  power: true
-                  source: true
-                artwork: material
-                replace_mute: stop
-              - type: custom:mini-media-player
-                entity: media_player.blake_s_echo_pop_2
-                volume_stateless: true
-                hide:
-                  power: true
-                  source: true
-                artwork: material
-                replace_mute: stop
-              - type: custom:mini-media-player
-                entity: media_player.blake_s_echo_dot_2
-                volume_stateless: true
-                hide:
-                  power: true
-                  source: true
-                artwork: material
-                replace_mute: stop
+        action: navigate
+        navigation_path: /my-dashboard/popup#music
       uix:
         style: "ha-card {\n  padding-top: 10px !important;\n}\n.subtitle {\n  font-size:\
           \ 15px !important;\n}\n.title ha-icon {\n  --mdc-icon-size: 15px !important;\n\
@@ -2749,148 +2203,7 @@ views:
             \ 0 !important;\n  margin-inline-end: 20px !important;\n}\nha-tile-info\
             \ {\n  --ha-tile-info-gap: 4px !important;\n}\nha-card {\n\n}\n"
     type: grid
-  - cards:
-    - bg_blur: '30'
-      bg_opacity: '20'
-      button_type: name
-      card_type: pop-up
-      cards:
-      - entity: weather.openweathermap_2
-        forecast_slots: 7
-        forecast_type: daily
-        show_current: false
-        show_forecast: true
-        type: weather-forecast
-      - heading: Work Temperatures
-        heading_style: title
-        type: heading
-      - cards:
-        - entity: sensor.a_expansion_attic_temperature
-          type: tile
-        - entity: sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature
-          features_position: bottom
-          name: A Sensor
-          type: tile
-          vertical: false
-        type: horizontal-stack
-      - cards:
-        - entity: sensor.c_expansion_attic_temperature
-          type: tile
-        - entity: sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature
-          features_position: bottom
-          name: D Sensor
-          type: tile
-          vertical: false
-        type: horizontal-stack
-      - cards:
-        - entity: sensor.d_expansion_attic_temperature
-          type: tile
-        - entity: sensor.nest_temperature_sensor_stairwell_g_temperature
-          features_position: bottom
-          name: C Sensor - Stairwell G
-          type: tile
-          vertical: false
-        type: horizontal-stack
-      - color: red
-        grid_options:
-          columns: full
-        icon: mdi:weather-sunny-alert
-        primary: It's hot! Check the water loop!
-        secondary: Feels like {{ states('sensor.openweathermap_feels_like_temperature_2')
-          | float(0) | round(1) }} °F
-        type: custom:mushroom-template-card
-        uix:
-          style:
-            .: "ha-tile-icon {\n  size: 2px !important;\n}\nha-card {\n  height: auto\
-              \ !important;\n  --icon-display: block !important;\n  animation: bounce\
-              \ 2s infinite;\n}\n\n@keyframes bounce {\n  0%, 20%, 50%, 80%, 100%\
-              \ {transform: translateY(0);}\n  40% {transform: translateY(-5px);}\n\
-              \  60% {transform: translateY(-5px);}\n}\n"
-            ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n"
-        visibility:
-        - above: 92
-          condition: numeric_state
-          entity: sensor.openweathermap_feels_like_temperature_2
-      - color: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
-          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-          ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
-          \ 999) | select('lt', set_point) | list | count %} {{ 'orange' if count\
-          \ > 0 else 'green' }}"
-        features_position: inline
-        grid_options:
-          columns: 12
-          rows: auto
-        icon: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
-          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-          ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
-          \ 999) | select('lt', set_point) | list | count %} {{ 'mdi:thermometer-alert'\
-          \ if count > 0 else 'mdi:check-circle' }}"
-        multiline_secondary: true
-        primary: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
-          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-          ] %} {% set low_sensors = expand(sensors) | map(attribute='state') | map('float',\
-          \ 999) | select('lt', set_point) | list %}  {% if low_sensors | count >\
-          \ 0 %}\n  {{ low_sensors | count }} Attic Sensors Below {{ set_point }}°\n\
-          {% else %}\n  Attic Temperatures Normal\n{% endif %}"
-        secondary: "{% set set_point = 50 %}\n{% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
-          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
-          ] %}\n{% set ns = namespace(found=[]) %}\n{% for s in expand(sensors) %}\n\
-          \  {% if s.state | is_number and s.state | float < set_point %}\n    {%\
-          \ set ns.found = ns.found + [s] %}\n  {% endif %}\n{% endfor %}\n{% if ns.found\
-          \ | count > 0 %}\n  {% for s in ns.found -%}\n    {{ s.name | replace('\
-          \ Temperature', '') }}: {{ s.state }}°{{ \"\\n\" if not loop.last else \"\
-          \" }}\n  {%- endfor %}\n{% else %}\n  All attic sensors are above {{ set_point\
-          \ }}°\n{% endif %}"
-        type: custom:mushroom-template-card
-        uix:
-          style:
-            .: "ha-card {\n  height: auto !important;\n  --icon-display: block !important;\n\
-              \  /* Animation Logic */\n  {% set set_point = 50 %}\n  {% set sensors\
-              \ = [\n    'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
-              \    'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
-              \    'sensor.nest_temperature_sensor_stairwell_g_temperature',\n   \
-              \ 'sensor.a_expansion_attic_temperature',\n    'sensor.c_expansion_attic_temperature',\n\
-              \    'sensor.d_expansion_attic_temperature'\n  ] %}\n  {% set count\
-              \ = expand(sensors) | map(attribute='state') | map('float', 999) | select('lt',\
-              \ set_point) | list | count %}\n  {% if count > 0 %}\n  animation: bounce\
-              \ 2s infinite;\n  {% endif %}\n}\n\n@keyframes bounce {\n  0%, 20%,\
-              \ 50%, 80%, 100% {transform: translateY(0);}\n  40% {transform: translateY(-10px);}\n\
-              \  60% {transform: translateY(-5px);}\n}\n\n.content {\n  display: flex\
-              \ !important;\n  flex-direction: row !important;\n  column-gap: .25rem\
-              \ !important;\n}\nha-tile-icon {\n  margin-right: -.5rem !important;\n\
-              }\nhui-card-features {\n  flex: 0 0 7rem !important;\n  max-width: \
-              \ auto !important;\n  min-width: auto !important;\n}\nhui-card-features$\
-              \ :host {\n  width: auto !important;\n}\nhui-card-features$ .container\
-              \ {\n  width: auto !important;\n  justify-content: start !important;\n\
-              \  border: 1px solid !important; \n  border-radius: 12px !important;\n\
-              }\n.info {\n  flex: 1 1 auto !important;\n  margin-right: 0px !important;\n\
-              \  min-width: 0 !important;\n}\n"
-            ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n.secondary\
-              \ {\n  font-size: 1rem !important;\n  white-space: pre-wrap !important;\n\
-              \  -webkit-line-clamp: unset !important;\n  max-height: none !important;\n\
-              }\n"
-        visibility:
-        - below: 50
-          condition: numeric_state
-          entity: sensor.openweathermap_feels_like_temperature_2
-      hash: '#Work'
-      hide_backdrop: true
-      icon: local:work_temp
-      name: Work Temperatures
-      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
-        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
-        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
-        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
-        }"
-      type: custom:bubble-card
+  - cards: []
     type: grid
   theme: Frosted Glass Dark
   title: Home
@@ -2907,7 +2220,7 @@ views:
     icon: mdi:navigation-variant
     tap_action:
       action: navigate
-      navigation_path: '#masonrypop'
+      navigation_path: /my-dashboard/popup#nav
     text: Shortcuts
     type: shortcut
     uix:
@@ -3210,9 +2523,7 @@ views:
     - entity: light.living_room_lamp
     - entity: light.bathroom_light
     - entity: light.closet_light
-    - card_mod:
-        style: ":host {\n  --wa-form-control-border-width: 0px;\n}\n"
-      entity: light.bedroom_ceiling_lights
+    - entity: light.bedroom_ceiling_lights
     - entity: fan.bedroom_ceiling_fan
       icon: local:bedroom_ceiling_fan
       uix:
@@ -3224,6 +2535,9 @@ views:
       uix:
         style: ":host {\n  {% if is_state(config.entity, 'on') %}\n    --fan-spin-anim:\
           \ spinBoxFan 1s linear infinite;\n  {% endif %}\n}\n"
+    card_mod:
+      style: "hui-generic-entity-row {\n  font-size: 18px !important;\n  --mdc-icon-size:\
+        \ 32px !important;\n}\n"
     show_header_toggle: false
     title: Devices
     type: entities
@@ -4332,244 +3646,6 @@ views:
           \  margin-bottom: 5px;\n  margin-left: 5px;\n}\n\nha-card::before {\ncontent:\
           \ none !important;\n}\n"
     type: custom:vertical-stack-in-card
-  - cards:
-    - bg_blur: '30'
-      bg_opacity: '50'
-      button_action: {}
-      button_type: switch
-      card_type: pop-up
-      cards:
-      - cards:
-        - card_mod:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-          icon: mdi:robot
-          name: Automations
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/automation
-          type: button
-        - icon: mdi:palette
-          name: Scenes
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/scene
-          type: button
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - icon: mdi:script-text
-          name: Scripts
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/script
-          type: button
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - icon: mdi:puzzle
-          name: Integrations
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/integrations
-          type: button
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - icon: mdi:shape
-          name: Entities
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/entities
-          type: button
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - icon: mdi:tools
-          name: Helpers
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/helpers
-          type: button
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - icon: mdi:devices
-          name: Devices
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /config/devices
-          type: button
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - icon: mdi:format-list-bulleted
-          name: Activity
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /logbook
-          type: button
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        - icon: mdi:chart-box
-          name: History
-          show_icon: true
-          show_name: true
-          tap_action:
-            action: navigate
-            navigation_path: /history
-          type: button
-          uix:
-            style: "ha-card {\n  background: var(--custom-popup-card-background, var(--ha-card-background))\
-              \ !important;\n}\n"
-        grid_options:
-          columns: 12
-          rows: auto
-        type: grid
-      - card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
-        entity: light.closet_light
-        features_position: bottom
-        grid_options:
-          columns: full
-        hide_state: true
-        icon: mdi:tools
-        name: Current Helpers
-        tap_action:
-          action: navigate
-          navigation_path: '#helpermasonry'
-        type: tile
-        vertical: false
-      - card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\n"
-        entity: binary_sensor.apartment_presence
-        features:
-        - entries:
-          - entity_id: binary_sensor.apartment_presence
-            icon: mdi:shield-home
-            label: Security Dashboard
-            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-              \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
-              \ }};\n  box-shadow: none;\n}\n.label {\n  color: {{ 'var(--custom-contrast)'\
-              \ }};\n}\n.icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
-            tap_action:
-              action: navigate
-              navigation_path: /my-dashboard/security
-            thumb: md3-elevated
-            type: button
-          type: custom:service-call
-        features_position: inline
-        grid_options:
-          columns: 12
-          rows: 1
-        hide_state: true
-        icon: mdi:shield-home
-        icon_tap_action:
-          action: none
-        name: Security View
-        tap_action:
-          action: none
-        type: tile
-        vertical: false
-      hash: '#masonrypop'
-      hide_backdrop: true
-      icon: mdi:navigation-variant
-      name: Shortcuts
-      show_header: true
-      slider_fill_orientation: left
-      slider_value_position: right
-      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
-        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
-        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
-        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
-        }"
-      sub_button:
-        bottom: []
-        main: []
-      type: custom:bubble-card
-    - bg_blur: '30'
-      bg_opacity: '50'
-      button_action: {}
-      button_type: switch
-      card_type: pop-up
-      cards:
-      - card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
-        entity: input_datetime.home_timestamp
-        grid_options:
-          columns: full
-        type: tile
-      - card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
-        entity: input_datetime.last_door_open
-        grid_options:
-          columns: full
-        type: tile
-      - card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
-        entity: sensor.recent_alexa
-        grid_options:
-          columns: full
-        type: tile
-      - card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
-        entity: input_boolean.phone_active
-        type: tile
-      - card_mod:
-          style: "ha-card {\n  background: var(\n    --custom-popup-card-background,\n\
-            \    var(--ha-card-background, var(--card-background-color))\n  ) !important;\n\
-            }\nha-tile-icon {\n  --tile-color: white !important;\n}\n"
-        entity: input_boolean.disable_toggle
-        features_position: bottom
-        name: Music Disable
-        type: tile
-        vertical: false
-      hash: '#helpermasonry'
-      hide_backdrop: true
-      icon: mdi:tools
-      name: Current Helpers
-      show_header: true
-      slider_fill_orientation: left
-      slider_value_position: right
-      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
-        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
-        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
-        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
-        }"
-      sub_button:
-        bottom: []
-        main: []
-      type: custom:bubble-card
-    type: custom:vertical-stack-in-card
   path: masonry
   title: masonry
   type: masonry
@@ -4583,6 +3659,136 @@ views:
   - cards:
     - heading: New section
       type: heading
+    - type: markdown
+      title: Recent Alexa — Sensor Trace
+      content: "{% set alexas = [\n  states.media_player.blake_s_echo_dot_2,\n  states.media_player.blake_s_echo_pop_2,\n\
+        \  states.media_player.blake_s_echo_spot_2\n] %}\n\n{% set all_echo = states.media_player.all_echo_2\
+        \ %}\n\n## All Alexa entity states\n\n| Device | Original | `_2` |\n|---|---|---|\n\
+        | Dot | **{{ states('media_player.blake_s_echo_dot') }}** | **{{ states('media_player.blake_s_echo_dot_2')\
+        \ }}** |\n| Pop | **{{ states('media_player.blake_s_echo_pop') }}** | **{{\
+        \ states('media_player.blake_s_echo_pop_2') }}** |\n| Spot | **{{ states('media_player.blake_s_echo_spot')\
+        \ }}** | **{{ states('media_player.blake_s_echo_spot_2') }}** |\n| All Echo\
+        \ | **{{ states('media_player.all_echo') }}** | **{{ states('media_player.all_echo_2')\
+        \ }}** |\n\n---\n\n# Recent Alexa calculation\n\n## Step 1 — Is All Echo playing?\n\
+        \nState:\n\n**`{{ all_echo.state }}`**\n\nTest:\n\n`{{ all_echo.state == 'playing'\
+        \ }}`\n\n{% if all_echo.state == 'playing' %}\n\n✅ **TRUE**\n\nAll Echo always\
+        \ wins while actively playing.\n\n### Result\n\n**`media_player.all_echo_2`**\n\
+        \n{% else %}\n\n❌ **FALSE**\n\nContinue to Step 2.\n\n---\n\n## Step 2 — Individual\
+        \ Echos currently playing\n\n{% set playing = alexas\n  | selectattr('state',\
+        \ 'eq', 'playing')\n  | sort(attribute='last_changed', reverse=true)\n  |\
+        \ list\n%}\n\nDot playing:\n\n`{{ states('media_player.blake_s_echo_dot_2')\
+        \ == 'playing' }}`\n\nPop playing:\n\n`{{ states('media_player.blake_s_echo_pop_2')\
+        \ == 'playing' }}`\n\nSpot playing:\n\n`{{ states('media_player.blake_s_echo_spot_2')\
+        \ == 'playing' }}`\n\nNumber playing:\n\n**{{ playing | count }}**\n\n{% if\
+        \ playing | count > 0 %}\n\n### Playing entity state-change times\n\n| Entity\
+        \ | Last changed | Age |\n|---|---|---:|\n{% for p in playing %}\n| {{ p.name\
+        \ }} | {{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3] }} | {{ (now()\
+        \ - p.last_changed).total_seconds() | round(1) }}s |\n{% endfor %}\n\nThe\
+        \ list is sorted by `last_changed`, newest first.\n\n{% if playing | count\
+        \ > 1 %}\n\nMultiple individual Echos are playing, so the one with the newest\
+        \ `last_changed` wins.\n\n{% else %}\n\nOnly one individual Echo is playing,\
+        \ so it wins automatically.\n\n{% endif %}\n\n### Result\n\n**`{{ playing[0].entity_id\
+        \ }}`**\n\n{% else %}\n\n❌ No individual Echo is currently playing.\n\nContinue\
+        \ to Step 3.\n\n---\n\n## Step 3 — Paused Echos\n\n{% set paused = (alexas\
+        \ + [all_echo])\n  | selectattr('state', 'eq', 'paused')\n  | sort(attribute='last_changed',\
+        \ reverse=true)\n  | list\n%}\n\nOnly entities that are currently paused participate\
+        \ in this step.\n\nNumber paused:\n\n**{{ paused | count }}**\n\n{% if paused\
+        \ | count > 0 %}\n\n### Paused entity state-change times\n\n| Entity | Last\
+        \ changed | Age |\n|---|---|---:|\n{% for p in paused %}\n| {{ p.name }} |\
+        \ {{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3] }} | {{ (now()\
+        \ - p.last_changed).total_seconds() | round(1) }}s |\n{% endfor %}\n\n{% set\
+        \ provisional_winner = paused[0] %}\n\nThe list is sorted by `last_changed`,\
+        \ newest first.\n\nProvisional winner:\n\n**`{{ provisional_winner.entity_id\
+        \ }}`**\n\n---\n\n## Step 4 — All Echo 2-second override\n\nProvisional winner:\n\
+        \n**`{{ provisional_winner.entity_id }}`**\n\nIs provisional winner already\
+        \ All Echo:\n\n**{{ provisional_winner.entity_id == 'media_player.all_echo_2'\
+        \ }}**\n\nIs All Echo currently paused:\n\n**{{ all_echo.state == 'paused'\
+        \ }}**\n\n{% if provisional_winner.entity_id != 'media_player.all_echo_2'\n\
+        \      and all_echo.state == 'paused' %}\n\n{% set diff =\n  ((all_echo.last_changed\
+        \ - provisional_winner.last_changed).total_seconds() | abs)\n%}\n\nProvisional\
+        \ winner timestamp:\n\n`{{ as_local(provisional_winner.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+        \ }}`\n\nAll Echo timestamp:\n\n`{{ as_local(all_echo.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+        \ }}`\n\nDifference:\n\n`| {{ all_echo.last_changed.timestamp() | round(3)\
+        \ }} - {{ provisional_winner.last_changed.timestamp() | round(3) }} |`\n\n\
+        `= {{ diff | round(3) }} seconds`\n\nWithin 2 seconds:\n\n`{{ diff | round(3)\
+        \ }} <= 2`\n\n**{{ diff <= 2 }}**\n\nFull override test:\n\n`provisional winner\
+        \ != All Echo`\n\nAND\n\n`All Echo state == paused`\n\nAND\n\n`difference\
+        \ <= 2 seconds`\n\n**{{ provisional_winner.entity_id != 'media_player.all_echo_2'\n\
+        \    and all_echo.state == 'paused'\n    and diff <= 2 }}**\n\n{% if diff\
+        \ <= 2 %}\n\n{% set diagnostic_winner = all_echo %}\n\n✅ All Echo wins the\
+        \ paused comparison.\n\n### Paused winner after override\n\n**`{{ diagnostic_winner.entity_id\
+        \ }}`**\n\n{% else %}\n\n{% set diagnostic_winner = provisional_winner %}\n\
+        \n❌ All Echo is not within 2 seconds.\n\n### Paused winner after override\n\
+        \n**`{{ diagnostic_winner.entity_id }}`**\n\n{% endif %}\n\n{% else %}\n\n\
+        {% set diagnostic_winner = provisional_winner %}\n\nThe All Echo override\
+        \ does not apply.\n\n### Paused winner after override\n\n**`{{ diagnostic_winner.entity_id\
+        \ }}`**\n\n{% endif %}\n\n---\n\n## Step 5 — 10-minute sensor check\n\n{%\
+        \ set provisional_age =\n  (now() - provisional_winner.last_changed).total_seconds()\n\
+        %}\n\nThe real sensor performs its 10-minute check against the provisional\
+        \ winner before applying the override.\n\nAge of provisional winner:\n\n**{{\
+        \ provisional_age | round(3) }} seconds**\n\nTest:\n\n`{{ provisional_age\
+        \ | round(3) }} < 600`\n\n**{{ provisional_age < 600 }}**\n\n{% if provisional_age\
+        \ < 600 %}\n\n✅ The provisional winner is within 10 minutes.\n\nThe real sensor\
+        \ continues to its All Echo override logic.\n\n{% if provisional_winner.entity_id\
+        \ != 'media_player.all_echo_2'\n      and all_echo.state == 'paused'\n   \
+        \   and ((all_echo.last_changed - provisional_winner.last_changed).total_seconds()\
+        \ | abs) <= 2 %}\n\n### Final calculated result\n\n**`media_player.all_echo_2`**\n\
+        \n{% else %}\n\n### Final calculated result\n\n**`{{ provisional_winner.entity_id\
+        \ }}`**\n\n{% endif %}\n\n{% else %}\n\n❌ The provisional winner is more than\
+        \ 10 minutes old.\n\nThe real sensor stops here and does not use the override\
+        \ result shown above.\n\n### Final calculated result\n\n**`none`**\n\n{% endif\
+        \ %}\n\n{% else %}\n\nNo Echo is currently paused.\n\n### Final calculated\
+        \ result\n\n**`none`**\n\n{% endif %}\n\n{% endif %}\n\n{% endif %}\n\n---\n\
+        \n# Actual sensor result\n\n**`{{ states('sensor.recent_alexa') }}`**"
+      card_mod:
+        style:
+          ha-markdown$: "code {\n  background-color: var(--custom-bg) !important;\n\
+            }\n"
+    - type: vertical-stack
+      cards:
+      - type: tile
+        entity: sensor.recent_alexa
+        grid_options:
+          columns: full
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+              \ 35px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start: -5px !important;\n}\n"
+      - type: custom:mini-media-player
+        entity: media_player.all_echo_2
+        volume_stateless: true
+        hide:
+          power: true
+          source: true
+        artwork: material
+        replace_mute: stop
+      - type: custom:mini-media-player
+        entity: media_player.blake_s_echo_spot_2
+        volume_stateless: true
+        hide:
+          power: true
+          source: true
+        artwork: material
+        replace_mute: stop
+      - type: custom:mini-media-player
+        entity: media_player.blake_s_echo_pop_2
+        volume_stateless: true
+        hide:
+          power: true
+          source: true
+        artwork: material
+        replace_mute: stop
+      - type: custom:mini-media-player
+        entity: media_player.blake_s_echo_dot_2
+        volume_stateless: true
+        hide:
+          power: true
+          source: true
+        artwork: material
+        replace_mute: stop
     type: grid
   - cards:
     - heading: Template Cards
@@ -5117,31 +4323,36 @@ views:
         card:
         - font-size: 15px
       type: custom:button-card
-    - entity: binary_sensor.bed_presence_bb8594_bed_occupied_left
-      hide_state: true
-      hold_action:
-        action: more-info
-        entity: sensor.bed_presence_bb8594_left_pressure
-      name: Bed Occupied Left
-      tap_action:
-        action: more-info
-      type: tile
-      uix:
-        style:
-          ha-tile-icon $: ".container::before {\n  opacity: 0 !important;\n}\n"
-      vertical: false
-    - entity: binary_sensor.bed_presence_bb8594_bed_occupied_right
+    - type: custom:mushroom-template-card
       features_position: bottom
-      hide_state: true
-      hold_action:
-        action: more-info
-        entity: sensor.bed_presence_bb8594_right_pressure
-      name: Bed Occupied Right
-      type: tile
-      uix:
+      entity: binary_sensor.bed_presence_bb8594_bed_occupied_left
+      primary: Bed Occupied Left
+      secondary: '{{ state_translated("sensor.bed_presence_bb8594_calibrated_left_pressure")}}%'
+      icon: local:bed_sensor
+      color: '{{ iif(is_state("binary_sensor.bed_presence_bb8594_bed_occupied_left",
+        "on"), ''rgb(255, 193, 7)'', ''var(--state-icon-color)'') }}'
+      card_mod:
         style:
-          ha-tile-icon $: ".container::before {\n  opacity: 0 !important;\n}\n"
-      vertical: false
+          ha-tile-container$: ".content {\n  padding-inline-start: 0px !important;\n\
+            \  gap: -10px !important;\n}\n"
+          .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+            \ 35px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+            \  margin-inline-start: -7px !important;\n}\n"
+    - type: custom:mushroom-template-card
+      features_position: bottom
+      entity: binary_sensor.bed_presence_bb8594_bed_occupied_left
+      primary: Bed Occupied Right
+      secondary: '{{ state_translated("sensor.bed_presence_bb8594_calibrated_right_pressure")}}%'
+      icon: local:bed_sensor
+      color: '{{ iif(is_state("binary_sensor.bed_presence_bb8594_bed_occupied_right",
+        "on"), ''rgb(255, 193, 7)'', ''var(--state-icon-color)'') }}'
+      card_mod:
+        style:
+          ha-tile-container$: ".content {\n  padding-inline-start: 0px !important;\n\
+            \  gap: -10px !important;\n\n}\n"
+          .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+            \ 35px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+            \  margin-inline-start: -7px !important;\n}\n"
     - entity: scene.all_off
       grid_options:
         columns: 6
@@ -5220,3 +4431,659 @@ views:
   theme: Frosted Glass Dark
   title: Security
   type: sections
+- type: sections
+  theme: Frosted Glass Dark
+  max_columns: 4
+  title: Popup
+  path: popup
+  subview: true
+  sections:
+  - type: grid
+    cards:
+    - bg_blur: '30'
+      bg_opacity: '20'
+      button_action: {}
+      button_type: switch
+      card_type: pop-up
+      cards:
+      - cards:
+        - icon: mdi:robot
+          name: Automations
+          show_icon: true
+          show_name: true
+          tap_action:
+            action: navigate
+            navigation_path: /config/automation
+          type: button
+        - icon: mdi:palette
+          name: Scenes
+          show_icon: true
+          show_name: true
+          tap_action:
+            action: navigate
+            navigation_path: /config/scene
+          type: button
+        - icon: mdi:script-text
+          name: Scripts
+          show_icon: true
+          show_name: true
+          tap_action:
+            action: navigate
+            navigation_path: /config/script
+          type: button
+        - icon: mdi:puzzle
+          name: Integrations
+          show_icon: true
+          show_name: true
+          tap_action:
+            action: navigate
+            navigation_path: /config/integrations
+          type: button
+        - icon: mdi:shape
+          name: Entities
+          show_icon: true
+          show_name: true
+          tap_action:
+            action: navigate
+            navigation_path: /config/entities
+          type: button
+        - icon: mdi:tools
+          name: Helpers
+          show_icon: true
+          show_name: true
+          tap_action:
+            action: navigate
+            navigation_path: /config/helpers
+          type: button
+        - icon: mdi:devices
+          name: Devices
+          show_icon: true
+          show_name: true
+          tap_action:
+            action: navigate
+            navigation_path: /config/devices
+          type: button
+        - icon: mdi:format-list-bulleted
+          name: Activity
+          show_icon: true
+          show_name: true
+          tap_action:
+            action: navigate
+            navigation_path: /logbook
+          type: button
+        - icon: mdi:chart-box
+          name: History
+          show_icon: true
+          show_name: true
+          tap_action:
+            action: navigate
+            navigation_path: /history
+          type: button
+        grid_options:
+          columns: 12
+          rows: auto
+        type: grid
+      - color: white
+        entity: binary_sensor.apartment_presence
+        features:
+        - entries:
+          - entity_id: binary_sensor.apartment_presence
+            icon: mdi:tools
+            label: View
+            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+              \  border-radius: var(--custom-radius);\n  height: 40px;\n  width: 140px\
+              \ !important;\n  flex: 0 0 140px !important;\n  --color: var(--custom-bg)\
+              \ !important;\n}\n.label {\n  color: {{ 'var(--custom-contrast)' }};\n\
+              }\n.icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
+            tap_action:
+              action: navigate
+              navigation_path: '#helper'
+            thumb: md3-elevated
+            type: button
+          type: custom:service-call
+        features_position: inline
+        grid_options:
+          columns: 12
+          rows: 1
+        hide_state: true
+        icon: mdi:tools
+        name: Helper States
+        tap_action:
+          action: navigate
+          navigation_path: '#helper'
+        type: tile
+        vertical: false
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start: !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+              \ 35px !important;\n}\nhui-card-features[slot=\"features-inline\"] {\n\
+              \  width: auto !important;\n  flex: 0 0 auto !important;\n  padding:\
+              \ 0 !important;\n  margin-inline-end: 20px !important;\n}\nha-tile-info\
+              \ {\n  --ha-tile-info-primary-font-size: 15px !important;\n"
+      - color: white
+        entity: binary_sensor.apartment_presence
+        features:
+        - entries:
+          - entity_id: binary_sensor.apartment_presence
+            icon: mdi:shield-home
+            label: View
+            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+              \  border-radius: var(--custom-radius);\n  height: 40px;\n  width: 140px\
+              \ !important;\n  flex: 0 0 140px !important;\n  --color: var(--custom-bg)\
+              \ !important;\n}\n.label {\n  color: {{ 'var(--custom-contrast)' }};\n\
+              }\n.icon {\n  color: {{ 'var(--custom-contrast)' }};  \n}"
+            tap_action:
+              action: navigate
+              navigation_path: /my-dashboard/security
+            thumb: md3-elevated
+            type: button
+          type: custom:service-call
+        features_position: inline
+        grid_options:
+          columns: 12
+          rows: 1
+        hide_state: true
+        icon: mdi:shield-home
+        icon_tap_action:
+          action: none
+        name: Security Dashboard
+        tap_action:
+          action: none
+        type: tile
+        vertical: false
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start: !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+              \ 35px !important;\n}\nhui-card-features[slot=\"features-inline\"] {\n\
+              \  width: auto !important;\n  flex: 0 0 auto !important;\n  padding:\
+              \ 0 !important;\n  margin-inline-end: 20px !important;\n}\nha-tile-info\
+              \ {\n  --ha-tile-info-primary-font-size: 15px !important;\n"
+      hash: '#nav'
+      hide_backdrop: true
+      icon: mdi:navigation-variant
+      name: Shortcuts
+      show_header: true
+      slider_fill_orientation: left
+      slider_value_position: right
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+        }"
+      sub_button:
+        bottom: []
+        main: []
+      type: custom:bubble-card
+      show_previous_button: true
+      show_close_button: false
+    - bg_blur: '30'
+      bg_opacity: '50'
+      button_action: {}
+      button_type: switch
+      card_type: pop-up
+      cards:
+      - type: tile
+        grid_options:
+          columns: full
+        entity: input_datetime.home_timestamp
+        vertical: false
+        tap_action:
+          action: none
+        features_position: bottom
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+              \ 35px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start: -5px !important;\n}\n"
+      - type: tile
+        grid_options:
+          columns: full
+        entity: input_datetime.last_door_open
+        vertical: false
+        tap_action:
+          action: none
+        features_position: bottom
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+              \ 35px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start: -5px !important;\n}\n"
+      - type: tile
+        grid_options:
+          columns: 12
+          rows: 1
+        entity: sensor.recent_alexa
+        name: Recent Alexa
+        vertical: false
+        features:
+        - type: custom:service-call
+          entries:
+          - icon: mdi:eye
+            label: 'Template Trace
+
+              '
+            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+              \  border-radius: var(--custom-radius);\n  height: 40px;\n  width: 180px\
+              \ !important;\n  flex: 0 0 180px !important;\n}\n:host {\n      --color:\
+              \ var(--custom-bg);      \n}\n.label {\n    color: var(--custom-comtrast);\n\
+              }\n.icon {\n    color: var(--custom-comtrast);\n}"
+            tap_action:
+              action: navigate
+              navigation_path: /my-dashboard/popup#recentalexa
+            thumb: md3-elevated
+            toggle_styles: false
+            type: button
+        features_position: inline
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start: 8px !important;\n\
+              \  gap: 4px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 4rem !important;\n  --mdc-icon-size:\
+              \ 3rem !important;\n}\nhui-card-features[slot=\"features-inline\"] {\n\
+              \  width: 130px !important;\n  flex: 0 0 130px !important;\n  padding:\
+              \ 0 !important;\n  margin-inline-end: 40px !important;\n}\nha-tile-info\
+              \ {\n  --ha-tile-info-gap: 3px !important;\n}\nha-card {\n\n}\n"
+      - entity: input_boolean.phone_active
+        type: tile
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 35px !important;\n  --mdc-icon-size:\
+              \ 30px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start: -2px !important;\n}\n"
+      - entity: input_boolean.disable_toggle
+        features_position: bottom
+        name: Music Disable
+        type: tile
+        vertical: false
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 35px !important;\n  --mdc-icon-size:\
+              \ 30px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start: -2px !important;\n}\n"
+      - type: tile
+        entity: sensor.bathroom_humidity_derivative
+        name: Humidity Change
+        vertical: false
+        features_position: bottom
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  padding-inline-start:  !important;\n\
+              \  gap: -10px !important;\n}\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 35px !important;\n  --mdc-icon-size:\
+              \ 30px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start:  !important;\n}\n"
+      - type: tile
+        entity: sensor.bathroom_humidity
+        card_mod:
+          style:
+            ha-tile-container$: ".content {\n  margin-inline-start: -5px  !important;\n\
+              }\n"
+            .: "ha-tile-icon {\n  --tile-icon-size: 45px !important;\n  --mdc-icon-size:\
+              \ 40px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+              \  margin-inline-start: -7px !important;\n}\n"
+      hash: '#helper'
+      hide_backdrop: true
+      icon: mdi:tools
+      name: Current Helpers
+      show_header: true
+      slider_fill_orientation: left
+      slider_value_position: right
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+        }"
+      sub_button:
+        bottom: []
+        main: []
+      type: custom:bubble-card
+      show_previous_button: true
+      show_close_button: false
+    - bg_blur: '30'
+      bg_opacity: '20'
+      button_type: name
+      card_type: pop-up
+      cards:
+      - entity: weather.openweathermap_2
+        forecast_slots: 7
+        forecast_type: daily
+        show_current: false
+        show_forecast: true
+        type: weather-forecast
+      - heading: Work Temperatures
+        heading_style: title
+        type: heading
+      - cards:
+        - entity: sensor.a_expansion_attic_temperature
+          type: tile
+        - entity: sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature
+          features_position: bottom
+          name: A Sensor
+          type: tile
+          vertical: false
+        type: horizontal-stack
+      - cards:
+        - entity: sensor.c_expansion_attic_temperature
+          type: tile
+        - entity: sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature
+          features_position: bottom
+          name: D Sensor
+          type: tile
+          vertical: false
+        type: horizontal-stack
+      - cards:
+        - entity: sensor.d_expansion_attic_temperature
+          type: tile
+        - entity: sensor.nest_temperature_sensor_stairwell_g_temperature
+          features_position: bottom
+          name: C Sensor - Stairwell G
+          type: tile
+          vertical: false
+        type: horizontal-stack
+      - color: red
+        grid_options:
+          columns: full
+        icon: mdi:weather-sunny-alert
+        primary: It's hot! Check the water loop!
+        secondary: Feels like {{ states('sensor.openweathermap_feels_like_temperature_2')
+          | float(0) | round(1) }} °F
+        type: custom:mushroom-template-card
+        uix:
+          style:
+            .: "ha-tile-icon {\n  size: 2px !important;\n}\nha-card {\n  height: auto\
+              \ !important;\n  --icon-display: block !important;\n  animation: bounce\
+              \ 2s infinite;\n}\n\n@keyframes bounce {\n  0%, 20%, 50%, 80%, 100%\
+              \ {transform: translateY(0);}\n  40% {transform: translateY(-5px);}\n\
+              \  60% {transform: translateY(-5px);}\n}\n"
+            ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n"
+        visibility:
+        - above: 92
+          condition: numeric_state
+          entity: sensor.openweathermap_feels_like_temperature_2
+      - color: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
+          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
+          ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
+          \ 999) | select('lt', set_point) | list | count %} {{ 'orange' if count\
+          \ > 0 else 'green' }}"
+        features_position: inline
+        grid_options:
+          columns: 12
+          rows: auto
+        icon: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
+          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
+          ] %} {% set count = expand(sensors) | map(attribute='state') | map('float',\
+          \ 999) | select('lt', set_point) | list | count %} {{ 'mdi:thermometer-alert'\
+          \ if count > 0 else 'mdi:check-circle' }}"
+        multiline_secondary: true
+        primary: "{% set set_point = 50 %} {% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
+          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
+          ] %} {% set low_sensors = expand(sensors) | map(attribute='state') | map('float',\
+          \ 999) | select('lt', set_point) | list %}  {% if low_sensors | count >\
+          \ 0 %}\n  {{ low_sensors | count }} Attic Sensors Below {{ set_point }}°\n\
+          {% else %}\n  Attic Temperatures Normal\n{% endif %}"
+        secondary: "{% set set_point = 50 %}\n{% set sensors = [\n  'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+          \  'sensor.nest_temperature_sensor_stairwell_g_temperature',\n  'sensor.a_expansion_attic_temperature',\n\
+          \  'sensor.c_expansion_attic_temperature',\n  'sensor.d_expansion_attic_temperature'\n\
+          ] %}\n{% set ns = namespace(found=[]) %}\n{% for s in expand(sensors) %}\n\
+          \  {% if s.state | is_number and s.state | float < set_point %}\n    {%\
+          \ set ns.found = ns.found + [s] %}\n  {% endif %}\n{% endfor %}\n{% if ns.found\
+          \ | count > 0 %}\n  {% for s in ns.found -%}\n    {{ s.name | replace('\
+          \ Temperature', '') }}: {{ s.state }}°{{ \"\\n\" if not loop.last else \"\
+          \" }}\n  {%- endfor %}\n{% else %}\n  All attic sensors are above {{ set_point\
+          \ }}°\n{% endif %}"
+        type: custom:mushroom-template-card
+        uix:
+          style:
+            .: "ha-card {\n  height: auto !important;\n  --icon-display: block !important;\n\
+              \  /* Animation Logic */\n  {% set set_point = 50 %}\n  {% set sensors\
+              \ = [\n    'sensor.nest_temperature_sensor_a_expansion_attic_sensor_temperature',\n\
+              \    'sensor.nest_temperature_sensor_d_expansion_attic_sensor_temperature',\n\
+              \    'sensor.nest_temperature_sensor_stairwell_g_temperature',\n   \
+              \ 'sensor.a_expansion_attic_temperature',\n    'sensor.c_expansion_attic_temperature',\n\
+              \    'sensor.d_expansion_attic_temperature'\n  ] %}\n  {% set count\
+              \ = expand(sensors) | map(attribute='state') | map('float', 999) | select('lt',\
+              \ set_point) | list | count %}\n  {% if count > 0 %}\n  animation: bounce\
+              \ 2s infinite;\n  {% endif %}\n}\n\n@keyframes bounce {\n  0%, 20%,\
+              \ 50%, 80%, 100% {transform: translateY(0);}\n  40% {transform: translateY(-10px);}\n\
+              \  60% {transform: translateY(-5px);}\n}\n\n.content {\n  display: flex\
+              \ !important;\n  flex-direction: row !important;\n  column-gap: .25rem\
+              \ !important;\n}\nha-tile-icon {\n  margin-right: -.5rem !important;\n\
+              }\nhui-card-features {\n  flex: 0 0 7rem !important;\n  max-width: \
+              \ auto !important;\n  min-width: auto !important;\n}\nhui-card-features$\
+              \ :host {\n  width: auto !important;\n}\nhui-card-features$ .container\
+              \ {\n  width: auto !important;\n  justify-content: start !important;\n\
+              \  border: 1px solid !important; \n  border-radius: 12px !important;\n\
+              }\n.info {\n  flex: 1 1 auto !important;\n  margin-right: 0px !important;\n\
+              \  min-width: 0 !important;\n}\n"
+            ha-tile-info$: ".primary {\n  font-size: 1.2rem !important;\n}\n.secondary\
+              \ {\n  font-size: 1rem !important;\n  white-space: pre-wrap !important;\n\
+              \  -webkit-line-clamp: unset !important;\n  max-height: none !important;\n\
+              }\n"
+        visibility:
+        - below: 50
+          condition: numeric_state
+          entity: sensor.openweathermap_feels_like_temperature_2
+      hash: '#Work'
+      hide_backdrop: true
+      icon: local:work_temp
+      name: Work Temperatures
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+        }"
+      type: custom:bubble-card
+      show_previous_button: true
+      show_close_button: false
+    - bg_blur: '30'
+      bg_opacity: '20'
+      button_type: name
+      card_type: pop-up
+      cards:
+      - type: markdown
+        title: Recent Alexa — Sensor Trace
+        content: "{% set alexas = [\n  states.media_player.blake_s_echo_dot_2,\n \
+          \ states.media_player.blake_s_echo_pop_2,\n  states.media_player.blake_s_echo_spot_2\n\
+          ] %}\n\n{% set all_echo = states.media_player.all_echo_2 %}\n\n## All Alexa\
+          \ entity states\n\n| Device | Original | `_2` |\n|---|---|---|\n| Dot |\
+          \ **{{ states('media_player.blake_s_echo_dot') }}** | **{{ states('media_player.blake_s_echo_dot_2')\
+          \ }}** |\n| Pop | **{{ states('media_player.blake_s_echo_pop') }}** | **{{\
+          \ states('media_player.blake_s_echo_pop_2') }}** |\n| Spot | **{{ states('media_player.blake_s_echo_spot')\
+          \ }}** | **{{ states('media_player.blake_s_echo_spot_2') }}** |\n| All Echo\
+          \ | **{{ states('media_player.all_echo') }}** | **{{ states('media_player.all_echo_2')\
+          \ }}** |\n\n---\n\n# Recent Alexa calculation\n\n## Step 1 — Is All Echo\
+          \ playing?\n\nState:\n\n**`{{ all_echo.state }}`**\n\nTest:\n\n`{{ all_echo.state\
+          \ == 'playing' }}`\n\n{% if all_echo.state == 'playing' %}\n\n✅ **TRUE**\n\
+          \nAll Echo always wins while actively playing.\n\n### Result\n\n**`media_player.all_echo_2`**\n\
+          \n{% else %}\n\n❌ **FALSE**\n\nContinue to Step 2.\n\n---\n\n## Step 2 —\
+          \ Individual Echos currently playing\n\n{% set playing = alexas\n  | selectattr('state',\
+          \ 'eq', 'playing')\n  | sort(attribute='last_changed', reverse=true)\n \
+          \ | list\n%}\n\nDot playing:\n\n`{{ states('media_player.blake_s_echo_dot_2')\
+          \ == 'playing' }}`\n\nPop playing:\n\n`{{ states('media_player.blake_s_echo_pop_2')\
+          \ == 'playing' }}`\n\nSpot playing:\n\n`{{ states('media_player.blake_s_echo_spot_2')\
+          \ == 'playing' }}`\n\nNumber playing:\n\n**{{ playing | count }}**\n\n{%\
+          \ if playing | count > 0 %}\n\n### Playing entity state-change times\n\n\
+          | Entity | Last changed | Age |\n|---|---|---:|\n{% for p in playing %}\n\
+          | {{ p.name }} | {{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+          \ }} | {{ (now() - p.last_changed).total_seconds() | round(1) }}s |\n{%\
+          \ endfor %}\n\nThe list is sorted by `last_changed`, newest first.\n\n{%\
+          \ if playing | count > 1 %}\n\nMultiple individual Echos are playing, so\
+          \ the one with the newest `last_changed` wins.\n\n{% else %}\n\nOnly one\
+          \ individual Echo is playing, so it wins automatically.\n\n{% endif %}\n\
+          \n### Result\n\n**`{{ playing[0].entity_id }}`**\n\n{% else %}\n\n❌ No individual\
+          \ Echo is currently playing.\n\nContinue to Step 3.\n\n---\n\n## Step 3\
+          \ — Paused Echos\n\n{% set paused = (alexas + [all_echo])\n  | selectattr('state',\
+          \ 'eq', 'paused')\n  | sort(attribute='last_changed', reverse=true)\n  |\
+          \ list\n%}\n\nOnly entities that are currently paused participate in this\
+          \ step.\n\nNumber paused:\n\n**{{ paused | count }}**\n\n{% if paused |\
+          \ count > 0 %}\n\n### Paused entity state-change times\n\n| Entity | Last\
+          \ changed | Age |\n|---|---|---:|\n{% for p in paused %}\n| {{ p.name }}\
+          \ | {{ as_local(p.last_changed).strftime('%H:%M:%S.%f')[:-3] }} | {{ (now()\
+          \ - p.last_changed).total_seconds() | round(1) }}s |\n{% endfor %}\n\n{%\
+          \ set provisional_winner = paused[0] %}\n\nThe list is sorted by `last_changed`,\
+          \ newest first.\n\nProvisional winner:\n\n**`{{ provisional_winner.entity_id\
+          \ }}`**\n\n---\n\n## Step 4 — All Echo 2-second override\n\nProvisional\
+          \ winner:\n\n**`{{ provisional_winner.entity_id }}`**\n\nIs provisional\
+          \ winner already All Echo:\n\n**{{ provisional_winner.entity_id == 'media_player.all_echo_2'\
+          \ }}**\n\nIs All Echo currently paused:\n\n**{{ all_echo.state == 'paused'\
+          \ }}**\n\n{% if provisional_winner.entity_id != 'media_player.all_echo_2'\n\
+          \      and all_echo.state == 'paused' %}\n\n{% set diff =\n  ((all_echo.last_changed\
+          \ - provisional_winner.last_changed).total_seconds() | abs)\n%}\n\nProvisional\
+          \ winner timestamp:\n\n`{{ as_local(provisional_winner.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+          \ }}`\n\nAll Echo timestamp:\n\n`{{ as_local(all_echo.last_changed).strftime('%H:%M:%S.%f')[:-3]\
+          \ }}`\n\nDifference:\n\n`| {{ all_echo.last_changed.timestamp() | round(3)\
+          \ }} - {{ provisional_winner.last_changed.timestamp() | round(3) }} |`\n\
+          \n`= {{ diff | round(3) }} seconds`\n\nWithin 2 seconds:\n\n`{{ diff | round(3)\
+          \ }} <= 2`\n\n**{{ diff <= 2 }}**\n\nFull override test:\n\n`provisional\
+          \ winner != All Echo`\n\nAND\n\n`All Echo state == paused`\n\nAND\n\n`difference\
+          \ <= 2 seconds`\n\n**{{ provisional_winner.entity_id != 'media_player.all_echo_2'\n\
+          \    and all_echo.state == 'paused'\n    and diff <= 2 }}**\n\n{% if diff\
+          \ <= 2 %}\n\n{% set diagnostic_winner = all_echo %}\n\n✅ All Echo wins the\
+          \ paused comparison.\n\n### Paused winner after override\n\n**`{{ diagnostic_winner.entity_id\
+          \ }}`**\n\n{% else %}\n\n{% set diagnostic_winner = provisional_winner %}\n\
+          \n❌ All Echo is not within 2 seconds.\n\n### Paused winner after override\n\
+          \n**`{{ diagnostic_winner.entity_id }}`**\n\n{% endif %}\n\n{% else %}\n\
+          \n{% set diagnostic_winner = provisional_winner %}\n\nThe All Echo override\
+          \ does not apply.\n\n### Paused winner after override\n\n**`{{ diagnostic_winner.entity_id\
+          \ }}`**\n\n{% endif %}\n\n---\n\n## Step 5 — 10-minute sensor check\n\n\
+          {% set provisional_age =\n  (now() - provisional_winner.last_changed).total_seconds()\n\
+          %}\n\nThe real sensor performs its 10-minute check against the provisional\
+          \ winner before applying the override.\n\nAge of provisional winner:\n\n\
+          **{{ provisional_age | round(3) }} seconds**\n\nTest:\n\n`{{ provisional_age\
+          \ | round(3) }} < 600`\n\n**{{ provisional_age < 600 }}**\n\n{% if provisional_age\
+          \ < 600 %}\n\n✅ The provisional winner is within 10 minutes.\n\nThe real\
+          \ sensor continues to its All Echo override logic.\n\n{% if provisional_winner.entity_id\
+          \ != 'media_player.all_echo_2'\n      and all_echo.state == 'paused'\n \
+          \     and ((all_echo.last_changed - provisional_winner.last_changed).total_seconds()\
+          \ | abs) <= 2 %}\n\n### Final calculated result\n\n**`media_player.all_echo_2`**\n\
+          \n{% else %}\n\n### Final calculated result\n\n**`{{ provisional_winner.entity_id\
+          \ }}`**\n\n{% endif %}\n\n{% else %}\n\n❌ The provisional winner is more\
+          \ than 10 minutes old.\n\nThe real sensor stops here and does not use the\
+          \ override result shown above.\n\n### Final calculated result\n\n**`none`**\n\
+          \n{% endif %}\n\n{% else %}\n\nNo Echo is currently paused.\n\n### Final\
+          \ calculated result\n\n**`none`**\n\n{% endif %}\n\n{% endif %}\n\n{% endif\
+          \ %}\n\n---\n\n# Actual sensor result\n\n**`{{ states('sensor.recent_alexa')\
+          \ }}`**"
+        card_mod:
+          style:
+            ha-markdown$: "code {\n  background-color: var(--custom-bg) !important;\n\
+              }\n"
+      hash: '#recentalexa'
+      hide_backdrop: true
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+        }"
+      type: custom:bubble-card
+      show_previous_button: true
+      show_close_button: false
+      name: Recent Alexa Template
+      icon: mdi:playlist-music
+    - bg_blur: '30'
+      bg_opacity: '20'
+      button_type: name
+      card_type: pop-up
+      cards:
+      - type: vertical-stack
+        cards:
+        - type: tile
+          grid_options:
+            columns: 12
+            rows: 1
+          entity: sensor.recent_alexa
+          name: Recent Alexa
+          vertical: false
+          features:
+          - type: custom:service-call
+            entries:
+            - icon: mdi:eye
+              label: 'Template Trace
+
+                '
+              styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+                \  border-radius: var(--custom-radius);\n  height: 40px;\n  width:\
+                \ 180px !important;\n  flex: 0 0 180px !important;\n}\n:host {\n \
+                \     --color: var(--custom-bg);      \n}\n.label {\n    color: var(--custom-comtrast);\n\
+                }\n.icon {\n    color: var(--custom-comtrast);\n}"
+              tap_action:
+                action: navigate
+                navigation_path: /my-dashboard/popup#recentalexa
+              thumb: md3-elevated
+              toggle_styles: false
+              type: button
+          features_position: inline
+          card_mod:
+            style:
+              ha-tile-container$: ".content {\n  padding-inline-start: 8px !important;\n\
+                \  gap: 4px !important;\n}\n"
+              .: "ha-tile-icon {\n  --tile-icon-size: 4rem !important;\n  --mdc-icon-size:\
+                \ 3rem !important;\n}\nhui-card-features[slot=\"features-inline\"\
+                ] {\n  width: 130px !important;\n  flex: 0 0 130px !important;\n \
+                \ padding: 0 !important;\n  margin-inline-end: 40px !important;\n\
+                }\nha-tile-info {\n  --ha-tile-info-gap: 3px !important;\n}\nha-card\
+                \ {\n\n}\n"
+        - type: custom:mini-media-player
+          entity: media_player.all_echo_2
+          volume_stateless: true
+          hide:
+            power: true
+            source: true
+          artwork: material
+          replace_mute: stop
+        - type: custom:mini-media-player
+          entity: media_player.blake_s_echo_spot_2
+          volume_stateless: true
+          hide:
+            power: true
+            source: true
+          artwork: material
+          replace_mute: stop
+        - type: custom:mini-media-player
+          entity: media_player.blake_s_echo_pop_2
+          volume_stateless: true
+          hide:
+            power: true
+            source: true
+          artwork: material
+          replace_mute: stop
+        - type: custom:mini-media-player
+          entity: media_player.blake_s_echo_dot_2
+          volume_stateless: true
+          hide:
+            power: true
+            source: true
+          artwork: material
+          replace_mute: stop
+      hash: '#music'
+      hide_backdrop: true
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+        }"
+      type: custom:bubble-card
+      show_previous_button: true
+      show_close_button: false
+      name: Music
+      icon: mdi:music
+  cards: []

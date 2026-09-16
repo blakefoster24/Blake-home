@@ -1214,7 +1214,7 @@
           | Home_ts: {{ fmt(home_ts) }} | Prev_door_ts: {{ fmt(prev_door_ts) }} |
           Home_ts - Prev_door_ts = {{ home_delta }}s | First opening: {{ true if first_open_bool
           == true else false if first_open_bool == false else 'n/a' }}\n"
-        entity_id: sensor.door_log
+        entity_id: binary_sensor.front_door
   - alias: Leaving / Arriving
     choose:
     - conditions:
@@ -1358,6 +1358,20 @@
                 browse_entity_id: media_player.bedroom_tv
           target:
             entity_id: media_player.bedroom_tv
+        - wait_for_trigger:
+          - trigger: occupancy.detected
+            target:
+              entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_left
+            options:
+              for:
+                hours: 0
+                minutes: 3
+                seconds: 0
+          timeout:
+            hours: 0
+            minutes: 10
+            seconds: 0
+            milliseconds: 0
         else:
         - action: light.turn_on
           metadata: {}
@@ -3067,13 +3081,23 @@
   - trigger: template
     value_template: '{{ (states(''sensor.blakes_phone_browser_path'') | lower).startswith(''/my-dashboard'')
       }}'
-    alias: Switches to dashboard
+    alias: Blake’s phone app -> dashboard
     id: Dashboard
+  - trigger: template
+    value_template: '{{ (states(''sensor.blakes_phone_safari_browser_path'') | lower).startswith(''/my-dashboard'')
+      }}'
+    alias: Blake’s phone safari -> dashboard
+    id: Dashboard2
   - trigger: template
     value_template: '{{ not (states(''sensor.blakes_phone_browser_path'') | lower).startswith(''/my-dashboard'')
       }}'
-    alias: Default
+    alias: Blake’s phone app -> leaves dashboard
     id: Default
+  - trigger: template
+    value_template: '{{ not (states(''sensor.blakes_phone_safari_browser_path'') |
+      lower).startswith(''/my-dashboard'') }}'
+    alias: Blake’s phone safari -> leaves dashboard
+    id: Default2
   conditions: []
   actions:
   - choose:
@@ -3081,23 +3105,26 @@
       - condition: trigger
         id:
         - Dashboard
+        - Dashboard2
       sequence:
       - action: browser_mod.set_theme
         metadata: {}
         data:
-          browser_id:
-          - 97ccdd5d88b9d2a59ffaceee2b3f50c3
           theme: Frosted Glass Global
           dark: dark
+          browser_id:
+          - 97ccdd5d88b9d2a59ffaceee2b3f50c3
+          - 5b64858aff100d3bbcdba99e8d9a1250
         alias: 'Set Theme: Frosted Glass Global (Dark)'
     default:
     - action: browser_mod.set_theme
       metadata: {}
       data:
-        browser_id:
-        - 97ccdd5d88b9d2a59ffaceee2b3f50c3
         theme: Frosted Glass Global
         dark: auto
+        browser_id:
+        - 97ccdd5d88b9d2a59ffaceee2b3f50c3
+        - 5b64858aff100d3bbcdba99e8d9a1250
       alias: 'Set Theme: Frosted Glass Global (Auto)'
   mode: single
 - id: '1789246217977'
