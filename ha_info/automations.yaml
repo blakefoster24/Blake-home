@@ -899,6 +899,26 @@
         seconds: 0
       behavior: first
     id: Echos playing > 2min
+  - trigger: state
+    entity_id:
+    - input_select.speakers
+    from:
+    - All Echo (All Alexa Devices)
+    id: Speaker options
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  - trigger: state
+    entity_id:
+    - input_boolean.general_toggle_helper
+    to:
+    - 'on'
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    id: Shower mode on
   conditions: []
   actions:
   - choose:
@@ -985,6 +1005,35 @@
             action_type: disable trigger
         metadata: {}
       alias: If triggered by Echos playing > 1min and 1 more condition
+    - conditions:
+      - condition: trigger
+        id:
+        - Speaker options
+      - condition: state
+        entity_id: script.alexa_music
+        state:
+        - 'off'
+      sequence:
+      - action: input_select.select_option
+        metadata: {}
+        target:
+          entity_id: input_select.speakers
+        data:
+          option: All Echo (All Alexa Devices)
+    - conditions:
+      - condition: trigger
+        id:
+        - Shower mode on
+      - condition: state
+        entity_id: script.alexa_music
+        state:
+        - 'off'
+      sequence:
+      - action: input_boolean.turn_off
+        metadata: {}
+        target:
+          entity_id: input_boolean.general_toggle_helper
+        data: {}
   mode: parallel
   max: 10
   trace:
@@ -3084,12 +3133,22 @@
     alias: Blake’s phone app -> dashboard
     id: Dashboard
   - trigger: template
+    value_template: '{{ (states(''sensor.blakes_phone_browser_path_2'') | lower).startswith(''/my-dashboard'')
+      }}'
+    alias: Blake’s phone app -> dashboard
+    id: Dashboard
+  - trigger: template
     value_template: '{{ (states(''sensor.blakes_phone_safari_browser_path'') | lower).startswith(''/my-dashboard'')
       }}'
     alias: Blake’s phone safari -> dashboard
     id: Dashboard2
   - trigger: template
     value_template: '{{ not (states(''sensor.blakes_phone_browser_path'') | lower).startswith(''/my-dashboard'')
+      }}'
+    alias: Blake’s phone app -> leaves dashboard
+    id: Default
+  - trigger: template
+    value_template: '{{ not (states(''sensor.blakes_phone_browser_path_2'') | lower).startswith(''/my-dashboard'')
       }}'
     alias: Blake’s phone app -> leaves dashboard
     id: Default
@@ -3115,6 +3174,7 @@
           browser_id:
           - 97ccdd5d88b9d2a59ffaceee2b3f50c3
           - 5b64858aff100d3bbcdba99e8d9a1250
+          - d4f7141f09cec1a16e707736622a57b4
         alias: 'Set Theme: Frosted Glass Global (Dark)'
     default:
     - action: browser_mod.set_theme
@@ -3125,6 +3185,7 @@
         browser_id:
         - 97ccdd5d88b9d2a59ffaceee2b3f50c3
         - 5b64858aff100d3bbcdba99e8d9a1250
+        - d4f7141f09cec1a16e707736622a57b4
       alias: 'Set Theme: Frosted Glass Global (Auto)'
   mode: single
 - id: '1789246217977'

@@ -253,18 +253,24 @@ alexa_music:
         \ 'Echo Dot': 'media_player.blake_s_echo_dot_2',\n  'Echo Pop': 'media_player.blake_s_echo_pop_2',\n
         \ 'Echo Spot': 'media_player.blake_s_echo_spot_2'\n} %}\n{{ mapper.get(speaker_voice_name,
         'media_player.all_echo_2') }}"
+      shower_mode: '{{ is_state(''input_boolean.general_toggle_helper'', ''on'') }}'
       music_script_variables: "{% if action_type | default('none') == 'stop' %}\n
-        \ Stop / Reset\n{% else %}\n  {{ ('Manual Search' if is_search else 'Automatic')\n
-        \    ~ ' • '\n     ~ ('Music Search: ' if is_search else 'Alarm Music: ')\n
-        \    ~ ('Default: ' if music_input in ['', 'unknown', 'unavailable'] else
-        '')\n     ~ music_query\n     ~ ' on '\n     ~ ('Default: ' if speaker_selection
-        in ['', 'unknown', 'unavailable'] else '')\n     ~ speaker_voice_name }}\n{%
-        endif %}"
+        \ Stop / Reset\n{% else %}\n  {{ ('Shower Mode • ' if shower_mode else '')\n
+        \    ~ ('Manual Search' if is_search else 'Automatic')\n     ~ ' • '\n     ~
+        ('Music Search: ' if is_search else 'Alarm Music: ')\n     ~ ('Default: '
+        if music_input in ['', 'unknown', 'unavailable'] else '')\n     ~ music_query\n
+        \    ~ ' on '\n     ~ ('Default: ' if speaker_selection in ['', 'unknown',
+        'unavailable'] else '')\n     ~ speaker_voice_name }}\n{% endif %}"
     note: is_search decides whether this run is a manual music search or the automatic
       alarm/wakeup path. music_query and speaker_choice provide safe defaults. speaker_voice_name
       is the friendly Alexa command name, target_media_player is the mapped Home Assistant
       media player, and music_script_variables is the primary information written
       before " || " in input_text.music_script_info.
+  - action: input_boolean.turn_off
+    metadata: {}
+    target:
+      entity_id: input_boolean.general_toggle_helper
+    data: {}
   - action: input_select.select_option
     metadata: {}
     target:
@@ -539,7 +545,8 @@ alexa_music:
                     entity_id: input_text.music_script_info
                   data:
                     value: '{{ music_script_variables }} || Raising All Echo Volume
-                      - {{ repeat.index * 0.02 }}'
+                      - {{ repeat.index * 2 }}%'
+                  alias: 'Music script info: volume '
                 - action: media_player.volume_set
                   metadata: {}
                   data:
@@ -551,6 +558,30 @@ alexa_music:
                     minutes: 0
                     seconds: 2
                     milliseconds: 0
+            - if:
+              - condition: template
+                value_template: '{{ shower_mode }}'
+                alias: Shower_mode = true
+              then:
+              - action: input_text.set_value
+                metadata: {}
+                target:
+                  entity_id: input_text.music_script_info
+                data:
+                  value: '{{ music_script_variables }} || Raising Echo Pop Volume
+                    - Shower - 34%'
+                alias: 'Music script info: shower volume'
+              - delay:
+                  hours: 0
+                  minutes: 0
+                  seconds: 2
+                  milliseconds: 0
+              - action: media_player.volume_set
+                metadata: {}
+                data:
+                  volume_level: 0.34
+                target:
+                  entity_id: media_player.blake_s_echo_pop_2
             - alias: 'Music script info: playing'
               action: input_text.set_value
               metadata: {}
@@ -558,21 +589,6 @@ alexa_music:
                 entity_id: input_text.music_script_info
               data:
                 value: '{{ music_script_variables }} || Playing...'
-            - if:
-              - condition: select.is_option_selected
-                target:
-                  entity_id: input_select.speakers
-                options:
-                  for: 00:00:00
-                  option:
-                  - Echo Pop (Bathroom)
-              then:
-              - action: media_player.volume_set
-                metadata: {}
-                data:
-                  volume_level: 0.34
-                target:
-                  entity_id: media_player.blake_s_echo_pop_2
           - alias: Wakeup Sequence
             choose:
             - alias: 'Manual Wakeup: no delays'
