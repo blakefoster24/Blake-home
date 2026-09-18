@@ -357,7 +357,7 @@ views:
     badges_position: bottom
     badges_wrap: wrap
     layout: center
-  max_columns: 4
+  max_columns: 1
   sections:
   - cards:
     - card_mod:
@@ -1352,7 +1352,7 @@ views:
             \  margin-inline-start: -7px !important;\n}\n"
     - type: custom:mushroom-template-card
       features_position: bottom
-      entity: binary_sensor.bed_presence_bb8594_bed_occupied_left
+      entity: binary_sensor.bed_presence_bb8594_bed_occupied_right
       primary: Bed Occupied Right
       secondary: '{{ state_translated("sensor.bed_presence_bb8594_calibrated_right_pressure")}}%'
       icon: local:bed_sensor
@@ -2138,82 +2138,6 @@ views:
       uix:
         style: ".title {\n  font-size: 20px !important;\n}\n.title ha-icon {\n  --mdc-icon-size:\
           \ 25px !important;\n}\n"
-    - custom_fields:
-        run_button:
-          card:
-            features:
-            - entries:
-              - entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
-                icon: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      null\n    {% else %}\n      local:github_zip_script\n\
-                  \    {% endif %} \n"
-                label: "{% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      Generating...\n    {% else %}\n      Generate\n\
-                  \    {% endif %} \n"
-                styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                  \  --color: var(--custom-bg); \n  border-radius: var(--custom-radius);\n\
-                  \  box-shadow: none;\n  margin-right: auto\n  margin-left: auto\
-                  \  \n  width: auto\n  justify-content: space-around\n  justify-self:\
-                  \ space-around\n  justify-items: space-around\n}\n.label {\n   \
-                  \ {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n\
-                  \      color: var(--custom-contrast);\n    {% endif %} \n}\n.icon\
-                  \ {\n    {% if is_state('script.push_ha_info_to_github_create_ai_zip_file_now',\
-                  \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n\
-                  \      color: var(--custom-contrast);\n    {% endif %}\n  padding-bottom:\
-                  \ .25rem\n}"
-                tap_action:
-                  action: perform-action
-                  perform_action: script.turn_on
-                  target:
-                    entity_id: script.push_ha_info_to_github_create_ai_zip_file_now
-                thumb: md3-elevated
-                toggle_styles: false
-                type: button
-              type: custom:service-call
-            transparent: false
-            type: custom:custom-features-card
-            uix:
-              style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
-                \ none;\n  margin-right: auto\n  margin-left: auto\n  width: auto\n\
-                \  justify-content: space-around\n  justify-self: space-around\n \
-                \ justify-items: space-around\n\n}\nha-card::before {\ncontent: none\
-                \ !important;\n}\n"
-      entity: script.push_ha_info_to_github_create_ai_zip_file_now
-      name: Generate HA Info Folder
-      show_state: true
-      state:
-      - state_display: generating
-        valye: 'on'
-      - state_display: 'off'
-        value: 'off'
-      styles:
-        card:
-        - padding: .7rem
-        - height: 4.5rem
-        grid:
-        - grid-template-areas: '"i n run_button" "i s run_button"'
-        - grid-template-columns: min-content min-content 1fr
-        - grid-template-rows: 1fr 1fr
-        icon:
-        - width: 3rem
-        - color: "[[[\n  return entity.state === 'on' ? 'var(--custom-active)' : 'var(--custom-contrast)';\n\
-            ]]]\n"
-        - padding-bottom: .25rem
-        - margin-left: -.5rem
-        img_cell:
-        - background-color: transparent
-        - width: 4rem
-        name:
-        - justify-self: start
-        - font-weight: 500
-        - font-size: 1rem
-        state:
-        - justify-self: start
-        - font-size: 1rem
-      tap_action:
-        action: none
-      type: custom:button-card
     - type: tile
       grid_options:
         columns: 12
@@ -3529,10 +3453,15 @@ views:
       entity: media_player.bedroom_tv
       source: full
       type: custom:mini-media-player
-      uix:
-        style: "ha-card {\n  border-radius: 30px !important;\n  margin-bottom: 5px\n\
-          }\n"
       volume_stateless: true
+      group: false
+      info: scroll
+      uix:
+        style: "ha-card {\n  border-radius: var(--custom-radius) !important;\n  box-shadow:\
+          \ none !important;\n  margin-bottom: 5px\n}\n{% if is_state('media_player.bedroom_tv',\
+          \ 'off') %}\n  ha-card {\n    box-shadow: 50px;\n    border: 1px solid rgba(255,\
+          \ 255, 255, 0.2) !important;\n  }\n  ha-card::before,\n  .mmp__bg,\n  .mmp__bg::before\
+          \ {\n    display: none !important;\n  }\n{% endif %}\n"
     - card:
         cards:
         - entity: light.bedroom_tv_backlight
