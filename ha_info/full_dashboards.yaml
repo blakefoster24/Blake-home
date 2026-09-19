@@ -1705,76 +1705,33 @@ views:
               style: "ha-card {\n  border: none !important;\n  background: none !important;\n\
                 \  box-shadow: none !important;\n  margin-bottom: 0px !important;\n\
                 }\nha-card::before { content: none !important; }\n"
-          - cards:
-            - bg_blur: '30'
-              bg_opacity: '50'
-              button_action: {}
-              button_type: switch
-              card_type: pop-up
-              cards:
-              - grid_options:
-                  columns: 12
-                  rows: auto
-                hold_time: 50
-                media_player_id: media_player.bedroom_tv
-                platform: Roku
-                remote_id: remote.bedroom_tv
-                rows:
-                - - back
-                  - power
-                  - home
-                  - menu
-                  - youtube
-                - - touchpad
-                  - - volume_buttons
-                - - rewind
-                  - previous
-                  - play_pause
-                  - next
-                  - fast_forward
-                type: custom:universal-remote-card
-              close_action:
-                action: perform-action
-                perform_action: input_boolean.turn_off
-                target:
-                  entity_id: input_boolean.dashboard_toggle
-              hash: '#remote'
-              icon: mdi:remote
-              name: Remote
-              show_header: true
-              slider_fill_orientation: left
-              slider_value_position: right
-              sub_button:
-                bottom: []
-                main: []
-              type: custom:bubble-card
-            - button_action:
-                tap_action:
-                  action: navigate
-                  navigation_path: '#remote'
-              button_type: name
-              card_type: button
-              icon: mdi:remote
-              name: Remote
-              styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
-                \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
-                \ 30px;\n  --bubble-button-border:  var(--custom-button-border);\n\
-                }\n"
-              sub_button:
-                bottom: []
-                main: []
-              type: custom:bubble-card
-              uix:
-                style:
-                  .: "ha-card {\n  background: none !important;\n  border: none !important;\n\
-                    \  box-shadow: none !important;\n  padding: .5rem .5rem .25rem\
-                    \ .5rem !important;\n  margin-top: -2.5rem\n}\nha-card::before\
-                    \ { content: none !important; }\n"
+          - cards: []
             type: vertical-stack
             uix:
               style: "ha-card {\n  border: none !important;\n  background: none !important;\n\
                 \  box-shadow: none !important;\n  margin-bottom: 0px !important;\n\
                 }\nha-card::before { content: none !important; }\n"
+          - button_action:
+              tap_action:
+                action: navigate
+                navigation_path: '#remote'
+            button_type: name
+            card_type: button
+            icon: mdi:remote
+            name: Remote
+            styles: "ha-card {\n  --bubble-button-main-background-color: var(--custom-bg);\n\
+              \  --bubble-button-icon-background-color: var(--custom-bg);\n  --bubble-button-border-radius:\
+              \ 30px;\n  --bubble-button-border:  var(--custom-button-border);\n}\n"
+            sub_button:
+              bottom: []
+              main: []
+            type: custom:bubble-card
+            uix:
+              style:
+                .: "ha-card {\n  background: none !important;\n  border: none !important;\n\
+                  \  box-shadow: none !important;\n  padding: .5rem .5rem .25rem .5rem\
+                  \ !important;\n  margin-top: -2.5rem\n}\nha-card::before { content:\
+                  \ none !important; }\n"
           type: vertical-stack
         conditions:
         - condition: state
@@ -5027,4 +4984,43 @@ views:
       name: Music
       icon: mdi:music
       buttons_position: left
+    - bg_blur: '30'
+      bg_opacity: '20'
+      button_type: name
+      card_type: pop-up
+      cards:
+      - grid_options:
+          columns: 12
+          rows: auto
+        hold_time: 50
+        media_player_id: media_player.bedroom_tv
+        platform: Roku
+        remote_id: remote.bedroom_tv
+        rows:
+        - - back
+          - power
+          - home
+          - menu
+          - youtube
+        - - touchpad
+          - - volume_buttons
+        - - rewind
+          - previous
+          - play_pause
+          - next
+          - fast_forward
+        type: custom:universal-remote-card
+      hash: '#Remote'
+      hide_backdrop: true
+      styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
+        \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
+        \ var(--custom-bg) !important;\n  opacity: 1 !important;\n}\n.bubble-icon-container\
+        \ {\n  background-color: var(--custom-bg) !important;\n  opacity: 1 !important;\n\
+        }"
+      type: custom:bubble-card
+      show_previous_button: true
+      show_close_button: false
+      icon: mdi:remote
+      buttons_position: left
+      name: Remote
   cards: []

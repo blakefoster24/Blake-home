@@ -360,7 +360,7 @@
                 action_type: lights
                 called_by: '{{ this.entity_id }}'
                 threshold: 5
-                scene: lights off except br lamp
+                scene: lights off except bedroom lamp
                 sensors:
                 - binary_sensor.bathroom_presence
                 - binary_sensor.kitchen_presence
@@ -494,11 +494,24 @@
         options:
           for: 00:00:00
       sequence:
-      - action: light.turn_on
-        metadata: {}
-        target:
-          entity_id: light.bedroom_ceiling_lights
-        data: {}
+      - if:
+        - condition: time
+          after: '22:00:00'
+          before: 08:00:00
+        then:
+        - action: scene.turn_on
+          metadata: {}
+          target:
+            entity_id: scene.dimmed
+          data:
+            transition: 2
+        else:
+        - action: scene.turn_on
+          metadata: {}
+          target:
+            entity_id: scene.full_lamp
+          data:
+            transition: 1
   mode: parallel
   trace:
     stored_traces: 30
@@ -919,6 +932,9 @@
       minutes: 5
       seconds: 0
     id: Shower mode on
+  - trigger: state
+    entity_id: light.bedroom_tv_backlight
+    id: Backlight
   conditions: []
   actions:
   - choose:
@@ -1034,6 +1050,31 @@
         target:
           entity_id: input_boolean.general_toggle_helper
         data: {}
+    - conditions:
+      - condition: trigger
+        id:
+        - Backlight
+      sequence:
+      - if:
+        - condition: light.is_on
+          target:
+            entity_id: light.bedroom_tv_backlight
+          options:
+            behavior: any
+            for: 00:00:00
+        then:
+        - action: input_boolean.turn_on
+          metadata: {}
+          target:
+            entity_id: input_boolean.dashboard_toggle
+          data: {}
+        else:
+        - action: input_boolean.turn_off
+          metadata: {}
+          target:
+            entity_id: input_boolean.dashboard_toggle
+          data: {}
+        alias: Turn dashboard toggle on/off with backlight
   mode: parallel
   max: 10
   trace:
