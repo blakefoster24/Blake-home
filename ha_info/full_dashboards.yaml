@@ -1651,7 +1651,7 @@ views:
             type: tile
             uix:
               style: "ha-card {\n  border: none !important;\n  background: none !important;\n\
-                \  box-shadow: none !important;\n  margin-top: 1rem !important;\n\
+                \  box-shadow: none !important;\n  margin-top: 10px !important;\n\
                 \  margin-bottom: 0px !important;\n}\nha-card::before { content: none\
                 \ !important; }\n"
             vertical: false
@@ -1705,16 +1705,10 @@ views:
               style: "ha-card {\n  border: none !important;\n  background: none !important;\n\
                 \  box-shadow: none !important;\n  margin-bottom: 0px !important;\n\
                 }\nha-card::before { content: none !important; }\n"
-          - cards: []
-            type: vertical-stack
-            uix:
-              style: "ha-card {\n  border: none !important;\n  background: none !important;\n\
-                \  box-shadow: none !important;\n  margin-bottom: 0px !important;\n\
-                }\nha-card::before { content: none !important; }\n"
           - button_action:
               tap_action:
                 action: navigate
-                navigation_path: '#remote'
+                navigation_path: /my-dashboard/popup#remote
             button_type: name
             card_type: button
             icon: mdi:remote
@@ -3487,44 +3481,10 @@ views:
               \  box-shadow: none !important;\n  margin-bottom: 0px !important;\n\
               }\nha-card::before { content: none !important; }\n"
         - cards:
-          - bg_blur: '30'
-            bg_opacity: '50'
-            button_action: {}
-            button_type: switch
-            card_type: pop-up
-            cards:
-            - grid_options:
-                columns: 12
-                rows: auto
-              hold_time: 50
-              media_player_id: media_player.bedroom_tv
-              platform: Roku
-              remote_id: remote.bedroom_tv
-              rows:
-              - - back
-                - power
-                - home
-                - menu
-                - youtube
-              - - touchpad
-                - - volume_buttons
-              - - rewind
-                - previous
-                - play_pause
-                - next
-                - fast_forward
-              type: custom:universal-remote-card
-            hash: '#remote2'
-            icon: mdi:remote
-            name: Remote
-            show_header: true
-            slider_fill_orientation: left
-            slider_value_position: right
-            type: custom:bubble-card
           - button_action:
               tap_action:
                 action: navigate
-                navigation_path: '#remote2'
+                navigation_path: /my-dashboard/popup#remote
             button_type: name
             card_type: button
             icon: mdi:remote
@@ -5010,7 +4970,7 @@ views:
           - next
           - fast_forward
         type: custom:universal-remote-card
-      hash: '#Remote'
+      hash: '#remote'
       hide_backdrop: true
       styles: ".bubble-button-background {\n  background: var(--custom-bg) !important;\n\
         \  opacity: 1 !important;\n}\n.bubble-close-button {\n  background-color:\
