@@ -492,7 +492,10 @@
         target:
           entity_id: binary_sensor.bed_presence_bb8594_bed_occupied_either
         options:
-          for: 00:00:00
+          for:
+            hours: 0
+            minutes: 0
+            seconds: 30
       sequence:
       - if:
         - condition: time

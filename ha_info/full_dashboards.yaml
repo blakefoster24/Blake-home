@@ -378,148 +378,231 @@ views:
         navigation_path: /my-dashboard/popup#nav
       type: tile
       vertical: false
-    - entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
-        | int(0) > 0 else ''off'' }}'
-      states:
-        'on':
-          cards:
-          - features_position: bottom
-            grid_options:
-              columns: full
-            icon: local:briefcase_alarm_automation
-            icon_color: '#e1b000'
-            name_color: '#e1b000'
-            primary: Workday Wakeup is Active
-            type: custom:mushroom-template-card
-            uix:
-              style:
-                ha-tile-container$: ".content {\n  padding-inline-start: 4px !important;\n\
-                  \  gap: 4px !important;\n}\n"
-                .: "ha-tile-icon {\n  --tile-icon-size: 32px !important;\n  --mdc-icon-size:\
-                  \ 32px !important;\n\n}\nha-tile-info {\n  --ha-tile-info-gap: 4px\
-                  \ !important;\n  --ha-tile-info-primary-font-size: 20px;\n}\nha-card\
-                  \ {\n  border: none;\n  background: none;\n  box-shadow: none;\n\
-                  }\n\nha-card::before {\n  content: none !important;\n}\n"
-          - features:
-            - entries:
-              - entity_id: ''
-                icon: mdi:cancel
-                label: Abort and Reset
-                tap_action:
-                  action: perform-action
-                  data:
-                    action_type: abort
-                  perform_action: script.helper_script
-                thumb: md3-elevated
-                type: button
-                styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                  \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
-                  \ }};\n}\n.label {\n  color: {{ 'var(--custom-active)' }};\n}\n\
-                  .icon {\n  color: {{ 'var(--custom-active)' }};  \n}"
-            uix:
-              style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
-                \ none;\n  margin-top: -18px;\n}\n\nha-card::before {\n  content:\
-                \ none;\n}\ntype: custom:service-call\n"
-            type: custom:custom-features-card
-          type: custom:vertical-stack-in-card
-      type: custom:state-switch
-    - entity: "{{ 'on'\n   if is_state('script.helper_script', 'on')\n   and states('input_text.template_tracking')\
-        \ != ''\n   else 'off'\n}}"
-      states:
-        'on':
-          element:
-            card_mod:
-              style: "ha-tile-info .primary {\n  white-space: normal !important;\n\
-                \  overflow: visible !important;\n  text-overflow: unset !important;\n\
-                \  line-height: 1.2 !important;\n}\n"
-            entity: timer.timer_helper
-            features_position: bottom
-            hide_state: '{{ states(''input_text.template_tracking'').startswith(''Timer
-              was'') }}'
-            name: "{% if states('input_text.template_tracking').startswith('Timer\
-              \ was') %}\n  Timer was already in use when triggered\n{% else %}\n\
-              \  Light Template Active - {{ states('input_text.template_tracking')\
-              \ }}\n{% endif %}"
-            tap_action:
-              action: none
-            type: tile
-            vertical: false
-          forge:
-            grid_options:
-              columns: full
-            mold: card
-          type: custom:uix-forge
-      type: custom:state-switch
-    - entity: template
-      states:
-        'on':
-          cards:
-          - grid_options:
-              columns: full
-              rows: auto
-            icon: "{% set door = 'automation.door_automation' %} {% set wake = 'automation.workday_wakeup'\
-              \ %} {% set disabled = states.automation | selectattr('state', 'eq',\
-              \ 'off') | map(attribute='entity_id') | list %} {% if is_state(door,\
-              \ 'off') and state_attr(wake, 'current') | int(0) > 0 %}\n  {% set disabled_count\
-              \ = disabled | reject('eq', door) | list | length %}\n{% else %}\n \
-              \ {% set disabled_count = disabled | length %}\n{% endif %}\n{% if disabled_count\
-              \ > 0 %}\n  mdi:robot-off\n{% else %}\n  mdi:robot\n{% endif %}"
-            icon_color: "{% set door = 'automation.door_automation' %} {% set wake\
-              \ = 'automation.workday_wakeup' %} {% set disabled = states.automation\
-              \ | selectattr('state', 'eq', 'off') | map(attribute='entity_id') |\
-              \ list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
-              \ | int(0) > 0 %}\n  {% set disabled_count = disabled | reject('eq',\
-              \ door) | list | length %}\n{% else %}\n  {% set disabled_count = disabled\
-              \ | length %}\n{% endif %}\n{% if disabled_count > 0 %}\n  orange\n\
-              {% else %}\n  green\n{% endif %}"
-            primary: "{% set door = 'automation.door_automation' %} {% set wake =\
-              \ 'automation.workday_wakeup' %} {% set disabled = states.automation\
-              \ | selectattr('state', 'eq', 'off') | map(attribute='entity_id') |\
-              \ list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
-              \ | int(0) > 0 %}\n  {% set disabled_count = disabled | reject('eq',\
-              \ door) | list | length %}\n{% else %}\n  {% set disabled_count = disabled\
-              \ | length %}\n{% endif %}\n{% if disabled_count > 0 %}\n  {{ disabled_count\
-              \ }} Disabled Automation{{ 's' if disabled_count > 1 else '' }}\n{%\
-              \ else %}\n  All Automations Active\n{% endif %}"
-            tap_action:
-              action: navigate
-              navigation_path: /config/automation
-            type: custom:mushroom-template-card
-            uix:
-              style:
-                ha-tile-container$: ".content {\n  padding-inline-start: 4px !important;\n\
-                  \  gap: 4px !important;\n}\n"
-                .: "ha-tile-icon {\n  --tile-icon-size: 25px !important;\n  --mdc-icon-size:\
-                  \ 25px !important;\n\n}\nha-tile-info {\n  --ha-tile-info-gap: 4px\
-                  \ !important;\n  --ha-tile-info-primary-font-size: 18px;\n}\nha-card\
-                  \ {\n  border: none;\n  background: none;\n  box-shadow: none;\n\
-                  \  margin-bottom: -20px !important;\n}\n\nha-card::before {\n  content:\
-                  \ none !important;\n}\n"
-          - card:
-              type: entities
+    - type: vertical-stack
+      cards:
+      - name: Device Health (checks for offline devices)
+        type: custom:state-switch
+        entity: template
+        template: "{% set entities = [\n  'light.main_lights',\n  'light.kitchen_lights',\n\
+          \  'light.living_room_ceiling_lights',\n  'light.living_room_lamp',\n  'climate.nest_thermostat',\n\
+          \  'fan.living_room_ceiling_fan',\n  'light.closet_light',\n  'light.bathroom_light',\n\
+          \  'light.bedroom_lamp',\n  'light.bedroom_ceiling_lights',\n  'fan.bedroom_ceiling_fan',\n\
+          \  'fan.bedroom_fan',\n  'binary_sensor.front_door',\n  'binary_sensor.kitchen_presence',\n\
+          \  'binary_sensor.living_room_motion',\n  'binary_sensor.bathroom_presence',\n\
+          \  'binary_sensor.bedroom_presence',\n  'binary_sensor.closet_motion',\n\
+          \  'binary_sensor.washing_machine',\n  'binary_sensor.dryer',\n  'binary_sensor.bed_presence_bb8594_bed_occupied_left',\n\
+          \  'binary_sensor.bed_presence_bb8594_bed_occupied_right',\n  'media_player.blake_s_echo_dot_2',\n\
+          \  'media_player.blake_s_echo_pop_2',\n  'media_player.blake_s_echo_spot_2',\n\
+          \  'media_player.all_echo_2'\n] %} {% set offline = expand(entities)\n \
+          \ | selectattr('state', 'in', ['unavailable', 'unknown'])\n  | list %}\n\
+          {{ 'on' if offline | count > 0 else 'off' }}\n"
+        states:
+          'on':
+            type: custom:vertical-stack-in-card
+            cards:
+            - type: custom:mushroom-template-card
+              grid_options:
+                columns: full
+                rows: auto
+              icon: mdi:wifi-off
+              icon_color: orange
+              primary: "{% set entities = [\n  'light.main_lights',\n  'light.kitchen_lights',\n\
+                \  'light.living_room_ceiling_lights',\n  'light.living_room_lamp',\n\
+                \  'climate.nest_thermostat',\n  'fan.living_room_ceiling_fan',\n\
+                \  'light.closet_light',\n  'light.bathroom_light',\n  'light.bedroom_lamp',\n\
+                \  'light.bedroom_ceiling_lights',\n  'fan.bedroom_ceiling_fan',\n\
+                \  'fan.bedroom_fan',\n  'binary_sensor.front_door',\n  'binary_sensor.kitchen_presence',\n\
+                \  'binary_sensor.living_room_motion',\n  'binary_sensor.bathroom_presence',\n\
+                \  'binary_sensor.bedroom_presence',\n  'binary_sensor.closet_motion',\n\
+                \  'binary_sensor.washing_machine',\n  'binary_sensor.dryer',\n  'binary_sensor.bed_presence_bb8594_bed_occupied_left',\n\
+                \  'binary_sensor.bed_presence_bb8594_bed_occupied_right',\n  'media_player.blake_s_echo_dot_2',\n\
+                \  'media_player.blake_s_echo_pop_2',\n  'media_player.blake_s_echo_spot_2',\n\
+                \  'media_player.all_echo_2'\n] %} {% set offline = expand(entities)\n\
+                \  | selectattr('state', 'in', ['unavailable', 'unknown'])\n  | list\
+                \ %}\n{{ offline | count }} Device{{ 's' if offline | count != 1 else\
+                \ '' }} Offline\n"
               uix:
-                style: "ha-card {\n  background: none !important;\n  border: none\
-                  \ !important;\n  box-shadow: none !important;\n}\nha-card::before\
-                  \ {\n  content: none !important;\n}\n"
-            filter:
-              template: "{% set door = 'automation.door_automation' %} {% set wake\
+                style:
+                  ha-tile-container$: ".content {\n  padding-inline-start: 4px !important;\n\
+                    \  gap: 4px !important;\n}\n"
+                  .: "ha-tile-icon {\n  --tile-icon-size: 25px !important;\n  --mdc-icon-size:\
+                    \ 25px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 4px\
+                    \ !important;\n  --ha-tile-info-primary-font-size: 18px;\n}\n\
+                    ha-card {\n  border: none;\n  background: none;\n  box-shadow:\
+                    \ none;\n  margin-bottom: -20px !important;\n}\nha-card::before\
+                    \ {\n  content: none !important;\n}\n"
+            - type: custom:auto-entities
+              show_empty: false
+              card:
+                type: entities
+                uix:
+                  style: "ha-card {\n  background: none !important;\n  border: none\
+                    \ !important;\n  box-shadow: none !important;\n}\nha-card::before\
+                    \ {\n  content: none !important;\n}\n"
+              filter:
+                template: "{% set entities = [\n  'light.main_lights',\n  'light.kitchen_lights',\n\
+                  \  'light.living_room_ceiling_lights',\n  'light.living_room_lamp',\n\
+                  \  'climate.nest_thermostat',\n  'fan.living_room_ceiling_fan',\n\
+                  \  'light.closet_light',\n  'light.bathroom_light',\n  'light.bedroom_lamp',\n\
+                  \  'light.bedroom_ceiling_lights',\n  'fan.bedroom_ceiling_fan',\n\
+                  \  'fan.bedroom_fan',\n  'binary_sensor.front_door',\n  'binary_sensor.kitchen_presence',\n\
+                  \  'binary_sensor.living_room_motion',\n  'binary_sensor.bathroom_presence',\n\
+                  \  'binary_sensor.bedroom_presence',\n  'binary_sensor.closet_motion',\n\
+                  \  'binary_sensor.washing_machine',\n  'binary_sensor.dryer',\n\
+                  \  'binary_sensor.bed_presence_bb8594_bed_occupied_left',\n  'binary_sensor.bed_presence_bb8594_bed_occupied_right',\n\
+                  \  'media_player.blake_s_echo_dot_2',\n  'media_player.blake_s_echo_pop_2',\n\
+                  \  'media_player.blake_s_echo_spot_2',\n  'media_player.all_echo_2'\n\
+                  ] %} {{ expand(entities)\n  | selectattr('state', 'in', ['unavailable',\
+                  \ 'unknown'])\n  | map(attribute='entity_id')\n  | list\n  | tojson\
+                  \ }}\n"
+      - Name: Disabled Automations (not including door automation while workday wakeup
+          automation is active)
+        entity: template
+        states:
+          'on':
+            cards:
+            - grid_options:
+                columns: full
+                rows: auto
+              icon: "{% set door = 'automation.door_automation' %} {% set wake = 'automation.workday_wakeup'\
+                \ %} {% set disabled = states.automation | selectattr('state', 'eq',\
+                \ 'off') | map(attribute='entity_id') | list %} {% if is_state(door,\
+                \ 'off') and state_attr(wake, 'current') | int(0) > 0 %}\n  {% set\
+                \ disabled_count = disabled | reject('eq', door) | list | length %}\n\
+                {% else %}\n  {% set disabled_count = disabled | length %}\n{% endif\
+                \ %}\n{% if disabled_count > 0 %}\n  mdi:robot-off\n{% else %}\n \
+                \ mdi:robot\n{% endif %}"
+              icon_color: "{% set door = 'automation.door_automation' %} {% set wake\
                 \ = 'automation.workday_wakeup' %} {% set disabled = states.automation\
                 \ | selectattr('state', 'eq', 'off') | map(attribute='entity_id')\
                 \ | list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
-                \ | int(0) > 0 %}\n  {{ disabled | reject('eq', door) | list | tojson\
-                \ }}\n{% else %}\n  {{ disabled | tojson }}\n{% endif %}"
-            show_empty: false
-            type: custom:auto-entities
-          type: custom:vertical-stack-in-card
-      template: '{% set door_entity = ''automation.door_automation'' %} {% set wakeup_entity
-        = ''automation.workday_wakeup'' %} {% set other_disabled = states.automation
-        | selectattr(''state'', ''eq'', ''off'') | rejectattr(''entity_id'', ''eq'',
-        door_entity) | list | count > 0 %} {% set door_condition = is_state(door_entity,
-        ''off'') and state_attr(wakeup_entity, ''current'') | int(0) == 0 %} {{ ''on''
-        if other_disabled or door_condition else ''off'' }}
+                \ | int(0) > 0 %}\n  {% set disabled_count = disabled | reject('eq',\
+                \ door) | list | length %}\n{% else %}\n  {% set disabled_count =\
+                \ disabled | length %}\n{% endif %}\n{% if disabled_count > 0 %}\n\
+                \  orange\n{% else %}\n  green\n{% endif %}"
+              primary: "{% set door = 'automation.door_automation' %} {% set wake\
+                \ = 'automation.workday_wakeup' %} {% set disabled = states.automation\
+                \ | selectattr('state', 'eq', 'off') | map(attribute='entity_id')\
+                \ | list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
+                \ | int(0) > 0 %}\n  {% set disabled_count = disabled | reject('eq',\
+                \ door) | list | length %}\n{% else %}\n  {% set disabled_count =\
+                \ disabled | length %}\n{% endif %}\n{% if disabled_count > 0 %}\n\
+                \  {{ disabled_count }} Disabled Automation{{ 's' if disabled_count\
+                \ > 1 else '' }}\n{% else %}\n  All Automations Active\n{% endif %}"
+              tap_action:
+                action: navigate
+                navigation_path: /config/automation
+              type: custom:mushroom-template-card
+              uix:
+                style:
+                  ha-tile-container$: ".content {\n  padding-inline-start: 4px !important;\n\
+                    \  gap: 4px !important;\n}\n"
+                  .: "ha-tile-icon {\n  --tile-icon-size: 25px !important;\n  --mdc-icon-size:\
+                    \ 25px !important;\n\n}\nha-tile-info {\n  --ha-tile-info-gap:\
+                    \ 4px !important;\n  --ha-tile-info-primary-font-size: 18px;\n\
+                    }\nha-card {\n  border: none;\n  background: none;\n  box-shadow:\
+                    \ none;\n  margin-bottom: -20px !important;\n}\n\nha-card::before\
+                    \ {\n  content: none !important;\n}\n"
+            - card:
+                type: entities
+                uix:
+                  style: "ha-card {\n  background: none !important;\n  border: none\
+                    \ !important;\n  box-shadow: none !important;\n}\nha-card::before\
+                    \ {\n  content: none !important;\n}\n"
+              filter:
+                template: "{% set door = 'automation.door_automation' %} {% set wake\
+                  \ = 'automation.workday_wakeup' %} {% set disabled = states.automation\
+                  \ | selectattr('state', 'eq', 'off') | map(attribute='entity_id')\
+                  \ | list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
+                  \ | int(0) > 0 %}\n  {{ disabled | reject('eq', door) | list | tojson\
+                  \ }}\n{% else %}\n  {{ disabled | tojson }}\n{% endif %}"
+              show_empty: false
+              type: custom:auto-entities
+            type: custom:vertical-stack-in-card
+        template: '{% set door_entity = ''automation.door_automation'' %} {% set wakeup_entity
+          = ''automation.workday_wakeup'' %} {% set other_disabled = states.automation
+          | selectattr(''state'', ''eq'', ''off'') | rejectattr(''entity_id'', ''eq'',
+          door_entity) | list | count > 0 %} {% set door_condition = is_state(door_entity,
+          ''off'') and state_attr(wakeup_entity, ''current'') | int(0) == 0 %} {{
+          ''on'' if other_disabled or door_condition else ''off'' }}
 
-        '
-      type: custom:state-switch
+          '
+        type: custom:state-switch
+      - name: Workday Wakeup Abort
+        entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
+          | int(0) > 0 else ''off'' }}'
+        states:
+          'on':
+            cards:
+            - features_position: bottom
+              grid_options:
+                columns: full
+              icon: local:briefcase_alarm_automation
+              icon_color: '#e1b000'
+              name_color: '#e1b000'
+              primary: Workday Wakeup is Active
+              type: custom:mushroom-template-card
+              uix:
+                style:
+                  ha-tile-container$: ".content {\n  padding-inline-start: 4px !important;\n\
+                    \  gap: 4px !important;\n}\n"
+                  .: "ha-tile-icon {\n  --tile-icon-size: 32px !important;\n  --mdc-icon-size:\
+                    \ 32px !important;\n\n}\nha-tile-info {\n  --ha-tile-info-gap:\
+                    \ 4px !important;\n  --ha-tile-info-primary-font-size: 20px;\n\
+                    }\nha-card {\n  border: none;\n  background: none;\n  box-shadow:\
+                    \ none;\n}\n\nha-card::before {\n  content: none !important;\n\
+                    }\n"
+            - features:
+              - entries:
+                - entity_id: ''
+                  icon: mdi:cancel
+                  label: Abort and Reset
+                  tap_action:
+                    action: perform-action
+                    data:
+                      action_type: abort
+                    perform_action: script.helper_script
+                  thumb: md3-elevated
+                  type: button
+                  styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+                    \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
+                    \ }};\n}\n.label {\n  color: {{ 'var(--custom-active)' }};\n}\n\
+                    .icon {\n  color: {{ 'var(--custom-active)' }};  \n}"
+              uix:
+                style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
+                  \ none;\n  margin-top: -18px;\n}\n\nha-card::before {\n  content:\
+                  \ none;\n}\ntype: custom:service-call\n"
+              type: custom:custom-features-card
+            type: custom:vertical-stack-in-card
+        type: custom:state-switch
+      - name: Light Template Tracker
+        entity: "{{ 'on'\n   if is_state('script.helper_script', 'on')\n   and states('input_text.template_tracking')\
+          \ != ''\n   else 'off'\n}}"
+        states:
+          'on':
+            element:
+              card_mod:
+                style: "ha-tile-info .primary {\n  white-space: normal !important;\n\
+                  \  overflow: visible !important;\n  text-overflow: unset !important;\n\
+                  \  line-height: 1.2 !important;\n}\n"
+              entity: timer.timer_helper
+              features_position: bottom
+              hide_state: '{{ states(''input_text.template_tracking'').startswith(''Timer
+                was'') }}'
+              name: "{% if states('input_text.template_tracking').startswith('Timer\
+                \ was') %}\n  Timer was already in use when triggered\n{% else %}\n\
+                \  Light Template Active - {{ states('input_text.template_tracking')\
+                \ }}\n{% endif %}"
+              tap_action:
+                action: none
+              type: tile
+              vertical: false
+            forge:
+              grid_options:
+                columns: full
+              mold: card
+            type: custom:uix-forge
+        type: custom:state-switch
     - cards:
       - color: red
         features_position: bottom
@@ -3889,6 +3972,235 @@ views:
             \ !important;\n  margin-inline-end: 20px !important;\n}\nha-tile-info\
             \ {\n  --ha-tile-info-gap: 4px !important;\n}\nha-card {\n\n}\n"
     type: grid
+  - type: grid
+    cards:
+    - type: heading
+      heading: New section
+    - type: vertical-stack
+      cards:
+      - name: Device Health (checks for offline devices)
+        type: custom:state-switch
+        entity: template
+        template: "{% set entities = [\n  'light.main_lights',\n  'light.kitchen_lights',\n\
+          \  'light.living_room_ceiling_lights',\n  'light.living_room_lamp',\n  'climate.nest_thermostat',\n\
+          \  'fan.living_room_ceiling_fan',\n  'light.closet_light',\n  'light.bathroom_light',\n\
+          \  'light.bedroom_lamp',\n  'light.bedroom_ceiling_lights',\n  'fan.bedroom_ceiling_fan',\n\
+          \  'fan.bedroom_fan',\n  'binary_sensor.front_door',\n  'binary_sensor.kitchen_presence',\n\
+          \  'binary_sensor.living_room_motion',\n  'binary_sensor.bathroom_presence',\n\
+          \  'binary_sensor.bedroom_presence',\n  'binary_sensor.closet_motion',\n\
+          \  'binary_sensor.washing_machine',\n  'binary_sensor.dryer',\n  'binary_sensor.bed_presence_bb8594_bed_occupied_left',\n\
+          \  'binary_sensor.bed_presence_bb8594_bed_occupied_right',\n  'media_player.blake_s_echo_dot_2',\n\
+          \  'media_player.blake_s_echo_pop_2',\n  'media_player.blake_s_echo_spot_2',\n\
+          \  'media_player.all_echo_2'\n] %} {% set offline = expand(entities)\n \
+          \ | rejectattr('state', 'in', ['unavailable', 'unknown'])\n  | list %}\n\
+          {{ 'on' if offline | count > 0 else 'off' }}\n"
+        states:
+          'on':
+            type: custom:vertical-stack-in-card
+            cards:
+            - type: custom:mushroom-template-card
+              grid_options:
+                columns: full
+                rows: auto
+              icon: mdi:wifi-off
+              icon_color: orange
+              primary: "{% set entities = [\n  'light.main_lights',\n  'light.kitchen_lights',\n\
+                \  'light.living_room_ceiling_lights',\n  'light.living_room_lamp',\n\
+                \  'climate.nest_thermostat',\n  'fan.living_room_ceiling_fan',\n\
+                \  'light.closet_light',\n  'light.bathroom_light',\n  'light.bedroom_lamp',\n\
+                \  'light.bedroom_ceiling_lights',\n  'fan.bedroom_ceiling_fan',\n\
+                \  'fan.bedroom_fan',\n  'binary_sensor.front_door',\n  'binary_sensor.kitchen_presence',\n\
+                \  'binary_sensor.living_room_motion',\n  'binary_sensor.bathroom_presence',\n\
+                \  'binary_sensor.bedroom_presence',\n  'binary_sensor.closet_motion',\n\
+                \  'binary_sensor.washing_machine',\n  'binary_sensor.dryer',\n  'binary_sensor.bed_presence_bb8594_bed_occupied_left',\n\
+                \  'binary_sensor.bed_presence_bb8594_bed_occupied_right',\n  'media_player.blake_s_echo_dot_2',\n\
+                \  'media_player.blake_s_echo_pop_2',\n  'media_player.blake_s_echo_spot_2',\n\
+                \  'media_player.all_echo_2'\n] %} {% set offline = expand(entities)\n\
+                \  | rejectattr('state', 'in', ['unavailable', 'unknown'])\n  | list\
+                \ %}\n{{ offline | count }} Device{{ 's' if offline | count != 1 else\
+                \ '' }} Offline\n"
+              uix:
+                style:
+                  ha-tile-container$: ".content {\n  padding-inline-start: 4px !important;\n\
+                    \  gap: 4px !important;\n}\n"
+                  .: "ha-tile-icon {\n  --tile-icon-size: 25px !important;\n  --mdc-icon-size:\
+                    \ 25px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 4px\
+                    \ !important;\n  --ha-tile-info-primary-font-size: 18px;\n}\n\
+                    ha-card {\n  border: none;\n  background: none;\n  box-shadow:\
+                    \ none;\n  margin-bottom: -20px !important;\n}\nha-card::before\
+                    \ {\n  content: none !important;\n}\n"
+            - type: custom:auto-entities
+              show_empty: false
+              card:
+                type: entities
+                uix:
+                  style: "ha-card {\n  background: none !important;\n  border: none\
+                    \ !important;\n  box-shadow: none !important;\n}\nha-card::before\
+                    \ {\n  content: none !important;\n}\n"
+              filter:
+                template: "{% set entities = [\n  'light.main_lights',\n  'light.kitchen_lights',\n\
+                  \  'light.living_room_ceiling_lights',\n  'light.living_room_lamp',\n\
+                  \  'climate.nest_thermostat',\n  'fan.living_room_ceiling_fan',\n\
+                  \  'light.closet_light',\n  'light.bathroom_light',\n  'light.bedroom_lamp',\n\
+                  \  'light.bedroom_ceiling_lights',\n  'fan.bedroom_ceiling_fan',\n\
+                  \  'fan.bedroom_fan',\n  'binary_sensor.front_door',\n  'binary_sensor.kitchen_presence',\n\
+                  \  'binary_sensor.living_room_motion',\n  'binary_sensor.bathroom_presence',\n\
+                  \  'binary_sensor.bedroom_presence',\n  'binary_sensor.closet_motion',\n\
+                  \  'binary_sensor.washing_machine',\n  'binary_sensor.dryer',\n\
+                  \  'binary_sensor.bed_presence_bb8594_bed_occupied_left',\n  'binary_sensor.bed_presence_bb8594_bed_occupied_right',\n\
+                  \  'media_player.blake_s_echo_dot_2',\n  'media_player.blake_s_echo_pop_2',\n\
+                  \  'media_player.blake_s_echo_spot_2',\n  'media_player.all_echo_2'\n\
+                  ] %} {{ expand(entities)\n  | rejectattr('state', 'in', ['unavailable',\
+                  \ 'unknown'])\n  | map(attribute='entity_id')\n  | list\n  | tojson\
+                  \ }}\n"
+      - name: Workday Wakeup Abort
+        entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
+          | int(0) > 0 else ''off'' }}'
+        states:
+          'on':
+            cards:
+            - features_position: bottom
+              grid_options:
+                columns: full
+              icon: local:briefcase_alarm_automation
+              icon_color: '#e1b000'
+              name_color: '#e1b000'
+              primary: Workday Wakeup is Active
+              type: custom:mushroom-template-card
+              uix:
+                style:
+                  ha-tile-container$: ".content {\n  padding-inline-start: 4px !important;\n\
+                    \  gap: 4px !important;\n}\n"
+                  .: "ha-tile-icon {\n  --tile-icon-size: 32px !important;\n  --mdc-icon-size:\
+                    \ 32px !important;\n\n}\nha-tile-info {\n  --ha-tile-info-gap:\
+                    \ 4px !important;\n  --ha-tile-info-primary-font-size: 20px;\n\
+                    }\nha-card {\n  border: none;\n  background: none;\n  box-shadow:\
+                    \ none;\n}\n\nha-card::before {\n  content: none !important;\n\
+                    }\n"
+            - features:
+              - entries:
+                - entity_id: ''
+                  icon: mdi:cancel
+                  label: Abort and Reset
+                  tap_action:
+                    action: perform-action
+                    data:
+                      action_type: abort
+                    perform_action: script.helper_script
+                  thumb: md3-elevated
+                  type: button
+                  styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+                    \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
+                    \ }};\n}\n.label {\n  color: {{ 'var(--custom-active)' }};\n}\n\
+                    .icon {\n  color: {{ 'var(--custom-active)' }};  \n}"
+              uix:
+                style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
+                  \ none;\n  margin-top: -18px;\n}\n\nha-card::before {\n  content:\
+                  \ none;\n}\ntype: custom:service-call\n"
+              type: custom:custom-features-card
+            type: custom:vertical-stack-in-card
+        type: custom:state-switch
+      - name: Light Template Tracker
+        entity: "{{ 'on'\n   if is_state('script.helper_script', 'on')\n   and states('input_text.template_tracking')\
+          \ != ''\n   else 'off'\n}}"
+        states:
+          'on':
+            element:
+              card_mod:
+                style: "ha-tile-info .primary {\n  white-space: normal !important;\n\
+                  \  overflow: visible !important;\n  text-overflow: unset !important;\n\
+                  \  line-height: 1.2 !important;\n}\n"
+              entity: timer.timer_helper
+              features_position: bottom
+              hide_state: '{{ states(''input_text.template_tracking'').startswith(''Timer
+                was'') }}'
+              name: "{% if states('input_text.template_tracking').startswith('Timer\
+                \ was') %}\n  Timer was already in use when triggered\n{% else %}\n\
+                \  Light Template Active - {{ states('input_text.template_tracking')\
+                \ }}\n{% endif %}"
+              tap_action:
+                action: none
+              type: tile
+              vertical: false
+            forge:
+              grid_options:
+                columns: full
+              mold: card
+            type: custom:uix-forge
+        type: custom:state-switch
+      - Name: Disabled Automations (not including door automation while workday wakeup
+          automation is active)
+        entity: template
+        states:
+          'on':
+            cards:
+            - grid_options:
+                columns: full
+                rows: auto
+              icon: "{% set door = 'automation.door_automation' %} {% set wake = 'automation.workday_wakeup'\
+                \ %} {% set disabled = states.automation | selectattr('state', 'eq',\
+                \ 'off') | map(attribute='entity_id') | list %} {% if is_state(door,\
+                \ 'off') and state_attr(wake, 'current') | int(0) > 0 %}\n  {% set\
+                \ disabled_count = disabled | reject('eq', door) | list | length %}\n\
+                {% else %}\n  {% set disabled_count = disabled | length %}\n{% endif\
+                \ %}\n{% if disabled_count > 0 %}\n  mdi:robot-off\n{% else %}\n \
+                \ mdi:robot\n{% endif %}"
+              icon_color: "{% set door = 'automation.door_automation' %} {% set wake\
+                \ = 'automation.workday_wakeup' %} {% set disabled = states.automation\
+                \ | selectattr('state', 'eq', 'off') | map(attribute='entity_id')\
+                \ | list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
+                \ | int(0) > 0 %}\n  {% set disabled_count = disabled | reject('eq',\
+                \ door) | list | length %}\n{% else %}\n  {% set disabled_count =\
+                \ disabled | length %}\n{% endif %}\n{% if disabled_count > 0 %}\n\
+                \  orange\n{% else %}\n  green\n{% endif %}"
+              primary: "{% set door = 'automation.door_automation' %} {% set wake\
+                \ = 'automation.workday_wakeup' %} {% set disabled = states.automation\
+                \ | selectattr('state', 'eq', 'off') | map(attribute='entity_id')\
+                \ | list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
+                \ | int(0) > 0 %}\n  {% set disabled_count = disabled | reject('eq',\
+                \ door) | list | length %}\n{% else %}\n  {% set disabled_count =\
+                \ disabled | length %}\n{% endif %}\n{% if disabled_count > 0 %}\n\
+                \  {{ disabled_count }} Disabled Automation{{ 's' if disabled_count\
+                \ > 1 else '' }}\n{% else %}\n  All Automations Active\n{% endif %}"
+              tap_action:
+                action: navigate
+                navigation_path: /config/automation
+              type: custom:mushroom-template-card
+              uix:
+                style:
+                  ha-tile-container$: ".content {\n  padding-inline-start: 4px !important;\n\
+                    \  gap: 4px !important;\n}\n"
+                  .: "ha-tile-icon {\n  --tile-icon-size: 25px !important;\n  --mdc-icon-size:\
+                    \ 25px !important;\n\n}\nha-tile-info {\n  --ha-tile-info-gap:\
+                    \ 4px !important;\n  --ha-tile-info-primary-font-size: 18px;\n\
+                    }\nha-card {\n  border: none;\n  background: none;\n  box-shadow:\
+                    \ none;\n  margin-bottom: -20px !important;\n}\n\nha-card::before\
+                    \ {\n  content: none !important;\n}\n"
+            - card:
+                type: entities
+                uix:
+                  style: "ha-card {\n  background: none !important;\n  border: none\
+                    \ !important;\n  box-shadow: none !important;\n}\nha-card::before\
+                    \ {\n  content: none !important;\n}\n"
+              filter:
+                template: "{% set door = 'automation.door_automation' %} {% set wake\
+                  \ = 'automation.workday_wakeup' %} {% set disabled = states.automation\
+                  \ | selectattr('state', 'eq', 'off') | map(attribute='entity_id')\
+                  \ | list %} {% if is_state(door, 'off') and state_attr(wake, 'current')\
+                  \ | int(0) > 0 %}\n  {{ disabled | reject('eq', door) | list | tojson\
+                  \ }}\n{% else %}\n  {{ disabled | tojson }}\n{% endif %}"
+              show_empty: false
+              type: custom:auto-entities
+            type: custom:vertical-stack-in-card
+        template: '{% set door_entity = ''automation.door_automation'' %} {% set wakeup_entity
+          = ''automation.workday_wakeup'' %} {% set other_disabled = states.automation
+          | selectattr(''state'', ''eq'', ''off'') | rejectattr(''entity_id'', ''eq'',
+          door_entity) | list | count > 0 %} {% set door_condition = is_state(door_entity,
+          ''off'') and state_attr(wakeup_entity, ''current'') | int(0) == 0 %} {{
+          ''on'' if other_disabled or door_condition else ''off'' }}
+
+          '
+        type: custom:state-switch
   subview: false
   theme: Frosted Glass Dark
   title: Test Bay
