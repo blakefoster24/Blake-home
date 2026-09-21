@@ -989,64 +989,114 @@ views:
           style: "ha-card {\n  border: none;\n  background: none !important;\n}\n\
             ha-card::before {\n  content: none !important;\n}\n"
         vertical: false
-      - type: custom:mushroom-template-card
-        grid_options:
-          columns: 12
-          rows: 1
-        entity: script.temporary_thermostat_adjustment
-        primary: Temporary Thermostat Adjustment
-        secondary: "{% if is_state('script.temporary_thermostat_adjustment', 'on')\
-          \ %}\n  {{ states('timer.timer_helper') }}\n{% else %}\n  {{ states('script.temporary_thermostat_adjustment')\
-          \ }}\n{% endif %}"
-        icon: local:thermostat_adjustment_script
-        icon_color: "{% if is_state('script.temporary_thermostat_adjustment', 'on')\
-          \ %}\n  var(--custom-active)\n{% else %}\n  var(--state-icon-color)\n{%\
-          \ endif %}"
-        features:
-        - type: custom:service-call
-          entries:
-          - type: button
-            entity_id: script.temporary_thermostat_adjustment
-            icon: "{% if is_state('script.temporary_thermostat_adjustment', 'on')\
-              \ %}\n  mdi:stop\n{% else %}\n  local:thermostat_adjustment_script\n\
-              {% endif %}"
-            label: "{% if is_state('script.temporary_thermostat_adjustment', 'on')\
-              \ %}\n  Stop\n{% else %}\n  Start\n{% endif %}"
-            styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-              \  border-radius: var(--custom-radius);\n  height: 40px;\n  width: 110px\
-              \ !important;\n  flex: 0 0 110px !important;\n  --color: var(--custom-bg);\n\
-              }\n\n.label {\n  {% if is_state('script.temporary_thermostat_adjustment',\
-              \ 'on') %}\n    color: var(--custom-active);\n  {% else %}\n    color:\
-              \ var(--custom-contrast);\n  {% endif %}\n}\n\n.icon {\n  {% if is_state('script.temporary_thermostat_adjustment',\
-              \ 'on') %}\n    color: var(--custom-active);\n  {% else %}\n    color:\
-              \ var(--custom-contrast);\n  {% endif %}\n  padding-bottom: .25rem;\n\
-              }"
-            tap_action:
-              action: "{% if is_state('script.temporary_thermostat_adjustment', 'on')\
-                \ %}\n  perform-action\n{% else %}\n  more-info\n{% endif %}"
-              perform_action: timer.finish
-              target:
-                entity_id: "{% if is_state('script.temporary_thermostat_adjustment',\
-                  \ 'on') %}\n  timer.timer_helper\n{% else %}\n  script.temporary_thermostat_adjustment\n\
-                  {% endif %}"
-              data: {}
-            thumb: md3-elevated
-            toggle_styles: false
-        features_position: inline
-        uix:
-          style:
-            .: "ha-card {\n  border-radius: var(--custom-radius) !important;\n  border:\
-              \ var(--custom-border) !important;\n  background: none !important;\n\
-              }\n\nha-card::before {\n  content: none !important;\n}\n\n.content {\n\
-              \  padding-inline-start: 7px !important;\n  gap: 4px !important;\n}\n\
-              \nha-tile-icon {\n  --tile-icon-size: 35px !important;\n  --mdc-icon-size:\
-              \ 32px !important;\n}\n\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
-              \n  {% if is_state('script.temporary_thermostat_adjustment', 'on') %}\n\
-              \    --ha-tile-info-primary-color: var(--custom-active) !important;\n\
-              \    --ha-tile-info-secondary-color: rgb(255, 193, 7) !important;\n\
-              \  {% endif %}\n}\n\n.container.horizontal .features-inline {\n  width:\
-              \ auto !important;\n  flex: 0 0 auto !important;\n  padding: 0 !important;\n\
-              \  margin-inline-end: 12px !important;\n}\n"
+      - type: conditional
+        conditions:
+        - condition: state
+          entity: script.temporary_thermostat_adjustment
+          state: 'off'
+        card:
+          type: tile
+          grid_options:
+            columns: 12
+            rows: 1
+          entity: script.temporary_thermostat_adjustment
+          name:
+            type: entity
+          icon: local:thermostat_adjustment_script
+          vertical: false
+          features:
+          - type: custom:service-call
+            entries:
+            - icon: local:thermostat_adjustment_script
+              label: Start
+              styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+                \  border-radius: var(--custom-radius);\n  height: 40px;\n  width:\
+                \ 110px !important;\n  flex: 0 0 110px !important;\n}\n:host {\n \
+                \   {% if is_state('script.temporary_thermostat_adjustment', 'on')\
+                \ %}\n      --color: var(--custom-bg-active);\n    {% else %}\n  \
+                \    --color: var(--custom-bg);\n    {% endif %}\n}\n.label {\n  \
+                \  {% if is_state('script.temporary_thermostat_adjustment', 'on')\
+                \ %}\n      color: var(--custom-contrast-active);\n    {% else %}\n\
+                \      color: var(--custom-contrast);\n    {% endif %} \n}\n.icon\
+                \ {\n    {% if is_state('script.temporary_thermostat_adjustment',\
+                \ 'on') %}\n      color: var(--custom-contrast-active);\n    {% else\
+                \ %}\n      color: var(--custom-contrast);\n    {% endif %}\n  padding-bottom:\
+                \ .25rem\n}"
+              tap_action:
+                action: more-info
+                target:
+                  entity_id: script.temporary_thermostat_adjustment
+                data: {}
+              thumb: md3-elevated
+              toggle_styles: false
+              type: button
+              entity_id: script.temporary_thermostat_adjustment
+          features_position: inline
+          card_mod:
+            style:
+              ha-tile-container$: ".content {\n  padding-inline-start: 7px !important;\n\
+                \  gap: 4px !important;\n}\n"
+              .: "ha-card {\n  border: 5px solid white;\n}\nha-tile-icon {\n  --tile-icon-size:\
+                \ 35px !important;\n  --mdc-icon-size: 32px !important;\n}\nhui-card-features[slot=\"\
+                features-inline\"] {\n  width: auto !important;\n  flex: 0 0 auto\
+                \ !important;\n  padding: 0 !important;\n  margin-inline-end: 12px\
+                \ !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+                }\nha-card {\n  border: var(--custom-border) !important;\n}\n"
+      - type: conditional
+        conditions:
+        - condition: state
+          entity: script.temporary_thermostat_adjustment
+          state: 'on'
+        card:
+          type: tile
+          grid_options:
+            columns: 12
+            rows: 1
+          entity: timer.timer_helper
+          name: Temporary Thermostat Adjustment
+          icon: local:thermostat_adjustment_script
+          vertical: false
+          features:
+          - type: custom:service-call
+            entries:
+            - icon: mdi:stop
+              label: Stop
+              styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+                \  border-radius: var(--custom-radius);\n  height: 40px;\n  width:\
+                \ 110px !important;\n  flex: 0 0 110px !important;\n}\n:host {\n \
+                \   {% if is_state('script.temporary_thermostat_adjustment', 'on')\
+                \ %}\n      --color: var(--custom-bg);\n    {% else %}\n      --color:\
+                \ var(--custom-bg);\n    {% endif %}\n}\n.label {\n    {% if is_state('script.temporary_thermostat_adjustment',\
+                \ 'on') %}\n      color: var(--custom-active);\n    {% else %}\n \
+                \     color: var(--custom-contrast);\n    {% endif %} \n}\n.icon {\n\
+                \    {% if is_state('script.temporary_thermostat_adjustment', 'on')\
+                \ %}\n      color: var(--custom-active);\n    {% else %}\n      color:\
+                \ var(--custom-active);\n    {% endif %}\n  padding-bottom: .25rem\n\
+                }"
+              tap_action:
+                action: perform-action
+                perform_action: timer.finish
+                target:
+                  entity_id: timer.timer_helper
+                data: {}
+              thumb: md3-elevated
+              toggle_styles: false
+              type: button
+              entity_id: timer.timer_helper
+          features_position: inline
+          card_mod:
+            style:
+              ha-tile-container$: ".content {\n  padding-inline-start: 7px !important;\n\
+                \  gap: 4px !important;\n}\n"
+              .: "ha-card {\n  border: var(--custom-border) !important;\n}\nha-tile-icon\
+                \ {\n  --tile-icon-size: 35px !important;\n  --mdc-icon-size: 32px\
+                \ !important;\n  --tile-color: var(--custom-active);\n}\nhui-card-features[slot=\"\
+                features-inline\"] {\n  width: auto !important;\n  flex: 0 0 auto\
+                \ !important;\n  padding: 0 !important;\n  margin-inline-end: 12px\
+                \ !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 2px !important;\n\
+                \  --ha-tile-info-primary-color: var(--custom-active) !important;\n\
+                \  --ha-tile-info-secondary-color: rgb(255, 193, 7) !important;\n\
+                \  \n}\n"
       index: 20
       type: custom:vertical-stack-in-card
     column_span: 1
@@ -2304,80 +2354,85 @@ views:
       entity: person.blake_foster
       state_not: home
   cards:
-  - cards:
-    - entity: "{{ 'on'\n   if is_state('script.helper_script', 'on')\n   and states('input_text.template_tracking')\
-        \ != ''\n   else 'off'\n}}"
-      states:
-        'on':
-          element:
-            card_mod:
-              style: "ha-tile-info .primary {\n  white-space: normal !important;\n\
-                \  overflow: visible !important;\n  text-overflow: unset !important;\n\
-                \  line-height: 1.2 !important;\n}\n"
-            entity: timer.timer_helper
-            features_position: bottom
-            hide_state: '{{ states(''input_text.template_tracking'').startswith(''Timer
-              was'') }}'
-            name: "{% if states('input_text.template_tracking').startswith('Timer\
-              \ was') %}\n  Timer was already in use when triggered\n{% else %}\n\
-              \  Light Template Active - {{ states('input_text.template_tracking')\
-              \ }}\n{% endif %}"
-            tap_action:
-              action: none
-            type: tile
-            vertical: false
-          forge:
-            grid_options:
-              columns: full
-            mold: card
-          type: custom:uix-forge
+  - type: vertical-stack
+    cards:
+    - name: Offline Devices
       type: custom:state-switch
-    - entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
-        | int(0) > 0 else ''off'' }}'
+      entity: template
+      template: "{% set entities = [\n  'light.main_lights',\n  'light.kitchen_lights',\n\
+        \  'light.living_room_ceiling_lights',\n  'light.living_room_lamp',\n  'climate.nest_thermostat',\n\
+        \  'fan.living_room_ceiling_fan',\n  'light.closet_light',\n  'light.bathroom_light',\n\
+        \  'light.bedroom_lamp',\n  'light.bedroom_ceiling_lights',\n  'fan.bedroom_ceiling_fan',\n\
+        \  'fan.bedroom_fan',\n  'binary_sensor.front_door',\n  'binary_sensor.kitchen_presence',\n\
+        \  'binary_sensor.living_room_motion',\n  'binary_sensor.bathroom_presence',\n\
+        \  'binary_sensor.bedroom_presence',\n  'binary_sensor.closet_motion',\n \
+        \ 'binary_sensor.washing_machine',\n  'binary_sensor.dryer',\n  'binary_sensor.bed_presence_bb8594_bed_occupied_left',\n\
+        \  'binary_sensor.bed_presence_bb8594_bed_occupied_right',\n  'media_player.blake_s_echo_dot_2',\n\
+        \  'media_player.blake_s_echo_pop_2',\n  'media_player.blake_s_echo_spot_2',\n\
+        \  'media_player.all_echo_2'\n] %} {% set offline = expand(entities)\n  |\
+        \ selectattr('state', 'in', ['unavailable', 'unknown'])\n  | list %}\n{{ 'on'\
+        \ if offline | count > 0 else 'off' }}\n"
       states:
         'on':
+          type: custom:vertical-stack-in-card
           cards:
-          - features_position: bottom
+          - type: custom:mushroom-template-card
             grid_options:
               columns: full
-            icon: local:briefcase_alarm_automation
-            icon_color: '#e1b000'
-            name_color: '#e1b000'
-            primary: Workday Wakeup is Active
-            type: custom:mushroom-template-card
+              rows: auto
+            icon: mdi:wifi-off
+            icon_color: orange
+            primary: "{% set entities = [\n  'light.main_lights',\n  'light.kitchen_lights',\n\
+              \  'light.living_room_ceiling_lights',\n  'light.living_room_lamp',\n\
+              \  'climate.nest_thermostat',\n  'fan.living_room_ceiling_fan',\n  'light.closet_light',\n\
+              \  'light.bathroom_light',\n  'light.bedroom_lamp',\n  'light.bedroom_ceiling_lights',\n\
+              \  'fan.bedroom_ceiling_fan',\n  'fan.bedroom_fan',\n  'binary_sensor.front_door',\n\
+              \  'binary_sensor.kitchen_presence',\n  'binary_sensor.living_room_motion',\n\
+              \  'binary_sensor.bathroom_presence',\n  'binary_sensor.bedroom_presence',\n\
+              \  'binary_sensor.closet_motion',\n  'binary_sensor.washing_machine',\n\
+              \  'binary_sensor.dryer',\n  'binary_sensor.bed_presence_bb8594_bed_occupied_left',\n\
+              \  'binary_sensor.bed_presence_bb8594_bed_occupied_right',\n  'media_player.blake_s_echo_dot_2',\n\
+              \  'media_player.blake_s_echo_pop_2',\n  'media_player.blake_s_echo_spot_2',\n\
+              \  'media_player.all_echo_2'\n] %} {% set offline = expand(entities)\n\
+              \  | selectattr('state', 'in', ['unavailable', 'unknown'])\n  | list\
+              \ %}\n{{ offline | count }} Device{{ 's' if offline | count != 1 else\
+              \ '' }} Offline\n"
             uix:
               style:
                 ha-tile-container$: ".content {\n  padding-inline-start: 4px !important;\n\
                   \  gap: 4px !important;\n}\n"
-                .: "ha-tile-icon {\n  --tile-icon-size: 32px !important;\n  --mdc-icon-size:\
-                  \ 32px !important;\n\n}\nha-tile-info {\n  --ha-tile-info-gap: 4px\
-                  \ !important;\n  --ha-tile-info-primary-font-size: 20px;\n}\nha-card\
+                .: "ha-tile-icon {\n  --tile-icon-size: 25px !important;\n  --mdc-icon-size:\
+                  \ 25px !important;\n}\nha-tile-info {\n  --ha-tile-info-gap: 4px\
+                  \ !important;\n  --ha-tile-info-primary-font-size: 18px;\n}\nha-card\
                   \ {\n  border: none;\n  background: none;\n  box-shadow: none;\n\
-                  }\n\nha-card::before {\n  content: none !important;\n}\n"
-          - features:
-            - entries:
-              - entity_id: ''
-                icon: mdi:cancel
-                label: Abort and Reset
-                tap_action:
-                  action: perform-action
-                  data:
-                    action_type: abort
-                  perform_action: script.helper_script
-                thumb: md3-elevated
-                type: button
-                styles: ":host {\n  border: var(--custom-button-border) !important;\n\
-                  \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
-                  \ }};\n}\n.label {\n  color: {{ 'var(--custom-active)' }};\n}\n\
-                  .icon {\n  color: {{ 'var(--custom-active)' }};  \n}"
-            uix:
-              style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
-                \ none;\n  margin-top: -18px;\n}\n\nha-card::before {\n  content:\
-                \ none;\n}\ntype: custom:service-call\n"
-            type: custom:custom-features-card
-          type: custom:vertical-stack-in-card
-      type: custom:state-switch
-    - entity: template
+                  \  margin-bottom: -20px !important;\n}\nha-card::before {\n  content:\
+                  \ none !important;\n}\n"
+          - type: custom:auto-entities
+            show_empty: false
+            card:
+              type: entities
+              uix:
+                style: "ha-card {\n  background: none !important;\n  border: none\
+                  \ !important;\n  box-shadow: none !important;\n}\nha-card::before\
+                  \ {\n  content: none !important;\n}\n"
+            filter:
+              template: "{% set entities = [\n  'light.main_lights',\n  'light.kitchen_lights',\n\
+                \  'light.living_room_ceiling_lights',\n  'light.living_room_lamp',\n\
+                \  'climate.nest_thermostat',\n  'fan.living_room_ceiling_fan',\n\
+                \  'light.closet_light',\n  'light.bathroom_light',\n  'light.bedroom_lamp',\n\
+                \  'light.bedroom_ceiling_lights',\n  'fan.bedroom_ceiling_fan',\n\
+                \  'fan.bedroom_fan',\n  'binary_sensor.front_door',\n  'binary_sensor.kitchen_presence',\n\
+                \  'binary_sensor.living_room_motion',\n  'binary_sensor.bathroom_presence',\n\
+                \  'binary_sensor.bedroom_presence',\n  'binary_sensor.closet_motion',\n\
+                \  'binary_sensor.washing_machine',\n  'binary_sensor.dryer',\n  'binary_sensor.bed_presence_bb8594_bed_occupied_left',\n\
+                \  'binary_sensor.bed_presence_bb8594_bed_occupied_right',\n  'media_player.blake_s_echo_dot_2',\n\
+                \  'media_player.blake_s_echo_pop_2',\n  'media_player.blake_s_echo_spot_2',\n\
+                \  'media_player.all_echo_2'\n] %} {{ expand(entities)\n  | selectattr('state',\
+                \ 'in', ['unavailable', 'unknown'])\n  | map(attribute='entity_id')\n\
+                \  | list\n  | tojson }}\n"
+    - Name: Disabled Automations (not including door automation while workday wakeup
+        automation is active)
+      entity: template
       states:
         'on':
           cards:
@@ -2446,6 +2501,80 @@ views:
         if other_disabled or door_condition else ''off'' }}
 
         '
+      type: custom:state-switch
+    - name: Workday Wakeup Abort
+      entity: '{{ ''on'' if state_attr(''automation.workday_wakeup'', ''current'')
+        | int(0) > 0 else ''off'' }}'
+      states:
+        'on':
+          cards:
+          - features_position: bottom
+            grid_options:
+              columns: full
+            icon: local:briefcase_alarm_automation
+            icon_color: '#e1b000'
+            name_color: '#e1b000'
+            primary: Workday Wakeup is Active
+            type: custom:mushroom-template-card
+            uix:
+              style:
+                ha-tile-container$: ".content {\n  padding-inline-start: 4px !important;\n\
+                  \  gap: 4px !important;\n}\n"
+                .: "ha-tile-icon {\n  --tile-icon-size: 32px !important;\n  --mdc-icon-size:\
+                  \ 32px !important;\n\n}\nha-tile-info {\n  --ha-tile-info-gap: 4px\
+                  \ !important;\n  --ha-tile-info-primary-font-size: 20px;\n}\nha-card\
+                  \ {\n  border: none;\n  background: none;\n  box-shadow: none;\n\
+                  }\n\nha-card::before {\n  content: none !important;\n}\n"
+          - features:
+            - entries:
+              - entity_id: ''
+                icon: mdi:cancel
+                label: Abort and Reset
+                tap_action:
+                  action: perform-action
+                  data:
+                    action_type: abort
+                  perform_action: script.helper_script
+                thumb: md3-elevated
+                type: button
+                styles: ":host {\n  border: var(--custom-button-border) !important;\n\
+                  \  border-radius: var(--custom-radius);\n  --color: {{ 'var(--custom-bg)'\
+                  \ }};\n}\n.label {\n  color: {{ 'var(--custom-active)' }};\n}\n\
+                  .icon {\n  color: {{ 'var(--custom-active)' }};  \n}"
+            uix:
+              style: "ha-card {\n  background: none;\n  border: none;\n  box-shadow:\
+                \ none;\n  margin-top: -18px;\n}\n\nha-card::before {\n  content:\
+                \ none;\n}\ntype: custom:service-call\n"
+            type: custom:custom-features-card
+          type: custom:vertical-stack-in-card
+      type: custom:state-switch
+    - name: Light Template Tracker
+      entity: "{{ 'on'\n   if is_state('script.helper_script', 'on')\n   and states('input_text.template_tracking')\
+        \ != ''\n   else 'off'\n}}"
+      states:
+        'on':
+          element:
+            card_mod:
+              style: "ha-tile-info .primary {\n  white-space: normal !important;\n\
+                \  overflow: visible !important;\n  text-overflow: unset !important;\n\
+                \  line-height: 1.2 !important;\n}\n"
+            entity: timer.timer_helper
+            features_position: bottom
+            hide_state: '{{ states(''input_text.template_tracking'').startswith(''Timer
+              was'') }}'
+            name: "{% if states('input_text.template_tracking').startswith('Timer\
+              \ was') %}\n  Timer was already in use when triggered\n{% else %}\n\
+              \  Light Template Active - {{ states('input_text.template_tracking')\
+              \ }}\n{% endif %}"
+            tap_action:
+              action: none
+            type: tile
+            vertical: false
+          forge:
+            grid_options:
+              columns: full
+            mold: card
+          type: custom:uix-forge
       type: custom:state-switch
     - card:
         cards:
@@ -2543,10 +2672,6 @@ views:
         entity: input_text.security_info
         state_not: ''
       type: conditional
-    type: custom:vertical-stack-in-card
-    uix:
-      style: "ha-card {\n  border: none;\n  background: none;\n}\n\nha-card::before\
-        \ {\n  content: none !important;\n}\n"
   - color: state
     entities:
     - entity: light.main_lights

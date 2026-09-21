@@ -455,6 +455,7 @@ Frosted Glass Dark:
   custom-contrast: *contrast
   custom-radius: 20px
   custom-button-border: .8px solid rgba(255, 255, 255, 0.2)
+  custom-border-2: 2px white solid
   custom-border:  .5px solid rgba(255, 255, 255, 0.2)
 
   # =========================
